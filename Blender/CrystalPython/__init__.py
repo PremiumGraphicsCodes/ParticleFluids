@@ -35,6 +35,7 @@ import scene
 import physics_command
 import particle_system_scene
 from polygon_mesh_scene import *
+from triangle_mesh_scene import *
 from physics_command import *
 from scene import *
 from bpy.props import *
@@ -64,15 +65,14 @@ class BLPointCloud :
       me.update()
       bpy.context.collection.objects.link(ob)
 
-class BLPolygonMesh :
+class BLTriangleMesh :
   def __init__(self):
     pass
 
   def build(self):
-    self.mesh = PolygonMeshScene(scene)
-#    self.mesh.create_empty_polygon_mesh_scene("", 0)
+    self.mesh = TriangleMeshScene(scene)
 
-  def convert(self, mesh) :
+  def convert_from_polygon_mesh(self, mesh) :
     meshes = bpy.data.meshes
 
     positions = []
@@ -85,19 +85,27 @@ class BLPolygonMesh :
       n = Vector3dd(vt.normal[0], vt.normal[1], vt.normal[2])
       normals.append(n)
 
-    self.mesh.create_polygon_mesh_scene("", positions, normals, [], 0)
+    #self.mesh.create_polygon_mesh_scene("", positions, normals, [], 0)
 
     print("num of edges:", len(mesh.edges))
     for ed in mesh.edges:
       print("edge index:{0: 2} v0:{1} v1:{2}".format(ed.index, ed.vertices[0], ed.vertices[1]))
 
     print("num of polygons:", len(mesh.polygons))
+    triangles = Triangle3ddVector()
     for pl in mesh.polygons:
       print("polygon index:{0:2} ".format(pl.index), end="")
       print("vertices:", end="")
       for vi in pl.vertices:
         print("{0:2}, ".format(vi), end="")
+      v0 = positions[pl.vertices[0]]
+      v1 = positions[pl.vertices[1]]
+      v2 = positions[pl.vertices[2]]
+      triangle = Triangle3dd(v0, v1, v2)
+      triangles.add(triangle)
+#      v0 = vi[0].
       print("")
+    self.mesh.create(triangles, "", 1)
 
 class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
   bl_idname = "pg.particlesystemimportoperator"
@@ -133,9 +141,9 @@ class MeshToPS(bpy.types.Operator) :
   def execute(self, context) :
       pc = BLPointCloud("point-cloud", [(0.0, 0.0, 0.0)])      
       selected_mesh = self.get_selected_mesh(context)
-      mesh = BLPolygonMesh()
+      mesh = BLTriangleMesh()
       mesh.build()
-      mesh.convert(selected_mesh)
+      mesh.convert_from_polygon_mesh(selected_mesh)
       return {'FINISHED'}
 
   def get_selected_mesh(self, context) :

@@ -16,9 +16,11 @@ class VoxelScene :
        set_arg_box3dd(space_labels.VoxelSceneCreateLabels.BoundingBoxLabel, boundingBox)
        set_arg_string(space_labels.VoxelSceneCreateLabels.NameLabel, name)
        set_arg_int(space_labels.VoxelSceneCreateLabels.LayerLabel, layer)
-       execute_command(self.scene.world)
-       new_id = get_result_int(space_labels.VoxelSceneCreateLabels.NewIdLabel);
-       return new_id
+       is_ok = execute_command(self.scene.world)
+       if not is_ok :
+           return False
+       self.id = get_result_int(space_labels.VoxelSceneCreateLabels.NewIdLabel);
+       return True
 
     def set_voxel_nodes(voxel_id, nodes) :
         indicesX = []

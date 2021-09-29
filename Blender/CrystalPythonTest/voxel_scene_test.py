@@ -8,5 +8,5 @@ class VoxelSceneTest(unittest.TestCase):
         voxel = VoxelScene(scene)
         resolution = [2,2,2]
         bb = Box3dd()
-        new_id = voxel.create_voxel("", resolution,bb, 1)
-        self.assertEqual(1, new_id)
+        voxel.create_voxel("", resolution,bb, 1)
+        self.assertEqual(1, voxel.id)
