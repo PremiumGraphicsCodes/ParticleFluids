@@ -32,7 +32,7 @@ void ScanLineVoxelizerView::onOk()
 {
 	TriangleMeshBuilder builder;
 	const Box3d box(Vector3dd(2, 2, 2), Vector3dd(8, 8, 8));
-	builder.add(box);
+	builder.add(box, 2, 2, 2);
 	//const Sphere3dd sphere(Vector3dd(5, 5, 5), 5);
 	//builder.add(sphere, 32, 32);
 	auto mesh = builder.build();
