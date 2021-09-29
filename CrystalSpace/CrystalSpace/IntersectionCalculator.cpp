@@ -210,13 +210,13 @@ bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Box3d
 
 	const auto min = box.getMin();
 	const auto max = box.getMax();
-	float tmin = (min.x - origin.x) / dir.x;
-	float tmax = (max.x - origin.x) / dir.x;
+	auto tmin = (min.x - origin.x) / dir.x;
+	auto tmax = (max.x - origin.x) / dir.x;
 
 	if (tmin > tmax) std::swap(tmin, tmax);
 
-	float tymin = (min.y - origin.y) / dir.y;
-	float tymax = (max.y - origin.y) / dir.y;
+	auto tymin = (min.y - origin.y) / dir.y;
+	auto tymax = (max.y - origin.y) / dir.y;
 
 	if (tymin > tymax) std::swap(tymin, tymax);
 
@@ -229,8 +229,8 @@ bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Box3d
 	if (tymax < tmax)
 		tmax = tymax;
 
-	float tzmin = (min.z - origin.z) / dir.z;
-	float tzmax = (max.z - origin.z) / dir.z;
+	auto tzmin = (min.z - origin.z) / dir.z;
+	auto tzmax = (max.z - origin.z) / dir.z;
 
 	if (tzmin > tzmax) std::swap(tzmin, tzmax);
 

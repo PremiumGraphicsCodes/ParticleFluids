@@ -22,12 +22,12 @@ bool Overlap::overlap(const Box3dd& box, const Plane3d& plane, const double tole
 	const auto n = plane.getNormal();
 
 	// Compute the projection interval radius of b onto L(t) = b.c + t * p.n
-	float r = e[0] * ::fabs(n[0]) + e[1] * ::fabs(n[1]) + e[2] * ::fabs(n[2]);
+	auto r = e[0] * ::fabs(n[0]) + e[1] * ::fabs(n[1]) + e[2] * ::fabs(n[2]);
 
 	const auto d = plane.calculateD();
 
 	// Compute distance of box center from plane
-	float s = glm::dot(n, c) - d;
+	auto s = glm::dot(n, c) - d;
 
 	// Intersection occurs when distance s falls within [-r,+r] interval
 	return ::fabs(s) <= r;
