@@ -70,28 +70,46 @@ class BLTriangleMesh :
     pass
 
   def build(self):
+    self.triangles = Triangle3ddVector()
     self.mesh = TriangleMeshScene(scene)
 
+  def convert_to_polygon_mesh(self, name) :
+    mesh = bpy.data.meshes.new(name = name)
+    obj = bpy.data.objects.new(name, mesh)
+
+    coords = []
+    faces = []
+    next_vertex = 0
+    for t in self.triangles.values :
+      coords.append( (t.v0.x, t.v0.y, t.v0.z ))
+      coords.append( (t.v1.x, t.v1.y, t.v1.z ))
+      coords.append( (t.v2.x, t.v2.y, t.v2.z ))
+      faces.append( (next_vertex,next_vertex+1,next_vertex+2) )
+      next_vertex += 3
+
+    mesh.from_pydata(coords, [], faces)
+    
+    # Display name and update the mesh
+    obj.show_name = True
+    mesh.update()
+    bpy.context.collection.objects.link(obj)
+
+#      triangle.
+
+#    self.mesh.
+#    mesh.from_pydata()
+
   def convert_from_polygon_mesh(self, mesh) :
-    meshes = bpy.data.meshes
+    #meshes = bpy.data.meshes
 
     positions = []
-    normals = []
     print("num of vertices:", len(mesh.vertices))
     for vt in mesh.vertices:
       print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
       p = Vector3dd(vt.co[0], vt.co[1], vt.co[2])
       positions.append(p)
-      n = Vector3dd(vt.normal[0], vt.normal[1], vt.normal[2])
-      normals.append(n)
 
     #self.mesh.create_polygon_mesh_scene("", positions, normals, [], 0)
-
-    print("num of edges:", len(mesh.edges))
-    for ed in mesh.edges:
-      print("edge index:{0: 2} v0:{1} v1:{2}".format(ed.index, ed.vertices[0], ed.vertices[1]))
-
-    print("num of polygons:", len(mesh.polygons))
     triangles = Triangle3ddVector()
     for pl in mesh.polygons:
       print("polygon index:{0:2} ".format(pl.index), end="")
@@ -101,9 +119,11 @@ class BLTriangleMesh :
       v0 = positions[pl.vertices[0]]
       v1 = positions[pl.vertices[1]]
       v2 = positions[pl.vertices[2]]
-      triangle = Triangle3dd(v0, v1, v2)
-      triangles.add(triangle)
-#      v0 = vi[0].
+      v3 = positions[pl.vertices[3]]
+      triangle1 = Triangle3dd(v0, v1, v2)
+      self.triangles.add(triangle1)
+      triangle2 = Triangle3dd(v0, v2, v3)
+      self.triangles.add(triangle2)
       print("")
     self.mesh.create(triangles, "", 1)
 
@@ -144,6 +164,7 @@ class MeshToPS(bpy.types.Operator) :
       mesh = BLTriangleMesh()
       mesh.build()
       mesh.convert_from_polygon_mesh(selected_mesh)
+      mesh.convert_to_polygon_mesh("hello")
       return {'FINISHED'}
 
   def get_selected_mesh(self, context) :
