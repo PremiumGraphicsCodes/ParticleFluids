@@ -36,8 +36,10 @@ import physics_command
 import particle_system_scene
 from polygon_mesh_scene import *
 from triangle_mesh_scene import *
+from voxel_scene import *
 from physics_command import *
 from scene import *
+from space_command import *
 from bpy.props import *
 
 from bpy_extras.io_utils import (
@@ -127,6 +129,13 @@ class BLTriangleMesh :
       print("")
     self.mesh.create(triangles, "", 1)
 
+class BLVoxel:
+  def __init__(self):
+    pass
+
+  def build(self):
+    self.voxel = VoxelScene(scene)
+
 class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
   bl_idname = "pg.particlesystemimportoperator"
   bl_label = "ParticleSystemImport"
@@ -165,6 +174,7 @@ class MeshToPS(bpy.types.Operator) :
       mesh.build()
       mesh.convert_from_polygon_mesh(selected_mesh)
       mesh.convert_to_polygon_mesh("hello")
+      voxel = BLVoxel()
       return {'FINISHED'}
 
   def get_selected_mesh(self, context) :

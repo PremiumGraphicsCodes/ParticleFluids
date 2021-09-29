@@ -11,13 +11,12 @@ class SpaceCommandTest(unittest.TestCase):
         new_id = command.create_sparse_volume(resolution, bb, 1, "")
         self.assertEqual(1, new_id)
 
+#class VoxelizerTest(unittest.TestCase):
 #    def test_voxelize(self):
 #        scene = Scene(World())
-#        positions = Vector3ddVector()
-#        color = ColorRGBAf()
-#        ps_id = scene.create_particle_system_scene(positions, "", 1.0, color, 1)
-#        self.assertEqual(1, ps_id)
-
+#        voxel = VoxelScene(scene)
+#        voxelizer = Voxelizer(scene)
+#        voxelizer.voxelize(mesh_id, voxel_id, divide_length)
 
 if __name__ == '__main__':
     unittest.main()

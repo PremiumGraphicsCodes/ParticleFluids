@@ -13,6 +13,17 @@ class VoxelNode :
         self.indices = []
         self.value = false
 
+class Voxelizer :
+    def __init__(self, scene) :
+        self.scene = scene
+
+    def voxelize(self, mesh_id, voxel_id, divide_length) :
+        create_space_command(space_labels.VoxelizerLabels.CommandNameLabel)
+        set_arg_double(space_labels.VoxelizerLabels.DivideLengthLabel, divide_length)
+        set_arg_int(space_labels.VoxelizerLabels.MeshIdLabel, mesh_id)
+        set_arg_int(space_labels.VoxelizerLabels.VoxelIdLabel, voxel_id)
+        return execute_command(self.scene.world)
+
 class SpaceCommand :
     def __init__(self, scene):
         self.scene = scene
