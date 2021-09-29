@@ -1,15 +1,17 @@
 #include "ScanLineVoxelizerView.h"
 
 #include "../CrystalSpace/ScanLineVoxelizer.h"
-#include "CrystalScene/Scene/VoxelScene.h"
 
+#include "CrystalScene/Scene/VoxelScene.h"
 #include "CrystalScene/Scene/ParticleSystemScene.h"
+
 //#include "../../Crystal/Scene/PolygonMeshScene.h"
 
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
-#include "../../Crystal/Math/Sphere3d.h"
+#include "Crystal/Shape/TriangleMeshBuilder.h"
+#include "Crystal/Math/Sphere3d.h"
 
-#include "../../Crystal/IO/TXTFileWriter.h"
+#include "Crystal/IO/TXTFileWriter.h"
+
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -23,20 +25,14 @@ ScanLineVoxelizerView::ScanLineVoxelizerView(const std::string& name, World* mod
 	IOkCancelView(name, model, canvas),
 	divideLengthView("DivideLength", 1.0)
 {
-	//toPointsButton.setFunction([=]() { toPoints(); });
-	//toVoxelButton.setFunction([=]() { toVolume(); });
-
-	//add(&toPointsButton);
-	//add(&toVoxelButton);
-
 	add(&divideLengthView);
 }
 
 void ScanLineVoxelizerView::onOk()
 {
-	PolygonMeshBuilder builder;
+	TriangleMeshBuilder builder;
 	const Box3d box(Vector3dd(2, 2, 2), Vector3dd(8, 8, 8));
-	builder.add(box, 2, 2, 2);
+	builder.add(box);
 	//const Sphere3dd sphere(Vector3dd(5, 5, 5), 5);
 	//builder.add(sphere, 32, 32);
 	auto mesh = builder.build();
@@ -53,7 +49,7 @@ void ScanLineVoxelizerView::onOk()
 	ParticleAttribute attr;
 	attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
 	attr.size = 100.0f;
-	for (auto p : intersections) {
+	for (const auto& p : intersections) {
 		ps->add(p, attr);
 	}
 

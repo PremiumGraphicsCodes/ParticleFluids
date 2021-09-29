@@ -1,7 +1,7 @@
 #include "ColorMenu.h"
-#include "../../CrystalViewer/AppBase/imgui.h"
-#include "../../CrystalViewer/AppBase/ControlPanel.h"
-#include "../../CrystalViewer/AppBase/ColorMapView.h"
+#include "../../CrystalScene/AppBase/imgui.h"
+#include "../../CrystalScene/AppBase/ControlPanel.h"
+#include "../../CrystalScene/AppBase/ColorMapView.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

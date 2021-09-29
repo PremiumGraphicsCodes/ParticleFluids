@@ -23,6 +23,7 @@
 #include "PMSphereView.h"
 #include "PMConeView.h"
 
+#include "TMBoxView.h"
 #include "TMSphereView.h"
 
 #include "VolSphereView.h"
@@ -153,10 +154,10 @@ void TMGenerationMenu::onShow()
 	const auto& c = name.c_str();
 
 	if (ImGui::BeginMenu(c)) {
-		/*
-		if (ImGui::MenuItem("PMBox")) {
-			control->setWindow(new PMBoxView("PMBox", world, canvas));
+		if (ImGui::MenuItem("TMBox")) {
+			control->setWindow(new TMBoxView("TMBox", world, canvas));
 		}
+		/*
 		if (ImGui::MenuItem("PMQuad")) {
 			control->setWindow(new PMQuadView("PMQuad", world, canvas));
 		}

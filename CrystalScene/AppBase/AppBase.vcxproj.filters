@@ -318,6 +318,9 @@
     <ClCompile Include="TMSphereView.cpp">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClCompile>
+    <ClCompile Include="TMBoxView.cpp">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -677,6 +680,9 @@
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClInclude>
     <ClInclude Include="TMSphereView.h">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TMBoxView.h">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClInclude>
   </ItemGroup>

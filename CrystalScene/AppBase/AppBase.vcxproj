@@ -85,6 +85,7 @@
     <ClCompile Include="PolygonMeshEditView.cpp" />
     <ClCompile Include="SceneListPanel.cpp" />
     <ClCompile Include="SphereRegionSelectView.cpp" />
+    <ClCompile Include="TMBoxView.cpp" />
     <ClCompile Include="TMSphereView.cpp" />
     <ClCompile Include="TranslateView.cpp" />
     <ClCompile Include="Vector3dView.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="PolygonMeshEditView.h" />
     <ClInclude Include="SceneListPanel.h" />
     <ClInclude Include="SphereRegionSelectView.h" />
+    <ClInclude Include="TMBoxView.h" />
     <ClInclude Include="TMSphereView.h" />
     <ClInclude Include="TranslateView.h" />
     <ClInclude Include="VertexView.h" />

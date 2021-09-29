@@ -2,7 +2,7 @@
 
 #include "PublicLabels/VoxelizerLabels.h"
 
-#include "CrystalScene/Scene/PolygonMeshScene.h"
+#include "CrystalScene/Scene/TriangleMeshScene.h"
 #include "CrystalScene/Scene/VoxelScene.h"
 
 #include "../CrystalSpace/ScanLineVoxelizer.h"
@@ -37,7 +37,7 @@ std::string VoxelizerCommand::getName()
 
 bool VoxelizerCommand::execute(World* scene)
 {
-	auto pmScene = scene->getScenes()->findSceneById<PolygonMeshScene*>(args.meshId.getValue());
+	auto pmScene = scene->getScenes()->findSceneById<TriangleMeshScene*>(args.meshId.getValue());
 	if (pmScene == nullptr) {
 		return false;
 	}

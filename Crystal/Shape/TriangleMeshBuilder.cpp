@@ -35,24 +35,6 @@ void TriangleMeshBuilder::add(const Quad3d& quad)
 	faces.push_back(f2);
 }
 
-void TriangleMeshBuilder::add(const Box3dd& box)
-{
-	auto p0 = box.getPosition(0, 0, 0);
-	auto p1 = box.getPosition(1, 0, 0);
-	auto p2 = box.getPosition(1, 1, 0);
-	auto p3 = box.getPosition(0, 1, 0);
-
-	auto p4 = box.getPosition(0, 0, 1);
-	auto p5 = box.getPosition(1, 0, 1);
-	auto p6 = box.getPosition(1, 1, 1);
-	auto p7 = box.getPosition(0, 1, 1);
-
-	faces.push_back(TriangleFace(Triangle3d(p0, p1, p2))); // front
-	faces.push_back(TriangleFace(Triangle3d(p3, p2, p1)));
-	faces.push_back(TriangleFace(Triangle3d(p4, p5, p6)));
-	faces.push_back(TriangleFace(Triangle3d(p7, p4, p5)));
-}
-
 std::unique_ptr<TriangleMesh> TriangleMeshBuilder::build()
 {
 	auto mesh = std::make_unique<TriangleMesh>();
@@ -86,4 +68,46 @@ void TriangleMeshBuilder::add(const ISurface3dd& surface, const int unum, const 
 			faces.push_back(TriangleFace(t2));
 		}
 	}
+}
+
+void TriangleMeshBuilder::add(const IVolume3dd& volume, const int unum, const int vnum, const int wnum)
+{
+	const auto v0 = volume.getPosition(0, 0, 0);
+	const auto v1 = volume.getPosition(1, 0, 0);
+	const auto v2 = volume.getPosition(1, 1, 0);
+	const auto v3 = volume.getPosition(0, 1, 0);
+
+	const auto v4 = volume.getPosition(0, 0, 1);
+	const auto v5 = volume.getPosition(1, 0, 1);
+	const auto v6 = volume.getPosition(1, 1, 1);
+	const auto v7 = volume.getPosition(0, 1, 1);
+
+	addFace(v0, v1, v2); // front
+	addFace(v2, v3, v0);
+
+	addFace(v1, v5, v6); // right
+	addFace(v6, v2, v1);
+
+	addFace(v6, v5, v4); // left
+	addFace(v4, v7, v6);
+
+	addFace(v4, v0, v3); // back
+	addFace(v7, v4, v3);
+
+	addFace(v6, v3, v2); // top;
+	addFace(v7, v3, v6);
+
+	addFace(v0, v5, v1); // bottom
+	addFace(v0, v4, v5);
+}
+
+void TriangleMeshBuilder::addFace(const Vector3dd& v0, const Vector3dd& v1, const Vector3dd& v2)
+{
+	addFace(Triangle3d(v0, v1, v2));
+}
+
+void TriangleMeshBuilder::addFace(const Triangle3d& triangle)
+{
+	const TriangleFace f(triangle);
+	faces.push_back(f);
 }

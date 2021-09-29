@@ -8,14 +8,14 @@
 
 namespace Crystal {
 	namespace Shape {
-		class PolygonMesh;
+		class TriangleMesh;
 	}
 	namespace Space {
 
 class ScanLineVoxelizer
 {
 public:
-	void voxelize(const Shape::PolygonMesh& polygon, const Math::Box3dd& space, const double res);
+	void voxelize(const Shape::TriangleMesh& mesh, const Math::Box3dd& space, const double res);
 
 	std::unique_ptr<Voxel> getVoxel() { return std::move(voxel); }
 
