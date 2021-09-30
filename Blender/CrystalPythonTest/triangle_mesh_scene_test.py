@@ -12,5 +12,8 @@ class TriangleMeshSceneTest(unittest.TestCase) :
         v2 = Vector3dd(1.0, 1.0, 0.0)
         triangles = Triangle3ddVector()
         triangles.add(Triangle3dd(v0, v1, v2))
-        mesh.create(triangles, "test", 0)
+        mesh.create(triangles, "test")
         self.assertEqual(1, mesh.id)
+
+        triangles = mesh.get_triangles()
+        self.assertEqual(1, (len(triangles.values)))

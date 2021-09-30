@@ -238,6 +238,13 @@ class TriangleMeshCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
+class TriangleMeshGetLabels:
+   CommandNameLabel="TriangleMeshGet"
+   MeshIdLabel="MeshId"
+   LayerLabel="Layer"
+   TrianglesLabel="Triangles"
+   NormalsLabel="Normals"
+   NameLabel="Name"
 class TrimLabels:
    TrimCommandLabel="Trim"
    ShapeIdLabel="ShapeId"

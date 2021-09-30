@@ -150,6 +150,12 @@ namespace {
         const auto vv = std::any_cast<std::vector<Vector3dd>>(command->getResult(name));
         return Vector3ddVector(vv);
     }
+
+    Triangle3ddVector getResultTriangle3ddVector(const std::string& name)
+    {
+        const auto tv = std::any_cast<std::vector<Triangle3d>>(command->getResult(name));
+        return Triangle3ddVector(tv);
+    }
 }
 
 namespace py = pybind11;
@@ -245,6 +251,6 @@ PYBIND11_MODULE(CrystalPLI, m) {
     m.def("get_result_int_vector", &getResultIntVector);
     m.def("get_result_vector3df_vector", getResultVector3dfVector);
     m.def("get_result_vector3dd_vector", getResultVector3ddVector);
-
+    m.def("get_result_triangle3dd_vector", getResultTriangle3ddVector);
     //m.def("call", &call);
 }
