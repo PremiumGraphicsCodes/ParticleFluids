@@ -7,7 +7,6 @@ import unittest
 from CrystalPLI import *
 
 from scene_test import *
-from space_command_test import *
 from wire_frame_scene_test import *
 from polygon_mesh_scene_test import *
 from triangle_mesh_scene_test import *
@@ -107,7 +106,6 @@ class TestRunner(unittest.TestCase):
         test_suite.addTest(unittest.makeSuite(WireFrameSceneTest))
         test_suite.addTest(unittest.makeSuite(PolygonMeshSceneTest))
         test_suite.addTest(unittest.makeSuite(TriangleMeshSceneTest))
-        test_suite.addTest(unittest.makeSuite(SpaceCommandTest))
         test_suite.addTest(unittest.makeSuite(VoxelSceneTest))
         test_suite.addTest(unittest.makeSuite(SolverSceneTest))
         test_suite.addTest(unittest.makeSuite(CSGBoundarySceneTest))
