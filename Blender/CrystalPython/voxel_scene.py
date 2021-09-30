@@ -22,7 +22,7 @@ class VoxelScene :
        self.id = get_result_int(space_labels.VoxelSceneCreateLabels.NewIdLabel);
        return True
 
-    def set_voxel_nodes(voxel_id, nodes) :
+    def set_voxel_nodes(self, nodes) :
         indicesX = []
         indicesY = []
         indicesZ = []
@@ -33,14 +33,21 @@ class VoxelScene :
             indicesZ.append(node.Index[2])
             values.append(node.Value)
 
-        create_space_command(space_labels.VoxelNodeSetLabels.CommandNameLabel)
-        set_arg_int(space_labels.VoxelNodeSetLabels.VoxelIdLabel, voxelId)
-        set_arg_int_vector(space_labels.VoxelNodeSetLabels.IndicesXLabel, indicesX)
-        set_arg_int_vector(space_labels.VoxelNodeSetLabels.IndicesYLabel, indicesY)
-        set_arg_int_vector(space_labels.VoxelNodeSetLabels.IndicesZLabel, indicesZ)
-        set_arg_bool_vector(space_labels.VoxelNodeSetLabels.ValuesLabel, values)
+        create_space_command(space_labels.VoxelSetLabels.CommandNameLabel)
+        set_arg_int(space_labels.VoxelSetLabels.VoxelIdLabel, self.Id)
+        set_arg_int_vector(space_labels.VoxelSetLabels.IndicesXLabel, indicesX)
+        set_arg_int_vector(space_labels.VoxelSetLabels.IndicesYLabel, indicesY)
+        set_arg_int_vector(space_labels.VoxelSetLabels.IndicesZLabel, indicesZ)
+        set_arg_bool_vector(space_labels.VoxelSetLabels.ValuesLabel, values)
         is_ok = command.Execute(world.Adapter)
         return is_ok
+
+    def get_values(self):
+        value = []
+        create_space_command(space_labels.VoxelGetLabels.CommandNameLabel)
+        set_arg_int(space_labels.VoxelGetLabels.VoxelIdLabel, self.id)
+        execute_command(self.scene.world)
+        return get_result_bool_vector(space_labels.VoxelGetLabels.ValuesLabel)
 
     def voxelize(mesh_id, particle_system_id, divide_length) :
         create_space_command(space_labels.VoxelizerLabels.CommandNameLabel)

@@ -24,18 +24,18 @@ class SparseVolumeSceneCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
+class VoxelGetLabels:
+   CommandNameLabel="VoxelGet"
+   VoxelIdLabel="VoxelId"
+   ResolutionXLabel="ResX"
+   ResolutionYLabel="ResY"
+   ResolutionZLabel="ResZ"
+   ValuesLabel="Values"
 class VoxelizerLabels:
    CommandNameLabel="VoxelizerCommand"
    MeshIdLabel="MeshId"
    VoxelIdLabel="VoxelId"
    DivideLengthLabel="DivideLength"
-class VoxelNodeSetLabels:
-   CommandNameLabel="VoxelNodeSet"
-   VoxelIdLabel="VoxelId"
-   IndicesXLabel="IndicesX"
-   IndicesYLabel="IndicesY"
-   IndicesZLabel="IndicesZ"
-   ValuesLabel="Values"
 class VoxelSceneCreateLabels:
    CommandNameLabel="VoxelSceneCreate"
    ResolutionXLabel="ResolutionX"
@@ -45,6 +45,13 @@ class VoxelSceneCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
+class VoxelSetLabels:
+   CommandNameLabel="VoxelNodeSet"
+   VoxelIdLabel="VoxelId"
+   IndicesXLabel="IndicesX"
+   IndicesYLabel="IndicesY"
+   IndicesZLabel="IndicesZ"
+   ValuesLabel="Values"
 class VoxelToPSLabels:
    CommandNameLabel="VoxelToPSCommand"
    VoxelIdLabel="VoxelId"
