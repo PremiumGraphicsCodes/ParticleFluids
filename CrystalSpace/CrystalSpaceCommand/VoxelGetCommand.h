@@ -24,9 +24,9 @@ public:
 	{
 		Results();
 
-		Command::Result< std::vector<int> > indicesX;
-		Command::Result< std::vector<int> > indicesY;
-		Command::Result< std::vector<int> > indicesZ;
+		Command::Result< int > resX;
+		Command::Result< int > resY;
+		Command::Result< int > resZ;
 		Command::Result< std::vector<bool> > values;
 	};
 

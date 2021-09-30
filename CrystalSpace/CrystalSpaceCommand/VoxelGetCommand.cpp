@@ -16,13 +16,15 @@ VoxelGetCommand::Args::Args() :
 }
 
 VoxelGetCommand::Results::Results() :
-	indicesX(::IndicesXLabel, {}),
-	indicesY(::IndicesYLabel, {}),
-	indicesZ(::IndicesZLabel, {}),
+	resX(::ResolutionXLabel, 0),
+	resY(::ResolutionYLabel, 0),
+	resZ(::ResolutionZLabel, 0),
 	values(::ValuesLabel, {})
-//	newId(::NewIdLabel, -1)
 {
-	//	add(&newId);
+	add(&resX);
+	add(&resY);
+	add(&resZ);
+	add(&values);
 }
 
 std::string VoxelGetCommand::getName()
@@ -39,20 +41,20 @@ bool VoxelGetCommand::execute(World* world)
 
 	auto shape = scene->getShape();
 
-	/*
-	const auto indicesx = args.indicesX.getValue();
-	const auto indicesy = args.indicesY.getValue();
-	const auto indicesz = args.indicesZ.getValue();
-	const auto values = args.values.getValue();
-
-	assert(indicesx.size() == indicesy.size());
-	assert(indicesy.size() == indicesz.size());
-	assert(indicesz.size() == values.size());
-
-	for (int i = 0; i < indicesx.size(); ++i) {
-		shape->setValue(indicesx[i], indicesy[i], indicesz[i], values[i]);
+	const auto res = shape->getResolutions();
+	std::vector<bool> values;
+	for (int i = 0; i < res[0]; ++i) {
+		for (int j = 0; j < res[1]; ++j) {
+			for (int k = 0; k < res[2]; ++k) {
+				values.push_back(shape->getValue(i, j, k));
+			}
+		}
 	}
-	*/
+
+	results.resX.setValue(res[0]);
+	results.resY.setValue(res[1]);
+	results.resZ.setValue(res[2]);
+	results.values.setValue(values);
 
 	return true;
 }

@@ -3,8 +3,8 @@
 namespace {
 	PublicLabel CommandNameLabel = "VoxelGet";
 	PublicLabel VoxelIdLabel = "VoxelId";
-	PublicLabel IndicesXLabel = "IndicesX";
-	PublicLabel IndicesYLabel = "IndicesY";
-	PublicLabel IndicesZLabel = "IndicesZ";
+	PublicLabel ResolutionXLabel = "ResX";
+	PublicLabel ResolutionYLabel = "ResY";
+	PublicLabel ResolutionZLabel = "ResZ";
 	PublicLabel ValuesLabel = "Values";
 }
