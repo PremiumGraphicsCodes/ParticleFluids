@@ -6,10 +6,10 @@
 namespace Crystal {
 	namespace Space {
 
-class VoxelNodeSetCommand : public Command::ICommand
+class VoxelSetCommand : public Command::ICommand
 {
 public:
-	VoxelNodeSetCommand() :
+	VoxelSetCommand() :
 		Command::ICommand(&args, &results)
 	{}
 

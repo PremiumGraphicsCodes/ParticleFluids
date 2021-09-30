@@ -39,12 +39,6 @@
     <ClInclude Include="PublicLabels\VoxelSceneCreateLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
-    <ClInclude Include="VoxelNodeSetCommand.h">
-      <Filter>Voxel</Filter>
-    </ClInclude>
-    <ClInclude Include="PublicLabels\VoxelNodeSetLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VoxelToPSCommand.h" />
     <ClInclude Include="PublicLabels\VoxelToPSLabels.h">
       <Filter>PublicLabels</Filter>
@@ -53,6 +47,18 @@
       <Filter>Voxel</Filter>
     </ClInclude>
     <ClInclude Include="PublicLabels\VoxelizerLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="VoxelSetCommand.h">
+      <Filter>Voxel</Filter>
+    </ClInclude>
+    <ClInclude Include="VoxelGetCommand.h">
+      <Filter>Voxel</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\VoxelGetLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\VoxelSetLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>
@@ -69,11 +75,14 @@
     <ClCompile Include="VoxelSceneCreateCommand.cpp">
       <Filter>Voxel</Filter>
     </ClCompile>
-    <ClCompile Include="VoxelNodeSetCommand.cpp">
-      <Filter>Voxel</Filter>
-    </ClCompile>
     <ClCompile Include="VoxelToPSCommand.cpp" />
     <ClCompile Include="VoxelizerCommand.cpp">
+      <Filter>Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="VoxelSetCommand.cpp">
+      <Filter>Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="VoxelGetCommand.cpp">
       <Filter>Voxel</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,7 +3,7 @@
 #include "SparseVolumeSceneCreateCommand.h"
 #include "SparseVolumeNodeSetCommand.h"
 #include "VoxelSceneCreateCommand.h"
-#include "VoxelNodeSetCommand.h"
+#include "VoxelSetCommand.h"
 #include "MeshToPSCommand.h"
 #include "MeshToVoxelCommand.h"
 #include "VoxelToPSCommand.h"
@@ -23,8 +23,8 @@ std::unique_ptr<ICommand> SpaceCommandFactory::create(const std::string& name)
 	else if (name == VoxelSceneCreateCommand::getName()) {
 		return std::make_unique<VoxelSceneCreateCommand>();
 	}
-	else if (name == VoxelNodeSetCommand::getName()) {
-		return std::make_unique<VoxelNodeSetCommand>();
+	else if (name == VoxelSetCommand::getName()) {
+		return std::make_unique<VoxelSetCommand>();
 	}
 	else if (name == MeshToPSCommand::getName()) {
 		return std::make_unique<MeshToPSCommand>();

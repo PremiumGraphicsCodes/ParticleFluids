@@ -1,9 +1,6 @@
-#include "VoxelNodeSetCommand.h"
+#include "VoxelGetCommand.h"
 
-//#include "../../Crystal/Scene/ParticleAttribute.h"
-//#include "../../Crystal/Scene/ParticleSystemScene.h"
-
-#include "PublicLabels/VoxelNodeSetLabels.h"
+#include "PublicLabels/VoxelGetLabels.h"
 
 #include "../CrystalSpace/VoxelScene.h"
 
@@ -12,32 +9,28 @@ using namespace Crystal::Space;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-VoxelNodeSetCommand::Args::Args() :
-	voxelId(::VoxelIdLabel, -1),
-	indicesX(::IndicesXLabel, { 0 }),
-	indicesY(::IndicesYLabel, { 0 }),
-	indicesZ(::IndicesZLabel, { 0 }),
-	values(::ValuesLabel, {})
+VoxelGetCommand::Args::Args() :
+	voxelId(::VoxelIdLabel, -1)
 {
 	add(&voxelId);
-	add(&indicesX);
-	add(&indicesY);
-	add(&indicesZ);
-	add(&values);
 }
 
-VoxelNodeSetCommand::Results::Results()// :
+VoxelGetCommand::Results::Results() :
+	indicesX(::IndicesXLabel, {}),
+	indicesY(::IndicesYLabel, {}),
+	indicesZ(::IndicesZLabel, {}),
+	values(::ValuesLabel, {})
 //	newId(::NewIdLabel, -1)
 {
 	//	add(&newId);
 }
 
-std::string VoxelNodeSetCommand::getName()
+std::string VoxelGetCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-bool VoxelNodeSetCommand::execute(World* world)
+bool VoxelGetCommand::execute(World* world)
 {
 	auto scene = world->getScenes()->findSceneById<VoxelScene*>(args.voxelId.getValue());
 	if (scene == nullptr) {
@@ -46,6 +39,7 @@ bool VoxelNodeSetCommand::execute(World* world)
 
 	auto shape = scene->getShape();
 
+	/*
 	const auto indicesx = args.indicesX.getValue();
 	const auto indicesy = args.indicesY.getValue();
 	const auto indicesz = args.indicesZ.getValue();
@@ -58,6 +52,7 @@ bool VoxelNodeSetCommand::execute(World* world)
 	for (int i = 0; i < indicesx.size(); ++i) {
 		shape->setValue(indicesx[i], indicesy[i], indicesz[i], values[i]);
 	}
+	*/
 
 	return true;
 }
