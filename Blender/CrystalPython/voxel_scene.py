@@ -8,14 +8,19 @@ class VoxelScene :
         self.scene = scene
         self.id = -1
 
-    def create_voxel(self, name, resolution, boundingBox, layer) :
+    def create_empty_voxel(self, name) :
+        resolution = [2,2,2]
+        bb = Box3dd()
+        return self.create_voxel(name, resolution, bb)
+
+    def create_voxel(self, name, resolution, boundingBox) :
        create_space_command(space_labels.VoxelSceneCreateLabels.CommandNameLabel)
        set_arg_int(space_labels.VoxelSceneCreateLabels.ResolutionXLabel, resolution[0])
        set_arg_int(space_labels.VoxelSceneCreateLabels.ResolutionYLabel, resolution[1])
        set_arg_int(space_labels.VoxelSceneCreateLabels.ResolutionZLabel, resolution[2])
        set_arg_box3dd(space_labels.VoxelSceneCreateLabels.BoundingBoxLabel, boundingBox)
        set_arg_string(space_labels.VoxelSceneCreateLabels.NameLabel, name)
-       set_arg_int(space_labels.VoxelSceneCreateLabels.LayerLabel, layer)
+       set_arg_int(space_labels.VoxelSceneCreateLabels.LayerLabel, 1)
        is_ok = execute_command(self.scene.world)
        if not is_ok :
            return False
@@ -49,10 +54,14 @@ class VoxelScene :
         execute_command(self.scene.world)
         return get_result_bool_vector(space_labels.VoxelGetLabels.ValuesLabel)
 
-    def voxelize(mesh_id, particle_system_id, divide_length) :
+class Voxelizer :
+    def __init__(self, scene) :
+        self.scene = scene
+
+    def voxelize(self, mesh_id, voxel_id, divide_length) :
         create_space_command(space_labels.VoxelizerLabels.CommandNameLabel)
         set_arg_int(space_labels.VoxelizerLabels.MeshIdLabel, mesh_id)
-        set_arg_int(space_labels.VoxelizerLabels.PSIdLabel, particle_system_id)
+        set_arg_int(space_labels.VoxelizerLabels.VoxelIdLabel, voxel_id)
         set_arg_float(space_labels.VoxelizerLabels.DivideLengthLabel, divide_length)
-        is_ok = command.Execute(world.Adapter)
+        is_ok = execute_command(self.scene.world)
         return is_ok

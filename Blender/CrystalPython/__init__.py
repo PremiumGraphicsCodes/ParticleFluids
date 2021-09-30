@@ -39,7 +39,6 @@ from triangle_mesh_scene import *
 from voxel_scene import *
 from physics_command import *
 from scene import *
-from space_command import *
 from bpy.props import *
 
 from bpy_extras.io_utils import (
@@ -72,7 +71,7 @@ class BLTriangleMesh :
     pass
 
   def build(self):
-    self.triangles = Triangle3ddVector()
+    #self.triangles = Triangle3ddVector()
     self.mesh = TriangleMeshScene(scene)
 
   def convert_to_polygon_mesh(self, name) :
@@ -82,7 +81,8 @@ class BLTriangleMesh :
     coords = []
     faces = []
     next_vertex = 0
-    for t in self.triangles.values :
+    triangles = self.mesh.get_triangles()
+    for t in triangles.values :
       coords.append( (t.v0.x, t.v0.y, t.v0.z ))
       coords.append( (t.v1.x, t.v1.y, t.v1.z ))
       coords.append( (t.v2.x, t.v2.y, t.v2.z ))
@@ -123,9 +123,9 @@ class BLTriangleMesh :
       v2 = positions[pl.vertices[2]]
       v3 = positions[pl.vertices[3]]
       triangle1 = Triangle3dd(v0, v1, v2)
-      self.triangles.add(triangle1)
+      triangles.add(triangle1)
       triangle2 = Triangle3dd(v0, v2, v3)
-      self.triangles.add(triangle2)
+      triangles.add(triangle2)
       print("")
     self.mesh.create(triangles, "")
 
@@ -135,6 +135,7 @@ class BLVoxel:
 
   def build(self):
     self.voxel = VoxelScene(scene)
+    self.voxel.create_empty_voxel("name")
 
 class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
   bl_idname = "pg.particlesystemimportoperator"
@@ -184,6 +185,9 @@ class MeshToPS(bpy.types.Operator) :
       mesh.convert_from_polygon_mesh(selected_mesh)
       mesh.convert_to_polygon_mesh("hello")
       voxel = BLVoxel()
+      voxel.build()
+      voxelizer = Voxelizer(scene)
+      voxelizer.voxelize(mesh.mesh.id, voxel.voxel.id, 1.0)
       return {'FINISHED'}
 
   def get_selected_mesh(self, context) :

@@ -50,7 +50,7 @@ void TriangleMesh::transform(const Matrix4dd& m)
 
 Box3dd TriangleMesh::getBoundingBox() const
 {
-	auto bb = faces.front().triangle.getBoundingBox();
+	Box3dd bb = Box3dd::createDegeneratedBox();
 	for (auto& f : faces) {
 		bb.add( f.triangle.getBoundingBox() );
 	}

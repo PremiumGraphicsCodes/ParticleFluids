@@ -45,6 +45,9 @@ bool VoxelizerCommand::execute(World* scene)
 	if (voxelScene == nullptr) {
 		return false;
 	}
+	if (pmScene->getShape()->getFaces().empty()) {
+		return false;
+	}
 	const auto divideLength = args.divideLength.getValue();
 	const auto bb = pmScene->getShape()->getBoundingBox();
 	const auto p1 = bb.getMin() - Vector3dd(divideLength);
