@@ -127,7 +127,7 @@ class BLTriangleMesh :
       triangle2 = Triangle3dd(v0, v2, v3)
       self.triangles.add(triangle2)
       print("")
-    self.mesh.create(triangles, "", 1)
+    self.mesh.create(triangles, "")
 
 class BLVoxel:
   def __init__(self):
@@ -162,13 +162,22 @@ class ParticleSystemExportOperator(bpy.types.Operator, ExportHelper) :
   def draw(self, context) :
     pass
 
+class ParticleSystemGenerator(bpy.types.Operator) :
+  bl_idname = "pg.particlesystemgenerator"
+  bl_label = "ParticleSystemGenerator"
+  bl_options = {"REGISTER", "UNDO"}
+
+  def execute(self, context) :
+      pc = BLPointCloud("point-cloud", [(0.0, 0.0, 0.0)])      
+      return {'FINISHED'}
+
 class MeshToPS(bpy.types.Operator) :
   bl_idname = "pg.meshtops"
   bl_label = "MeshToPS"
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      pc = BLPointCloud("point-cloud", [(0.0, 0.0, 0.0)])      
+      #pc = BLPointCloud("point-cloud", [(0.0, 0.0, 0.0)])      
       selected_mesh = self.get_selected_mesh(context)
       mesh = BLTriangleMesh()
       mesh.build()
@@ -220,6 +229,7 @@ class FastParticlesPanel(bpy.types.Panel):
   def draw(self, context):
     layout = self.layout
     layout.operator(MeshToPS.bl_idname, text="MeshToPS")
+    layout.operator(ParticleSystemGenerator.bl_idname, text="PSGenerator")
     layout.operator(ParticleSystemImportOperator.bl_idname, text="PSImport")
     layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
 
@@ -230,6 +240,7 @@ classes = [
   MeshToPS,
   ParticleSystemImportOperator,
   ParticleSystemExportOperator,
+  ParticleSystemGenerator,
 ]
 
 world = None
