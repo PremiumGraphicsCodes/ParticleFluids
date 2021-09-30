@@ -53,7 +53,7 @@ sys.path += [addon_dirpath]
 
 
 class BLPointCloud :    
-  def __init__(self, ob_name, coords):
+  def convert_to_polygon_mesh(self, ob_name, coords):
       # Create new mesh and a new object
       me = bpy.data.meshes.new(name = ob_name + "Mesh")
       ob = bpy.data.objects.new(ob_name, me)
@@ -68,10 +68,6 @@ class BLPointCloud :
 
 class BLTriangleMesh :
   def __init__(self):
-    pass
-
-  def build(self):
-    #self.triangles = Triangle3ddVector()
     self.mesh = TriangleMeshScene(scene)
 
   def convert_to_polygon_mesh(self, name) :
@@ -131,10 +127,9 @@ class BLTriangleMesh :
 
 class BLVoxel:
   def __init__(self):
-    pass
+    self.voxel = VoxelScene(scene)
 
   def build(self):
-    self.voxel = VoxelScene(scene)
     self.voxel.create_empty_voxel("name")
 
 class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
@@ -169,7 +164,8 @@ class ParticleSystemGenerator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      pc = BLPointCloud("point-cloud", [(0.0, 0.0, 0.0)])      
+      pc = BLPointCloud()
+      pc.convert_to_polygon_mesh("point-cloud", [(0.0, 0.0, 0.0)])      
       return {'FINISHED'}
 
 class MeshToPS(bpy.types.Operator) :
@@ -181,13 +177,13 @@ class MeshToPS(bpy.types.Operator) :
       #pc = BLPointCloud("point-cloud", [(0.0, 0.0, 0.0)])      
       selected_mesh = self.get_selected_mesh(context)
       mesh = BLTriangleMesh()
-      mesh.build()
       mesh.convert_from_polygon_mesh(selected_mesh)
       mesh.convert_to_polygon_mesh("hello")
       voxel = BLVoxel()
       voxel.build()
       voxelizer = Voxelizer(scene)
-      voxelizer.voxelize(mesh.mesh.id, voxel.voxel.id, 1.0)
+      voxelizer.voxelize(mesh.mesh.id, voxel.voxel.id, 0.2)
+      values = voxel.voxel.get_values()
       return {'FINISHED'}
 
   def get_selected_mesh(self, context) :
