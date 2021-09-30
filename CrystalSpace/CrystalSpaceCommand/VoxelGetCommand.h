@@ -27,6 +27,7 @@ public:
 		Command::Result< int > resX;
 		Command::Result< int > resY;
 		Command::Result< int > resZ;
+		Command::Result< Math::Box3dd > boundingBox;
 		Command::Result< std::vector<bool> > values;
 	};
 

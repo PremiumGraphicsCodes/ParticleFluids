@@ -6,5 +6,6 @@ namespace {
 	PublicLabel ResolutionXLabel = "ResX";
 	PublicLabel ResolutionYLabel = "ResY";
 	PublicLabel ResolutionZLabel = "ResZ";
+	PublicLabel BoundingBoxLabel = "BoundingBox";
 	PublicLabel ValuesLabel = "Values";
 }

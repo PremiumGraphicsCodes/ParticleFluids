@@ -5,8 +5,11 @@ from wire_frame_scene import *
 from scene import *
 
 class ParticleSystemSceneTest(unittest.TestCase):
-#    def test_create_mesh_scene(self):
-#        scene = Scene(World())
+    def test_create_empty(self):
+        scene = Scene(World())
+        particle_system = ParticleSystemScene(scene)
+        particle_system.create_empty("")
+        self.assertEqual(1, particle_system.id)
 
     def test_create_particle_system_scene(self):
         scene = Scene(World())

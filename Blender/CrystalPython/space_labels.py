@@ -30,6 +30,7 @@ class VoxelGetLabels:
    ResolutionXLabel="ResX"
    ResolutionYLabel="ResY"
    ResolutionZLabel="ResZ"
+   BoundingBoxLabel="BoundingBox"
    ValuesLabel="Values"
 class VoxelizerLabels:
    CommandNameLabel="VoxelizerCommand"

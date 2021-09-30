@@ -255,6 +255,7 @@ PYBIND11_MODULE(CrystalPLI, m) {
     m.def("set_arg_color4f", setArg<Crystal::Graphics::ColorRGBAf>);
     m.def("get_result_int", &getResult<int>);
     m.def("get_result_string", &getResult<std::string>);
+    m.def("get_result_box3dd", &getResult<Box3dd>);
     m.def("get_result_int_vector", &getResult<std::vector<int>>);
     m.def("get_result_bool_vector", &getResult<std::vector<bool>>);
     m.def("get_result_vector3df_vector", getResultVector3dfVector);

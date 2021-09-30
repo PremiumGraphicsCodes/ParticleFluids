@@ -3,6 +3,12 @@ import space_labels
 from scene import *
 from CrystalPLI import *
 
+class GridData :
+    def __init__(self) :
+        self.res = []
+        self.bb = Box3dd()
+        self.values = []
+
 class VoxelScene :    
     def __init__(self, scene) :
         self.scene = scene
@@ -52,7 +58,23 @@ class VoxelScene :
         create_space_command(space_labels.VoxelGetLabels.CommandNameLabel)
         set_arg_int(space_labels.VoxelGetLabels.VoxelIdLabel, self.id)
         execute_command(self.scene.world)
-        return get_result_bool_vector(space_labels.VoxelGetLabels.ValuesLabel)
+        xres = get_result_int(space_labels.VoxelGetLabels.ResolutionXLabel)
+        yres = get_result_int(space_labels.VoxelGetLabels.ResolutionYLabel)
+        zres = get_result_int(space_labels.VoxelGetLabels.ResolutionZLabel)
+        bb = get_result_box3dd(space_labels.VoxelGetLabels.BoundingBoxLabel)
+        values = get_result_bool_vector(space_labels.VoxelGetLabels.ValuesLabel)
+        data = GridData()
+        data.res = [xres, yres, zres]
+        data.bb = bb;
+        data.values = values
+        return data
+
+    def convert_to_ps(self, psId) :
+        create_space_command(space_labels.VoxelToPSLabels.CommandNameLabel)
+        set_arg_int(space_labels.VoxelToPSLabels.VoxelIdLabel, self.id)
+        set_arg_int(space_labels.VoxelToPSLabels.PSIdLabel, psId)
+        is_ok = execute_command(self.scene.world)
+        return is_ok
 
 class Voxelizer :
     def __init__(self, scene) :

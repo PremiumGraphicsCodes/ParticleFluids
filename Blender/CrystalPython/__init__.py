@@ -33,7 +33,8 @@ import bpy
 import CrystalPLI
 import scene
 import physics_command
-import particle_system_scene
+#import particle_system_scene
+from particle_system_scene import *
 from polygon_mesh_scene import *
 from triangle_mesh_scene import *
 from voxel_scene import *
@@ -52,12 +53,19 @@ addon_dirpath = os.path.dirname(__file__)
 sys.path += [addon_dirpath]
 
 
-class BLPointCloud :    
-  def convert_to_polygon_mesh(self, ob_name, coords):
+class BLParticleSystem :
+  def __init__(self):
+    self.ps = ParticleSystemScene(scene)
+
+  def convert_to_polygon_mesh(self, ob_name):
       # Create new mesh and a new object
       me = bpy.data.meshes.new(name = ob_name + "Mesh")
       ob = bpy.data.objects.new(ob_name, me)
 
+      positions = self.ps.get_positions()
+      coords = []
+      for p in positions.values :
+        coords.append( (p.x, p.y, p.z))
       # Make a mesh from a list of vertices/edges/faces
       me.from_pydata(coords, [], [])
 
@@ -132,6 +140,33 @@ class BLVoxel:
   def build(self):
     self.voxel.create_empty_voxel("name")
 
+  def convert_to_polygon_mesh(self, ob_name):
+      # Create new mesh and a new object
+      me = bpy.data.meshes.new(name = ob_name)
+      ob = bpy.data.objects.new(ob_name, me)
+
+      grid = self.voxel.get_values()
+      bb = grid.bb
+
+      coords = []
+      index = 0
+      for x in range(0, grid.res[0]):
+        for y in range(0, grid.res[1]):
+          for z in range(0, grid.res[2]):
+            b = grid.values[index]
+            if b :
+              coords.append( (x * 0.1, y * 0.1, z * 0.1) )
+            index+=1
+          
+      # Make a mesh from a list of vertices/edges/faces
+      me.from_pydata(coords, [], [])
+
+      # Display name and update the mesh
+      ob.show_name = True
+      me.update()
+      bpy.context.collection.objects.link(ob)
+
+
 class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
   bl_idname = "pg.particlesystemimportoperator"
   bl_label = "ParticleSystemImport"
@@ -164,8 +199,9 @@ class ParticleSystemGenerator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      pc = BLPointCloud()
-      pc.convert_to_polygon_mesh("point-cloud", [(0.0, 0.0, 0.0)])      
+      pc = BLParticleSystem()
+#      pc.ps.create(positions, name, point_size, color, layer)
+#      pc.convert_to_polygon_mesh("point-cloud", [(0.0, 0.0, 0.0)])      
       return {'FINISHED'}
 
 class MeshToPS(bpy.types.Operator) :
@@ -184,6 +220,11 @@ class MeshToPS(bpy.types.Operator) :
       voxelizer = Voxelizer(scene)
       voxelizer.voxelize(mesh.mesh.id, voxel.voxel.id, 0.2)
       values = voxel.voxel.get_values()
+      voxel.convert_to_polygon_mesh("voxel")
+      ps = BLParticleSystem()
+      ps.ps.create_empty("")
+      voxel.voxel.convert_to_ps(ps.ps.id)
+      ps.convert_to_polygon_mesh("ps")
       return {'FINISHED'}
 
   def get_selected_mesh(self, context) :

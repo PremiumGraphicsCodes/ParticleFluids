@@ -11,8 +11,9 @@ class VoxelSceneTest(unittest.TestCase):
         bb = Box3dd()
         voxel.create_voxel("", resolution,bb)
         self.assertEqual(1, voxel.id)
-        values = voxel.get_values()
-        print(len(values))
+        data = voxel.get_values()
+        print(data.bb.min.x)
+        print(len(data.values))
 
     def test_voxelizer(self):
         scene = Scene(World())

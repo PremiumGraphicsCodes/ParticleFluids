@@ -7,6 +7,11 @@ class ParticleSystemScene :
         self.scene = scene
         self.id = -1
 
+    def create_empty(self, name) :
+        positions = Vector3ddVector()
+        color = ColorRGBAf()
+        return self.create(positions,name,1.0, color, 1)
+
     def create(self, positions, name, point_size, color, layer) :
         create_scene_command(scene_labels.ParticleSystemCreateLabels.ParticleSystemAddLabel)
         set_arg_vector3dd_vector(scene_labels.ParticleSystemCreateLabels.PositionsLabel, positions)

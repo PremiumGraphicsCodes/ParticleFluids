@@ -19,11 +19,13 @@ VoxelGetCommand::Results::Results() :
 	resX(::ResolutionXLabel, 0),
 	resY(::ResolutionYLabel, 0),
 	resZ(::ResolutionZLabel, 0),
+	boundingBox(::BoundingBoxLabel, Box3dd()),
 	values(::ValuesLabel, {})
 {
 	add(&resX);
 	add(&resY);
 	add(&resZ);
+	add(&boundingBox);
 	add(&values);
 }
 
@@ -54,7 +56,7 @@ bool VoxelGetCommand::execute(World* world)
 	results.resX.setValue(res[0]);
 	results.resY.setValue(res[1]);
 	results.resZ.setValue(res[2]);
+	results.boundingBox.setValue(shape->getBoundingBox());
 	results.values.setValue(values);
-
 	return true;
 }
