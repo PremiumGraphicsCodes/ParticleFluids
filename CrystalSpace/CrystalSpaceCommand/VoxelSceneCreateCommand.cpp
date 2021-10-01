@@ -42,9 +42,9 @@ bool VoxelSceneCreateCommand::execute(World* world)
 	const auto bb = args.boundingBox.getValue();
 	const std::array<size_t, 3> res =
 	{
-		args.resolutionX.getValue(),
-		args.resolutionY.getValue(),
-		args.resolutionZ.getValue()
+		(size_t)args.resolutionX.getValue(),
+		(size_t)args.resolutionY.getValue(),
+		(size_t)args.resolutionZ.getValue()
 	};
 	auto shape = std::make_unique<Voxel>(bb, res);
 	auto scene = new VoxelScene(world->getNextSceneId(), name, std::move(shape));

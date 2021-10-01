@@ -14,15 +14,17 @@ using namespace Crystal::Command;
 
 VoxelSetCommand::Args::Args() :
 	voxelId(::VoxelIdLabel, -1),
-	indicesX(::IndicesXLabel, { 0 }),
-	indicesY(::IndicesYLabel, { 0 }),
-	indicesZ(::IndicesZLabel, { 0 }),
+	resX(::ResolutionXLabel, 2),
+	resY(::ResolutionYLabel, 2),
+	resZ(::ResolutionZLabel, 2),
+	bb(::BoundingBoxLabel, Box3dd()),
 	values(::ValuesLabel, {})
 {
 	add(&voxelId);
-	add(&indicesX);
-	add(&indicesY);
-	add(&indicesZ);
+	add(&resX);
+	add(&resY);
+	add(&resZ);
+	add(&bb);
 	add(&values);
 }
 
@@ -44,20 +46,29 @@ bool VoxelSetCommand::execute(World* world)
 		return false;
 	}
 
-	auto shape = scene->getShape();
-
-	const auto indicesx = args.indicesX.getValue();
-	const auto indicesy = args.indicesY.getValue();
-	const auto indicesz = args.indicesZ.getValue();
+	//auto shape = scene->getShape();
+	const auto bb = args.bb.getValue();
+	const std::array<size_t, 3> ress =
+	{
+		(size_t)args.resX.getValue(),
+		(size_t)args.resY.getValue(),
+		(size_t)args.resZ.getValue()
+	};
 	const auto values = args.values.getValue();
 
-	assert(indicesx.size() == indicesy.size());
-	assert(indicesy.size() == indicesz.size());
-	assert(indicesz.size() == values.size());
+	assert((ress[0] * ress[1] * ress[2]) == values.size());
 
-	for (int i = 0; i < indicesx.size(); ++i) {
-		shape->setValue(indicesx[i], indicesy[i], indicesz[i], values[i]);
+	auto voxel = std::make_unique<Voxel>(bb, ress);
+
+	int index = 0;
+	for (int i = 0; i < ress[0]; ++i) {
+		for (int j = 0; j < ress[1]; ++j) {
+			for (int k = 0; k < ress[2]; ++k) {
+				voxel->setValue(i, j, k, values[index++]);
+			}
+		}
 	}
+	scene->resetShape(std::move(voxel));
 
 	return true;
 }

@@ -18,9 +18,10 @@ public:
 		Args();
 
 		Command::Arg< int > voxelId;
-		Command::Arg< std::vector<int> > indicesX;
-		Command::Arg< std::vector<int> > indicesY;
-		Command::Arg< std::vector<int> > indicesZ;
+		Command::Arg< unsigned int > resX;
+		Command::Arg< unsigned int > resY;
+		Command::Arg< unsigned int > resZ;
+		Command::Arg< Math::Box3dd > bb;
 		Command::Arg< std::vector<bool> > values;
 	};
 

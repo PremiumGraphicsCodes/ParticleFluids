@@ -26,9 +26,9 @@ void VolSphereView::onOk()
 	const auto corner = box.getPosition(0, 0, 0);
 	const auto center = box.getCenter();
 	const auto radius = glm::distance(center, corner);
-	for (int i = 0; i < resolution[0]; ++i) {
-		for (int j = 0; j < resolution[1]; ++j) {
-			for (int k = 0; k < resolution[2]; ++k) {
+	for (size_t i = 0; i < resolution[0]; ++i) {
+		for (size_t j = 0; j < resolution[1]; ++j) {
+			for (size_t k = 0; k < resolution[2]; ++k) {
 				const auto p = v->getCellPosition(i,j,k);
 				const auto value = glm::distance(p, center) / radius;
 				v->setValue(i, j, k, value);

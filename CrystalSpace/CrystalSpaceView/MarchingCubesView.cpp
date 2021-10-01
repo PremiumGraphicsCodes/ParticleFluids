@@ -48,7 +48,7 @@ void MarchingCubesView::onOk()
 	}
 
 	MarchingCubesAlgo algo;
-	algo.build(v, 0.30);
+	algo.build(v, 0.30f);
 	const auto& triangles = algo.getTriangles();
 	PolygonMeshBuilder builder;
 	for (const auto& t : triangles) {

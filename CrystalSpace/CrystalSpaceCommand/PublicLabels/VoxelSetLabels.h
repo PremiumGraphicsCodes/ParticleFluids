@@ -3,8 +3,9 @@
 namespace {
 	PublicLabel CommandNameLabel = "VoxelNodeSet";
 	PublicLabel VoxelIdLabel = "VoxelId";
-	PublicLabel IndicesXLabel = "IndicesX";
-	PublicLabel IndicesYLabel = "IndicesY";
-	PublicLabel IndicesZLabel = "IndicesZ";
+	PublicLabel ResolutionXLabel = "ResolutionX";
+	PublicLabel ResolutionYLabel = "ResolutionY";
+	PublicLabel ResolutionZLabel = "ResolutionZ";
+	PublicLabel BoundingBoxLabel = "BoundingBox";
 	PublicLabel ValuesLabel = "Values";
 }
