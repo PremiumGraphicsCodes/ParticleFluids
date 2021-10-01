@@ -15,6 +15,16 @@ class VoxelSceneTest(unittest.TestCase):
         print(data.bb.min.x)
         print(len(data.values))
 
+    def test_set_values(self):
+        scene = Scene(World())
+        voxel = VoxelScene(scene)
+        voxel.create_empty_voxel("")
+        data = GridData()
+        data.bb = Box3dd()
+        data.res = [1,1,1]
+        data.values = [False]
+        voxel.set_values(data)
+
     def test_voxelizer(self):
         scene = Scene(World())
         mesh = TriangleMeshScene(scene)

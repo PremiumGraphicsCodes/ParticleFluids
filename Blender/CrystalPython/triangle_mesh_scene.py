@@ -7,6 +7,10 @@ class TriangleMeshScene :
         self.scene = scene
         self.id = -1
 
+    def create_empty(self, name) :
+        triangles = Triangle3ddVector()
+        return self.create(triangles, name)
+
     def create(self, triangles, name) :
         create_scene_command(scene_labels.TriangleMeshCreateLabels.CommandNameLabel)
         set_arg_int(scene_labels.TriangleMeshCreateLabels.LayerLabel, 1)

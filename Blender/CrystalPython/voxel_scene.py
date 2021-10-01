@@ -33,24 +33,15 @@ class VoxelScene :
        self.id = get_result_int(space_labels.VoxelSceneCreateLabels.NewIdLabel);
        return True
 
-    def set_voxel_nodes(self, nodes) :
-        indicesX = []
-        indicesY = []
-        indicesZ = []
-        values = []
-        for node in nodes :
-            indicesX.append(node.Index[0])
-            indicesY.append(node.Index[1])
-            indicesZ.append(node.Index[2])
-            values.append(node.Value)
-
+    def set_values(self, data):
         create_space_command(space_labels.VoxelSetLabels.CommandNameLabel)
-        set_arg_int(space_labels.VoxelSetLabels.VoxelIdLabel, self.Id)
-        set_arg_int_vector(space_labels.VoxelSetLabels.IndicesXLabel, indicesX)
-        set_arg_int_vector(space_labels.VoxelSetLabels.IndicesYLabel, indicesY)
-        set_arg_int_vector(space_labels.VoxelSetLabels.IndicesZLabel, indicesZ)
-        set_arg_bool_vector(space_labels.VoxelSetLabels.ValuesLabel, values)
-        is_ok = command.Execute(world.Adapter)
+        set_arg_int(space_labels.VoxelSetLabels.VoxelIdLabel, self.id)
+        set_arg_box3dd(space_labels.VoxelSetLabels.BoundingBoxLabel, data.bb)
+        set_arg_int(space_labels.VoxelSetLabels.ResolutionXLabel, data.res[0])
+        set_arg_int(space_labels.VoxelSetLabels.ResolutionYLabel, data.res[1])
+        set_arg_int(space_labels.VoxelSetLabels.ResolutionZLabel, data.res[2])
+        set_arg_bool_vector(space_labels.VoxelSetLabels.ValuesLabel, data.values)
+        is_ok = execute_command(self.scene.world)
         return is_ok
 
     def get_values(self):

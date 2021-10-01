@@ -17,3 +17,15 @@ class TriangleMeshSceneTest(unittest.TestCase) :
 
         triangles = mesh.get_triangles()
         self.assertEqual(1, (len(triangles.values)))
+
+    def test_create_empty(self):
+        scene = Scene(World())
+        mesh = TriangleMeshScene(scene)
+        mesh.create_empty("")
+        self.assertEqual(1, mesh.id)
+
+    #def test_set_triangles(self):
+    #    scene = Scene(World())
+    #    mesh = TriangleMeshScene(scene)
+    #    mesh.create_empty("")
+    #    mesh.a

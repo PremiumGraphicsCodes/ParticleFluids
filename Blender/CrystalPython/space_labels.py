@@ -49,9 +49,10 @@ class VoxelSceneCreateLabels:
 class VoxelSetLabels:
    CommandNameLabel="VoxelNodeSet"
    VoxelIdLabel="VoxelId"
-   IndicesXLabel="IndicesX"
-   IndicesYLabel="IndicesY"
-   IndicesZLabel="IndicesZ"
+   ResolutionXLabel="ResolutionX"
+   ResolutionYLabel="ResolutionY"
+   ResolutionZLabel="ResolutionZ"
+   BoundingBoxLabel="BoundingBox"
    ValuesLabel="Values"
 class VoxelToPSLabels:
    CommandNameLabel="VoxelToPSCommand"
