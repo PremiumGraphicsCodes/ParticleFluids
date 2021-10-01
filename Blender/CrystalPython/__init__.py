@@ -200,8 +200,11 @@ class ParticleSystemGenerator(bpy.types.Operator) :
 
   def execute(self, context) :
       pc = BLParticleSystem()
-#      pc.ps.create(positions, name, point_size, color, layer)
-#      pc.convert_to_polygon_mesh("point-cloud", [(0.0, 0.0, 0.0)])      
+      positions = Vector3ddVector()
+      positions.add(Vector3dd(0.0, 0.0, 0.0))
+      pc.ps.create_empty("")
+      pc.ps.set_positions(positions)
+      pc.convert_to_polygon_mesh("")      
       return {'FINISHED'}
 
 class MeshToPS(bpy.types.Operator) :

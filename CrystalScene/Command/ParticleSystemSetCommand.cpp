@@ -17,6 +17,7 @@ ParticleSystemSetCommand::Args::Args() :
 	color(ParticleSystemSetLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
 	name(ParticleSystemSetLabels::NameLabel, std::string(""))
 {
+	add(&psId);
 	add(&positions);
 	add(&pointSize);
 	add(&color);

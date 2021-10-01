@@ -10,6 +10,15 @@ class ParticleSystemSceneTest(unittest.TestCase):
         particle_system = ParticleSystemScene(scene)
         particle_system.create_empty("")
         self.assertEqual(1, particle_system.id)
+        
+    def test_create_empty(self):
+        scene = Scene(World())
+        particle_system = ParticleSystemScene(scene)
+        particle_system.create_empty("")
+        positions = Vector3ddVector()
+        positions.add(Vector3dd(1.0, 2.0, 3.0))
+        positions.add(Vector3dd(4.0, 5.0, 6.0))
+        particle_system.set_positions(positions)
 
     def test_create_particle_system_scene(self):
         scene = Scene(World())
