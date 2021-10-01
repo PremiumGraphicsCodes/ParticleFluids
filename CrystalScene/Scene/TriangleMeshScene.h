@@ -28,6 +28,8 @@ public:
 
 	const Shape::TriangleMesh* getShape() const { return shape.get(); }
 
+	void setShape(std::unique_ptr<Shape::TriangleMesh> shape) { this->shape = std::move(shape); }
+
 private:
 	std::unique_ptr<Shape::TriangleMesh> shape;
 	std::unique_ptr<ITMPresenter> presenter;
