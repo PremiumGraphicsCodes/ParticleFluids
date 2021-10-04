@@ -4,15 +4,8 @@
 #include "PickUICtrl.h"
 #include "CameraUICtrl.h"
 
-#include "../Command/Public/ShapeSelectLabels.h"
-#include "../Command/Command.h"
-#include "../../Crystal/Shape/WireFrameBuilder.h"
-#include "../Scene/WireFrameScene.h"
-
-using namespace Crystal::Shape;
 using namespace Crystal::UI;
 using namespace Crystal::Scene;
-using namespace Crystal::Command;
 
 ObjectSelectView::ObjectSelectView(const std::string& name, World* model, Canvas* canvas) :
 	ObjectSelectView(name, model, canvas, Scene::SceneTypeLabels::ParticleSystemScene)

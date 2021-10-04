@@ -1,8 +1,5 @@
 #include "TextureEditView.h"
 
-#include "../Command/Command.h"
-#include "../Command/Public/TextureSetLabels.h"
-
 #include "../Scene/TextureScene.h"
 
 using namespace Crystal::Scene;
@@ -30,8 +27,10 @@ void TextureEditView::setValue(TextureScene* value)
 
 void TextureEditView::onEdit()
 {
+	/*
 	Command::Command command(TextureSetLabels::CommandNameLabel);
 	command.setArg(TextureSetLabels::IdLabel, idView.getValue());
 	command.setArg(TextureSetLabels::FilePathLabel, filePathView.getFileName());
 	command.execute(getWorld());
+	*/
 }

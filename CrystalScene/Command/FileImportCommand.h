@@ -43,7 +43,7 @@ private:
 
 	bool importFile(const std::filesystem::path& filePath, Scene::World* world, const IO::FileFormat format);
 
-private:
+public:
 	Args args;
 	Results results;
 };

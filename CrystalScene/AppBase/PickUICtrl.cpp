@@ -2,7 +2,7 @@
 
 #include "../Scene/World.h"
 #include "../Command/Command.h"
-#include "../Command/Public/PickLabels.h"
+#include "../Command/PickCommand.h"
 
 #include <iostream>
 
@@ -32,6 +32,7 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 	const auto dy = mergin / canvas->getHeight();
 	for (float x = -mergin; x < mergin; x += dx) {
 		for (float y = -mergin; y < mergin; y += dy) {
+			/*
 			Crystal::Command::Command command(PickLabels::PickCommandLabel);
 			command.setArg(PickLabels::PositionLabel, Vector2dd(position));
 			command.execute(model);
@@ -51,6 +52,7 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 					return;
 				}
 			}
+			*/
 		}
 	}
 }

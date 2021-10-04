@@ -3,8 +3,8 @@
 #include "../Scene/SolidScene.h"
 
 #include "../Command/Command.h"
-#include "../Command/Public/ShaderBuildLabels.h"
-#include "../Command/Public/CameraLabels.h"
+#include "../Command/ShaderBuildCommand.h"
+//#include "../Command/CameraL.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -25,9 +25,7 @@ ISolidAddView::ISolidAddView(const std::string& name, Scene::World* model, Canva
 
 void ISolidAddView::addSolid(std::unique_ptr<Solid> solid)
 {
-	//WireFrameAttribute attr = attributeView.getValue();
-	//const auto& name = nameView.getValue();
-	//auto shape = std::make_unique<WireFrame>(positions, edges);
+	/*
 	auto newId = getWorld()->getNextSceneId();
 	auto scene = new SolidScene(newId, name, std::move(solid));
 	scene->setColor(colorView.getValue());
@@ -42,4 +40,5 @@ void ISolidAddView::addSolid(std::unique_ptr<Solid> solid)
 
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
+	*/
 }

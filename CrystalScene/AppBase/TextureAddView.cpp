@@ -1,7 +1,6 @@
 #include "TextureAddView.h"
 
 #include "../Command/Command.h"
-#include "../Command/Public/TextureCreateLabels.h"
 
 #include "../Scene/TextureScene.h"
 
@@ -24,6 +23,7 @@ TextureAddView::TextureAddView(const std::string& name, World* model, Canvas* ca
 
 void TextureAddView::onOk()
 {
+	/*
 	Command::Command command(TextureCreateLabels::CommandNameLabel);
 	command.setArg(TextureCreateLabels::FilePathLabel, filePathView.getFileName());
 	command.setArg(TextureCreateLabels::NameLabel, nameView.getValue());
@@ -34,4 +34,5 @@ void TextureAddView::onOk()
 	auto controller = scene->getPresenter();
 	controller->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	//getWorld()->getRenderer()->getScene()->screen.addChild(controller.getView());
+	*/
 }

@@ -7,9 +7,8 @@
 #include "../Scene/World.h"
 #include "../Command/CameraFitCommand.h"
 #include "../Command/Command.h"
-#include "../Command/Public/FileImportLabels.h"
-#include "../Command/Public/FileExportLabels.h"
-#include "../Command/Public/NewLabels.h"
+#include "../Command/FileImportCommand.h"
+#include "../Command/FileExportCommand.h"
 #include "../Command/NewCommand.h"
 
 #include <iostream>
@@ -24,7 +23,7 @@ void FileMenu::onShow()
 	const auto& n = name.c_str();
 	if (ImGui::BeginMenu(n)) {
 		if (ImGui::MenuItem("New")) {
-			Crystal::Command::Command command(NewLabels::CommandNameLabel);
+			NewCommand command;
 			command.execute(model);
 		}
 		if (ImGui::MenuItem("Import")) {
@@ -36,12 +35,10 @@ void FileMenu::onShow()
 			view.show();
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
-				Crystal::Command::Command command("FileImport");
-				command.setArg(FileImportLabels::FilePathLabel, std::string(filename));
-				bool isOk = command.execute(model);
 				/*
-				bool isOk = std::any_cast<bool>(command.getResult(FileImportLabels::IsOkLabel));
-				*/
+				FileImportCommand command;
+				command.setArg(Fil::FilePathLabel, std::string(filename));
+				bool isOk = command.execute(model);
 				if (!isOk) {
 					std::cout << "import failed." << std::endl;
 				}
@@ -52,6 +49,7 @@ void FileMenu::onShow()
 					presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 //					scene->getParent()->se
 				}
+				*/
 			}
 			//canvas->update();
 		}
@@ -64,12 +62,14 @@ void FileMenu::onShow()
 			view.show();
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
+				/*
 				Crystal::Command::Command command(FileExportLabels::FileExportCommandLabel);
 				command.setArg(FileExportLabels::FilePathLabel, filename);
 				const auto isOk = command.execute(model);
 				if (!isOk) {
 					std::cout << "export failed." << std::endl;
 				}
+				*/
 			}
 			//model->write(filename);
 		}

@@ -4,9 +4,6 @@
 #include "../Scene/World.h"
 #include "Canvas.h"
 
-#include "../Command/Command.h"
-#include "../Command/Public/MaterialCreateLabels.h"
-
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -22,6 +19,7 @@ MaterialAddView::MaterialAddView(const std::string& name, World* world, Canvas* 
 
 void MaterialAddView::onOk()
 {
+	/*
 	Crystal::Command::Command command(MaterialCreateLabels::CommandNameLabel);
 	command.setArg(MaterialCreateLabels::AmbientLabel, materialView.ambientView.getValue());
 	command.setArg(MaterialCreateLabels::DiffuseLabel, materialView.diffuseView.getValue());
@@ -33,4 +31,5 @@ void MaterialAddView::onOk()
 	command.setArg(MaterialCreateLabels::NameLabel, nameView.getValue());
 	command.execute(getWorld());
 	const auto newId = command.getResult(MaterialCreateLabels::NewIdLabel);
+	*/
 }

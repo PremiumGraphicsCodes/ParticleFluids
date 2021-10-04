@@ -1,7 +1,6 @@
 #include "DeleteView.h"
 
-#include "../Command/Public/DeleteLabels.h"
-#include "../Command/Command.h"
+#include "../Command/DeleteCommand.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -17,8 +16,9 @@ DeleteView::DeleteView(const std::string& name, World* model, Canvas* canvas) :
 
 void DeleteView::onOk()
 {
+	/*
 	Command::Command command(DeleteLabels::CommandNameLabel);
 	command.setArg(DeleteLabels::IdLabel, idView.getValue());
 	command.execute(getWorld());
-//	getWorld()->updateViewModel();
+	*/
 }

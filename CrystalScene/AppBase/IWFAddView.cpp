@@ -2,15 +2,10 @@
 
 #include "../Scene/WireFrameScene.h"
 
-#include "../Command/Command.h"
-#include "../Command/Public/ShaderBuildLabels.h"
-#include "../Command/Public/CameraLabels.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Command;
 
 IWFAddView::IWFAddView(const std::string& name, Scene::World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),

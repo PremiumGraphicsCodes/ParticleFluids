@@ -1,10 +1,5 @@
 #include "TransformView.h"
 
-#include "../Command/Command.h"
-
-#include "../Command/Public/TransformLabels.h"
-#include "../Command/Public/ShaderSendLabels.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -20,6 +15,7 @@ TransformView::TransformView(const std::string& name, World* model, Canvas* canv
 
 void TransformView::onOk()
 {
+	/*
 	Crystal::Command::Command command(::TransformLabels::TransformCommandLabel);
 	command.setArg(::TransformLabels::IdLabel, objectSelectView.getId());
 	command.setArg(::TransformLabels::MatrixLabel, matrixView.getValue());
@@ -28,4 +24,5 @@ void TransformView::onOk()
 	command.create(::ShaderSendLabels::CommandNameLabel);
 	command.setArg(::ShaderSendLabels::IdLabel, objectSelectView.getId());
 	command.execute(getWorld());
+	*/
 }
