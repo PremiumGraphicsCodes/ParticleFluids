@@ -1,6 +1,13 @@
 #include "CameraCreateCommand.h"
 
-#include "Public/CameraCreateLabels.h"
+#include "PublicLabel.h"
+
+namespace CameraCreateLabels
+{
+	PublicLabel CommandNameLabel = "CameraCreate";
+
+	PublicLabel NewIdLabel = "NewId";
+}
 
 #include "../Scene/CameraScene.h"
 

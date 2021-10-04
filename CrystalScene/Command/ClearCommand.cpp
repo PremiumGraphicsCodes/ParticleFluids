@@ -1,6 +1,12 @@
 #include "ClearCommand.h"
 
-#include "Public/ClearLabels.h"
+#include "PublicLabel.h"
+
+namespace ClearLabels
+{
+	PublicLabel CommandNameLabel = "ClearCommand";
+	PublicLabel LayerLabel = "Layer";
+}
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;

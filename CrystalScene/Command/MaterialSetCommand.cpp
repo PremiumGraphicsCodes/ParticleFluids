@@ -1,7 +1,21 @@
 #include "MaterialSetCommand.h"
 
-#include "Public/MaterialSetLabels.h"
 #include "../Scene/MaterialScene.h"
+
+#include "PublicLabel.h"
+
+namespace MaterialSetLabels
+{
+	PublicLabel CommandNameLabel = "MaterialSet";
+
+	PublicLabel IdLabel = "Id";
+	PublicLabel AmbientLabel = "Ambient";
+	PublicLabel DiffuseLabel = "Diffuse";
+	PublicLabel SpecularLabel = "Specular";
+	PublicLabel ShininessLabel = "Shininess";
+	PublicLabel TextureNameLabel = "TextureName";
+	PublicLabel NameLabel = "Name";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

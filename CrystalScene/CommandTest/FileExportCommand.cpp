@@ -11,13 +11,14 @@
 
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"
-#include "../Command/Public/FileExportLabels.h"
+#include "../Command/FileExportCommand.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+/*
 TEST(FileExportCommand, TestExportPCD)
 {
 	World world;
@@ -34,7 +35,6 @@ TEST(FileExportCommand, TestExportPCD)
 	EXPECT_TRUE(isOk);
 }
 
-/*
 TEST(FileExportCommand, TestExportOBJ)
 {
 	World world;

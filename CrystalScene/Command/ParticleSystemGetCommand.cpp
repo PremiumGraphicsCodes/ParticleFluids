@@ -3,7 +3,18 @@
 #include "../Scene/ParticleAttribute.h"
 #include "../Scene/ParticleSystemScene.h"
 
-#include "Public/ParticleSystemGetLabels.h"
+#include "PublicLabel.h"
+
+namespace ParticleSystemGetLabels
+{
+	PublicLabel CommandNameLabel = "ParticleSystemGet";
+	PublicLabel PSIdLabel = "PSId";
+	PublicLabel LayerLabel = "Layer";
+	PublicLabel PositionsLabel = "Positions";
+	PublicLabel PointSizeLabel = "PointSize";
+	PublicLabel ColorLabel = "Color";
+	PublicLabel NameLabel = "Name";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

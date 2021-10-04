@@ -1,6 +1,17 @@
 #include "SceneGetCommand.h"
 
-#include "Public/SceneGetLabels.h"
+#include "PublicLabel.h"
+
+namespace SceneGetLabels
+{
+	PublicLabel CommandLabel = "SceneGet";
+	PublicLabel IdLabel = "Id";
+	PublicLabel BoundingBoxLabel = "BoundingBox";
+	PublicLabel IsPickableLabel = "IsPickable";
+	PublicLabel IsVisibleLabel = "IsVisible";
+	PublicLabel NameLabel = "Name";
+	PublicLabel TypeNameLabel = "TypeName";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

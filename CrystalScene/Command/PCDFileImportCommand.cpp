@@ -3,7 +3,14 @@
 #include "../../Crystal/IO/PCDFileReader.h"
 #include "../Scene/ParticleSystemScene.h"
 
-#include "Public/PCDFileImportLabels.h"
+#include "PublicLabel.h"
+
+namespace PCDFileImportLabels
+{
+	PublicLabel CommandNameLabel = "PCDFileImport";
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::IO;

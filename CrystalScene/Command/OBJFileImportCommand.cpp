@@ -1,6 +1,13 @@
 #include "OBJFileImportCommand.h"
 
-#include "Public/OBJFileImportLabels.h"
+#include "PublicLabel.h"
+
+namespace OBJFileImportLabels
+{
+	PublicLabel CommandNameLabel = "OBJFileImport";
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/IO/OBJFileReader.h"

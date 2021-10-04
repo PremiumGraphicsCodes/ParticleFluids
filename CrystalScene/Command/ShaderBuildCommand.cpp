@@ -1,6 +1,12 @@
 #include "ShaderBuildCommand.h"
 
-#include "Public/ShaderBuildLabels.h"
+#include "PublicLabel.h"
+
+namespace ShaderBuildLabels
+{
+	PublicLabel CommandNameLabel = "ShaderBuild";
+	PublicLabel IdLabel = "Id";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

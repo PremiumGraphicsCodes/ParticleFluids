@@ -1,5 +1,11 @@
 #include "CameraTranslateCommand.h"
-#include "Public/CameraLabels.h"
+#include "PublicLabel.h"
+
+namespace CameraTranslateCommandLabels
+{
+	PublicLabel TranslateLabel = "Translate";
+	PublicLabel CameraTranslateCommandLabel = "CameraTranslate";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

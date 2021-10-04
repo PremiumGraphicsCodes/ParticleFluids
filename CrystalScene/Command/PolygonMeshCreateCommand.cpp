@@ -5,7 +5,20 @@
 #include "../../Crystal/Shape/PolygonMesh.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
-#include "Public/PolygonMeshCreateLabels.h"
+#include "PublicLabel.h"
+
+namespace PolygonMeshCreateLabels
+{
+	PublicLabel CommandNameLabel = "PolygonMeshCreate";
+	PublicLabel PositionsLabel = "Positions";
+	PublicLabel NormalsLabel = "Normals";
+	PublicLabel TexCoordsLabel = "TexCoords";
+	PublicLabel VerticesLabel = "Vertices";
+	PublicLabel FacesLabel = "Faces";
+	PublicLabel NameLabel = "Name";
+	PublicLabel LayerLabel = "Layer";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

@@ -3,7 +3,15 @@
 #include "../../Crystal/IO/PCDFileWriter.h"
 #include "../Scene/ParticleSystemScene.h"
 
-#include "Public/PCDFileExportLabels.h"
+#include "PublicLabel.h"
+
+namespace PCDFileExportLabels
+{
+	PublicLabel CommandNameLabel = "PCDFileExport";
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel IdsLabel = "Ids";
+	PublicLabel IsBinaryLabel = "IsBinary";
+}
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;

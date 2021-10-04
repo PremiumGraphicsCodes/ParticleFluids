@@ -5,7 +5,16 @@
 #include "Crystal/Shape/TriangleMesh.h"
 #include "Crystal/Shape/TriangleMeshBuilder.h"
 
-#include "Public/TriangleMeshCreateLabels.h"
+#include "PublicLabel.h"
+
+namespace TriangleMeshCreateLabels
+{
+	PublicLabel CommandNameLabel = "TriangleMeshCreate";
+	PublicLabel TrianglesLabel = "Triangles";
+	PublicLabel NameLabel = "Name";
+	PublicLabel LayerLabel = "Layer";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

@@ -1,5 +1,12 @@
 #include "CameraZoomCommand.h"
-#include "Public/CameraLabels.h"
+
+#include "Public/PublicLabel.h"
+
+namespace CameraZoomCommandLabels
+{
+	PublicLabel CameraZoomCommandLabel = "CameraZoom";
+	PublicLabel ZoomRatioLabel = "Ratio";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Command;

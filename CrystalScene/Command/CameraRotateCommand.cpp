@@ -1,5 +1,12 @@
 #include "CameraRotateCommand.h"
-#include "Public/CameraLabels.h"
+
+#include "PublicLabel.h"
+
+namespace CameraRotateCommandLabels
+{
+	PublicLabel CameraRotateCommandLabel = "CameraRotate";
+	PublicLabel MatrixLabel = "Matrix";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

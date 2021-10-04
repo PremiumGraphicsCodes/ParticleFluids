@@ -5,7 +5,15 @@
 
 #include "../Scene/PolygonMeshScene.h"
 
-#include "Public/STLFileExportLabels.h"
+#include "PublicLabel.h"
+
+namespace STLFileExportLabels
+{
+	PublicLabel CommandNameLabel = "STLFileExport";
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel IdsLabel = "Ids";
+	PublicLabel IsBinaryLabel = "IsBinary";
+}
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;

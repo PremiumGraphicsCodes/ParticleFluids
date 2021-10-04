@@ -1,6 +1,13 @@
 #include "DeleteCommand.h"
 
-#include "Public/DeleteLabels.h"
+#include "PublicLabel.h"
+
+namespace DeleteLabels
+{
+	PublicLabel CommandNameLabel = "DeleteCommand";
+	PublicLabel IdLabel = "Id";
+	PublicLabel IsItemLabel = "IsItem";
+}
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;

@@ -1,6 +1,11 @@
 #include "NewCommand.h"
 
-#include "Public/NewLabels.h"
+#include "PublicLabel.h"
+
+namespace NewLabels
+{
+	PublicLabel CommandNameLabel = "NewCommand";
+}
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;

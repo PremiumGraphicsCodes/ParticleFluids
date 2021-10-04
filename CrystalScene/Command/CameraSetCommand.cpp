@@ -1,6 +1,16 @@
 #include "CameraSetCommand.h"
 
-#include "Public/CameraSetLabels.h"
+#include "PublicLabel.h"
+
+namespace CameraSetCommandLabels
+{
+	PublicLabel CommandLabel = "CameraSet";
+	PublicLabel NearLabel = "Near";
+	PublicLabel FarLabel = "Far";
+	PublicLabel EyePositionLabel = "EyePosition";
+	PublicLabel TargetPositionLabel = "TargetPosition";
+	PublicLabel UpVector = "UpVector";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

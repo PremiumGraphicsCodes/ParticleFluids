@@ -3,10 +3,17 @@
 #include "Command.h"
 #include "CommandFactory.h"
 
-#include "Public/FileExportLabels.h"
-#include "Public/OBJFileExportLabels.h"
-#include "Public/STLFileExportLabels.h"
-#include "Public/PCDFileExportLabels.h"
+#include "PublicLabel.h"
+
+#include "OBJFileExportCommand.h"
+#include "STLFileExportCommand.h"
+#include "PCDFileExportCommand.h"
+
+namespace FileExportLabels
+{
+	PublicLabel FileExportCommandLabel = "FileExport";
+	PublicLabel FilePathLabel = "FilePath";
+}
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
@@ -37,65 +44,65 @@ bool FileExportCommand::execute(World* world)
 
 bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format, World* world)
 {
-	switch (format) {
-	case FileFormat::OBJ :
-	{
-		std::vector<int> ids;
-		auto scenes = world->getScenes()->findScenes(SceneTypeLabels::PolygonMeshScene);
-		for (auto s : scenes) {
-			ids.push_back(s->getId());
-		}
+	//switch (format) {
+	//case FileFormat::OBJ :
+	//{
+	//	std::vector<int> ids;
+	//	auto scenes = world->getScenes()->findScenes(SceneTypeLabels::PolygonMeshScene);
+	//	for (auto s : scenes) {
+	//		ids.push_back(s->getId());
+	//	}
 
-		auto command = CommandFactory::create(::OBJFileExportLabels::CommandNameLabel);
-		command->setArg(::OBJFileExportLabels::FilePathLabel, args.filePath.getValue());
-		command->setArg(::OBJFileExportLabels::IdsLabel, ids);
-		return command->execute(world);
-	}
-	/*
-	case FileFormat::MTL :
-	{
-		OBJFileExporter exporter;
-		return exporter.exportMTL(filePath, objects);
-	}
-	*/
-	case FileFormat::STL_ASCII :
-	{
-		/*
-		std::vector<int> ids;
-		auto scenes = world->getScenes()->findScenes(SceneType::TriangleMeshScene);
-		for (auto s : scenes) {
-			ids.push_back(s->getId());
-		}
-		*/
+	//	auto command = OBJFileExportCommand();
+	//	command.setArg(::OBJFileExportLabels::FilePathLabel, args.filePath.getValue());
+	//	command.setArg(::OBJFileExportLabels::IdsLabel, ids);
+	//	return command->execute(world);
+	//}
+	///*
+	//case FileFormat::MTL :
+	//{
+	//	OBJFileExporter exporter;
+	//	return exporter.exportMTL(filePath, objects);
+	//}
+	//*/
+	//case FileFormat::STL_ASCII :
+	//{
+	//	/*
+	//	std::vector<int> ids;
+	//	auto scenes = world->getScenes()->findScenes(SceneType::TriangleMeshScene);
+	//	for (auto s : scenes) {
+	//		ids.push_back(s->getId());
+	//	}
+	//	*/
 
-		auto command = CommandFactory::create(::OBJFileExportLabels::CommandNameLabel);
-		command->setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
-		command->setArg(::STLFileExportLabels::IsBinaryLabel, false);
-		return command->execute(world);
-	}
-	case FileFormat::STL_BINARY :
-	{
-		auto command = CommandFactory::create(::STLFileExportLabels::CommandNameLabel);
-		command->setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
-		command->setArg(::STLFileExportLabels::IsBinaryLabel, true);
-		return command->execute(world);
-	}
-	case FileFormat::PCD :
-	{
-		auto command = CommandFactory::create(::PCDFileExportLabels::CommandNameLabel);
-		std::vector<int> ids;
-		auto scenes = world->getScenes()->findScenes(SceneTypeLabels::ParticleSystemScene);
-		for (auto s : scenes) {
-			ids.push_back(s->getId());
-		}
-		command->setArg(::PCDFileExportLabels::IdsLabel, ids);
-		command->setArg(::PCDFileExportLabels::FilePathLabel, args.filePath.getValue());
-		return command->execute(world);
-	}
-	default :
-		assert(false);
-		return false;
-	}
+	//	auto command = CommandFactory::create(::OBJFileExportLabels::CommandNameLabel);
+	//	command->setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
+	//	command->setArg(::STLFileExportLabels::IsBinaryLabel, false);
+	//	return command->execute(world);
+	//}
+	//case FileFormat::STL_BINARY :
+	//{
+	//	auto command = CommandFactory::create(::STLFileExportLabels::CommandNameLabel);
+	//	command->setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
+	//	command->setArg(::STLFileExportLabels::IsBinaryLabel, true);
+	//	return command->execute(world);
+	//}
+	//case FileFormat::PCD :
+	//{
+	//	auto command = CommandFactory::create(::PCDFileExportLabels::CommandNameLabel);
+	//	std::vector<int> ids;
+	//	auto scenes = world->getScenes()->findScenes(SceneTypeLabels::ParticleSystemScene);
+	//	for (auto s : scenes) {
+	//		ids.push_back(s->getId());
+	//	}
+	//	command->setArg(::PCDFileExportLabels::IdsLabel, ids);
+	//	command->setArg(::PCDFileExportLabels::FilePathLabel, args.filePath.getValue());
+	//	return command->execute(world);
+	//}
+	//default :
+	//	assert(false);
+	//	return false;
+	//}
 	return false;
 }
 

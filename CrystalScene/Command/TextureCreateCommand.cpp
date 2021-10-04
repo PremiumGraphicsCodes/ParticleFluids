@@ -1,6 +1,16 @@
 #include "TextureCreateCommand.h"
 
-#include "Public/TextureCreateLabels.h"
+#include "PublicLabel.h"
+
+namespace TextureCreateLabels
+{
+	PublicLabel CommandNameLabel = "TextureCreate";
+
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel NameLabel = "Name";
+
+	PublicLabel NewIdLabel = "NewId";
+}
 
 #include "../Scene/TextureScene.h"
 #include "../../Crystal/IO/ImageFileReader.h"

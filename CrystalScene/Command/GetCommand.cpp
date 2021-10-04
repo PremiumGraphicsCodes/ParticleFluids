@@ -1,8 +1,16 @@
 #include "GetCommand.h"
 
-#include "Public/GetLabels.h"
-
 #include "../Scene/IShapeScene.h"
+
+#include "PublicLabel.h"
+
+namespace GetLabels
+{
+	PublicLabel PositionLabel = "Position";
+	PublicLabel SceneCountLabel = "SceneCount";
+	PublicLabel SceneListIdsLabel = "SceneListIds";
+	PublicLabel MaterialNameLabel = "MaterialName";
+}
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;

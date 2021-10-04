@@ -1,8 +1,21 @@
 #include "MaterialGetCommand.h"
 
-#include "Public/MaterialGetLabels.h"
 #include "../Scene/MaterialScene.h"
 
+#include "PublicLabel.h"
+
+namespace MaterialGetLabels
+{
+	PublicLabel CommandNameLabel = "MaterialGet";
+
+	PublicLabel IdLabel = "Id";
+	PublicLabel AmbientLabel = "Ambient";
+	PublicLabel DiffuseLabel = "Diffuse";
+	PublicLabel SpecularLabel = "Specular";
+	PublicLabel ShininessLabel = "Shininess";
+	PublicLabel TextureNameLabel = "TextureName";
+	PublicLabel NameLabel = "Name";
+}
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;

@@ -2,9 +2,17 @@
 #include "../Scene/World.h"
 #include "../Scene/IShapeScene.h"
 #include "../Scene/ParticleSystemScene.h"
-#include "Public/TrimLabels.h"
 #include "../../Crystal/Math/Sphere3d.h"
 
+#include "PublicLabel.h"
+
+namespace TrimLabels
+{
+	PublicLabel TrimCommandLabel = "Trim";
+	PublicLabel ShapeIdLabel = "ShapeId";
+	PublicLabel SpaceLabel = "Space";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

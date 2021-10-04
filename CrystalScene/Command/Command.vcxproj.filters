@@ -42,90 +42,36 @@
     <ClInclude Include="OBJFileExportCommand.h">
       <Filter>File\OBJ</Filter>
     </ClInclude>
-    <ClInclude Include="Public\CameraLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\FileImportLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\PickLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\PublicLabel.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\FileExportLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="PCDFileExportCommand.h">
       <Filter>File\PCD</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\TransformLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\MockLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="TrimCommand.h">
       <Filter>Scene\Shape\Trim</Filter>
     </ClInclude>
-    <ClInclude Include="Public\TrimLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="WireFrameCreateCommand.h">
       <Filter>Scene\Shape\WireFrame</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\WireFrameCreateLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemCreateCommand.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Public\ParticleSystemCreateLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonMeshCreateCommand.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
-    <ClInclude Include="Public\PolygonMeshCreateLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="NewCommand.h" />
-    <ClInclude Include="Public\NewLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="LightCreateCommand.h">
       <Filter>Scene\Appearance\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\LightCreateLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="MaterialCreateCommand.h">
       <Filter>Scene\Appearance\Material</Filter>
     </ClInclude>
-    <ClInclude Include="Public\MaterialCreateLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\TextureCreateLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="ShapeSelectCommand.h">
       <Filter>Scene\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\ShapeSelectLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="DeleteCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Public\DeleteLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="ClearCommand.h">
       <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\ClearLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="CameraRotateCommand.h">
       <Filter>Camera</Filter>
@@ -136,44 +82,20 @@
     <ClInclude Include="MaterialGetCommand.h">
       <Filter>Scene\Appearance\Material</Filter>
     </ClInclude>
-    <ClInclude Include="Public\MaterialGetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialSetCommand.h">
       <Filter>Scene\Appearance\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\MaterialSetLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="LightSetCommand.h">
       <Filter>Scene\Appearance\Light</Filter>
     </ClInclude>
-    <ClInclude Include="Public\LightSetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="LightGetCommand.h">
       <Filter>Scene\Appearance\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\LightGetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\GetMatrixLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="SceneGetCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Public\SceneGetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="CameraSetCommand.h">
       <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\CameraSetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\CameraGetLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="CameraGetCommand.h">
       <Filter>Camera</Filter>
@@ -181,105 +103,46 @@
     <ClInclude Include="TextureSetCommand.h">
       <Filter>Scene\Appearance\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="Public\TextureSetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\OBJFileExportLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\STLFileExportLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\PCDFileExportLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\OBJFileImportLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\PCDFileImportLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\STLFileImportLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderBuildCommand.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\ShaderBuildLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="ShaderSendCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Public\ShaderSendLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="CameraCreateCommand.h">
-      <Filter>Scene\Appearance\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\CameraCreateLabels.h">
       <Filter>Scene\Appearance\Camera</Filter>
     </ClInclude>
     <ClInclude Include="SolidCreateCommand.h">
       <Filter>Scene\Shape\Solid</Filter>
     </ClInclude>
-    <ClInclude Include="Public\SolidCreateLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="PresenterSetCommand.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\PresenterSetLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="SceneSetCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Public\SceneSetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonMeshAddVerticesCommand.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\PolygonMeshAddVerticesLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshAddFacesCommand.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
-    <ClInclude Include="Public\PolygonMeshAddFacesLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleSystemGetCommand.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\ParticleSystemGetLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemSetCommand.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Public\ParticleSystemSetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="TriangleMeshCreateCommand.h">
       <Filter>Scene\Shape\TriangleMesh</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\TriangleMeshCreateLabels.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="TriangleMeshGetCommand.h">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClInclude>
-    <ClInclude Include="Public\TriangleMeshGetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="TriangleMeshSetCommand.h">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClInclude>
-    <ClInclude Include="Public\TriangleMeshSetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
+    <ClInclude Include="PublicLabel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -459,9 +322,6 @@
     <Filter Include="File\OBJ">
       <UniqueIdentifier>{42593c27-df0f-4740-bafb-9b6414a5528d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Public">
-      <UniqueIdentifier>{d6ba1b28-bbff-414a-911b-334672ec90b6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Shape\Trim">
       <UniqueIdentifier>{d9be7589-1db5-4cd6-8ea1-d013ea4f6881}</UniqueIdentifier>
     </Filter>
@@ -486,10 +346,5 @@
     <Filter Include="Scene\Shape\TriangleMesh">
       <UniqueIdentifier>{6b7ee31a-8822-46b4-bcba-b649cd9d78d2}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Public\GetLabels.h">
-      <Filter>Public</Filter>
-    </Text>
   </ItemGroup>
 </Project>

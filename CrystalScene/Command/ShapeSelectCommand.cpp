@@ -3,7 +3,13 @@
 #include "../../Crystal/Shape/WireFrameBuilder.h"
 #include "../Scene/WireFrameScene.h"
 
-#include "Public/ShapeSelectLabels.h"
+#include "PublicLabel.h"
+
+namespace ShapeSelectLabels
+{
+	PublicLabel CommandNameLabel = "ShapeSelectCommand";
+	PublicLabel ShapeIdLabel = "ShapeId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

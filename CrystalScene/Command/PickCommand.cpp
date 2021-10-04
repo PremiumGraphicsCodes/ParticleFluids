@@ -1,6 +1,14 @@
 #include "PickCommand.h"
 
-#include "Public/PickLabels.h"
+#include "PublicLabel.h"
+
+namespace PickLabels
+{
+	PublicLabel PickCommandLabel = "Pick";
+	PublicLabel PositionLabel = "Position";
+	PublicLabel ParentIdLabel = "ParentId";
+	PublicLabel ChildIdLabel = "ChildId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

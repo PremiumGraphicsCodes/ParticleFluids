@@ -5,7 +5,14 @@
 
 #include "../Scene/PolygonMeshScene.h"
 
-#include "Public/OBJFileExportLabels.h"
+#include "PublicLabel.h"
+
+namespace OBJFileExportLabels
+{
+	PublicLabel CommandNameLabel = "OBJFileExport";
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel IdsLabel = "Ids";
+}
 
 using namespace Crystal::Scene;
 using namespace Crystal::IO;

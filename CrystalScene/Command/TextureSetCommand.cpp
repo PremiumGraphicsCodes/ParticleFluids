@@ -1,6 +1,16 @@
 #include "TextureSetCommand.h"
 
-#include "Public/TextureSetLabels.h"
+#include "PublicLabel.h"
+
+namespace TextureSetLabels
+{
+	PublicLabel CommandNameLabel = "TextureSet";
+
+	PublicLabel IdLabel = "Id";
+	PublicLabel FilePathLabel = "FilePath";
+
+	PublicLabel IsOkLabel = "IsOk";
+}
 
 #include "../Scene/TextureScene.h"
 #include "../../Crystal/IO/ImageFileReader.h"

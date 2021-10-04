@@ -1,7 +1,14 @@
 #include "TransformCommand.h"
 
 #include "../Scene/IShapeScene.h"
-#include "Public/TransformLabels.h"
+#include "PublicLabel.h"
+
+namespace TransformLabels
+{
+	PublicLabel TransformCommandLabel = "Transform";
+	PublicLabel IdLabel = "Id";
+	PublicLabel MatrixLabel = "Matrix";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

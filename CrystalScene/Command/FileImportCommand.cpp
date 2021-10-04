@@ -1,12 +1,18 @@
 #include "FileImportCommand.h"
-#include "Public/FileImportLabels.h"
 
 #include "../../Crystal/IO/FileFormat.h"
 
-#include "Public/OBJFileImportLabels.h"
-#include "Public/PCDFileImportLabels.h"
-#include "Public/STLFileImportLabels.h"
+#include "PublicLabel.h"
 
+namespace FileImportLabels
+{
+	PublicLabel FileImportCommandLabel = "FileImport";
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel IsOkLabel = "IsOk";
+	PublicLabel NewIdLabel = "NewId";
+
+	PublicLabel STLFileImportCommandLabel = "STLFileImport";
+}
 #include "Command.h"
 #include "CommandFactory.h"
 
@@ -48,40 +54,40 @@ bool FileImportCommand::importFile(const std::filesystem::path& filePath, World*
 
 bool FileImportCommand::importFile(const std::filesystem::path& filePath, World* world, const FileFormat format)
 {
-	switch (format) {
-	case FileFormat::OBJ:
-	{
-		auto command = CommandFactory::create(::OBJFileImportLabels::CommandNameLabel);
-		command->setArg(::OBJFileImportLabels::FilePathLabel, args.filePath.getValue());
-		const auto isOk = command->execute(world);
-		const auto newId = command->getResult(::OBJFileImportLabels::NewIdLabel);
-		results.newId.setValue( std::any_cast<int>( newId ) );
-		//OBJFileImporter importer(factory);
-		//return importer.importOBJWithMTL(filePath, parent);
-		return isOk;
-	}
-	case FileFormat::MTL:
-	{
-//		OBJFileImporter importer(factory);
-//		return importer.importMTL(filePath, parent);
-		return false;
-	}
-	case FileFormat::STL:
-	{
-		auto command = CommandFactory::create(STLFileImportLabels::CommandNameLabel);
-		command->setArg(STLFileImportLabels::FilePathLabel, this->args.filePath.getValue());
-		const auto isOk = command->execute(world);
-		return isOk;
-	}
-	case FileFormat::PCD:
-	{
-		auto command = CommandFactory::create(::PCDFileImportLabels::CommandNameLabel);
-		command->setArg(::PCDFileImportLabels::FilePathLabel, this->args.filePath.getValue());
-		const auto isOk = command->execute(world);
-		return isOk;
-	}
-	default:
-		assert(false);
-	}
+//	switch (format) {
+//	case FileFormat::OBJ:
+//	{
+//		auto command = CommandFactory::create(::OBJFileImportLabels::CommandNameLabel);
+//		command->setArg(::OBJFileImportLabels::FilePathLabel, args.filePath.getValue());
+//		const auto isOk = command->execute(world);
+//		const auto newId = command->getResult(::OBJFileImportLabels::NewIdLabel);
+//		results.newId.setValue( std::any_cast<int>( newId ) );
+//		//OBJFileImporter importer(factory);
+//		//return importer.importOBJWithMTL(filePath, parent);
+//		return isOk;
+//	}
+//	case FileFormat::MTL:
+//	{
+////		OBJFileImporter importer(factory);
+////		return importer.importMTL(filePath, parent);
+//		return false;
+//	}
+//	case FileFormat::STL:
+//	{
+//		auto command = CommandFactory::create(STLFileImportLabels::CommandNameLabel);
+//		command->setArg(STLFileImportLabels::FilePathLabel, this->args.filePath.getValue());
+//		const auto isOk = command->execute(world);
+//		return isOk;
+//	}
+//	case FileFormat::PCD:
+//	{
+//		auto command = CommandFactory::create(::PCDFileImportLabels::CommandNameLabel);
+//		command->setArg(::PCDFileImportLabels::FilePathLabel, this->args.filePath.getValue());
+//		const auto isOk = command->execute(world);
+//		return isOk;
+//	}
+//	default:
+//		assert(false);
+//	}
 	return false;
 }

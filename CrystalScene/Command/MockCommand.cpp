@@ -1,6 +1,11 @@
 #include "MockCommand.h"
 
-#include "Public/MockLabels.h"
+#include "PublicLabel.h"
+
+namespace MockLabels
+{
+	PublicLabel MockCommandLabel = "Mock";
+}
 
 using namespace Crystal::Command;
 

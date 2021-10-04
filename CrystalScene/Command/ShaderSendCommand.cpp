@@ -1,6 +1,12 @@
 #include "ShaderSendCommand.h"
 
-#include "Public/ShaderSendLabels.h"
+#include "PublicLabel.h"
+
+namespace ShaderSendLabels
+{
+	PublicLabel CommandNameLabel = "ShaderSend";
+	PublicLabel IdLabel = "Id";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

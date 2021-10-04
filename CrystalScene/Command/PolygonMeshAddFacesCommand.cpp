@@ -3,7 +3,15 @@
 #include "../../Crystal/Shape/PolygonMesh.h"
 #include "../Scene/PolygonMeshScene.h"
 
-#include "Public/PolygonMeshAddFacesLabels.h"
+#include "PublicLabel.h"
+
+namespace PolygonMeshAddFacesLabels
+{
+	PublicLabel CommandNameLabel = "PolygonMeshAddFaces";
+	PublicLabel PolygonMeshIdLabel = "PolygonMeshId";
+
+	PublicLabel VertexIdsLabel = "VertexIds";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

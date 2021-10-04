@@ -1,6 +1,14 @@
 #include "CameraFitCommand.h"
 
-#include "Public/CameraLabels.h"
+#include "PublicLabel.h"
+
+namespace CameraFitCommandLabels
+{
+	PublicLabel CameraFitCommandLabel = "CameraFit";
+	PublicLabel CameraXYCommandLabel = "CameraXY";
+	PublicLabel CameraYZCommandLabel = "CameraYZ";
+	PublicLabel CameraZXCommandLabel = "CameraZX";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

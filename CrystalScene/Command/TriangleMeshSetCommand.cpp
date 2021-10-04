@@ -2,7 +2,17 @@
 
 #include "../Scene/TriangleMeshScene.h"
 
-#include "Public/TriangleMeshSetLabels.h"
+#include "PublicLabel.h"
+
+namespace TriangleMeshSetLabels
+{
+	PublicLabel CommandNameLabel = "TriangleMeshSet";
+	PublicLabel MeshIdLabel = "MeshId";
+	//PublicLabel LayerLabel = "Layer";
+	PublicLabel TrianglesLabel = "Triangles";
+	//PublicLabel NormalsLabel = "Normals";
+	//PublicLabel NameLabel = "Name";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

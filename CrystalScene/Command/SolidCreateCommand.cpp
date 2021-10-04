@@ -2,7 +2,17 @@
 
 #include "../Scene/SolidScene.h"
 
-#include "Public/SolidCreateLabels.h"
+#include "PublicLabel.h"
+
+namespace SolidCreateLabels
+{
+	PublicLabel ParticleSystemAddLabel = "SolidCreate";
+	PublicLabel BoxLabel = "Box";
+	PublicLabel ColorLabel = "Color";
+	PublicLabel NameLabel = "Name";
+	PublicLabel LayerLabel = "Layer";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

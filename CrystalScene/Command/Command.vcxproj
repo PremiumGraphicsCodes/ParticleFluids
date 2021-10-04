@@ -165,28 +165,7 @@
     <ClInclude Include="PolygonMeshAddFacesCommand.h" />
     <ClInclude Include="PolygonMeshAddVerticesCommand.h" />
     <ClInclude Include="PresenterSetCommand.h" />
-    <ClInclude Include="Public\CameraCreateLabels.h" />
-    <ClInclude Include="Public\CameraGetLabels.h" />
-    <ClInclude Include="Public\CameraSetLabels.h" />
-    <ClInclude Include="Public\OBJFileExportLabels.h" />
-    <ClInclude Include="Public\OBJFileImportLabels.h" />
-    <ClInclude Include="Public\ParticleSystemGetLabels.h" />
-    <ClInclude Include="Public\ParticleSystemSetLabels.h" />
-    <ClInclude Include="Public\PCDFileExportLabels.h" />
-    <ClInclude Include="Public\PCDFileImportLabels.h" />
-    <ClInclude Include="Public\PolygonMeshAddFacesLabels.h" />
-    <ClInclude Include="Public\PolygonMeshAddVerticesLabels.h" />
-    <ClInclude Include="Public\PresenterSetLabels.h" />
-    <ClInclude Include="Public\SceneGetLabels.h" />
-    <ClInclude Include="Public\ShaderBuildLabels.h" />
-    <ClInclude Include="Public\ShaderSendLabels.h" />
-    <ClInclude Include="Public\SolidCreateLabels.h" />
-    <ClInclude Include="Public\STLFileExportLabels.h" />
-    <ClInclude Include="Public\STLFileImportLabels.h" />
-    <ClInclude Include="Public\TextureSetLabels.h" />
-    <ClInclude Include="Public\TriangleMeshCreateLabels.h" />
-    <ClInclude Include="Public\TriangleMeshGetLabels.h" />
-    <ClInclude Include="Public\TriangleMeshSetLabels.h" />
+    <ClInclude Include="PublicLabel.h" />
     <ClInclude Include="SceneGetCommand.h" />
     <ClInclude Include="CameraFitCommand.h" />
     <ClInclude Include="CameraRotateCommand.h" />
@@ -217,30 +196,6 @@
     <ClInclude Include="PCDFileImportCommand.h" />
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PolygonMeshCreateCommand.h" />
-    <ClInclude Include="Public\CameraLabels.h" />
-    <ClInclude Include="Public\ClearLabels.h" />
-    <ClInclude Include="Public\DeleteLabels.h" />
-    <ClInclude Include="Public\FileExportLabels.h" />
-    <ClInclude Include="Public\FileImportLabels.h" />
-    <ClInclude Include="Public\GetMatrixLabels.h" />
-    <ClInclude Include="Public\LightCreateLabels.h" />
-    <ClInclude Include="Public\LightGetLabels.h" />
-    <ClInclude Include="Public\LightSetLabels.h" />
-    <ClInclude Include="Public\MaterialCreateLabels.h" />
-    <ClInclude Include="Public\MaterialGetLabels.h" />
-    <ClInclude Include="Public\MaterialSetLabels.h" />
-    <ClInclude Include="Public\MockLabels.h" />
-    <ClInclude Include="Public\NewLabels.h" />
-    <ClInclude Include="Public\ParticleSystemCreateLabels.h" />
-    <ClInclude Include="Public\PickLabels.h" />
-    <ClInclude Include="Public\PolygonMeshCreateLabels.h" />
-    <ClInclude Include="Public\PublicLabel.h" />
-    <ClInclude Include="Public\SceneSetLabels.h" />
-    <ClInclude Include="Public\ShapeSelectLabels.h" />
-    <ClInclude Include="Public\TextureCreateLabels.h" />
-    <ClInclude Include="Public\TransformLabels.h" />
-    <ClInclude Include="Public\TrimLabels.h" />
-    <ClInclude Include="Public\WireFrameCreateLabels.h" />
     <ClInclude Include="SceneSetCommand.h" />
     <ClInclude Include="ShaderBuildCommand.h" />
     <ClInclude Include="ShaderSendCommand.h" />
@@ -309,9 +264,6 @@
     <ClCompile Include="TriangleMeshSetCommand.cpp" />
     <ClCompile Include="TrimCommand.cpp" />
     <ClCompile Include="WireFrameCreateCommand.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Public\GetLabels.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Scene\Scene.vcxproj">

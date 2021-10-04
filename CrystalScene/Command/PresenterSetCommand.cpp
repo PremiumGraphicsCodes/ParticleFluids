@@ -9,7 +9,15 @@ using namespace Crystal::Command;
 
 //#include "ShaderSendCommand.h"
 
-#include "Public/PresenterSetLabels.h"
+#include "PublicLabel.h"
+
+namespace PresenterSetLabels
+{
+	PublicLabel CommandNameLabel = "PresenterSet";
+
+	PublicLabel IdLabel = "Id";
+	PublicLabel PresenterNameLabel = "PresenterName";
+}
 
 PresenterSetCommand::Args::Args() :
 	id(PresenterSetLabels::IdLabel, 0),

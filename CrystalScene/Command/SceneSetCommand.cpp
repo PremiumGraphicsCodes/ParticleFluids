@@ -1,6 +1,13 @@
 #include "SceneSetCommand.h"
 
-#include "Public/SceneSetLabels.h"
+#include "PublicLabel.h"
+
+namespace SceneSetLabels
+{
+	PublicLabel CommandNameLabel = "SceneSet";
+	PublicLabel IdLabel = "Id";
+	PublicLabel NameLabel = "Name";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

@@ -3,7 +3,17 @@
 #include "../../Crystal/Shape/PolygonMesh.h"
 #include "../Scene/PolygonMeshScene.h"
 
-#include "Public/PolygonMeshAddVerticesLabels.h"
+#include "PublicLabel.h"
+
+namespace PolygonMeshAddVerticesLabels
+{
+	PublicLabel CommandNameLabel = "PolygonMeshAddVertices";
+	PublicLabel PolygonMeshIdLabel = "PolygonMeshId";
+
+	PublicLabel PositionIdsLabel = "PositionIds";
+	PublicLabel NormalIdsLabel = "NormalIds";
+	PublicLabel TexCoordIdsLabel = "TexCoordIds";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

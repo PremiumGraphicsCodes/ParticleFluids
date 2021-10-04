@@ -7,8 +7,14 @@
 #include "../../Crystal/IO/STLAsciiFileReader.h"
 #include "../../Crystal/IO/STLBinaryFileReader.h"
 
-#include "Public/STLFileImportLabels.h"
+#include "PublicLabel.h"
 
+namespace STLFileImportLabels
+{
+	PublicLabel CommandNameLabel = "STLFileImport";
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::IO;
 using namespace Crystal::Shape;

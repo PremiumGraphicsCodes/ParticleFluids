@@ -3,7 +3,19 @@
 #include "../Scene/WireFrameAttribute.h"
 #include "../Scene/WireFrameScene.h"
 
-#include "Public/WireFrameCreateLabels.h"
+#include "PublicLabel.h"
+
+namespace WireFrameCreateLabels
+{
+	PublicLabel WireFrameAddLabel = "WireFrameAdd";
+	PublicLabel PositionsLabel = "Positions";
+	PublicLabel EdgesLabel = "Edges";
+	PublicLabel LineWidthLabel = "LineWidth";
+	PublicLabel ColorLabel = "Color";
+	PublicLabel NameLabel = "Name";
+	PublicLabel LayerLabel = "Layer";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
