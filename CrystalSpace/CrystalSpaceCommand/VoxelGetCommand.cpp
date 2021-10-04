@@ -1,8 +1,18 @@
 #include "VoxelGetCommand.h"
 
-#include "PublicLabels/VoxelGetLabels.h"
-
 #include "../CrystalSpace/VoxelScene.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "VoxelGet";
+	PublicLabel VoxelIdLabel = "VoxelId";
+	PublicLabel ResolutionXLabel = "ResX";
+	PublicLabel ResolutionYLabel = "ResY";
+	PublicLabel ResolutionZLabel = "ResZ";
+	PublicLabel BoundingBoxLabel = "BoundingBox";
+	PublicLabel ValuesLabel = "Values";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;

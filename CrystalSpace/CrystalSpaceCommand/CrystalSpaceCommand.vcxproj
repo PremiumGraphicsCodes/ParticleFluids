@@ -183,15 +183,6 @@
   <ItemGroup>
     <ClInclude Include="MeshToPSCommand.h" />
     <ClInclude Include="MeshToVoxelCommand.h" />
-    <ClInclude Include="PublicLabels\MeshToPSLabels.h" />
-    <ClInclude Include="PublicLabels\MeshToVoxelLabels.h" />
-    <ClInclude Include="PublicLabels\SparseVolumeNodeSetLabels.h" />
-    <ClInclude Include="PublicLabels\SparseVolumeSceneCreateLabels.h" />
-    <ClInclude Include="PublicLabels\VoxelGetLabels.h" />
-    <ClInclude Include="PublicLabels\VoxelizerLabels.h" />
-    <ClInclude Include="PublicLabels\VoxelSceneCreateLabels.h" />
-    <ClInclude Include="PublicLabels\VoxelSetLabels.h" />
-    <ClInclude Include="PublicLabels\VoxelToPSLabels.h" />
     <ClInclude Include="SpaceCommandFactory.h" />
     <ClInclude Include="SparseVolumeNodeSetCommand.h" />
     <ClInclude Include="SparseVolumeSceneCreateCommand.h" />

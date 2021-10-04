@@ -1,11 +1,18 @@
 #include "SparseVolumeNodeSetCommand.h"
 
-//#include "../../Crystal/Scene/ParticleAttribute.h"
-//#include "../../Crystal/Scene/ParticleSystemScene.h"
-
-#include "PublicLabels/SparseVolumeNodeSetLabels.h"
-
 #include "../CrystalSpace/SparseVolumeScene.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "SparseVolumeNodeSet";
+	PublicLabel SparseVolumeIdLabel = "SparseVolumeId";
+	PublicLabel IndicesXLabel = "IndicesX";
+	PublicLabel IndicesYLabel = "IndicesY";
+	PublicLabel IndicesZLabel = "IndicesZ";
+	PublicLabel ValuesLabel = "Values";
+}
+
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;

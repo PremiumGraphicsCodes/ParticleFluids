@@ -2,7 +2,18 @@
 
 #include "../CrystalSpace/SparseVolumeScene.h"
 
-#include "PublicLabels/SparseVolumeSceneCreateLabels.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "SparseVolumeSceneCreate";
+	PublicLabel ResolutionXLabel = "ResolutionX";
+	PublicLabel ResolutionYLabel = "ResolutionY";
+	PublicLabel ResolutionZLabel = "ResolutionZ";
+	PublicLabel BoundingBoxLabel = "BoundingBox";
+	PublicLabel NameLabel = "Name";
+	PublicLabel LayerLabel = "Layer";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;

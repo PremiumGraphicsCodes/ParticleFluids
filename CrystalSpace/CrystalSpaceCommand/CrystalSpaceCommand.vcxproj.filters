@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="PublicLabels">
-      <UniqueIdentifier>{3785dcb4-c0ca-455e-aa76-9feb2128ba15}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SparseVolume">
       <UniqueIdentifier>{b8a76ead-c15c-45b6-8ec2-f9eec2b7b387}</UniqueIdentifier>
     </Filter>
@@ -12,20 +9,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PublicLabels\SparseVolumeSceneCreateLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="SpaceCommandFactory.h" />
-    <ClInclude Include="PublicLabels\SparseVolumeNodeSetLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="MeshToPSCommand.h" />
-    <ClInclude Include="PublicLabels\MeshToPSLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
-    <ClInclude Include="PublicLabels\MeshToVoxelLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="MeshToVoxelCommand.h" />
     <ClInclude Include="SparseVolumeNodeSetCommand.h">
       <Filter>SparseVolume</Filter>
@@ -36,30 +21,15 @@
     <ClInclude Include="VoxelSceneCreateCommand.h">
       <Filter>Voxel</Filter>
     </ClInclude>
-    <ClInclude Include="PublicLabels\VoxelSceneCreateLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VoxelToPSCommand.h" />
-    <ClInclude Include="PublicLabels\VoxelToPSLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VoxelizerCommand.h">
       <Filter>Voxel</Filter>
-    </ClInclude>
-    <ClInclude Include="PublicLabels\VoxelizerLabels.h">
-      <Filter>PublicLabels</Filter>
     </ClInclude>
     <ClInclude Include="VoxelSetCommand.h">
       <Filter>Voxel</Filter>
     </ClInclude>
     <ClInclude Include="VoxelGetCommand.h">
       <Filter>Voxel</Filter>
-    </ClInclude>
-    <ClInclude Include="PublicLabels\VoxelGetLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
-    <ClInclude Include="PublicLabels\VoxelSetLabels.h">
-      <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

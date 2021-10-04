@@ -71,7 +71,7 @@ def create_scene_labels() :
     generator.write(output_file_path)
 
 def create_space_labels() :
-    input_directory_path = "../../CrystalSpace/CrystalSpaceCommand/PublicLabels/*.h"
+    input_directory_path = "../../CrystalSpace/CrystalSpaceCommand/*.cpp"
     output_file_path = "../CrystalPython/space_labels.py"
     generator = PythonLabelFileGenerator()
     generator.read_all_files(input_directory_path)

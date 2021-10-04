@@ -1,21 +1,21 @@
-class MeshToPSLabels:
+class MeshToPSCommand:
    CommandNameLabel="MeshToPS"
    PolygonMeshIdLabel="PolygonMeshId"
    DivideLengthLabel="DivideLength"
    ParticleSystemIdLabel="ParticleSystemId"
-class MeshToVoxelLabels:
+class MeshToVoxelCommand:
    CommandNameLabel="MeshToVoxelCommand"
    PolygonMeshIdLabel="PolygonMeshId"
    VoxelIdLabel="VoxelId"
    DivideLengthLabel="DivideLength"
-class SparseVolumeNodeSetLabels:
+class SparseVolumeNodeSetCommand:
    CommandNameLabel="SparseVolumeNodeSet"
    SparseVolumeIdLabel="SparseVolumeId"
    IndicesXLabel="IndicesX"
    IndicesYLabel="IndicesY"
    IndicesZLabel="IndicesZ"
    ValuesLabel="Values"
-class SparseVolumeSceneCreateLabels:
+class SparseVolumeSceneCreateCommand:
    CommandNameLabel="SparseVolumeSceneCreate"
    ResolutionXLabel="ResolutionX"
    ResolutionYLabel="ResolutionY"
@@ -24,7 +24,7 @@ class SparseVolumeSceneCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-class VoxelGetLabels:
+class VoxelGetCommand:
    CommandNameLabel="VoxelGet"
    VoxelIdLabel="VoxelId"
    ResolutionXLabel="ResX"
@@ -32,12 +32,12 @@ class VoxelGetLabels:
    ResolutionZLabel="ResZ"
    BoundingBoxLabel="BoundingBox"
    ValuesLabel="Values"
-class VoxelizerLabels:
+class VoxelizerCommand:
    CommandNameLabel="VoxelizerCommand"
    MeshIdLabel="MeshId"
    VoxelIdLabel="VoxelId"
    DivideLengthLabel="DivideLength"
-class VoxelSceneCreateLabels:
+class VoxelSceneCreateCommand:
    CommandNameLabel="VoxelSceneCreate"
    ResolutionXLabel="ResolutionX"
    ResolutionYLabel="ResolutionY"
@@ -46,7 +46,7 @@ class VoxelSceneCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-class VoxelSetLabels:
+class VoxelSetCommand:
    CommandNameLabel="VoxelNodeSet"
    VoxelIdLabel="VoxelId"
    ResolutionXLabel="ResolutionX"
@@ -54,7 +54,7 @@ class VoxelSetLabels:
    ResolutionZLabel="ResolutionZ"
    BoundingBoxLabel="BoundingBox"
    ValuesLabel="Values"
-class VoxelToPSLabels:
+class VoxelToPSCommand:
    CommandNameLabel="VoxelToPSCommand"
    VoxelIdLabel="VoxelId"
    PSIdLabel="PSId"

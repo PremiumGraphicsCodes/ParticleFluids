@@ -1,11 +1,18 @@
 #include "VoxelizerCommand.h"
 
-#include "PublicLabels/VoxelizerLabels.h"
-
 #include "CrystalScene/Scene/TriangleMeshScene.h"
 #include "CrystalScene/Scene/VoxelScene.h"
 
 #include "../CrystalSpace/ScanLineVoxelizer.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace VoxelizerLabels {
+	PublicLabel CommandNameLabel = "VoxelizerCommand";
+	PublicLabel MeshIdLabel = "MeshId";
+	PublicLabel VoxelIdLabel = "VoxelId";
+	PublicLabel DivideLengthLabel = "DivideLength";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

@@ -1,6 +1,8 @@
 #include "MeshToPSCommand.h"
 
-#include "PublicLabels/MeshToPSLabels.h"
+//#include "PublicLabels/MeshToPSLabels.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
 
 #include "CrystalScene/Scene/PolygonMeshScene.h"
 #include "CrystalScene/Scene/ParticleSystemScene.h"
@@ -11,6 +13,14 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Space;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
+
+
+namespace {
+	PublicLabel CommandNameLabel = "MeshToPS";
+	PublicLabel PolygonMeshIdLabel = "PolygonMeshId";
+	PublicLabel DivideLengthLabel = "DivideLength";
+	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
+}
 
 MeshToPSCommand::Args::Args() :
 	polygonMeshId(::PolygonMeshIdLabel, -1),

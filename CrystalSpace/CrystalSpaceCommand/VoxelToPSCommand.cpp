@@ -1,11 +1,17 @@
 #include "VoxelToPSCommand.h"
 
-#include "PublicLabels/VoxelToPSLabels.h"
-
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 #include "../CrystalSpace/VoxelScene.h"
 
 #include "../CrystalSpace/VoxelToParticleConverter.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "VoxelToPSCommand";
+	PublicLabel VoxelIdLabel = "VoxelId";
+	PublicLabel PSIdLabel = "PSId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

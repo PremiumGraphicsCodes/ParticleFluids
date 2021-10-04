@@ -1,11 +1,18 @@
 #include "MeshToVoxelCommand.h"
 
-#include "PublicLabels/MeshToVoxelLabels.h"
-
 #include "CrystalScene/Scene/PolygonMeshScene.h"
 #include "../CrystalSpace/VoxelScene.h"
 
 #include "../CrystalSpace/Voxelizer.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "MeshToVoxelCommand";
+	PublicLabel PolygonMeshIdLabel = "PolygonMeshId";
+	PublicLabel VoxelIdLabel = "VoxelId";
+	PublicLabel DivideLengthLabel = "DivideLength";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;
