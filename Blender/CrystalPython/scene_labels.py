@@ -1,7 +1,12 @@
-class CameraCreateLabels:
+class CameraCreateCommand:
    CommandNameLabel="CameraCreate"
    NewIdLabel="NewId"
-class CameraGetLabels:
+class CameraFitCommand:
+   CameraFitCommandLabel="CameraFit"
+   CameraXYCommandLabel="CameraXY"
+   CameraYZCommandLabel="CameraYZ"
+   CameraZXCommandLabel="CameraZX"
+class CameraGetCommand:
    CommandNameLabel="CameraGet"
    NearLabel="Near"
    FarLabel="Far"
@@ -10,50 +15,44 @@ class CameraGetLabels:
    UpVectorLabel="UpVector"
    ProjectionMatrixLabel="ProjectionMatrix"
    RotationMatrixLabel="RotationMatrix"
-class CameraLabels:
-   CameraFitCommandLabel="CameraFit"
-   CameraXYCommandLabel="CameraXY"
-   CameraYZCommandLabel="CameraYZ"
-   CameraZXCommandLabel="CameraZX"
+class CameraRotateCommand:
    CameraRotateCommandLabel="CameraRotate"
    MatrixLabel="Matrix"
-   TranslateLabel="Translate"
-   CameraTranslateCommandLabel="CameraTranslate"
-   CameraZoomCommandLabel="CameraZoom"
-   ZoomRatioLabel="Ratio"
-class CameraSetLabels:
+class CameraSetCommand:
    CommandLabel="CameraSet"
    NearLabel="Near"
    FarLabel="Far"
    EyePositionLabel="EyePosition"
    TargetPositionLabel="TargetPosition"
    UpVector="UpVector"
-class ClearLabels:
+class CameraTranslateCommand:
+   TranslateLabel="Translate"
+   CameraTranslateCommandLabel="CameraTranslate"
+class CameraZoomCommand:
+   CameraZoomCommandLabel="CameraZoom"
+   ZoomRatioLabel="Ratio"
+class ClearCommand:
    CommandNameLabel="ClearCommand"
    LayerLabel="Layer"
-class DeleteLabels:
+class DeleteCommand:
    CommandNameLabel="DeleteCommand"
    IdLabel="Id"
    IsItemLabel="IsItem"
-class FileExportLabels:
+class FileExportCommand:
    FileExportCommandLabel="FileExport"
    FilePathLabel="FilePath"
-class FileImportLabels:
+class FileImportCommand:
    FileImportCommandLabel="FileImport"
    FilePathLabel="FilePath"
    IsOkLabel="IsOk"
    NewIdLabel="NewId"
    STLFileImportCommandLabel="STLFileImport"
-class GetLabels:
+class GetCommand:
    PositionLabel="Position"
    SceneCountLabel="SceneCount"
    SceneListIdsLabel="SceneListIds"
    MaterialNameLabel="MaterialName"
-class GetMatrixLabels:
-   CommandLabel="SetMatrix"
-   IdLabel="Id"
-   MatrixLabel="Matrix"
-class LightCreateLabels:
+class LightCreateCommand:
    CommandNameLabel="LightCreate"
    PositionLabel="Position"
    AmbientLabel="Ambient"
@@ -61,7 +60,7 @@ class LightCreateLabels:
    SpecularLabel="Specular"
    NameLabel="Name"
    NewIdLabel="NewId"
-class LightGetLabels:
+class LightGetCommand:
    CommandNameLabel="LightGet"
    IdLabel="Id"
    PositionLabel="Position"
@@ -69,7 +68,7 @@ class LightGetLabels:
    DiffuseLabel="Diffuse"
    SpecularLabel="Specular"
    NameLabel="Name"
-class LightSetLabels:
+class LightSetCommand:
    CommandNameLabel="LightSet"
    IdLabel="Id"
    PositionLabel="Position"
@@ -77,7 +76,7 @@ class LightSetLabels:
    DiffuseLabel="Diffuse"
    SpecularLabel="Specular"
    NameLabel="Name"
-class MaterialCreateLabels:
+class MaterialCreateCommand:
    CommandNameLabel="MaterialCreate"
    AmbientLabel="Ambient"
    DiffuseLabel="Diffuse"
@@ -88,7 +87,7 @@ class MaterialCreateLabels:
    SpecularTextureNameLabel="SpecularTextureName"
    NameLabel="Name"
    NewIdLabel="NewId"
-class MaterialGetLabels:
+class MaterialGetCommand:
    CommandNameLabel="MaterialGet"
    IdLabel="Id"
    AmbientLabel="Ambient"
@@ -97,7 +96,7 @@ class MaterialGetLabels:
    ShininessLabel="Shininess"
    TextureNameLabel="TextureName"
    NameLabel="Name"
-class MaterialSetLabels:
+class MaterialSetCommand:
    CommandNameLabel="MaterialSet"
    IdLabel="Id"
    AmbientLabel="Ambient"
@@ -106,19 +105,19 @@ class MaterialSetLabels:
    ShininessLabel="Shininess"
    TextureNameLabel="TextureName"
    NameLabel="Name"
-class MockLabels:
+class MockCommand:
    MockCommandLabel="Mock"
-class NewLabels:
+class NewCommand:
    CommandNameLabel="NewCommand"
-class OBJFileExportLabels:
+class OBJFileExportCommand:
    CommandNameLabel="OBJFileExport"
    FilePathLabel="FilePath"
    IdsLabel="Ids"
-class OBJFileImportLabels:
+class OBJFileImportCommand:
    CommandNameLabel="OBJFileImport"
    FilePathLabel="FilePath"
    NewIdLabel="NewId"
-class ParticleSystemCreateLabels:
+class ParticleSystemCreateCommand:
    ParticleSystemAddLabel="ParticleSystemAdd"
    PositionsLabel="Positions"
    PointSizeLabel="PointSize"
@@ -126,7 +125,7 @@ class ParticleSystemCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-class ParticleSystemGetLabels:
+class ParticleSystemGetCommand:
    CommandNameLabel="ParticleSystemGet"
    PSIdLabel="PSId"
    LayerLabel="Layer"
@@ -134,7 +133,7 @@ class ParticleSystemGetLabels:
    PointSizeLabel="PointSize"
    ColorLabel="Color"
    NameLabel="Name"
-class ParticleSystemSetLabels:
+class ParticleSystemSetCommand:
    CommandNameLabel="ParticleSystemSet"
    IdLabel="Id"
    PositionsLabel="Positions"
@@ -143,31 +142,31 @@ class ParticleSystemSetLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-class PCDFileExportLabels:
+class PCDFileExportCommand:
    CommandNameLabel="PCDFileExport"
    FilePathLabel="FilePath"
    IdsLabel="Ids"
    IsBinaryLabel="IsBinary"
-class PCDFileImportLabels:
+class PCDFileImportCommand:
    CommandNameLabel="PCDFileImport"
    FilePathLabel="FilePath"
    NewIdLabel="NewId"
-class PickLabels:
+class PickCommand:
    PickCommandLabel="Pick"
    PositionLabel="Position"
    ParentIdLabel="ParentId"
    ChildIdLabel="ChildId"
-class PolygonMeshAddFacesLabels:
+class PolygonMeshAddFacesCommand:
    CommandNameLabel="PolygonMeshAddFaces"
    PolygonMeshIdLabel="PolygonMeshId"
    VertexIdsLabel="VertexIds"
-class PolygonMeshAddVerticesLabels:
+class PolygonMeshAddVerticesCommand:
    CommandNameLabel="PolygonMeshAddVertices"
    PolygonMeshIdLabel="PolygonMeshId"
    PositionIdsLabel="PositionIds"
    NormalIdsLabel="NormalIds"
    TexCoordIdsLabel="TexCoordIds"
-class PolygonMeshCreateLabels:
+class PolygonMeshCreateCommand:
    CommandNameLabel="PolygonMeshCreate"
    PositionsLabel="Positions"
    NormalsLabel="Normals"
@@ -177,11 +176,11 @@ class PolygonMeshCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-class PresenterSetLabels:
+class PresenterSetCommand:
    CommandNameLabel="PresenterSet"
    IdLabel="Id"
    PresenterNameLabel="PresenterName"
-class SceneGetLabels:
+class SceneGetCommand:
    CommandLabel="SceneGet"
    IdLabel="Id"
    BoundingBoxLabel="BoundingBox"
@@ -189,72 +188,72 @@ class SceneGetLabels:
    IsVisibleLabel="IsVisible"
    NameLabel="Name"
    TypeNameLabel="TypeName"
-class SceneSetLabels:
+class SceneSetCommand:
    CommandNameLabel="SceneSet"
    IdLabel="Id"
    NameLabel="Name"
-class ShaderBuildLabels:
+class ShaderBuildCommand:
    CommandNameLabel="ShaderBuild"
    IdLabel="Id"
-class ShaderSendLabels:
+class ShaderSendCommand:
    CommandNameLabel="ShaderSend"
    IdLabel="Id"
-class ShapeSelectLabels:
+class ShapeSelectCommand:
    CommandNameLabel="ShapeSelectCommand"
    ShapeIdLabel="ShapeId"
-class SolidCreateLabels:
+class SolidCreateCommand:
    ParticleSystemAddLabel="SolidCreate"
    BoxLabel="Box"
    ColorLabel="Color"
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-class STLFileExportLabels:
+class STLFileExportCommand:
    CommandNameLabel="STLFileExport"
    FilePathLabel="FilePath"
    IdsLabel="Ids"
    IsBinaryLabel="IsBinary"
-class STLFileImportLabels:
+class STLFileImportCommand:
    CommandNameLabel="STLFileImport"
    FilePathLabel="FilePath"
    NewIdLabel="NewId"
-class TextureCreateLabels:
+class TextureCreateCommand:
    CommandNameLabel="TextureCreate"
    FilePathLabel="FilePath"
    NameLabel="Name"
    NewIdLabel="NewId"
-class TextureSetLabels:
+class TextureSetCommand:
    CommandNameLabel="TextureSet"
    IdLabel="Id"
    FilePathLabel="FilePath"
    IsOkLabel="IsOk"
-class TransformLabels:
+class TransformCommand:
    TransformCommandLabel="Transform"
    IdLabel="Id"
    MatrixLabel="Matrix"
-class TriangleMeshCreateLabels:
+class TriangleMeshCreateCommand:
    CommandNameLabel="TriangleMeshCreate"
    TrianglesLabel="Triangles"
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-class TriangleMeshGetLabels:
+class TriangleMeshGetCommand:
    CommandNameLabel="TriangleMeshGet"
    MeshIdLabel="MeshId"
    LayerLabel="Layer"
    TrianglesLabel="Triangles"
    NormalsLabel="Normals"
    NameLabel="Name"
-class TriangleMeshSetLabels:
+class TriangleMeshSetCommand:
    CommandNameLabel="TriangleMeshSet"
    MeshIdLabel="MeshId"
    TrianglesLabel="Triangles"
-class TrimLabels:
+class TrimCommand:
    TrimCommandLabel="Trim"
    ShapeIdLabel="ShapeId"
    SpaceLabel="Space"
    NewIdLabel="NewId"
-class WireFrameCreateLabels:
+class WireFrameCreateCommand:
    WireFrameAddLabel="WireFrameAdd"
    PositionsLabel="Positions"
    EdgesLabel="Edges"

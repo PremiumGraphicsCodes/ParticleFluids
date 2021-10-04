@@ -13,39 +13,39 @@ class ParticleSystemScene :
         return self.create(positions,name,1.0, color, 1)
 
     def create(self, positions, name, point_size, color, layer) :
-        create_scene_command(scene_labels.ParticleSystemCreateLabels.ParticleSystemAddLabel)
-        set_arg_vector3dd_vector(scene_labels.ParticleSystemCreateLabels.PositionsLabel, positions)
-        set_arg_string(scene_labels.ParticleSystemCreateLabels.NameLabel, name)
-        set_arg_float(scene_labels.ParticleSystemCreateLabels.PointSizeLabel, point_size)
-        set_arg_color4f(scene_labels.ParticleSystemCreateLabels.ColorLabel, color)
-        set_arg_int(scene_labels.ParticleSystemCreateLabels.LayerLabel, layer)
+        create_scene_command(scene_labels.ParticleSystemCreateCommand.ParticleSystemAddLabel)
+        set_arg_vector3dd_vector(scene_labels.ParticleSystemCreateCommand.PositionsLabel, positions)
+        set_arg_string(scene_labels.ParticleSystemCreateCommand.NameLabel, name)
+        set_arg_float(scene_labels.ParticleSystemCreateCommand.PointSizeLabel, point_size)
+        set_arg_color4f(scene_labels.ParticleSystemCreateCommand.ColorLabel, color)
+        set_arg_int(scene_labels.ParticleSystemCreateCommand.LayerLabel, layer)
         is_ok = execute_command(self.scene.world)
-        self.id = get_result_int(scene_labels.ParticleSystemCreateLabels.NewIdLabel)
+        self.id = get_result_int(scene_labels.ParticleSystemCreateCommand.NewIdLabel)
         return is_ok
 
     def export_pcd_file(self, file_path) :
-        create_scene_command(scene_labels.PCDFileExportLabels.CommandNameLabel)
-        set_arg_int_vector(scene_labels.PCDFileExportLabels.IdsLabel, [self.id])
-        set_arg_string(scene_labels.PCDFileExportLabels.FilePathLabel, file_path)
+        create_scene_command(scene_labels.PCDFileExportCommand.CommandNameLabel)
+        set_arg_int_vector(scene_labels.PCDFileExportCommand.IdsLabel, [self.id])
+        set_arg_string(scene_labels.PCDFileExportCommand.FilePathLabel, file_path)
         is_ok = execute_command(self.scene.world)
         return is_ok
 
     def import_pcd_file(self, file_path) :
-        create_scene_command(scene_labels.PCDFileImportLabels.CommandNameLabel)
-        set_arg_string(scene_labels.PCDFileImportLabels.FilePathLabel, file_path)
+        create_scene_command(scene_labels.PCDFileImportCommand.CommandNameLabel)
+        set_arg_string(scene_labels.PCDFileImportCommand.FilePathLabel, file_path)
         is_ok = execute_command(self.scene.world)
-        self.id = get_result_int(scene_labels.PCDFileImportLabels.NewIdLabel)
+        self.id = get_result_int(scene_labels.PCDFileImportCommand.NewIdLabel)
         return is_ok
 
     def get_positions(self) :
-        create_scene_command(scene_labels.ParticleSystemGetLabels.CommandNameLabel)
-        set_arg_int(scene_labels.ParticleSystemGetLabels.PSIdLabel, self.id)
+        create_scene_command(scene_labels.ParticleSystemGetCommand.CommandNameLabel)
+        set_arg_int(scene_labels.ParticleSystemGetCommand.PSIdLabel, self.id)
         is_ok = execute_command(self.scene.world)
-        return get_result_vector3dd_vector(scene_labels.ParticleSystemGetLabels.PositionsLabel)
+        return get_result_vector3dd_vector(scene_labels.ParticleSystemGetCommand.PositionsLabel)
 
     def set_positions(self, positions):
-        create_scene_command(scene_labels.ParticleSystemSetLabels.CommandNameLabel)
-        set_arg_int(scene_labels.ParticleSystemSetLabels.IdLabel, self.id)
-        set_arg_vector3dd_vector(scene_labels.ParticleSystemSetLabels.PositionsLabel, positions)
+        create_scene_command(scene_labels.ParticleSystemSetCommand.CommandNameLabel)
+        set_arg_int(scene_labels.ParticleSystemSetCommand.IdLabel, self.id)
+        set_arg_vector3dd_vector(scene_labels.ParticleSystemSetCommand.PositionsLabel, positions)
         is_ok = execute_command(self.scene.world)
         return is_ok

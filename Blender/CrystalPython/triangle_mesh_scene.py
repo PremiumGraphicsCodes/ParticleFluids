@@ -12,25 +12,25 @@ class TriangleMeshScene :
         return self.create(triangles, name)
 
     def create(self, triangles, name) :
-        create_scene_command(scene_labels.TriangleMeshCreateLabels.CommandNameLabel)
-        set_arg_int(scene_labels.TriangleMeshCreateLabels.LayerLabel, 1)
-        set_arg_triangle3dd_vector(scene_labels.TriangleMeshCreateLabels.TrianglesLabel, triangles)
-        set_arg_string(scene_labels.TriangleMeshCreateLabels.NameLabel, name)
+        create_scene_command(scene_labels.TriangleMeshCreateCommand.CommandNameLabel)
+        set_arg_int(scene_labels.TriangleMeshCreateCommand.LayerLabel, 1)
+        set_arg_triangle3dd_vector(scene_labels.TriangleMeshCreateCommand.TrianglesLabel, triangles)
+        set_arg_string(scene_labels.TriangleMeshCreateCommand.NameLabel, name)
         is_ok = execute_command(self.scene.world)
-        self.id = get_result_int(scene_labels.PolygonMeshCreateLabels.NewIdLabel)
+        self.id = get_result_int(scene_labels.TriangleMeshCreateCommand.NewIdLabel)
         return is_ok
 
     def get_triangles(self) :
-        create_scene_command(scene_labels.TriangleMeshGetLabels.CommandNameLabel)
-        set_arg_int(scene_labels.TriangleMeshGetLabels.MeshIdLabel, self.id)
-        set_arg_int(scene_labels.TriangleMeshGetLabels.LayerLabel, 1)
+        create_scene_command(scene_labels.TriangleMeshGetCommand.CommandNameLabel)
+        set_arg_int(scene_labels.TriangleMeshGetCommand.MeshIdLabel, self.id)
+        set_arg_int(scene_labels.TriangleMeshGetCommand.LayerLabel, 1)
         is_ok = execute_command(self.scene.world)
-        return get_result_triangle3dd_vector(scene_labels.TriangleMeshGetLabels.TrianglesLabel)
+        return get_result_triangle3dd_vector(scene_labels.TriangleMeshGetCommand.TrianglesLabel)
 
     def set_triangles(self, triangles):
-        create_scene_command(scene_labels.TriangleMeshSetLabels.CommandNameLabel)
-        set_arg_int(scene_labels.TriangleMeshSetLabels.MeshIdLabel, self.id)
-        set_arg_triangle3dd_vector(scene_labels.TriangleMeshSetLabels.TrianglesLabel, triangles)
+        create_scene_command(scene_labels.TriangleMeshSetCommand.CommandNameLabel)
+        set_arg_int(scene_labels.TriangleMeshSetCommand.MeshIdLabel, self.id)
+        set_arg_triangle3dd_vector(scene_labels.TriangleMeshSetCommand.TrianglesLabel, triangles)
         is_ok = execute_command(self.scene.world)
         return is_ok
 #   TrianglesLabel="Triangles"
