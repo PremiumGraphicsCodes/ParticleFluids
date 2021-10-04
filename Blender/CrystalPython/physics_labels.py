@@ -1,15 +1,15 @@
-class CSGBoundarySceneCreateLabels:
+class CSGBoundarySceneCreateCommand:
    CommandNameLabel="CSGBoundarySceneCreate"
    NewIdLabel="NewId"
-class CSGBoundarySceneUpdateLabels:
+class CSGBoundarySceneUpdateCommand:
    CommandNameLabel="CSGBoundarySceneUpdate"
    IdLabel="Id"
    BoundingBoxLabel="BoundingBox"
    NameLabel="Name"
-class EmitterSceneCreateLabels:
+class EmitterSceneCreateCommand:
    CommandNameLabel="EmitterSceneCreateCommand"
    NewIdLabel="NewId"
-class EmitterSceneUpdateLabels:
+class EmitterSceneUpdateCommand:
    CommandNameLabel="EmitterSceneUpdateCommand"
    IdLabel="Id"
    ParticleSystemIdLabel="ParticleSystemId"
@@ -22,14 +22,14 @@ class EmitterSceneUpdateLabels:
    StartStepLabel="StartStep"
    EndStepLabel="EndStep"
    IntervalLabel="Interval"
-class FluidSceneCreateLabels:
+class FluidSceneCreateCommand:
    CommandNameLabel="FluidSceneCreateCommand"
    NewIdLabel="NewId"
-class FluidSceneToPSLabels:
+class FluidSceneToPSCommand:
    CommandNameLabel="FluidSceneToPSCommand"
    FluidIdLabel="FluidId"
    ParticleSystemIdLabel="ParticleSystemId"
-class FluidSceneUpdateLabels:
+class FluidSceneUpdateCommand:
    CommandNameLabel="FluidSceneUpdateCommand"
    IdLabel="Id"
    ParticleSystemIdLabel="ParticleSystemId"
@@ -39,21 +39,21 @@ class FluidSceneUpdateLabels:
    DensityLabel="Density"
    IsBoundary="IsBoundary"
    NameLabel="Name"
-class FluidSimulationLabels:
+class FluidSimulationCommand:
    CommandNameLabel="FluidSimulationCommand"
    SolverIdLabel="SolverId"
-class MeshBoundarySceneCreateLabels:
+class MeshBoundarySceneCreateCommand:
    CommandNameLabel="MeshBoundarySceneCreate"
    NewIdLabel="NewId"
-class MeshBoundarySceneUpdateLabels:
+class MeshBoundarySceneUpdateCommand:
    CommandNameLabel="MeshBoundarySceneUpdate"
    IdLabel="Id"
    MeshIdLabel="MeshId"
    NameLabel="Name"
-class PhysicsSolverCreateLabels:
+class PhysicsSolverCreateCommand:
    CommandNameLabel="PhysicsSolverCreateCommand"
    NewIdLabel="NewId"
-class PhysicsSolverUpdateLabels:
+class PhysicsSolverUpdateCommand:
    CommandNameLabel="PhysicsSolverUpdateCommand"
    IdLabel="Id"
    FluidSceneIdsLabel="FluidSceneIds"
@@ -63,7 +63,7 @@ class PhysicsSolverUpdateLabels:
    EffectLengthLabel="EffectLength"
    TimeStepLabel="TimeStep"
    NameLabel="Name"
-class SPHSurfaceConstructionLabels:
+class SPHSurfaceConstructionCommand:
    CommandNameLabel="SPHSurfaceConstructionCommand"
    ParticleSystemIdLabel="ParticleSystemId"
    SparseVolumeIdLabel="SparseVolumeId"

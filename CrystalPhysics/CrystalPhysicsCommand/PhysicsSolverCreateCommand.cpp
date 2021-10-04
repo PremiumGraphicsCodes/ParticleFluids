@@ -1,8 +1,14 @@
 #include "PhysicsSolverCreateCommand.h"
 
-#include "PublicLabels/PhysicsSolverCreateLabels.h"
-
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "PhysicsSolverCreateCommand";
+	PublicLabel NewIdLabel = "NewId";
+}
+
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

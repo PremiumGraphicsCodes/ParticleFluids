@@ -1,8 +1,14 @@
 #include "FluidSimulationCommand.h"
 
-#include "PublicLabels/FluidSimulationLabels.h"
-
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "FluidSimulationCommand";
+	PublicLabel SolverIdLabel = "SolverId";
+}
+
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

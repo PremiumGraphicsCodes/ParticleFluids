@@ -1,12 +1,21 @@
 #include "SPHSurfaceConstructionCommand.h"
 
-#include "PublicLabels/SPHSurfaceConstructionLabels.h"
-
 //#include "../CrystalPhysics/KFFluidScene.h"
 #include "CrystalScene/Scene/IParticleSystemScene.h"
 #include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
 #include "../../CrystalPhysics/CrystalPhysics/SurfaceConstruction/SPHSurfaceBuilder.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "SPHSurfaceConstructionCommand";
+	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
+	PublicLabel SparseVolumeIdLabel = "SparseVolumeId";
+	PublicLabel EffectLengthLabel = "EffectLength";
+	PublicLabel CellLengthLabel = "CellLength";
+}
+
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;

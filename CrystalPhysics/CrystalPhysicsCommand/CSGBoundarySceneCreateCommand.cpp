@@ -1,9 +1,13 @@
 #include "CSGBoundarySceneCreateCommand.h"
 
-#include "PublicLabels/CSGBoundarySceneCreateLabels.h"
-
 #include "../CrystalPhysics/CSGBoundaryScene.h"
-//#include "../../Crystal/Scene/ParticleSystemScene.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "CSGBoundarySceneCreate";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

@@ -1,9 +1,15 @@
 #include "FluidSceneToPSCommand.h"
 
-#include "PublicLabels/FluidSceneToPSLabels.h"
-
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "CrystalScene/Scene/ParticleSystemScene.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "FluidSceneToPSCommand";
+	PublicLabel FluidIdLabel = "FluidId";
+	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

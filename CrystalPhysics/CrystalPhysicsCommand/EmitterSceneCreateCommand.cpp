@@ -1,8 +1,13 @@
 #include "EmitterSceneCreateCommand.h"
 
-#include "PublicLabels/EmitterSceneCreateLabels.h"
-
 #include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "EmitterSceneCreateCommand";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

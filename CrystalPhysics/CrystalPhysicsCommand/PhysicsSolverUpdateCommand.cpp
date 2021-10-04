@@ -1,13 +1,26 @@
 #include "PhysicsSolverUpdateCommand.h"
 
-#include "PublicLabels/PhysicsSolverUpdateLabels.h"
-
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "../CrystalPhysics/CSGBoundaryScene.h"
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "PhysicsSolverUpdateCommand";
+	PublicLabel IdLabel = "Id";
+	PublicLabel FluidSceneIdsLabel = "FluidSceneIds";
+	PublicLabel EmitterSceneIdsLabel = "EmitterSceneIds";
+	PublicLabel CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
+	PublicLabel MeshBoundarySceneIdsLabel = "MeshBoundarySceneIds";
+	PublicLabel EffectLengthLabel = "EffectLength";
+	PublicLabel TimeStepLabel = "TimeStep";
+	PublicLabel NameLabel = "Name";
+}
+
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

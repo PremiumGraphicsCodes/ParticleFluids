@@ -1,9 +1,13 @@
 #include "MeshBoundarySceneCreateCommand.h"
 
-#include "PublicLabels/MeshBoundarySceneCreateLabels.h"
-
 #include "../CrystalPhysics/MeshBoundaryScene.h"
-//#include "../../Crystal/Scene/ParticleSystemScene.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "MeshBoundarySceneCreate";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

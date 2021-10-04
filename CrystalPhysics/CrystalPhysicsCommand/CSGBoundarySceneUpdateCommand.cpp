@@ -2,12 +2,17 @@
 
 #include "CrystalScene/Scene/SolidScene.h"
 
-#include "PublicLabels/CSGBoundarySceneUpdateLabels.h"
-
 #include "../CrystalPhysics/CSGBoundaryScene.h"
 //#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "CSGBoundarySceneUpdate";
+	PublicLabel IdLabel = "Id";
+	PublicLabel BoundingBoxLabel = "BoundingBox";
+	PublicLabel NameLabel = "Name";
+}
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

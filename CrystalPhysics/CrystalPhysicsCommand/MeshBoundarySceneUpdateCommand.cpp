@@ -2,12 +2,19 @@
 
 #include "CrystalScene/Scene/PolygonMeshScene.h"
 
-#include "PublicLabels/MeshBoundarySceneUpdateLabels.h"
-
 #include "../CrystalPhysics/MeshBoundaryScene.h"
 //#include "../../Crystal/Scene/ParticleSystemScene.h"
 
+
 #include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "MeshBoundarySceneUpdate";
+	PublicLabel IdLabel = "Id";
+	PublicLabel MeshIdLabel = "MeshId";
+	PublicLabel NameLabel = "Name";
+}
+
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

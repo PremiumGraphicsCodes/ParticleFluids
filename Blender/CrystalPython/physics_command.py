@@ -7,10 +7,10 @@ class SolverScene :
         self.scene = scene
 
     def create(self) :
-        create_physics_command(physics_labels.PhysicsSolverCreateLabels.CommandNameLabel)
+        create_physics_command(physics_labels.PhysicsSolverCreateCommand.CommandNameLabel)
         isOk = execute_command(self.scene.world)
         #self.assertTrue(isOk)
-        newId = get_result_int(physics_labels.PhysicsSolverCreateLabels.NewIdLabel)
+        newId = get_result_int(physics_labels.PhysicsSolverCreateCommand.NewIdLabel)
         return newId
 
 class FluidScene :
@@ -26,20 +26,20 @@ class FluidScene :
         self.name = ""
 
     def create(self) :
-        create_physics_command(physics_labels.FluidSceneCreateLabels.CommandNameLabel)
+        create_physics_command(physics_labels.FluidSceneCreateCommand.CommandNameLabel)
         execute_command(self.scene.world)
-        self.id = get_result_int(physics_labels.FluidSceneCreateLabels.NewIdLabel)
+        self.id = get_result_int(physics_labels.FluidSceneCreateCommand.NewIdLabel)
 
     def send(self) :
-        create_physics_command(physics_labels.FluidSceneUpdateLabels.CommandNameLabel)
-        set_arg_int(physics_labels.FluidSceneUpdateLabels.IdLabel, self.id)
-        set_arg_int(physics_labels.FluidSceneUpdateLabels.ParticleSystemIdLabel, self.source_particle_system_id)
-        set_arg_float(physics_labels.FluidSceneUpdateLabels.ParticleRadiusLabel, self.particle_radius)
-        set_arg_float(physics_labels.FluidSceneUpdateLabels.DensityLabel, self.density)
-        set_arg_float(physics_labels.FluidSceneUpdateLabels.StiffnessLabel, self.stiffness)
-        set_arg_float(physics_labels.FluidSceneUpdateLabels.ViscosityLabel, self.viscosity)
-        set_arg_bool(physics_labels.FluidSceneUpdateLabels.IsBoundary, self.is_boundary)
-        set_arg_string(physics_labels.FluidSceneUpdateLabels.NameLabel, self.name)
+        create_physics_command(physics_labels.FluidSceneUpdateCommand.CommandNameLabel)
+        set_arg_int(physics_labels.FluidSceneUpdateCommand.IdLabel, self.id)
+        set_arg_int(physics_labels.FluidSceneUpdateCommand.ParticleSystemIdLabel, self.source_particle_system_id)
+        set_arg_float(physics_labels.FluidSceneUpdateCommand.ParticleRadiusLabel, self.particle_radius)
+        set_arg_float(physics_labels.FluidSceneUpdateCommand.DensityLabel, self.density)
+        set_arg_float(physics_labels.FluidSceneUpdateCommand.StiffnessLabel, self.stiffness)
+        set_arg_float(physics_labels.FluidSceneUpdateCommand.ViscosityLabel, self.viscosity)
+        set_arg_bool(physics_labels.FluidSceneUpdateCommand.IsBoundary, self.is_boundary)
+        set_arg_string(physics_labels.FluidSceneUpdateCommand.NameLabel, self.name)
         is_ok = execute_command(self.scene.world)
         return is_ok
 
@@ -51,15 +51,15 @@ class CSGBoundaryScene :
         self.bounding_box = Box3dd()
 
     def create(self) :
-        create_physics_command(physics_labels.CSGBoundarySceneCreateLabels.CommandNameLabel)
+        create_physics_command(physics_labels.CSGBoundarySceneCreateCommand.CommandNameLabel)
         execute_command(self.scene.world)
-        self.id = get_result_int(physics_labels.FluidSceneCreateLabels.NewIdLabel)
+        self.id = get_result_int(physics_labels.FluidSceneCreateCommand.NewIdLabel)
 
     def send(self) :
-        create_physics_command(physics_labels.CSGBoundarySceneUpdateLabels.CommandNameLabel)
-        set_arg_int(physics_labels.CSGBoundarySceneUpdateLabels.IdLabel, self.id)
-        set_arg_string(physics_labels.CSGBoundarySceneUpdateLabels.NameLabel, self.name)
-        set_arg_box3dd(physics_labels.CSGBoundarySceneUpdateLabels.BoundingBoxLabel, self.bounding_box)
+        create_physics_command(physics_labels.CSGBoundarySceneUpdateCommand.CommandNameLabel)
+        set_arg_int(physics_labels.CSGBoundarySceneUpdateCommand.IdLabel, self.id)
+        set_arg_string(physics_labels.CSGBoundarySceneUpdateCommand.NameLabel, self.name)
+        set_arg_box3dd(physics_labels.CSGBoundarySceneUpdateCommand.BoundingBoxLabel, self.bounding_box)
         is_ok = execute_command(self.scene.world)
         return is_ok
     

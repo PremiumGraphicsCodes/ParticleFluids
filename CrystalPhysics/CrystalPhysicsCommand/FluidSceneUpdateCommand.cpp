@@ -2,10 +2,23 @@
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 
-#include "PublicLabels/FluidSceneUpdateLabels.h"
-
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel CommandNameLabel = "FluidSceneUpdateCommand";
+	PublicLabel IdLabel = "Id";
+	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
+	PublicLabel ParticleRadiusLabel = "ParticleRadius";
+	PublicLabel StiffnessLabel = "Stiffness";
+	PublicLabel ViscosityLabel = "Viscosity";
+	PublicLabel DensityLabel = "Density";
+	PublicLabel IsBoundary = "IsBoundary";
+	PublicLabel NameLabel = "Name";
+}
+
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

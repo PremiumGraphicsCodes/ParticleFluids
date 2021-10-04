@@ -213,22 +213,7 @@
     <ClInclude Include="PhysicsSolverUpdateCommand.h" />
     <ClInclude Include="PhysicsCommandFactory.h" />
     <ClInclude Include="PhysicsSolverCreateCommand.h" />
-    <ClInclude Include="PublicLabels\CSGBoundarySceneCreateLabels.h" />
-    <ClInclude Include="PublicLabels\CSGBoundarySceneUpdateLabels.h" />
-    <ClInclude Include="PublicLabels\EmitterSceneCreateLabels.h" />
-    <ClInclude Include="PublicLabels\EmitterSceneUpdateLabels.h" />
-    <ClInclude Include="PublicLabels\FluidSceneToPSLabels.h" />
-    <ClInclude Include="PublicLabels\FluidSceneUpdateLabels.h" />
-    <ClInclude Include="PublicLabels\FluidSimulationLabels.h" />
-    <ClInclude Include="PublicLabels\MeshBoundarySceneCreateLabels.h" />
-    <ClInclude Include="PublicLabels\MeshBoundarySceneUpdateLabels.h" />
-    <ClInclude Include="PublicLabels\PhysicsSolverCreateLabels.h" />
-    <ClInclude Include="PublicLabels\PhysicsSolverUpdateLabels.h" />
-    <ClInclude Include="PublicLabels\SPHSurfaceConstructionLabels.h" />
     <ClInclude Include="SPHSurfaceConstructionCommand.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="PublicLabels\FluidSceneCreateLabels.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
