@@ -4,7 +4,8 @@
 #include "../../Crystal/Math/Plane3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
 
-#include "../ThirdParty/tribox/tribox2.cpp"
+//#include "../ThirdParty/tribox/tribox2.cpp"
+#include "TriangleBoxOverlapCalculator.h"
 
 #include <array>
 
@@ -36,18 +37,18 @@ bool Overlap::overlap(const Box3dd& box, const Plane3d& plane, const double tole
 bool Overlap::overlap(const Box3dd& box, const Triangle3d& triangle)
 {
 	const auto c = box.getCenter();
-	std::array<float, 3> boxCenter{ c.x, c.y, c.z };
+	std::array<double, 3> boxCenter{ c.x, c.y, c.z };
 
 	const auto hs = box.getLength() * 0.5;
-	std::array<float, 3> halfSize{ hs.x, hs.y, hs.z };
+	std::array<double, 3> halfSize{ hs.x, hs.y, hs.z };
 
 	const auto vs = triangle.getVertices();
-	float vertices[3][3];
+	double vertices[3][3];
 	for (int i = 0; i < 3; ++i) {
 		vertices[i][0] = vs[i].x;
 		vertices[i][1] = vs[i].y;
 		vertices[i][2] = vs[i].z;
 	}
-	auto retCode = ::triBoxOverlap(boxCenter.data(), halfSize.data(), vertices);
+	auto retCode = TriangleBoxOverlapCalculator::triBoxOverlap(boxCenter.data(), halfSize.data(), vertices);
 	return (retCode == 1);
 }

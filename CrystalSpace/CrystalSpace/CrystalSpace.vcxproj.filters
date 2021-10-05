@@ -91,6 +91,9 @@
     <ClInclude Include="LinearOctreeIndex.h">
       <Filter>Search\Octree\LinearOctree</Filter>
     </ClInclude>
+    <ClInclude Include="TriangleBoxOverlapCalculator.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MarchingCubesAlgo.cpp">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="LinearOctreeIndex.cpp">
       <Filter>Search\Octree\LinearOctree</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleBoxOverlapCalculator.cpp">
+      <Filter>Intersection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
