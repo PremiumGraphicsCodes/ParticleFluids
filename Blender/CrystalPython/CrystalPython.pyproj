@@ -25,7 +25,15 @@
     <Compile Include="particle_system_scene.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="physics_command.py" />
+    <Compile Include="physics\csg_boundary_scene.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="physics\fluid_scene.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="physics\solver_scene.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="physics_labels.py" />
     <Compile Include="polygon_mesh_scene.py">
       <SubType>Code</SubType>
@@ -49,6 +57,9 @@
       <Project>{09688343-9c7d-4b37-825a-3a4ad8201eae}</Project>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="physics\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

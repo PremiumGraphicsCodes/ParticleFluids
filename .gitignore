@@ -286,3 +286,4 @@ ModelManifest.xml
 /CrystalSpace/CrystalSpaceView/test2.txt
 /Blender/CrystalPythonTest/CrystalPLI.pyd
 /Blender/CrystalPythonTest/glew32.lib
+/Blender/CrystalPython/physics/__pycache__

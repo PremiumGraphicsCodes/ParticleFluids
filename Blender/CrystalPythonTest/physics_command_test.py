@@ -1,5 +1,7 @@
 import unittest
-from physics_command import *
+from physics.solver_scene import *
+from physics.fluid_scene import *
+from physics.csg_boundary_scene import *
 
 class SolverSceneTest(unittest.TestCase):
     def test(self):
