@@ -2,10 +2,6 @@
 
 #include "CrystalScene/Command/Command.h"
 
-#include "CrystalScene/Command/Public/ShaderBuildLabels.h"
-#include "CrystalScene/Command/Public/ShaderSendLabels.h"
-#include "CrystalScene/Command/Public/CameraLabels.h"
-
 #include "../CrystalPhysics/SPHConstant.h"
 
 using namespace Crystal::Math;
@@ -72,9 +68,9 @@ void SPHFlameSimulationView::onOk()
 
 	this->onReset();
 
-	Crystal::Command::Command command;
-	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-	command.execute(getWorld());
+	//Crystal::Command::Command command;
+	//command.create(CameraFitCommandLabels::CameraFitCommandLabel);
+	//command.execute(getWorld());
 
 	getWorld()->addAnimation(solver);
 }

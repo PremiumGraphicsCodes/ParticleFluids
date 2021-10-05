@@ -7,16 +7,10 @@
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 
-#include "CrystalScene/Command/CameraFitCommand.h"
-#include "CrystalScene/Command/Public/ShaderBuildLabels.h"
-#include "CrystalScene/Command/Public/ShaderSendLabels.h"
-#include "CrystalScene/Command/Public/CameraLabels.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
 MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
@@ -61,8 +55,8 @@ void MVPFluidSimulationView::onStart()
 	updator.add(fluidScene);
 
 
-	CameraFitCommand cameraCommand;
-	cameraCommand.execute(world);
+	//CameraFitCommand cameraCommand;
+	//cameraCommand.execute(world);
 }
 
 void MVPFluidSimulationView::onReset()

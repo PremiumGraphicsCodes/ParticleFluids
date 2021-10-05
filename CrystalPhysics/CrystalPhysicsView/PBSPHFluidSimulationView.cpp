@@ -6,16 +6,10 @@
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 
-#include "CrystalScene/Command/Command.h"
-#include "CrystalScene/Command/Public/ShaderBuildLabels.h"
-#include "CrystalScene/Command/Public/ShaderSendLabels.h"
-#include "CrystalScene/Command/Public/CameraLabels.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
 PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas) :
@@ -55,21 +49,13 @@ void PBSPHFluidSimulationView::onOk()
 
 	getWorld()->getScenes()->addScene(this->fluidScene);
 	auto newId = this->fluidScene->getId();
+	this->fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
 	//getWorld()->getScenes()->addScene(this->boundaryScene);
 	//auto boundaryId = this->boundaryScene->getId();
 
-	Command::Command command;
-	command.create(ShaderBuildLabels::CommandNameLabel);
-	command.setArg(ShaderBuildLabels::IdLabel, newId);
-	command.execute(getWorld());
-
-	//command.create(ShaderBuildLabels::CommandNameLabel);
-	//command.setArg(ShaderBuildLabels::IdLabel, boundaryId);
+	//command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	//command.execute(getWorld());
-
-	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-	command.execute(getWorld());
 
 	simulator->add(this->fluidScene);
 	//simulator->add(this->boundaryScene);

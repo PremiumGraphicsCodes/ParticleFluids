@@ -39,7 +39,7 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 		particles.push_back(std::make_unique<SPHSurfaceParticle>(p));
 	}
 
-	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
+	CompactSpaceHash3d spaceHash(searchRadius, (int)particles.size());
 	for (const auto& p : particles) {
 		spaceHash.add(p.get());
 	}
@@ -71,7 +71,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 
 	calculateAnisotropy(searchRadius);
 
-	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
+	CompactSpaceHash3d spaceHash(searchRadius, (int)particles.size());
 
 	for (const auto& p : particles) {
 		spaceHash.add(p.get());
@@ -134,21 +134,21 @@ std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::
 
 	const auto i = static_cast<int>( searchRadius / cellLength );
 
-	std::set<std::array<int, 3>> indices;
+	std::set<std::array<size_t, 3>> indices;
 	for (const auto& p : particles) {
 		const auto localPosition = p - origin;
 		const auto ip = localPosition / (double)cellLength;
-		for (int ix = -i; ix <= i; ix++) {
-			for (int iy = -i; iy <= i; iy++) {
-				for (int iz = -i; iz <= i; iz++) {
-					std::array<int, 3> index = { ip[0] + ix, ip[1] + iy, ip[2] + iz };
+		for (size_t ix = -i; ix <= i; ix++) {
+			for (size_t iy = -i; iy <= i; iy++) {
+				for (size_t iz = -i; iz <= i; iz++) {
+					std::array<size_t, 3> index = { ip[0] + ix, ip[1] + iy, ip[2] + iz };
 					indices.insert(index);
 				}
 			}
 		}
 	}
 
-	std::array<int, 3> resolution{ resx, resy, resz };
+	std::array<size_t, 3> resolution{ resx, resy, resz };
 	auto sv = std::make_unique<SparseVolumed>(bb, resolution);
 	for (const auto& index : indices) {
 		sv->createNode(index);
