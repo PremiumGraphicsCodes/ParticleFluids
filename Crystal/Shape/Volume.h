@@ -47,15 +47,15 @@ public:
 
 	std::array<size_t,3> getResolutions() const { return nodes.getResolutions(); }
 
-	Math::Vector3dd getCellPosition(size_t i, size_t j, size_t k) const;
+	Math::Vector3dd getCellPosition(const size_t i, const size_t j, const size_t k) const;
 
 	std::array<size_t, 3> getIndexFromPosition(const Math::Vector3dd& position);
 
 	Math::Vector3dd getCellLength() const;
 
-	T getValue(const int i, const int j, const int k) const { return nodes.get(i,j,k); }
+	T getValue(const size_t i, const size_t j, const size_t k) const { return nodes.get(i,j,k); }
 
-	void setValue(const int i, const int j, const int k, const T value) { nodes.set(i,j,k, value); }
+	void setValue(const size_t i, const size_t j, const size_t k, const T value) { nodes.set(i,j,k, value); }
 
 	Util::Array3d<T> getNodes() const { return nodes; }
 

@@ -35,11 +35,11 @@ public:
 		}
 	}
 
-	void set(int i, int j, int k, T value) {
+	void set(const size_t i, const size_t j, const size_t k, T value) {
 		values[i][j][k] = value;
 	}
 
-	T get(int i, int j, int k) const {
+	T get(const size_t i, const size_t j, const size_t k) const {
 		return values[i][j][k];
 	}
 

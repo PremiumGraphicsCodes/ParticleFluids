@@ -24,7 +24,8 @@ void ScanLineVoxelizer::voxelize(const TriangleMesh& mesh, const Box3dd& space, 
 	std::array<size_t, 3> ress = { xres, yres, zres };
 
 	const auto& faces = mesh.getFaces();
-	SpaceHash3d table(res, faces.size() * 3);
+	const int size = static_cast<int>( faces.size() * 3 );
+	SpaceHash3d table(res, size);
 
 	const auto voxelSize = Vector3dd(res);
 
@@ -53,13 +54,13 @@ void ScanLineVoxelizer::voxelize(const TriangleMesh& mesh, const Box3dd& space, 
 	const auto& resolutions = array3d.getResolutions();
 
 	//const Ray3d ray(Vector3dd(0, 5, 5), Vector3dd(1, 0, 0));
-	for (auto j = 0; j < yres; ++j) {
+	for (size_t j = 0; j < yres; ++j) {
 		const auto y = space.getMinY() + j * voxelSize.y;
-		for (auto k = 0; k < zres; ++k) {
+		for (size_t k = 0; k < zres; ++k) {
 			const auto z = space.getMinZ() + k * voxelSize.z;
 			const Ray3d ray(Vector3dd(space.getMinX(), y, z), Vector3dd(1, 0, 0));
 			std::list<double> params;
-			for (int i = 0; i < xres; ++i) {
+			for (size_t i = 0; i < xres; ++i) {
 				const auto x = space.getMinX() + i * voxelSize.x;
 				const Vector3dd pos(x, y, z);
 				if (!table.isEmpty(pos)) {
