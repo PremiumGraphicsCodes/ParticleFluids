@@ -32,9 +32,9 @@ void MarchingCubesView::onOk()
 
 	const auto center = box.getCenter();
 	const auto radius = 5.0;
-	for (int i = 0; i < 100; ++i) {
-		for (int j = 0; j < 100; ++j) {
-			for (int k = 0; k < 100; ++k) {
+	for (size_t i = 0; i < 100; ++i) {
+		for (size_t j = 0; j < 100; ++j) {
+			for (size_t k = 0; k < 100; ++k) {
 				const auto distanceSquared = Math::getDistanceSquared(v.getPositionAt({ i, j, k }), center);
 				if (distanceSquared < radius * radius) {
 					const auto distance = ::sqrt(distanceSquared);

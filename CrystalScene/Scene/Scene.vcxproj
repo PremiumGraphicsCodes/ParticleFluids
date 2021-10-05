@@ -118,10 +118,19 @@
     <ClCompile Include="WireFrameScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Graphics\Graphics.vcxproj">
+    <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
       <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Shape\Shape.vcxproj">
+    <ProjectReference Include="..\..\Crystal\IO\IO.vcxproj">
+      <Project>{198160cc-5ed1-499d-ad45-90dbac4852f8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
+      <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Crystal\Shader\Shader.vcxproj">
+      <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
       <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
     </ProjectReference>
   </ItemGroup>

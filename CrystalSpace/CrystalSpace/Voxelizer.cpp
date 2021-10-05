@@ -23,7 +23,8 @@ void Voxelizer::voxelize(const PolygonMesh& polygon, const double res)
 	std::array<size_t, 3> ress = { xres, yres, zres };
 
 	const auto faces = polygon.getFaces();
-	SpaceHash3d table(res, faces.size() * 3);
+	const auto size = static_cast<int>(faces.size() * 3);
+	SpaceHash3d table(res, size);
 
 	const auto voxelSize = Vector3dd(res);
 	
@@ -35,9 +36,9 @@ void Voxelizer::voxelize(const PolygonMesh& polygon, const double res)
 		}
 		const auto smallBB = triangle.getBoundingBox();
 
-		for (float x = smallBB.getMinX(); x < smallBB.getMaxX() + e; x += voxelSize.x) {
-			for (float y = smallBB.getMinY(); y < smallBB.getMaxY() + e; y += voxelSize.y) {
-				for (float z = smallBB.getMinZ(); z < smallBB.getMaxZ() + e; z += voxelSize.z) {
+		for (auto x = smallBB.getMinX(); x < smallBB.getMaxX() + e; x += voxelSize.x) {
+			for (auto y = smallBB.getMinY(); y < smallBB.getMaxY() + e; y += voxelSize.y) {
+				for (auto z = smallBB.getMinZ(); z < smallBB.getMaxZ() + e; z += voxelSize.z) {
 					const Vector3dd p(x, y, z);
 					const auto v1 = p - voxelSize * 0.5;// - 1.0e-3;
 					const auto v2 = p + voxelSize * 0.5;// + 1.0e-3;

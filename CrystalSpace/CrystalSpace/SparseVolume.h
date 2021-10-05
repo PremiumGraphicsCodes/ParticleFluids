@@ -45,7 +45,7 @@ public:
 	SparseVolume()
 	{}
 
-	SparseVolume(const Math::Box3dd& bb, const std::array<int, 3>& resolutions) :
+	SparseVolume(const Math::Box3dd& bb, const std::array<size_t, 3>& resolutions) :
 		boundingBox(bb),
 		resolutions(resolutions)
 	{
@@ -63,34 +63,34 @@ public:
 		this->boundingBox = bb;
 	}
 
-	void setResolution(const std::array<int, 3>& resolution)
+	void setResolution(const std::array<size_t, 3>& resolution)
 	{
 		this->resolutions = resolution;
 	}
 
 	Math::Box3dd getBoundingBox() const { return boundingBox; }
 
-	SparseVolumeNode<T>* createNode(const std::array<int, 3>& index);
+	SparseVolumeNode<T>* createNode(const std::array<size_t, 3>& index);
 
-	Math::Vector3dd getPositionAt(const std::array<int, 3>& index) const;
+	Math::Vector3dd getPositionAt(const std::array<size_t, 3>& index) const;
 
-	SparseVolumeNode<T>* findNode(const std::array<int, 3>& index) { return nodes[index]; }
+	SparseVolumeNode<T>* findNode(const std::array<size_t, 3>& index) { return nodes[index]; }
 
-	std::map< std::array<int, 3>, SparseVolumeNode<T>*> getNodes() const { return nodes; }
+	std::map< std::array<size_t, 3>, SparseVolumeNode<T>*> getNodes() const { return nodes; }
 
-	std::map< std::array<int, 3>, SparseVolumeNode<T>*>& getNodes() { return nodes; }
+	std::map< std::array<size_t, 3>, SparseVolumeNode<T>*>& getNodes() { return nodes; }
 
-	void addValue(const std::array<int, 3>& index, const T value);
+	void addValue(const std::array<size_t, 3>& index, const T value);
 
-	T getValueAt(const std::array<int, 3>& index) const;
+	T getValueAt(const std::array<size_t, 3>& index) const;
 
-	bool exists(const std::array<int, 3>& index) const;
+	bool exists(const std::array<size_t, 3>& index) const;
 
 private:
-	std::map< std::array<int, 3>, SparseVolumeNode<T>*> nodes;
+	std::map< std::array<size_t, 3>, SparseVolumeNode<T>*> nodes;
 
 	Math::Box3dd boundingBox;
-	std::array<int, 3> resolutions;
+	std::array<size_t, 3> resolutions;
 };
 
 using SparseVolumef = SparseVolume<float>;

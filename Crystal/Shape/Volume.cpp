@@ -23,7 +23,7 @@ Volume<T>::Volume(const Math::Box3dd& box, const Util::Array3d<T>& nodes) :
 {}
 
 template<typename T>
-Vector3dd Volume<T>::getCellPosition(int i, int j, int k) const
+Vector3dd Volume<T>::getCellPosition(size_t i, size_t j, size_t k) const
 {
 	const auto& length = getCellLength();
 	const auto cx = length.x * i;

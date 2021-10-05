@@ -52,7 +52,7 @@ bool SparseVolumeSceneCreateCommand::execute(World* world)
 	auto name = args.name.getValue();
 
 	const auto bb = args.boundingBox.getValue();
-	const std::array<int,3> res = 
+	const std::array<size_t,3> res = 
 	{ 
 		args.resolutionX.getValue(),
 		args.resolutionY.getValue(),

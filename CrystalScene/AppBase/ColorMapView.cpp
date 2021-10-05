@@ -44,7 +44,7 @@ void ColorMapView::onShow()
     //colors[1] = ImColor(255,0, 0);
     //colors[2] = 1.0;
     for (int i = 0; i < 100; ++i) {
-        const auto c = value.getColor(i / 100.0);
+        const auto c = value.getColor(i / 100.0f);
         ImColor ic(c.r, c.g, c.b);
         colors.push_back(ic);
     }

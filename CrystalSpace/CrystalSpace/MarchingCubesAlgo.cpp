@@ -67,31 +67,31 @@ void MarchingCubesAlgo::build(const SparseVolume<double>& volume, const float is
 		vertices[0].position = volume.getPositionAt(ii);
 		vertices[0].value = volume.getValueAt(ii);
 
-		const std::array<int, 3> i1 = { i + 1, j, k };
+		const std::array<size_t, 3> i1 = { i + 1, j, k };
 		vertices[1].position = volume.getPositionAt(i1);
 		vertices[1].value = volume.getValueAt(i1);
 
-		const std::array<int, 3> i2 = { i+ 1, j + 1,k };
+		const std::array<size_t, 3> i2 = { i+ 1, j + 1,k };
 		vertices[2].position = volume.getPositionAt(i2);
 		vertices[2].value = volume.getValueAt(i2);
 
-		const std::array<int, 3> i3 = { i, j + 1, k };
+		const std::array<size_t, 3> i3 = { i, j + 1, k };
 		vertices[3].position = volume.getPositionAt(i3);
 		vertices[3].value = volume.getValueAt(i3);
 
-		const std::array<int, 3> i4 = { i, j, k + 1 };
+		const std::array<size_t, 3> i4 = { i, j, k + 1 };
 		vertices[4].position = volume.getPositionAt(i4);
 		vertices[4].value = volume.getValueAt(i4);
 
-		const std::array<int, 3> i5 = { i+1, j, k + 1 };
+		const std::array<size_t, 3> i5 = { i+1, j, k + 1 };
 		vertices[5].position = volume.getPositionAt(i5);
 		vertices[5].value = volume.getValueAt(i5);
 
-		const std::array<int, 3> i6 = { i + 1, j+1, k + 1 };
+		const std::array<size_t, 3> i6 = { i + 1, j+1, k + 1 };
 		vertices[6].position = volume.getPositionAt(i6);
 		vertices[6].value = volume.getValueAt(i6);
 
-		const std::array<int, 3> i7 = { i, j + 1, k + 1 };
+		const std::array<size_t, 3> i7 = { i, j + 1, k + 1 };
 		vertices[7].position = volume.getPositionAt(i7);
 		vertices[7].value = volume.getValueAt(i7);
 

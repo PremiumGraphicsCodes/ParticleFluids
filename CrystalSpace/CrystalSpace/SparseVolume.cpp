@@ -17,7 +17,7 @@ void SparseVolume<T>::clear()
 }
 
 template<typename T>
-Vector3dd SparseVolume<T>::getPositionAt(const std::array<int, 3>& index) const
+Vector3dd SparseVolume<T>::getPositionAt(const std::array<size_t, 3>& index) const
 {
 	const auto u = index[0] / static_cast<double>(resolutions[0]);
 	const auto v = index[1] / static_cast<double>(resolutions[1]);
@@ -27,7 +27,7 @@ Vector3dd SparseVolume<T>::getPositionAt(const std::array<int, 3>& index) const
 }
 
 template<typename T>
-SparseVolumeNode<T>* SparseVolume<T>::createNode(const std::array<int, 3>& index)
+SparseVolumeNode<T>* SparseVolume<T>::createNode(const std::array<size_t, 3>& index)
 {
 	const auto pos = getPositionAt(index);
 	auto node = new SparseVolumeNode<T>(pos);
@@ -36,14 +36,14 @@ SparseVolumeNode<T>* SparseVolume<T>::createNode(const std::array<int, 3>& index
 }
 
 template<typename T>
-void SparseVolume<T>::addValue(const std::array<int, 3>& index, const T value)
+void SparseVolume<T>::addValue(const std::array<size_t, 3>& index, const T value)
 {
 	auto n = nodes[index];
 	n->setValue(n->getValue() + value);
 }
 
 template<typename T>
-T SparseVolume<T>::getValueAt(const std::array<int, 3>& index) const
+T SparseVolume<T>::getValueAt(const std::array<size_t, 3>& index) const
 {
 	auto iter = nodes.find(index);
 	if (iter == nodes.end()) {
@@ -53,7 +53,7 @@ T SparseVolume<T>::getValueAt(const std::array<int, 3>& index) const
 }
 
 template<typename T>
-bool SparseVolume<T>::exists(const std::array<int, 3>& index) const
+bool SparseVolume<T>::exists(const std::array<size_t, 3>& index) const
 {
 	auto iter = nodes.find(index);
 	return iter != nodes.end();

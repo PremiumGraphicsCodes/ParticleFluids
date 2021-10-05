@@ -47,7 +47,7 @@ public:
 
 	std::array<size_t,3> getResolutions() const { return nodes.getResolutions(); }
 
-	Math::Vector3dd getCellPosition(int i, int j, int k) const;
+	Math::Vector3dd getCellPosition(size_t i, size_t j, size_t k) const;
 
 	std::array<size_t, 3> getIndexFromPosition(const Math::Vector3dd& position);
 
