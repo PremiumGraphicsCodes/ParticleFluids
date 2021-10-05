@@ -6,7 +6,7 @@ import unittest
 
 from CrystalPLI import *
 
-from scene_test import *
+from particle_system_scene_test import *
 from wire_frame_scene_test import *
 from polygon_mesh_scene_test import *
 from triangle_mesh_scene_test import *

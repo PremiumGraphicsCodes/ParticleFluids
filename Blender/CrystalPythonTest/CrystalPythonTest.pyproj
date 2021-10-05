@@ -29,10 +29,10 @@
     <Compile Include="physics_command_test.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="polygon_mesh_scene_test.py">
+	<Compile Include="particle_system_scene_test.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="scene_test.py">
+    <Compile Include="polygon_mesh_scene_test.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="triangle_mesh_scene_test.py">
