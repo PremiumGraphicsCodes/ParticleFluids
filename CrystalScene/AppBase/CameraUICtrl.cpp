@@ -73,10 +73,5 @@ void CameraUICtrl::onRightDragging(const Vector2df& position)
 
 void CameraUICtrl::onWheel(const float dx)
 {
-	/*
-	auto camera = world->getCamera()->getCamera();
-	auto command = CommandFactory::create(CameraZoomCommandLabels::CameraZoomCommandLabel);
-	command->setArg(CameraZoomCommandLabels::ZoomRatioLabel, dx / 100.0f);
-	command->execute(world);
-	*/
+	world->getCamera()->getCamera()->zoom(dx / 100.0f);
 }

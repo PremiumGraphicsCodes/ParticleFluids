@@ -20,8 +20,6 @@
 #include "ScanLineVoxelizerView.h"
 #include "RayTracerView.h"
 
-#include "VoxelizerCommandView.h"
-
 #include "CrystalScene/AppBase/imgui.h"
 
 using namespace Crystal::Scene;
@@ -89,12 +87,6 @@ void SpaceMenu::onShow()
 		}
 		if (ImGui::MenuItem("RayTracer")) {
 			control->setWindow(new RayTracerView("RayTracer", world, canvas));
-		}
-		ImGui::EndMenu();
-	}
-	if (ImGui::BeginMenu("SpaceCommand")) {
-		if (ImGui::MenuItem("VoxelizerCommand")) {
-			control->setWindow(new VoxelizerCommandView("VoxelizerCommand", world, canvas));
 		}
 		ImGui::EndMenu();
 	}

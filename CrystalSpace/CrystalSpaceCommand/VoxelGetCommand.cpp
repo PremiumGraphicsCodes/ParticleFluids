@@ -63,9 +63,9 @@ bool VoxelGetCommand::execute(World* world)
 		}
 	}
 
-	results.resX.setValue(res[0]);
-	results.resY.setValue(res[1]);
-	results.resZ.setValue(res[2]);
+	results.resX.setValue((int)res[0]);
+	results.resY.setValue((int)res[1]);
+	results.resZ.setValue((int)res[2]);
 	results.boundingBox.setValue(shape->getBoundingBox());
 	results.values.setValue(values);
 	return true;
