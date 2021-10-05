@@ -7,10 +7,6 @@
 
 #include "CrystalScene/Command/Command.h"
 
-#include "CrystalScene/Command/Public/ShaderBuildLabels.h"
-#include "CrystalScene/Command/Public/ShaderSendLabels.h"
-#include "CrystalScene/Command/Public/CameraLabels.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
@@ -58,18 +54,16 @@ void DFSPHFluidSimulationView::onOk()
 	getWorld()->getScenes()->addScene(this->fluidScene);
 	this->newId = this->fluidScene->getId();
 
-	Command::Command command;
-	command.create(ShaderBuildLabels::CommandNameLabel);
-	command.setArg(ShaderBuildLabels::IdLabel, newId);
-	command.execute(getWorld());
+	fluidScene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+
 
 	updater.add(fluidScene);
 
 	//boundaryScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
 
-	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-	command.execute(getWorld());
+	//command.create(CameraFitCommandLabels::CameraFitCommandLabel);
+	//command.execute(getWorld());
 
 
 	simulator->add(this->fluidScene);

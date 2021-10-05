@@ -1,18 +1,11 @@
 #include "CSPHFluidSimulationView.h"
 
-#include "CrystalScene/Command/Command.h"
-
-#include "CrystalScene/Command/Public/ShaderBuildLabels.h"
-#include "CrystalScene/Command/Public/ShaderSendLabels.h"
-#include "CrystalScene/Command/Public/CameraLabels.h"
-
 #include "../CrystalPhysics/SPHConstant.h"
 
 using namespace Crystal::Math;
 //using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
 namespace {
@@ -65,18 +58,15 @@ void CSPHFluidSimulationView::onOk()
 
 	this->newId = fluidScene->getId();
 
-	Command::Command command;
-	command.create(ShaderBuildLabels::CommandNameLabel);
-	command.setArg(ShaderBuildLabels::IdLabel, newId);
-	command.execute(getWorld());
+	fluidScene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 
 	simulator = new CSPHSolver();
 	simulator->add(fluidScene);
 
 	this->onReset();
 
-	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-	command.execute(getWorld());
+	//command.create(CameraFitCommandLabels::CameraFitCommandLabel);
+	//command.execute(getWorld());
 
 
 	getWorld()->addAnimation(simulator);

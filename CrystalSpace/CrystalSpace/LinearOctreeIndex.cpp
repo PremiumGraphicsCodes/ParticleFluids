@@ -5,7 +5,7 @@ using namespace Crystal::Space;
 
 LinearOctreeIndex::LinearOctreeIndex(const unsigned int level, const unsigned int number)
 {
-    const auto start = (std::pow(8, level) - 1) / 7;
+    const auto start = static_cast<unsigned int>( (std::pow(8, level) - 1) / 7 );
     this->index1d = start + number;
 }
 
@@ -15,7 +15,7 @@ std::pair<unsigned int, unsigned int> LinearOctreeIndex::getLevelAndNumber() con
     int level = 0;
     // ハッシュ値から所属する最小空間のモートンオーダーに変換
     while (number >= std::pow(8, level)) {
-        number -= std::pow(8, level);
+        number -= static_cast<unsigned int>( std::pow(8, level) );
         level++;
     }
     return std::make_pair(level, number);
