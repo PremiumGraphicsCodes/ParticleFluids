@@ -39,7 +39,7 @@
     <ClCompile Include="CommandFactoryTest.cpp" />
     <ClCompile Include="CommandTest.cpp" />
     <ClCompile Include="FileExportCommand.cpp" />
-    <ClCompile Include="JSONFileWriterTest.cpp" />
+    <ClCompile Include="JSONFileConverterTest.cpp" />
     <ClCompile Include="OBJFileExportCommandTest.cpp" />
     <ClCompile Include="OBJFileImportCommandTest.cpp" />
     <ClCompile Include="ParticleSystemCreateCommandTest.cpp" />

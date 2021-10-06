@@ -1,9 +1,7 @@
 #include "pch.h"
 
-/*
-#include "../Command/Command.h"
+#include "../Command/OBJFileExportCommand.h"
 #include "../Command/CommandFactory.h"
-#include "../Command/Public/OBJFileExportLabels.h"
 
 #include "Crystal/Math/Quad3d.h"
 #include "Crystal/Shape/PolygonMeshBuilder.h"
@@ -14,6 +12,21 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+TEST(OBJFileExportCommand, TestWriteJSON)
+{
+	OBJFileExportCommand command;
+	command.writeJSON("OBJFileExportCommandWrite.json");
+}
+
+/*
+TEST(OBJFileExportCommand, TestReadJSON)
+{
+	OBJFileExportCommand command;
+	command.readJSON("OBJFileExportCommandWrite.json");
+}
+*/
+
+/*
 TEST(OBJFileExportCommand, TestExecute)
 {
 	World world;
@@ -31,4 +44,4 @@ TEST(OBJFileExportCommand, TestExecute)
 	command->setArg(OBJFileExportLabels::FilePathLabel, filePath);
 	EXPECT_TRUE(command->execute(&world));
 }
-*/
+	*/

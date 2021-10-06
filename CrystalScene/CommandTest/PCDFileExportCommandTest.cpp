@@ -1,17 +1,22 @@
 #include "pch.h"
 
 #include "../Command/Command.h"
-#include "../Command/CommandFactory.h"
+#include "../Command/PCDFileExportCommand.h"
 
 #include "../Scene/ParticleSystemScene.h"
-/*
-#include "../Command/Public/PCDFileExportLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+TEST(PCDFileExportCommand, TestWriteJson)
+{
+	PCDFileExportCommand command;
+	command.writeJSON("PCDFileExportCommandWrite.json");
+}
+
+/*
 TEST(PCDFileExportCommand, TestExecute)
 {
 	World world;

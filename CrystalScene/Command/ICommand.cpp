@@ -1,12 +1,21 @@
 #include "ICommand.h"
 
+#include "JSONConverter.h"
+#include <fstream>
+
 using namespace Crystal::Command;
 
-void ICommand::saveJSON(const std::string& filePath)
+void ICommand::writeJSON(const std::string& filePath)
 {
-	/*
-	for (auto a : args->args) {
-		a->name
-	}
-	*/
+	auto j = JSONConverter::toJSON(*this);
+	std::ofstream stream(filePath);
+	stream << j;
+}
+
+void ICommand::readJSON(const std::string& filePath)
+{
+	std::ifstream stream(filePath);
+	nlohmann::json j;
+	stream >> j;
+	JSONConverter::fromJSON(j, *this);
 }

@@ -35,7 +35,7 @@
     <ClCompile Include="OBJFileImportCommandTest.cpp">
       <Filter>File\OBJ</Filter>
     </ClCompile>
-    <ClCompile Include="JSONFileWriterTest.cpp" />
+    <ClCompile Include="JSONFileConverterTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

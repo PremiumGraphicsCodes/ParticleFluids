@@ -4,6 +4,7 @@
 
 #include "Crystal/Math/Vector3d.h"
 #include "IArgs.h"
+#include "ICommand.h"
 
 #include "../ThirdParty/nlohmnn/json.hpp"
 
@@ -13,11 +14,15 @@ namespace Crystal {
 class JSONConverter
 {
 public:
-	static nlohmann::json toJson(const std::any& value);
+	static nlohmann::json toJSON(const std::any& value);
 
-	static nlohmann::json toJson(const IArg& v);
+	static nlohmann::json toJSON(const IArgs& args);
 
-	//nlohmann::json write(const Math::)
+	static nlohmann::json toJSON(const ICommand& command);
+
+	static void fromJSON(const nlohmann::json& json, std::any& dest);
+
+	static void fromJSON(const nlohmann::json& json, ICommand& command);
 
 private:
 	//std::string toJsonText();

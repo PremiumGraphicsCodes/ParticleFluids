@@ -21,11 +21,17 @@ namespace glm{
     }
 } // namespace ns
 
-json JSONConverter::toJson(const std::any& value)
+json JSONConverter::toJSON(const std::any& value)
 {
     const auto& type = value.type();
     if (type == typeid(int)) {
         return std::any_cast<int>(value);
+    }
+    if (type == typeid(std::string)) {
+        return std::any_cast<std::string>(value);
+    }
+    if (type == typeid(std::vector<int>)) {
+        return std::any_cast<std::vector<int>>(value);
     }
     if (value.type() == typeid(Math::Vector3dd)) {
         return std::any_cast<Math::Vector3dd>(value);
@@ -34,7 +40,49 @@ json JSONConverter::toJson(const std::any& value)
     return {};
 }
 
-json JSONConverter::toJson(const IArg& v)
+json JSONConverter::toJSON(const IArgs& args)
 {
-    return json{ v.name, toJson(v.value) };
+    json j;
+    for (auto a : args.args) {
+        j[a->name] = toJSON(a->value);
+    }
+    return j;
 }
+
+json JSONConverter::toJSON(const ICommand& command)
+{
+    json j;
+    j["name"] = command.getCommandName();
+    j["args"] = toJSON(*command.getArgs());
+    return j;
+}
+
+void JSONConverter::fromJSON(const nlohmann::json& json, std::any& value)
+{
+    const auto& type = value.type();
+    if (type == typeid(Math::Vector3dd)) {
+        const Math::Vector3dd v = json;
+        value = v;
+        return;
+    }
+    assert(false);
+}
+
+#include <iostream>
+
+void JSONConverter::fromJSON(const nlohmann::json& json, ICommand& command)
+{
+    auto args = command.getArgs();
+    auto jj = json[0];
+    auto jjj = json[1];
+    for (auto i : jjj.items()) {
+        std::cout << i;
+    }
+    for (auto a : args->args) {
+        auto j = jjj[a->name];
+        fromJSON(j, a->value);
+    }
+}
+
+
+//JSONConverter::
