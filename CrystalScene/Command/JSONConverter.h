@@ -22,6 +22,8 @@ public:
 
 	static void fromJSON(const nlohmann::json& json, std::any& dest);
 
+	static void fromJSON(const nlohmann::json& json, Arg<int>& dest);
+
 	static void fromJSON(const nlohmann::json& json, ICommand& command);
 
 private:

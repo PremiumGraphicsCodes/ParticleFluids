@@ -18,13 +18,11 @@ TEST(OBJFileExportCommand, TestWriteJSON)
 	command.writeJSON("OBJFileExportCommandWrite.json");
 }
 
-/*
 TEST(OBJFileExportCommand, TestReadJSON)
 {
 	OBJFileExportCommand command;
 	command.readJSON("OBJFileExportCommandWrite.json");
 }
-*/
 
 /*
 TEST(OBJFileExportCommand, TestExecute)

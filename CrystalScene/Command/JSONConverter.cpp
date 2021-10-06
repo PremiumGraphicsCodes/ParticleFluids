@@ -60,26 +60,42 @@ json JSONConverter::toJSON(const ICommand& command)
 void JSONConverter::fromJSON(const nlohmann::json& json, std::any& value)
 {
     const auto& type = value.type();
-    if (type == typeid(Math::Vector3dd)) {
+    if (type == typeid(int)) {
+        const int v = json;
+        value = v;
+    }
+    else if (type == typeid(std::string)) {
+        const std::string v = json;
+        value = v;
+    }
+    else if (type == typeid(std::vector<int>)) {
+        std::vector<int> v = json;
+        value = v;
+    }
+    else if (type == typeid(Math::Vector3dd)) {
         const Math::Vector3dd v = json;
         value = v;
-        return;
     }
-    assert(false);
 }
 
-#include <iostream>
+void JSONConverter::fromJSON(const nlohmann::json& json, Arg<int>& dest)
+{
+    fromJSON(json, dest.value);
+}
 
 void JSONConverter::fromJSON(const nlohmann::json& json, ICommand& command)
 {
     auto args = command.getArgs();
-    auto jj = json[0];
-    auto jjj = json[1];
-    for (auto i : jjj.items()) {
-        std::cout << i;
-    }
+    const auto jj = json["args"];
     for (auto a : args->args) {
-        auto j = jjj[a->name];
+        auto j = jj[a->name];
+        /*
+        auto& type = a->value.type();
+        if (type == typeid(int)) {
+            return;
+        }
+        */
+//        command.getArgType(a->name);
         fromJSON(j, a->value);
     }
 }
