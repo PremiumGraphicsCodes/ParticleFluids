@@ -160,6 +160,7 @@
     <ClInclude Include="CameraCreateCommand.h" />
     <ClInclude Include="CameraGetCommand.h" />
     <ClInclude Include="CameraSetCommand.h" />
+    <ClInclude Include="JSONFileWriter.h" />
     <ClInclude Include="ParticleSystemGetCommand.h" />
     <ClInclude Include="ParticleSystemSetCommand.h" />
     <ClInclude Include="PolygonMeshAddFacesCommand.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="FileImportCommand.cpp" />
     <ClCompile Include="GetCommand.cpp" />
     <ClCompile Include="ICommand.cpp" />
+    <ClCompile Include="JSONFileWriter.cpp" />
     <ClCompile Include="LightCreateCommand.cpp" />
     <ClCompile Include="LightGetCommand.cpp" />
     <ClCompile Include="LightSetCommand.cpp" />

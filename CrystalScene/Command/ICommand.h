@@ -39,6 +39,8 @@ public:
 
 	std::any getResult(const std::string& name) { return results->getValue(name); }
 
+	void saveJSON(const std::string& filePath);
+
 private:
 	IArgs* args;
 	IResults* results;

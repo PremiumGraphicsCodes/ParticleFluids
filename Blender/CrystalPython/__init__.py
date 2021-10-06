@@ -32,13 +32,14 @@ sys.path += [addon_dirpath]
 import bpy
 import CrystalPLI
 import scene
-import physics_command
-#import particle_system_scene
+
 from particle_system_scene import *
 from polygon_mesh_scene import *
 from triangle_mesh_scene import *
 from voxel_scene import *
-from physics_command import *
+from physics.fluid_scene import *
+from physics.solver_scene import *
+from physics.csg_boundary_scene import *
 from scene import *
 from bpy.props import *
 

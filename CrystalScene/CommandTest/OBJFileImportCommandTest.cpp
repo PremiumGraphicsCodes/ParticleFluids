@@ -1,5 +1,6 @@
 #include "pch.h"
 
+/*
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"
 #include "../Command/Public/OBJFileImportLabels.h"
@@ -19,3 +20,4 @@ TEST(OBJFileImportCommandTest, TestExecute)
 	const auto newId = std::any_cast<int>( command->getResult(OBJFileImportLabels::NewIdLabel) );
 	EXPECT_EQ(1, newId);
 }
+*/

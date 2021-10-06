@@ -1,5 +1,6 @@
 #include "pch.h"
 
+/*
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"
 
@@ -21,3 +22,4 @@ TEST(STLFileImportCommand, TestExecute)
 	//const auto id = std::any_cast<int>(command.getResult(FileImportLabels::NewIdLabel));
 	//EXPECT_EQ(1, id);
 }
+*/

@@ -4,6 +4,7 @@
 #include "../Command/CommandFactory.h"
 
 #include "../Scene/ParticleSystemScene.h"
+/*
 #include "../Command/Public/PCDFileExportLabels.h"
 
 using namespace Crystal::Math;
@@ -27,3 +28,4 @@ TEST(PCDFileExportCommand, TestExecute)
 	command->setArg(PCDFileExportLabels::FilePathLabel, filePath);
 	EXPECT_TRUE( command->execute(&world) );
 }
+*/

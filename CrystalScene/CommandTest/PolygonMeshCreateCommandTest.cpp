@@ -1,5 +1,6 @@
 #include "pch.h"
 
+/*
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"
 
@@ -29,3 +30,4 @@ TEST(PolygonMeshCreateCommandTest, TestExecute)
 	const auto newId = std::any_cast<int>(command->getResult(PolygonMeshCreateLabels::NewIdLabel));
 	EXPECT_EQ(1, newId);
 }
+*/

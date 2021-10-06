@@ -33,19 +33,10 @@ public:
 
 	std::any getResult(const std::string& name);
 
+	void saveJSON(const std::string& filePath);
+
 private:
 	std::unique_ptr<ICommand> command;
 };
-
-/*
-class SetCommand
-{
-public:
-	SetCommand(const std::string& name);
-
-	void Set(int id, std::any value);
-};
-
-*/
 	}
 }

@@ -3,6 +3,7 @@
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"
 
+/*
 #include "../Command/Public/PCDFileImportLabels.h"
 
 using namespace Crystal::Math;
@@ -22,3 +23,4 @@ TEST(PCDFileImportCommand, TestExecute)
 	const auto id = std::any_cast<int>( command->getResult(PCDFileImportLabels::NewIdLabel) );
 	EXPECT_EQ(1, id);
 }
+*/

@@ -143,6 +143,7 @@
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClInclude>
     <ClInclude Include="PublicLabel.h" />
+    <ClInclude Include="JSONFileWriter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -284,6 +285,7 @@
     <ClCompile Include="TriangleMeshSetCommand.cpp">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClCompile>
+    <ClCompile Include="JSONFileWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

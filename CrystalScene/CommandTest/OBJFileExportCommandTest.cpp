@@ -1,5 +1,6 @@
 #include "pch.h"
 
+/*
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"
 #include "../Command/Public/OBJFileExportLabels.h"
@@ -30,3 +31,4 @@ TEST(OBJFileExportCommand, TestExecute)
 	command->setArg(OBJFileExportLabels::FilePathLabel, filePath);
 	EXPECT_TRUE(command->execute(&world));
 }
+*/

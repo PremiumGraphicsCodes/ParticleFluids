@@ -1,5 +1,6 @@
 #include "pch.h"
 
+/*
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"
 
@@ -28,3 +29,4 @@ TEST(WireFrameCreateCommandTest, TestExecute)
 	const auto newId = std::any_cast<int>(command->getResult(WireFrameCreateLabels::NewIdLabel));
 	EXPECT_EQ(1, newId);
 }
+*/
