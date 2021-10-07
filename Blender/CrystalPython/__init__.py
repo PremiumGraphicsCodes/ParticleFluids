@@ -44,6 +44,7 @@ from physics.surface_builder import *
 from scene import *
 from bpy.props import *
 from ui.animation_sample import *
+from ui.bl_particle_system import *
 
 from bpy_extras.io_utils import (
     ImportHelper,
@@ -54,28 +55,6 @@ from bpy_extras.io_utils import (
 addon_dirpath = os.path.dirname(__file__)
 # 読み込み元のディレクトリパスをシステムパスに追加
 sys.path += [addon_dirpath]
-
-
-class BLParticleSystem :
-  def __init__(self):
-    self.ps = ParticleSystemScene(scene)
-
-  def convert_to_polygon_mesh(self, ob_name):
-      # Create new mesh and a new object
-      me = bpy.data.meshes.new(name = ob_name + "Mesh")
-      ob = bpy.data.objects.new(ob_name, me)
-
-      positions = self.ps.get_positions()
-      coords = []
-      for p in positions.values :
-        coords.append( (p.x, p.y, p.z))
-      # Make a mesh from a list of vertices/edges/faces
-      me.from_pydata(coords, [], [])
-
-      # Display name and update the mesh
-      ob.show_name = True
-      me.update()
-      bpy.context.collection.objects.link(ob)
 
 class BLTriangleMesh :
   def __init__(self):
@@ -226,7 +205,7 @@ class MeshToPS(bpy.types.Operator) :
       voxelizer.voxelize(mesh.mesh.id, voxel.voxel.id, 0.2)
       values = voxel.voxel.get_values()
       voxel.convert_to_polygon_mesh("voxel")
-      ps = BLParticleSystem()
+      ps = BLParticleSystem(scene)
       ps.ps.create_empty("")
       voxel.voxel.convert_to_ps(ps.ps.id)
       ps.convert_to_polygon_mesh("ps")
@@ -244,7 +223,7 @@ class PSToMesh(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      ps = BLParticleSystem()
+      ps = BLParticleSystem(scene)
       ps.ps.create_empty("")
       positions = Vector3ddVector()
       for i in range(0,10) :
