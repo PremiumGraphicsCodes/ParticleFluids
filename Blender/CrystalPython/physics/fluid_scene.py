@@ -1,5 +1,5 @@
-import physics_labels
-from scene import Scene
+from physics.physics_labels import *
+from scene.scene import Scene
 from CrystalPLI import *
 
 class FluidScene :
@@ -15,19 +15,19 @@ class FluidScene :
         self.name = ""
 
     def create(self) :
-        create_physics_command(physics_labels.FluidSceneCreateCommand.CommandNameLabel)
+        create_physics_command(FluidSceneCreateCommand.CommandNameLabel)
         execute_command(self.scene.world)
-        self.id = get_result_int(physics_labels.FluidSceneCreateCommand.NewIdLabel)
+        self.id = get_result_int(FluidSceneCreateCommand.NewIdLabel)
 
     def send(self) :
-        create_physics_command(physics_labels.FluidSceneUpdateCommand.CommandNameLabel)
-        set_arg_int(physics_labels.FluidSceneUpdateCommand.IdLabel, self.id)
-        set_arg_int(physics_labels.FluidSceneUpdateCommand.ParticleSystemIdLabel, self.source_particle_system_id)
-        set_arg_float(physics_labels.FluidSceneUpdateCommand.ParticleRadiusLabel, self.particle_radius)
-        set_arg_float(physics_labels.FluidSceneUpdateCommand.DensityLabel, self.density)
-        set_arg_float(physics_labels.FluidSceneUpdateCommand.StiffnessLabel, self.stiffness)
-        set_arg_float(physics_labels.FluidSceneUpdateCommand.ViscosityLabel, self.viscosity)
-        set_arg_bool(physics_labels.FluidSceneUpdateCommand.IsBoundary, self.is_boundary)
-        set_arg_string(physics_labels.FluidSceneUpdateCommand.NameLabel, self.name)
+        create_physics_command(FluidSceneUpdateCommand.CommandNameLabel)
+        set_arg_int(FluidSceneUpdateCommand.IdLabel, self.id)
+        set_arg_int(FluidSceneUpdateCommand.ParticleSystemIdLabel, self.source_particle_system_id)
+        set_arg_float(FluidSceneUpdateCommand.ParticleRadiusLabel, self.particle_radius)
+        set_arg_float(FluidSceneUpdateCommand.DensityLabel, self.density)
+        set_arg_float(FluidSceneUpdateCommand.StiffnessLabel, self.stiffness)
+        set_arg_float(FluidSceneUpdateCommand.ViscosityLabel, self.viscosity)
+        set_arg_bool(FluidSceneUpdateCommand.IsBoundary, self.is_boundary)
+        set_arg_string(FluidSceneUpdateCommand.NameLabel, self.name)
         is_ok = execute_command(self.scene.world)
         return is_ok

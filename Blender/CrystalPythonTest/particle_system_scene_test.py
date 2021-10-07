@@ -1,8 +1,8 @@
 import unittest
 import CrystalPLI
-from particle_system_scene import *
-from wire_frame_scene import *
-from scene import *
+from scene.particle_system_scene import *
+from scene.wire_frame_scene import *
+from scene.scene import *
 
 class ParticleSystemSceneTest(unittest.TestCase):
     def test_create_empty(self):

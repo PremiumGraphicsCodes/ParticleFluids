@@ -65,21 +65,21 @@ class PythonLabelFileGenerator:
 
 def create_scene_labels() :
     input_directory_path = "../../CrystalScene/Command/*.cpp"
-    output_file_path = "../CrystalPython/scene_labels.py"
+    output_file_path = "../CrystalPython/scene/scene_labels.py"
     generator = PythonLabelFileGenerator()
     generator.read_all_files(input_directory_path)
     generator.write(output_file_path)
 
 def create_space_labels() :
     input_directory_path = "../../CrystalSpace/CrystalSpaceCommand/*.cpp"
-    output_file_path = "../CrystalPython/space_labels.py"
+    output_file_path = "../CrystalPython/space/space_labels.py"
     generator = PythonLabelFileGenerator()
     generator.read_all_files(input_directory_path)
     generator.write(output_file_path)
 
 def create_physics_labels() :
     input_directory_path = "../../CrystalPhysics/CrystalPhysicsCommand/*.cpp"
-    output_file_path = "../CrystalPython/physics_labels.py"
+    output_file_path = "../CrystalPython/physics/physics_labels.py"
     generator = PythonLabelFileGenerator()
     generator.read_all_files(input_directory_path)
     generator.write(output_file_path)

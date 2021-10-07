@@ -1,7 +1,7 @@
 import unittest
 import CrystalPLI
-from triangle_mesh_scene import *
-from voxel_scene import *
+from scene.triangle_mesh_scene import *
+from space.voxel_scene import *
 
 class VoxelSceneTest(unittest.TestCase):
     def test_create_voxel(self):

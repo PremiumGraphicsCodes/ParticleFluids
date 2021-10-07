@@ -1,6 +1,6 @@
 import unittest
 import CrystalPLI
-from polygon_mesh_scene import *
+from scene.polygon_mesh_scene import *
 
 class PolygonMeshSceneTest(unittest.TestCase) :
     def test_create_empty_polygon_mesh_scene(self):

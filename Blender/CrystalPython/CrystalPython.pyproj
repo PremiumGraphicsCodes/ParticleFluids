@@ -22,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="particle_system_scene.py">
+    <Compile Include="scene\particle_system_scene.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="physics\csg_boundary_scene.py">
@@ -34,20 +34,20 @@
     <Compile Include="physics\solver_scene.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="physics_labels.py" />
-    <Compile Include="polygon_mesh_scene.py">
+    <Compile Include="physics\physics_labels.py" />
+    <Compile Include="scene\polygon_mesh_scene.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="scene.py" />
-    <Compile Include="scene_labels.py" />
-    <Compile Include="space_labels.py" />
-    <Compile Include="triangle_mesh_scene.py">
+    <Compile Include="scene\scene.py" />
+    <Compile Include="scene\scene_labels.py" />
+    <Compile Include="space\space_labels.py" />
+    <Compile Include="scene\triangle_mesh_scene.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="voxel_scene.py">
+    <Compile Include="space\voxel_scene.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="wire_frame_scene.py">
+    <Compile Include="scene\wire_frame_scene.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -59,6 +59,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="scene\" />
+    <Folder Include="space\" />
     <Folder Include="physics\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

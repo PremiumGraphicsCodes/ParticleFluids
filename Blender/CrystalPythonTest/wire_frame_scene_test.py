@@ -1,7 +1,7 @@
 import unittest
 import CrystalPLI
-from wire_frame_scene import *
-from scene import *
+from scene.wire_frame_scene import *
+from scene.scene import *
 
 class WireFrameSceneTest(unittest.TestCase):
     def test_create_wire_frame_scene(self):
