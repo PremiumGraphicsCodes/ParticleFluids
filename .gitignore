@@ -294,3 +294,5 @@ Blender/CrystalPython/ui/__pycache__/animation_sample.cpython-39.pyc
 Blender/CrystalPython/ui/__pycache__/bl_particle_system.cpython-39.pyc
 Blender/CrystalPython/ui/__pycache__/bl_triangle_mesh.cpython-39.pyc
 Blender/CrystalPython/ui/__pycache__/bl_voxel.cpython-39.pyc
+Blender/CrystalPython/ui/__pycache__/model.cpython-39.pyc
+Blender/CrystalPython/ui/__pycache__/world.cpython-39.pyc
