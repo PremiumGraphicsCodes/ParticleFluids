@@ -297,3 +297,5 @@ Blender/CrystalPython/ui/__pycache__/bl_voxel.cpython-39.pyc
 Blender/CrystalPython/ui/__pycache__/model.cpython-39.pyc
 Blender/CrystalPython/ui/__pycache__/world.cpython-39.pyc
 Blender/CrystalPython/ui/__pycache__/mesh_to_ps_operator.cpython-39.pyc
+Blender/CrystalPython/ui/ps_to_mesh_operator.py
+Blender/CrystalPython/ui/__pycache__/ps_to_mesh_operator.cpython-39.pyc

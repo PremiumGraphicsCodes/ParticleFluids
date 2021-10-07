@@ -4,8 +4,9 @@ import CrystalPLI
 from ui.bl_particle_system import BLParticleSystem
 from ui.bl_triangle_mesh import BLTriangleMesh
 from ui.bl_voxel import BLVoxel
-from ui.model import Model as model
 from space.voxel_scene import Voxelizer
+
+from ui.model import Model as model
 
 class MeshToPSOperator(bpy.types.Operator) :
   bl_idname = "pg.meshtops"

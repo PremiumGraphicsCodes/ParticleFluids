@@ -49,6 +49,7 @@ from ui.bl_triangle_mesh import *
 from ui.bl_voxel import *
 from ui.model import Model as model
 from ui.mesh_to_ps_operator import MeshToPSOperator
+from ui.ps_to_mesh_operator import PSToMeshOperator
 
 from bpy_extras.io_utils import (
     ImportHelper,
@@ -100,31 +101,6 @@ class ParticleSystemGenerator(bpy.types.Operator) :
       pc.ps.create_empty("")
       pc.ps.set_positions(positions)
       pc.convert_to_polygon_mesh("")      
-      return {'FINISHED'}
-
-class PSToMeshOperator(bpy.types.Operator) :
-  bl_idname = "pg.pstomesh"
-  bl_label = "PSToMesh"
-  bl_options = {"REGISTER", "UNDO"}
-
-  def execute(self, context) :
-      ps = BLParticleSystem(model.scene)
-      ps.ps.create_empty("")
-      positions = Vector3ddVector()
-      for i in range(0,10) :
-        for j in range(0,10) :
-          for k in range(0,10) :
-            p = Vector3dd(i,j,k)
-            positions.add(p)
-      ps.ps.set_positions(positions)
-      ps.convert_to_polygon_mesh("ps")
-
-      mesh = BLTriangleMesh(model.scene)
-      mesh.mesh.create_empty("")
-
-      builder = SurfaceBuilder(model.scene)
-      builder.build_anisotorpic(ps.ps.id, mesh.mesh.id, 1.0, 2.0)
-      mesh.convert_to_polygon_mesh("")
       return {'FINISHED'}
 
 class FastParticlesPanel(bpy.types.Panel):
