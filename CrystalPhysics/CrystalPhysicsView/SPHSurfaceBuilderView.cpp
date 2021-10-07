@@ -6,15 +6,15 @@
 #include "Crystal/Shape/WireFrameBuilder.h"
 
 #include "CrystalScene/Scene/WireFrameScene.h"
-#include "CrystalScene/Scene/PolygonMeshScene.h"
+#include "CrystalScene/Scene/TriangleMeshScene.h"
 
-#include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
+#include "CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
-#include "../../Crystal/Math/Sphere3d.h"
-#include "../../Crystal/Math/Ellipsoid3d.h"
+#include "Crystal/Math/Sphere3d.h"
+#include "Crystal/Math/Ellipsoid3d.h"
 
-#include "../../CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
+#include "CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
+//#include "Crystal/Shape/PolygonMeshBuilder.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -112,15 +112,14 @@ void SPHSurfaceBuilderView::onOk()
 	MarchingCubesAlgo mcAlgo;
 	mcAlgo.build(*builder.getVolume(), 1.0e-3);
 
-	PolygonMeshBuilder pmBuilder;
+	//PolygonMeshBuilder pmBuilder;
+	auto mesh = std::make_unique<TriangleMesh>();
 	const auto triangles = mcAlgo.getTriangles();
 	for (const auto& t : triangles) {
-		pmBuilder.add(t);
+		mesh->addFace(TriangleFace(t));
 	}
-	auto scene = new PolygonMeshScene(getWorld()->getNextSceneId(), "", std::move(pmBuilder.build()));
+	auto scene = new TriangleMeshScene(getWorld()->getNextSceneId(), "", std::move(mesh));
 
-	PolygonMeshScene::FaceGroup group(pmBuilder.getFaces(), nullptr);
-	scene->addGroup(group);
 	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	getWorld()->getScenes()->addScene(scene);
 	/*

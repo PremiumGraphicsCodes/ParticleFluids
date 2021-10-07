@@ -138,10 +138,23 @@ std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::
 	for (const auto& p : particles) {
 		const auto localPosition = p - origin;
 		const auto ip = localPosition / (double)cellLength;
-		for (size_t ix = -i; ix <= i; ix++) {
-			for (size_t iy = -i; iy <= i; iy++) {
-				for (size_t iz = -i; iz <= i; iz++) {
-					std::array<size_t, 3> index = { ip[0] + ix, ip[1] + iy, ip[2] + iz };
+		//const auto startIx = std::max<int>(0, ip.x - i);
+		for (int ix = -i; ix <= i; ix++) {
+			for (int iy = -i; iy <= i; iy++) {
+				for (int iz = -i; iz <= i; iz++) {
+					const auto ixx = ip[0] + ix;
+					if (ixx <= 0) {
+						continue;
+					}
+					const auto iyy = ip[1] + iy;
+					if (iyy <= 0) {
+						continue;
+					}
+					const auto izz = ip[2] + iz;
+					if (izz <= 0) {
+						continue;
+					}
+					std::array<size_t, 3> index = { ixx, iyy, izz };
 					indices.insert(index);
 				}
 			}
