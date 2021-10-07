@@ -47,6 +47,7 @@ from ui.animation_sample import *
 from ui.bl_particle_system import *
 from ui.bl_triangle_mesh import *
 from ui.bl_voxel import *
+from ui.model import Model as model
 
 from bpy_extras.io_utils import (
     ImportHelper,
@@ -57,6 +58,8 @@ from bpy_extras.io_utils import (
 addon_dirpath = os.path.dirname(__file__)
 # 読み込み元のディレクトリパスをシステムパスに追加
 sys.path += [addon_dirpath]
+
+
 
 class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
   bl_idname = "pg.particlesystemimportoperator"
@@ -90,7 +93,7 @@ class ParticleSystemGenerator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      pc = BLParticleSystem(scene)
+      pc = BLParticleSystem(model.scene)
       positions = Vector3ddVector()
       positions.add(Vector3dd(0.0, 0.0, 0.0))
       pc.ps.create_empty("")
@@ -105,16 +108,16 @@ class MeshToPSOperator(bpy.types.Operator) :
 
   def execute(self, context) :
       selected_mesh = self.get_selected_mesh(context)
-      mesh = BLTriangleMesh(scene)
+      mesh = BLTriangleMesh(model.scene)
       mesh.convert_from_polygon_mesh(selected_mesh)
       mesh.convert_to_polygon_mesh("hello")
-      voxel = BLVoxel(scene)
+      voxel = BLVoxel(model.scene)
       voxel.build()
-      voxelizer = Voxelizer(scene)
+      voxelizer = Voxelizer(model.scene)
       voxelizer.voxelize(mesh.mesh.id, voxel.voxel.id, 0.2)
       values = voxel.voxel.get_values()
       voxel.convert_to_polygon_mesh("voxel")
-      ps = BLParticleSystem(scene)
+      ps = BLParticleSystem(model.scene)
       ps.ps.create_empty("")
       voxel.voxel.convert_to_ps(ps.ps.id)
       ps.convert_to_polygon_mesh("ps")
@@ -132,7 +135,7 @@ class PSToMeshOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      ps = BLParticleSystem(scene)
+      ps = BLParticleSystem(model.scene)
       ps.ps.create_empty("")
       positions = Vector3ddVector()
       for i in range(0,10) :
@@ -143,10 +146,10 @@ class PSToMeshOperator(bpy.types.Operator) :
       ps.ps.set_positions(positions)
       ps.convert_to_polygon_mesh("ps")
 
-      mesh = BLTriangleMesh(scene)
+      mesh = BLTriangleMesh(model.scene)
       mesh.mesh.create_empty("")
 
-      builder = SurfaceBuilder(scene)
+      builder = SurfaceBuilder(model.scene)
       builder.build_anisotorpic(ps.ps.id, mesh.mesh.id, 1.0, 2.0)
       mesh.convert_to_polygon_mesh("")
       return {'FINISHED'}
@@ -177,15 +180,7 @@ classes = [
   SAMPLE31_PT_RotateObjectByMouseDragging,
 ]
 
-world = None
-scene = None
-
 def register():
-  global world
-  global scene
-  world = World()
-  scene = Scene(world)
-
   for c in classes:
     bpy.utils.register_class(c)
 
