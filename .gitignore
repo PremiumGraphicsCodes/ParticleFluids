@@ -287,3 +287,4 @@ ModelManifest.xml
 /Blender/CrystalPythonTest/CrystalPLI.pyd
 /Blender/CrystalPythonTest/glew32.lib
 /Blender/CrystalPython/physics/__pycache__
+Blender/CrystalPython/ui/__pycache__/animation_sample.cpython-39.pyc
