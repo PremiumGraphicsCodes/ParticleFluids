@@ -46,6 +46,7 @@ from bpy.props import *
 from ui.animation_sample import *
 from ui.bl_particle_system import *
 from ui.bl_triangle_mesh import *
+from ui.bl_voxel import *
 
 from bpy_extras.io_utils import (
     ImportHelper,
@@ -56,40 +57,6 @@ from bpy_extras.io_utils import (
 addon_dirpath = os.path.dirname(__file__)
 # 読み込み元のディレクトリパスをシステムパスに追加
 sys.path += [addon_dirpath]
-
-class BLVoxel:
-  def __init__(self):
-    self.voxel = VoxelScene(scene)
-
-  def build(self):
-    self.voxel.create_empty_voxel("name")
-
-  def convert_to_polygon_mesh(self, ob_name):
-      # Create new mesh and a new object
-      me = bpy.data.meshes.new(name = ob_name)
-      ob = bpy.data.objects.new(ob_name, me)
-
-      grid = self.voxel.get_values()
-      bb = grid.bb
-
-      coords = []
-      index = 0
-      for x in range(0, grid.res[0]):
-        for y in range(0, grid.res[1]):
-          for z in range(0, grid.res[2]):
-            b = grid.values[index]
-            if b :
-              coords.append( (x * 0.1, y * 0.1, z * 0.1) )
-            index+=1
-          
-      # Make a mesh from a list of vertices/edges/faces
-      me.from_pydata(coords, [], [])
-
-      # Display name and update the mesh
-      ob.show_name = True
-      me.update()
-      bpy.context.collection.objects.link(ob)
-
 
 class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
   bl_idname = "pg.particlesystemimportoperator"
@@ -131,7 +98,7 @@ class ParticleSystemGenerator(bpy.types.Operator) :
       pc.convert_to_polygon_mesh("")      
       return {'FINISHED'}
 
-class MeshToPS(bpy.types.Operator) :
+class MeshToPSOperator(bpy.types.Operator) :
   bl_idname = "pg.meshtops"
   bl_label = "MeshToPS"
   bl_options = {"REGISTER", "UNDO"}
@@ -141,7 +108,7 @@ class MeshToPS(bpy.types.Operator) :
       mesh = BLTriangleMesh(scene)
       mesh.convert_from_polygon_mesh(selected_mesh)
       mesh.convert_to_polygon_mesh("hello")
-      voxel = BLVoxel()
+      voxel = BLVoxel(scene)
       voxel.build()
       voxelizer = Voxelizer(scene)
       voxelizer.voxelize(mesh.mesh.id, voxel.voxel.id, 0.2)
@@ -159,7 +126,7 @@ class MeshToPS(bpy.types.Operator) :
         return o.to_mesh()
     return None
 
-class PSToMesh(bpy.types.Operator) :
+class PSToMeshOperator(bpy.types.Operator) :
   bl_idname = "pg.pstomesh"
   bl_label = "PSToMesh"
   bl_options = {"REGISTER", "UNDO"}
@@ -192,8 +159,8 @@ class FastParticlesPanel(bpy.types.Panel):
 
   def draw(self, context):
     layout = self.layout
-    layout.operator(MeshToPS.bl_idname, text="MeshToPS")
-    layout.operator(PSToMesh.bl_idname, text="PSToMesh")
+    layout.operator(MeshToPSOperator.bl_idname, text="MeshToPS")
+    layout.operator(PSToMeshOperator.bl_idname, text="PSToMesh")
     layout.operator(ParticleSystemGenerator.bl_idname, text="PSGenerator")
     layout.operator(ParticleSystemImportOperator.bl_idname, text="PSImport")
     layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
@@ -201,8 +168,8 @@ class FastParticlesPanel(bpy.types.Panel):
 
 classes = [
   FastParticlesPanel,
-  MeshToPS,
-  PSToMesh,
+  MeshToPSOperator,
+  PSToMeshOperator,
   ParticleSystemImportOperator,
   ParticleSystemExportOperator,
   ParticleSystemGenerator,
