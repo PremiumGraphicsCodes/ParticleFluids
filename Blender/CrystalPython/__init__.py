@@ -45,6 +45,7 @@ from scene import *
 from bpy.props import *
 from ui.animation_sample import *
 from ui.bl_particle_system import *
+from ui.bl_triangle_mesh import *
 
 from bpy_extras.io_utils import (
     ImportHelper,
@@ -55,65 +56,6 @@ from bpy_extras.io_utils import (
 addon_dirpath = os.path.dirname(__file__)
 # 読み込み元のディレクトリパスをシステムパスに追加
 sys.path += [addon_dirpath]
-
-class BLTriangleMesh :
-  def __init__(self):
-    self.mesh = TriangleMeshScene(scene)
-
-  def convert_to_polygon_mesh(self, name) :
-    mesh = bpy.data.meshes.new(name = name)
-    obj = bpy.data.objects.new(name, mesh)
-
-    coords = []
-    faces = []
-    next_vertex = 0
-    triangles = self.mesh.get_triangles()
-    for t in triangles.values :
-      coords.append( (t.v0.x, t.v0.y, t.v0.z ))
-      coords.append( (t.v1.x, t.v1.y, t.v1.z ))
-      coords.append( (t.v2.x, t.v2.y, t.v2.z ))
-      faces.append( (next_vertex,next_vertex+1,next_vertex+2) )
-      next_vertex += 3
-
-    mesh.from_pydata(coords, [], faces)
-    
-    # Display name and update the mesh
-    obj.show_name = True
-    mesh.update()
-    bpy.context.collection.objects.link(obj)
-
-#      triangle.
-
-#    self.mesh.
-#    mesh.from_pydata()
-
-  def convert_from_polygon_mesh(self, mesh) :
-    #meshes = bpy.data.meshes
-
-    positions = []
-    print("num of vertices:", len(mesh.vertices))
-    for vt in mesh.vertices:
-      print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
-      p = Vector3dd(vt.co[0], vt.co[1], vt.co[2])
-      positions.append(p)
-
-    #self.mesh.create_polygon_mesh_scene("", positions, normals, [], 0)
-    triangles = Triangle3ddVector()
-    for pl in mesh.polygons:
-      print("polygon index:{0:2} ".format(pl.index), end="")
-      print("vertices:", end="")
-      for vi in pl.vertices:
-        print("{0:2}, ".format(vi), end="")
-      v0 = positions[pl.vertices[0]]
-      v1 = positions[pl.vertices[1]]
-      v2 = positions[pl.vertices[2]]
-      v3 = positions[pl.vertices[3]]
-      triangle1 = Triangle3dd(v0, v1, v2)
-      triangles.add(triangle1)
-      triangle2 = Triangle3dd(v0, v2, v3)
-      triangles.add(triangle2)
-      print("")
-    self.mesh.create(triangles, "")
 
 class BLVoxel:
   def __init__(self):
@@ -181,7 +123,7 @@ class ParticleSystemGenerator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      pc = BLParticleSystem()
+      pc = BLParticleSystem(scene)
       positions = Vector3ddVector()
       positions.add(Vector3dd(0.0, 0.0, 0.0))
       pc.ps.create_empty("")
@@ -196,7 +138,7 @@ class MeshToPS(bpy.types.Operator) :
 
   def execute(self, context) :
       selected_mesh = self.get_selected_mesh(context)
-      mesh = BLTriangleMesh()
+      mesh = BLTriangleMesh(scene)
       mesh.convert_from_polygon_mesh(selected_mesh)
       mesh.convert_to_polygon_mesh("hello")
       voxel = BLVoxel()
@@ -234,7 +176,7 @@ class PSToMesh(bpy.types.Operator) :
       ps.ps.set_positions(positions)
       ps.convert_to_polygon_mesh("ps")
 
-      mesh = BLTriangleMesh()
+      mesh = BLTriangleMesh(scene)
       mesh.mesh.create_empty("")
 
       builder = SurfaceBuilder(scene)
