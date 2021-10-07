@@ -29,6 +29,9 @@
     <Compile Include="physics\physics_command_test.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="physics\surface_builder_test.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="scene\particle_system_scene_test.py">
       <SubType>Code</SubType>
     </Compile>
