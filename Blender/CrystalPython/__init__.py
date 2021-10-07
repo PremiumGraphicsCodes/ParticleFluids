@@ -40,6 +40,7 @@ from space.voxel_scene import *
 from physics.fluid_scene import *
 from physics.solver_scene import *
 from physics.csg_boundary_scene import *
+from physics.surface_builder import *
 from scene import *
 from bpy.props import *
 from ui.animation_sample import *
@@ -215,7 +216,6 @@ class MeshToPS(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      #pc = BLPointCloud("point-cloud", [(0.0, 0.0, 0.0)])      
       selected_mesh = self.get_selected_mesh(context)
       mesh = BLTriangleMesh()
       mesh.convert_from_polygon_mesh(selected_mesh)
@@ -238,33 +238,30 @@ class MeshToPS(bpy.types.Operator) :
         return o.to_mesh()
     return None
 
-class TUTORIAL_OT_SayComment(bpy.types.Operator):
-  bl_idname = "tutorial.saycomment"
-  bl_label = "Say Comment"
+class PSToMesh(bpy.types.Operator) :
+  bl_idname = "pg.pstomesh"
+  bl_label = "PSToMesh"
   bl_options = {"REGISTER", "UNDO"}
 
-  comment: StringProperty(default="Hello", options={'HIDDEN'})
+  def execute(self, context) :
+      ps = BLParticleSystem()
+      ps.ps.create_empty("")
+      positions = Vector3ddVector()
+      for i in range(0,10) :
+        for j in range(0,10) :
+          for k in range(0,10) :
+            p = Vector3dd(i,j,k)
+            positions.add(p)
+      ps.ps.set_positions(positions)
+      ps.convert_to_polygon_mesh("ps")
 
-  def execute(self, context):
-      f = FluidScene(scene)
-      f.create()
-      self.report({'INFO'}, str(f.id))
-      self.report({'INFO'}, addon_dirpath)
-      self.report({'INFO'}, self.comment)
+      mesh = BLTriangleMesh()
+      mesh.mesh.create_empty("")
+
+      builder = SurfaceBuilder(scene)
+      builder.build_anisotorpic(ps.ps.id, mesh.mesh.id, 1.0, 2.0)
+      mesh.convert_to_polygon_mesh("")
       return {'FINISHED'}
-
-class ParticleFluidsPanel(bpy.types.Panel):
-  bl_space_type = "VIEW_3D"
-  bl_region_type = "UI"
-  bl_category = "Tutorial"
-  bl_label = "PanelTitle"
-
-  def draw(self, context):
-    layout = self.layout
-#    layout.prop(context.scene, "tutorial_comment")
-
-    op_prop = layout.operator(TUTORIAL_OT_SayComment.bl_idname, text="Say")
-    #op_prop.comment = context.scene.tutorial_comment
 
 class FastParticlesPanel(bpy.types.Panel):
   bl_space_type = "VIEW_3D"
@@ -275,16 +272,16 @@ class FastParticlesPanel(bpy.types.Panel):
   def draw(self, context):
     layout = self.layout
     layout.operator(MeshToPS.bl_idname, text="MeshToPS")
+    layout.operator(PSToMesh.bl_idname, text="PSToMesh")
     layout.operator(ParticleSystemGenerator.bl_idname, text="PSGenerator")
     layout.operator(ParticleSystemImportOperator.bl_idname, text="PSImport")
     layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
 
 
 classes = [
-  ParticleFluidsPanel,
-  TUTORIAL_OT_SayComment,
   FastParticlesPanel,
   MeshToPS,
+  PSToMesh,
   ParticleSystemImportOperator,
   ParticleSystemExportOperator,
   ParticleSystemGenerator,
