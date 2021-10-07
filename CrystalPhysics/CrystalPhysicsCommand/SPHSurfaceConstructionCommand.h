@@ -11,7 +11,8 @@ public:
 	struct Args : Command::IArgs
 	{
 		Command::Arg<int> particleSystemId;
-		Command::Arg<int> sparseVolumeId;
+		//Command::Arg<int> sparseVolumeId;
+		Command::Arg<int> triangleMeshId;
 
 		Command::Arg<float> effectLength;
 		Command::Arg<float> cellLength;

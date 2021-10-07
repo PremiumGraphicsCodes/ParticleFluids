@@ -31,3 +31,4 @@ class FluidScene :
         set_arg_string(FluidSceneUpdateCommand.NameLabel, self.name)
         is_ok = execute_command(self.scene.world)
         return is_ok
+

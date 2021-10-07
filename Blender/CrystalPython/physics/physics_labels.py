@@ -66,6 +66,6 @@ class PhysicsSolverUpdateCommand:
 class SPHSurfaceConstructionCommand:
    CommandNameLabel="SPHSurfaceConstructionCommand"
    ParticleSystemIdLabel="ParticleSystemId"
-   SparseVolumeIdLabel="SparseVolumeId"
+   TriangleMeshIdLabel="TriangleMeshId"
    EffectLengthLabel="EffectLength"
    CellLengthLabel="CellLength"

@@ -1,17 +1,15 @@
 
 import CrystalPLI
 import unittest
-#import os
-#import vdb_command_test
 
 from CrystalPLI import *
 
-from particle_system_scene_test import *
-from wire_frame_scene_test import *
-from polygon_mesh_scene_test import *
-from triangle_mesh_scene_test import *
+from scene.particle_system_scene_test import *
+from scene.wire_frame_scene_test import *
+from scene.polygon_mesh_scene_test import *
+from scene.triangle_mesh_scene_test import *
 from voxel_scene_test import *
-from physics_command_test import *
+from physics.physics_command_test import *
 
 #print('doc=', CrystalPLI.__doc__)
 
