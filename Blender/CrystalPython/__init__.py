@@ -35,6 +35,8 @@ from ui.ps_to_mesh_operator import PSToMeshOperator
 from ui.particle_system_generate_operator import ParticleSystemGenerateOperator
 from ui.particle_system_import_operator import ParticleSystemImportOperator
 from ui.particle_system_export_operator import ParticleSystemExportOperator
+from ui.physics_simulation_operator import PhysicsSimulationOperator
+from ui.physics_simulation_operator import PhysicsSimulationPanel
 from ui.animation_sample import *
 
 class ParticleFluidsPanel(bpy.types.Panel):
@@ -50,7 +52,7 @@ class ParticleFluidsPanel(bpy.types.Panel):
     layout.operator(ParticleSystemGenerateOperator.bl_idname, text="PSGenerator")
     layout.operator(ParticleSystemImportOperator.bl_idname, text="PSImport")
     layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
-
+    #layout.operator(PhysicsSimulationOperator.bl_idname, text="Simulation")
 
 classes = [
   ParticleFluidsPanel,
@@ -61,6 +63,8 @@ classes = [
   ParticleSystemGenerateOperator,
   SAMPLE31_OT_RotateObjectByMouseDragging,
   SAMPLE31_PT_RotateObjectByMouseDragging,
+  PhysicsSimulationOperator,
+  PhysicsSimulationPanel,
 ]
 
 def register():
