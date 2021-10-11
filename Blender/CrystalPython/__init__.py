@@ -23,59 +23,19 @@ bl_info = {
 }
 
 import os
-#from polygon_mesh_scene import PolygonMeshScene
 import sys
 
 addon_dirpath = os.path.dirname(__file__)
 sys.path += [addon_dirpath]
 
 import bpy
-import CrystalPLI
-import scene
 
-from scene.particle_system_scene import *
-from scene.polygon_mesh_scene import *
-from scene.triangle_mesh_scene import *
-from space.voxel_scene import *
-from physics.fluid_scene import *
-from physics.solver_scene import *
-from physics.csg_boundary_scene import *
-from physics.surface_builder import *
-from scene import *
-from bpy.props import *
-from ui.animation_sample import *
-from ui.bl_particle_system import *
-from ui.bl_triangle_mesh import *
-from ui.bl_voxel import *
-from ui.model import Model as model
 from ui.mesh_to_ps_operator import MeshToPSOperator
 from ui.ps_to_mesh_operator import PSToMeshOperator
 from ui.particle_system_generate_operator import ParticleSystemGenerateOperator
 from ui.particle_system_import_operator import ParticleSystemImportOperator
-
-from bpy_extras.io_utils import (
-    ImportHelper,
-    ExportHelper,
-)
-
-# 読み込み元のディレクトリパスを取得
-addon_dirpath = os.path.dirname(__file__)
-# 読み込み元のディレクトリパスをシステムパスに追加
-sys.path += [addon_dirpath]
-
-
-class ParticleSystemExportOperator(bpy.types.Operator, ExportHelper) :
-  bl_idname = "pg.particlesystemexportoperator"
-  bl_label = "ParticleSystemExport"
-  bl_options = {"UNDO"}
-
-  filename_ext = ".pcd"
-
-  def execute(self, context) :
-    return {"FINISHED"}
-
-  def draw(self, context) :
-    pass
+from ui.particle_system_export_operator import ParticleSystemExportOperator
+from ui.animation_sample import *
 
 class ParticleFluidsPanel(bpy.types.Panel):
   bl_space_type = "VIEW_3D"
