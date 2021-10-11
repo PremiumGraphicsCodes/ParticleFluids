@@ -1,14 +1,15 @@
 import bpy
+from ui.model import Model as model
+
+from physics.fluid_scene import FluidScene
+from physics.solver_scene import SolverScene
 
 class PhysicsSimulationOperator(bpy.types.Operator):
     bl_idname = "pg.physicssimulationoperator"
     bl_label = "PhysicsSimulation"
     bl_description = "Hello"
 
-    # Trueの場合は、マウスをドラッグさせたときに、アクティブなオブジェクトが
-    # 回転する（Trueの場合は、モーダルモード中である）
     __running = False
-    # マウスが右クリックされている間に、Trueとなる
 
     # モーダルモード中はTrueを返す
     @classmethod
@@ -34,6 +35,13 @@ class PhysicsSimulationOperator(bpy.types.Operator):
                 # モーダルモードを開始
                 context.window_manager.modal_handler_add(self)
                 op_cls.__running = True
+
+                model.solver.create()
+                fluid = FluidScene(model.scene)
+                fluid.create()
+                fluids = []
+                fluids.append(fluid)
+                model.solver.send(fluids)
                 print("サンプル 3-1: オブジェクトの回転処理を開始しました。")
                 return {'RUNNING_MODAL'}
             # [終了] ボタンが押された時の処理
