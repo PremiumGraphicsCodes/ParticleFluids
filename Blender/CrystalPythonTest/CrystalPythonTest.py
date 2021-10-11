@@ -9,8 +9,9 @@ from scene.wire_frame_scene_test import *
 from scene.polygon_mesh_scene_test import *
 from scene.triangle_mesh_scene_test import *
 from voxel_scene_test import *
+from physics.fluid_scene_test import *
 from physics.solver_scene_test import *
-from physics.physics_command_test import *
+from physics.csg_boundary_scene_test import *
 from physics.surface_builder_test import *
 #print('doc=', CrystalPLI.__doc__)
 

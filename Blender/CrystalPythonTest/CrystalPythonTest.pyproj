@@ -26,7 +26,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CrystalPythonTest.py" />
-    <Compile Include="physics\physics_command_test.py">
+    <Compile Include="physics\csg_boundary_scene_test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="physics\fluid_scene_test.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="physics\solver_scene_test.py">

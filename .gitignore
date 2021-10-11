@@ -303,3 +303,4 @@ Blender/CrystalPython/ui/__pycache__/particle_system_generate_operator.cpython-3
 Blender/CrystalPython/ui/__pycache__/particle_system_import_operator.cpython-39.pyc
 Blender/CrystalPython/ui/__pycache__/particle_system_export_operator.cpython-39.pyc
 Blender/CrystalPython/ui/__pycache__/physics_simulation_operator.cpython-39.pyc
+*.py
