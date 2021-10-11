@@ -11,17 +11,26 @@ class BLParticleSystem :
 
   def convert_to_polygon_mesh(self, ob_name):
       # Create new mesh and a new object
-      me = bpy.data.meshes.new(name = ob_name + "Mesh")
-      ob = bpy.data.objects.new(ob_name, me)
+      self.me = bpy.data.meshes.new(name = ob_name + "Mesh")
+      ob = bpy.data.objects.new(ob_name, self.me)
 
       positions = self.ps.get_positions()
       coords = []
       for p in positions.values :
         coords.append( (p.x, p.y, p.z))
       # Make a mesh from a list of vertices/edges/faces
-      me.from_pydata(coords, [], [])
+      self.me.from_pydata(coords, [], [])
 
       # Display name and update the mesh
       ob.show_name = True
-      me.update()
+      self.me.update()
       bpy.context.collection.objects.link(ob)
+
+  def update(self):
+      positions = self.ps.get_positions()
+      coords = []
+      for p in positions.values :
+        coords.append( (p.x, p.y, p.z))
+      # Make a mesh from a list of vertices/edges/faces
+      self.me.from_pydata(coords, [], [])
+      self.me.update()

@@ -3,6 +3,7 @@ from ui.model import Model as model
 
 from physics.fluid_scene import FluidScene
 from physics.solver_scene import SolverScene
+from ui.bl_particle_system import BLParticleSystem
 
 class PhysicsSimulationOperator(bpy.types.Operator):
     bl_idname = "pg.physicssimulationoperator"
@@ -39,8 +40,14 @@ class PhysicsSimulationOperator(bpy.types.Operator):
                 op_cls.__running = True
 
                 model.solver.create()
+                ps = BLParticleSystem(model.scene)
+                ps.convert_to_polygon_mesh("")
                 fluid = FluidScene(model.scene)
                 fluid.create()
+                
+                ps.ps.create_empty("")
+                fluid.source_particle_system_id = ps.ps.id
+
                 fluids = []
                 fluids.append(fluid)
                 model.solver.send(fluids)
