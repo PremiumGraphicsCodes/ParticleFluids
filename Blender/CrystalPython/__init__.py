@@ -51,6 +51,7 @@ from ui.model import Model as model
 from ui.mesh_to_ps_operator import MeshToPSOperator
 from ui.ps_to_mesh_operator import PSToMeshOperator
 from ui.particle_system_generate_operator import ParticleSystemGenerateOperator
+from ui.particle_system_import_operator import ParticleSystemImportOperator
 
 from bpy_extras.io_utils import (
     ImportHelper,
@@ -62,20 +63,6 @@ addon_dirpath = os.path.dirname(__file__)
 # 読み込み元のディレクトリパスをシステムパスに追加
 sys.path += [addon_dirpath]
 
-
-
-class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
-  bl_idname = "pg.particlesystemimportoperator"
-  bl_label = "ParticleSystemImport"
-  bl_options = {"UNDO"}
-
-  def execute(self, context) :
-#    ps = particle_system_scene()
-#    ps.
-    return {"FINISHED"}
-
-  def draw(self, context) :
-    pass
 
 class ParticleSystemExportOperator(bpy.types.Operator, ExportHelper) :
   bl_idname = "pg.particlesystemexportoperator"
