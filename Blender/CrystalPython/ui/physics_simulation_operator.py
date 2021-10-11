@@ -20,6 +20,8 @@ class PhysicsSimulationOperator(bpy.types.Operator):
         op_cls = PhysicsSimulationOperator
         active_obj = context.active_object
 
+        model.solver.simulate()
+
         # エリアを再描画
         if context.area:
             context.area.tag_redraw()

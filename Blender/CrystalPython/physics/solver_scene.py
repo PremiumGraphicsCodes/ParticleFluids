@@ -22,3 +22,9 @@ class SolverScene :
         set_arg_int_vector(PhysicsSolverUpdateCommand.FluidSceneIdsLabel, fluid_ids)
         is_ok = execute_command(self.scene.world)
         return is_ok
+
+    def simulate(self) :
+        create_physics_command(FluidSimulationCommand.CommandNameLabel)
+        set_arg_int(FluidSimulationCommand.SolverIdLabel, self.id)
+        is_ok = execute_command(self.scene.world)
+        return is_ok

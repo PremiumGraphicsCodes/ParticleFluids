@@ -16,3 +16,4 @@ class SolverSceneTest(unittest.TestCase):
         fluids.append(fluid)
 
         solver.send(fluids)
+        solver.simulate()
