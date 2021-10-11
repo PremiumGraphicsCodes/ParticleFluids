@@ -50,6 +50,7 @@ from ui.bl_voxel import *
 from ui.model import Model as model
 from ui.mesh_to_ps_operator import MeshToPSOperator
 from ui.ps_to_mesh_operator import PSToMeshOperator
+from ui.particle_system_generate_operator import ParticleSystemGenerateOperator
 
 from bpy_extras.io_utils import (
     ImportHelper,
@@ -89,42 +90,28 @@ class ParticleSystemExportOperator(bpy.types.Operator, ExportHelper) :
   def draw(self, context) :
     pass
 
-class ParticleSystemGenerator(bpy.types.Operator) :
-  bl_idname = "pg.particlesystemgenerator"
-  bl_label = "ParticleSystemGenerator"
-  bl_options = {"REGISTER", "UNDO"}
-
-  def execute(self, context) :
-      pc = BLParticleSystem(model.scene)
-      positions = Vector3ddVector()
-      positions.add(Vector3dd(0.0, 0.0, 0.0))
-      pc.ps.create_empty("")
-      pc.ps.set_positions(positions)
-      pc.convert_to_polygon_mesh("")      
-      return {'FINISHED'}
-
-class FastParticlesPanel(bpy.types.Panel):
+class ParticleFluidsPanel(bpy.types.Panel):
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
-  bl_category = "FastParticles"
+  bl_category = "ParticleFluids"
   bl_label = "PanelTitle"
 
   def draw(self, context):
     layout = self.layout
     layout.operator(MeshToPSOperator.bl_idname, text="MeshToPS")
     layout.operator(PSToMeshOperator.bl_idname, text="PSToMesh")
-    layout.operator(ParticleSystemGenerator.bl_idname, text="PSGenerator")
+    layout.operator(ParticleSystemGenerateOperator.bl_idname, text="PSGenerator")
     layout.operator(ParticleSystemImportOperator.bl_idname, text="PSImport")
     layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
 
 
 classes = [
-  FastParticlesPanel,
+  ParticleFluidsPanel,
   MeshToPSOperator,
   PSToMeshOperator,
   ParticleSystemImportOperator,
   ParticleSystemExportOperator,
-  ParticleSystemGenerator,
+  ParticleSystemGenerateOperator,
   SAMPLE31_OT_RotateObjectByMouseDragging,
   SAMPLE31_PT_RotateObjectByMouseDragging,
 ]
