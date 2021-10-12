@@ -2,20 +2,35 @@ import bpy
 from ui.model import Model as model
 from ui.bl_particle_system import BLParticleSystem
 
+class ParticleSystemAnimator :
+    def __init__(self) :
+        self.ps = None
+        self.__running = False
+
+    def init(self):
+        if self.ps == None :
+            self.ps = BLParticleSystem(model.scene)
+            self.ps.convert_to_polygon_mesh("")               
+            self.ps.ps.create_empty("")
+
+    def start(self):
+        self.__running = True
+
+    def stop(self):
+        self.__running = False
+
+    def is_running(self):
+        return self.__running
+
+
+animator = ParticleSystemAnimator()
+
 class ParticleSystemAnimationOperator(bpy.types.Operator):
     bl_idname = "pg.particlesystemanimationoperator"
     bl_label = "ParticleSystem"
     bl_description = "Hello"
 
-    __running = False
-
-    # モーダルモード中はTrueを返す
-    @classmethod
-    def is_running(self):
-        return self.__running
-
     def modal(self, context, event):
-        op = ParticleSystemAnimationOperator
         active_obj = context.active_object
 
         # エリアを再描画
@@ -25,24 +40,19 @@ class ParticleSystemAnimationOperator(bpy.types.Operator):
         return {'PASS_THROUGH'}
 
     def invoke(self, context, event):
-        op = ParticleSystemAnimationOperator
-
         if context.area.type == 'VIEW_3D':
             # [開始] ボタンが押された時の処理
-            if not self.is_running():
+            if not animator.is_running():
                 # モーダルモードを開始
                 context.window_manager.modal_handler_add(self)
-                op.__running = True
-
-                ps = BLParticleSystem(model.scene)
-                ps.convert_to_polygon_mesh("")               
-                ps.ps.create_empty("")
+                animator.init()
+                animator.start()
 
                 print("animation start")
                 return {'RUNNING_MODAL'}
             # [終了] ボタンが押された時の処理
             else:
-                op.__running = False
+                animator.stop()
                 print("animation stop")
                 return {'FINISHED'}
         else:
@@ -58,7 +68,7 @@ class ParticleSystemAnimationPanel(bpy.types.Panel):
 
     def draw(self, context):
         op = ParticleSystemAnimationOperator
-        if not op.is_running():
+        if not animator.is_running():
             self.layout.operator(op.bl_idname,text="開始", icon='PLAY')
         else:
             self.layout.operator(op.bl_idname,text="終了", icon='PAUSE')
