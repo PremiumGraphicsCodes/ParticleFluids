@@ -3,60 +3,87 @@ from ui.model import Model as model
 
 from physics.fluid_scene import FluidScene
 from physics.solver_scene import SolverScene
+from scene.particle_system_scene import ParticleSystemScene
 from ui.bl_particle_system import BLParticleSystem
+from CrystalPLI import Vector3dd, Vector3ddVector
+
+class Simulator :
+    def __init__(self) :
+        self.solver = None
+        self.ps = None
+        self.__running = False
+        self.positions = Vector3ddVector()
+        self.positions.add(Vector3dd(0,0,0))
+
+    def init(self):
+        if self.solver != None :
+            return
+            
+        self.solver = SolverScene(model.scene)
+        self.solver.create()
+
+        self.ps = ParticleSystemScene(model.scene)
+        self.ps.create_empty("")
+
+        fluids = []
+        fluid = FluidScene(model.scene)
+        fluid.create()
+        fluid.source_particle_system_id = self.ps.id
+        fluids.append(fluid)
+
+        self.solver.send(fluids)
+        self.solver.simulate()
+
+    def start(self):
+        self.__running = True
+
+    def stop(self):
+        self.__running = False
+
+    def step(self):
+        self.solver.simulate()
+        #self.positions = Vector3ddVector()
+        #self.positions.add(Vector3dd(10,0,0))
+        #self.ps.ps.set_positions(self.positions)
+        #self.ps.update()
+
+    def is_running(self):
+        return self.__running
+
+simulator = Simulator()
 
 class PhysicsSimulationOperator(bpy.types.Operator):
     bl_idname = "pg.physicssimulationoperator"
     bl_label = "PhysicsSimulation"
     bl_description = "Hello"
 
-    __running = False
-
-    # モーダルモード中はTrueを返す
-    @classmethod
-    def is_running(cls):
-        return cls.__running
-
     def modal(self, context, event):
-        op_cls = PhysicsSimulationOperator
         active_obj = context.active_object
 
-        model.solver.simulate()
+        if simulator.is_running() :
+            simulator.step()
 
-        # エリアを再描画
         if context.area:
             context.area.tag_redraw()
 
         return {'PASS_THROUGH'}
 
     def invoke(self, context, event):
-        op_cls = PhysicsSimulationOperator
 
         if context.area.type == 'VIEW_3D':
             # [開始] ボタンが押された時の処理
-            if not self.is_running():
+            if not simulator.is_running():
                 # モーダルモードを開始
                 context.window_manager.modal_handler_add(self)
-                op_cls.__running = True
+                simulator.init()
+                simulator.start()
 
-                model.solver.create()
-                ps = BLParticleSystem(model.scene)
-                ps.convert_to_polygon_mesh("")
-                fluid = FluidScene(model.scene)
-                fluid.create()
-                
-                ps.ps.create_empty("")
-                fluid.source_particle_system_id = ps.ps.id
-
-                fluids = []
-                fluids.append(fluid)
-                model.solver.send(fluids)
-                print("サンプル 3-1: オブジェクトの回転処理を開始しました。")
+                print("simulation start")
                 return {'RUNNING_MODAL'}
             # [終了] ボタンが押された時の処理
             else:
-                op_cls.__running = False
-                print("サンプル 3-1: オブジェクトの回転処理を終了しました。")
+                simulator.stop()
+                print("simulation stop")
                 return {'FINISHED'}
         else:
             return {'CANCELLED'}
@@ -70,10 +97,7 @@ class PhysicsSimulationPanel(bpy.types.Panel):
     bl_context = "objectmode"
 
     def draw(self, context):
-        op_cls = PhysicsSimulationOperator
-        layout = self.layout
-        # [開始] / [終了] ボタンを追加
-        if not op_cls.is_running():
-            layout.operator(op_cls.bl_idname,text="開始", icon='PLAY')
+        if not simulator.is_running():
+            self.layout.operator(PhysicsSimulationOperator.bl_idname,text="Start", icon='PLAY')
         else:
-            layout.operator(op_cls.bl_idname,text="終了", icon='PAUSE')
+            self.layout.operator(PhysicsSimulationOperator.bl_idname,text="Stop", icon='PAUSE')

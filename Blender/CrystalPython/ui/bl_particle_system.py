@@ -39,3 +39,7 @@ class BLParticleSystem :
 
       for v in bm.verts:
           v.co.x += 1.0
+
+      bm.to_mesh(self.me)
+      bm.free()
+      self.me.update()
