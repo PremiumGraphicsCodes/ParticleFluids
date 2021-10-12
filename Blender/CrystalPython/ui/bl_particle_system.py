@@ -1,4 +1,5 @@
 import bpy
+import bmesh
 import CrystalPLI
 import scene
 
@@ -32,5 +33,9 @@ class BLParticleSystem :
       for p in positions.values :
         coords.append( (p.x, p.y, p.z))
       # Make a mesh from a list of vertices/edges/faces
-      self.me.from_pydata(coords, [], [])
-      self.me.update()
+      #self.me.from_pydata(coords, [], [])
+      bm = bmesh.new()   # create an empty BMesh
+      bm.from_mesh(self.me)   # fill it in from a Mesh      self.me.update()
+
+      for v in bm.verts:
+          v.co.x += 1.0

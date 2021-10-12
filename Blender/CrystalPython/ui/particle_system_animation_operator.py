@@ -1,23 +1,33 @@
 import bpy
 from ui.model import Model as model
 from ui.bl_particle_system import BLParticleSystem
+from CrystalPLI import Vector3dd, Vector3ddVector
 
 class ParticleSystemAnimator :
     def __init__(self) :
         self.ps = None
         self.__running = False
+        self.positions = Vector3ddVector()
+        self.positions.add(Vector3dd(0,0,0))
 
     def init(self):
         if self.ps == None :
             self.ps = BLParticleSystem(model.scene)
-            self.ps.convert_to_polygon_mesh("")               
             self.ps.ps.create_empty("")
+            self.ps.ps.set_positions(self.positions)
+            self.ps.convert_to_polygon_mesh("")               
 
     def start(self):
         self.__running = True
 
     def stop(self):
         self.__running = False
+
+    def step(self):
+        self.positions = Vector3ddVector()
+        self.positions.add(Vector3dd(10,0,0))
+        self.ps.ps.set_positions(self.positions)
+        self.ps.update()
 
     def is_running(self):
         return self.__running
@@ -32,6 +42,9 @@ class ParticleSystemAnimationOperator(bpy.types.Operator):
 
     def modal(self, context, event):
         active_obj = context.active_object
+
+        if animator.is_running() :
+            animator.step()
 
         # エリアを再描画
         if context.area:
