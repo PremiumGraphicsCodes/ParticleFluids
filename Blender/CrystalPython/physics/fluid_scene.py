@@ -1,6 +1,7 @@
 from physics.physics_labels import *
 from scene.scene import Scene
 from CrystalPLI import *
+from scene.scene_labels import *
 
 class FluidScene :
     def __init__(self, scene) :
@@ -32,3 +33,8 @@ class FluidScene :
         is_ok = execute_command(self.scene.world)
         return is_ok
 
+    def get_positions(self) :
+        create_scene_command(ParticleSystemGetCommand.CommandNameLabel)
+        set_arg_int(ParticleSystemGetCommand.PSIdLabel, self.id)
+        is_ok = execute_command(self.scene.world)
+        return get_result_vector3dd_vector(ParticleSystemGetCommand.PositionsLabel)

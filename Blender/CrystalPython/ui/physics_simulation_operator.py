@@ -11,9 +11,8 @@ class Simulator :
     def __init__(self) :
         self.solver = None
         self.ps = None
+        self.fluid = None
         self.__running = False
-        self.positions = Vector3ddVector()
-        self.positions.add(Vector3dd(0,0,0))
 
     def init(self):
         if self.solver != None :
@@ -22,14 +21,23 @@ class Simulator :
         self.solver = SolverScene(model.scene)
         self.solver.create()
 
-        self.ps = ParticleSystemScene(model.scene)
-        self.ps.create_empty("")
+        self.ps = BLParticleSystem(model.scene)
+        self.ps.ps.create_empty("")
+        
+        positions = Vector3ddVector()
+        for i in range(0,1) :
+            for j in range(0,1) :
+                for k in range(0,1):
+                    positions.add(Vector3dd(i,j,k))
+
+        self.ps.ps.set_positions(positions)
 
         fluids = []
-        fluid = FluidScene(model.scene)
-        fluid.create()
-        fluid.source_particle_system_id = self.ps.id
-        fluids.append(fluid)
+        self.fluid = FluidScene(model.scene)
+        self.fluid.create()
+        self.fluid.source_particle_system_id = self.ps.ps.id
+        self.fluid.send()
+        fluids.append(self.fluid)
 
         self.solver.send(fluids)
         self.solver.simulate()
@@ -42,10 +50,11 @@ class Simulator :
 
     def step(self):
         self.solver.simulate()
-        #self.positions = Vector3ddVector()
-        #self.positions.add(Vector3dd(10,0,0))
-        #self.ps.ps.set_positions(self.positions)
-        #self.ps.update()
+        pp = self.fluid.get_positions()
+        p = pp.values[0]
+        print(p.x)
+        print(p.y)
+        print(p.z)
 
     def is_running(self):
         return self.__running

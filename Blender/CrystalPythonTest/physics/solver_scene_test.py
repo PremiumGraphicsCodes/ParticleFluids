@@ -18,6 +18,7 @@ class SolverSceneTest(unittest.TestCase):
         fluid = FluidScene(scene)
         fluid.create()
         fluid.source_particle_system_id = ps.id
+        fluid.send()
         fluids.append(fluid)
 
         solver.send(fluids)

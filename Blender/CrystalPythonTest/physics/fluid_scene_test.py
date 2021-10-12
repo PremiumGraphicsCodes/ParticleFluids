@@ -8,4 +8,5 @@ class FluidSceneTest(unittest.TestCase):
         fluid = FluidScene(scene)
         fluid.create()
         fluid.send()
-
+        p = fluid.get_positions()
+        

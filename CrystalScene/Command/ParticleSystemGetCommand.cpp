@@ -48,12 +48,12 @@ std::string ParticleSystemGetCommand::getName()
 
 bool ParticleSystemGetCommand::execute(World* world)
 {
-	const auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.psId.getValue());
+	const auto scene = world->getScenes()->findSceneById<IParticleSystemScene*>(args.psId.getValue());
 	if (scene == nullptr) {
 		return false;
 	}
 
-	results.positions.setValue(scene->getShape()->getPositions());
+	results.positions.setValue(scene->getPositions());
 	results.name.setValue(scene->getName());
 	return true;
 }
