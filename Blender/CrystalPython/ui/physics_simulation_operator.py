@@ -23,6 +23,7 @@ class Simulator :
 
         self.ps = BLParticleSystem(model.scene)
         self.ps.ps.create_empty("")
+        self.ps.convert_to_polygon_mesh("fluid")
         
         positions = Vector3ddVector()
         for i in range(0,1) :
@@ -55,6 +56,7 @@ class Simulator :
         print(p.x)
         print(p.y)
         print(p.z)
+        self.ps.update_from_positions(pp)
 
     def is_running(self):
         return self.__running

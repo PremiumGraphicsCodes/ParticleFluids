@@ -35,3 +35,11 @@ class BLParticleSystem :
       bm.to_mesh(self.me)
       bm.free()
       self.me.update()
+
+  def update_from_positions(self, positions) :
+      bm = bmesh.new()   # create an empty BMesh
+      for p in positions.values:
+        bm.verts.new((p.x, p.y, p.z))  # add a new vert
+      bm.to_mesh(self.me)
+      bm.free()
+      self.me.update()
