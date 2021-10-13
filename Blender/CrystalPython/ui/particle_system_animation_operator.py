@@ -7,14 +7,14 @@ class ParticleSystemAnimator :
     def __init__(self) :
         self.ps = None
         self.__running = False
-        self.positions = Vector3ddVector()
-        self.positions.add(Vector3dd(0,0,0))
+        self.px = 0.0
+        self.py = 0.0
+        self.pz = 0.0
 
     def init(self):
         if self.ps == None :
             self.ps = BLParticleSystem(model.scene)
             self.ps.ps.create_empty("")
-            self.ps.ps.set_positions(self.positions)
             self.ps.convert_to_polygon_mesh("")               
 
     def start(self):
@@ -24,9 +24,10 @@ class ParticleSystemAnimator :
         self.__running = False
 
     def step(self):
-        self.positions = Vector3ddVector()
-        self.positions.add(Vector3dd(10,0,0))
-        self.ps.ps.set_positions(self.positions)
+        positions = Vector3ddVector()
+        positions.add(Vector3dd(self.px,self.py,self.pz))
+        self.px += 1.0
+        self.ps.ps.set_positions(positions)
         self.ps.update()
 
     def is_running(self):

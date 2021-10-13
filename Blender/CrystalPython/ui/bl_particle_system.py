@@ -29,17 +29,9 @@ class BLParticleSystem :
 
   def update(self):
       positions = self.ps.get_positions()
-      coords = []
-      for p in positions.values :
-        coords.append( (p.x, p.y, p.z))
-      # Make a mesh from a list of vertices/edges/faces
-      #self.me.from_pydata(coords, [], [])
       bm = bmesh.new()   # create an empty BMesh
-      bm.from_mesh(self.me)   # fill it in from a Mesh      self.me.update()
-
-      for v in bm.verts:
-          v.co.x += 1.0
-
+      for p in positions.values:
+        bm.verts.new((p.x, p.y, p.z))  # add a new vert
       bm.to_mesh(self.me)
       bm.free()
       self.me.update()
