@@ -3,6 +3,7 @@
 #include "../ThirdParty/nlohmnn/json.hpp"
 
 #include "Crystal/Math/Vector3d.h"
+#include "Crystal/Graphics/ColorRGBA.h"
 
 using namespace Crystal;
 using namespace Crystal::Command;
@@ -19,6 +20,11 @@ namespace glm{
         p.y = j.at("y").get<double>();
         p.z = j.at("z").get<double>();
     }
+
+    void to_json(json& j, const Graphics::ColorRGBAf& p) {
+        j = json{ {"r", p.r}, {"g", p.g}, {"b", p.b}, {"a", p.a} };
+    }
+
 } // namespace ns
 
 json JSONConverter::toJSON(const std::any& value)
@@ -27,14 +33,26 @@ json JSONConverter::toJSON(const std::any& value)
     if (type == typeid(int)) {
         return std::any_cast<int>(value);
     }
+    if (type == typeid(float)) {
+        return std::any_cast<float>(value);
+    }
+    if (type == typeid(double)) {
+        return std::any_cast<double>(value);
+    }
     if (type == typeid(std::string)) {
         return std::any_cast<std::string>(value);
     }
     if (type == typeid(std::vector<int>)) {
         return std::any_cast<std::vector<int>>(value);
     }
-    if (value.type() == typeid(Math::Vector3dd)) {
+    if (type == typeid(Math::Vector3dd)) {
         return std::any_cast<Math::Vector3dd>(value);
+    }
+    if (type == typeid(std::vector<Math::Vector3dd>)) {
+        return std::any_cast<std::vector<Math::Vector3dd>>(value);
+    }
+    if (type == typeid(Graphics::ColorRGBAf)) {
+        return std::any_cast<Graphics::ColorRGBAf>(value);
     }
     assert(false);
     return {};
