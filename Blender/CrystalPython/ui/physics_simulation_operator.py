@@ -7,10 +7,47 @@ from scene.particle_system_scene import ParticleSystemScene
 from ui.bl_particle_system import BLParticleSystem
 from CrystalPLI import Vector3dd, Vector3ddVector
 
+import bmesh
+
+class BLVolumeBoundary :
+    def __init__(self, scene) :
+        pass
+
+class BLFluid :
+    def __init__(self, scene):
+        self.ps = ParticleSystemScene(scene)
+        
+    def convert_to_polygon_mesh(self, ob_name):
+        # Create new mesh and a new object
+        self.me = bpy.data.meshes.new(name = ob_name + "Mesh")
+        ob = bpy.data.objects.new(ob_name, self.me)
+        
+        positions = self.ps.get_positions()
+        coords = []
+        for p in positions.values :
+            coords.append( (p.x, p.y, p.z))
+        
+        # Make a mesh from a list of vertices/edges/faces
+        self.me.from_pydata(coords, [], [])
+        
+        # Display name and update the mesh
+        ob.show_name = True
+        self.me.update()
+        bpy.context.collection.objects.link(ob)
+
+    def update(self):
+        positions = self.ps.get_positions()
+        bm = bmesh.new()   # create an empty BMesh
+        for p in positions.values:
+            bm.verts.new((p.x, p.y, p.z))  # add a new vert
+        bm.to_mesh(self.me)
+        bm.free()
+        self.me.update()
+
 class Simulator :
     def __init__(self) :
         self.solver = None
-        self.ps = None
+        self.source_ps = None
         self.fluid = None
         self.__running = False
 
@@ -21,9 +58,9 @@ class Simulator :
         self.solver = SolverScene(model.scene)
         self.solver.create()
 
-        self.ps = BLParticleSystem(model.scene)
-        self.ps.ps.create_empty("")
-        self.ps.convert_to_polygon_mesh("fluid")
+        self.source_ps = BLParticleSystem(model.scene)
+        self.source_ps.ps.create_empty("")
+        self.source_ps.convert_to_polygon_mesh("fluid")
         
         positions = Vector3ddVector()
         for i in range(0,1) :
@@ -31,7 +68,7 @@ class Simulator :
                 for k in range(0,1):
                     positions.add(Vector3dd(i,j,k))
 
-        self.ps.ps.set_positions(positions)
+        self.source_ps.ps.set_positions(positions)
 
         fluids = []
         self.fluid = FluidScene(model.scene)
@@ -56,7 +93,7 @@ class Simulator :
         print(p.x)
         print(p.y)
         print(p.z)
-        self.ps.update_from_positions(pp)
+        self.source_ps.update_from_positions(pp)
 
     def is_running(self):
         return self.__running
