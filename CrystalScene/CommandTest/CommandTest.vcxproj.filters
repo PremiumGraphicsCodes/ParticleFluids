@@ -8,7 +8,7 @@
     <ClCompile Include="PCDFileExportCommandTest.cpp">
       <Filter>File\PCD</Filter>
     </ClCompile>
-    <ClCompile Include="FileExportCommand.cpp">
+    <ClCompile Include="FileExportCommandTest.cpp">
       <Filter>File</Filter>
     </ClCompile>
     <ClCompile Include="PCDFileImportCommandTest.cpp">

@@ -37,6 +37,9 @@ namespace glm{
 json JSONConverter::toJSON(const std::any& value)
 {
     const auto& type = value.type();
+    if (type == typeid(bool)) {
+        return std::any_cast<bool>(value);
+    }
     if (type == typeid(int)) {
         return std::any_cast<int>(value);
     }

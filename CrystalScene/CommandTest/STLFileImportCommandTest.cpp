@@ -1,25 +1,17 @@
 #include "pch.h"
 
-/*
-#include "../Command/Command.h"
-#include "../Command/CommandFactory.h"
+#include "../Command/STLFileImportCommand.h"
 
-#include "../Command/Public/FileImportLabels.h"
-
-using namespace Crystal::Math;
-using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-TEST(STLFileImportCommand, TestExecute)
+TEST(STLFileImportCommand, TestWriteJSON)
 {
-	World world;
-
-	const std::string filePath = "STLFileImportTest.stl";
-	auto command = CommandFactory::create(FileImportLabels::STLFileImportCommandLabel);
-	command->setArg(FileImportLabels::FilePathLabel, filePath);
-	EXPECT_TRUE(command->execute(&world));
-
-	//const auto id = std::any_cast<int>(command.getResult(FileImportLabels::NewIdLabel));
-	//EXPECT_EQ(1, id);
+	STLFileImportCommand command;
+	command.writeJSON("STLFileImportWrite.json");
 }
-*/
+
+TEST(STLFileImportCommand, TestReadJSON)
+{
+	STLFileImportCommand command;
+	command.readJSON("STLFileImportWrite.json");
+}
