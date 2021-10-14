@@ -1,85 +1,68 @@
 import bpy
+
 from ui.model import Model as model
-
-from physics.fluid_scene import FluidScene
 from physics.solver_scene import SolverScene
-from scene.particle_system_scene import ParticleSystemScene
-from ui.bl_particle_system import BLParticleSystem
+from ui.bl_fluid import BLFluid
 from CrystalPLI import Vector3dd, Vector3ddVector
+from physics.csg_boundary_scene import CSGBoundaryScene
 
-import bmesh
+def get_position(box, u, v, w) :
+    lx = box.max.x - box.min.x
+    ly = box.max.y - box.min.y
+    lz = box.max.z - box.min.z
+    x = lx * u + box.min.x
+    y = ly * v + box.min.y
+    z = lz * w + box.min.z
+    return Vector3dd(x,y,z)
 
-class BLVolumeBoundary :
+class BLBoundary :
     def __init__(self, scene) :
         pass
 
-class BLFluid :
-    def __init__(self, scene):
-        self.source_ps = None
-        self.fluid = None
-        self.me = None
+    def build(self) :
+        self.scene = CSGBoundaryScene(model.scene)
 
-    def create(self) :
-        self.fluid = FluidScene(model.scene)
-        self.source_ps = ParticleSystemScene(model.scene)
-        self.source_ps.create_empty("")
+    def convert_to_polygon_mesh(self, name) :
+        box = self.scene.bounding_box
 
         positions = Vector3ddVector()
-        for i in range(0,1) :
-            for j in range(0,1) :
-                for k in range(0,1):
-                    positions.add(Vector3dd(i,j,k))
-
-        self.source_ps.set_positions(positions)
-
-        self.fluid.create()
-        self.fluid.source_particle_system_id = self.source_ps.id
-        self.fluid.send()
+        positions.add(get_position(box, 0.0, 0.0, 0.0))
+        positions.add(get_position(box, 1.0, 0.0, 0.0))
+        positions.add(get_position(box, 1.0, 1.0, 0.0))
+        positions.add(get_position(box, 0.0, 1.0, 0.0))
+        positions.add(get_position(box, 0.0, 0.0, 1.0))
+        positions.add(get_position(box, 1.0, 0.0, 1.0))
+        positions.add(get_position(box, 1.0, 1.0, 1.0))
+        positions.add(get_position(box, 0.0, 1.0, 1.0))
         
-    def convert_to_polygon_mesh(self, ob_name):
-        # Create new mesh and a new object
-        self.me = bpy.data.meshes.new(name = ob_name + "Mesh")
-        ob = bpy.data.objects.new(ob_name, self.me)
+        self.me = bpy.data.meshes.new(name = name + "Mesh")
+        ob = bpy.data.objects.new(name, self.me)
         
-        positions = self.fluid.get_positions()
         coords = []
         for p in positions.values :
             coords.append( (p.x, p.y, p.z))
-        
-        # Make a mesh from a list of vertices/edges/faces
         self.me.from_pydata(coords, [], [])
         
-        # Display name and update the mesh
         ob.show_name = True
         self.me.update()
         bpy.context.collection.objects.link(ob)
-
-    def update(self):
-        positions = self.fluid.get_positions()
-        p = positions.values[0]
-        print(p.x)
-        print(p.y)
-        print(p.z)
-
-        bm = bmesh.new()   # create an empty BMesh
-        for p in positions.values:
-            bm.verts.new((p.x, p.y, p.z))  # add a new vert
-        bm.to_mesh(self.me)
-        bm.free()
-        self.me.update()
 
 class Simulator :
     def __init__(self) :
         self.solver = None
         self.__running = False
         self.fluid = BLFluid(model.scene)
+        self.boundary = BLBoundary(model.scene)
 
-    def init(self):
+    def build(self):
         if self.solver != None :
             return
 
-        self.fluid.create()
+        self.fluid.build()
         self.fluid.convert_to_polygon_mesh("BLFluid")
+
+        self.boundary.build()
+        self.boundary.convert_to_polygon_mesh("BLBoundary")
 
         self.solver = SolverScene(model.scene)
         self.solver.create()
@@ -128,7 +111,7 @@ class PhysicsSimulationOperator(bpy.types.Operator):
             if not simulator.is_running():
                 # モーダルモードを開始
                 context.window_manager.modal_handler_add(self)
-                simulator.init()
+                simulator.build()
                 simulator.start()
 
                 print("simulation start")
