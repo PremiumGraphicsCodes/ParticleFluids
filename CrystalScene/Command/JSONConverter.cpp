@@ -9,7 +9,11 @@ using namespace Crystal;
 using namespace Crystal::Command;
 using namespace nlohmann;
 
-namespace glm{
+namespace glm {
+    void to_json(json& j, const Math::Vector2dd& p) {
+        j = json{ {"x", p.x}, {"y", p.y} };
+    }
+
     void to_json(json& j, const Math::Vector3dd& p) {
         j = json{ {"x", p.x}, {"y", p.y}, {"z", p.z} };
     }
@@ -54,6 +58,15 @@ json JSONConverter::toJSON(const std::any& value)
     }
     if (type == typeid(std::vector<int>)) {
         return std::any_cast<std::vector<int>>(value);
+    }
+    if (type == typeid(Math::Vector2df)) {
+        return std::any_cast<Math::Vector2df>(value);
+    }
+    if (type == typeid(std::vector<Math::Vector2df>)) {
+        return {};
+    }
+    if (type == typeid(std::vector<Math::Vector2dd>)) {
+        return std::any_cast<std::vector<Math::Vector2dd>>(value);
     }
     if (type == typeid(Math::Vector3dd)) {
         return std::any_cast<Math::Vector3dd>(value);

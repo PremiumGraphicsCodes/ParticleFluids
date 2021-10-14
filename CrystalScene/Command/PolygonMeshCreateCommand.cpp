@@ -13,8 +13,6 @@ namespace PolygonMeshCreateLabels
 	PublicLabel PositionsLabel = "Positions";
 	PublicLabel NormalsLabel = "Normals";
 	PublicLabel TexCoordsLabel = "TexCoords";
-	PublicLabel VerticesLabel = "Vertices";
-	PublicLabel FacesLabel = "Faces";
 	PublicLabel NameLabel = "Name";
 	PublicLabel LayerLabel = "Layer";
 	PublicLabel NewIdLabel = "NewId";
@@ -28,16 +26,12 @@ PolygonMeshCreateCommand::Args::Args() :
 	positions(PolygonMeshCreateLabels::PositionsLabel, {}),
 	normals(PolygonMeshCreateLabels::NormalsLabel, {}),
 	texCoords(PolygonMeshCreateLabels::TexCoordsLabel, {}),
-	vertices(PolygonMeshCreateLabels::VerticesLabel, {}),
-	faces(PolygonMeshCreateLabels::FacesLabel, {}),
 	name(PolygonMeshCreateLabels::NameLabel, std::string("")),
 	layer(PolygonMeshCreateLabels::LayerLabel, 1)
 {
 	add(&positions);
 	add(&normals);
 	add(&texCoords);
-	add(&vertices);
-	add(&faces);
 	add(&name);
 	add(&layer);
 }
@@ -59,8 +53,6 @@ bool PolygonMeshCreateCommand::execute(World* world)
 	mesh->positions = args.positions.getValue();
 	mesh->normals = args.normals.getValue();
 	mesh->texCoords = args.texCoords.getValue();
-	mesh->vertices = args.vertices.getValue();
-	mesh->faces = args.faces.getValue();
 
 	auto shape = new PolygonMeshScene(world->getNextSceneId(), args.name.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
 	world->addScene(args.layer.getValue(), shape);
