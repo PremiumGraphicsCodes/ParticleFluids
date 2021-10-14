@@ -15,14 +15,33 @@ class BLVolumeBoundary :
 
 class BLFluid :
     def __init__(self, scene):
-        self.ps = ParticleSystemScene(scene)
+        self.source_ps = None
+        self.fluid = None
+        self.me = None
+
+    def create(self) :
+        self.fluid = FluidScene(model.scene)
+        self.source_ps = ParticleSystemScene(model.scene)
+        self.source_ps.create_empty("")
+
+        positions = Vector3ddVector()
+        for i in range(0,1) :
+            for j in range(0,1) :
+                for k in range(0,1):
+                    positions.add(Vector3dd(i,j,k))
+
+        self.source_ps.set_positions(positions)
+
+        self.fluid.create()
+        self.fluid.source_particle_system_id = self.source_ps.id
+        self.fluid.send()
         
     def convert_to_polygon_mesh(self, ob_name):
         # Create new mesh and a new object
         self.me = bpy.data.meshes.new(name = ob_name + "Mesh")
         ob = bpy.data.objects.new(ob_name, self.me)
         
-        positions = self.ps.get_positions()
+        positions = self.fluid.get_positions()
         coords = []
         for p in positions.values :
             coords.append( (p.x, p.y, p.z))
@@ -36,7 +55,12 @@ class BLFluid :
         bpy.context.collection.objects.link(ob)
 
     def update(self):
-        positions = self.ps.get_positions()
+        positions = self.fluid.get_positions()
+        p = positions.values[0]
+        print(p.x)
+        print(p.y)
+        print(p.z)
+
         bm = bmesh.new()   # create an empty BMesh
         for p in positions.values:
             bm.verts.new((p.x, p.y, p.z))  # add a new vert
@@ -47,35 +71,21 @@ class BLFluid :
 class Simulator :
     def __init__(self) :
         self.solver = None
-        self.source_ps = None
-        self.fluid = None
         self.__running = False
+        self.fluid = BLFluid(model.scene)
 
     def init(self):
         if self.solver != None :
             return
-            
+
+        self.fluid.create()
+        self.fluid.convert_to_polygon_mesh("BLFluid")
+
         self.solver = SolverScene(model.scene)
         self.solver.create()
-
-        self.source_ps = BLParticleSystem(model.scene)
-        self.source_ps.ps.create_empty("")
-        self.source_ps.convert_to_polygon_mesh("fluid")
         
-        positions = Vector3ddVector()
-        for i in range(0,1) :
-            for j in range(0,1) :
-                for k in range(0,1):
-                    positions.add(Vector3dd(i,j,k))
-
-        self.source_ps.ps.set_positions(positions)
-
         fluids = []
-        self.fluid = FluidScene(model.scene)
-        self.fluid.create()
-        self.fluid.source_particle_system_id = self.ps.ps.id
-        self.fluid.send()
-        fluids.append(self.fluid)
+        fluids.append(self.fluid.fluid)
 
         self.solver.send(fluids)
         self.solver.simulate()
@@ -88,12 +98,7 @@ class Simulator :
 
     def step(self):
         self.solver.simulate()
-        pp = self.fluid.get_positions()
-        p = pp.values[0]
-        print(p.x)
-        print(p.y)
-        print(p.z)
-        self.source_ps.update_from_positions(pp)
+        self.fluid.update()
 
     def is_running(self):
         return self.__running
