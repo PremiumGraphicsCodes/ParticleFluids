@@ -171,8 +171,6 @@ class PolygonMeshCreateCommand:
    PositionsLabel="Positions"
    NormalsLabel="Normals"
    TexCoordsLabel="TexCoords"
-   VerticesLabel="Vertices"
-   FacesLabel="Faces"
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
