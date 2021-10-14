@@ -25,6 +25,13 @@ namespace glm{
         j = json{ {"r", p.r}, {"g", p.g}, {"b", p.b}, {"a", p.a} };
     }
 
+    void from_json(const json& j, Graphics::ColorRGBAf& c) {
+        c.r = j.at("r").get<float>();
+        c.g = j.at("g").get<float>();
+        c.b = j.at("b").get<float>();
+        c.a = j.at("a").get<float>();
+    }
+
 } // namespace ns
 
 json JSONConverter::toJSON(const std::any& value)
@@ -82,17 +89,36 @@ void JSONConverter::fromJSON(const nlohmann::json& json, std::any& value)
         const int v = json;
         value = v;
     }
+    else if (type == typeid(float)) {
+        const float v = json;
+        value = v;
+    }
+    else if (type == typeid(double)) {
+        const double v = json;
+        value = v;
+    }
     else if (type == typeid(std::string)) {
         const std::string v = json;
         value = v;
     }
     else if (type == typeid(std::vector<int>)) {
-        std::vector<int> v = json;
+        const std::vector<int> v = json;
         value = v;
     }
     else if (type == typeid(Math::Vector3dd)) {
         const Math::Vector3dd v = json;
         value = v;
+    }
+    else if (type == typeid(std::vector<Math::Vector3dd>)) {
+        const std::vector<Math::Vector3dd> v = json;
+        value = v;
+    }
+    else if (type == typeid(Graphics::ColorRGBAf)) {
+        const Graphics::ColorRGBAf v = json;
+        value = v;
+    }
+    else {
+        assert(false);
     }
 }
 

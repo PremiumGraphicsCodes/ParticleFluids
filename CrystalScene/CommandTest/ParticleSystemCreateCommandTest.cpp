@@ -5,8 +5,14 @@
 
 using namespace Crystal::Command;
 
-TEST(ParticleSystemCreateCommandTest, TestExecute)
+TEST(ParticleSystemCreateCommandTest, TestWriteJSON)
 {
 	ParticleSystemCreateCommand command;
 	command.writeJSON("ParticleSystemCreateCommandWrite.json");
+}
+
+TEST(ParticleSystemCreateCommandTest, TestReadJSON)
+{
+	ParticleSystemCreateCommand command;
+	command.readJSON("ParticleSystemCreateCommandWrite.json");
 }
