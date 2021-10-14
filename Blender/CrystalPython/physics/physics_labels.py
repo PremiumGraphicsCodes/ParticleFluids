@@ -61,6 +61,7 @@ class PhysicsSolverUpdateCommand:
    CSGBoundarySceneIdsLabel="CSGBoundarySceneIds"
    MeshBoundarySceneIdsLabel="MeshBoundarySceneIds"
    EffectLengthLabel="EffectLength"
+   ExternalForceLabel="ExternalForce"
    TimeStepLabel="TimeStep"
    NameLabel="Name"
 class SPHSurfaceConstructionCommand:

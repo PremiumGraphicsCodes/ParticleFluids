@@ -2,6 +2,7 @@ import unittest
 from scene.particle_system_scene import *
 from physics.fluid_scene import *
 from physics.solver_scene import *
+from CrystalPLI import Vector3df
 
 class SolverSceneTest(unittest.TestCase):
     def test(self):
@@ -21,5 +22,5 @@ class SolverSceneTest(unittest.TestCase):
         fluid.send()
         fluids.append(fluid)
 
-        solver.send(fluids)
+        solver.send(fluids, Vector3df(0.0, 0.0, -9.8))
         solver.simulate()

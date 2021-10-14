@@ -3,7 +3,7 @@ import bpy
 from ui.model import Model as model
 from physics.solver_scene import SolverScene
 from ui.bl_fluid import BLFluid
-from CrystalPLI import Vector3dd, Vector3ddVector
+from CrystalPLI import Vector3dd, Vector3ddVector, Vector3df
 from physics.csg_boundary_scene import CSGBoundaryScene
 
 def get_position(box, u, v, w) :
@@ -70,7 +70,7 @@ class Simulator :
         fluids = []
         fluids.append(self.fluid.fluid)
 
-        self.solver.send(fluids)
+        self.solver.send(fluids, Vector3df(0.0,0.0,-9.8))
         self.solver.simulate()
 
     def start(self):

@@ -17,7 +17,8 @@ using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
 MVPFluidSolver::MVPFluidSolver(const int id) :
-	IAnimator(id)
+	IAnimator(id),
+	externalForce(0.0, -9.8f, 0.0)
 {}
 
 void MVPFluidSolver::setupBoundaries()
@@ -124,7 +125,7 @@ void MVPFluidSolver::simulate()
 		}
 
 		for (auto particle : fluidParticles) {
-			particle->addForce(Vector3dd(0.0, -9.8 * particle->getDensity(), 0.0));
+			particle->addForce(externalForce * particle->getDensity());
 			//particle->stepTime(dt);
 		}
 

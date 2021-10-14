@@ -41,6 +41,8 @@ public:
 
 	void setEffectLength(const float effectLength) { this->effectLength = effectLength; }
 
+	void setExternalForce(const Math::Vector3df& externalForce) { this->externalForce = externalForce; }
+
 	void simulate();
 
 	void step() override;
@@ -59,6 +61,7 @@ private:
 	float effectLength = 2.0f;
 	float maxTimeStep = 0.03f;
 	int currentTimeStep = 0;
+	Math::Vector3df externalForce;
 };
 
 class MVPUpdater : public Scene::IAnimator

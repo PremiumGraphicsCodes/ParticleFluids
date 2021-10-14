@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CrystalScene/Command/ICommand.h"
+#include "Crystal/Math/Vector3d.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -17,6 +18,7 @@ public:
 		Command::Arg<std::vector<int>> meshBoundarySceneIds;
 		Command::Arg<float> effectLength;
 		Command::Arg<float> timeStep;
+		Command::Arg<Math::Vector3df> externalForce;
 		Command::Arg<std::string> name;
 
 		Args();

@@ -17,6 +17,7 @@ namespace {
 	PublicLabel CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
 	PublicLabel MeshBoundarySceneIdsLabel = "MeshBoundarySceneIds";
 	PublicLabel EffectLengthLabel = "EffectLength";
+	PublicLabel ExternalForceLabel = "ExternalForce";
 	PublicLabel TimeStepLabel = "TimeStep";
 	PublicLabel NameLabel = "Name";
 }
@@ -38,6 +39,7 @@ PhysicsSolverUpdateCommand::Args::Args() :
 	csgBoundarySceneIds(::CSGBoundarySceneIdsLabel, {}),
 	meshBoundarySceneIds(::MeshBoundarySceneIdsLabel, {}),
 	effectLength(::EffectLengthLabel, 2.0f),
+	externalForce(::ExternalForceLabel, Vector3df(0,-9.8f, 0.0)),
 	timeStep(::TimeStepLabel, 0.03f),
 	name(::NameLabel, std::string("FluidScene"))
 {
@@ -47,6 +49,7 @@ PhysicsSolverUpdateCommand::Args::Args() :
 	add(&csgBoundarySceneIds);
 	add(&meshBoundarySceneIds);
 	add(&effectLength);
+	add(&externalForce);
 	add(&timeStep);
 	add(&name);
 }
@@ -96,6 +99,8 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 		auto scene = world->getScenes()->findSceneById<CSGBoundaryScene*>(id);
 		solver->addBoundary(scene);
 	}
+
+	solver->setExternalForce(args.externalForce.getValue());
 
 	solver->setupBoundaries();
 
