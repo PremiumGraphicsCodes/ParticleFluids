@@ -10,8 +10,8 @@ class FluidScene :
         self.source_particle_system_id = 0
         self.particle_radius = 1.0
         self.density = 1.0
-        self.stiffness = 1.0
-        self.viscosity = 1.0
+        self.stiffness = 0.25
+        self.viscosity = 10.0
         self.is_boundary = False;
         self.name = ""
 

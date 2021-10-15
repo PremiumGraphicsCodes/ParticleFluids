@@ -6,7 +6,9 @@ from CrystalPLI import *
 class SolverScene :
     def __init__(self, scene) :
         self.scene = scene
-        self.id = -1;
+        self.id = -1
+        self.time_step = 0.03
+        self.effect_length = 2.25
 
     def create(self) :
         create_physics_command(PhysicsSolverCreateCommand.CommandNameLabel)
@@ -26,6 +28,8 @@ class SolverScene :
         set_arg_int_vector(PhysicsSolverUpdateCommand.FluidSceneIdsLabel, fluid_ids)
         set_arg_int_vector(PhysicsSolverUpdateCommand.CSGBoundarySceneIdsLabel, boundary_ids)
         set_arg_vector3df(PhysicsSolverUpdateCommand.ExternalForceLabel, external_force)
+        set_arg_float(PhysicsSolverUpdateCommand.TimeStepLabel, self.time_step)
+        set_arg_float(PhysicsSolverUpdateCommand.EffectLengthLabel, self.effect_length)
         is_ok = execute_command(self.scene.world)
         return is_ok
 

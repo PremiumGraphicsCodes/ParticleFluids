@@ -3,7 +3,7 @@ import bpy
 from ui.model import Model as model
 from physics.solver_scene import SolverScene
 from ui.bl_fluid import BLFluid
-from CrystalPLI import Vector3dd, Vector3ddVector, Vector3df
+from CrystalPLI import Vector3dd, Vector3ddVector, Vector3df, Box3dd
 from physics.csg_boundary_scene import CSGBoundaryScene
 
 def get_position(box, u, v, w) :
@@ -22,6 +22,7 @@ class BLBoundary :
     def build(self) :
         self.boundary = CSGBoundaryScene(model.scene)
         self.boundary.create()
+        self.boundary.bounding_box = Box3dd(Vector3dd(0,0,0), Vector3dd(10,10,10))
         self.boundary.send()
 
     def convert_to_polygon_mesh(self, name) :
@@ -91,6 +92,8 @@ class Simulator :
         boundaries = []
         boundaries.append(self.boundary.boundary)
 
+        self.solver.time_step = 0.03
+        self.solver.effect_length = 2.25
         self.solver.send(fluids, boundaries, Vector3df(0.0,0.0,-9.8))
         self.solver.simulate()
 
