@@ -29,5 +29,8 @@ class SolverSceneTest(unittest.TestCase):
         boundary.send()
         boundaries.append(boundary)
 
-        solver.send(fluids, boundaries, Vector3df(0.0, 0.0, -9.8))
+        solver.fluids = fluids
+        solver.boundaries = boundaries
+        solver.external_force = Vector3df(0.0, 0.0, -9.8)
+        solver.send()
         solver.simulate()

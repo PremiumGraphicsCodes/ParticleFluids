@@ -9,6 +9,9 @@ class SolverScene :
         self.id = -1
         self.time_step = 0.03
         self.effect_length = 2.25
+        self.fluids = []
+        self.boundaries = []
+        self.external_force = Vector3df(0.0, 0.0, -9.8)
 
     def create(self) :
         create_physics_command(PhysicsSolverCreateCommand.CommandNameLabel)
@@ -16,18 +19,18 @@ class SolverScene :
         self.id = get_result_int(PhysicsSolverCreateCommand.NewIdLabel)
         return is_ok
 
-    def send(self, fluids, boundaries, external_force) :
+    def send(self) :
         create_physics_command(PhysicsSolverUpdateCommand.CommandNameLabel)
         set_arg_int(PhysicsSolverUpdateCommand.IdLabel, self.id)
         fluid_ids = []
-        for f in fluids :
+        for f in self.fluids :
             fluid_ids.append(f.id)
         boundary_ids = []
-        for b in boundaries :
+        for b in self.boundaries :
             boundary_ids.append(b.id)
         set_arg_int_vector(PhysicsSolverUpdateCommand.FluidSceneIdsLabel, fluid_ids)
         set_arg_int_vector(PhysicsSolverUpdateCommand.CSGBoundarySceneIdsLabel, boundary_ids)
-        set_arg_vector3df(PhysicsSolverUpdateCommand.ExternalForceLabel, external_force)
+        set_arg_vector3df(PhysicsSolverUpdateCommand.ExternalForceLabel, self.external_force)
         set_arg_float(PhysicsSolverUpdateCommand.TimeStepLabel, self.time_step)
         set_arg_float(PhysicsSolverUpdateCommand.EffectLengthLabel, self.effect_length)
         is_ok = execute_command(self.scene.world)

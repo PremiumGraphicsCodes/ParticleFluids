@@ -28,13 +28,15 @@ class Simulator :
         
         fluids = []
         fluids.append(self.fluid.fluid)
+        self.solver.fluids = fluids
 
         boundaries = []
         boundaries.append(self.boundary.boundary)
+        self.solver.boundaries = boundaries
 
-        self.solver.time_step = 0.03
-        self.solver.effect_length = 2.25
-        self.solver.send(fluids, boundaries, Vector3df(0.0,0.0,-9.8))
+        self.solver.external_force = Vector3df(0.0,0.0,-9.8)
+
+        self.solver.send()
         self.solver.simulate()
 
     def start(self):
