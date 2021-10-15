@@ -16,6 +16,10 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
+MVPFluidSolver::MVPFluidSolver() :
+	externalForce(0.0, -9.8f, 0.0)
+{}
+
 MVPFluidSolver::MVPFluidSolver(const int id) :
 	IAnimator(id),
 	externalForce(0.0, -9.8f, 0.0)

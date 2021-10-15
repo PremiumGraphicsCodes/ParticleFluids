@@ -21,7 +21,7 @@ namespace Crystal {
 class MVPFluidSolver : public Scene::IAnimator
 {
 public:
-	MVPFluidSolver() {}
+	MVPFluidSolver();
 
 	explicit MVPFluidSolver(const int id);
 
