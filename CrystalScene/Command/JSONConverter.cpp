@@ -10,16 +10,39 @@ using namespace Crystal::Command;
 using namespace nlohmann;
 
 namespace glm {
+    void to_json(json& j, const Math::Vector2df& p) {
+        j = json{ {"x", p.x}, {"y", p.y} };
+    }
+
+    void from_json(const json& j, Math::Vector2df& p) {
+        p.x = j.at("x").get<float>();
+        p.y = j.at("y").get<float>();
+    }
+
     void to_json(json& j, const Math::Vector2dd& p) {
         j = json{ {"x", p.x}, {"y", p.y} };
+    }
+
+    void from_json(const json& j, Math::Vector2dd& p) {
+        p.x = j.at("x").get<double>();
+        p.y = j.at("y").get<double>();
+    }
+
+    void to_json(json& j, const Math::Vector3df& p) {
+        j = json{ {"x", p.x}, {"y", p.y}, {"z", p.z} };
+    }
+
+    void from_json(const json& j, Math::Vector3df& p) {
+        p.x = j.at("x").get<double>();       // get_to(T& arg) ‚Í arg = get<T>() ‚Æ“¯‚¶
+        p.y = j.at("y").get<double>();
+        p.z = j.at("z").get<double>();
     }
 
     void to_json(json& j, const Math::Vector3dd& p) {
         j = json{ {"x", p.x}, {"y", p.y}, {"z", p.z} };
     }
 
-    template<typename T>
-    void from_json(const json& j, Math::Vector3d<T>& p) {
+    void from_json(const json& j, Math::Vector3dd& p) {
         p.x = j.at("x").get<double>();       // get_to(T& arg) ‚Í arg = get<T>() ‚Æ“¯‚¶
         p.y = j.at("y").get<double>();
         p.z = j.at("z").get<double>();
@@ -63,7 +86,7 @@ json JSONConverter::toJSON(const std::any& value)
         return std::any_cast<Math::Vector2df>(value);
     }
     if (type == typeid(std::vector<Math::Vector2df>)) {
-        return {};
+        return std::any_cast<std::vector<Math::Vector2df>>(value);
     }
     if (type == typeid(std::vector<Math::Vector2dd>)) {
         return std::any_cast<std::vector<Math::Vector2dd>>(value);
@@ -105,6 +128,10 @@ void JSONConverter::fromJSON(const nlohmann::json& json, std::any& value)
         const int v = json;
         value = v;
     }
+    else if (type == typeid(bool)) {
+        const bool v = json;
+        value = v;
+    }
     else if (type == typeid(float)) {
         const float v = json;
         value = v;
@@ -119,6 +146,22 @@ void JSONConverter::fromJSON(const nlohmann::json& json, std::any& value)
     }
     else if (type == typeid(std::vector<int>)) {
         const std::vector<int> v = json;
+        value = v;
+    }
+    else if (type == typeid(Math::Vector2df)) {
+        const Math::Vector2df v = json;
+        value = v;
+    }
+    else if (type == typeid(Math::Vector2dd)) {
+        const Math::Vector2dd v = json;
+        value = v;
+    }
+    else if (type == typeid(std::vector<Math::Vector2dd>)) {
+        const std::vector<Math::Vector2dd> v = json;
+        value = v;
+    }
+    else if (type == typeid(Math::Vector3df)) {
+        const Math::Vector3df v = json;
         value = v;
     }
     else if (type == typeid(Math::Vector3dd)) {

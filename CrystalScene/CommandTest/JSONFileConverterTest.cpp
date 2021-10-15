@@ -15,26 +15,39 @@ TEST(JSONConverterTest, TestToJSONAny)
 	EXPECT_EQ(j["z"], 2);
 }
 
-/*
-TEST(JSONFileConverterTest, TestToJSONArgs)
-{
-	Arg<int> arg("Int", 123);
-	JSONConverter::toJSON(arg);
-}
-*/
-
-TEST(JSONConverterTest, TestToJsonCommand)
-{
-	MockCommand command;
-	const auto j = JSONConverter::toJSON(command);
-
-	for (auto& el : j.items()) {
-		std::cout << el.key() << " : " << el.value() << "\n";
-	}
-}
-
 TEST(JSONConverterTest, TestFromJSONAny)
 {
+	{
+		nlohmann::json j;
+		j["x"] = 0;
+		j["y"] = 1;
+		std::any a(Vector2df(0, 0));
+		JSONConverter::fromJSON(j, a);
+		Vector2df v1(0, 1);
+		auto v2 = std::any_cast<Vector2df>(a);
+		EXPECT_EQ(v1, v2);
+	}
+	{
+		nlohmann::json j;
+		j["x"] = 0;
+		j["y"] = 1;
+		std::any a(Vector2dd(0, 0));
+		JSONConverter::fromJSON(j, a);
+		Vector2dd v1(0, 1);
+		auto v2 = std::any_cast<Vector2dd>(a);
+		EXPECT_EQ(v1, v2);
+	}
+	{
+		nlohmann::json j;
+		j["x"] = 0;
+		j["y"] = 1;
+		j["z"] = 2;
+		std::any a(Vector3df(0, 0, 0));
+		JSONConverter::fromJSON(j, a);
+		Vector3df v1(0, 1, 2);
+		auto v2 = std::any_cast<Vector3df>(a);
+		EXPECT_EQ(v1, v2);
+	}
 	{
 		nlohmann::json j;
 		j["x"] = 0;

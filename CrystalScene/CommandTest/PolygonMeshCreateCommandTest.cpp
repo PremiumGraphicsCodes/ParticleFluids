@@ -9,3 +9,9 @@ TEST(PolygonMeshCreateCommandTest, TestWriteJSON)
 	PolygonMeshCreateCommand command;
 	command.writeJSON("PolygonMeshCreateWrite.json");
 }
+
+TEST(PolygonMeshCreateCommandTest, TestReadJSON)
+{
+	PolygonMeshCreateCommand command;
+	command.readJSON("PolygonMeshCreateWrite.json");
+}
