@@ -1,4 +1,5 @@
 from physics.physics_labels import *
+from physics.csg_boundary_scene import CSGBoundaryScene
 from scene.scene import Scene
 from CrystalPLI import *
 
@@ -13,13 +14,17 @@ class SolverScene :
         self.id = get_result_int(PhysicsSolverCreateCommand.NewIdLabel)
         return is_ok
 
-    def send(self, fluids, external_force) :
+    def send(self, fluids, boundaries, external_force) :
         create_physics_command(PhysicsSolverUpdateCommand.CommandNameLabel)
         set_arg_int(PhysicsSolverUpdateCommand.IdLabel, self.id)
         fluid_ids = []
         for f in fluids :
             fluid_ids.append(f.id)
+        boundary_ids = []
+        for b in boundaries :
+            boundary_ids.append(b.id)
         set_arg_int_vector(PhysicsSolverUpdateCommand.FluidSceneIdsLabel, fluid_ids)
+        set_arg_int_vector(PhysicsSolverUpdateCommand.CSGBoundarySceneIdsLabel, boundary_ids)
         set_arg_vector3df(PhysicsSolverUpdateCommand.ExternalForceLabel, external_force)
         is_ok = execute_command(self.scene.world)
         return is_ok

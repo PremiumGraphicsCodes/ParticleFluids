@@ -8,7 +8,7 @@ class WireFrameScene :
         self.id = -1
 
     def create_empty_wire_frame_scene(self, name, line_width, color, layer) :
-        create_scene_command(WireFrameCreateCommand.WireFrameAddLabel)
+        create_scene_command(WireFrameCreateCommand.WireFrameCreateLabel)
         set_arg_string(WireFrameCreateCommand.NameLabel, name)
         set_arg_float(WireFrameCreateCommand.LineWidthLabel, line_width)
         set_arg_color4f(WireFrameCreateCommand.ColorLabel, color)

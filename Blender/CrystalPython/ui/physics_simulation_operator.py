@@ -20,10 +20,12 @@ class BLBoundary :
         pass
 
     def build(self) :
-        self.scene = CSGBoundaryScene(model.scene)
+        self.boundary = CSGBoundaryScene(model.scene)
+        self.boundary.create()
+        self.boundary.send()
 
     def convert_to_polygon_mesh(self, name) :
-        box = self.scene.bounding_box
+        box = self.boundary.bounding_box
 
         positions = Vector3ddVector()
         positions.add(get_position(box, 0.0, 0.0, 0.0))
@@ -70,7 +72,10 @@ class Simulator :
         fluids = []
         fluids.append(self.fluid.fluid)
 
-        self.solver.send(fluids, Vector3df(0.0,0.0,-9.8))
+        boundaries = []
+        boundaries.append(self.boundary.boundary)
+
+        self.solver.send(fluids, boundaries, Vector3df(0.0,0.0,-9.8))
         self.solver.simulate()
 
     def start(self):

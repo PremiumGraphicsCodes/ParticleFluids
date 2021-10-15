@@ -2,6 +2,7 @@ import unittest
 from scene.particle_system_scene import *
 from physics.fluid_scene import *
 from physics.solver_scene import *
+from physics.csg_boundary_scene import CSGBoundaryScene
 from CrystalPLI import Vector3df
 
 class SolverSceneTest(unittest.TestCase):
@@ -22,5 +23,11 @@ class SolverSceneTest(unittest.TestCase):
         fluid.send()
         fluids.append(fluid)
 
-        solver.send(fluids, Vector3df(0.0, 0.0, -9.8))
+        boundaries = []
+        boundary = CSGBoundaryScene(scene)
+        boundary.create()
+        boundary.send()
+        boundaries.append(boundary)
+
+        solver.send(fluids, boundaries, Vector3df(0.0, 0.0, -9.8))
         solver.simulate()
