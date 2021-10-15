@@ -252,9 +252,9 @@ class TrimCommand:
    SpaceLabel="Space"
    NewIdLabel="NewId"
 class WireFrameCreateCommand:
-   WireFrameAddLabel="WireFrameAdd"
+   WireFrameCreateLabel="WireFrameCreate"
    PositionsLabel="Positions"
-   EdgesLabel="Edges"
+   EdgeIndicesLabel="EdgeIndices"
    LineWidthLabel="LineWidth"
    ColorLabel="Color"
    NameLabel="Name"

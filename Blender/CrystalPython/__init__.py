@@ -38,6 +38,7 @@ from ui.particle_system_export_operator import ParticleSystemExportOperator
 from ui.physics_simulation_operator import PhysicsSimulationOperator, PhysicsSimulationPanel
 from ui.particle_system_animation_operator import ParticleSystemAnimationOperator, ParticleSystemAnimationPanel
 from ui.animation_sample import *
+from ui.model import Model 
 
 class ParticleFluidsPanel(bpy.types.Panel):
   bl_space_type = "VIEW_3D"
@@ -76,6 +77,8 @@ def register():
   #bpy.types.Scene.tutorial_comment = StringProperty(default = "")
 
 def unregister():
+  Model.scene.clear(0)
+  Model.scene.clear(1)
   for c in classes:
     bpy.utils.unregister_class(c)
 
