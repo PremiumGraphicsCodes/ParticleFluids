@@ -36,6 +36,22 @@ class BLBoundary :
         positions.add(get_position(box, 1.0, 0.0, 1.0))
         positions.add(get_position(box, 1.0, 1.0, 1.0))
         positions.add(get_position(box, 0.0, 1.0, 1.0))
+
+        edges = []
+        edges.append((0,1))
+        edges.append((1,2))
+        edges.append((2,3))
+        edges.append((3,0))
+
+        edges.append((4,5))
+        edges.append((5,6))
+        edges.append((6,7))
+        edges.append((7,4))
+
+        edges.append((0,4))
+        edges.append((1,5))
+        edges.append((2,6))
+        edges.append((3,7))
         
         self.me = bpy.data.meshes.new(name = name + "Mesh")
         ob = bpy.data.objects.new(name, self.me)
@@ -43,7 +59,7 @@ class BLBoundary :
         coords = []
         for p in positions.values :
             coords.append( (p.x, p.y, p.z))
-        self.me.from_pydata(coords, [], [])
+        self.me.from_pydata(coords, edges, [])
         
         ob.show_name = True
         self.me.update()
