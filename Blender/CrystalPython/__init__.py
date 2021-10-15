@@ -37,7 +37,6 @@ from ui.particle_system_import_operator import ParticleSystemImportOperator
 from ui.particle_system_export_operator import ParticleSystemExportOperator
 from ui.physics_simulation_operator import PhysicsSimulationOperator, PhysicsSimulationPanel
 from ui.particle_system_animation_operator import ParticleSystemAnimationOperator, ParticleSystemAnimationPanel
-from ui.animation_sample import *
 from ui.model import Model 
 
 class ParticleFluidsPanel(bpy.types.Panel):
@@ -62,8 +61,6 @@ classes = [
   ParticleSystemImportOperator,
   ParticleSystemExportOperator,
   ParticleSystemGenerateOperator,
-  SAMPLE31_OT_RotateObjectByMouseDragging,
-  SAMPLE31_PT_RotateObjectByMouseDragging,
   PhysicsSimulationOperator,
   PhysicsSimulationPanel,
   ParticleSystemAnimationOperator,
