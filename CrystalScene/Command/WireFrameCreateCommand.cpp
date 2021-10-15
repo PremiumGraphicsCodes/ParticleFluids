@@ -3,13 +3,15 @@
 #include "../Scene/WireFrameAttribute.h"
 #include "../Scene/WireFrameScene.h"
 
+#include "Crystal/Shape/WireFrameBuilder.h"
+
 #include "PublicLabel.h"
 
 namespace WireFrameCreateLabels
 {
-	PublicLabel WireFrameAddLabel = "WireFrameAdd";
+	PublicLabel WireFrameCreateLabel = "WireFrameCreate";
 	PublicLabel PositionsLabel = "Positions";
-	PublicLabel EdgesLabel = "Edges";
+	PublicLabel EdgeIndicesLabel = "EdgeIndices";
 	PublicLabel LineWidthLabel = "LineWidth";
 	PublicLabel ColorLabel = "Color";
 	PublicLabel NameLabel = "Name";
@@ -24,14 +26,14 @@ using namespace Crystal::Command;
 
 WireFrameCreateCommand::Args::Args() :
 	positions(WireFrameCreateLabels::PositionsLabel, {}),
-	edges(WireFrameCreateLabels::EdgesLabel, {}),
+	edgeIndices(WireFrameCreateLabels::EdgeIndicesLabel, {}),
 	lineWidth(WireFrameCreateLabels::LineWidthLabel, 1.0f),
 	color(WireFrameCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
 	name(WireFrameCreateLabels::NameLabel, std::string("")),
 	layer(WireFrameCreateLabels::LayerLabel, 1)
 {
 	add(&positions);
-	add(&edges);
+	add(&edgeIndices);
 	add(&lineWidth);
 	add(&color);
 	add(&name);
@@ -46,17 +48,24 @@ WireFrameCreateCommand::Results::Results() :
 
 std::string WireFrameCreateCommand::getName()
 {
-	return WireFrameCreateLabels::WireFrameAddLabel;
+	return WireFrameCreateLabels::WireFrameCreateLabel;
 }
 
 bool WireFrameCreateCommand::execute(World* world)
 {
 	const auto& positions = args.positions.getValue();
-	const auto& edges = args.edges.getValue();
+	const auto& edgeIndices = args.edgeIndices.getValue();
 	WireFrameAttribute attr;
 	attr.color = args.color.getValue();
 	attr.width = args.lineWidth.getValue();
 	const auto& name = args.name.getValue();
+
+	std::vector<WireFrameEdge> edges;
+	for (int i = 0; i < edgeIndices.size(); i+=2) {
+		const auto startIndex = edgeIndices[i];
+		const auto endIndex = edgeIndices[i + 1];
+		edges.emplace_back(startIndex, endIndex);
+	}
 	auto shape = std::make_unique<WireFrame>(positions, edges);
 	auto newId = world->getNextSceneId();
 	auto scene = new WireFrameScene(newId, name, std::move(shape), attr);

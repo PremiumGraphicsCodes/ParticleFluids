@@ -33,9 +33,9 @@ namespace glm {
     }
 
     void from_json(const json& j, Math::Vector3df& p) {
-        p.x = j.at("x").get<double>();       // get_to(T& arg) ‚Í arg = get<T>() ‚Æ“¯‚¶
-        p.y = j.at("y").get<double>();
-        p.z = j.at("z").get<double>();
+        p.x = j.at("x").get<float>();       // get_to(T& arg) ‚Í arg = get<T>() ‚Æ“¯‚¶
+        p.y = j.at("y").get<float>();
+        p.z = j.at("z").get<float>();
     }
 
     void to_json(json& j, const Math::Vector3dd& p) {
@@ -88,8 +88,14 @@ json JSONConverter::toJSON(const std::any& value)
     if (type == typeid(std::vector<Math::Vector2df>)) {
         return std::any_cast<std::vector<Math::Vector2df>>(value);
     }
+    if (type == typeid(Math::Vector2dd)) {
+        return std::any_cast<Math::Vector2dd>(value);
+    }
     if (type == typeid(std::vector<Math::Vector2dd>)) {
         return std::any_cast<std::vector<Math::Vector2dd>>(value);
+    }
+    if (type == typeid(Math::Vector3df)) {
+        return std::any_cast<Math::Vector3df>(value);
     }
     if (type == typeid(Math::Vector3dd)) {
         return std::any_cast<Math::Vector3dd>(value);

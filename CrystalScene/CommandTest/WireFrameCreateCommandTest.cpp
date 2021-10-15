@@ -1,32 +1,20 @@
 #include "pch.h"
 
-/*
-#include "../Command/Command.h"
-#include "../Command/CommandFactory.h"
-
-#include "../Command/Public/WireFrameCreateLabels.h"
-
-#include "../../Crystal/Shape/WireFrameBuilder.h"
-#include "../../Crystal/Math/Line3d.h"
+#include "../Command/WireFrameCreateCommand.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-TEST(WireFrameCreateCommandTest, TestExecute)
+TEST(WireFrameCreateCommandTest, TestWriteJSON)
 {
-	World world;
-
-	WireFrameBuilder builder;
-	builder.add(Line3dd(Vector3dd(0,0,0), Vector3dd(1,0,0)), 2);
-
-	auto command = CommandFactory::create(WireFrameCreateLabels::WireFrameAddLabel);
-	command->setArg(WireFrameCreateLabels::PositionsLabel, builder.getPositions());
-	command->setArg(WireFrameCreateLabels::EdgesLabel, builder.getEdges());
-	EXPECT_TRUE(command->execute(&world));
-
-	const auto newId = std::any_cast<int>(command->getResult(WireFrameCreateLabels::NewIdLabel));
-	EXPECT_EQ(1, newId);
+	WireFrameCreateCommand command;
+	command.writeJSON("WireFrameCreateWrite.json");
 }
-*/
+
+TEST(WireFrameCreateCommandTest, TestReadJSON)
+{
+	WireFrameCreateCommand command;
+	command.readJSON("WireFrameCreateWrite.json");
+}
