@@ -29,6 +29,12 @@
     <ClCompile Include="STLFileReaderTest.cpp">
       <Filter>STL</Filter>
     </ClCompile>
+    <ClCompile Include="TXTFileWriterTest.cpp">
+      <Filter>TXT</Filter>
+    </ClCompile>
+    <ClCompile Include="TXTFileReaderTest.cpp">
+      <Filter>TXT</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -42,6 +48,9 @@
     </Filter>
     <Filter Include="STL">
       <UniqueIdentifier>{4c949bac-5d6c-4dc7-a794-96f94ea89520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TXT">
+      <UniqueIdentifier>{8bdc56ae-5dc7-4fbd-8f7a-61c7e8085333}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
