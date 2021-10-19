@@ -10,13 +10,13 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-TEST(PCDFileExportCommand, TestWriteJSON)
+TEST(PCDFileExportCommandTest, TestWriteJSON)
 {
 	PCDFileExportCommand command;
 	command.writeJSON("PCDFileExportCommandWrite.json");
 }
 
-TEST(PCDFileExportCommand, TestReadJSON)
+TEST(PCDFileExportCommandTest, TestReadJSON)
 {
 	PCDFileExportCommand command;
 	command.readJSON("PCDFileExportCommandWrite.json");

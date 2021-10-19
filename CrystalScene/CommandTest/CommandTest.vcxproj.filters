@@ -36,6 +36,12 @@
       <Filter>File\OBJ</Filter>
     </ClCompile>
     <ClCompile Include="JSONFileConverterTest.cpp" />
+    <ClCompile Include="TXTFileImportCommandTest.cpp">
+      <Filter>File\TXT</Filter>
+    </ClCompile>
+    <ClCompile Include="TXTFileExportCommandTest.cpp">
+      <Filter>File\TXT</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -76,6 +82,9 @@
     </Filter>
     <Filter Include="Scene\Shape\WireFrame">
       <UniqueIdentifier>{8ecc9919-d7eb-4bda-97eb-1dbae90c367c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File\TXT">
+      <UniqueIdentifier>{4fd9e299-c510-4088-a6eb-01519cd16bdd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
