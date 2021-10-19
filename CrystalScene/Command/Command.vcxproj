@@ -211,6 +211,8 @@
     <ClInclude Include="TriangleMeshGetCommand.h" />
     <ClInclude Include="TriangleMeshSetCommand.h" />
     <ClInclude Include="TrimCommand.h" />
+    <ClInclude Include="TXTFileExportCommand.h" />
+    <ClInclude Include="TXTFileImportCommand.h" />
     <ClInclude Include="WireFrameCreateCommand.h" />
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +267,8 @@
     <ClCompile Include="TriangleMeshGetCommand.cpp" />
     <ClCompile Include="TriangleMeshSetCommand.cpp" />
     <ClCompile Include="TrimCommand.cpp" />
+    <ClCompile Include="TXTFileExportCommand.cpp" />
+    <ClCompile Include="TXTFileImportCommand.cpp" />
     <ClCompile Include="WireFrameCreateCommand.cpp" />
   </ItemGroup>
   <ItemGroup>

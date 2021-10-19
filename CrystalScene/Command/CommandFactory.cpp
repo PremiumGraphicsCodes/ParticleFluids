@@ -37,9 +37,11 @@
 #include "OBJFileImportCommand.h"
 #include "STLFileImportCommand.h"
 #include "PCDFileImportCommand.h"
+#include "TXTFileImportCommand.h"
 #include "OBJFileExportCommand.h"
 #include "STLFileExportCommand.h"
 #include "PCDFileExportCommand.h"
+#include "TXTFileExportCommand.h"
 #include "SceneGetCommand.h"
 #include "SceneSetCommand.h"
 #include "CameraGetCommand.h"
@@ -160,6 +162,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == PCDFileImportCommand::getName()) {
 		return std::make_unique<PCDFileImportCommand>();
 	}
+	else if (name == TXTFileExportCommand::getName()) {
+		return std::make_unique<TXTFileExportCommand>();
+	}
 	else if (name == OBJFileExportCommand::getName()) {
 		return std::make_unique<OBJFileExportCommand>();
 	}
@@ -168,6 +173,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == PCDFileExportCommand::getName()) {
 		return std::make_unique<PCDFileExportCommand>();
+	}
+	else if (name == TXTFileExportCommand::getName()) {
+		return std::make_unique<TXTFileExportCommand>();
 	}
 	else if (name == LightSetCommand::getName()) {
 		return std::make_unique<LightSetCommand>();

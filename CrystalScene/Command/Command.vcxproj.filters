@@ -144,6 +144,12 @@
     </ClInclude>
     <ClInclude Include="PublicLabel.h" />
     <ClInclude Include="JSONConverter.h" />
+    <ClInclude Include="TXTFileImportCommand.h">
+      <Filter>File\TXT</Filter>
+    </ClInclude>
+    <ClInclude Include="TXTFileExportCommand.h">
+      <Filter>File\TXT</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -286,6 +292,12 @@
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClCompile>
     <ClCompile Include="JSONConverter.cpp" />
+    <ClCompile Include="TXTFileImportCommand.cpp">
+      <Filter>File\TXT</Filter>
+    </ClCompile>
+    <ClCompile Include="TXTFileExportCommand.cpp">
+      <Filter>File\TXT</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -347,6 +359,9 @@
     </Filter>
     <Filter Include="Scene\Shape\TriangleMesh">
       <UniqueIdentifier>{6b7ee31a-8822-46b4-bcba-b649cd9d78d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File\TXT">
+      <UniqueIdentifier>{d656cd53-3765-411c-b9b5-78e4ceda7b34}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
