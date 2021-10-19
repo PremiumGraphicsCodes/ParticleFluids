@@ -4,15 +4,16 @@ import unittest
 
 from CrystalPLI import *
 
-from scene.particle_system_scene_test import *
-from scene.wire_frame_scene_test import *
-from scene.polygon_mesh_scene_test import *
-from scene.triangle_mesh_scene_test import *
-from voxel_scene_test import *
-from physics.fluid_scene_test import *
-from physics.solver_scene_test import *
-from physics.csg_boundary_scene_test import *
-from physics.surface_builder_test import *
+from scene.particle_system_scene_test import ParticleSystemSceneTest
+from scene.wire_frame_scene_test import WireFrameSceneTest
+from scene.polygon_mesh_scene_test import PolygonMeshSceneTest
+from scene.triangle_mesh_scene_test import TriangleMeshSceneTest
+from scene.file_io_test import FileIOTest
+from voxel_scene_test import VoxelSceneTest
+from physics.fluid_scene_test import FluidSceneTest
+from physics.solver_scene_test import SolverSceneTest
+from physics.csg_boundary_scene_test import CSGBoundarySceneTest
+from physics.surface_builder_test import SurfaceBuilderTest
 #print('doc=', CrystalPLI.__doc__)
 
 class TestVector2df(unittest.TestCase):
@@ -106,6 +107,7 @@ class TestRunner(unittest.TestCase):
         test_suite.addTest(unittest.makeSuite(WireFrameSceneTest))
         test_suite.addTest(unittest.makeSuite(PolygonMeshSceneTest))
         test_suite.addTest(unittest.makeSuite(TriangleMeshSceneTest))
+        test_suite.addTest(unittest.makeSuite(FileIOTest))
         test_suite.addTest(unittest.makeSuite(VoxelSceneTest))
         test_suite.addTest(unittest.makeSuite(SolverSceneTest))
         test_suite.addTest(unittest.makeSuite(CSGBoundarySceneTest))

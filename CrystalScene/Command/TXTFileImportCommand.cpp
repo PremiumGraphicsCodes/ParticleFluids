@@ -9,7 +9,7 @@ namespace TXTFileImportLabels
 {
 	PublicLabel CommandNameLabel = "TXTFileImport";
 	PublicLabel FilePathLabel = "FilePath";
-	PublicLabel NewIdLabel = "NewId";
+	PublicLabel IdLabel = "Id";
 }
 
 using namespace Crystal::Shape;
@@ -18,15 +18,14 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 TXTFileImportCommand::Args::Args() :
-	filePath(TXTFileImportLabels::FilePathLabel, "")
+	filePath(TXTFileImportLabels::FilePathLabel, ""),
+	id(TXTFileImportLabels::IdLabel, -1)
 {
 	add(&filePath);
 }
 
-TXTFileImportCommand::Results::Results() :
-	newId(TXTFileImportLabels::NewIdLabel, -1)
+TXTFileImportCommand::Results::Results()
 {
-	add(&newId);
 }
 
 std::string TXTFileImportCommand::getName()
@@ -34,7 +33,7 @@ std::string TXTFileImportCommand::getName()
 	return TXTFileImportLabels::CommandNameLabel;
 }
 
-bool TXTFileImportCommand::execute(Crystal::Scene::World* scene)
+bool TXTFileImportCommand::execute(Crystal::Scene::World* world)
 {
 	TXTFileReader reader;
 	const auto isOk = reader.read(args.filePath.getValue());
@@ -43,12 +42,14 @@ bool TXTFileImportCommand::execute(Crystal::Scene::World* scene)
 		return false;
 	}
 	const auto& positions = reader.getPositions();
+
+	auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.id.getValue());
+	if (scene == nullptr) {
+		return false;
+	}
+
 	ParticleAttribute attr;
-	attr.color = glm::vec4(0, 0, 0, 0);
-	attr.size = 1.0;
-	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
-	auto s = new ParticleSystemScene(scene->getNextSceneId(), "TXT", std::move(shape));
-	scene->getScenes()->addScene(s);
-	results.newId.setValue(s->getId());
+	auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
+	scene->resetShape(std::move(ps));
 	return true;
 }

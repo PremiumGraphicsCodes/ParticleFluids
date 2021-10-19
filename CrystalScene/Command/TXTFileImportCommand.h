@@ -13,15 +13,13 @@ public:
 	{
 		Args();
 
+		Arg< int > id;
 		Arg< std::string > filePath;
 	};
 
 	struct Results : IResults
 	{
 		Results();
-
-		Result<int> newId;
-		//Result< int > newId;
 	};
 
 	TXTFileImportCommand() :

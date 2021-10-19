@@ -311,3 +311,4 @@ Blender/CrystalPython/ui/__pycache__/particle_system_animation_operator.cpython-
 /Blender/CrystalPythonTest/scene/__pycache__/particle_system_scene_test.cpython-39.pyc
 Blender/CrystalPython/ui/__pycache__/bl_boundary.cpython-39.pyc
 /Blender/CrystalPython/env
+*.pyc

@@ -251,6 +251,14 @@ class TrimCommand:
    ShapeIdLabel="ShapeId"
    SpaceLabel="Space"
    NewIdLabel="NewId"
+class TXTFileExportCommand:
+   CommandNameLabel="TXTFileExport"
+   FilePathLabel="FilePath"
+   IdLabel="Id"
+class TXTFileImportCommand:
+   CommandNameLabel="TXTFileImport"
+   FilePathLabel="FilePath"
+   IdLabel="Id"
 class WireFrameCreateCommand:
    WireFrameCreateLabel="WireFrameCreate"
    PositionsLabel="Positions"
