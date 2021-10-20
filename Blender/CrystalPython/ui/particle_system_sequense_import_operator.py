@@ -9,9 +9,6 @@ class ParticleSystemSequenceImporter :
     def __init__(self) :
         self.ps = None
         self.__running = False
-        self.px = 0.0
-        self.py = 0.0
-        self.pz = 0.0
 
     def init(self):
         if self.ps == None :
@@ -26,16 +23,11 @@ class ParticleSystemSequenceImporter :
         self.__running = False
 
     def step(self):
-        positions = Vector3ddVector()
-        positions.add(Vector3dd(self.px,self.py,self.pz))
-        self.px += 1.0
-        self.ps.ps.set_positions(positions)
-        self.ps.update()
-
         time_step = bpy.context.scene.frame_current
         file_path = os.path.join("tmp_txt", "test" + str(time_step) + ".txt")
 
-        FileIO.export_txt(model.scene, self.ps.ps.id, file_path)
+        FileIO.import_txt(model.scene, self.ps.ps.id, file_path)
+        self.ps.update()
 
     def is_running(self):
         return self.__running
@@ -43,7 +35,7 @@ class ParticleSystemSequenceImporter :
 animator = ParticleSystemSequenceImporter()
 
 class ParticleSystemSequenceImportOperator(bpy.types.Operator):
-    bl_idname = "pg.particlesystemimportoperator"
+    bl_idname = "pg.particlesystemsequenceimportoperator"
     bl_label = "ParticleSystem"
     bl_description = "Hello"
 

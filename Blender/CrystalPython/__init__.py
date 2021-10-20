@@ -53,6 +53,7 @@ class ParticleFluidsPanel(bpy.types.Panel):
     layout.operator(ParticleSystemGenerateOperator.bl_idname, text="PSGenerator")
     layout.operator(ParticleSystemImportOperator.bl_idname, text="PSImport")
     layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
+#    layout.operator(ParticleSystemSequenceImportOperator.bl_idname, text="PSSequenceImport")
     #layout.operator(PhysicsSimulationOperator.bl_idname, text="Simulation")
 
 classes = [
