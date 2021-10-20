@@ -37,6 +37,7 @@ from ui.particle_system_import_operator import ParticleSystemImportOperator
 from ui.particle_system_export_operator import ParticleSystemExportOperator
 from ui.physics_simulation_operator import PhysicsSimulationOperator, PhysicsSimulationPanel
 from ui.particle_system_animation_operator import ParticleSystemAnimationOperator, ParticleSystemAnimationPanel
+from ui.particle_system_sequense_import_operator import ParticleSystemSequenceImportOperator, ParticleSystemSequenceImportPanel
 from ui.model import Model 
 
 class ParticleFluidsPanel(bpy.types.Panel):
@@ -65,6 +66,8 @@ classes = [
   PhysicsSimulationPanel,
   ParticleSystemAnimationOperator,
   ParticleSystemAnimationPanel,
+  ParticleSystemSequenceImportOperator,
+  ParticleSystemSequenceImportPanel,
 ]
 
 def register():
