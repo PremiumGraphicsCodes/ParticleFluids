@@ -12,6 +12,7 @@ class ParticleSystemAnimator :
         self.px = 0.0
         self.py = 0.0
         self.pz = 0.0
+        self.time_step = 0
 
     def init(self):
         if self.ps == None :
@@ -26,14 +27,17 @@ class ParticleSystemAnimator :
         self.__running = False
 
     def step(self):
+        if self.time_step == bpy.context.scene.frame_current :
+            return
+
         positions = Vector3ddVector()
         positions.add(Vector3dd(self.px,self.py,self.pz))
         self.px += 1.0
         self.ps.ps.set_positions(positions)
         self.ps.update()
 
-        time_step = bpy.context.scene.frame_current
-        file_path = os.path.join("tmp_txt", "test" + str(time_step) + ".txt")
+        self.time_step = bpy.context.scene.frame_current
+        file_path = os.path.join("tmp_txt", "test" + str(self.time_step) + ".txt")
 
         FileIO.export_txt(model.scene, self.ps.ps.id, file_path)
 

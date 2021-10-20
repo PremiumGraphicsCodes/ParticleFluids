@@ -38,11 +38,11 @@ bool TXTFileExportCommand::execute(World* world)
 {
 	const auto id = args.id.getValue();
 
-	auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(id);
+	auto scene = world->getScenes()->findSceneById<IParticleSystemScene*>(id);
 	if (scene == nullptr) {
 		return false;
 	}
-	const auto& ps = scene->getShape()->getPositions();
+	const auto& ps = scene->getPositions();
 
 	TXTFileWriter writer;
 	const auto isOk = writer.write(args.filePath.getValue(), ps);
