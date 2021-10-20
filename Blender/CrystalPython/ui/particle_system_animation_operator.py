@@ -2,6 +2,8 @@ import bpy
 from ui.model import Model as model
 from ui.bl_particle_system import BLParticleSystem
 from CrystalPLI import Vector3dd, Vector3ddVector
+from scene.file_io import FileIO
+import os
 
 class ParticleSystemAnimator :
     def __init__(self) :
@@ -29,6 +31,11 @@ class ParticleSystemAnimator :
         self.px += 1.0
         self.ps.ps.set_positions(positions)
         self.ps.update()
+
+        time_step = bpy.context.scene.frame_current
+        file_path = os.path.join("tmp_txt", "test" + str(time_step) + ".txt")
+
+        FileIO.export_txt(model.scene, self.ps.ps.id, file_path)
 
     def is_running(self):
         return self.__running
