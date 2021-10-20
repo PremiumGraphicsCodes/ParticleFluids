@@ -22,6 +22,7 @@ TXTFileImportCommand::Args::Args() :
 	id(TXTFileImportLabels::IdLabel, -1)
 {
 	add(&filePath);
+	add(&id);
 }
 
 TXTFileImportCommand::Results::Results()

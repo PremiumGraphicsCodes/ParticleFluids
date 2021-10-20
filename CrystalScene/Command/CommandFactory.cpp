@@ -162,8 +162,8 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == PCDFileImportCommand::getName()) {
 		return std::make_unique<PCDFileImportCommand>();
 	}
-	else if (name == TXTFileExportCommand::getName()) {
-		return std::make_unique<TXTFileExportCommand>();
+	else if (name == TXTFileImportCommand::getName()) {
+		return std::make_unique<TXTFileImportCommand>();
 	}
 	else if (name == OBJFileExportCommand::getName()) {
 		return std::make_unique<OBJFileExportCommand>();

@@ -17,7 +17,7 @@ using namespace Crystal::Command;
 using namespace Crystal::IO;
 
 TXTFileExportCommand::Args::Args() :
-	id(TXTFileExportLabels::IdLabel, {}),
+	id(TXTFileExportLabels::IdLabel, -1),
 	filePath(TXTFileExportLabels::FilePathLabel, "")
 {
 	add(&id);

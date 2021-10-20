@@ -1,12 +1,21 @@
 import unittest
-import CrystalPLI
+from CrystalPLI import * #World, Vector3dd, Vector3ddVector
 from scene.particle_system_scene import ParticleSystemScene
+from scene.file_io import FileIO
 #from scene.wire_frame_scene import *
 from scene.scene import Scene
 
 class FileIOTest(unittest.TestCase):
-    def test_export_txt(self):
-        pass
+    def test_export_txt(self) :
+        scene = Scene(World())
+        ps = self.__create_test_particle_system(scene)
+        FileIO.export_txt(scene, ps.id, "TXTExportTest.txt")
+
+    def test_import_txt(self) :
+        scene = Scene(World())
+        ps = ParticleSystemScene(scene)
+        ps.create_empty("")
+        FileIO.import_txt(scene, ps.id, "TXTExportTest.txt")
 
     def __create_test_particle_system(self, scene) :
         positions = Vector3ddVector()
