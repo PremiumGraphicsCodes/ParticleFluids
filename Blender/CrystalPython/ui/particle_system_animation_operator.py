@@ -97,3 +97,18 @@ class ParticleSystemAnimationPanel(bpy.types.Panel):
             self.layout.operator(op.bl_idname,text="開始", icon='PLAY')
         else:
             self.layout.operator(op.bl_idname,text="終了", icon='PAUSE')
+
+classes = [
+  ParticleSystemAnimationOperator,
+  ParticleSystemAnimationPanel,
+]
+
+
+class ParticleSystemAnimationUI :
+    def register():
+        for c in classes:
+            bpy.utils.register_class(c)
+
+    def unregister():
+        for c in classes:
+            bpy.utils.unregister_class(c)

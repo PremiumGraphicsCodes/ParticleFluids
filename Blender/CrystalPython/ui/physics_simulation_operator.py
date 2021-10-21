@@ -138,6 +138,8 @@ class PhysicsSimulationPanel(bpy.types.Panel):
     bl_context = "objectmode"
 
     def draw(self, context):
+        self.layout.prop(context.scene, "stiffness_prop", text="Stiffness")
+
         if not simulator.is_running():
             self.layout.operator(PhysicsSimulationOperator.bl_idname,text="Start", icon='PLAY')
         else:

@@ -36,7 +36,7 @@ from ui.particle_system_generate_operator import ParticleSystemGenerateOperator
 from ui.particle_system_import_operator import ParticleSystemImportOperator
 from ui.particle_system_export_operator import ParticleSystemExportOperator
 from ui.physics_simulation_operator import PhysicsSimulationUI
-from ui.particle_system_animation_operator import ParticleSystemAnimationOperator, ParticleSystemAnimationPanel
+from ui.particle_system_animation_operator import ParticleSystemAnimationUI
 from ui.particle_system_sequense_import_operator import ParticleSystemSequenceImportOperator, ParticleSystemSequenceImportPanel
 from ui.model import Model 
 from ui.panel_sample import SampleUI
@@ -54,8 +54,6 @@ class ParticleFluidsPanel(bpy.types.Panel):
     layout.operator(ParticleSystemGenerateOperator.bl_idname, text="PSGenerator")
     layout.operator(ParticleSystemImportOperator.bl_idname, text="PSImport")
     layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
-#    layout.operator(ParticleSystemSequenceImportOperator.bl_idname, text="PSSequenceImport")
-    #layout.operator(PhysicsSimulationOperator.bl_idname, text="Simulation")
 
 classes = [
   ParticleFluidsPanel,
@@ -64,8 +62,6 @@ classes = [
   ParticleSystemImportOperator,
   ParticleSystemExportOperator,
   ParticleSystemGenerateOperator,
-  ParticleSystemAnimationOperator,
-  ParticleSystemAnimationPanel,
   ParticleSystemSequenceImportOperator,
   ParticleSystemSequenceImportPanel,
 ]
@@ -73,6 +69,7 @@ classes = [
 def register():
   for c in classes:
     bpy.utils.register_class(c)
+  ParticleSystemAnimationUI.register()
   PhysicsSimulationUI.register()
   SampleUI.register()
 
@@ -83,6 +80,7 @@ def unregister():
   Model.scene.clear(1)
   for c in classes:
     bpy.utils.unregister_class(c)
+  ParticleSystemAnimationUI.unregister()
   PhysicsSimulationUI.unregister()
   SampleUI.unregister()
 
