@@ -34,37 +34,20 @@ from ui.voxelizer_operator import VoxelizerUI
 from ui.meshing_operator import MeshingUI
 from ui.particle_system_generate_operator import ParticleSystemGenerateUI
 from ui.particle_system_import_operator import ParticleSystemImportUI
-from ui.particle_system_export_operator import ParticleSystemExportOperator
+from ui.particle_system_export_operator import ParticleSystemExportUI
 from ui.physics_simulation_operator import PhysicsSimulationUI
 from ui.particle_system_animation_operator import ParticleSystemAnimationUI
 from ui.particle_system_sequense_import_operator import ParticleSystemSequenceImportUI
 from ui.model import Model 
 from ui.panel_sample import SampleUI
 
-class ParticleFluidsPanel(bpy.types.Panel):
-  bl_space_type = "VIEW_3D"
-  bl_region_type = "UI"
-  bl_category = "ParticleFluids"
-  bl_label = "PanelTitle"
-
-  def draw(self, context):
-    layout = self.layout
-#    layout.operator(VoxelizerOperator.bl_idname, text="Voxelizer")
-    layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
-
-classes = [
-  ParticleFluidsPanel,
-  ParticleSystemExportOperator,
-]
-
 def register():
-  for c in classes:
-    bpy.utils.register_class(c)
   VoxelizerUI.register()
   MeshingUI.register()
   ParticleSystemGenerateUI.register()
   ParticleSystemAnimationUI.register()
   ParticleSystemImportUI.register()
+  ParticleSystemExportUI.register()
   ParticleSystemSequenceImportUI.register()
   PhysicsSimulationUI.register()
   SampleUI.register()
@@ -74,13 +57,13 @@ def register():
 def unregister():
   Model.scene.clear(0)
   Model.scene.clear(1)
-  for c in classes:
-    bpy.utils.unregister_class(c)
+
   MeshingUI.unregister()
   VoxelizerUI.unregister()
   ParticleSystemGenerateUI.unregister()
   ParticleSystemAnimationUI.unregister()
   ParticleSystemImportUI.unregister()
+  ParticleSystemExportUI.unregister()
   ParticleSystemSequenceImportUI.unregister()
   PhysicsSimulationUI.unregister()
   SampleUI.unregister()
