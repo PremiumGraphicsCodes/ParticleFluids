@@ -1,4 +1,4 @@
-#include "../../CrystalViewer/AppBase/IMenu.h"
+#include "CrystalScene/AppBase/IMenu.h"
 
 namespace Crystal {
 	namespace UI {

@@ -19,7 +19,7 @@ struct SphereObject
 {
     Crystal::Math::Vector3dd         color;
     MaterialType    type;
-    Crystal::Math::Sphere3d sphere;
+    Crystal::Math::Sphere3dd sphere;
 
     SphereObject( double r, Crystal::Math::Vector3dd pos, Crystal::Math::Vector3dd col, MaterialType mat )
     : sphere( pos, r )

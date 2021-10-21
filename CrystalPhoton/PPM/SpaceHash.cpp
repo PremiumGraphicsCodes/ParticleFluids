@@ -25,7 +25,7 @@ void SpaceHash::build_hash_grid
 
     // determine hash table size
     // we now find the bounding box of all the measurement points inflated by the initial radius
-    scene.hpbbox = Box3d::createDegeneratedBox();
+    scene.hpbbox = Box3dd::createDegeneratedBox();
     auto photon_count = 0;
     for (auto itr = scene.hitpoints.begin(); itr != scene.hitpoints.end(); ++itr)
     {

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../../Crystal/Scene/IParticleSystemScene.h"
+#include "../../CrystalScene/Scene/IParticleSystemScene.h"
 //#include "ParticleAttribute.h"
 
 //#include "IParticleSystemScene.h"
-#include "../../Crystal/Scene/ParticleSystemPresenter.h"
+#include "../../CrystalScene/Scene/ParticleSystemPresenter.h"
 
 namespace Crystal {
 	namespace Photon {
@@ -29,7 +29,7 @@ public:
 
 	Scene::SceneType getType() const override { return getTypeName(); }
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 	void addPhoton(Photon* p);
 

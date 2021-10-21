@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     auto c = new Vector3dd[ w * h ];
 
     Scene scene;
-    scene.hpbbox = Box3d::createDegeneratedBox();
+    scene.hpbbox = Box3dd::createDegeneratedBox();
 
     RayTracer rayTracer;
     rayTracer.trace_ray(w, h, scene);

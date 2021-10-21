@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Scene/IParticleSystemPresenter.h"
+#include "../../CrystalScene/Scene/IPresenter.h"
 
 namespace Crystal {
 	namespace Scene {

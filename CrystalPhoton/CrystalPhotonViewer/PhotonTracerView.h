@@ -1,15 +1,15 @@
 #pragma once
 
-#include "../../CrystalViewer/AppBase/IOkCancelView.h"
+#include "CrystalScene/AppBase/IOkCancelView.h"
 
-#include "../../Crystal/Scene/World.h"
-#include "../../CrystalViewer/AppBase/Canvas.h"
+#include "CrystalScene/Scene/World.h"
+#include "CrystalScene/AppBase/Canvas.h"
 
-#include "../../CrystalViewer/AppBase/SpotLightView.h"
+#include "CrystalScene/AppBase/SpotLightView.h"
 
 #include "../CrystalPhoton/PhotonTracer.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 #include "../CrystalPhoton/PhotonCloudScene.h"
 
 namespace Crystal {

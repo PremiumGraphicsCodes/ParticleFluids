@@ -13,10 +13,10 @@ PhotonCloudScene::PhotonCloudScene(const int id, const std::string& name) :
 	presenter = std::make_unique<PhotonCloudPresenter>(this);
 }
 
-Box3d PhotonCloudScene::getBoundingBox() const
+Box3dd PhotonCloudScene::getBoundingBox() const
 {
 	if (photons.empty()) {
-		return Box3d::createDegeneratedBox();
+		return Box3dd::createDegeneratedBox();
 	}
 	Box3d bb(photons.front()->getPosition());
 	for (auto p : photons) {

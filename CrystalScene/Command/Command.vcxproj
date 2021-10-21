@@ -271,11 +271,6 @@
     <ClCompile Include="TXTFileImportCommand.cpp" />
     <ClCompile Include="WireFrameCreateCommand.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Scene\Scene.vcxproj">
-      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>

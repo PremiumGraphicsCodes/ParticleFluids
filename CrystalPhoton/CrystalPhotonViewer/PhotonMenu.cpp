@@ -1,7 +1,7 @@
 #include "PhotonMenu.h"
 
-#include "../../CrystalViewer/AppBase/imgui.h"
-#include "../../CrystalViewer/AppBase/ControlPanel.h"
+#include "CrystalScene/AppBase/imgui.h"
+#include "CrystalScene/AppBase/ControlPanel.h"
 
 #include "PCSphereView.h"
 

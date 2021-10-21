@@ -4,8 +4,8 @@
 #include "PhotonCloudScene.h"
 #include "Photon.h"
 
-#include "../../Crystal/Scene/SceneShader.h"
-#include "../../Crystal/Scene/PointShaderScene.h"
+#include "../../CrystalScene/Scene/SceneShader.h"
+#include "../../CrystalScene/Scene/PointShaderScene.h"
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;

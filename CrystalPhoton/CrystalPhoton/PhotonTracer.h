@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Shape/IParticle.h"
 #include "../../Crystal/Graphics/SpotLight.h"
-#include "../../CrystalSpace/CrystalAlgo/CompactSpaceHash3d.h"
+#include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 
 namespace Crystal {
 	namespace Photon {
@@ -22,7 +22,7 @@ public:
 
 private:
 	std::vector<Shape::IParticle*> particles;
-	Crystal::Search::CompactSpaceHash3d spaceHash;
+	Crystal::Space::CompactSpaceHash3d spaceHash;
 };
 	}
 }

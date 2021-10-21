@@ -19,7 +19,7 @@ public:
     std::list<HitRecord*>               hitpoints;
     std::vector<std::list<HitRecord*> > hash_grid;
     double                              hash_s;
-    Math::Box3d hpbbox;
+    Math::Box3dd hpbbox;
 
     std::vector<SphereObject> sph;
 
