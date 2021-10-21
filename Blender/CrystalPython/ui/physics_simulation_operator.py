@@ -115,19 +115,18 @@ def init_props():
         min=0.0,
         max=1.0
     )
-#    scene.sample27_prop_floatv = FloatVectorProperty(
-#        name="プロパティ 3",
-#        description="プロパティ（float vector）",
-#        subtype='COLOR_GAMMA',
-#        default=(1.0, 1.0, 1.0),
-#        min=0.0,
-#        max=1.0
-#    )
+    scene.external_force_prop = FloatVectorProperty(
+        name="external_force",
+        description="ExternalForce",
+        default=(0.0, 0.0, -9.8),
+        min=0.0,
+        max=100.0
+    )
 
 def clear_props():
     scene = bpy.types.Scene
     del scene.stiffness_prop
-
+    del scene.external_force_prop
 
 # UI
 class PhysicsSimulationPanel(bpy.types.Panel):
@@ -139,6 +138,7 @@ class PhysicsSimulationPanel(bpy.types.Panel):
 
     def draw(self, context):
         self.layout.prop(context.scene, "stiffness_prop", text="Stiffness")
+        self.layout.prop(context.scene, "external_force_prop", text="ExternalForce")
 
         if not simulator.is_running():
             self.layout.operator(PhysicsSimulationOperator.bl_idname,text="Start", icon='PLAY')
