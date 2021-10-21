@@ -30,7 +30,7 @@ sys.path += [addon_dirpath]
 
 import bpy
 
-from ui.mesh_to_ps_operator import MeshToPSOperator
+from ui.voxelizer_operator import VoxelizerOperator, VoxelizerPanel
 from ui.ps_to_mesh_operator import PSToMeshOperator
 from ui.particle_system_generate_operator import ParticleSystemGenerateOperator
 from ui.particle_system_import_operator import ParticleSystemImportOperator
@@ -49,7 +49,7 @@ class ParticleFluidsPanel(bpy.types.Panel):
 
   def draw(self, context):
     layout = self.layout
-    layout.operator(MeshToPSOperator.bl_idname, text="MeshToPS")
+#    layout.operator(VoxelizerOperator.bl_idname, text="Voxelizer")
     layout.operator(PSToMeshOperator.bl_idname, text="PSToMesh")
     layout.operator(ParticleSystemGenerateOperator.bl_idname, text="PSGenerator")
     layout.operator(ParticleSystemImportOperator.bl_idname, text="PSImport")
@@ -57,7 +57,8 @@ class ParticleFluidsPanel(bpy.types.Panel):
 
 classes = [
   ParticleFluidsPanel,
-  MeshToPSOperator,
+  VoxelizerOperator,
+  VoxelizerPanel,
   PSToMeshOperator,
   ParticleSystemImportOperator,
   ParticleSystemExportOperator,
