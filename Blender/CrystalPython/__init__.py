@@ -31,8 +31,8 @@ sys.path += [addon_dirpath]
 import bpy
 
 from ui.voxelizer_operator import VoxelizerUI
-from ui.ps_to_mesh_operator import PSToMeshOperator
-from ui.particle_system_generate_operator import ParticleSystemGenerateOperator
+from ui.meshing_operator import MeshingUI
+from ui.particle_system_generate_operator import ParticleSystemGenerateUI
 from ui.particle_system_import_operator import ParticleSystemImportUI
 from ui.particle_system_export_operator import ParticleSystemExportOperator
 from ui.physics_simulation_operator import PhysicsSimulationUI
@@ -50,21 +50,19 @@ class ParticleFluidsPanel(bpy.types.Panel):
   def draw(self, context):
     layout = self.layout
 #    layout.operator(VoxelizerOperator.bl_idname, text="Voxelizer")
-    layout.operator(PSToMeshOperator.bl_idname, text="PSToMesh")
-    layout.operator(ParticleSystemGenerateOperator.bl_idname, text="PSGenerator")
     layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
 
 classes = [
   ParticleFluidsPanel,
-  PSToMeshOperator,
   ParticleSystemExportOperator,
-  ParticleSystemGenerateOperator,
 ]
 
 def register():
   for c in classes:
     bpy.utils.register_class(c)
   VoxelizerUI.register()
+  MeshingUI.register()
+  ParticleSystemGenerateUI.register()
   ParticleSystemAnimationUI.register()
   ParticleSystemImportUI.register()
   ParticleSystemSequenceImportUI.register()
@@ -78,7 +76,9 @@ def unregister():
   Model.scene.clear(1)
   for c in classes:
     bpy.utils.unregister_class(c)
+  MeshingUI.unregister()
   VoxelizerUI.unregister()
+  ParticleSystemGenerateUI.unregister()
   ParticleSystemAnimationUI.unregister()
   ParticleSystemImportUI.unregister()
   ParticleSystemSequenceImportUI.unregister()

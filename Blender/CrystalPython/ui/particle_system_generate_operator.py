@@ -17,3 +17,28 @@ class ParticleSystemGenerateOperator(bpy.types.Operator) :
       pc.ps.set_positions(positions)
       pc.convert_to_polygon_mesh("")      
       return {'FINISHED'}
+
+class ParticleSystemGeneratePanel(bpy.types.Panel):
+  bl_space_type = "VIEW_3D"
+  bl_region_type = "UI"
+  bl_category = "ParticleFluids"
+  bl_label = "ParticleSystemGenerate"
+
+  def draw(self, context):
+    layout = self.layout
+#    layout.operator(VoxelizerOperator.bl_idname, text="Voxelizer")
+    layout.operator(ParticleSystemGenerateOperator.bl_idname, text="PSGenerator")
+
+classes = [
+  ParticleSystemGenerateOperator,
+  ParticleSystemGeneratePanel,
+]
+
+class ParticleSystemGenerateUI :
+    def register():
+        for c in classes:
+            bpy.utils.register_class(c)
+
+    def unregister():
+        for c in classes:
+            bpy.utils.unregister_class(c)

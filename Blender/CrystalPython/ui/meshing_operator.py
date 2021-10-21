@@ -8,8 +8,8 @@ from physics.surface_builder import SurfaceBuilder
 
 from ui.model import Model as model
 
-class PSToMeshOperator(bpy.types.Operator) :
-  bl_idname = "pg.pstomesh"
+class MeshingOperator(bpy.types.Operator) :
+  bl_idname = "pg.meshing"
   bl_label = "PSToMesh"
   bl_options = {"REGISTER", "UNDO"}
 
@@ -32,3 +32,28 @@ class PSToMeshOperator(bpy.types.Operator) :
       builder.build_anisotorpic(ps.ps.id, mesh.mesh.id, 1.0, 2.0)
       mesh.convert_to_polygon_mesh("")
       return {'FINISHED'}
+
+class MeshingPanel(bpy.types.Panel):
+  bl_space_type = "VIEW_3D"
+  bl_region_type = "UI"
+  bl_category = "ParticleFluids"
+  bl_label = "Meshing"
+
+  def draw(self, context):
+    layout = self.layout
+#    layout.operator(VoxelizerOperator.bl_idname, text="Voxelizer")
+    layout.operator(MeshingOperator.bl_idname, text="Meshing")
+
+classes = [
+  MeshingOperator,
+  MeshingPanel,
+]
+
+class MeshingUI :
+    def register():
+        for c in classes:
+            bpy.utils.register_class(c)
+
+    def unregister():
+        for c in classes:
+            bpy.utils.unregister_class(c)
