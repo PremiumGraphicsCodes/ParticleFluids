@@ -33,7 +33,7 @@ import bpy
 from ui.voxelizer_operator import VoxelizerUI
 from ui.ps_to_mesh_operator import PSToMeshOperator
 from ui.particle_system_generate_operator import ParticleSystemGenerateOperator
-from ui.particle_system_import_operator import ParticleSystemImportOperator
+from ui.particle_system_import_operator import ParticleSystemImportUI
 from ui.particle_system_export_operator import ParticleSystemExportOperator
 from ui.physics_simulation_operator import PhysicsSimulationUI
 from ui.particle_system_animation_operator import ParticleSystemAnimationUI
@@ -52,13 +52,11 @@ class ParticleFluidsPanel(bpy.types.Panel):
 #    layout.operator(VoxelizerOperator.bl_idname, text="Voxelizer")
     layout.operator(PSToMeshOperator.bl_idname, text="PSToMesh")
     layout.operator(ParticleSystemGenerateOperator.bl_idname, text="PSGenerator")
-    layout.operator(ParticleSystemImportOperator.bl_idname, text="PSImport")
     layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
 
 classes = [
   ParticleFluidsPanel,
   PSToMeshOperator,
-  ParticleSystemImportOperator,
   ParticleSystemExportOperator,
   ParticleSystemGenerateOperator,
 ]
@@ -68,6 +66,7 @@ def register():
     bpy.utils.register_class(c)
   VoxelizerUI.register()
   ParticleSystemAnimationUI.register()
+  ParticleSystemImportUI.register()
   ParticleSystemSequenceImportUI.register()
   PhysicsSimulationUI.register()
   SampleUI.register()
@@ -81,6 +80,7 @@ def unregister():
     bpy.utils.unregister_class(c)
   VoxelizerUI.unregister()
   ParticleSystemAnimationUI.unregister()
+  ParticleSystemImportUI.unregister()
   ParticleSystemSequenceImportUI.unregister()
   PhysicsSimulationUI.unregister()
   SampleUI.unregister()
