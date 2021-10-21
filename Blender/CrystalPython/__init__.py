@@ -37,7 +37,7 @@ from ui.particle_system_import_operator import ParticleSystemImportOperator
 from ui.particle_system_export_operator import ParticleSystemExportOperator
 from ui.physics_simulation_operator import PhysicsSimulationUI
 from ui.particle_system_animation_operator import ParticleSystemAnimationUI
-from ui.particle_system_sequense_import_operator import ParticleSystemSequenceImportOperator, ParticleSystemSequenceImportPanel
+from ui.particle_system_sequense_import_operator import ParticleSystemSequenceImportUI
 from ui.model import Model 
 from ui.panel_sample import SampleUI
 
@@ -61,8 +61,6 @@ classes = [
   ParticleSystemImportOperator,
   ParticleSystemExportOperator,
   ParticleSystemGenerateOperator,
-  ParticleSystemSequenceImportOperator,
-  ParticleSystemSequenceImportPanel,
 ]
 
 def register():
@@ -70,6 +68,7 @@ def register():
     bpy.utils.register_class(c)
   VoxelizerUI.register()
   ParticleSystemAnimationUI.register()
+  ParticleSystemSequenceImportUI.register()
   PhysicsSimulationUI.register()
   SampleUI.register()
 
@@ -82,6 +81,7 @@ def unregister():
     bpy.utils.unregister_class(c)
   VoxelizerUI.unregister()
   ParticleSystemAnimationUI.unregister()
+  ParticleSystemSequenceImportUI.unregister()
   PhysicsSimulationUI.unregister()
   SampleUI.unregister()
 

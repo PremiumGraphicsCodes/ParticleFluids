@@ -84,3 +84,17 @@ class ParticleSystemSequenceImportPanel(bpy.types.Panel):
             self.layout.operator(op.bl_idname,text="ImportStart", icon='PLAY')
         else:
             self.layout.operator(op.bl_idname,text="ImportStop", icon='PAUSE')
+
+classes = [
+  ParticleSystemSequenceImportOperator,
+  ParticleSystemSequenceImportPanel,
+]
+
+class ParticleSystemSequenceImportUI :
+    def register():
+        for c in classes:
+            bpy.utils.register_class(c)
+
+    def unregister():
+        for c in classes:
+            bpy.utils.unregister_class(c)
