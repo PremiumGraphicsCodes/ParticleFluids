@@ -257,19 +257,20 @@ classes = [
 ]
 
 
-def register():
-    for c in classes:
-        bpy.utils.register_class(c)
-    init_props()
-    print("サンプル 2-7: アドオン『サンプル 2-7』が有効化されました。")
+class SampleUI :
+    def register():
+        for c in classes:
+            bpy.utils.register_class(c)
+        init_props()
+        print("サンプル 2-7: アドオン『サンプル 2-7』が有効化されました。")
 
 
-def unregister():
-    clear_props()
-    for c in classes:
-        bpy.utils.unregister_class(c)
-    print("サンプル 2-7: アドオン『サンプル 2-7』が無効化されました。")
+    def unregister():
+        clear_props()
+        for c in classes:
+            bpy.utils.unregister_class(c)
+        print("サンプル 2-7: アドオン『サンプル 2-7』が無効化されました。")
 
 
-if __name__ == "__main__":
-    register()
+#if __name__ == "__main__":
+#    register()

@@ -1,12 +1,21 @@
 import bpy
 import os
 
+from bpy.props import (
+    IntProperty,
+    FloatProperty,
+    FloatVectorProperty,
+    EnumProperty,
+    BoolProperty,
+)
+
 from ui.model import Model as model
 from physics.solver_scene import SolverScene
 from ui.bl_fluid import BLFluid
 from ui.bl_boundary import BLBoundary
 from CrystalPLI import Vector3df
 from scene.file_io import FileIO
+
 
 class Simulator :
     def __init__(self) :
@@ -97,6 +106,29 @@ class PhysicsSimulationOperator(bpy.types.Operator):
         else:
             return {'CANCELLED'}
 
+def init_props():
+    scene = bpy.types.Scene
+    scene.stiffness_prop = FloatProperty(
+        name="stiffness",
+        description="Stiffness",
+        default=0.75,
+        min=0.0,
+        max=1.0
+    )
+#    scene.sample27_prop_floatv = FloatVectorProperty(
+#        name="プロパティ 3",
+#        description="プロパティ（float vector）",
+#        subtype='COLOR_GAMMA',
+#        default=(1.0, 1.0, 1.0),
+#        min=0.0,
+#        max=1.0
+#    )
+
+def clear_props():
+    scene = bpy.types.Scene
+    del scene.stiffness_prop
+
+
 # UI
 class PhysicsSimulationPanel(bpy.types.Panel):
     bl_label = "Start"
@@ -110,3 +142,19 @@ class PhysicsSimulationPanel(bpy.types.Panel):
             self.layout.operator(PhysicsSimulationOperator.bl_idname,text="Start", icon='PLAY')
         else:
             self.layout.operator(PhysicsSimulationOperator.bl_idname,text="Stop", icon='PAUSE')
+
+classes = [
+  PhysicsSimulationOperator,
+  PhysicsSimulationPanel,
+]
+
+class PhysicsSimulationUI :
+    def register():
+        init_props()
+        for c in classes:
+            bpy.utils.register_class(c)
+
+    def unregister():
+        clear_props()
+        for c in classes:
+            bpy.utils.unregister_class(c)

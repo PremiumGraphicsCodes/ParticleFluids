@@ -35,10 +35,11 @@ from ui.ps_to_mesh_operator import PSToMeshOperator
 from ui.particle_system_generate_operator import ParticleSystemGenerateOperator
 from ui.particle_system_import_operator import ParticleSystemImportOperator
 from ui.particle_system_export_operator import ParticleSystemExportOperator
-from ui.physics_simulation_operator import PhysicsSimulationOperator, PhysicsSimulationPanel
+from ui.physics_simulation_operator import PhysicsSimulationUI
 from ui.particle_system_animation_operator import ParticleSystemAnimationOperator, ParticleSystemAnimationPanel
 from ui.particle_system_sequense_import_operator import ParticleSystemSequenceImportOperator, ParticleSystemSequenceImportPanel
 from ui.model import Model 
+from ui.panel_sample import SampleUI
 
 class ParticleFluidsPanel(bpy.types.Panel):
   bl_space_type = "VIEW_3D"
@@ -63,8 +64,6 @@ classes = [
   ParticleSystemImportOperator,
   ParticleSystemExportOperator,
   ParticleSystemGenerateOperator,
-  PhysicsSimulationOperator,
-  PhysicsSimulationPanel,
   ParticleSystemAnimationOperator,
   ParticleSystemAnimationPanel,
   ParticleSystemSequenceImportOperator,
@@ -74,6 +73,8 @@ classes = [
 def register():
   for c in classes:
     bpy.utils.register_class(c)
+  PhysicsSimulationUI.register()
+  SampleUI.register()
 
   #bpy.types.Scene.tutorial_comment = StringProperty(default = "")
 
@@ -82,6 +83,8 @@ def unregister():
   Model.scene.clear(1)
   for c in classes:
     bpy.utils.unregister_class(c)
+  PhysicsSimulationUI.unregister()
+  SampleUI.unregister()
 
   #del bpy.types.Scene.tutorial_comment
 
