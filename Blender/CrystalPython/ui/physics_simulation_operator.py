@@ -16,6 +16,8 @@ from ui.bl_boundary import BLBoundary
 from CrystalPLI import Vector3df
 from scene.file_io import FileIO
 
+external_force = [0, 0, -9.8]
+time_step = 0.01
 
 class Simulator :
     def __init__(self) :
@@ -46,7 +48,11 @@ class Simulator :
         boundaries.append(self.boundary.boundary)
         self.solver.boundaries = boundaries
 
-        self.solver.external_force = Vector3df(0.0,0.0,-9.8)
+        global external_force
+        self.solver.external_force = Vector3df(external_force[0],external_force[1],external_force[2])
+
+        global time_step
+        self.solver.time_step = time_step
 
         self.solver.send()
         self.solver.simulate()
@@ -106,26 +112,46 @@ class PhysicsSimulationOperator(bpy.types.Operator):
         else:
             return {'CANCELLED'}
 
+def set_external_force(self, value) :
+    global external_force
+    external_force = value
+
+def get_external_force(self):
+  global external_force
+  return external_force
+
+def set_time_step(self, value) :
+    global time_step
+    time_step = value
+
+def get_time_step(self):
+    global time_step
+    return time_step
+
 def init_props():
     scene = bpy.types.Scene
-    scene.stiffness_prop = FloatProperty(
-        name="stiffness",
-        description="Stiffness",
-        default=0.75,
+    scene.time_step_prop = FloatProperty(
+        name="time_step",
+        description="TimeStep",
+        default=0.01,
         min=0.0,
-        max=1.0
+        max=1.0,
+        set=set_time_step,
+        get=get_time_step,
     )
     scene.external_force_prop = FloatVectorProperty(
         name="external_force",
         description="ExternalForce",
         default=(0.0, 0.0, -9.8),
-        min=0.0,
-        max=100.0
+        min=-100.0,
+        max=100.0,
+        set=set_external_force,
+        get=get_external_force,
     )
 
 def clear_props():
     scene = bpy.types.Scene
-    del scene.stiffness_prop
+    del scene.time_step_prop
     del scene.external_force_prop
 
 # UI
@@ -137,7 +163,7 @@ class PhysicsSimulationPanel(bpy.types.Panel):
     bl_context = "objectmode"
 
     def draw(self, context):
-        self.layout.prop(context.scene, "stiffness_prop", text="Stiffness")
+        self.layout.prop(context.scene, "time_step_prop", text="TimeStep")
         self.layout.prop(context.scene, "external_force_prop", text="ExternalForce")
 
         if not simulator.is_running():
