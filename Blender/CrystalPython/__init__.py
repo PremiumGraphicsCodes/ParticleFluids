@@ -30,7 +30,7 @@ sys.path += [addon_dirpath]
 
 import bpy
 
-from ui.voxelizer_operator import VoxelizerOperator, VoxelizerPanel
+from ui.voxelizer_operator import VoxelizerUI
 from ui.ps_to_mesh_operator import PSToMeshOperator
 from ui.particle_system_generate_operator import ParticleSystemGenerateOperator
 from ui.particle_system_import_operator import ParticleSystemImportOperator
@@ -57,8 +57,6 @@ class ParticleFluidsPanel(bpy.types.Panel):
 
 classes = [
   ParticleFluidsPanel,
-  VoxelizerOperator,
-  VoxelizerPanel,
   PSToMeshOperator,
   ParticleSystemImportOperator,
   ParticleSystemExportOperator,
@@ -70,6 +68,7 @@ classes = [
 def register():
   for c in classes:
     bpy.utils.register_class(c)
+  VoxelizerUI.register()
   ParticleSystemAnimationUI.register()
   PhysicsSimulationUI.register()
   SampleUI.register()
@@ -81,6 +80,7 @@ def unregister():
   Model.scene.clear(1)
   for c in classes:
     bpy.utils.unregister_class(c)
+  VoxelizerUI.unregister()
   ParticleSystemAnimationUI.unregister()
   PhysicsSimulationUI.unregister()
   SampleUI.unregister()
