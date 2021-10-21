@@ -83,7 +83,7 @@ public:
 		if (particles.empty()) {
 			return Math::Box3dd::createDegeneratedBox();
 		}
-		Math::Box3d bb(particles.front()->getPosition());
+		Math::Box3dd bb(particles.front()->getPosition());
 		for (auto p : particles) {
 			bb.add(p->getPosition());
 		}

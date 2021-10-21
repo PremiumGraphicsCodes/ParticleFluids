@@ -1,6 +1,6 @@
 #include "SphereObject.h"
 
-#include "CrystalSpace/CrystalSpace/IntersectionAlgo.h"
+#include "CrystalSpace/CrystalSpace/IntersectionCalculator.h"
 
 double SphereObject::intersect(const Crystal::Math::Ray3d& ray) const
 {
