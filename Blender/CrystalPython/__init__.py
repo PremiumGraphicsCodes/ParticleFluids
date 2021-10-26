@@ -36,6 +36,7 @@ from ui.particle_system_generate_operator import ParticleSystemGenerateUI
 from ui.particle_system_import_operator import ParticleSystemImportUI
 from ui.particle_system_export_operator import ParticleSystemExportUI
 from ui.fluid_ui import FluidUI
+from ui.boundary_ui import BoundaryUI
 from ui.physics_simulation_operator import PhysicsSimulationUI
 from ui.particle_system_animation_operator import ParticleSystemAnimationUI
 from ui.particle_system_sequense_import_operator import ParticleSystemSequenceImportUI
@@ -51,6 +52,7 @@ def register():
   ParticleSystemExportUI.register()
   ParticleSystemSequenceImportUI.register()
   FluidUI.register()
+  BoundaryUI.register()
   PhysicsSimulationUI.register()
   SampleUI.register()
 
@@ -68,6 +70,7 @@ def unregister():
   ParticleSystemExportUI.unregister()
   ParticleSystemSequenceImportUI.unregister()
   FluidUI.unregister()
+  BoundaryUI.unregister()
   PhysicsSimulationUI.unregister()
   SampleUI.unregister()
 
