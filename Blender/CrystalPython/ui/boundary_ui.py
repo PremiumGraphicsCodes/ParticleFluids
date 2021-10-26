@@ -34,6 +34,14 @@ def get_min(self) :
     global min
     return min
 
+def set_max(self, value) :
+    global max
+    max = value
+
+def get_max(self) :
+    global max
+    return max
+
 def init_props():
     scene = bpy.types.Scene
     scene.min_prop = FloatVectorProperty(
@@ -43,20 +51,29 @@ def init_props():
         set=set_min,
         get=get_min,
     )
+    scene.max_prop = FloatVectorProperty(
+        name="max",
+        description="Max",
+        default=(1.0, 1.0, 1.0),
+        set=set_min,
+        get=get_min,
+    )
 
 def clear_props():
     scene = bpy.types.Scene
     del scene.min_prop
+    del scene.max_prop
 
 class BoundaryPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
   bl_category = "ParticleFluids"
-  bl_label = "Fluid"
+  bl_label = "Boundary"
   
   def draw(self, context):
     layout = self.layout
     layout.prop(context.scene, "min_prop", text="Min")
+    layout.prop(context.scene, "max_prop", text="Max")
     layout.operator(BoundaryUpdateOperator.bl_idname, text="Update")
 
 classes = [
