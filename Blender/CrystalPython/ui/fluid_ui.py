@@ -11,20 +11,29 @@ from ui.bl_fluid import BLFluid
 
 from ui.model import Model as model
 
+fluid = BLFluid(model.scene)
 particle_radius = 0.2
+stiffness = 0.25
+viscosity = 10.0
 
-class FluidOperator(bpy.types.Operator) :
-  bl_idname = "pg.fluidoperator"
+class FluidSourceSelectOperator(bpy.types.Operator) :
+  bl_idname = "pg.fluidsourceselectoperator"
   bl_label = "Fluid"
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
       selected_mesh = self.get_selected_mesh(context)
-      
-#      self.fluid.
-      self.fluid = BLFluid(model.scene)
+
+      global fluid      
+      fluid.build()
+      fluid.convert_from_polygon_mesh(selected_mesh)
       global particle_radius
-      self.fluid.fluid.particle_radius = particle_radius
+      global stiffness
+      global viscosity
+      fluid.fluid.particle_radius = particle_radius
+      fluid.fluid.stiffness = stiffness
+      fluid.fluid.viscosity = viscosity
+      fluid.fluid.send()
 #      self.fluid.fluid.
       return {'FINISHED'}
 
@@ -33,15 +42,6 @@ class FluidOperator(bpy.types.Operator) :
       if o.type == 'MESH' and o.select_get():
         return o.to_mesh()
     return None
-
-  def convert_from_polygon_mesh(self, mesh) :
-    positions = []
-    print("num of vertices:", len(mesh.vertices))
-    for vt in mesh.vertices:
-      print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
-      p = Vector3dd(vt.co[0], vt.co[1], vt.co[2])
-      positions.append(p)
-    return positions
 
 def set_particle_radius(self, value) :
     global particle_radius
@@ -54,19 +54,19 @@ def get_particle_radius(self):
 
 def init_props():
     scene = bpy.types.Scene
-#    scene.divide_length_prop = FloatProperty(
-#        name="divide_length",
-#        description="DivideLength",
-#        default=0.2,
-#        min=0.0,
-#        max=100.0,
-#        get=get_divide_length,
-#        set=set_divide_length
-#    )
+    scene.particle_radius_prop = FloatProperty(
+        name="particle_radius",
+        description="ParticleRadius",
+        default=0.2,
+        min=0.0,
+        max=100.0,
+        get=get_particle_radius,
+        set=set_particle_radius
+    )
 
 def clear_props():
     scene = bpy.types.Scene
-#   del scene.divide_length_prop
+    del scene.particle_radius_prop
 
 class FluidPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
@@ -76,11 +76,11 @@ class FluidPanel(bpy.types.Panel) :
   
   def draw(self, context):
     layout = self.layout
-#    layout.prop(context.scene, "divide_length_prop", text="DivideLength")
-#    layout.operator(VoxelizerOperator.bl_idname, text="Voxelizer")
+    layout.prop(context.scene, "particle_radius_prop", text="ParticleRadius")
+    layout.operator(FluidSourceSelectOperator.bl_idname, text="SelectSource")
 
 classes = [
-  FluidOperator,
+  FluidSourceSelectOperator,
   FluidPanel,
 ]
 

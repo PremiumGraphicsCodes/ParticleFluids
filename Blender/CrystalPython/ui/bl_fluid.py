@@ -30,6 +30,16 @@ class BLFluid :
         self.fluid.pressure = 0.25
         self.fluid.viscosity = 10.0
         self.fluid.send()
+
+    def convert_from_polygon_mesh(self, mesh) :
+        positions = Vector3ddVector()
+        print("num of vertices:", len(mesh.vertices))
+        for vt in mesh.vertices:
+#            print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
+            p = Vector3dd(vt.co[0], vt.co[1], vt.co[2])
+            positions.add(p)
+        self.source_ps.set_positions(positions)
+        self.fluid.send()
         
     def convert_to_polygon_mesh(self, ob_name):
         # Create new mesh and a new object
