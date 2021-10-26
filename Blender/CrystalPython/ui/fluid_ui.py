@@ -62,6 +62,14 @@ def get_stiffness(self):
     global stiffnes
     return stiffness
 
+def set_viscosity(self, value) :
+    global viscosity
+    viscosity = value
+
+def get_viscosity(self) :
+    global viscosity
+    return viscosity
+
 def init_props():
     scene = bpy.types.Scene
     scene.particle_radius_prop = FloatProperty(
@@ -82,11 +90,21 @@ def init_props():
         get = get_stiffness,
         set = set_stiffness,
     )
+    scene.viscosity_prop = FloatProperty(
+        name="viscosity",
+        description="Viscosity",
+        default = 10.0,
+        min = 0.0,
+        max = 100.0,
+        get = get_viscosity,
+        set = set_viscosity,
+    )
 
 def clear_props():
     scene = bpy.types.Scene
     del scene.particle_radius_prop
     del scene.stiffness_prop
+    del scene.viscosity_prop
 
 class FluidPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
@@ -98,6 +116,7 @@ class FluidPanel(bpy.types.Panel) :
     layout = self.layout
     layout.prop(context.scene, "particle_radius_prop", text="ParticleRadius")
     layout.prop(context.scene, "stiffness_prop", text="Stiffness")
+    layout.prop(context.scene, "viscosity_prop", text="Viscosity")
     layout.operator(FluidSourceSelectOperator.bl_idname, text="SelectSource")
     layout.operator(FluidUpdateOperator.bl_idname, text="Update")
 
