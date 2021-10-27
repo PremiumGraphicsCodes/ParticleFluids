@@ -66,7 +66,6 @@ class BoundaryUI :
       bpy.utils.register_class(c)
     bpy.types.Scene.boundary_property = bpy.props.PointerProperty(type=BoundaryProperty)
 
-
   def unregister() :
     del bpy.types.Scene.boundary_property
     for c in classes:
