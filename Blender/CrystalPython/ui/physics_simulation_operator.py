@@ -16,9 +16,6 @@ from ui.bl_boundary import BLBoundary
 from CrystalPLI import Vector3df
 from scene.file_io import FileIO
 
-external_force = [0, 0, -9.8]
-time_step = 0.01
-
 class Simulator :
     def __init__(self) :
         self.solver = None
@@ -48,11 +45,10 @@ class Simulator :
         boundaries.append(self.boundary.boundary)
         self.solver.boundaries = boundaries
 
-        global external_force
+        external_force = bpy.context.scene.solver_property.external_force_prop
         self.solver.external_force = Vector3df(external_force[0],external_force[1],external_force[2])
 
-        global time_step
-        self.solver.time_step = time_step
+        self.solver.time_step = bpy.context.scene.solver_property.time_step_prop
 
         self.solver.send()
         self.solver.simulate()
@@ -112,47 +108,21 @@ class PhysicsSimulationOperator(bpy.types.Operator):
         else:
             return {'CANCELLED'}
 
-def set_external_force(self, value) :
-    global external_force
-    external_force = value
-
-def get_external_force(self):
-  global external_force
-  return external_force
-
-def set_time_step(self, value) :
-    global time_step
-    time_step = value
-
-def get_time_step(self):
-    global time_step
-    return time_step
-
-def init_props():
-    scene = bpy.types.Scene
-    scene.time_step_prop = FloatProperty(
+class SolverProperty(bpy.types.PropertyGroup) :
+    time_step_prop : FloatProperty(
         name="time_step",
         description="TimeStep",
         default=0.01,
         min=0.0,
         max=1.0,
-        set=set_time_step,
-        get=get_time_step,
     )
-    scene.external_force_prop = FloatVectorProperty(
+    external_force_prop : FloatVectorProperty(
         name="external_force",
         description="ExternalForce",
         default=(0.0, 0.0, -9.8),
         min=-100.0,
         max=100.0,
-        set=set_external_force,
-        get=get_external_force,
     )
-
-def clear_props():
-    scene = bpy.types.Scene
-    del scene.time_step_prop
-    del scene.external_force_prop
 
 # UI
 class PhysicsSimulationPanel(bpy.types.Panel):
@@ -163,8 +133,8 @@ class PhysicsSimulationPanel(bpy.types.Panel):
     bl_context = "objectmode"
 
     def draw(self, context):
-        self.layout.prop(context.scene, "time_step_prop", text="TimeStep")
-        self.layout.prop(context.scene, "external_force_prop", text="ExternalForce")
+        self.layout.prop(context.scene.solver_property, "time_step_prop", text="TimeStep")
+        self.layout.prop(context.scene.solver_property, "external_force_prop", text="ExternalForce")
 
         if not simulator.is_running():
             self.layout.operator(PhysicsSimulationOperator.bl_idname,text="Start", icon='PLAY')
@@ -174,15 +144,16 @@ class PhysicsSimulationPanel(bpy.types.Panel):
 classes = [
   PhysicsSimulationOperator,
   PhysicsSimulationPanel,
+  SolverProperty,
 ]
 
 class PhysicsSimulationUI :
     def register():
-        init_props()
         for c in classes:
             bpy.utils.register_class(c)
+        bpy.types.Scene.solver_property = bpy.props.PointerProperty(type=SolverProperty)
 
     def unregister():
-        clear_props()
         for c in classes:
             bpy.utils.unregister_class(c)
+        del bpy.types.Scene.solver_property
