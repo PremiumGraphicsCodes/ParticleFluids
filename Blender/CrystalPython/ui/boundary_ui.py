@@ -23,7 +23,7 @@ class BoundaryAddOperator(bpy.types.Operator) :
 
 class BoundaryUpdateOperator(bpy.types.Operator) :
   bl_idname = "pg.boundaryupdate"
-  bl_label = "Boundary"
+  bl_label = "Update"
   bl_options = {"REGISTER", "UNDO"}
   boundary_name : bpy.props.StringProperty()
 
@@ -37,6 +37,24 @@ class BoundaryUpdateOperator(bpy.types.Operator) :
       boundary.boundary.bounding_box = bb
       boundary.boundary.send()
       return {'FINISHED'}
+
+class BoundaryDeleteOperator(bpy.types.Operator) :
+  bl_idname = "pg.boundarydelete"
+  bl_label = "Add"
+  bl_options = {"REGISTER", "UNDO"}
+  boundary_name : bpy.props.StringProperty()
+
+  def execute(self, context) :
+    boundary = model.bl_boundaries[self.boundary_name]
+    model.scene.delete(boundary.boundary.id, False)
+    del boundary
+    index = 0
+    for boundary_property in context.scene.boundary_properties :
+      if boundary_property.name == self.boundary_name :
+        context.scene.boundary_properties.remove(index)
+        break
+      index+=1
+    return {'FINISHED'}
 
 class BoundaryPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
@@ -54,6 +72,8 @@ class BoundaryPanel(bpy.types.Panel) :
       layout.prop(boundary_property, "max", text="Max")
       op = layout.operator(BoundaryUpdateOperator.bl_idname, text="Update")
       op.boundary_name = boundary_property.name
+      op2 = layout.operator(BoundaryDeleteOperator.bl_idname, text="Delete")
+      op2.boundary_name = boundary_property.name
     layout.operator(BoundaryAddOperator.bl_idname, text="Add")
 
 class BoundaryProperty(bpy.types.PropertyGroup) :
@@ -75,6 +95,7 @@ class BoundaryProperty(bpy.types.PropertyGroup) :
 
 classes = [
   BoundaryAddOperator,
+  BoundaryDeleteOperator,
   BoundaryProperty,
   BoundaryUpdateOperator,
   BoundaryPanel,
