@@ -7,19 +7,30 @@ from ui.bl_boundary import BLBoundary
 from ui.model import Model as model
 from CrystalPLI import Vector3dd, Box3dd
 
-boundary = BLBoundary(model.scene)
+class BoundaryAddOperator(bpy.types.Operator) :
+  bl_idname = "pg.boundaryadd"
+  bl_label = "Add"
+  bl_options = {"REGISTER", "UNDO"}
+
+  def execute(self, context) :
+    boundary = BLBoundary(model.scene)
+    boundary.build()
+    boundary.boundary.name = "Boundary01"
+    boundary.boundary.send()
+    context.scene.boundary_properties.add()
+    model.bl_boundaries["Boundary01"] = boundary
+    return {'FINISHED'}
 
 class BoundaryUpdateOperator(bpy.types.Operator) :
   bl_idname = "pg.boundaryupdate"
   bl_label = "Boundary"
   bl_options = {"REGISTER", "UNDO"}
+  boundary_name : bpy.props.StringProperty()
 
   def execute(self, context) :
-      global boundary
-      boundary.build()
-      #v1 = Vector3dd(min[0], min[1], min[2])
-      min = context.scene.boundary_property.min
-      max = context.scene.boundary_property.max
+      boundary = model.bl_boundaries[self.boundary_name]
+      min = context.scene.boundary_properties[0].min
+      max = context.scene.boundary_properties[0].max
       v1 = Vector3dd(min[0], min[1], min[2])
       v2 = Vector3dd(max[0], max[1], max[2])
       bb = Box3dd(v1, v2)
@@ -37,17 +48,25 @@ class BoundaryPanel(bpy.types.Panel) :
     layout = self.layout
     #layout.prop(context.scene, "min_prop", text="Min")
     #row = layout.row()
-    layout.prop(context.scene.boundary_property, "min", text="Min")
-    layout.prop(context.scene.boundary_property, "max", text="Max")
-    layout.operator(BoundaryUpdateOperator.bl_idname, text="Update")
+    for boundary_property in context.scene.boundary_properties :
+      layout.prop(boundary_property, "name", text="Name")
+      layout.prop(boundary_property, "min", text="Min")
+      layout.prop(boundary_property, "max", text="Max")
+      op = layout.operator(BoundaryUpdateOperator.bl_idname, text="Update")
+      op.boundary_name = boundary_property.name
+    layout.operator(BoundaryAddOperator.bl_idname, text="Add")
 
 class BoundaryProperty(bpy.types.PropertyGroup) :
+  name : bpy.props.StringProperty(
+    name = "name",
+    description="Name",
+    default = "Boundary01"
+  )
   min : bpy.props.FloatVectorProperty(
         name="min",
         description="Min",
         default=(0.0, 0.0, 0.0)
     )
-
   max : bpy.props.FloatVectorProperty(
         name="max",
         description="Max",
@@ -55,6 +74,7 @@ class BoundaryProperty(bpy.types.PropertyGroup) :
     )
 
 classes = [
+  BoundaryAddOperator,
   BoundaryProperty,
   BoundaryUpdateOperator,
   BoundaryPanel,
@@ -64,9 +84,9 @@ class BoundaryUI :
   def register():
     for c in classes:
       bpy.utils.register_class(c)
-    bpy.types.Scene.boundary_property = bpy.props.PointerProperty(type=BoundaryProperty)
+    bpy.types.Scene.boundary_properties = bpy.props.CollectionProperty(type=BoundaryProperty)
 
   def unregister() :
-    del bpy.types.Scene.boundary_property
+    del bpy.types.Scene.boundary_properties
     for c in classes:
       bpy.utils.unregister_class(c)
