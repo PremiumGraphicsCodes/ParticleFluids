@@ -37,7 +37,7 @@ from ui.particle_system_import_ui import ParticleSystemImportUI
 from ui.particle_system_export_ui import ParticleSystemExportUI
 from ui.fluid_ui import FluidUI
 from ui.boundary_ui import BoundaryUI
-from ui.physics_simulation_operator import PhysicsSimulationUI
+from ui.solver_ui import SolverUI
 from ui.particle_system_animation_ui import ParticleSystemAnimationUI
 from ui.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
 from ui.model import Model 
@@ -53,7 +53,7 @@ def register():
   ParticleSystemSequenceImportUI.register()
   FluidUI.register()
   BoundaryUI.register()
-  PhysicsSimulationUI.register()
+  SolverUI.register()
   SampleUI.register()
 
   #bpy.types.Scene.tutorial_comment = StringProperty(default = "")
@@ -71,7 +71,7 @@ def unregister():
   ParticleSystemSequenceImportUI.unregister()
   FluidUI.unregister()
   BoundaryUI.unregister()
-  PhysicsSimulationUI.unregister()
+  SolverUI.unregister()
   SampleUI.unregister()
 
   #del bpy.types.Scene.tutorial_comment
