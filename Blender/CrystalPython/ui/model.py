@@ -7,3 +7,4 @@ class Model :
   scene = Scene(world)
   bl_fluids = {}
   bl_boundaries = {}
+  bl_solvers = {}

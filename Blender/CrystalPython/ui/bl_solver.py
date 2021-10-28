@@ -8,13 +8,15 @@ from ui.bl_boundary import BLBoundary
 from CrystalPLI import Vector3df
 from scene.file_io import FileIO
 
-class Simulator :
+class BLSolver :
     def __init__(self) :
         self.solver = None
         self.__running = False
         self.fluid = BLFluid(model.scene)
         self.boundary = BLBoundary(model.scene)
         self.time_step = 0
+        self.external_force = Vector3df(0.0, 0.0, -9.8)
+        self.time_step = 0.01
 
     def build(self):
         if self.solver != None :
@@ -37,10 +39,10 @@ class Simulator :
         boundaries.append(self.boundary.boundary)
         self.solver.boundaries = boundaries
 
-        external_force = bpy.context.scene.solver_property.external_force_prop
-        self.solver.external_force = Vector3df(external_force[0],external_force[1],external_force[2])
+        #external_force = bpy.context.scene.solver_property.external_force_prop
+        #self.solver.external_force = Vector3df(external_force[0],external_force[1],external_force[2])
 
-        self.solver.time_step = bpy.context.scene.solver_property.time_step_prop
+        #self.solver.time_step = bpy.context.scene.solver_property.time_step_prop
 
         self.solver.send()
         self.solver.simulate()
