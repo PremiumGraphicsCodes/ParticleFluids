@@ -55,6 +55,9 @@ class SolverUpdateOperator(bpy.types.Operator):
     solver_name : StringProperty()
     
     def execute(self, context) :
+        solver = model.bl_solvers[self.solver_name]
+#        solver.
+#        solver.solver.send()
         return {'FINISHED'}
 
 class SolverStartOperator(bpy.types.Operator):
@@ -127,6 +130,8 @@ class SolverPanel(bpy.types.Panel):
             self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
             self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
+            op_update = self.layout.operator(SolverUpdateOperator.bl_idname, text="Update")
+            op_update.solver_name = solver_property.name_prop
             op_del = self.layout.operator(SolverDeleteOperator.bl_idname,text="Delete")
             op_del.solver_name = solver_property.name_prop
             #if not solver.is_running():

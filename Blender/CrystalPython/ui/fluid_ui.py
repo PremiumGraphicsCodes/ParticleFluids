@@ -3,10 +3,7 @@ from bpy.props import FloatProperty
 
 from physics.fluid_scene import FluidScene
 from ui.bl_fluid import BLFluid
-
 from ui.model import Model as model
-
-fluid = BLFluid(model.scene)
 
 class FluidAddOperator(bpy.types.Operator) :
   bl_idname = "pg.fluidaddoperator"
@@ -14,6 +11,9 @@ class FluidAddOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
+    fluid = BLFluid(model.scene)
+    fluid.build()
+    model.bl_fluids["Fluid01"] = fluid
     context.scene.fluid_properties.add()
     return {'FINISHED'}
 
@@ -21,12 +21,12 @@ class FluidSourceSelectOperator(bpy.types.Operator) :
   bl_idname = "pg.fluidsourceselectoperator"
   bl_label = "Fluid"
   bl_options = {"REGISTER", "UNDO"}
+  fluid_name : bpy.props.StringProperty()
 
   def execute(self, context) :
       selected_mesh = self.get_selected_mesh(context)
 
-      global fluid      
-      fluid.build()
+      fluid = model.bl_fluids[self.fluid_name]
       fluid.convert_from_polygon_mesh(selected_mesh)
       return {'FINISHED'}
 
@@ -40,9 +40,10 @@ class FluidUpdateOperator(bpy.types.Operator) :
   bl_idname = "pg.fluidupdate"
   bl_label = "Fluid"
   bl_options = {"REGISTER", "UNDO"}
+  fluid_name : bpy.props.StringProperty()
 
   def execute(self, context) :
-      global fluid
+      fluid = model.bl_fluids[self.fluid_name]
       fluid.build()
       fluid.fluid.particle_radius = context.scene.fluid_properties[0].particle_radius_prop
       fluid.fluid.stiffness = context.scene.fluid_properties[0].stiffness_prop
@@ -92,8 +93,10 @@ class FluidPanel(bpy.types.Panel) :
       layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
-      layout.operator(FluidSourceSelectOperator.bl_idname, text="SelectSource")
-      layout.operator(FluidUpdateOperator.bl_idname, text="Update")
+      op_sel = layout.operator(FluidSourceSelectOperator.bl_idname, text="SelectSource")
+      op_sel.fluid_name = fluid_property.name_prop
+      op_up = layout.operator(FluidUpdateOperator.bl_idname, text="Update")
+      op_up.fluid_name = fluid_property.name_prop
 
 classes = [
   FluidAddOperator,
