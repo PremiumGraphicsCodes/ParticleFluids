@@ -1,5 +1,5 @@
 import bpy
-from bpy.props import FloatProperty
+from bpy.props import FloatProperty, StringProperty
 
 from physics.fluid_scene import FluidScene
 from ui.bl_fluid import BLFluid
@@ -14,8 +14,28 @@ class FluidAddOperator(bpy.types.Operator) :
     fluid = BLFluid(model.scene)
     fluid.build()
     model.bl_fluids["Fluid01"] = fluid
-    context.scene.fluid_properties.add()
+    prop = context.scene.fluid_properties.add()
+    prop.name_prop = "Fluid01"
     return {'FINISHED'}
+
+class FluidDeleteOperator(bpy.types.Operator):
+    bl_idname = "pg.fluiddeleteoperator"
+    bl_label = "Delete"
+    bl_description = "Hello"
+    fluid_name : StringProperty()
+
+    def execute(self, context) :
+        fluid = model.bl_fluids[self.fluid_name]
+        model.scene.delete( fluid.fluid.id, False )
+        del fluid
+        index = 0
+        for fluid_property in context.scene.fluid_properties :
+            if fluid_property.name_prop == self.fluid_name :
+                context.scene.fluid_properties.remove(index)
+                break
+            index+=1
+
+        return {'FINISHED'}    
 
 class FluidSourceSelectOperator(bpy.types.Operator) :
   bl_idname = "pg.fluidsourceselectoperator"
@@ -97,9 +117,12 @@ class FluidPanel(bpy.types.Panel) :
       op_sel.fluid_name = fluid_property.name_prop
       op_up = layout.operator(FluidUpdateOperator.bl_idname, text="Update")
       op_up.fluid_name = fluid_property.name_prop
+      op_del = layout.operator(FluidDeleteOperator.bl_idname, text="Delete")
+      op_del.fluid_name = fluid_property.name_prop
 
 classes = [
   FluidAddOperator,
+  FluidDeleteOperator,
   FluidSourceSelectOperator,
   FluidUpdateOperator,
   FluidProperty,
