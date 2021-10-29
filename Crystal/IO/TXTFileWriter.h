@@ -9,7 +9,12 @@ namespace Crystal {
 class TXTFileWriter
 {
 public:
-	bool write(const std::filesystem::path& filePath, const std::vector<Math::Vector3dd>& positions);
+	void add(const Math::Vector3dd& position);
+
+	bool write(const std::filesystem::path& filePath);
+
+private:
+	std::vector<Math::Vector3dd> positions;
 };
 
 	}

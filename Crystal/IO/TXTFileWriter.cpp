@@ -2,9 +2,15 @@
 
 #include <fstream>
 
+using namespace Crystal::Math;
 using namespace Crystal::IO;
 
-bool TXTFileWriter::write(const std::filesystem::path& filePath, const std::vector<Math::Vector3dd>& positions)
+void TXTFileWriter::add(const Vector3dd& position)
+{
+	positions.emplace_back(position);
+}
+
+bool TXTFileWriter::write(const std::filesystem::path& filePath)
 {
 	std::ofstream stream(filePath);
 	if (!stream.is_open()) {

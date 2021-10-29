@@ -60,7 +60,8 @@ class BoundaryDeleteOperator(bpy.types.Operator) :
 class BoundaryPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
-  bl_category = "ParticleFluids"
+  bl_category = "Simulation"
+#  bl_category = "ParticleFluids"
   bl_label = "Boundary"
   
   def draw(self, context):

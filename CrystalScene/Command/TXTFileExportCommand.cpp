@@ -42,9 +42,13 @@ bool TXTFileExportCommand::execute(World* world)
 	if (scene == nullptr) {
 		return false;
 	}
-	const auto& ps = scene->getPositions();
 
 	TXTFileWriter writer;
-	const auto isOk = writer.write(args.filePath.getValue(), ps);
+	const auto& ps = scene->getPositions();
+	for (const auto& p : ps) {
+		writer.add(p);
+	}
+
+	const auto isOk = writer.write(args.filePath.getValue());
 	return isOk;
 }

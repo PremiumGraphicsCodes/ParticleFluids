@@ -103,7 +103,7 @@ class FluidProperty(bpy.types.PropertyGroup) :
 class FluidPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
-  bl_category = "ParticleFluids"
+  bl_category = "Simulation"
   bl_label = "Fluid"
   
   def draw(self, context):

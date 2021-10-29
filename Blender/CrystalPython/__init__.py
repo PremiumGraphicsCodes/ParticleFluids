@@ -46,15 +46,15 @@ from ui.panel_sample import SampleUI
 def register():
   VoxelizerUI.register()
   MeshingUI.register()
-  ParticleSystemGenerateUI.register()
-  ParticleSystemAnimationUI.register()
-  ParticleSystemImportUI.register()
-  ParticleSystemExportUI.register()
+#  ParticleSystemGenerateUI.register()
+#  ParticleSystemAnimationUI.register()
+#  ParticleSystemImportUI.register()
+#  ParticleSystemExportUI.register()
   ParticleSystemSequenceImportUI.register()
   FluidUI.register()
   BoundaryUI.register()
   SolverUI.register()
-  SampleUI.register()
+#  SampleUI.register()
 
   #bpy.types.Scene.tutorial_comment = StringProperty(default = "")
 
@@ -64,15 +64,15 @@ def unregister():
 
   MeshingUI.unregister()
   VoxelizerUI.unregister()
-  ParticleSystemGenerateUI.unregister()
-  ParticleSystemAnimationUI.unregister()
-  ParticleSystemImportUI.unregister()
-  ParticleSystemExportUI.unregister()
+#  ParticleSystemGenerateUI.unregister()
+#  ParticleSystemAnimationUI.unregister()
+#  ParticleSystemImportUI.unregister()
+#  ParticleSystemExportUI.unregister()
   ParticleSystemSequenceImportUI.unregister()
   FluidUI.unregister()
   BoundaryUI.unregister()
   SolverUI.unregister()
-  SampleUI.unregister()
+#  SampleUI.unregister()
 
   #del bpy.types.Scene.tutorial_comment
 
