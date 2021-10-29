@@ -56,8 +56,9 @@ class SolverUpdateOperator(bpy.types.Operator):
     
     def execute(self, context) :
         solver = model.bl_solvers[self.solver_name]
-#        solver.
-#        solver.solver.send()
+        for bl_fluid in model.bl_fluids.values() :
+            solver.add_fluid(bl_fluid)
+        solver.send()
         return {'FINISHED'}
 
 class SolverStartOperator(bpy.types.Operator):

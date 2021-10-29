@@ -13,6 +13,7 @@ class FluidAddOperator(bpy.types.Operator) :
   def execute(self, context) :
     fluid = BLFluid(model.scene)
     fluid.build()
+    fluid.convert_to_polygon_mesh("Fluid01")
     model.bl_fluids["Fluid01"] = fluid
     prop = context.scene.fluid_properties.add()
     prop.name_prop = "Fluid01"
