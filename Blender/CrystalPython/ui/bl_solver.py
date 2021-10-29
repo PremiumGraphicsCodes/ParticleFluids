@@ -61,7 +61,7 @@ class BLSolver :
             bl_fluid.update()
         
         file_path = os.path.join("tmp_txt", "test" + str(self.time_step) + ".txt")
-        #FileIO.export_txt(model.scene, self.fluid.fluid.id, file_path)
+        self.solver.export_txt(file_path)
         self.time_step += 1
 
     def is_running(self):

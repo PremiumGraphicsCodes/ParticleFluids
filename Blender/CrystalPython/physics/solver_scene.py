@@ -47,4 +47,4 @@ class SolverScene :
         fluid_ids = []
         for f in self.fluids :
             fluid_ids.append(f.id)
-        return FileIO.export_txt(fluid_ids, file_path)
+        return FileIO.export_txt(self.scene,fluid_ids, file_path)
