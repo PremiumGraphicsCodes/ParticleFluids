@@ -9,7 +9,7 @@ namespace TXTFileExportLabels
 {
 	PublicLabel CommandNameLabel = "TXTFileExport";
 	PublicLabel FilePathLabel = "FilePath";
-	PublicLabel IdLabel = "Id";
+	PublicLabel IdsLabel = "Ids";
 }
 
 using namespace Crystal::Scene;
@@ -17,10 +17,10 @@ using namespace Crystal::Command;
 using namespace Crystal::IO;
 
 TXTFileExportCommand::Args::Args() :
-	id(TXTFileExportLabels::IdLabel, -1),
+	ids(TXTFileExportLabels::IdsLabel, {}),
 	filePath(TXTFileExportLabels::FilePathLabel, "")
 {
-	add(&id);
+	add(&ids);
 	add(&filePath);
 }
 
@@ -36,17 +36,18 @@ std::string TXTFileExportCommand::getName()
 
 bool TXTFileExportCommand::execute(World* world)
 {
-	const auto id = args.id.getValue();
-
-	auto scene = world->getScenes()->findSceneById<IParticleSystemScene*>(id);
-	if (scene == nullptr) {
-		return false;
-	}
+	const auto ids = args.ids.getValue();
 
 	TXTFileWriter writer;
-	const auto& ps = scene->getPositions();
-	for (const auto& p : ps) {
-		writer.add(p);
+	for (const auto id : ids) {
+		auto scene = world->getScenes()->findSceneById<IParticleSystemScene*>(id);
+		if (scene == nullptr) {
+			continue;
+		}
+		const auto& ps = scene->getPositions();
+		for (const auto& p : ps) {
+			writer.add(p);
+		}
 	}
 
 	const auto isOk = writer.write(args.filePath.getValue());

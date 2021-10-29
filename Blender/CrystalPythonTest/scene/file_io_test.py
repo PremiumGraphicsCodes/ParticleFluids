@@ -9,7 +9,9 @@ class FileIOTest(unittest.TestCase):
     def test_export_txt(self) :
         scene = Scene(World())
         ps = self.__create_test_particle_system(scene)
-        FileIO.export_txt(scene, ps.id, "TXTExportTest.txt")
+        ids = []
+        ids.append(ps.id)
+        FileIO.export_txt(scene, ids, "TXTExportTest.txt")
 
     def test_import_txt(self) :
         scene = Scene(World())

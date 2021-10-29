@@ -2,6 +2,7 @@ from physics.physics_labels import *
 from physics.csg_boundary_scene import CSGBoundaryScene
 from scene.scene import Scene
 from CrystalPLI import *
+from scene.file_io import FileIO
 
 class SolverScene :
     def __init__(self, scene) :
@@ -41,3 +42,9 @@ class SolverScene :
         set_arg_int(FluidSimulationCommand.SolverIdLabel, self.id)
         is_ok = execute_command(self.scene.world)
         return is_ok
+
+    def export_txt(self, file_path) :
+        fluid_ids = []
+        for f in self.fluids :
+            fluid_ids.append(f.id)
+        return FileIO.export_txt(fluid_ids, file_path)

@@ -13,7 +13,7 @@ public:
 	{
 		Args();
 
-		Arg< int > id;
+		Arg< std::vector<int> > ids;
 		Arg< std::string > filePath;
 	};
 

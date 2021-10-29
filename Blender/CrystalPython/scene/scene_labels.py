@@ -254,7 +254,7 @@ class TrimCommand:
 class TXTFileExportCommand:
    CommandNameLabel="TXTFileExport"
    FilePathLabel="FilePath"
-   IdLabel="Id"
+   IdsLabel="Ids"
 class TXTFileImportCommand:
    CommandNameLabel="TXTFileImport"
    FilePathLabel="FilePath"
