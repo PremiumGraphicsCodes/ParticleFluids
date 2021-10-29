@@ -14,7 +14,7 @@ class BLSolver :
         self.__running = False
         self.bl_fluids = []
         self.bl_boundaries = []
-        self.time_step = 0
+        self.frame = 0
         self.external_force = Vector3df(0.0, 0.0, -9.8)
         self.time_step = 0.01
 
@@ -60,9 +60,9 @@ class BLSolver :
         for bl_fluid in self.bl_fluids :
             bl_fluid.update()
         
-        file_path = os.path.join("tmp_txt", "test" + str(self.time_step) + ".txt")
+        file_path = os.path.join("tmp_txt", "test" + str(self.frame) + ".txt")
         self.solver.export_txt(file_path)
-        self.time_step += 1
+        self.frame += 1
 
     def is_running(self):
         return self.__running
