@@ -72,3 +72,7 @@ class BLFluid :
         bm.to_mesh(self.me)
         bm.free()
         self.me.update()
+
+    def reset(self):
+        self.fluid.send()
+        self.update()

@@ -17,6 +17,7 @@ class BoundaryAddOperator(bpy.types.Operator) :
     boundary.build()
     boundary.boundary.name = "Boundary01"
     boundary.boundary.send()
+    boundary.convert_to_polygon_mesh("Boundary01")
     context.scene.boundary_properties.add()
     model.bl_boundaries["Boundary01"] = boundary
     return {'FINISHED'}

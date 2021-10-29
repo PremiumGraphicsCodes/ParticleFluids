@@ -13,7 +13,7 @@ class BLSolver :
         self.solver = None
         self.__running = False
         self.bl_fluids = []
-        self.boundary = BLBoundary(model.scene)
+        self.bl_boundaries = []
         self.time_step = 0
         self.external_force = Vector3df(0.0, 0.0, -9.8)
         self.time_step = 0.01
@@ -22,16 +22,9 @@ class BLSolver :
         if self.solver != None :
             return
 
-        self.boundary.build()
-        self.boundary.convert_to_polygon_mesh("BLBoundary")
-
         self.solver = SolverScene(model.scene)
         self.solver.create()
         
-        boundaries = []
-        boundaries.append(self.boundary.boundary)
-        self.solver.boundaries = boundaries
-
         #external_force = bpy.context.scene.solver_property.external_force_prop
         #self.solver.external_force = Vector3df(external_force[0],external_force[1],external_force[2])
 
@@ -40,11 +33,20 @@ class BLSolver :
     def add_fluid(self, bl_fluid) :
         self.bl_fluids.append(bl_fluid)
 
+    def add_boundary(self, bl_boundary) :
+        self.bl_boundaries.append(bl_boundary)
+
     def send(self) :
         fluids = []
         for bl_fluid in self.bl_fluids :
             fluids.append( bl_fluid.fluid )
         self.solver.fluids = fluids
+
+        boundaries = []
+        for bl_boundary in self.bl_boundaries :
+            boundaries.append( bl_boundary.boundary )
+        self.solver.boundaries = boundaries
+
         self.solver.send()
 
     def start(self):
@@ -64,3 +66,8 @@ class BLSolver :
 
     def is_running(self):
         return self.__running
+
+    def reset(self):
+        for bl_fluid in self.bl_fluids :
+            bl_fluid.reset()
+
