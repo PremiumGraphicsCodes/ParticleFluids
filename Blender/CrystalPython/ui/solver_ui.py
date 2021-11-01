@@ -63,6 +63,7 @@ class SolverUpdateOperator(bpy.types.Operator):
         for bl_boundary in model.bl_boundaries.values() :
             solver.add_boundary(bl_boundary)
         solver.send()
+        solver.frame = context.scene.solver_properties[0].start_frame_prop
         context.scene.solver_properties[0].current_frame_prop = solver.frame
         return {'FINISHED'}
 
@@ -93,6 +94,8 @@ class SolverStartOperator(bpy.types.Operator):
         if solver.is_running() :
             solver.step()
             context.scene.solver_properties[0].current_frame_prop = solver.frame
+            if solver.frame >= context.scene.solver_properties[0].end_frame_prop :
+                solver.stop()
 
         if context.area:
             context.area.tag_redraw()
