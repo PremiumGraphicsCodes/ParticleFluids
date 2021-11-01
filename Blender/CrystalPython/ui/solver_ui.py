@@ -2,6 +2,7 @@ import bpy
 import os
 
 from bpy.props import (
+    IntProperty,
     FloatProperty,
     FloatVectorProperty,
     StringProperty
@@ -135,6 +136,25 @@ class SolverProperty(bpy.types.PropertyGroup) :
         min=-100.0,
         max=100.0,
     )
+    start_frame_prop : IntProperty(
+        name="start_frame",
+        description="StartFrame",
+        default = 1,
+        min = 1
+    )
+    current_frame_prop : IntProperty(
+        name="current_frame",
+        description="CurrentFrame",
+        default = 1,
+        min = 1
+    )
+    end_frame_prop : IntProperty(
+        name="end_frame",
+        description="EndFrame",
+        default = 250,
+        min = 1
+    )
+
 
 # UI
 class SolverPanel(bpy.types.Panel):
@@ -150,6 +170,9 @@ class SolverPanel(bpy.types.Panel):
             self.layout.prop(solver_property, "name_prop", text="Name")
             self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
             self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
+            self.layout.prop(solver_property, "start_frame_prop", text="StartFrame")
+            self.layout.prop(solver_property, "current_frame_prop", text="CurrentFrame")
+            self.layout.prop(solver_property, "end_frame_prop", text="EndFrame")
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
             op_update = self.layout.operator(SolverUpdateOperator.bl_idname, text="Update")
             op_update.solver_name = solver_property.name_prop
