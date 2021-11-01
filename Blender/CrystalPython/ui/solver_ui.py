@@ -64,6 +64,23 @@ class SolverUpdateOperator(bpy.types.Operator):
         solver.send()
         return {'FINISHED'}
 
+#class SolverResetOperator(bpy.types.Operator):
+#    bl_idname = "pg.solverresetoperator"
+#    bl_label = "Reset"
+#    bl_description = "Hello"
+#    solver_name : StringProperty()
+    
+#    def execute(self, context) :
+#        solver = model.bl_solvers[self.solver_name]
+#        solver.reset()
+#        for bl_fluid in model.bl_fluids.values() :
+#            solver.add_fluid(bl_fluid)
+#        for bl_boundary in model.bl_boundaries.values() :
+#            solver.add_boundary(bl_boundary)
+#        solver.send()
+#        return {'FINISHED'}
+
+
 class SolverStartOperator(bpy.types.Operator):
     bl_idname = "pg.solverstartoperator"
     bl_label = "SolverStart"
