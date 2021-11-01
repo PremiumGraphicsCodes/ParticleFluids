@@ -14,7 +14,7 @@ class BLSolver :
         self.__running = False
         self.bl_fluids = []
         self.bl_boundaries = []
-        self.frame = 0
+        self.frame = 1
         self.external_force = Vector3df(0.0, 0.0, -9.8)
         self.time_step = 0.01
 
@@ -72,4 +72,5 @@ class BLSolver :
             bl_fluid.reset()
         self.bl_fluids.clear()
         self.bl_boundaries.clear()
+        self.frame = 1
 

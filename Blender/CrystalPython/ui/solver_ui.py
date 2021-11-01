@@ -63,6 +63,7 @@ class SolverUpdateOperator(bpy.types.Operator):
         for bl_boundary in model.bl_boundaries.values() :
             solver.add_boundary(bl_boundary)
         solver.send()
+        context.scene.solver_properties[0].current_frame_prop = solver.frame
         return {'FINISHED'}
 
 #class SolverResetOperator(bpy.types.Operator):
@@ -91,6 +92,7 @@ class SolverStartOperator(bpy.types.Operator):
         solver = model.bl_solvers["Solver01"]
         if solver.is_running() :
             solver.step()
+            context.scene.solver_properties[0].current_frame_prop = solver.frame
 
         if context.area:
             context.area.tag_redraw()
@@ -166,12 +168,15 @@ class SolverPanel(bpy.types.Panel):
 
     def draw(self, context):
         self.layout.operator(SolverAddOperator.bl_idname, text="Add")
+        solver = model.bl_solvers["Solver01"]
         for solver_property in context.scene.solver_properties :
+#            solver_property.current_frame_prop = solver.frame
+
             self.layout.prop(solver_property, "name_prop", text="Name")
             self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
             self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
             self.layout.prop(solver_property, "start_frame_prop", text="StartFrame")
-            self.layout.prop(solver_property, "current_frame_prop", text="CurrentFrame")
+            self.layout.prop(solver_property, "current_frame_prop", text="CurrentFrame")            
             self.layout.prop(solver_property, "end_frame_prop", text="EndFrame")
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
             op_update = self.layout.operator(SolverUpdateOperator.bl_idname, text="Update")
