@@ -15,7 +15,6 @@ namespace WireFrameCreateLabels
 	PublicLabel LineWidthLabel = "LineWidth";
 	PublicLabel ColorLabel = "Color";
 	PublicLabel NameLabel = "Name";
-	PublicLabel LayerLabel = "Layer";
 	PublicLabel NewIdLabel = "NewId";
 }
 
@@ -29,15 +28,13 @@ WireFrameCreateCommand::Args::Args() :
 	edgeIndices(WireFrameCreateLabels::EdgeIndicesLabel, {}),
 	lineWidth(WireFrameCreateLabels::LineWidthLabel, 1.0f),
 	color(WireFrameCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
-	name(WireFrameCreateLabels::NameLabel, std::string("")),
-	layer(WireFrameCreateLabels::LayerLabel, 1)
+	name(WireFrameCreateLabels::NameLabel, std::string(""))
 {
 	add(&positions);
 	add(&edgeIndices);
 	add(&lineWidth);
 	add(&color);
 	add(&name);
-	add(&layer);
 }
 
 WireFrameCreateCommand::Results::Results() :
@@ -70,7 +67,7 @@ bool WireFrameCreateCommand::execute(World* world)
 	auto newId = world->getNextSceneId();
 	auto scene = new WireFrameScene(newId, name, std::move(shape), attr);
 	world->getScenes()->addScene(scene);
-	world->addScene(args.layer.getValue(), scene);
+	//world->addScene(args.layer.getValue(), scene);
 	results.newId.setValue(scene->getId());
 	//world->updateViewModel();
 	return true;

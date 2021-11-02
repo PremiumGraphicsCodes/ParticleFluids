@@ -6,7 +6,6 @@ namespace DeleteLabels
 {
 	PublicLabel CommandNameLabel = "DeleteCommand";
 	PublicLabel IdLabel = "Id";
-	PublicLabel IsItemLabel = "IsItem";
 }
 
 using namespace Crystal::Scene;
@@ -18,11 +17,9 @@ std::string DeleteCommand::getName()
 }
 
 DeleteCommand::Args::Args() :
-	id(DeleteLabels::IdLabel, -1),
-	isItem(DeleteLabels::IsItemLabel, false)
+	id(DeleteLabels::IdLabel, -1)
 {
 	add(&id);
-	add(&isItem);
 }
 
 DeleteCommand::DeleteCommand() :
@@ -31,19 +28,9 @@ DeleteCommand::DeleteCommand() :
 
 bool DeleteCommand::execute(World* world)
 {
-	if (args.isItem.getValue()) {
-		auto scene = world->getItems()->findSceneById(args.id.getValue());
-		if (scene == nullptr) {
-			return false;
-		}
-		world->getItems()->deleteSceneById(args.id.getValue());
+	auto scene = world->getScenes()->findSceneById(args.id.getValue());
+	if (scene == nullptr) {
+		return false;
 	}
-	else {
-		auto scene = world->getScenes()->findSceneById(args.id.getValue());
-		if (scene == nullptr) {
-			return false;
-		}
-		world->getScenes()->deleteSceneById(args.id.getValue());
-	}
-	return true;
+	world->getScenes()->deleteSceneById(args.id.getValue());
 }

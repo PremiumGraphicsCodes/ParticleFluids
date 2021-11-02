@@ -20,7 +20,6 @@ public:
 
 		Arg< std::vector<Math::Triangle3d> > triangles;
 		Arg< std::string > name;
-		Arg< int > layer;
 	};
 
 	struct Results : IResults

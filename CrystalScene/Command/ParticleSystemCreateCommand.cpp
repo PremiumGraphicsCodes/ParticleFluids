@@ -12,7 +12,6 @@ namespace ParticleSystemCreateLabels
 	PublicLabel PointSizeLabel = "PointSize";
 	PublicLabel ColorLabel = "Color";
 	PublicLabel NameLabel = "Name";
-	PublicLabel LayerLabel = "Layer";
 	PublicLabel NewIdLabel = "NewId";
 }
 
@@ -25,14 +24,12 @@ ParticleSystemCreateCommand::Args::Args() :
 	positions(ParticleSystemCreateLabels::PositionsLabel, {}),
 	pointSize(ParticleSystemCreateLabels::PointSizeLabel, 1.0f),
 	color(ParticleSystemCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
-	name(ParticleSystemCreateLabels::NameLabel, std::string("")),
-	layer(ParticleSystemCreateLabels::LayerLabel, 1)
+	name(ParticleSystemCreateLabels::NameLabel, std::string(""))
 {
 	add(&positions);
 	add(&pointSize);
 	add(&color);
 	add(&name);
-	add(&layer);
 }
 
 ParticleSystemCreateCommand::Results::Results() :
@@ -55,7 +52,7 @@ bool ParticleSystemCreateCommand::execute(World* world)
 	auto name = args.name.getValue();
 	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
 	auto scene = new ParticleSystemScene(world->getNextSceneId(), name, std::move(shape));
-	world->addScene(args.layer.getValue(), scene);
+	world->addScene(scene);
 	//world->getRenderer()->getBuffer()->screen.add(scene, *world->getGLFactory());
 	results.newId.setValue(scene->getId());
 	//world->updateViewModel();

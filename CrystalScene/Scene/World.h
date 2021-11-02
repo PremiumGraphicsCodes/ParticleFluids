@@ -29,13 +29,9 @@ public:
 
 	void clear();
 
-	void clear(int layer);
+	Scene* getScenes() { return scene.get(); }
 
-	Scene* getScenes() { return scenes[1].get(); }
-
-	Scene* getItems() { return scenes[0].get(); }
-
-	void addScene(int layer, IScene* scene);
+	void addScene(IScene* scene);
 
 	int getNextSceneId() { return sceneIdProvider.getNextId(); }
 
@@ -66,7 +62,7 @@ public:
 	}
 
 private:
-	std::array<std::unique_ptr<Scene>, 2> scenes;
+	std::unique_ptr<Scene> scene;
 	std::list<IAnimator*> animations;
 	std::list<IPresenter*> presenters;
 	CameraScene* camera;

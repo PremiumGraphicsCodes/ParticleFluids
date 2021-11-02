@@ -24,7 +24,6 @@ public:
 		Arg< std::vector<Math::Vector3dd> > normals;
 		Arg< std::vector<Math::Vector2dd> > texCoords;
 		Arg< std::string > name;
-		Arg< int > layer;
 	};
 
 	struct Results : IResults

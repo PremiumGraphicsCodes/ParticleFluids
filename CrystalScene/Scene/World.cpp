@@ -12,9 +12,7 @@ using namespace Crystal::Scene;
 World::World() :
 	sceneIdProvider(1)
 {
-	scenes[0] = std::make_unique<Scene>(0, "Item");
-	scenes[1] = std::make_unique<Scene>(0, "Root");
-
+	scene = std::make_unique<Scene>(0, "Root");
 	//createDefaultCamera();
 }
 
@@ -35,7 +33,7 @@ void World::init()
 		light->setSpecular(ColorRGBAf(1, 1, 1, 1));
 		auto s = new LightScene(getNextSceneId(), "Light0", std::move(light));
 		//s->getPresenter()->createView(renderer.get(), glFactory);
-		scenes[1]->addScene(s);
+		scene->addScene(s);
 		//scenes[1]->addScene(sceneFactory.createLightScene(std::move(light), "Light0"));
 	}
 
@@ -48,7 +46,7 @@ void World::init()
 		material->ambientTexName = "WhiteTex";
 		auto s = new MaterialScene(getNextSceneId(), "WhiteMat", std::move(material));
 		//s->getPresenter()->createView(renderer.get(), glFactory);
-		scenes[1]->addScene(s);
+		scene->addScene(s);
 	}
 
 	{
@@ -59,7 +57,7 @@ void World::init()
 		material->shininess = 1.0;
 		auto s = new MaterialScene(getNextSceneId(),"RedMat", std::move(material));
 		//s->getPresenter()->createView(renderer.get(), glFactory);
-		scenes[1]->addScene(s);
+		scene->addScene(s);
 	}
 
 	{
@@ -70,7 +68,7 @@ void World::init()
 		material->shininess = 1.0;
 		auto s = new MaterialScene(getNextSceneId(), "BlackMat", std::move(material));
 		//s->getPresenter()->createView(renderer.get(), glFactory);
-		scenes[1]->addScene(s);
+		scene->addScene(s);
 	}
 
 	{
@@ -82,7 +80,7 @@ void World::init()
 
 		auto s = new TextureScene(getNextSceneId(), std::move(image), "WhiteTex");
 		//s->getPresenter()->createView(renderer.get(), glFactory);
-		scenes[1]->addScene(s);
+		scene->addScene(s);
 	}
 
 	{
@@ -90,7 +88,7 @@ void World::init()
 		image->setColor(0, 0, ColorRGBAuc(0, 0, 0, 0));
 		auto s = new TextureScene(getNextSceneId(), std::move(image), "BlackTex");
 		//s->getPresenter()->createView(renderer.get(), glFactory);
-		scenes[1]->addScene(s);
+		scene->addScene(s);
 	}
 
 	//renderer = std::make_unique<SceneShader>();
@@ -106,7 +104,7 @@ int World::createDefaultCamera()
 			1.0f, 10.0f);
 	camera = new CameraScene(getNextSceneId(), "MainCamera", c);
 
-	scenes[1]->addScene(camera);
+	scene->addScene(camera);
 	return camera->getId();
 }
 
@@ -114,22 +112,15 @@ void World::clear()
 {
 	//glFactory.clear();
 	sceneIdProvider.reset(1);
-	for (auto& s : scenes) {
-		s->clear();
-	}
+	scene->clear();
 }
 
-void World::clear(int layer)
+void World::addScene(IScene* scene)
 {
-	scenes[layer]->clear();
-}
-
-void World::addScene(int layer, IScene* scene)
-{
-	scenes[layer]->addScene(scene);
+	scene->addScene(scene);
 }
 
 Box3dd World::getBoundingBox() const
 {
-	return scenes[1]->getBoundingBox();
+	return scene->getBoundingBox();
 }

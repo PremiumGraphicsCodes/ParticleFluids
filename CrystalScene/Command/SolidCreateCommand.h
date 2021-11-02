@@ -23,7 +23,6 @@ public:
 		Arg< Math::Box3dd > box;
 		Arg< Graphics::ColorRGBAf > color;
 		Arg< std::string > name;
-		Arg< int > layer;
 	};
 
 	struct Results : IResults

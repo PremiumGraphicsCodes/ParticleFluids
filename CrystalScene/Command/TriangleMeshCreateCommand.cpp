@@ -12,7 +12,6 @@ namespace TriangleMeshCreateLabels
 	PublicLabel CommandNameLabel = "TriangleMeshCreate";
 	PublicLabel TrianglesLabel = "Triangles";
 	PublicLabel NameLabel = "Name";
-	PublicLabel LayerLabel = "Layer";
 	PublicLabel NewIdLabel = "NewId";
 }
 
@@ -22,12 +21,10 @@ using namespace Crystal::Command;
 
 TriangleMeshCreateCommand::Args::Args() :
 	triangles(TriangleMeshCreateLabels::TrianglesLabel, {}),
-	name(TriangleMeshCreateLabels::NameLabel, std::string("")),
-	layer(TriangleMeshCreateLabels::LayerLabel, 1)
+	name(TriangleMeshCreateLabels::NameLabel, std::string(""))
 {
 	add(&triangles);
 	add(&name);
-	add(&layer);
 }
 
 TriangleMeshCreateCommand::Results::Results() :
@@ -52,7 +49,7 @@ bool TriangleMeshCreateCommand::execute(World* world)
 	}
 
 	auto shape = new TriangleMeshScene(world->getNextSceneId(), args.name.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
-	world->addScene(args.layer.getValue(), shape);
+	world->addScene(shape);
 	const auto newId = shape->getId();
 
 	results.newId.setValue(newId);

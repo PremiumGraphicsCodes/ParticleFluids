@@ -10,7 +10,6 @@ namespace SolidCreateLabels
 	PublicLabel BoxLabel = "Box";
 	PublicLabel ColorLabel = "Color";
 	PublicLabel NameLabel = "Name";
-	PublicLabel LayerLabel = "Layer";
 	PublicLabel NewIdLabel = "NewId";
 }
 
@@ -22,13 +21,11 @@ using namespace Crystal::Command;
 SolidCreateCommand::Args::Args() :
 	box(SolidCreateLabels::BoxLabel, Box3dd()),
 	color(SolidCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
-	name(SolidCreateLabels::NameLabel, std::string("")),
-	layer(SolidCreateLabels::LayerLabel, 1)
+	name(SolidCreateLabels::NameLabel, std::string(""))
 {
 	add(&box);
 	add(&color);
 	add(&name);
-	add(&layer);
 }
 
 SolidCreateCommand::Results::Results() :
@@ -51,7 +48,7 @@ bool SolidCreateCommand::execute(World* world)
 	(*solid3d) = box;
 	std::unique_ptr< Crystal::Shape::Solid > solid = std::make_unique<Crystal::Shape::Solid>((std::move(solid3d)));
 	auto scene = new SolidScene(world->getNextSceneId(), name, std::move(solid));
-	world->addScene(args.layer.getValue(), scene);
+	world->addScene(scene);
 	results.newId.setValue(scene->getId());
 	return true;
 }

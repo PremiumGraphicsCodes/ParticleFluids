@@ -11,8 +11,6 @@ public:
 	struct Args : public IArgs
 	{
 		Args();
-
-		Arg<int> layer;
 	};
 
 	static std::string getName();

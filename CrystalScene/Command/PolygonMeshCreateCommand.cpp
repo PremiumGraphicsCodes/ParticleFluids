@@ -14,7 +14,6 @@ namespace PolygonMeshCreateLabels
 	PublicLabel NormalsLabel = "Normals";
 	PublicLabel TexCoordsLabel = "TexCoords";
 	PublicLabel NameLabel = "Name";
-	PublicLabel LayerLabel = "Layer";
 	PublicLabel NewIdLabel = "NewId";
 }
 
@@ -26,14 +25,12 @@ PolygonMeshCreateCommand::Args::Args() :
 	positions(PolygonMeshCreateLabels::PositionsLabel, {}),
 	normals(PolygonMeshCreateLabels::NormalsLabel, {}),
 	texCoords(PolygonMeshCreateLabels::TexCoordsLabel, {}),
-	name(PolygonMeshCreateLabels::NameLabel, std::string("")),
-	layer(PolygonMeshCreateLabels::LayerLabel, 1)
+	name(PolygonMeshCreateLabels::NameLabel, std::string(""))
 {
 	add(&positions);
 	add(&normals);
 	add(&texCoords);
 	add(&name);
-	add(&layer);
 }
 
 PolygonMeshCreateCommand::Results::Results() :
@@ -55,7 +52,7 @@ bool PolygonMeshCreateCommand::execute(World* world)
 	mesh->texCoords = args.texCoords.getValue();
 
 	auto shape = new PolygonMeshScene(world->getNextSceneId(), args.name.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
-	world->addScene(args.layer.getValue(), shape);
+	world->addScene(shape);
 	//auto group = (shape, "FaceGroup");
 	const auto newId = shape->getId();
 

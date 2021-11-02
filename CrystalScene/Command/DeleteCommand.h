@@ -13,7 +13,6 @@ public:
 		Args();
 
 		Arg<int> id;
-		Arg<bool> isItem;
 	};
 
 	static std::string getName();

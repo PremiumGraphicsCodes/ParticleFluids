@@ -5,7 +5,6 @@
 namespace ClearLabels
 {
 	PublicLabel CommandNameLabel = "ClearCommand";
-	PublicLabel LayerLabel = "Layer";
 }
 
 using namespace Crystal::Scene;
@@ -16,10 +15,8 @@ std::string ClearCommand::getName()
 	return ClearLabels::CommandNameLabel;
 }
 
-ClearCommand::Args::Args() :
-	layer(ClearLabels::LayerLabel, 0)
+ClearCommand::Args::Args()
 {
-	add(&layer);
 }
 
 ClearCommand::ClearCommand() :
@@ -28,6 +25,6 @@ ClearCommand::ClearCommand() :
 
 bool ClearCommand::execute(World* world)
 {
-	world->clear(args.layer.getValue());
+	world->clear();
 	return true;
 }
