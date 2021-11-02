@@ -5,11 +5,22 @@
     <ClInclude Include="PhotonTracer.h" />
     <ClInclude Include="PhotonCloudScene.h" />
     <ClInclude Include="PhotonCloudPresenter.h" />
+    <ClInclude Include="PhotonTransporter.h">
+      <Filter>MovingPhoton</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PhotonTracer.cpp" />
     <ClCompile Include="PhotonCloudScene.cpp" />
     <ClCompile Include="PhotonCloudPresenter.cpp" />
     <ClCompile Include="Photon.cpp" />
+    <ClCompile Include="PhotonTransporter.cpp">
+      <Filter>MovingPhoton</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="MovingPhoton">
+      <UniqueIdentifier>{2fc245e9-5cb5-405a-b0f7-86890ff9a7b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

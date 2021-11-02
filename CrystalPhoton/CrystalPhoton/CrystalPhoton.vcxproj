@@ -159,12 +159,14 @@
     <ClInclude Include="PhotonCloudPresenter.h" />
     <ClInclude Include="PhotonCloudScene.h" />
     <ClInclude Include="PhotonTracer.h" />
+    <ClInclude Include="PhotonTransporter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Photon.cpp" />
     <ClCompile Include="PhotonCloudPresenter.cpp" />
     <ClCompile Include="PhotonCloudScene.cpp" />
     <ClCompile Include="PhotonTracer.cpp" />
+    <ClCompile Include="PhotonTransporter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
