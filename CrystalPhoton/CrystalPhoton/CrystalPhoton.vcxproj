@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="PBVRenderer.h" />
     <ClInclude Include="Photon.h" />
     <ClInclude Include="PhotonCloudPresenter.h" />
     <ClInclude Include="PhotonCloudScene.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="PhotonTransporter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PBVRenderer.cpp" />
     <ClCompile Include="Photon.cpp" />
     <ClCompile Include="PhotonCloudPresenter.cpp" />
     <ClCompile Include="PhotonCloudScene.cpp" />

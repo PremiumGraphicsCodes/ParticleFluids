@@ -8,6 +8,9 @@
     <ClInclude Include="PhotonTransporter.h">
       <Filter>MovingPhoton</Filter>
     </ClInclude>
+    <ClInclude Include="PBVRenderer.h">
+      <Filter>PBVR</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PhotonTracer.cpp" />
@@ -17,10 +20,16 @@
     <ClCompile Include="PhotonTransporter.cpp">
       <Filter>MovingPhoton</Filter>
     </ClCompile>
+    <ClCompile Include="PBVRenderer.cpp">
+      <Filter>PBVR</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MovingPhoton">
       <UniqueIdentifier>{2fc245e9-5cb5-405a-b0f7-86890ff9a7b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PBVR">
+      <UniqueIdentifier>{05d83d6d-dd91-4f0b-8457-6a0a431cc9d6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
