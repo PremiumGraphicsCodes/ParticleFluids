@@ -11,7 +11,6 @@ namespace {
 	PublicLabel ResolutionZLabel = "ResolutionZ";
 	PublicLabel BoundingBoxLabel = "BoundingBox";
 	PublicLabel NameLabel = "Name";
-	PublicLabel LayerLabel = "Layer";
 	PublicLabel NewIdLabel = "NewId";
 }
 
@@ -25,15 +24,13 @@ SparseVolumeSceneCreateCommand::Args::Args() :
 	resolutionY(::ResolutionYLabel, 10),
 	resolutionZ(::ResolutionZLabel, 10),
 	boundingBox(::BoundingBoxLabel, Box3dd()),
-	name (::NameLabel, std::string("")),
-	layer(::LayerLabel, -1)
+	name (::NameLabel, std::string(""))
 {
 	add(&resolutionX);
 	add(&resolutionY);
 	add(&resolutionZ);
 	add(&boundingBox);
 	add(&name);
-	add(&layer);
 }
 
 SparseVolumeSceneCreateCommand::Results::Results() :
@@ -60,7 +57,7 @@ bool SparseVolumeSceneCreateCommand::execute(World* world)
 	};
 	auto shape = std::make_unique<SparseVolumed>(bb, res);
 	auto scene = new SparseVolumeScene(world->getNextSceneId(), name, std::move(shape));
-	world->addScene(args.layer.getValue(), scene);
+	world->addScene(scene);
 	results.newId.setValue(scene->getId());
 
 	return true;

@@ -24,7 +24,6 @@ public:
 		Command::Arg< int > resolutionZ;
 		Command::Arg< Math::Box3dd > boundingBox;
 		Command::Arg< std::string> name;
-		Command::Arg< int > layer;
 	};
 
 	struct Results : Command::IResults

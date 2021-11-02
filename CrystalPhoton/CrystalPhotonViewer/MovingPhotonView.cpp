@@ -62,7 +62,7 @@ void MovingPhotonView::onBuild()
 	}
 	this->particles = new ParticleSystemScene(getWorld()->getNextSceneId(), "Boundary", std::move(shape));
 	auto presenter = particles->getPresenter();
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	presenter->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(this->particles);
 
 	this->photonCloud = new PhotonCloudScene(getWorld()->getNextSceneId(), "Photon");
@@ -72,7 +72,7 @@ void MovingPhotonView::onBuild()
 		photon->setDirection(Vector3df(0, -1, 0));
 		this->photonCloud->addPhoton(photon);
 	}
-	this->photonCloud->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	this->photonCloud->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(this->photonCloud);
 
 	auto ps = this->particles->getShape()->getIParticles();

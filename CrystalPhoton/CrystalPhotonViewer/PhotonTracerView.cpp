@@ -28,12 +28,12 @@ PhotonTracerView::PhotonTracerView(const std::string& name, World* world, Canvas
 		auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>();
 		this->particles = new ParticleSystemScene(getWorld()->getNextSceneId(), "Boundary", std::move(shape));
 		auto presenter = particles->getPresenter();
-		presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+		presenter->createView(getWorld()->getRenderer());
 	}
 
 	{
 		this->photonCloud = new PhotonCloudScene(getWorld()->getNextSceneId(), "Photon");
-		this->photonCloud->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+		this->photonCloud->getPresenter()->createView(getWorld()->getRenderer());
 	}
 }
 

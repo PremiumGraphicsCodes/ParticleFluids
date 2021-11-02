@@ -33,4 +33,5 @@ bool DeleteCommand::execute(World* world)
 		return false;
 	}
 	world->getScenes()->deleteSceneById(args.id.getValue());
+	return true;
 }

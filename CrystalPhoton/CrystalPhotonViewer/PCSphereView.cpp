@@ -54,5 +54,5 @@ void PCSphereView::onOk()
 	getWorld()->getScenes()->addScene(photonCloud);
 
 	auto presenter = photonCloud->getPresenter();
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	presenter->createView(getWorld()->getRenderer());
 }
