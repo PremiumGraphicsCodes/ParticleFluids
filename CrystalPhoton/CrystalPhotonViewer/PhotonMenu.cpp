@@ -6,6 +6,7 @@
 #include "PCSphereView.h"
 
 #include "PhotonTracerView.h"
+#include "MovingPhotonView.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -28,6 +29,9 @@ void PhotonMenu::onShow()
 		}
 		if (ImGui::MenuItem("PhotonTracer")) {
 			control->setWindow(new PhotonTracerView("PhotonTracer", world, canvas));
+		}
+		if (ImGui::MenuItem("MovingPhoton")) {
+			control->setWindow(new MovingPhotonView("MovingPhoton", world, canvas));
 		}
 		ImGui::EndMenu();
 	}

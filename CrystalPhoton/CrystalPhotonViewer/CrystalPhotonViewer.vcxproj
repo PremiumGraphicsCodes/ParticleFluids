@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CrystalPhotonViewer.cpp" />
+    <ClCompile Include="MovingPhotonView.cpp" />
     <ClCompile Include="PCSphereView.cpp" />
     <ClCompile Include="PhotonMenu.cpp" />
     <ClCompile Include="PhotonTracerView.cpp" />
@@ -184,6 +185,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MovingPhotonView.h" />
     <ClInclude Include="PCSphereView.h" />
     <ClInclude Include="PhotonMenu.h" />
     <ClInclude Include="PhotonTracerView.h" />
