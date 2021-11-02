@@ -5,9 +5,7 @@
 #include "CrystalScene/Scene/World.h"
 #include "CrystalScene/AppBase/Canvas.h"
 
-#include "CrystalScene/AppBase/SpotLightView.h"
-
-#include "../CrystalPhoton/PhotonTracer.h"
+#include "../CrystalPhoton/PhotonTransporter.h"
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 #include "../CrystalPhoton/PhotonCloudScene.h"
@@ -21,18 +19,17 @@ public:
 	MovingPhotonView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
-	void onAddVolume();
+	void onBuild();
 
 	void onStep();
 
 	void onOk();
 
 private:
-	SpotLightView lightView;
-	Button addVolumeButton;
+	Button buildButton;
 	Button stepButton;
 
-	Photon::PhotonTracer tracer;
+	Photon::PhotonTransporter transporter;
 	Scene::ParticleSystemScene* particles;
 	Photon::PhotonCloudScene* photonCloud;
 };

@@ -43,7 +43,7 @@ void PhotonTransporter::transport(const float length)
 		auto neighbors = spaceHash.findNeighbors(p->getPosition());
 		for (auto n : neighbors) {
 			if (dist(mt) < 1000) {
-				p->setPosition(n->getPosition());
+//				p->setPosition(n->getPosition());
 				p->setAbserved(true);
 			}
 		}

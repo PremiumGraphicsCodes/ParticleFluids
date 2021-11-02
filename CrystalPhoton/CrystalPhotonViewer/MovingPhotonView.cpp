@@ -2,6 +2,7 @@
 
 #include "MovingPhotonView.h"
 #include "Crystal/Math/Tolerance.h"
+#include "CrystalPhoton/CrystalPhoton/Photon.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -39,31 +40,17 @@ namespace {
 
 MovingPhotonView::MovingPhotonView(const std::string& name, World* world, Canvas* canvas) :
 	IOkCancelView(name, world, canvas),
-	lightView("Light"),
-	addVolumeButton("AddVolume"),
+	buildButton("AddVolume"),
 	stepButton("Step")
 {
-	SpotLight light;
-	light.setPosition(Vector3df(5.0f, 5.0f, 0.0f));
-	lightView.setValue(light);
+	add(&buildButton);
+	buildButton.setFunction([=]() { onBuild(); });
 
-	add(&lightView);
-	add(&addVolumeButton);
-	addVolumeButton.setFunction([=]() { onAddVolume(); });
-
-	/*
 	add(&stepButton);
 	stepButton.setFunction([=]() { onStep(); });
-
-
-	{
-		this->photonCloud = new PhotonCloudScene(getWorld()->getNextSceneId(), "Photon");
-		this->photonCloud->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	}
-	*/
 }
 
-void MovingPhotonView::onAddVolume()
+void MovingPhotonView::onBuild()
 {
 	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>();
 	ParticleAttribute attr;
@@ -77,10 +64,40 @@ void MovingPhotonView::onAddVolume()
 	auto presenter = particles->getPresenter();
 	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	getWorld()->getScenes()->addScene(this->particles);
+
+	this->photonCloud = new PhotonCloudScene(getWorld()->getNextSceneId(), "Photon");
+	for (int i = 0; i < 100; ++i) {
+		const auto x = 0.01 * i;
+		auto photon = new Photon::Photon(Vector3df(x, 1, 0), ColorRGBAf(1.0f, 1.0f, 1.0f, 1.0f), 10.0f);
+		photon->setDirection(Vector3df(0, -1, 0));
+		this->photonCloud->addPhoton(photon);
+	}
+	this->photonCloud->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	getWorld()->getScenes()->addScene(this->photonCloud);
+
+	auto ps = this->particles->getShape()->getIParticles();
+	transporter.build(0.1, positions.size());
+	for (auto p : ps) {
+		transporter.add(p);
+	}
+
+	auto photons = this->photonCloud->getPhotons();
+	for (auto p : photons) {
+		transporter.addPhoton(p);
+	}
+
 }
 
 void MovingPhotonView::onStep()
-{}
+{
+	transporter.transport(0.1f);
+	this->photonCloud->getPresenter()->updateView();
+}
 
 void MovingPhotonView::onOk()
-{}
+{
+	for (int i = 0; i < 100; ++i) {
+		transporter.transport(0.1f);
+	}
+	this->photonCloud->getPresenter()->updateView();
+}
