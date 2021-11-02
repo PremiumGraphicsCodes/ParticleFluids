@@ -25,7 +25,6 @@ class VoxelScene :
        set_arg_int(VoxelSceneCreateCommand.ResolutionZLabel, resolution[2])
        set_arg_box3dd(VoxelSceneCreateCommand.BoundingBoxLabel, boundingBox)
        set_arg_string(VoxelSceneCreateCommand.NameLabel, name)
-       set_arg_int(VoxelSceneCreateCommand.LayerLabel, 1)
        is_ok = execute_command(self.scene.world)
        if not is_ok :
            return False

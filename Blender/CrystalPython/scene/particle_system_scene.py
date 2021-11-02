@@ -10,15 +10,14 @@ class ParticleSystemScene :
     def create_empty(self, name) :
         positions = Vector3ddVector()
         color = ColorRGBAf()
-        return self.create(positions,name,1.0, color, 1)
+        return self.create(positions,name,1.0, color)
 
-    def create(self, positions, name, point_size, color, layer) :
+    def create(self, positions, name, point_size, color) :
         create_scene_command(ParticleSystemCreateCommand.ParticleSystemAddLabel)
         set_arg_vector3dd_vector(ParticleSystemCreateCommand.PositionsLabel, positions)
         set_arg_string(ParticleSystemCreateCommand.NameLabel, name)
         set_arg_float(ParticleSystemCreateCommand.PointSizeLabel, point_size)
         set_arg_color4f(ParticleSystemCreateCommand.ColorLabel, color)
-        set_arg_int(ParticleSystemCreateCommand.LayerLabel, layer)
         is_ok = execute_command(self.scene.world)
         self.id = get_result_int(ParticleSystemCreateCommand.NewIdLabel)
         return is_ok

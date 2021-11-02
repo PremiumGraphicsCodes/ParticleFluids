@@ -33,11 +33,9 @@ class CameraZoomCommand:
    ZoomRatioLabel="Ratio"
 class ClearCommand:
    CommandNameLabel="ClearCommand"
-   LayerLabel="Layer"
 class DeleteCommand:
    CommandNameLabel="DeleteCommand"
    IdLabel="Id"
-   IsItemLabel="IsItem"
 class FileExportCommand:
    FileExportCommandLabel="FileExport"
    FilePathLabel="FilePath"
@@ -123,7 +121,6 @@ class ParticleSystemCreateCommand:
    PointSizeLabel="PointSize"
    ColorLabel="Color"
    NameLabel="Name"
-   LayerLabel="Layer"
    NewIdLabel="NewId"
 class ParticleSystemGetCommand:
    CommandNameLabel="ParticleSystemGet"
@@ -172,7 +169,6 @@ class PolygonMeshCreateCommand:
    NormalsLabel="Normals"
    TexCoordsLabel="TexCoords"
    NameLabel="Name"
-   LayerLabel="Layer"
    NewIdLabel="NewId"
 class PresenterSetCommand:
    CommandNameLabel="PresenterSet"
@@ -204,7 +200,6 @@ class SolidCreateCommand:
    BoxLabel="Box"
    ColorLabel="Color"
    NameLabel="Name"
-   LayerLabel="Layer"
    NewIdLabel="NewId"
 class STLFileExportCommand:
    CommandNameLabel="STLFileExport"
@@ -233,7 +228,6 @@ class TriangleMeshCreateCommand:
    CommandNameLabel="TriangleMeshCreate"
    TrianglesLabel="Triangles"
    NameLabel="Name"
-   LayerLabel="Layer"
    NewIdLabel="NewId"
 class TriangleMeshGetCommand:
    CommandNameLabel="TriangleMeshGet"
@@ -266,5 +260,4 @@ class WireFrameCreateCommand:
    LineWidthLabel="LineWidth"
    ColorLabel="Color"
    NameLabel="Name"
-   LayerLabel="Layer"
    NewIdLabel="NewId"

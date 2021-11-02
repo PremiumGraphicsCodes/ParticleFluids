@@ -25,5 +25,5 @@ class FileIOTest(unittest.TestCase):
         positions.add(Vector3dd(4.0, 5.0, 6.0))
         color = ColorRGBAf()
         particle_system = ParticleSystemScene(scene)
-        particle_system.create(positions, "", 1.0, color, 1)
+        particle_system.create(positions, "", 1.0, color)
         return particle_system

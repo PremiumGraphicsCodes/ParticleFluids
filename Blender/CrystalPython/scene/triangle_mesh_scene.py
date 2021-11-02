@@ -13,7 +13,6 @@ class TriangleMeshScene :
 
     def create(self, triangles, name) :
         create_scene_command(TriangleMeshCreateCommand.CommandNameLabel)
-        set_arg_int(TriangleMeshCreateCommand.LayerLabel, 1)
         set_arg_triangle3dd_vector(TriangleMeshCreateCommand.TrianglesLabel, triangles)
         set_arg_string(TriangleMeshCreateCommand.NameLabel, name)
         is_ok = execute_command(self.scene.world)
@@ -23,7 +22,6 @@ class TriangleMeshScene :
     def get_triangles(self) :
         create_scene_command(TriangleMeshGetCommand.CommandNameLabel)
         set_arg_int(TriangleMeshGetCommand.MeshIdLabel, self.id)
-        set_arg_int(TriangleMeshGetCommand.LayerLabel, 1)
         is_ok = execute_command(self.scene.world)
         return get_result_triangle3dd_vector(TriangleMeshGetCommand.TrianglesLabel)
 

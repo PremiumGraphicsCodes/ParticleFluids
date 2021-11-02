@@ -7,12 +7,10 @@ class Scene :
 
     def clear(self, layer) :
         create_scene_command(ClearCommand.CommandNameLabel);
-        set_arg_int(ClearCommand.LayerLabel, layer);
         return execute_command(self.world);
 
     def delete(self, id, isItem):
         create_scene_command(DeleteCommand.CommandNameLabel)
         set_arg_int(DeleteCommand.IdLabel, id)
-        set_arg_bool(DeleteCommand.IsItemLabel, isItem)
         return execute_command(self.world)   
 

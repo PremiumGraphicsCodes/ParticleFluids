@@ -22,7 +22,6 @@ class SparseVolumeSceneCreateCommand:
    ResolutionZLabel="ResolutionZ"
    BoundingBoxLabel="BoundingBox"
    NameLabel="Name"
-   LayerLabel="Layer"
    NewIdLabel="NewId"
 class VoxelGetCommand:
    CommandNameLabel="VoxelGet"
@@ -44,7 +43,6 @@ class VoxelSceneCreateCommand:
    ResolutionZLabel="ResolutionZ"
    BoundingBoxLabel="BoundingBox"
    NameLabel="Name"
-   LayerLabel="Layer"
    NewIdLabel="NewId"
 class VoxelSetCommand:
    CommandNameLabel="VoxelNodeSet"

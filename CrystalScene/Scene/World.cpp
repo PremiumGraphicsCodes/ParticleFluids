@@ -117,7 +117,7 @@ void World::clear()
 
 void World::addScene(IScene* scene)
 {
-	scene->addScene(scene);
+	this->scene->addScene(scene);
 }
 
 Box3dd World::getBoundingBox() const

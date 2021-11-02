@@ -10,7 +10,6 @@ class PolygonMeshScene :
     def create_empty_polygon_mesh_scene(self, name, layer) :
         create_scene_command(PolygonMeshCreateCommand.CommandNameLabel)
         set_arg_string(PolygonMeshCreateCommand.NameLabel, name)
-        set_arg_int(PolygonMeshCreateCommand.LayerLabel, layer)
         is_ok = execute_command(self.scene.world)
         self.id = get_result_int(PolygonMeshCreateCommand.NewIdLabel)
         return is_ok
@@ -18,7 +17,6 @@ class PolygonMeshScene :
     def create_polygon_mesh_scene(self, name, positions, normals, texcoords, layer) :
         create_scene_command(PolygonMeshCreateCommand.CommandNameLabel)
         set_arg_string(PolygonMeshCreateCommand.NameLabel, name)
-        set_arg_int(PolygonMeshCreateCommand.LayerLabel, layer)
         set_arg_vector3dd_vector(PolygonMeshCreateCommand.PositionsLabel, positions)
         set_arg_vector3dd_vector(PolygonMeshCreateCommand.NormalsLabel, normals)
         is_ok = execute_command(self.scene.world)

@@ -12,7 +12,6 @@ class WireFrameScene :
         set_arg_string(WireFrameCreateCommand.NameLabel, name)
         set_arg_float(WireFrameCreateCommand.LineWidthLabel, line_width)
         set_arg_color4f(WireFrameCreateCommand.ColorLabel, color)
-        set_arg_int(WireFrameCreateCommand.LayerLabel, layer)
         execute_command(self.scene.world)
         self.id = get_result_int(WireFrameCreateCommand.NewIdLabel)
      
