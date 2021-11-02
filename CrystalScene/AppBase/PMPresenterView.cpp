@@ -31,5 +31,5 @@ void PMPresenterView::setPresenter(PolygonMeshScene* scene, World* world)
 	}
 
 	auto presenter = scene->getPresenter();
-	presenter->createView(world->getRenderer(), *world->getGLFactory());
+	presenter->createView(world->getRenderer());
 }

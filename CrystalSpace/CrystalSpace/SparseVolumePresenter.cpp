@@ -17,20 +17,20 @@ SparseVolumePresenter::SparseVolumePresenter(SparseVolumeScene* model) :
 	this->colorMap = ColorMap(0.0, 1.0, ColorTable::createDefaultTable(270));
 }
 
-void SparseVolumePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void SparseVolumePresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	updateView();
 }
 
-void SparseVolumePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+void SparseVolumePresenter::removeView(SceneShader* sceneShader)
 {
-	this->view->release(factory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 }

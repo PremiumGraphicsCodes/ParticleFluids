@@ -15,20 +15,20 @@ VoxelPresenter::VoxelPresenter(VoxelScene* model) :
 {
 }
 
-void VoxelPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void VoxelPresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	updateView();
 }
 
-void VoxelPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+void VoxelPresenter::removeView(SceneShader* sceneShader)
 {
-	this->view->release(factory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 }

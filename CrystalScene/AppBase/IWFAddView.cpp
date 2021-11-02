@@ -27,5 +27,5 @@ void IWFAddView::addWireFrame(const std::vector<Vector3dd>& positions, const std
 	//getWorld()->addScene(scene);
 
 	auto presenter = scene->getPresenter();
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	presenter->createView(getWorld()->getRenderer());
 }

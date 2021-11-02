@@ -28,5 +28,5 @@ void IVoxelAddView::addVoxel(std::unique_ptr<Volume<bool>> volume)
 
 	auto presenter = scene->getPresenter();
 	//static_cast<VolumePresenter*>(presenter)->setColorMap(colorMapView.getValue());
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	presenter->createView(getWorld()->getRenderer());
 }

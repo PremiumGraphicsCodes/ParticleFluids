@@ -28,5 +28,5 @@ void ISVAddView::addVolume(std::unique_ptr<SparseVolumed> volume)
 
 	auto presenter = scene->getPresenter();
 	static_cast<SparseVolumePresenter*>(presenter)->setColorMap(colorMapView.getValue());
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	presenter->createView(getWorld()->getRenderer());
 }

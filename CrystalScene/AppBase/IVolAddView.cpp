@@ -28,5 +28,5 @@ void IVolAddView::addVolume(std::unique_ptr<Volume<float>> volume)
 
 	auto presenter = scene->getPresenter();
 	static_cast<VolumePresenter*>(presenter)->setColorMap(colorMapView.getValue());
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	presenter->createView(getWorld()->getRenderer());
 }

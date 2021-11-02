@@ -42,7 +42,7 @@ void RayTracerView::onOk()
 		getWorld()->getScenes()->addScene(scene);
 
 		auto presenter = scene->getPresenter();
-		presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+		presenter->createView(getWorld()->getRenderer());
 	}
 
 	RayTracer rayTracer;
@@ -70,7 +70,7 @@ void RayTracerView::onOk()
 		getWorld()->getScenes()->addScene(scene);
 
 		auto presenter = scene->getPresenter();
-		presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+		presenter->createView(getWorld()->getRenderer());
 
 	}
 
@@ -96,7 +96,7 @@ void RayTracerView::onOk()
 	getWorld()->getScenes()->addScene(scene);
 
 	auto presenter = scene->getPresenter();
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	presenter->createView(getWorld()->getRenderer());
 
 	const auto& intersections = rayTracer.getIntersections();
 	auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>();
@@ -112,6 +112,6 @@ void RayTracerView::onOk()
 		auto scene = new ParticleSystemScene(getWorld()->getNextSceneId(), "", std::move(ps));
 		getWorld()->getScenes()->addScene(scene);
 		auto presenter = scene->getPresenter();
-		presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+		presenter->createView(getWorld()->getRenderer());
 	}
 }

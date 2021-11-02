@@ -63,5 +63,5 @@ void LinearOctreeView::onOk()
 	getWorld()->getScenes()->addScene(scene);
 
 	auto presenter = scene->getPresenter();
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	presenter->createView(getWorld()->getRenderer());
 }

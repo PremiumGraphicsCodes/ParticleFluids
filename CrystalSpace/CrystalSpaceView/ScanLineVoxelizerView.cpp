@@ -56,27 +56,26 @@ void ScanLineVoxelizerView::onOk()
 	auto scene = new ParticleSystemScene(getWorld()->getNextSceneId(), "", std::move(ps));
 	getWorld()->getScenes()->addScene(scene);
 	auto presenter = scene->getPresenter();
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	presenter->createView(getWorld()->getRenderer());
 
 	{
-		std::vector<Math::Vector3dd> positions;
+		TXTFileWriter writer;
 		for (int i = 0; i < voxel->getResolutions()[0]; ++i) {
 			for (int j = 0; j < voxel->getResolutions()[1]; ++j) {
 				for (int k = 0; k < voxel->getResolutions()[2]; ++k) {
 					if (voxel->getValue(i, j, k)) {
 						auto p = voxel->getCellPosition(i, j, k);
-						positions.push_back(p);
+						writer.add(p);
 					}
 				}
 			}
 		}
-		TXTFileWriter writer;
-		writer.write("voxelized.txt", positions);
+		writer.write("voxelized.txt");
 	}
 
 	{
 		auto scene = new VoxelScene(getWorld()->getNextSceneId(), "Voxelized", std::move(voxel));
 		auto presenter = scene->getPresenter();
-		presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+		presenter->createView(getWorld()->getRenderer());
 	}
 }

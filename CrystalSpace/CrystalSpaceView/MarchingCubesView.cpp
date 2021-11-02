@@ -59,7 +59,7 @@ void MarchingCubesView::onOk()
 	PolygonMeshScene::FaceGroup group(builder.getFaces(), nullptr);
 	scene->addGroup(group);
 
-	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	scene->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(scene);
 	//builder.pushCurrentFaceGroup();
 	//getWorld()->getObjectFactory()->createPolygonMeshScene(builder.(), "MarchingCubes");
