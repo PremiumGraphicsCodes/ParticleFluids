@@ -54,7 +54,7 @@ void DFSPHFluidSimulationView::onOk()
 	getWorld()->getScenes()->addScene(this->fluidScene);
 	this->newId = this->fluidScene->getId();
 
-	fluidScene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	fluidScene->getPresenter()->createView(getWorld()->getRenderer());
 
 
 	updater.add(fluidScene);

@@ -29,5 +29,5 @@ void CSGBoundaryView::onApply()
 	boundary->clear();
 	boundary->add(boxView.getValue());
 
-	boundary->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	boundary->getPresenter()->createView(world->getRenderer());
 }

@@ -49,7 +49,7 @@ void PBSPHFluidSimulationView::onOk()
 
 	getWorld()->getScenes()->addScene(this->fluidScene);
 	auto newId = this->fluidScene->getId();
-	this->fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	this->fluidScene->getPresenter()->createView(world->getRenderer());
 
 	//getWorld()->getScenes()->addScene(this->boundaryScene);
 	//auto boundaryId = this->boundaryScene->getId();

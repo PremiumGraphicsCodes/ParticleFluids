@@ -15,9 +15,9 @@ class SPHFlameScenePresenter : public Scene::IPresenter
 public:
 	explicit SPHFlameScenePresenter(SPHFlameScene* model);
 
-	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void createView(Scene::SceneShader* sceneShader) override;
 
-	void removeView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override{};
+	void removeView(Scene::SceneShader* sceneShader) override{};
 
 	void updateView() override;
 

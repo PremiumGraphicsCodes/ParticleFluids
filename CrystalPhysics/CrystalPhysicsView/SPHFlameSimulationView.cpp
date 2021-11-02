@@ -63,8 +63,8 @@ void SPHFlameSimulationView::onOk()
 	solver->add(flame);
 	solver->add(heatSource);
 
-	flame->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
-	heatSource->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	flame->getPresenter()->createView(world->getRenderer());
+	heatSource->getPresenter()->createView(world->getRenderer());
 
 	this->onReset();
 
@@ -97,7 +97,7 @@ void SPHFlameSimulationView::onReset()
 	else {
 		assert(false);
 	}
-	presenter->createView(world->getRenderer(), *world->getGLFactory());
+	presenter->createView(world->getRenderer());
 	this->flame->setPresenter(std::move(presenter));
 
 	const auto radius = 1.0;

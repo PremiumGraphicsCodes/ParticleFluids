@@ -120,7 +120,7 @@ void SPHSurfaceBuilderView::onOk()
 	}
 	auto scene = new TriangleMeshScene(getWorld()->getNextSceneId(), "", std::move(mesh));
 
-	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	scene->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(scene);
 	/*
 	WireFrameBuilder wfBuilder;

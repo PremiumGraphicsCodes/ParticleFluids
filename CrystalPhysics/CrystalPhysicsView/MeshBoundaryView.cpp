@@ -28,6 +28,6 @@ void MeshBoundaryView::onOk()
 	auto scene = new MeshBoundaryScene(getWorld()->getNextSceneId(), "MeshBoundary");
 	scene->build(mesh->getShape(), divideLengthView.getValue());
 
-	scene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	scene->getPresenter()->createView(world->getRenderer());
 	//boundary.build(*(mesh->getShape()), divideLengthView.getValue());
 }

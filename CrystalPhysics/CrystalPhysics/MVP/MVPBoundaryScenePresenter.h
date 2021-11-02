@@ -14,9 +14,9 @@ class MVPBoundaryScenePresenter : public Scene::IPresenter
 public:
 	explicit MVPBoundaryScenePresenter(MVPBoundaryScene* model);
 
-	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void createView(Scene::SceneShader* sceneShader) override;
 
-	void removeView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override {};
+	void removeView(Scene::SceneShader* sceneShader) override {};
 
 	void updateView() override;
 

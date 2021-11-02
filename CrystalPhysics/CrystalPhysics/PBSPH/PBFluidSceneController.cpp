@@ -16,12 +16,12 @@ PBFluidSceneController::PBFluidSceneController(PBFluidScene* model) :
 	colorMap = ColorMap(2.0f, 3.0f, ColorTable::createDefaultTable(270));
 }
 
-void PBFluidSceneController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PBFluidSceneController::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	updateView();

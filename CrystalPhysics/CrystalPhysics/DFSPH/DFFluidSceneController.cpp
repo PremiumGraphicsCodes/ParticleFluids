@@ -12,12 +12,12 @@ DFFluidSceneController::DFFluidSceneController(DFFluidScene* model) :
 	view(nullptr)
 {}
 
-void DFFluidSceneController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void DFFluidSceneController::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	updateView();

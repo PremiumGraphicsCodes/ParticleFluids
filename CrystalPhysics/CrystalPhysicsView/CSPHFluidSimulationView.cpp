@@ -58,7 +58,7 @@ void CSPHFluidSimulationView::onOk()
 
 	this->newId = fluidScene->getId();
 
-	fluidScene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	fluidScene->getPresenter()->createView(getWorld()->getRenderer());
 
 	simulator = new CSPHSolver();
 	simulator->add(fluidScene);

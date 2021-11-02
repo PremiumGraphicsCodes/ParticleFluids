@@ -12,12 +12,12 @@ MVPBoundaryScenePresenter::MVPBoundaryScenePresenter(MVPBoundaryScene* model) :
 	view(nullptr)
 {}
 
-void MVPBoundaryScenePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void MVPBoundaryScenePresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	updateView();

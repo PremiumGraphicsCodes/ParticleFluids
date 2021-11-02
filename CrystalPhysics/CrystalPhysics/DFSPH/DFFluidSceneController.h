@@ -14,9 +14,9 @@ class DFFluidSceneController : public Scene::IPresenter
 public:
 	explicit DFFluidSceneController(DFFluidScene* model);
 
-	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void createView(Scene::SceneShader* sceneShader) override;
 
-	void removeView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override{};
+	void removeView(Scene::SceneShader* sceneShader) override{};
 
 	void updateView() override;
 

@@ -51,7 +51,7 @@ void MVPFluidSimulationView::onStart()
 {
 	onReset();
 
-	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	fluidScene->getPresenter()->createView(world->getRenderer());
 	updator.add(fluidScene);
 
 

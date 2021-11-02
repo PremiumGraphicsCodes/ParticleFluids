@@ -14,9 +14,9 @@ class MeshBoundaryScenePresenter : public Scene::IPresenter
 public:
 	explicit MeshBoundaryScenePresenter(MeshBoundaryScene* model);
 
-	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void createView(Scene::SceneShader* sceneShader) override;
 
-	void removeView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void removeView(Scene::SceneShader* sceneShader) override;
 
 	void updateView() override;
 
