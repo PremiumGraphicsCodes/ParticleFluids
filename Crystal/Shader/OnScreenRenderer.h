@@ -1,7 +1,8 @@
 #pragma once
 
+#include "IRenderer.h"
+
 #include "ShaderObject.h"
-#include "ShaderBuildStatus.h"
 #include <memory>
 
 namespace Crystal {
@@ -9,12 +10,12 @@ namespace Crystal {
 		class GLObjectFactory;
 		class ITextureObject;
 
-class OnScreenRenderer
+class OnScreenRenderer : IRenderer
 {
 public:
-	ShaderBuildStatus build(GLObjectFactory& factory);
+	ShaderBuildStatus build(GLObjectFactory& factory) override;
 
-	void release(GLObjectFactory& factory);
+	void release(GLObjectFactory& factory) override;
 
 	void render(const ITextureObject& texture);
 

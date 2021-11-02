@@ -1,17 +1,18 @@
 #pragma once
 
+#include "IRenderer.h"
+
 #include "VertexBufferObject.h"
 #include "VertexArrayObject.h"
 #include "GLObjectFactory.h"
 #include "../Graphics/Camera.h"
 #include "../Shader/ShaderObject.h"
-#include "ShaderBuildStatus.h"
 #include <string>
 
 namespace Crystal {
 	namespace Shader {
 
-class PointRenderer// : public IShaderScene
+class PointRenderer : public IRenderer
 {
 public:
 	struct Buffer
@@ -26,9 +27,9 @@ public:
 
 	PointRenderer();
 
-	ShaderBuildStatus build(Shader::GLObjectFactory& factory);
+	ShaderBuildStatus build(Shader::GLObjectFactory& factory) override;
 
-	void release(Shader::GLObjectFactory& factory);
+	void release(Shader::GLObjectFactory& factory) override;
 
 	void render(const Buffer& buffer);
 

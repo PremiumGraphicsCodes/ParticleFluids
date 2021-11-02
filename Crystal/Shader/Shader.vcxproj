@@ -143,6 +143,7 @@
     <ClInclude Include="glew.h" />
     <ClInclude Include="GLObjectFactory.h" />
     <ClInclude Include="IGLObject.h" />
+    <ClInclude Include="IRenderer.h" />
     <ClInclude Include="IShader.h" />
     <ClInclude Include="IShaderCommand.h" />
     <ClInclude Include="ITextureObject.h" />

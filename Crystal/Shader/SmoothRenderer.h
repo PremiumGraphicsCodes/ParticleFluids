@@ -1,5 +1,7 @@
 #pragma once
 
+#include "IRenderer.h"
+
 #include "GLObjectFactory.h"
 #include "VertexBufferObject.h"
 #include "../Math/Matrix4d.h"
@@ -14,7 +16,7 @@
 namespace Crystal {
 	namespace Shader {
 
-class SmoothRenderer
+class SmoothRenderer : public IRenderer
 {
 public:
 	struct BufferBlock
@@ -41,9 +43,9 @@ public:
 
 	SmoothRenderer();
 
-	ShaderBuildStatus build(Shader::GLObjectFactory& factory);
+	ShaderBuildStatus build(Shader::GLObjectFactory& factory) override;
 
-	void release(Shader::GLObjectFactory& factory);
+	void release(Shader::GLObjectFactory& factory) override;
 
 	void sendLight(const int index, const Graphics::PointLight& light);
 

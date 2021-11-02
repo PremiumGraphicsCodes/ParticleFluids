@@ -3,12 +3,12 @@
 #include "ShaderObject.h"
 #include "GLObjectFactory.h"
 #include "VertexBufferObject.h"
-#include "ShaderBuildStatus.h"
+#include "IRenderer.h"
 
 namespace Crystal {
 	namespace Shader {
 
-class TriangleRenderer
+class TriangleRenderer : public IRenderer
 {
 public:
 	struct Buffer
@@ -22,11 +22,9 @@ public:
 
 	TriangleRenderer();
 
-	ShaderBuildStatus build(Shader::GLObjectFactory& glFactory);
+	ShaderBuildStatus build(Shader::GLObjectFactory& glFactory) override;
 
-	void release(Shader::GLObjectFactory& glFactory);
-
-	//void setScene(TriangleShaderScene* scene) { this->scene = scene; }
+	void release(Shader::GLObjectFactory& glFactory) override;
 
 	void render(const Buffer& buffer);
 

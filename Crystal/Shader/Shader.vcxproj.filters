@@ -58,6 +58,9 @@
     <ClInclude Include="ShaderBuildStatus.h">
       <Filter>Shader</Filter>
     </ClInclude>
+    <ClInclude Include="IRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />

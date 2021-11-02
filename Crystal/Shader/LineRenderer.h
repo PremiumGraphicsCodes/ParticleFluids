@@ -2,15 +2,13 @@
 
 #include "VertexBufferObject.h"
 
-#include "../Shader/GLObjectFactory.h"
+#include "IRenderer.h"
 #include "../Math/Matrix4d.h"
-#include "../Shader/ShaderObject.h"
-#include "../Shader/ShaderBuildStatus.h"
 
 namespace Crystal {
 	namespace Shader {
 
-class LineRenderer
+class LineRenderer : IRenderer
 {
 public:
 	struct Buffer
@@ -26,9 +24,9 @@ public:
 
 	LineRenderer();
 
-	ShaderBuildStatus build(Shader::GLObjectFactory& factory);
+	ShaderBuildStatus build(Shader::GLObjectFactory& factory) override;
 
-	void release(Shader::GLObjectFactory& factory);
+	void release(Shader::GLObjectFactory& factory) override;
 
 	void render(const Buffer& buffer);
 
