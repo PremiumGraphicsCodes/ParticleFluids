@@ -32,5 +32,5 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 	const auto newId = scene->getId();
 
 	auto presenter = scene->getPresenter();
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	presenter->createView(getWorld()->getRenderer());
 }

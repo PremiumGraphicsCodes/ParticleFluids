@@ -73,7 +73,7 @@ bool MaterialCreateCommand::execute(World* world)
 	auto scene = new MaterialScene(world->getNextSceneId(), "BlackMat", std::move(m) );
 	world->getScenes()->addScene(scene);
 
-	scene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	scene->getPresenter()->createView(world->getRenderer());
 
 	results.newId.setValue(scene->getId());
 

@@ -17,42 +17,42 @@ ParticleSystemPresenter::ParticleSystemPresenter(ParticleSystemScene* model) :
 {
 }
 
-void ParticleSystemPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void ParticleSystemPresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 
 	{
 		this->parentIdView = new PointShaderScene(model->getName());
 		this->parentIdView->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->parentIdView->build(glFactory);
+		this->parentIdView->build(*sceneShader->getGLFactory());
 		sceneShader->getParentIdRenderer()->addScene(this->parentIdView);
 	}
 
 	{
 		this->childIdView = new PointShaderScene(model->getName());
 		this->childIdView->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->childIdView->build(glFactory);
+		this->childIdView->build(*sceneShader->getGLFactory());
 		sceneShader->getChildIdRenderer()->addScene(this->childIdView);
 	}
 	updateView();
 }
 
-void ParticleSystemPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+void ParticleSystemPresenter::removeView(SceneShader* sceneShader)
 {
-	this->view->release(factory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 
-	this->parentIdView->release(factory);
+	this->parentIdView->release(*sceneShader->getGLFactory());
 	sceneShader->getParentIdRenderer()->removeScene(this->parentIdView);
 	delete this->parentIdView;
 
-	this->childIdView->release(factory);
+	this->childIdView->release(*sceneShader->getGLFactory());
 	sceneShader->getParentIdRenderer()->removeScene(this->childIdView);
 	delete this->childIdView;
 }

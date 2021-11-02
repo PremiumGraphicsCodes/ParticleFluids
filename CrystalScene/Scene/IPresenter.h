@@ -12,9 +12,9 @@ class IPresenter
 public:
 	virtual ~IPresenter() {};
 
-	virtual void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) = 0;
+	virtual void createView(SceneShader* sceneShader) = 0;
 
-	virtual void removeView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) = 0;
+	virtual void removeView(SceneShader* sceneShader) = 0;
 
 	virtual void updateView() = 0;
 };

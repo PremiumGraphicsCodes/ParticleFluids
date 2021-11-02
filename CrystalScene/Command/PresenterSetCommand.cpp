@@ -37,7 +37,7 @@ bool PresenterSetCommand::execute(World* world)
 	if (s->getType() == SceneTypeLabels::PolygonMeshScene) {
 		auto scene = static_cast<PolygonMeshScene*>(s);
 		const auto name = args.presenterName.getValue();
-		scene->getPresenter()->removeView(world->getRenderer(), *world->getGLFactory());
+		scene->getPresenter()->removeView(world->getRenderer());
 		if (name == "Smooth") {
 			auto presenter = std::make_unique<PMSmoothPresenter>(scene);
 			scene->setPresenter(std::move(presenter));
@@ -46,7 +46,7 @@ bool PresenterSetCommand::execute(World* world)
 			auto presenter = std::make_unique<PMWirePresenter>(scene);
 			scene->setPresenter(std::move(presenter));
 		}
-		scene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+		scene->getPresenter()->createView(world->getRenderer());
 	}
 	return true;
 }

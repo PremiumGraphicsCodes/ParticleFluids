@@ -12,9 +12,9 @@ class TexturePresenter : public IPresenter
 public:
 	explicit TexturePresenter(TextureScene* model);
 
-	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void createView(SceneShader* sceneShader) override;
 
-	void removeView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void removeView(SceneShader* sceneShader) override;
 
 	void updateView() override;
 

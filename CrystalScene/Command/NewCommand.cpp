@@ -19,7 +19,7 @@ bool NewCommand::execute(World* model)
 {
 	model->clear();
 	model->init();
-	model->getRenderer()->build(*model->getGLFactory());
+	model->getRenderer()->build(*model->getRenderer()->getGLFactory());
 
 	//world->getRenderer()->build(*world->getGLFactory());
 	//model->getCamera()->getPresenter()->createView(model->getRenderer(), *model->getGLFactory());

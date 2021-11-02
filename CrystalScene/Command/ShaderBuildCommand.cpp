@@ -26,7 +26,7 @@ std::string ShaderBuildCommand::getName()
 bool ShaderBuildCommand::execute(World* world)
 {
 	auto s = world->getScenes()->findSceneById(std::any_cast<int>(args.id.getValue()));
-	s->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	s->getPresenter()->createView(world->getRenderer());
 	return true;
 }
 

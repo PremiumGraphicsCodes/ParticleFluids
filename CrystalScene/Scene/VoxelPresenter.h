@@ -13,9 +13,9 @@ class VoxelPresenter : public IPresenter
 public:
 	explicit VoxelPresenter(VoxelScene* model);
 
-	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void createView(SceneShader* sceneShader) override;
 
-	void removeView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void removeView(SceneShader* sceneShader) override;
 
 	void updateView() override;
 

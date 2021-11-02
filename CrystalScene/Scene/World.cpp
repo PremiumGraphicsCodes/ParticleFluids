@@ -34,7 +34,7 @@ void World::init()
 		light->setDiffuse(ColorRGBAf(1, 1, 1, 1));
 		light->setSpecular(ColorRGBAf(1, 1, 1, 1));
 		auto s = new LightScene(getNextSceneId(), "Light0", std::move(light));
-		s->getPresenter()->createView(renderer.get(), glFactory);
+		//s->getPresenter()->createView(renderer.get(), glFactory);
 		scenes[1]->addScene(s);
 		//scenes[1]->addScene(sceneFactory.createLightScene(std::move(light), "Light0"));
 	}
@@ -47,7 +47,7 @@ void World::init()
 		material->shininess = 1.0;
 		material->ambientTexName = "WhiteTex";
 		auto s = new MaterialScene(getNextSceneId(), "WhiteMat", std::move(material));
-		s->getPresenter()->createView(renderer.get(), glFactory);
+		//s->getPresenter()->createView(renderer.get(), glFactory);
 		scenes[1]->addScene(s);
 	}
 
@@ -58,7 +58,7 @@ void World::init()
 		material->specular = ColorRGBAf(0, 0, 0, 1);
 		material->shininess = 1.0;
 		auto s = new MaterialScene(getNextSceneId(),"RedMat", std::move(material));
-		s->getPresenter()->createView(renderer.get(), glFactory);
+		//s->getPresenter()->createView(renderer.get(), glFactory);
 		scenes[1]->addScene(s);
 	}
 
@@ -69,7 +69,7 @@ void World::init()
 		material->specular = ColorRGBAf(0, 0, 0, 1);
 		material->shininess = 1.0;
 		auto s = new MaterialScene(getNextSceneId(), "BlackMat", std::move(material));
-		s->getPresenter()->createView(renderer.get(), glFactory);
+		//s->getPresenter()->createView(renderer.get(), glFactory);
 		scenes[1]->addScene(s);
 	}
 
@@ -81,7 +81,7 @@ void World::init()
 		image->setColor(1, 1, ColorRGBAuc(0, 0, 0, 255));
 
 		auto s = new TextureScene(getNextSceneId(), std::move(image), "WhiteTex");
-		s->getPresenter()->createView(renderer.get(), glFactory);
+		//s->getPresenter()->createView(renderer.get(), glFactory);
 		scenes[1]->addScene(s);
 	}
 
@@ -89,7 +89,7 @@ void World::init()
 		auto image = std::make_unique<Image>(1, 1);
 		image->setColor(0, 0, ColorRGBAuc(0, 0, 0, 0));
 		auto s = new TextureScene(getNextSceneId(), std::move(image), "BlackTex");
-		s->getPresenter()->createView(renderer.get(), glFactory);
+		//s->getPresenter()->createView(renderer.get(), glFactory);
 		scenes[1]->addScene(s);
 	}
 
@@ -112,7 +112,7 @@ int World::createDefaultCamera()
 
 void World::clear()
 {
-	glFactory.clear();
+	//glFactory.clear();
 	sceneIdProvider.reset(1);
 	for (auto& s : scenes) {
 		s->clear();

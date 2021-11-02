@@ -14,12 +14,12 @@ TMWirePresenter::TMWirePresenter(TriangleMeshScene* model) :
 {
 }
 
-void TMWirePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void TMWirePresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new LineShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 
@@ -27,9 +27,9 @@ void TMWirePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFa
 
 }
 
-void TMWirePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void TMWirePresenter::removeView(SceneShader* sceneShader)
 {
-	this->view->release(glFactory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 

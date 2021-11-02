@@ -33,6 +33,6 @@ void PolygonMeshEditView::onEdit()
 	}
 	scene->setName(nameView.getValue());
 
-	scene->getPresenter()->removeView(world->getRenderer(), *world->getGLFactory());
+	scene->getPresenter()->removeView(world->getRenderer());
 	presenterView.setPresenter(scene, world);
 }

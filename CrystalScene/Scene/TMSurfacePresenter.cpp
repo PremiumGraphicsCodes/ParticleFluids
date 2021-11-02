@@ -18,12 +18,12 @@ TMSurfacePresenter::TMSurfacePresenter(TriangleMeshScene* model) :
 {
 }
 
-void TMSurfacePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void TMSurfacePresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new TriangleShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getTriangleShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
@@ -31,9 +31,9 @@ void TMSurfacePresenter::createView(SceneShader* sceneShader, GLObjectFactory& g
 	updateView();
 }
 
-void TMSurfacePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void TMSurfacePresenter::removeView(SceneShader* sceneShader)
 {
-	this->view->release(glFactory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 }

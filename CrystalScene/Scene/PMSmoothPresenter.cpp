@@ -19,12 +19,12 @@ PMSmoothPresenter::PMSmoothPresenter(PolygonMeshScene* model) :
 {
 }
 
-void PMSmoothPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PMSmoothPresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new SmoothShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getSmoothShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 
 		/*
 		this->view->setMaterialBuffer(sceneShader->getObjectRenderer()->getMateialScene());
@@ -47,13 +47,13 @@ void PMSmoothPresenter::createView(SceneShader* sceneShader, GLObjectFactory& gl
 	updateView();
 }
 
-void PMSmoothPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PMSmoothPresenter::removeView(SceneShader* sceneShader)
 {
-	this->view->release(glFactory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 
-	this->parentIdView->release(glFactory);
+	this->parentIdView->release(*sceneShader->getGLFactory());
 	sceneShader->getParentIdRenderer()->removeScene(this->parentIdView);
 	delete this->parentIdView;
 }

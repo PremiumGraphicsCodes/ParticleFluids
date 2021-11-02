@@ -21,19 +21,19 @@ SolidAsWFPresenter::SolidAsWFPresenter(SolidScene* model) :
 {
 }
 
-void SolidAsWFPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void SolidAsWFPresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new LineShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 
 	updateView();
 }
 
-void SolidAsWFPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void SolidAsWFPresenter::removeView(SceneShader* sceneShader)
 {
 	;
 }

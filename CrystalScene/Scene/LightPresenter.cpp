@@ -16,14 +16,14 @@ LightPresenter::LightPresenter(LightScene* model) :
 {
 }
 
-void LightPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void LightPresenter::createView(SceneShader* sceneShader)
 {
 	this->view = sceneShader->getObjectRenderer()->getMateialScene();
 	this->index = this->view->getLights().size();
 	this->view->add(*this->model->getLight());
 }
 
-void LightPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+void LightPresenter::removeView(SceneShader* sceneShader)
 {
 	/*
 	this->view->release(factory);

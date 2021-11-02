@@ -14,20 +14,20 @@ VolumePresenter::VolumePresenter(VolumeScene* model) :
 {
 }
 
-void VolumePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void VolumePresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	updateView();
 }
 
-void VolumePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+void VolumePresenter::removeView(SceneShader* sceneShader)
 {
-	this->view->release(factory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 }

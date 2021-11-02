@@ -14,18 +14,18 @@ TexturePresenter::TexturePresenter(TextureScene* model) :
 {
 }
 
-void TexturePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void TexturePresenter::createView(SceneShader* sceneShader)
 {
 	this->view = sceneShader->getObjectRenderer()->getMateialScene();
 	this->index = this->view->getTextures().size();
 
-	auto texture = glFactory.createTextureObject();
+	auto texture = sceneShader->getGLFactory()->createTextureObject();
 	this->view->add(texture);
 
 	updateView();
 }
 
-void TexturePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+void TexturePresenter::removeView(SceneShader* sceneShader)
 {
 	/*
 	this->view->release(factory);

@@ -14,14 +14,14 @@ MaterialPresenter::MaterialPresenter(MaterialScene* model) :
 {
 }
 
-void MaterialPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void MaterialPresenter::createView(SceneShader* sceneShader)
 {
 	this->view = sceneShader->getObjectRenderer()->getMateialScene();
 	this->index = this->view->getMaterials().size();
 	this->view->add(*this->model->getMaterial());
 }
 
-void MaterialPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+void MaterialPresenter::removeView(SceneShader* sceneShader)
 {
 	/*
 	this->view->release(factory);

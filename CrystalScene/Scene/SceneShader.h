@@ -46,8 +46,9 @@ public:
 
 	void setRenderTarget(const RenderTarget target) { this->target = target; }
 
-private:
+	Shader::GLObjectFactory* getGLFactory() { return &glFactory; }
 
+private:
 	Shader::OnScreenRenderer renderer;
 
 	ScreenShader* objectRenderer;
@@ -55,6 +56,8 @@ private:
 	ScreenIdShader* childIdRenderer;
 
 	RenderTarget target;
+
+	Shader::GLObjectFactory glFactory;
 };
 
 	}

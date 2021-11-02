@@ -27,5 +27,5 @@ void ITMAddView::addTriangleMesh(std::unique_ptr<TriangleMesh> shape)
 
 	//presenterView.setPresenter(scene, world);
 
-	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	scene->getPresenter()->createView(getWorld()->getRenderer());
 }

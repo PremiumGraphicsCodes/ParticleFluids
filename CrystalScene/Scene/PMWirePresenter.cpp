@@ -14,12 +14,12 @@ PMWirePresenter::PMWirePresenter(PolygonMeshScene* model) :
 {
 }
 
-void PMWirePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PMWirePresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new LineShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	/*
@@ -35,9 +35,9 @@ void PMWirePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFa
 
 }
 
-void PMWirePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PMWirePresenter::removeView(SceneShader* sceneShader)
 {
-	this->view->release(glFactory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 

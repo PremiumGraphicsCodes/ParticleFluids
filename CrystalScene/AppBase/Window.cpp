@@ -93,7 +93,7 @@ namespace {
 
 	void onClose(GLFWwindow* window)
 	{
-		world->getRenderer()->release(*world->getGLFactory());
+		world->getRenderer()->release(*world->getRenderer()->getGLFactory());
 	}
 }
 
@@ -156,7 +156,7 @@ bool Window::init()
 	world->createDefaultCamera();
 	world->init();
 
-	const auto shaderBuildStatus = world->getRenderer()->build(*world->getGLFactory());
+	const auto shaderBuildStatus = world->getRenderer()->build(*world->getRenderer()->getGLFactory());
 	std::cout << shaderBuildStatus.log << std::endl;
 	//world->getCamera()->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 	//auto camera = world->getCamera()->getController().getView();

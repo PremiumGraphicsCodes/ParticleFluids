@@ -39,8 +39,6 @@ public:
 
 	int getNextSceneId() { return sceneIdProvider.getNextId(); }
 
-	Shader::GLObjectFactory* getGLFactory() { return &glFactory; }
-
 	Math::Box3dd getBoundingBox() const;
 
 	SceneShader* getRenderer() { return renderer.get(); }
@@ -74,7 +72,6 @@ private:
 	CameraScene* camera;
 
 	SceneIdProvider sceneIdProvider;
-	Shader::GLObjectFactory glFactory;
 	
 	std::unique_ptr<SceneShader> renderer;
 

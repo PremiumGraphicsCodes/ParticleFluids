@@ -19,31 +19,31 @@ WireFramePresenter::WireFramePresenter(WireFrameScene* model) :
 {
 }
 
-void WireFramePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void WireFramePresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new LineShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
-		this->view->build(glFactory);
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	{
 		this->parentIdView = new LineShaderScene(model->getName());
 		this->parentIdView->setShader(sceneShader->getObjectRenderer()->getWireShader());
-		this->parentIdView->build(glFactory);
+		this->parentIdView->build(*sceneShader->getGLFactory());
 		sceneShader->getParentIdRenderer()->addScene(this->parentIdView);
 	}
 
 	updateView();
 }
 
-void WireFramePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void WireFramePresenter::removeView(SceneShader* sceneShader)
 {
-	this->view->release(glFactory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 
-	this->parentIdView->release(glFactory);
+	this->parentIdView->release(*sceneShader->getGLFactory());
 	sceneShader->getParentIdRenderer()->removeScene(this->parentIdView);
 	delete this->parentIdView;
 }
