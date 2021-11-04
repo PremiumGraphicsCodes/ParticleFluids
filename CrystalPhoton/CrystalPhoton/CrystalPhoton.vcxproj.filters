@@ -11,6 +11,9 @@
     <ClInclude Include="PBVRenderer.h">
       <Filter>PBVR</Filter>
     </ClInclude>
+    <ClInclude Include="PBVRShaderScene.h">
+      <Filter>PBVR</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PhotonTracer.cpp" />
@@ -21,6 +24,9 @@
       <Filter>MovingPhoton</Filter>
     </ClCompile>
     <ClCompile Include="PBVRenderer.cpp">
+      <Filter>PBVR</Filter>
+    </ClCompile>
+    <ClCompile Include="PBVRShaderScene.cpp">
       <Filter>PBVR</Filter>
     </ClCompile>
   </ItemGroup>
