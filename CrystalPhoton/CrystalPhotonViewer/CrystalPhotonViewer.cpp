@@ -11,6 +11,8 @@
 #include "CrystalScene/AppBase/ControlPanel.h"
 #include "CrystalScene/AppBase/Canvas.h"
 
+#include "../CrystalPhoton/PBVRenderer.h"
+
 #include "PhotonMenu.h"
 
 //#include "../../Crystal/Scene/World.h"
@@ -19,6 +21,8 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
+
+using namespace Crystal::Photon;
 
 #include <iostream>
 
@@ -32,6 +36,10 @@ int main(int, char**)
 		assert(false);
 		return 0;
 	}
+
+	auto pbvrRenderer = std::make_unique<PBVRenderer>();
+	pbvrRenderer->build(*world.getRenderer()->getGLFactory());
+	world.getRenderer()->getRenderers()->addRenderer(std::move(pbvrRenderer));
 
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);

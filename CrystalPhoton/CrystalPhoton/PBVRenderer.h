@@ -5,6 +5,7 @@
 #include "Crystal/Graphics/Buffer1d.h"
 #include "Crystal/Graphics/Buffer3d.h"
 #include "Crystal/Graphics/Buffer4d.h"
+#include "Crystal/Shader/IRenderer.h"
 #include "Crystal/Shader/VertexBufferObject.h"
 #include "Crystal/Shader/GLObjectFactory.h"
 #include "Crystal/Shader/ShaderBuildStatus.h"
@@ -20,7 +21,7 @@ struct PBVRBuffer
 	Graphics::Buffer1d<float> colors;
 };
 
-class PBVRenderer// : public IShaderScene
+class PBVRenderer : public Shader::IRenderer
 {
 public:
 	struct Buffer
@@ -36,11 +37,13 @@ public:
 
 	PBVRenderer();
 
-	Shader::ShaderBuildStatus build(Shader::GLObjectFactory& factory);
+	Shader::ShaderBuildStatus build(Shader::GLObjectFactory& factory) override;
 
-	void release(Shader::GLObjectFactory& factory);
+	void release(Shader::GLObjectFactory& factory) override;
 
 	void render(const Buffer& buffer);
+
+	std::string getName() const override { return "PBVRRenderer"; }
 
 private:
 	std::string getBuiltInVertexShaderSource() const;

@@ -13,6 +13,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Photon;
 
 PhotonCloudPresenter::PhotonCloudPresenter(PhotonCloudScene* model) :
+	IPhotonCloudPresenter(model),
 	view(nullptr),
 	model(model)
 {

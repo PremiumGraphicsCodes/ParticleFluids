@@ -40,4 +40,19 @@ void RendererRepository::release(GLObjectFactory& factory)
 	smoothRenderer->release(factory);
 	triagleRenderer->release(factory);
 	onScreenRenderer->release(factory);
+
+	for (auto& r : customRenderers) {
+		r->release(factory);
+	}
+}
+
+void RendererRepository::addRenderer(std::unique_ptr<IRenderer> renderer)
+{
+	this->customRenderers.push_back(std::move(renderer));
+}
+
+IRenderer* RendererRepository::findRenderer(const std::string& name)
+{
+	auto iter = std::find_if(customRenderers.begin(), customRenderers.end(), [=](const auto& r) { return r->getName() == name; });
+	return iter->get();
 }

@@ -8,8 +8,15 @@ namespace Crystal {
 	}
 	namespace Photon {
 		class PhotonCloudScene;
+		class PBVRShaderScene;
 
-class PhotonCloudPresenter : public Scene::IPresenter
+class IPhotonCloudPresenter : public Scene::IPresenter
+{
+public:
+	IPhotonCloudPresenter(PhotonCloudScene* model) {}
+};
+
+class PhotonCloudPresenter : public IPhotonCloudPresenter
 {
 public:
 	explicit PhotonCloudPresenter(PhotonCloudScene* model);
@@ -30,6 +37,13 @@ private:
 private:
 	PhotonCloudScene* model;
 	Scene::PointShaderScene* view;
+};
+
+class PhotonCloudPBVRPresenter : public Scene::IPresenter
+{
+public:
+private:
+	PBVRShaderScene* pbvrView;
 };
 
 	}
