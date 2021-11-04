@@ -39,11 +39,11 @@ public:
 
 	void render(const Graphics::Camera& camera, const int width, const int height);
 
-	ScreenShader* getObjectRenderer() { return objectRenderer; }
+	ScreenShader* getObjectRenderer() { return objectRenderer.get(); }
 
-	ScreenIdShader* getParentIdRenderer() { return parentIdRenderer; }
+	ScreenIdShader* getParentIdRenderer() { return parentIdRenderer.get(); }
 
-	ScreenIdShader* getChildIdRenderer() { return childIdRenderer; }
+	ScreenIdShader* getChildIdRenderer() { return childIdRenderer.get(); }
 
 	void setRenderTarget(const RenderTarget target) { this->target = target; }
 
@@ -52,9 +52,9 @@ public:
 	RendererRepository* getRenderers() { return &renderers; }
 
 private:
-	ScreenShader* objectRenderer;
-	ScreenIdShader* parentIdRenderer;
-	ScreenIdShader* childIdRenderer;
+	std::unique_ptr<ScreenShader> objectRenderer;
+	std::unique_ptr<ScreenIdShader> parentIdRenderer;
+	std::unique_ptr<ScreenIdShader> childIdRenderer;
 
 	RendererRepository renderers;
 

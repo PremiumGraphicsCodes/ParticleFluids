@@ -10,9 +10,9 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 SceneShader::SceneShader() :
-	objectRenderer(new ScreenShader("ObjectRenderer")),
-	parentIdRenderer(new ScreenIdShader("ParentIdRenderer")),
-	childIdRenderer(new ScreenIdShader("ChildIdRenderer")),
+	objectRenderer(std::make_unique<ScreenShader>("ObjectRenderer")),
+	parentIdRenderer(std::make_unique<ScreenIdShader>("ParentIdRenderer")),
+	childIdRenderer(std::make_unique<ScreenIdShader>("ChildIdRenderer")),
 	target(RenderTarget::Shaded)
 {
 }
