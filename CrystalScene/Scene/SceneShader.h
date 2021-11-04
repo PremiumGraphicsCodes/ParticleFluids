@@ -52,8 +52,6 @@ public:
 	RendererRepository* getRenderers() { return &renderers; }
 
 private:
-	Shader::OnScreenRenderer renderer;
-
 	ScreenShader* objectRenderer;
 	ScreenIdShader* parentIdRenderer;
 	ScreenIdShader* childIdRenderer;

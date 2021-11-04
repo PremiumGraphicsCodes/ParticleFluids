@@ -24,13 +24,10 @@ ShaderBuildStatus SceneShader::build()
 	const auto prStatus = objectRenderer->build(this->glFactory);
 	parentIdRenderer->build(this->glFactory);
 	childIdRenderer->build(this->glFactory);
-	const auto rStatus = renderer.build(this->glFactory);
-
 
 	status.add(prStatus);
 	//status.add(pIdStatus);
 	//status.add(cIdStatus);
-	status.add(rStatus);
 
 	return status;
 }
@@ -42,7 +39,6 @@ void SceneShader::release()
 	objectRenderer->release(this->glFactory);
 	parentIdRenderer->release(this->glFactory);
 	childIdRenderer->release(this->glFactory);
-	renderer.release(this->glFactory);
 }
 
 void SceneShader::render(const Camera& camera)
@@ -59,23 +55,25 @@ void SceneShader::render(const Graphics::Camera& camera, const int width, const 
 	//glClearColor(0.0, 0.0, 1.0, 0.0);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	const auto renderer = renderers.getOnScreenShader();
+
 	switch (target) {
 	case RenderTarget::Shaded:
 	{
 		auto texture = objectRenderer->getTexture();
-		renderer.render(*texture);
+		renderer->render(*texture);
 		break;
 	}
 	case RenderTarget::ParentId:
 	{
 		auto texture = parentIdRenderer->getTextureScene();
-		renderer.render(*texture);
+		renderer->render(*texture);
 		break;
 	}
 	case RenderTarget::ChildId:
 	{
 		auto texture = childIdRenderer->getTextureScene();
-		renderer.render(*texture);
+		renderer->render(*texture);
 		break;
 	}
 	default:

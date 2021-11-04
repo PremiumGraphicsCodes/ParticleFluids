@@ -5,6 +5,7 @@
 #include "Crystal/Shader/LineRenderer.h"
 #include "Crystal/Shader/TriangleRenderer.h"
 #include "Crystal/Shader/SmoothRenderer.h"
+#include "Crystal/Shader/OnScreenRenderer.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -24,19 +25,22 @@ public:
 
 	void release(Shader::GLObjectFactory& factory);
 
-	Shader::PointRenderer* getPointShader() { return pointRenderer; }
+	Shader::PointRenderer* getPointShader() { return pointRenderer.get(); }
 
-	Shader::LineRenderer* getWireShader() { return wireRenderer; }
+	Shader::LineRenderer* getWireShader() { return wireRenderer.get(); }
 
-	Shader::TriangleRenderer* getTriangleShader() { return triagleRenderer; }
+	Shader::TriangleRenderer* getTriangleShader() { return triagleRenderer.get(); }
 
-	Shader::SmoothRenderer* getSmoothShader() { return smoothRenderer; }
+	Shader::SmoothRenderer* getSmoothShader() { return smoothRenderer.get(); }
+
+	Shader::OnScreenRenderer* getOnScreenShader() { return onScreenRenderer.get(); }
 
 private:
-	Shader::PointRenderer* pointRenderer;
-	Shader::LineRenderer* wireRenderer;
-	Shader::TriangleRenderer* triagleRenderer;
-	Shader::SmoothRenderer* smoothRenderer;
+	std::unique_ptr<Shader::PointRenderer> pointRenderer;
+	std::unique_ptr<Shader::LineRenderer> wireRenderer;
+	std::unique_ptr<Shader::TriangleRenderer> triagleRenderer;
+	std::unique_ptr<Shader::SmoothRenderer> smoothRenderer;
+	std::unique_ptr<Shader::OnScreenRenderer> onScreenRenderer;
 };
 
 	}
