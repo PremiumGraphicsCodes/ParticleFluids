@@ -62,7 +62,7 @@ void PBVRShaderScene::render(const Graphics::Camera& camera)
 	shader->render(rBuffer);
 }
 
-void PBVRShaderScene::setShader(PointRenderer* shader)
+void PBVRShaderScene::setShader(PBVRenderer* shader)
 {
 	this->shader = shader;
 }

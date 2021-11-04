@@ -10,7 +10,7 @@ using namespace Crystal::Photon;
 PhotonCloudScene::PhotonCloudScene(const int id, const std::string& name) :
 	IShapeScene(id, name)
 {
-	presenter = std::make_unique<PhotonCloudPresenter>(this);
+	presenter = std::make_unique<PhotonCloudPBVRPresenter>(this);
 }
 
 Box3dd PhotonCloudScene::getBoundingBox() const

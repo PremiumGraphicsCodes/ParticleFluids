@@ -3,7 +3,7 @@
 #include "CrystalScene/Scene/IShaderScene.h"
 #include "Crystal/Graphics/Camera.h"
 #include "CrystalScene/Scene/PointBuffer.h"
-#include "Crystal/Shader/PointRenderer.h"
+#include "PBVRenderer.h"
 
 namespace Crystal {
 	namespace Photon {
@@ -21,11 +21,11 @@ public:
 
 	void send(const Scene::PointBuffer& buffer);
 
-	void setShader(Shader::PointRenderer* shader);
+	void setShader(PBVRenderer* shader);
 
 private:
-	Shader::PointRenderer* shader;
-	Shader::PointRenderer::Buffer rBuffer;
+	PBVRenderer* shader;
+	PBVRenderer::Buffer rBuffer;
 };
 
 	}

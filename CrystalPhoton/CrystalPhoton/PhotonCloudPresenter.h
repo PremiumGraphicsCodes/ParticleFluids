@@ -39,11 +39,27 @@ private:
 	Scene::PointShaderScene* view;
 };
 
-class PhotonCloudPBVRPresenter : public Scene::IPresenter
+class PhotonCloudPBVRPresenter : public IPhotonCloudPresenter
 {
 public:
+	explicit PhotonCloudPBVRPresenter(PhotonCloudScene* model);
+
+	void createView(Scene::SceneShader* sceneShader) override;
+
+	void removeView(Scene::SceneShader* sceneShader) override;
+
+	void updateView() override;
+
 private:
-	PBVRShaderScene* pbvrView;
+	void updateScreenView();
+
+	void updateParentIdView();
+
+	void updateChildIdView();
+
+private:
+	PhotonCloudScene* model;
+	PBVRShaderScene* view;
 };
 
 	}
