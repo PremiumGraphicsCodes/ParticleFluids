@@ -1,7 +1,5 @@
 #include "SphereObject.h"
 
-#include "CrystalSpace/CrystalSpace/IntersectionCalculator.h"
-
 double SphereObject::intersect(const Crystal::Math::Ray3d& ray) const
 {
     constexpr auto eps = 1e-4;
