@@ -22,7 +22,7 @@ void TMSurfacePresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new TriangleShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getTriangleShader());
+		this->view->setShader(sceneShader->getObjectRenderer()->getRenderers()->getTriangleShader());
 		this->view->build(*sceneShader->getGLFactory());
 
 		sceneShader->getObjectRenderer()->addScene(this->view);

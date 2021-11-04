@@ -12,17 +12,22 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-ScreenShader::ScreenShader(const std::string& name) :
+RendererRepository::RendererRepository() :
 	pointRenderer(new PointRenderer()),
 	wireRenderer(new LineRenderer()),
 	smoothRenderer(new SmoothRenderer()),
-	triagleRenderer(new TriangleRenderer()),
-	texture(nullptr),
-	frameBufferObject(nullptr)
+	triagleRenderer(new TriangleRenderer())
+{}
+
+RendererRepository::~RendererRepository()
 {
+	delete pointRenderer;
+	delete wireRenderer;
+	delete smoothRenderer;
+	delete triagleRenderer;
 }
 
-ShaderBuildStatus ScreenShader::build(GLObjectFactory& factory)
+ShaderBuildStatus RendererRepository::build(GLObjectFactory& factory)
 {
 	ShaderBuildStatus status;
 	const auto prStatus = pointRenderer->build(factory);
@@ -34,6 +39,26 @@ ShaderBuildStatus ScreenShader::build(GLObjectFactory& factory)
 	status.add(wrStatus);
 	status.add(trStatus);
 	status.add(smStatus);
+	return status;
+}
+
+void RendererRepository::release(GLObjectFactory& factory)
+{
+	pointRenderer->release(factory);
+	wireRenderer->release(factory);
+	//smoothRenderer->release(factory);
+	triagleRenderer->release(factory);
+}
+
+ScreenShader::ScreenShader(const std::string& name) :
+	texture(nullptr),
+	frameBufferObject(nullptr)
+{
+}
+
+ShaderBuildStatus ScreenShader::build(GLObjectFactory& factory)
+{
+	ShaderBuildStatus status = renderers.build(factory);
 
 	texture = factory.createTextureObject();
 	texture->send(Image(512, 512));
@@ -45,10 +70,7 @@ ShaderBuildStatus ScreenShader::build(GLObjectFactory& factory)
 
 void ScreenShader::release(GLObjectFactory& factory)
 {
-	pointRenderer->release(factory);
-	wireRenderer->release(factory);
-	//smoothRenderer->release(factory);
-	triagleRenderer->release(factory);
+	renderers.release(factory);
 
 	factory.remove(texture);
 	factory.remove(frameBufferObject);
