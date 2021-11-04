@@ -166,6 +166,9 @@
     <ClInclude Include="TMSurfacePresenter.h">
       <Filter>Presenter\Shape\TriangleMesh</Filter>
     </ClInclude>
+    <ClInclude Include="RendererRepository.h">
+      <Filter>SceneShader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -273,6 +276,9 @@
     </ClCompile>
     <ClCompile Include="TMSurfacePresenter.cpp">
       <Filter>Presenter\Shape\TriangleMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="RendererRepository.cpp">
+      <Filter>SceneShader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
