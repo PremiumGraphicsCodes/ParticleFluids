@@ -21,7 +21,7 @@ void SparseVolumePresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
+		this->view->setShader(sceneShader->getRenderers()->getPointShader());
 		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
@@ -49,7 +49,7 @@ void SparseVolumePresenter::updateScreenView()
 
 	for (const auto& node : nodes) {
 		const auto v = node.second->getValue();
-		const auto c = colorMap.getColor(v);
+		const auto c = colorMap.getColor((float)v);
 		pb.add(node.second->getPosition(), c, 50.0f);
 	}
 	/*

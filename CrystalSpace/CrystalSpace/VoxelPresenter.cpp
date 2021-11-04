@@ -19,7 +19,7 @@ void VoxelPresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
+		this->view->setShader(sceneShader->getRenderers()->getPointShader());
 		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}

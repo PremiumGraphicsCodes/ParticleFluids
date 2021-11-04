@@ -20,7 +20,7 @@ void CSGBoundaryScenePresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new LineShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
+		this->view->setShader(sceneShader->getRenderers()->getWireShader());
 		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
