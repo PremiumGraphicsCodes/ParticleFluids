@@ -9,6 +9,7 @@
 #include "IShaderScene.h"
 
 #include "Crystal/Util/UnCopyable.h"
+#include "RendererRepository.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -30,9 +31,9 @@ public:
 
 	~SceneShader() {}
 
-	Shader::ShaderBuildStatus build(Shader::GLObjectFactory& factory);
+	Shader::ShaderBuildStatus build();
 
-	void release(Shader::GLObjectFactory& factory);
+	void release();
 
 	void render(const Graphics::Camera& camera);
 
@@ -48,12 +49,16 @@ public:
 
 	Shader::GLObjectFactory* getGLFactory() { return &glFactory; }
 
+	RendererRepository* getRenderers() { return &renderers; }
+
 private:
 	Shader::OnScreenRenderer renderer;
 
 	ScreenShader* objectRenderer;
 	ScreenIdShader* parentIdRenderer;
 	ScreenIdShader* childIdRenderer;
+
+	RendererRepository renderers;
 
 	RenderTarget target;
 

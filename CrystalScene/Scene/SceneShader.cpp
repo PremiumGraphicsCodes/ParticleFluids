@@ -17,14 +17,15 @@ SceneShader::SceneShader() :
 {
 }
 
-ShaderBuildStatus SceneShader::build(GLObjectFactory& factory)
+ShaderBuildStatus SceneShader::build()
 {
-	ShaderBuildStatus status;
+	ShaderBuildStatus status = renderers.build(this->glFactory);
 
-	const auto prStatus = objectRenderer->build(factory);
-	parentIdRenderer->build(factory);
-	childIdRenderer->build(factory);
-	const auto rStatus = renderer.build(factory);
+	const auto prStatus = objectRenderer->build(this->glFactory);
+	parentIdRenderer->build(this->glFactory);
+	childIdRenderer->build(this->glFactory);
+	const auto rStatus = renderer.build(this->glFactory);
+
 
 	status.add(prStatus);
 	//status.add(pIdStatus);
@@ -34,12 +35,14 @@ ShaderBuildStatus SceneShader::build(GLObjectFactory& factory)
 	return status;
 }
 
-void SceneShader::release(GLObjectFactory& factory)
+void SceneShader::release()
 {
-	objectRenderer->release(factory);
-	parentIdRenderer->release(factory);
-	childIdRenderer->release(factory);
-	renderer.release(factory);
+	renderers.release(this->glFactory);
+
+	objectRenderer->release(this->glFactory);
+	parentIdRenderer->release(this->glFactory);
+	childIdRenderer->release(this->glFactory);
+	renderer.release(this->glFactory);
 }
 
 void SceneShader::render(const Camera& camera)

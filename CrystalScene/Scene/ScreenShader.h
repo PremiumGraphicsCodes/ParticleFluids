@@ -59,15 +59,10 @@ public:
 
 	MaterialShaderScene* getMateialScene() { return &this->materialScene; }
 
-	RendererRepository* getRenderers() { return &renderers; }
-
 private:
 	std::list<IShaderScene*> scenes;
 	MaterialShaderScene materialScene;
-	RendererRepository renderers;
-
 	Mask mask;
-
 	Shader::TextureObject* texture;
 	Shader::FrameBufferObject* frameBufferObject;
 };

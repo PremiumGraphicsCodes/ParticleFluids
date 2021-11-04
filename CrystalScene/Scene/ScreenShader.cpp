@@ -20,7 +20,7 @@ ScreenShader::ScreenShader(const std::string& name) :
 
 ShaderBuildStatus ScreenShader::build(GLObjectFactory& factory)
 {
-	ShaderBuildStatus status = renderers.build(factory);
+	ShaderBuildStatus status;
 
 	texture = factory.createTextureObject();
 	texture->send(Image(512, 512));
@@ -32,8 +32,6 @@ ShaderBuildStatus ScreenShader::build(GLObjectFactory& factory)
 
 void ScreenShader::release(GLObjectFactory& factory)
 {
-	renderers.release(factory);
-
 	factory.remove(texture);
 	factory.remove(frameBufferObject);
 }
