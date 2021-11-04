@@ -35,6 +35,8 @@ public:
 
 	void renderBlend(const Buffer& buffer);
 
+	std::string getName() const override { return "PointRenderer"; }
+
 private:
 	std::string getBuiltInVertexShaderSource() const;
 

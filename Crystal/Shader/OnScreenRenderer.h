@@ -19,6 +19,8 @@ public:
 
 	void render(const ITextureObject& texture);
 
+	std::string getName() const override { return "OnScreenRenderer"; }
+
 private:
 	std::string getBuildinVertexShaderSource();
 

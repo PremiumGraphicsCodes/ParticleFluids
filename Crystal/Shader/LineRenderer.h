@@ -30,6 +30,8 @@ public:
 
 	void render(const Buffer& buffer);
 
+	std::string getName() const override { return "LineRenderer"; }
+
 private:
 	std::string getBuiltInVsSource() const;
 

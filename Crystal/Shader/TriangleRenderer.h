@@ -28,6 +28,8 @@ public:
 
 	void render(const Buffer& buffer);
 
+	std::string getName() const override { return "TriangleRenderer"; }
+
 private:
 	std::string getBuildInVertexShaderSource() const;
 

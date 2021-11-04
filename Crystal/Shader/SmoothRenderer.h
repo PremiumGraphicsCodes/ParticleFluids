@@ -51,6 +51,8 @@ public:
 
 	void render(const Buffer& buffer);
 
+	std::string getName() const override { return "SmoothRenderer"; }
+
 private:
 	std::string getBuildInVertexShaderSource() const;
 

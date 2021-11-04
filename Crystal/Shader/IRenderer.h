@@ -10,12 +10,15 @@ namespace Crystal {
 class IRenderer
 {
 public:
+	IRenderer() {}
+
 	~IRenderer() {}
 
 	virtual ShaderBuildStatus build(Shader::GLObjectFactory& factory) = 0;
 
 	virtual void release(Shader::GLObjectFactory& factory) = 0;
 
+	virtual std::string getName() const = 0;
 	//virtual void onRender() = 0;
 };
 
