@@ -49,18 +49,22 @@ bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 
 	if (!isBinary) {
 		STLASCIIFileReader reader;
-		if (reader.read(args.filePath.getValue())) {
-			PolygonMeshBuilder builder;
-			const auto& stl = reader.getSTL();
-			auto mesh = std::make_unique<TriangleMesh>();
-			const auto faces = stl.faces;
-			for (const auto& f : faces) {
-				TriangleFace tf(f.triangle, f.normal);
-				mesh->addFace(tf);
-			}
-			meshScene->setShape(std::move(mesh));
-			return true;
+		const auto isOk = reader.read(args.filePath.getValue());
+		/*
+		if (!isOk) {
+			return false;
 		}
+		*/
+		PolygonMeshBuilder builder;
+		const auto& stl = reader.getSTL();
+		auto mesh = std::make_unique<TriangleMesh>();
+		const auto faces = stl.faces;
+		for (const auto& f : faces) {
+			TriangleFace tf(f.triangle, f.normal);
+			mesh->addFace(tf);
+		}
+		meshScene->setShape(std::move(mesh));
+		return true;
 	}
 	else {
 		STLBinaryFileReader reader;

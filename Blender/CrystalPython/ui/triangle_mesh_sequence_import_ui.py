@@ -27,6 +27,7 @@ class TriangleMeshSequenceImporter :
         file_path = os.path.join("tmp_stl", "test" + str(time_step) + ".stl")
 
         self.tm.mesh.import_stl(file_path)
+        triangles = self.tm.mesh.get_triangles()
         self.tm.update()
 
     def is_running(self):

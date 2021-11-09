@@ -70,13 +70,11 @@ class BLTriangleMesh :
   def update(self):
       triangles = self.mesh.get_triangles()
       bm = bmesh.new()   # create an empty BMesh
-      index = 0
       for t in triangles.values:
-        bm.verts.new([t.v0.x, t.v0.y, t.v0.z])  # add a new vert
-        bm.verts.new([t.v1.x, t.v1.y, t.v1.z])  # add a new vert
-        bm.verts.new([t.v2.x, t.v2.y, t.v2.z])  # add a new vert
-        bm.faces.new([index, index+1, index+2])
-        index += 3
+        v0 = bm.verts.new([t.v0.x, t.v0.y, t.v0.z])  # add a new vert
+        v1 = bm.verts.new([t.v1.x, t.v1.y, t.v1.z])  # add a new vert
+        v2 = bm.verts.new([t.v2.x, t.v2.y, t.v2.z])  # add a new vert
+        bm.faces.new([v0, v1, v2])
       bm.to_mesh(self.bl_mesh)
       bm.free()
       self.bl_mesh.update()

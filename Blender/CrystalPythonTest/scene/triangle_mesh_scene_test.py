@@ -51,4 +51,7 @@ class TriangleMeshSceneTest(unittest.TestCase) :
         scene = Scene(World())
         mesh = TriangleMeshScene(scene)
         mesh.create_empty("")
-        mesh.import_stl("test_export.stl")
+        mesh.import_stl("test1.stl")
+        triangles = mesh.get_triangles()
+        print("num of triangles")
+        print(len(triangles.values))
