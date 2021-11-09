@@ -6,8 +6,8 @@ class Scene :
         self.world = world
 
     def clear(self, layer) :
-        create_scene_command(ClearCommand.CommandNameLabel);
-        return execute_command(self.world);
+        create_scene_command(ClearCommand.CommandNameLabel)
+        return execute_command(self.world)
 
     def delete(self, id, isItem):
         create_scene_command(DeleteCommand.CommandNameLabel)
