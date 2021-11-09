@@ -1,4 +1,5 @@
 import bpy
+import bmesh
 import CrystalPLI
 import scene
 
@@ -9,10 +10,11 @@ from scene import *
 class BLTriangleMesh :
   def __init__(self, scene):
     self.mesh = TriangleMeshScene(scene)
+    self.bl_mesh = None
 
   def convert_to_polygon_mesh(self, name) :
-    mesh = bpy.data.meshes.new(name = name)
-    obj = bpy.data.objects.new(name, mesh)
+    self.bl_mesh = bpy.data.meshes.new(name = name)
+    obj = bpy.data.objects.new(name, self.bl_mesh)
 
     coords = []
     faces = []
@@ -25,11 +27,11 @@ class BLTriangleMesh :
       faces.append( (next_vertex,next_vertex+1,next_vertex+2) )
       next_vertex += 3
 
-    mesh.from_pydata(coords, [], faces)
+    self.bl_mesh.from_pydata(coords, [], faces)
     
     # Display name and update the mesh
     obj.show_name = True
-    mesh.update()
+    self.bl_mesh.update()
     bpy.context.collection.objects.link(obj)
 
 #      triangle.
@@ -64,3 +66,17 @@ class BLTriangleMesh :
       triangles.add(triangle2)
       print("")
     self.mesh.create(triangles, "")
+
+  def update(self):
+      triangles = self.mesh.get_triangles()
+      bm = bmesh.new()   # create an empty BMesh
+      index = 0
+      for t in triangles.values:
+        bm.verts.new([t.v0.x, t.v0.y, t.v0.z])  # add a new vert
+        bm.verts.new([t.v1.x, t.v1.y, t.v1.z])  # add a new vert
+        bm.verts.new([t.v2.x, t.v2.y, t.v2.z])  # add a new vert
+        bm.faces.new([index, index+1, index+2])
+        index += 3
+      bm.to_mesh(self.bl_mesh)
+      bm.free()
+      self.bl_mesh.update()
