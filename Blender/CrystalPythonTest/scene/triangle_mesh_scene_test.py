@@ -46,3 +46,9 @@ class TriangleMeshSceneTest(unittest.TestCase) :
         triangles.add(Triangle3dd(v0, v1, v2))
         mesh.set_triangles(triangles)
         mesh.export_stl("test_export.stl")
+
+    def test_import_stl(self):
+        scene = Scene(World())
+        mesh = TriangleMeshScene(scene)
+        mesh.create_empty("")
+        mesh.import_stl("test_export.stl")

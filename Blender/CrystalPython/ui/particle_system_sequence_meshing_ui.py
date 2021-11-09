@@ -30,6 +30,9 @@ class ParticleSystemSequenceMeshingOperator(bpy.types.Operator) :
             builder = SurfaceBuilder(model.scene)
             builder.build_anisotorpic(ps.id, mesh.id, 1.0, 2.0)
 
+            export_file_path = os.path.join("tmp_stl", "test" + str(time_step) + ".stl")
+            mesh.export_stl(export_file_path)
+
 #            FileIO.ex
             #mesh.convert_to_polygon_mesh("")
             model.scene.delete(ps.id, False)

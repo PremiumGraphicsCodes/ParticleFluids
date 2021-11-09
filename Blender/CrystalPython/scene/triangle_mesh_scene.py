@@ -37,3 +37,6 @@ class TriangleMeshScene :
         ids = []
         ids.append(self.id)
         return FileIO.export_stl(self.scene, ids, file_path)
+
+    def import_stl(self, file_path):
+        return FileIO.import_stl(self.scene, self.id, file_path)
