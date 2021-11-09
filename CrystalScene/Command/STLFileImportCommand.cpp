@@ -13,7 +13,7 @@ namespace STLFileImportLabels
 {
 	PublicLabel CommandNameLabel = "STLFileImport";
 	PublicLabel FilePathLabel = "FilePath";
-	PublicLabel NewIdLabel = "NewId";
+	PublicLabel TriangleMeshIdLabel = "TriangleMeshId";
 }
 
 using namespace Crystal::IO;
@@ -22,15 +22,15 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 STLFileImportCommand::Args::Args() :
-	filePath(STLFileImportLabels::FilePathLabel, "")
+	filePath(STLFileImportLabels::FilePathLabel, ""),
+	id(STLFileImportLabels::TriangleMeshIdLabel, -1)
 {
 	add(&filePath);
+	add(&id);
 }
 
-STLFileImportCommand::Results::Results() :
-	newId(STLFileImportLabels::NewIdLabel, -1)
+STLFileImportCommand::Results::Results()
 {
-	add(&newId);
 }
 
 std::string STLFileImportCommand::getName()
@@ -40,21 +40,25 @@ std::string STLFileImportCommand::getName()
 
 bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 {
+	const auto meshScene = scene->getScenes()->findSceneById<TriangleMeshScene*>(args.id.getValue());
+	if (meshScene == nullptr) {
+		return false;
+	}
+
 	const auto isBinary = STLFileReader::isBinary(args.filePath.getValue());
+
 	if (!isBinary) {
 		STLASCIIFileReader reader;
 		if (reader.read(args.filePath.getValue())) {
 			PolygonMeshBuilder builder;
 			const auto& stl = reader.getSTL();
-			/*
-			scene->getSceneFactory()->createPolygonMeshScene()
-			scene->addScene( )
-			builder.add(stl.)
-			scene->addScene()
-			TriangleMesh mesh(stl.faces);
-			builder.add(mesh);
-			parent->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh") );
-			*/
+			auto mesh = std::make_unique<TriangleMesh>();
+			const auto faces = stl.faces;
+			for (const auto& f : faces) {
+				TriangleFace tf(f.triangle, f.normal);
+				mesh->addFace(tf);
+			}
+			meshScene->setShape(std::move(mesh));
 			return true;
 		}
 	}
@@ -63,11 +67,13 @@ bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 		if (reader.read(args.filePath.getValue())) {
 			PolygonMeshBuilder builder;
 			const auto& stl = reader.getSTL();
-			/*
-			TriangleMesh mesh(stl.faces);
-			builder.add(mesh);
-			parent->addScene(sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh"));
-			*/
+			auto mesh = std::make_unique<TriangleMesh>();
+			const auto faces = stl.faces;
+			for (const auto& f : faces) {
+				TriangleFace tf(f.triangle, f.normal);
+				mesh->addFace(tf);
+			}
+			meshScene->setShape(std::move(mesh));
 			return true;
 		}
 	}

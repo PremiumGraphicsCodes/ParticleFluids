@@ -4,6 +4,7 @@
 #include "../../Crystal/IO/STLBinaryFileWriter.h"
 
 #include "../Scene/PolygonMeshScene.h"
+#include "../Scene/TriangleMeshScene.h"
 
 #include "PublicLabel.h"
 
@@ -47,34 +48,21 @@ bool STLFileExportCommand::execute(World* world)
 	STLFile stl;
 	std::vector<STLFace> fs;
 	for (const auto id : ids) {
-		auto polygonMesh = world->getScenes()->findSceneById<PolygonMeshScene*>(id);
-		const auto& positions = polygonMesh->getShape()->getPositions();
-		const auto& vertices = polygonMesh->getShape()->getVertices();
-		const auto& faces = polygonMesh->getShape()->getFaces();
-		for (const auto& f : faces) {
-			/*
-			if (f.isDegenerated(1.0e-12f)) {
-				continue;
-			}
-			*/
-			const auto& vIds = f.getVertexIds();
-			const auto v1 = positions[ vertices[vIds[0]].positionId ];
-			const auto v2 = positions[ vertices[vIds[1]].positionId ];
-			const auto v3 = positions[ vertices[vIds[2]].positionId ];
-			STLFace ff({ v1,v2,v3 });
-			//const auto area = ff.toTriangle().getArea();
-			fs.push_back(ff);
+		auto triangleMesh = world->getScenes()->findSceneById<TriangleMeshScene*>(id);
+		const auto faces = triangleMesh->getShape()->getFaces();
+		for (const auto f : faces) {
+			STLFace sf(f.triangle, f.normal);
+			fs.push_back(sf);
 		}
 	}
 	stl.faces = fs;
 	stl.faceCount = fs.size();
-	const auto scenes = world->getScenes()->findScenes(SceneTypeLabels::PolygonMeshScene);
 
 	if (args.isBinary.getValue()) {
 		STLBinaryFileWriter writer;
 		return writer.write(args.filePath.getValue(), stl);
 	}
-	for (auto scene : scenes) {
+	else {
 		STLASCIIFileWriter writer;
 		return writer.write(args.filePath.getValue(), stl);
 	}

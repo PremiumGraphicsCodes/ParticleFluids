@@ -13,6 +13,7 @@ public:
 	{
 		Args();
 
+		Arg< int > id;
 		Arg< std::string > filePath;
 	};
 
@@ -20,7 +21,7 @@ public:
 	{
 		Results();
 
-		Result< int > newId;
+//		Result< int > newId;
 	};
 
 	STLFileImportCommand() :
