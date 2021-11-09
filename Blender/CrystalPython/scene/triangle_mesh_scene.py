@@ -1,6 +1,7 @@
-from scene.scene_labels import *
+from scene.scene_labels import TriangleMeshCreateCommand, TriangleMeshGetCommand, TriangleMeshSetCommand
 from scene.scene import *
 from CrystalPLI import *
+from scene.file_io import FileIO
 
 class TriangleMeshScene :
     def __init__(self, scene) :
@@ -31,6 +32,8 @@ class TriangleMeshScene :
         set_arg_triangle3dd_vector(TriangleMeshSetCommand.TrianglesLabel, triangles)
         is_ok = execute_command(self.scene.world)
         return is_ok
-#   TrianglesLabel="Triangles"
-#   NormalsLabel="Normals"
-#   NameLabel="Name"
+
+    def export_stl(self, file_path):
+        ids = []
+        ids.append(self.id)
+        return FileIO.export_stl(self.scene, ids, file_path)

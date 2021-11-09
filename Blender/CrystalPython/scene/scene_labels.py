@@ -209,7 +209,7 @@ class STLFileExportCommand:
 class STLFileImportCommand:
    CommandNameLabel="STLFileImport"
    FilePathLabel="FilePath"
-   NewIdLabel="NewId"
+   TriangleMeshIdLabel="TriangleMeshId"
 class TextureCreateCommand:
    CommandNameLabel="TextureCreate"
    FilePathLabel="FilePath"

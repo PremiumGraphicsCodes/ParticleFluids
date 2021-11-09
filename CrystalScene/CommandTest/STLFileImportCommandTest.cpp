@@ -2,16 +2,25 @@
 
 #include "../Command/STLFileImportCommand.h"
 
+using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-TEST(STLFileImportCommand, TestWriteJSON)
+TEST(STLFileImportCommandTest, TestWriteJSON)
 {
 	STLFileImportCommand command;
 	command.writeJSON("STLFileImportWrite.json");
 }
 
-TEST(STLFileImportCommand, TestReadJSON)
+TEST(STLFileImportCommandTest, TestReadJSON)
 {
 	STLFileImportCommand command;
 	command.readJSON("STLFileImportWrite.json");
 }
+
+/*
+TEST(STLFileImportCommandTest, TestExecute)
+{
+	STLFileImportCommand command;
+	command.setArg("Id", 1)
+}
+*/
