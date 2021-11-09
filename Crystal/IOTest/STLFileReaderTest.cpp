@@ -2,6 +2,7 @@
 
 #include "../Math/Vector3d.h"
 #include "../IO/STLFileReader.h"
+#include "../IO/STLAsciiFileReader.h"
 
 namespace {
 	std::stringstream getSampleAscii() {
@@ -25,6 +26,7 @@ namespace {
 			<< "endsolid" << std::endl;
 		return stream;
 	}
+
 }
 
 using namespace Crystal::IO;
