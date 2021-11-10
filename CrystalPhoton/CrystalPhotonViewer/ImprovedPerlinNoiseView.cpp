@@ -24,6 +24,7 @@ void ImprovedPerlinNoiseView::onBuild()
 {
 	Image image(64,64);
 	ImprovedPerlinNoise noise;
+	noise.buildTable();
 	for (int i = 0; i < 64; ++i) {
 		for (int j = 0; j < 64; ++j) {
 			const auto u = (double)i; // / 64.0;

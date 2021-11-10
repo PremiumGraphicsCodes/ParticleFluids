@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 namespace Crystal {
 	namespace Photon {
 
@@ -9,9 +11,13 @@ public:
 	ImprovedPerlinNoise();
 
 	~ImprovedPerlinNoise();
-	//void buildTable();
+	
+	void buildTable();
 
 	double getNoise(const double x, const double y, const double z) const;
+
+private:
+	std::vector<double> p;
 };
 	}
 }
