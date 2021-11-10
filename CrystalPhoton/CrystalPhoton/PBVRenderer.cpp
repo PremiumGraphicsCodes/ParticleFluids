@@ -21,7 +21,8 @@ namespace {
 	constexpr auto projectionMatrixLabel = "projectionMatrix";
 	constexpr auto modelViewMatrixLabel = "modelviewMatrix";
 	constexpr auto fragColorLabel = "fragColor";
-	constexpr auto repeatLevelLabel = "repeatLevel";
+	constexpr auto maxRepeatLevelLabel = "maxRepeatLevel";
+	constexpr auto currentRepeatLevelLabel = "currentRepeatLevel";
 	constexpr auto noiseTextureLabel = "noiseTexture";
 }
 
@@ -49,8 +50,8 @@ ShaderBuildStatus PBVRenderer::build(GLObjectFactory& factory)
 			image.setColor(i, j, c);
 		}
 	}
-	auto texture = factory.createTextureObject();
-	texture->send(image);
+	this->noiseTexture = factory.createTextureObject();
+	this->noiseTexture->send(image);
 
 	shader = factory.createShaderObject();
 	const auto isOk = shader->build(vsSource, fsSource);
@@ -62,7 +63,9 @@ ShaderBuildStatus PBVRenderer::build(GLObjectFactory& factory)
 
 	shader->findUniformLocation(::projectionMatrixLabel);
 	shader->findUniformLocation(::modelViewMatrixLabel);
-	shader->findUniformLocation(::repeatLevelLabel);
+	shader->findUniformLocation(::maxRepeatLevelLabel);
+	shader->findUniformLocation(::currentRepeatLevelLabel);
+	shader->findUniformLocation(::noiseTextureLabel);
 
 	shader->findAttribLocation(::positionLabel);
 	shader->findAttribLocation(::colorLabel);
@@ -74,6 +77,8 @@ ShaderBuildStatus PBVRenderer::build(GLObjectFactory& factory)
 void PBVRenderer::release(GLObjectFactory& factory)
 {
 	factory.remove(shader);
+
+	//factory.remove()
 }
 
 void PBVRenderer::render(const Buffer& buffer)
@@ -82,7 +87,9 @@ void PBVRenderer::render(const Buffer& buffer)
 
 	shader->sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);
 	shader->sendUniform(::modelViewMatrixLabel, buffer.modelViewMatrix);
-	shader->sendUniform(::repeatLevelLabel, buffer.repeatLevel);
+	shader->sendUniform(::maxRepeatLevelLabel, buffer.repeatLevel);
+	shader->sendUniform(::currentRepeatLevelLabel, buffer.currentRepeatLevel);
+	shader->sendUniform(::noiseTextureLabel, *this->noiseTexture, 0);
 
 	shader->sendVertexAttribute3df(::positionLabel, buffer.position);
 	shader->sendVertexAttribute4df(::colorLabel, buffer.color);
@@ -91,12 +98,16 @@ void PBVRenderer::render(const Buffer& buffer)
 	shader->enableDepthTest();
 	shader->enablePointSprite();
 
+	this->noiseTexture->bind(0);
+
 	shader->drawPoints(buffer.count);
 
 	shader->bindOutput(::fragColorLabel);
 
 	shader->disablePointSprite();
 	shader->disableDepthTest();
+
+	this->noiseTexture->unbind();
 
 	shader->unbind();
 
@@ -115,15 +126,16 @@ std::string PBVRenderer::getBuiltInVertexShaderSource() const
 		<< "out vec4 vColor;" << std::endl
 		<< "uniform mat4 projectionMatrix;" << std::endl
 		<< "uniform mat4 modelviewMatrix;" << std::endl
-//		<< "uniform sampler2D noiseTexture;" << std::endl
+		<< "uniform sampler2D noiseTexture;" << std::endl
+		<< "uniform int currentRepeatLevel;" << std::endl
 		<< "float rand(float n){return fract(sin(n) * 43758.5453123);}" << std::endl
 		<< "void main(void) {" << std::endl
-//		<< "	float random = texelFetch2D(noiseTexture, ivec2(int(mod(gl_PrimitiveIDIn, 64)), repetitionLevel), 0).a;" << std::endl
-		<< "	float random = rand(float(gl_VertexID));" << std::endl
-		<< "	float n1 = random * 0.1;" << std::endl
-		<< "	float n2 = 0.0;" << std::endl //rand(position.y) * 0.1;" << std::endl
-		<< "	float n3 = 0.0;" << std::endl //rand(position.z) * 0.1;" << std::endl
-		<< "	vec3 v = vec3(n1,n2,n3);" << std::endl
+		<< "	vec3 v = texelFetch(noiseTexture, ivec2(int(mod(gl_VertexID, 64)), currentRepeatLevel), 0).rgb;" << std::endl
+//		<< "	float random = rand(float(gl_VertexID));" << std::endl
+//		<< "	float n1 = random * 1.0;" << std::endl
+//		<< "	float n2 = 0.0;" << std::endl //rand(position.y) * 0.1;" << std::endl
+//		<< "	float n3 = 0.0;" << std::endl //rand(position.z) * 0.1;" << std::endl
+//		<< "	vec3 v = vec3(n1,n2,n3);" << std::endl
 		<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position + v, 1.0);" << std::endl
 		<< "	gl_PointSize = pointSize / gl_Position.w;" << std::endl
 		<< "	vColor = color;" << std::endl
@@ -136,7 +148,7 @@ std::string PBVRenderer::getBuiltInFragmentShaderSource() const
 	std::ostringstream stream;
 	stream
 		<< "#version 150" << std::endl
-		<< "uniform int repeatLevel;" << std::endl
+		<< "uniform int maxRepeatLevel;" << std::endl
 		<< "in vec4 vColor;" << std::endl
 		<< "out vec4 fragColor;" << std::endl
 		<< "void main(void) {" << std::endl
@@ -145,7 +157,7 @@ std::string PBVRenderer::getBuiltInFragmentShaderSource() const
 		<< "	if (distSquared < 0.0) {" << std::endl
 		<< "		discard;" << std::endl
 		<< "	}" << std::endl
-		<< "	fragColor.rgba = vColor / float(repeatLevel);" << std::endl
+		<< "	fragColor.rgba = vColor / float(maxRepeatLevel);" << std::endl
 //		<< "	float random = rand(gl_FragCoord.xy);" << std::endl
 //		<< "	fragColor.r = random;"<< std::endl
 //		<< "	fragColor.g = random;" << std::endl

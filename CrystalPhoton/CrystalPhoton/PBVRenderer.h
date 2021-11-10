@@ -34,6 +34,7 @@ public:
 		Math::Matrix4dd modelViewMatrix;
 		int count = 0;
 		int repeatLevel = 1;
+		int currentRepeatLevel = 1;
 	};
 
 	PBVRenderer();
@@ -54,6 +55,7 @@ private:
 	std::string getBuiltInFragmentShaderSource() const;
 
 	Shader::ShaderObject* shader;
+	Shader::TextureObject* noiseTexture;
 };
 
 	}
