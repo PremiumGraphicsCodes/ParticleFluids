@@ -33,8 +33,8 @@ public:
 		Math::Matrix4dd projectionMatrix;
 		Math::Matrix4dd modelViewMatrix;
 		int count = 0;
-		int repeatLevel = 1;
-		int currentRepeatLevel = 1;
+		int repeatLevel = 10;
+		//int currentRepeatLevel = 1;
 	};
 
 	PBVRenderer();

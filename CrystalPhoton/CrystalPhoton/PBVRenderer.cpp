@@ -45,8 +45,11 @@ ShaderBuildStatus PBVRenderer::build(GLObjectFactory& factory)
 	Crystal::Graphics::Image image(64,64);
 	for (int i = 0; i < 64; ++i) {
 		for (int j = 0; j < 64; ++j) {
-			const auto n = noise.getNoise(i, j, 0.0);
-			Crystal::Graphics::ColorRGBAuc c(n, n, n, n);
+			const auto r = noise.getNoise(i, j, 0.0);
+			const auto g = noise.getNoise(i, j, 1.0);
+			const auto b = noise.getNoise(i, j, 2.0);
+			const auto a = noise.getNoise(i, j, 3.0);
+			Crystal::Graphics::ColorRGBAuc c(r, g, b, 255);
 			image.setColor(i, j, c);
 		}
 	}
@@ -88,24 +91,33 @@ void PBVRenderer::render(const Buffer& buffer)
 	shader->sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);
 	shader->sendUniform(::modelViewMatrixLabel, buffer.modelViewMatrix);
 	shader->sendUniform(::maxRepeatLevelLabel, buffer.repeatLevel);
-	shader->sendUniform(::currentRepeatLevelLabel, buffer.currentRepeatLevel);
 	shader->sendUniform(::noiseTextureLabel, *this->noiseTexture, 0);
 
 	shader->sendVertexAttribute3df(::positionLabel, buffer.position);
 	shader->sendVertexAttribute4df(::colorLabel, buffer.color);
 	shader->sendVertexAttribute1df(::sizeLabel, buffer.size);
 
-	shader->enableDepthTest();
-	shader->enablePointSprite();
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ONE);
 
-	this->noiseTexture->bind(0);
+	for (int i = 0; i < buffer.repeatLevel; ++i) {
+		glClear(GL_DEPTH_BUFFER_BIT);
 
-	shader->drawPoints(buffer.count);
+		shader->sendUniform(::currentRepeatLevelLabel, i);
 
-	shader->bindOutput(::fragColorLabel);
+		shader->enableDepthTest();
+		shader->enablePointSprite();
 
-	shader->disablePointSprite();
-	shader->disableDepthTest();
+		this->noiseTexture->bind(0);
+
+		shader->drawPoints(buffer.count);
+
+		shader->bindOutput(::fragColorLabel);
+
+		shader->disablePointSprite();
+		shader->disableDepthTest();
+	}
+	glDisable(GL_BLEND);
 
 	this->noiseTexture->unbind();
 
@@ -136,7 +148,7 @@ std::string PBVRenderer::getBuiltInVertexShaderSource() const
 //		<< "	float n2 = 0.0;" << std::endl //rand(position.y) * 0.1;" << std::endl
 //		<< "	float n3 = 0.0;" << std::endl //rand(position.z) * 0.1;" << std::endl
 //		<< "	vec3 v = vec3(n1,n2,n3);" << std::endl
-		<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position + v, 1.0);" << std::endl
+		<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position + v * 0.5, 1.0);" << std::endl
 		<< "	gl_PointSize = pointSize / gl_Position.w;" << std::endl
 		<< "	vColor = color;" << std::endl
 		<< "}" << std::endl;
