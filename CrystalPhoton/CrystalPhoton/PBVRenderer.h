@@ -46,6 +46,8 @@ public:
 	std::string getName() const override { return "PBVRRenderer"; }
 
 private:
+	std::string getBuiltInGeometryShaderSource() const;
+
 	std::string getBuiltInVertexShaderSource() const;
 
 	std::string getBuiltInFragmentShaderSource() const;

@@ -96,9 +96,9 @@ std::string PBVRenderer::getBuiltInVertexShaderSource() const
 		<< "uniform mat4 modelviewMatrix;" << std::endl
 		<< "float rand(float n){return fract(sin(n) * 43758.5453123);}" << std::endl
 		<< "void main(void) {" << std::endl
-		<< "	float n1 = rand(position.x) * 0.1;" << std::endl
-		<< "	float n2 = rand(position.y) * 0.1;" << std::endl
-		<< "	float n3 = rand(position.z) * 0.1;" << std::endl
+		<< "	float n1 = rand(float(gl_VertexID)) * 0.1;" << std::endl
+		<< "	float n2 = 0.0;" << std::endl //rand(position.y) * 0.1;" << std::endl
+		<< "	float n3 = 0.0;" << std::endl //rand(position.z) * 0.1;" << std::endl
 		<< "	vec3 v = vec3(n1,n2,n3);" << std::endl
 		<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position + v, 1.0);" << std::endl
 		<< "	gl_PointSize = pointSize / gl_Position.w;" << std::endl
@@ -127,6 +127,50 @@ std::string PBVRenderer::getBuiltInFragmentShaderSource() const
 //		<< "	fragColor.r = random;"<< std::endl
 //		<< "	fragColor.g = random;" << std::endl
 //		<< "	fragColor.b = random;" << std::endl
+		<< "}" << std::endl;
+	return stream.str();
+}
+
+std::string PBVRenderer::getBuiltInGeometryShaderSource() const
+{
+
+	std::ostringstream stream;
+	stream
+		<< "#version 330" << std::endl
+		//		<< "#extension GL_EXT_gpu_shader4 : enable" << std::endl
+		<< "layout(points) in" << std::endl
+		<< "layout(points, max_vertices = 1) out;" << std::endl
+		<< "in Vertex" << std::endl
+		<< "{" << std::endl
+		<< "	vec3 position;" << std::endl
+		<< "	vec4 color;" << std::endl
+		<< "} vertex[];" << std::endl
+		<< "uniform mat4 projectionMatrix;" << std::endl
+		<< "uniform mat4 modelviewMatrix;" << std::endl
+		<< "uniform float pointSize;" << std::endl
+		<< "uniform sampler2D noiseTexture;" << std::endl
+		<< "uniform int repetitionLevel;" << std::endl
+		<< "uniform float particleDiameter;" << std::endl
+		<< "out vec4 color;" << std::endl
+		<< "void main() {" << std::endl
+		<< "for (int i = 0; i < gl_in.length(); i++) {" << std::endl
+		<< "	int howMany = int(vertex[i].color.a * 1.0);" << std::endl
+		<< "	float random = texelFetch2D(noiseTexture, ivec2(int(mod(gl_PrimitiveIDIn, 100)), repetitionLevel), 0).a;" << std::endl
+		<< "	float over = mod(vertex[i].color.a * 1.0, 1.0);" << std::endl
+		<< "	if (over > random) {" << std::endl
+		<< "		++howMany;" << std::endl
+		<< "	}" << std::endl
+		<< "	for (int j = 0; j < howMany; j++) {" << std::endl
+		<< "		vec3 noiseVector = texelFetch2D(noiseTexture, ivec2(j, repetitionLevel), 0).rgb - vec3(0.5, 0.5, 0.5);" << std::endl
+		<< "		noiseVector *= particleDiameter;" << std::endl
+		<< "		vec3 position = vertex[i].position + noiseVector;" << std::endl
+		<< "		gl_Position = projectionMatrix * modelviewMatrix * vec4(position, 1.0);" << std::endl
+		<< "		float dist = length(gl_Position);" << std::endl
+		<< "		gl_PointSize = pointSize / dist;" << std::endl
+		<< "		color = vertex[i].color;" << std::endl
+		<< "		EmitVertex();" << std::endl
+		<< "	}" << std::endl
+		<< "	EndPrimitive();" << std::endl
 		<< "}" << std::endl;
 	return stream.str();
 }
