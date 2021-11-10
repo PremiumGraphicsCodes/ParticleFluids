@@ -14,6 +14,9 @@
     <ClInclude Include="PBVRShaderScene.h">
       <Filter>PBVR</Filter>
     </ClInclude>
+    <ClInclude Include="ImprovedPerlinNoise.h">
+      <Filter>Noise</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PhotonTracer.cpp" />
@@ -29,6 +32,9 @@
     <ClCompile Include="PBVRShaderScene.cpp">
       <Filter>PBVR</Filter>
     </ClCompile>
+    <ClCompile Include="ImprovedPerlinNoise.cpp">
+      <Filter>Noise</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MovingPhoton">
@@ -36,6 +42,9 @@
     </Filter>
     <Filter Include="PBVR">
       <UniqueIdentifier>{05d83d6d-dd91-4f0b-8457-6a0a431cc9d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Noise">
+      <UniqueIdentifier>{928a06da-b444-4eda-9afa-a418ecde886c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ImprovedPerlinNoise.h" />
     <ClInclude Include="PBVRenderer.h" />
     <ClInclude Include="PBVRShaderScene.h" />
     <ClInclude Include="Photon.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="PhotonTransporter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ImprovedPerlinNoise.cpp" />
     <ClCompile Include="PBVRenderer.cpp" />
     <ClCompile Include="PBVRShaderScene.cpp" />
     <ClCompile Include="Photon.cpp" />
