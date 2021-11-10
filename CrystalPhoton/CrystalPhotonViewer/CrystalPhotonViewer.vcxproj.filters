@@ -8,6 +8,9 @@
     <ClCompile Include="MovingPhotonView.cpp">
       <Filter>MovingPhoton</Filter>
     </ClCompile>
+    <ClCompile Include="ImprovedPerlinNoiseView.cpp">
+      <Filter>Noise</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PCSphereView.h" />
@@ -16,10 +19,16 @@
     <ClInclude Include="MovingPhotonView.h">
       <Filter>MovingPhoton</Filter>
     </ClInclude>
+    <ClInclude Include="ImprovedPerlinNoiseView.h">
+      <Filter>Noise</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MovingPhoton">
       <UniqueIdentifier>{9836834d-2953-4007-963e-760261687974}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Noise">
+      <UniqueIdentifier>{95d9c194-54a1-4a1c-918c-08b20c219f79}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

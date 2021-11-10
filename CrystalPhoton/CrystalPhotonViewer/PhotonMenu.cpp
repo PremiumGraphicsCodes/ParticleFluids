@@ -7,6 +7,7 @@
 
 #include "PhotonTracerView.h"
 #include "MovingPhotonView.h"
+#include "ImprovedPerlinNoiseView.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -32,6 +33,9 @@ void PhotonMenu::onShow()
 		}
 		if (ImGui::MenuItem("MovingPhoton")) {
 			control->setWindow(new MovingPhotonView("MovingPhoton", world, canvas));
+		}
+		if (ImGui::MenuItem("ImprovedPerlinNoise")) {
+			control->setWindow(new ImprovedPerlinNoiseView("IPerlinNoise", world, canvas));
 		}
 		ImGui::EndMenu();
 	}
