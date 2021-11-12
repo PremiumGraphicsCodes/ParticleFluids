@@ -1,4 +1,5 @@
 import bpy
+import bmesh
 from CrystalPLI import Vector3dd, Vector3ddVector, Box3dd
 from physics.csg_boundary_scene import CSGBoundaryScene
 from ui.model import Model as model
@@ -15,6 +16,7 @@ def get_position(box, u, v, w) :
 class BLBoundary :
     def __init__(self, scene) :
         self.boundary = None
+        self.me = None
 
     def build(self) :
         self.boundary = CSGBoundaryScene(model.scene)
@@ -62,3 +64,47 @@ class BLBoundary :
         ob.show_name = True
         self.me.update()
         bpy.context.collection.objects.link(ob)
+
+    def update(self):
+#        positions = self.fluid.get_positions()
+#        p = positions.values[0]
+
+        box = self.boundary.bounding_box
+
+        positions = Vector3ddVector()
+        positions.add(get_position(box, 0.0, 0.0, 0.0))
+        positions.add(get_position(box, 1.0, 0.0, 0.0))
+        positions.add(get_position(box, 1.0, 1.0, 0.0))
+        positions.add(get_position(box, 0.0, 1.0, 0.0))
+        positions.add(get_position(box, 0.0, 0.0, 1.0))
+        positions.add(get_position(box, 1.0, 0.0, 1.0))
+        positions.add(get_position(box, 1.0, 1.0, 1.0))
+        positions.add(get_position(box, 0.0, 1.0, 1.0))
+
+        edges = []
+        edges.append((0,1))
+        edges.append((1,2))
+        edges.append((2,3))
+        edges.append((3,0))
+
+        edges.append((4,5))
+        edges.append((5,6))
+        edges.append((6,7))
+        edges.append((7,4))
+
+        edges.append((0,4))
+        edges.append((1,5))
+        edges.append((2,6))
+        edges.append((3,7))
+
+        vs = []
+        bm = bmesh.new()   # create an empty BMesh
+        for p in positions.values:
+            vs.append( bm.verts.new((p.x, p.y, p.z)) )  # add a new vert
+
+        for e in edges :
+            bm.edges.new([vs[e[0]], vs[e[1]]])
+
+        bm.to_mesh(self.me)
+        bm.free()
+        self.me.update()

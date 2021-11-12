@@ -37,6 +37,7 @@ class BoundaryUpdateOperator(bpy.types.Operator) :
       bb = Box3dd(v1, v2)
       boundary.boundary.bounding_box = bb
       boundary.boundary.send()
+      boundary.update()
       return {'FINISHED'}
 
 class BoundaryDeleteOperator(bpy.types.Operator) :
@@ -87,7 +88,7 @@ class BoundaryProperty(bpy.types.PropertyGroup) :
   min : bpy.props.FloatVectorProperty(
         name="min",
         description="Min",
-        default=(0.0, 0.0, 0.0)
+        default=(-1.0, -1.0, -1.0)
     )
   max : bpy.props.FloatVectorProperty(
         name="max",
