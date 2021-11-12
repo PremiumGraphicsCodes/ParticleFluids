@@ -166,7 +166,7 @@ class SolverPanel(bpy.types.Panel):
     bl_label = "Solver"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = "Simulation"
+    bl_category = "PFSolver"
     bl_context = "objectmode"
 
     def draw(self, context):

@@ -72,10 +72,10 @@ class ParticleSystemSequenceImportOperator(bpy.types.Operator):
 
 
 class ParticleSystemSequenceImportPanel(bpy.types.Panel):
-    bl_label = "Start"
+    bl_label = "PSSeqImport"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = "Animation"
+    bl_category = "PFTools"
     bl_context = "objectmode"
 
     def draw(self, context):

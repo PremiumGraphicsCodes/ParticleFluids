@@ -36,7 +36,7 @@ class MeshingOperator(bpy.types.Operator) :
 class MeshingPanel(bpy.types.Panel):
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
-  bl_category = "ParticleFluids"
+  bl_category = "PFTools"
   bl_label = "Meshing"
 
   def draw(self, context):

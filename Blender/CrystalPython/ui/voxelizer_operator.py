@@ -23,7 +23,6 @@ class VoxelizerOperator(bpy.types.Operator) :
       selected_mesh = self.get_selected_mesh(context)
       mesh = BLTriangleMesh(model.scene)
       mesh.convert_from_polygon_mesh(selected_mesh)
-      mesh.convert_to_polygon_mesh("hello")
       voxel = BLVoxel(model.scene)
       voxel.build()
       voxelizer = Voxelizer(model.scene)
@@ -32,7 +31,7 @@ class VoxelizerOperator(bpy.types.Operator) :
       global divide_length
       voxelizer.voxelize(mesh.mesh.id, voxel.voxel.id, divide_length)
       values = voxel.voxel.get_values()
-      voxel.convert_to_polygon_mesh("voxel")
+      #voxel.convert_to_polygon_mesh("voxel")
       ps = BLParticleSystem(model.scene)
       ps.ps.create_empty("")
       voxel.voxel.convert_to_ps(ps.ps.id)
@@ -74,7 +73,7 @@ def clear_props():
 class VoxelizerPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
-  bl_category = "ParticleFluids"
+  bl_category = "PFTools"
   bl_label = "Voxelizer"
   
   def draw(self, context):
