@@ -17,13 +17,13 @@ class BLFluid :
         self.source_ps = ParticleSystemScene(model.scene)
         self.source_ps.create_empty("")
 
-        positions = Vector3ddVector()
-        for i in range(0,5) :
-            for j in range(0,5) :
-                for k in range(0,5):
-                    positions.add(Vector3dd(i,j,k))
+#        positions = Vector3ddVector()
+#        for i in range(0,5) :
+#            for j in range(0,5) :
+#                for k in range(0,5):
+#                    positions.add(Vector3dd(i,j,k))#
 
-        self.source_ps.set_positions(positions)
+#        self.source_ps.set_positions(positions)
 
         self.fluid.create()
         self.fluid.source_particle_system_id = self.source_ps.id

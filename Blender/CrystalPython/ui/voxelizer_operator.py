@@ -74,12 +74,12 @@ class VoxelizerPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
   bl_category = "PFTools"
-  bl_label = "Voxelizer"
+  bl_label = "Voxelize"
   
   def draw(self, context):
     layout = self.layout
     layout.prop(context.scene, "divide_length_prop", text="DivideLength")
-    layout.operator(VoxelizerOperator.bl_idname, text="Voxelizer")
+    layout.operator(VoxelizerOperator.bl_idname, text="Voxelize")
 
 classes = [
   VoxelizerOperator,

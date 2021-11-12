@@ -65,7 +65,6 @@ class FluidUpdateOperator(bpy.types.Operator) :
 
   def execute(self, context) :
       fluid = model.bl_fluids[self.fluid_name]
-      fluid.build()
       fluid.fluid.particle_radius = context.scene.fluid_properties[0].particle_radius_prop
       fluid.fluid.stiffness = context.scene.fluid_properties[0].stiffness_prop
       fluid.fluid.viscosity = context.scene.fluid_properties[0].viscosity_prop
