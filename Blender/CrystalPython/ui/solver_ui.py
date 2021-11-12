@@ -61,6 +61,7 @@ class SolverUpdateOperator(bpy.types.Operator):
         for bl_fluid in model.bl_fluids.values() :
             solver.add_fluid(bl_fluid)
         for bl_boundary in model.bl_boundaries.values() :
+            print( bl_boundary.boundary.bounding_box.min )
             solver.add_boundary(bl_boundary)
         solver.send()
         solver.frame = context.scene.solver_properties[0].start_frame_prop

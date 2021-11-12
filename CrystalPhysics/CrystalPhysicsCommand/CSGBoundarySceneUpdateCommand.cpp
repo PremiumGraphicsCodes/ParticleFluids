@@ -45,7 +45,7 @@ bool CSGBoundarySceneUpdateCommand::execute(World* world)
 {
 	auto boundaryScene = world->getScenes()->findSceneById<CSGBoundaryScene*>(args.id.getValue());
 
-	boundaryScene->clear();
+	boundaryScene->clearBoxes();
 	boundaryScene->setName(args.name.getValue());
 	boundaryScene->add(args.bb.getValue());
 	world->getScenes()->addScene(boundaryScene);
