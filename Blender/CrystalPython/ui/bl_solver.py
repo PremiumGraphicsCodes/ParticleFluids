@@ -17,6 +17,7 @@ class BLSolver :
         self.frame = 1
         self.external_force = Vector3df(0.0, 0.0, -9.8)
         self.time_step = 0.01
+        self.export_dir_path = "tmp_txt"
 
     def build(self):
         if self.solver != None :
@@ -60,7 +61,7 @@ class BLSolver :
         for bl_fluid in self.bl_fluids :
             bl_fluid.update()
         
-        file_path = os.path.join("tmp_txt", "test" + str(self.frame) + ".txt")
+        file_path = os.path.join(self.export_dir_path, "test" + str(self.frame) + ".txt")
         self.solver.export_txt(file_path)
         self.frame += 1
 

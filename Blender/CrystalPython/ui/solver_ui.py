@@ -66,6 +66,7 @@ class SolverUpdateOperator(bpy.types.Operator):
         solver.send()
         solver.frame = context.scene.solver_properties[0].start_frame_prop
         context.scene.solver_properties[0].current_frame_prop = solver.frame
+        solver.export_dir_path = context.scene.solver_properties[0].export_dir_path
         return {'FINISHED'}
 
 #class SolverResetOperator(bpy.types.Operator):
@@ -160,7 +161,13 @@ class SolverProperty(bpy.types.PropertyGroup) :
         default = 250,
         min = 1
     )
-
+    export_dir_path : bpy.props.StringProperty(
+        name="export_dir",
+        description="Path to Directory",
+        default="",
+        maxlen=1024,
+        subtype='DIR_PATH',
+    )
 
 # UI
 class SolverPanel(bpy.types.Panel):
@@ -182,6 +189,7 @@ class SolverPanel(bpy.types.Panel):
             self.layout.prop(solver_property, "start_frame_prop", text="StartFrame")
             self.layout.prop(solver_property, "current_frame_prop", text="CurrentFrame")            
             self.layout.prop(solver_property, "end_frame_prop", text="EndFrame")
+            self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
             op_update = self.layout.operator(SolverUpdateOperator.bl_idname, text="Update")
             op_update.solver_name = solver_property.name_prop
