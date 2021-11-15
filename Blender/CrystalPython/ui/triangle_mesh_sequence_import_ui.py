@@ -24,7 +24,9 @@ class TriangleMeshSequenceImporter :
 
     def step(self):
         time_step = bpy.context.scene.frame_current
-        file_path = os.path.join("tmp_stl", "test" + str(time_step) + ".stl")
+        dir_path = bpy.context.scene.tm_seq_import_prop.path
+
+        file_path = os.path.join(dir_path, "test" + str(time_step) + ".stl")
 
         self.tm.mesh.import_stl(file_path)
         triangles = self.tm.mesh.get_triangles()
@@ -75,7 +77,7 @@ class TriangleMeshSequenceImportProperties(bpy.types.PropertyGroup):
     path : bpy.props.StringProperty(
         name="",
         description="Path to Directory",
-        default="",
+        default="tmp_stl",
         maxlen=1024,
         subtype='DIR_PATH')
 
@@ -94,9 +96,8 @@ class TriangleMeshSequenceImportPanel(bpy.types.Panel):
         else:
             self.layout.operator(op.bl_idname,text="ImportStop", icon='PAUSE')
         layout = self.layout
-        scn = context.scene
         col = layout.column(align=True)
-        col.prop(scn.my_tool, "path", text="")
+        col.prop(context.scene.tm_seq_import_prop, "path", text="")
 
         #print (scn.my_tool.path)
 
