@@ -41,7 +41,7 @@ from ui.solver_ui import SolverUI
 from ui.particle_system_animation_ui import ParticleSystemAnimationUI
 from ui.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
 from ui.particle_system_sequence_meshing_ui import ParticleSystemSequenceMeshingUI
-from ui.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI, Dir_Select_Sample_UI
+from ui.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
 from ui.model import Model 
 from ui.panel_sample import SampleUI
 
@@ -58,7 +58,6 @@ def register():
   FluidUI.register()
   BoundaryUI.register()
   SolverUI.register()
-  Dir_Select_Sample_UI.register()
 #  SampleUI.register()
 
   #bpy.types.Scene.tutorial_comment = StringProperty(default = "")
@@ -79,7 +78,6 @@ def unregister():
   FluidUI.unregister()
   BoundaryUI.unregister()
   SolverUI.unregister()
-  Dir_Select_Sample_UI.unregister()
 #  SampleUI.unregister()
 
   #del bpy.types.Scene.tutorial_comment

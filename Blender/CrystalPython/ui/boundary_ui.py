@@ -16,6 +16,7 @@ class BoundaryAddOperator(bpy.types.Operator) :
     boundary = BLBoundary(model.scene)
     boundary.build()
     boundary.boundary.name = "Boundary01"
+    boundary.boundary.bounding_box = Box3dd(Vector3dd(-1,-1,-1), Vector3dd(1,1,1))
     boundary.boundary.send()
     boundary.convert_to_polygon_mesh("Boundary01")
     context.scene.boundary_properties.add()
