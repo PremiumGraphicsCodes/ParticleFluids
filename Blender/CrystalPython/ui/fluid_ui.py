@@ -5,6 +5,11 @@ from physics.fluid_scene import FluidScene
 from ui.bl_fluid import BLFluid
 from ui.model import Model as model
 
+def find_fluid_prop_by_name(context, name) :
+  for prop in context.scene.fluid_properties :
+    if prop.name_prop == name :
+      return prop 
+
 class FluidAddOperator(bpy.types.Operator) :
   bl_idname = "pg.fluidaddoperator"
   bl_label = "FluidAdd"
@@ -65,9 +70,11 @@ class FluidUpdateOperator(bpy.types.Operator) :
 
   def execute(self, context) :
       fluid = model.bl_fluids[self.fluid_name]
-      fluid.fluid.particle_radius = context.scene.fluid_properties[0].particle_radius_prop
-      fluid.fluid.stiffness = context.scene.fluid_properties[0].stiffness_prop
-      fluid.fluid.viscosity = context.scene.fluid_properties[0].viscosity_prop
+      prop = find_fluid_prop_by_name(context, self.fluid_name)
+      fluid.fluid.particle_radius = prop.particle_radius_prop
+      fluid.fluid.stiffness = prop.stiffness_prop
+      fluid.fluid.viscosity = prop.viscosity_prop
+      fluid.fluid.is_boundary = prop.is_static_prop
       fluid.fluid.send()
       return {'FINISHED'}
 
