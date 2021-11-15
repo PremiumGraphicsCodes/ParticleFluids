@@ -1,4 +1,13 @@
 import bpy
+from bpy.props import (StringProperty,
+                       PointerProperty,
+                       )
+
+from bpy.types import (Panel,
+                       Operator,
+                       AddonPreferences,
+                       PropertyGroup,
+                       )
 from ui.model import Model as model
 from ui.bl_triangle_mesh import BLTriangleMesh
 from CrystalPLI import Vector3dd, Vector3ddVector
@@ -99,3 +108,59 @@ class TriangleMeshSequenceImportUI :
     def unregister():
         for c in classes:
             bpy.utils.unregister_class(c)
+
+
+
+# ------------------------------------------------------------------------
+#    Scene Properties
+# ------------------------------------------------------------------------
+
+class MyProperties(PropertyGroup):
+
+    path : StringProperty(
+        name="",
+        description="Path to Directory",
+        default="",
+        maxlen=1024,
+        subtype='DIR_PATH')
+
+# ------------------------------------------------------------------------
+#    Panel in Object Mode
+# ------------------------------------------------------------------------
+
+class OBJECT_PT_CustomPanel(Panel):
+    bl_idname = "OBJECT_PT_my_panel"
+    bl_label = "My Panel"
+    bl_space_type = "VIEW_3D"   
+    bl_region_type = "UI"
+    bl_category = "Tools"
+    bl_context = "objectmode"
+
+    def draw(self, context):
+        layout = self.layout
+        scn = context.scene
+        col = layout.column(align=True)
+        col.prop(scn.my_tool, "path", text="")
+
+        # print the path to the console
+        print (scn.my_tool.path)
+
+# ------------------------------------------------------------------------
+#    Registration
+# ------------------------------------------------------------------------
+
+test_classes = (
+    MyProperties,
+    OBJECT_PT_CustomPanel
+)
+
+class Dir_Select_Sample_UI :
+    def register():
+        for cls in test_classes:
+            bpy.utils.register_class(cls)
+        bpy.types.Scene.my_tool = PointerProperty(type=MyProperties)
+    
+    def unregister():
+        for cls in reversed(test_classes):
+            bpy.utils.unregister_class(cls)
+        del bpy.types.Scene.my_tool
