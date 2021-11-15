@@ -12,7 +12,7 @@ class FluidScene :
         self.density = 1.0
         self.stiffness = 0.25
         self.viscosity = 10.0
-        self.is_boundary = False;
+        self.is_boundary = False
         self.name = ""
 
     def create(self) :

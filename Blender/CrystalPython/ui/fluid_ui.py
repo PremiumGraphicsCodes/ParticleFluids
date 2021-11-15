@@ -1,5 +1,5 @@
 import bpy
-from bpy.props import FloatProperty, StringProperty
+from bpy.props import FloatProperty, StringProperty, BoolProperty
 
 from physics.fluid_scene import FluidScene
 from ui.bl_fluid import BLFluid
@@ -98,6 +98,11 @@ class FluidProperty(bpy.types.PropertyGroup) :
     min = 0.0,
     max = 100.0,
   )
+  is_static_prop : BoolProperty(
+    name="is_static",
+    description="Boundary",
+    default = False,
+  )
 
 class FluidPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
@@ -113,6 +118,7 @@ class FluidPanel(bpy.types.Panel) :
       layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
+      layout.prop(fluid_property, "is_static_prop", text="Static")
       op_sel = layout.operator(FluidSourceSelectOperator.bl_idname, text="SelectSource")
       op_sel.fluid_name = fluid_property.name_prop
       op_up = layout.operator(FluidUpdateOperator.bl_idname, text="Update")
