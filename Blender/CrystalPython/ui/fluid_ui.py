@@ -18,11 +18,20 @@ class FluidAddOperator(bpy.types.Operator) :
   def execute(self, context) :
     fluid = BLFluid(model.scene)
     fluid.build()
-    fluid.convert_to_polygon_mesh("Fluid01")
+    #fluid.convert_to_polygon_mesh("Fluid01")
     model.bl_fluids["Fluid01"] = fluid
     prop = context.scene.fluid_properties.add()
     prop.name_prop = "Fluid01"
+    selected_mesh = self.get_selected_mesh(context)
+    fluid.convert_from_polygon_mesh(selected_mesh)
+    fluid.convert_to_polygon_mesh("Fluid01")
     return {'FINISHED'}
+
+  def get_selected_mesh(self, context) :
+    for o in bpy.data.objects:
+      if o.type == 'MESH' and o.select_get():
+        return o.to_mesh()
+    return None
 
 class FluidDeleteOperator(bpy.types.Operator):
     bl_idname = "pg.fluiddeleteoperator"
@@ -42,25 +51,6 @@ class FluidDeleteOperator(bpy.types.Operator):
             index+=1
 
         return {'FINISHED'}    
-
-class FluidSourceSelectOperator(bpy.types.Operator) :
-  bl_idname = "pg.fluidsourceselectoperator"
-  bl_label = "Fluid"
-  bl_options = {"REGISTER", "UNDO"}
-  fluid_name : bpy.props.StringProperty()
-
-  def execute(self, context) :
-      selected_mesh = self.get_selected_mesh(context)
-
-      fluid = model.bl_fluids[self.fluid_name]
-      fluid.convert_from_polygon_mesh(selected_mesh)
-      return {'FINISHED'}
-
-  def get_selected_mesh(self, context) :
-    for o in bpy.data.objects:
-      if o.type == 'MESH' and o.select_get():
-        return o.to_mesh()
-    return None
 
 class FluidUpdateOperator(bpy.types.Operator) :
   bl_idname = "pg.fluidupdate"
@@ -126,8 +116,6 @@ class FluidPanel(bpy.types.Panel) :
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
       layout.prop(fluid_property, "is_static_prop", text="Static")
-      op_sel = layout.operator(FluidSourceSelectOperator.bl_idname, text="SelectSource")
-      op_sel.fluid_name = fluid_property.name_prop
       op_up = layout.operator(FluidUpdateOperator.bl_idname, text="Update")
       op_up.fluid_name = fluid_property.name_prop
       op_del = layout.operator(FluidDeleteOperator.bl_idname, text="Delete")
@@ -136,7 +124,6 @@ class FluidPanel(bpy.types.Panel) :
 classes = [
   FluidAddOperator,
   FluidDeleteOperator,
-  FluidSourceSelectOperator,
   FluidUpdateOperator,
   FluidProperty,
   FluidPanel,  

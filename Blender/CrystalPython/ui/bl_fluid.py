@@ -40,10 +40,11 @@ class BLFluid :
             positions.add(p)
         self.source_ps.set_positions(positions)
         self.fluid.send()
+#        self.me = mesh
         
     def convert_to_polygon_mesh(self, ob_name):
         # Create new mesh and a new object
-        self.me = bpy.data.meshes.new(name = ob_name + "Mesh")
+        self.me = bpy.data.meshes.new(name = ob_name)
         ob = bpy.data.objects.new(ob_name, self.me)
         
         positions = self.fluid.get_positions()
