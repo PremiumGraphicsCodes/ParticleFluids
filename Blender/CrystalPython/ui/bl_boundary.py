@@ -17,6 +17,7 @@ class BLBoundary :
     def __init__(self, scene) :
         self.boundary = None
         self.me = None
+        self.prop = None
 
     def build(self) :
         self.boundary = CSGBoundaryScene(model.scene)
@@ -65,7 +66,17 @@ class BLBoundary :
         self.me.update()
         bpy.context.collection.objects.link(ob)
 
-    def update(self):
+    def reset(self):
+        min = self.prop.min
+        max = self.prop.max
+        v1 = Vector3dd(min[0], min[1], min[2])
+        v2 = Vector3dd(max[0], max[1], max[2])
+        bb = Box3dd(v1, v2)
+        self.boundary.bounding_box = bb
+        self.boundary.send()
+        #boundary.update()
+
+
 #        positions = self.fluid.get_positions()
 #        p = positions.values[0]
 
@@ -108,3 +119,4 @@ class BLBoundary :
         bm.to_mesh(self.me)
         bm.free()
         self.me.update()
+

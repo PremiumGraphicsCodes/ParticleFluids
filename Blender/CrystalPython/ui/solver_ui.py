@@ -36,7 +36,7 @@ class SolverUpdateOperator(bpy.types.Operator):
             bl_fluid.reset()
             solver.add_fluid(bl_fluid)
         for bl_boundary in model.bl_boundaries.values() :
-            print( bl_boundary.boundary.bounding_box.min )
+            bl_boundary.reset()
             solver.add_boundary(bl_boundary)
         solver.send()
         solver.export_dir_path = context.scene.solver_property.export_dir_path
