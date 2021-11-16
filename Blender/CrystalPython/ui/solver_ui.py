@@ -17,6 +17,12 @@ from scene.file_io import FileIO
 
 from ui.bl_solver import BLSolver
 
+def find_fluid_prop_by_name(context, name) :
+  for prop in bpy.context.scene.fluid_properties :
+    if prop.name_prop == name :
+      return prop 
+
+
 class SolverUpdateOperator(bpy.types.Operator):
     bl_idname = "pg.solverupdateoperator"
     bl_label = "Delete"
@@ -27,6 +33,7 @@ class SolverUpdateOperator(bpy.types.Operator):
         solver = model.bl_solver
         solver.reset()
         for bl_fluid in model.bl_fluids.values() :
+            bl_fluid.reset()
             solver.add_fluid(bl_fluid)
         for bl_boundary in model.bl_boundaries.values() :
             print( bl_boundary.boundary.bounding_box.min )
@@ -111,8 +118,11 @@ class SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
-        self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
-        self.layout.operator(SolverUpdateOperator.bl_idname, text="Update")
+        self.layout.operator(SolverUpdateOperator.bl_idname, text="Reset")
+        if not model.bl_solver.is_running() :
+            self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
+        else :
+            self.layout.operator(SolverStartOperator.bl_idname,text="Stop", icon='PAUSE')
 
 classes = [
     SolverStartOperator,

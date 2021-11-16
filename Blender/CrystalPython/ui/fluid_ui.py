@@ -5,11 +5,6 @@ from physics.fluid_scene import FluidScene
 from ui.bl_fluid import BLFluid
 from ui.model import Model as model
 
-def find_fluid_prop_by_name(context, name) :
-  for prop in context.scene.fluid_properties :
-    if prop.name_prop == name :
-      return prop 
-
 class FluidAddOperator(bpy.types.Operator) :
   bl_idname = "pg.fluidaddoperator"
   bl_label = "FluidAdd"
@@ -25,6 +20,7 @@ class FluidAddOperator(bpy.types.Operator) :
     selected_mesh = self.get_selected_mesh(context)
     fluid.convert_from_polygon_mesh(selected_mesh)
     fluid.convert_to_polygon_mesh("Fluid01")
+    fluid.prop = prop
     return {'FINISHED'}
 
   def get_selected_mesh(self, context) :
@@ -51,22 +47,6 @@ class FluidDeleteOperator(bpy.types.Operator):
             index+=1
 
         return {'FINISHED'}    
-
-class FluidUpdateOperator(bpy.types.Operator) :
-  bl_idname = "pg.fluidupdate"
-  bl_label = "Fluid"
-  bl_options = {"REGISTER", "UNDO"}
-  fluid_name : bpy.props.StringProperty()
-
-  def execute(self, context) :
-      fluid = model.bl_fluids[self.fluid_name]
-      prop = find_fluid_prop_by_name(context, self.fluid_name)
-      fluid.fluid.particle_radius = prop.particle_radius_prop
-      fluid.fluid.stiffness = prop.stiffness_prop
-      fluid.fluid.viscosity = prop.viscosity_prop
-      fluid.fluid.is_boundary = prop.is_static_prop
-      fluid.fluid.send()
-      return {'FINISHED'}
 
 class FluidProperty(bpy.types.PropertyGroup) :
   name_prop : bpy.props.StringProperty(
@@ -116,15 +96,12 @@ class FluidPanel(bpy.types.Panel) :
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
       layout.prop(fluid_property, "is_static_prop", text="Static")
-      op_up = layout.operator(FluidUpdateOperator.bl_idname, text="Update")
-      op_up.fluid_name = fluid_property.name_prop
       op_del = layout.operator(FluidDeleteOperator.bl_idname, text="Delete")
       op_del.fluid_name = fluid_property.name_prop
 
 classes = [
   FluidAddOperator,
   FluidDeleteOperator,
-  FluidUpdateOperator,
   FluidProperty,
   FluidPanel,  
 ]

@@ -11,19 +11,12 @@ class BLFluid :
         self.source_ps = None
         self.fluid = None
         self.me = None
+        self.prop = None
 
     def build(self) :
         self.fluid = FluidScene(model.scene)
         self.source_ps = ParticleSystemScene(model.scene)
         self.source_ps.create_empty("")
-
-#        positions = Vector3ddVector()
-#        for i in range(0,5) :
-#            for j in range(0,5) :
-#                for k in range(0,5):
-#                    positions.add(Vector3dd(i,j,k))#
-
-#        self.source_ps.set_positions(positions)
 
         self.fluid.create()
         self.fluid.source_particle_system_id = self.source_ps.id
@@ -75,5 +68,9 @@ class BLFluid :
         self.me.update()
 
     def reset(self):
+        self.fluid.particle_radius = self.prop.particle_radius_prop
+        self.fluid.stiffness = self.prop.stiffness_prop
+        self.fluid.viscosity = self.prop.viscosity_prop
+        self.fluid.is_boundary = self.prop.is_static_prop
         self.fluid.send()
         self.update()
