@@ -11,43 +11,89 @@ from scene.scene import *
 import os
 import glob
 
-class ParticleSystemSequenceMeshingOperator(bpy.types.Operator) :
-    bl_idname = "pg.particlesystemsequencemeshingoperator"
-    bl_label = "ParticleSystem"
-    bl_description = "Hello"
+class MeshingRunner :
+    def __init__(self) :
+        self.__is_running = False
+        self.__frame = 0
 
-    def execute(self, context) :
-        prop = context.scene.meshing_property
+    def start(self) :
+        self.__is_running = True
+
+    def stop(self) :
+        self.__is_running = False
+
+    def step(self, frame) :
+        if frame == self.__frame :
+            return
+        prop = bpy.context.scene.meshing_property
         input_path = prop.input_path_prop
         output_path = prop.output_path_prop
         cell_length = prop.cell_length_prop
         effect_length = prop.effect_length_prop
 
         # TODO ファイル一覧の取得
-        file_path = os.path.join(input_path, "*.txt")
-        files = glob.glob(file_path)
-        for file_path in files :
-#            file_path = os.path.join(input_path, "test" + str(time_step) + ".txt")
-
-            ps = ParticleSystemScene(model.scene)
-            ps.create_empty("")
-            FileIO.import_txt(model.scene, ps.id, file_path)
+        file_path = os.path.join(input_path, "test" + str(frame) + ".txt")
+        ps = ParticleSystemScene(model.scene)
+        ps.create_empty("")
+        FileIO.import_txt(model.scene, ps.id, file_path)
+        
+        mesh = TriangleMeshScene(model.scene)
+        mesh.create_empty("")
             
-            mesh = TriangleMeshScene(model.scene)
-            mesh.create_empty("")
-            
-            builder = SurfaceBuilder(model.scene)
-            builder.build_anisotorpic(ps.id, mesh.id, cell_length, effect_length)
+        builder = SurfaceBuilder(model.scene)
+        builder.build_anisotorpic(ps.id, mesh.id, cell_length, effect_length)
 
-            basename_without_ext = os.path.splitext(os.path.basename(file_path))[0]
-            export_file_path = os.path.join(output_path, basename_without_ext + ".stl")
-            mesh.export_stl(export_file_path)
+        basename_without_ext = os.path.splitext(os.path.basename(file_path))[0]
+        export_file_path = os.path.join(output_path, basename_without_ext + ".stl")
+        mesh.export_stl(export_file_path)
 
 #            FileIO.ex
             #mesh.convert_to_polygon_mesh("")
-            model.scene.delete(ps.id, False)
-            model.scene.delete(mesh.id, False)
+        model.scene.delete(ps.id, False)
+        model.scene.delete(mesh.id, False)
+        self.__frame = frame
+
+    def is_running(self) :
+        return self.__is_running
+
+runner = MeshingRunner()
+
+class ParticleSystemSequenceMeshingOperator(bpy.types.Operator) :
+    bl_idname = "pg.particlesystemsequencemeshingoperator"
+    bl_label = "ParticleSystem"
+    bl_description = "Hello"
+    
+    def modal(self, context, event):
+        if runner.is_running() :
+            runner.step(bpy.context.scene.frame_current)
+
+        if context.area:
+            context.area.tag_redraw()
+
+        return {'PASS_THROUGH'}
+
+    def invoke(self, context, event):
+        if context.area.type == 'VIEW_3D':
+            # [開始] ボタンが押された時の処理
+            if not runner.is_running():
+                # モーダルモードを開始
+                context.window_manager.modal_handler_add(self)
+                runner.start()
+
+                print("simulation start")
+                return {'RUNNING_MODAL'}
+            # [終了] ボタンが押された時の処理
+            else:
+                runner.stop()
+                print("simulation stop")
+                return {'FINISHED'}
+        else:
+            return {'CANCELLED'}
+
+    def execute(self, context) :
+
         return {'FINISHED'}
+
 
 class MeshingProperty(bpy.types.PropertyGroup) :
     input_path_prop : bpy.props.StringProperty(
@@ -95,7 +141,10 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         self.layout.prop(prop, "output_path_prop", text="OutputPath")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
         self.layout.prop(prop, "effect_length_prop", text="EffectLength")
-        self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="PSSeqMesher")
+        #if not runner.is_running() :
+        self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
+        #else :
+        #    self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname,text="Stop", icon='PAUSE')
 
 classes = [
     ParticleSystemSequenceMeshingOperator,
