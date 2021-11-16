@@ -32,27 +32,8 @@ class SolverUpdateOperator(bpy.types.Operator):
             print( bl_boundary.boundary.bounding_box.min )
             solver.add_boundary(bl_boundary)
         solver.send()
-        solver.frame = context.scene.solver_property.start_frame_prop
-        context.scene.solver_property.current_frame_prop = solver.frame
         solver.export_dir_path = context.scene.solver_property.export_dir_path
         return {'FINISHED'}
-
-#class SolverResetOperator(bpy.types.Operator):
-#    bl_idname = "pg.solverresetoperator"
-#    bl_label = "Reset"
-#    bl_description = "Hello"
-#    solver_name : StringProperty()
-    
-#    def execute(self, context) :
-#        solver = model.bl_solvers[self.solver_name]
-#        solver.reset()
-#        for bl_fluid in model.bl_fluids.values() :
-#            solver.add_fluid(bl_fluid)
-#        for bl_boundary in model.bl_boundaries.values() :
-#            solver.add_boundary(bl_boundary)
-#        solver.send()
-#        return {'FINISHED'}
-
 
 class SolverStartOperator(bpy.types.Operator):
     bl_idname = "pg.solverstartoperator"
@@ -62,10 +43,7 @@ class SolverStartOperator(bpy.types.Operator):
     def modal(self, context, event):
         solver = model.bl_solver
         if solver.is_running() :
-            solver.step()
-            context.scene.solver_property.current_frame_prop = solver.frame
-            if solver.frame >= context.scene.solver_property.end_frame_prop :
-                solver.stop()
+            solver.step(bpy.context.scene.frame_current)
 
         if context.area:
             context.area.tag_redraw()
@@ -111,24 +89,6 @@ class SolverProperty(bpy.types.PropertyGroup) :
         min=-100.0,
         max=100.0,
     )
-    start_frame_prop : IntProperty(
-        name="start_frame",
-        description="StartFrame",
-        default = 1,
-        min = 1
-    )
-    current_frame_prop : IntProperty(
-        name="current_frame",
-        description="CurrentFrame",
-        default = 1,
-        min = 1
-    )
-    end_frame_prop : IntProperty(
-        name="end_frame",
-        description="EndFrame",
-        default = 250,
-        min = 1
-    )
     export_dir_path : bpy.props.StringProperty(
         name="export_dir",
         description="Path to Directory",
@@ -150,17 +110,9 @@ class SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "name_prop", text="Name")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
-        self.layout.prop(solver_property, "start_frame_prop", text="StartFrame")
-        self.layout.prop(solver_property, "current_frame_prop", text="CurrentFrame")            
-        self.layout.prop(solver_property, "end_frame_prop", text="EndFrame")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
         self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
-        op_update = self.layout.operator(SolverUpdateOperator.bl_idname, text="Update")
-        op_update.solver_name = solver_property.name_prop
-            #if not solver.is_running():
-            #    self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
-            #else:
-            #    self.layout.operator(SolverStartOperator.bl_idname,text="Stop", icon='PAUSE')
+        self.layout.operator(SolverUpdateOperator.bl_idname, text="Update")
 
 classes = [
     SolverStartOperator,

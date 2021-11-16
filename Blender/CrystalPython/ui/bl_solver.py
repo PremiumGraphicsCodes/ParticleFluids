@@ -12,9 +12,9 @@ class BLSolver :
     def __init__(self) :
         self.solver = None
         self.__running = False
-        self.bl_fluids = []
-        self.bl_boundaries = []
-        self.frame = 1
+        self.__bl_fluids = []
+        self.__bl_boundaries = []
+        self.__frame = 1
         self.external_force = Vector3df(0.0, 0.0, -9.8)
         self.time_step = 0.01
         self.export_dir_path = "tmp_txt"
@@ -32,19 +32,19 @@ class BLSolver :
         #self.solver.time_step = bpy.context.scene.solver_property.time_step_prop
 
     def add_fluid(self, bl_fluid) :
-        self.bl_fluids.append(bl_fluid)
+        self.__bl_fluids.append(bl_fluid)
 
     def add_boundary(self, bl_boundary) :
-        self.bl_boundaries.append(bl_boundary)
+        self.__bl_boundaries.append(bl_boundary)
 
     def send(self) :
         fluids = []
-        for bl_fluid in self.bl_fluids :
+        for bl_fluid in self.__bl_fluids :
             fluids.append( bl_fluid.fluid )
         self.solver.fluids = fluids
 
         boundaries = []
-        for bl_boundary in self.bl_boundaries :
+        for bl_boundary in self.__bl_boundaries :
             boundaries.append( bl_boundary.boundary )
         self.solver.boundaries = boundaries
 
@@ -56,22 +56,24 @@ class BLSolver :
     def stop(self):
         self.__running = False
 
-    def step(self):
+    def step(self, frame):
+        if frame == self.__frame :
+            return
         self.solver.simulate()
-        for bl_fluid in self.bl_fluids :
+        for bl_fluid in self.__bl_fluids :
             bl_fluid.update()
         
-        file_path = os.path.join(self.export_dir_path, "test" + str(self.frame) + ".txt")
+        file_path = os.path.join(self.export_dir_path, "test" + str(frame) + ".txt")
         self.solver.export_txt(file_path)
-        self.frame += 1
+        self.__frame = frame
 
     def is_running(self):
         return self.__running
 
     def reset(self):
-        for bl_fluid in self.bl_fluids :
+        for bl_fluid in self.__bl_fluids :
             bl_fluid.reset()
-        self.bl_fluids.clear()
-        self.bl_boundaries.clear()
-        self.frame = 1
+        self.__bl_fluids.clear()
+        self.__bl_boundaries.clear()
+        self.__frame = 1
 
