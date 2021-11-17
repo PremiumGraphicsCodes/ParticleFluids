@@ -30,6 +30,8 @@ public:
 
 	void setShape(std::unique_ptr<Shape::TriangleMesh> shape) { this->shape = std::move(shape); }
 
+	Math::Box3dd getBoundingBox() const override { return shape->getBoundingBox(); }
+
 private:
 	std::unique_ptr<Shape::TriangleMesh> shape;
 	std::unique_ptr<ITMPresenter> presenter;
