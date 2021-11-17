@@ -23,7 +23,7 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	pressureCoeView("PressureCoe", 100.f),
 	viscosityCoeView("ViscosityCoe", 10.0f),
 	timeStepView("TimeStep", 0.03f),
-	radiusView("SearchRadius", 2.25f)
+	radiusView("SearchRadius", 1.00f)
 {
 	startButton.setFunction([=]() { onStart(); });
 	add(&startButton);

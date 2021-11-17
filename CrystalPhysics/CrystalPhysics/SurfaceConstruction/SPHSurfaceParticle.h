@@ -10,11 +10,11 @@ namespace Crystal {
 class SPHSurfaceParticle : public Shape::IParticle
 {
 public:
-	explicit SPHSurfaceParticle(const Math::Vector3dd& p, const float mass) :
+	SPHSurfaceParticle(const Math::Vector3dd& p, const float radius) :
 		position(p),
 		matrix(Math::identitiyMatrix<double>()),
 		density(0.0f),
-		mass(mass)
+		radius(radius)
 	{}
 
 	Math::Vector3dd getPosition() const { return position; }
@@ -29,13 +29,13 @@ public:
 
 	float getDensity() const { return density; }
 
-	float getMass() const { return mass; }
+	float getMass() const;
 
 private:
 	Math::Vector3df position;
 	Math::Matrix3dd matrix;
 	float density;
-	float mass;
+	float radius;
 };
 
 	}

@@ -33,8 +33,10 @@ namespace {
 	}
 }
 
-void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float searchRadius)
+void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius)
 {
+	const auto searchRadius = particleRadius * 2.25;
+
 	for (auto p : positions) {
 		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, 1.0f));
 	}
@@ -66,8 +68,9 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 	}
 }
 
-void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float searchRadius)
+void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float particleRadius)
 {
+	const auto searchRadius = particleRadius * 2.25;
 	const SPHKernel kernel(searchRadius);
 
 	for (auto p : positions) {

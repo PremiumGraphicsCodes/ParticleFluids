@@ -66,8 +66,15 @@ void SPHSurfaceParticle::calculateAnisotoropicMatrix(const std::vector<IParticle
 
 void SPHSurfaceParticle::calculateDensity(const std::vector<IParticle*>& neighbors, const float searchRadius, const SPHKernel& kernel)
 {
+	const auto mass = getMass();
 	for (auto n : neighbors) {
 		const auto distanceSquared = Math::getDistanceSquared( (Vector3df)(n->getPosition()), this->position);
-		this->density += this->mass * kernel.getCubicSpline(::sqrt(distanceSquared));
+		this->density += mass * kernel.getCubicSpline(::sqrt(distanceSquared));
 	}
+}
+
+float SPHSurfaceParticle::getMass() const
+{
+	const auto diameter = radius * 2.0;
+	return diameter * diameter * diameter;
 }
