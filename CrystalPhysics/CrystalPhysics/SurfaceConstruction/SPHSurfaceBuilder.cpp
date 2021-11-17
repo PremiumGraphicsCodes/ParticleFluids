@@ -36,7 +36,7 @@ namespace {
 void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float searchRadius)
 {
 	for (auto p : positions) {
-		particles.push_back(std::make_unique<SPHSurfaceParticle>(p));
+		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, 1.0f));
 	}
 
 	CompactSpaceHash3d spaceHash(searchRadius, (int)particles.size());
@@ -44,9 +44,14 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 		spaceHash.add(p.get());
 	}
 
+	const SPHKernel kernel(searchRadius);
+	for (const auto& p : particles) {
+		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
+		p->calculateDensity(neighbors, searchRadius, kernel);
+	}
+
 	this->volume = createSparseVolume(positions, searchRadius, searchRadius);
 
-	const SPHKernel kernel(searchRadius);
 
 	auto& nodes = volume->getNodes();
 	for (auto& node : nodes) {
@@ -55,7 +60,7 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 		for (auto n : neighbors) {
 			auto sp = static_cast<SPHSurfaceParticle*>(n);
 			const auto v = n->getPosition() - pos;
-			const auto w = kernel.getCubicSpline(v);
+			const auto w = kernel.getCubicSpline(v) * sp->getMass() / sp->getDensity();
 			node.second->setValue(w + node.second->getValue());
 		}
 	}
@@ -66,7 +71,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 	const SPHKernel kernel(searchRadius);
 
 	for (auto p : positions) {
-		particles.push_back(std::make_unique<SPHSurfaceParticle>(p));
+		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, 1.0f));
 	}
 
 	calculateAnisotropy(searchRadius);
@@ -107,7 +112,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 			const auto distance = m * v;
 			const auto d = glm::length(distance);
 			const auto det = glm::determinant(m);
-			const auto w = ::getCubicSpline(d, searchRadius) * det / sp->getDensity();
+			const auto w = ::getCubicSpline(d, searchRadius) * det * sp->getMass() / sp->getDensity();
 			node->setValue(w + node->getValue());
 			//const auto distance = getDistanceSquared(sp->getPosition(), pos);
 		}

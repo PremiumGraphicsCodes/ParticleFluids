@@ -68,6 +68,6 @@ void SPHSurfaceParticle::calculateDensity(const std::vector<IParticle*>& neighbo
 {
 	for (auto n : neighbors) {
 		const auto distanceSquared = Math::getDistanceSquared( (Vector3df)(n->getPosition()), this->position);
-		this->density += kernel.getCubicSpline(::sqrt(distanceSquared));
+		this->density += this->mass * kernel.getCubicSpline(::sqrt(distanceSquared));
 	}
 }
