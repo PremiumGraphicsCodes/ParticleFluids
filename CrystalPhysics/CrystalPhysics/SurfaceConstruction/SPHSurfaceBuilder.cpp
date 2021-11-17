@@ -66,12 +66,12 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 	}
 }
 
-void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float searchRadius, const float cellLength)
+void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float searchRadius)
 {
 	const SPHKernel kernel(searchRadius);
 
 	for (auto p : positions) {
-		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, 1.0f));
+		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, 0.1f * 0.1f * 0.1f));
 	}
 
 	calculateAnisotropy(searchRadius);
@@ -88,7 +88,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 	}
 	*/
 
-	this->volume = createSparseVolume(positions, searchRadius, cellLength);
+	this->volume = createSparseVolume(positions, searchRadius, searchRadius);
 
 
 	auto& nodes = volume->getNodes();

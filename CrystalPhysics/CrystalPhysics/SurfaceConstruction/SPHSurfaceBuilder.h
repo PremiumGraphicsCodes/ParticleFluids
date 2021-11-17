@@ -18,7 +18,7 @@ public:
 
 	void buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float searchRadius);
 
-	void buildAnisotoropic(const std::vector<Math::Vector3dd>& positions, const float searchRadius, const float cellLength);
+	void buildAnisotoropic(const std::vector<Math::Vector3dd>& positions, const float searchRadius);
 
 	const std::vector<std::unique_ptr<SPHSurfaceParticle>>& getParticles() const { return particles; }
 

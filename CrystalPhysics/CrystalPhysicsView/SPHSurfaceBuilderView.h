@@ -20,7 +20,7 @@ private:
 
 private:
 	FloatView searchRadiusView;
-	FloatView cellLengthView;
+	//FloatView cellLengthView;
 	ColorMapView colorMapView;
 };
 

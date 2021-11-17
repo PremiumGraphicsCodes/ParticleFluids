@@ -61,13 +61,13 @@ namespace {
 SPHSurfaceBuilderView::SPHSurfaceBuilderView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	searchRadiusView("SearchRadius"),
-	cellLengthView("CellLength"),
+//	cellLengthView("CellLength"),
 	colorMapView("ColorMap")
 {
 	searchRadiusView.setValue(1.0f);
 	add(&searchRadiusView);
-	cellLengthView.setValue(0.5f);
-	add(&cellLengthView);
+//	cellLengthView.setValue(0.5f);
+//	add(&cellLengthView);
 	add(&colorMapView);
 }
 
@@ -107,7 +107,8 @@ void SPHSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	builder.buildAnisotoropic(positions, searchRadiusView.getValue(), cellLengthView.getValue());
+	//builder.buildIsotoropic(positions, searchRadiusView.getValue());
+	builder.buildAnisotoropic(positions, searchRadiusView.getValue());
 
 	MarchingCubesAlgo mcAlgo;
 	mcAlgo.build(*builder.getVolume(), 1.0e-3);

@@ -66,7 +66,7 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 	auto positions = ps->getPositions();
 
 	SPHSurfaceBuilder builder;
-	builder.buildAnisotoropic(positions, args.effectLength.getValue(), args.cellLength.getValue());
+	builder.buildAnisotoropic(positions, args.effectLength.getValue());
 	//auto shape = builder.getVolume();
 	//sp->resetShape(std::move(shape));
 
