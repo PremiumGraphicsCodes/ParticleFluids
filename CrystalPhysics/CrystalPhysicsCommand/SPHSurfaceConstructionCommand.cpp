@@ -14,8 +14,7 @@ namespace {
 	PublicLabel CommandNameLabel = "SPHSurfaceConstructionCommand";
 	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
 	PublicLabel TriangleMeshIdLabel = "TriangleMeshId";
-	PublicLabel EffectLengthLabel = "EffectLength";
-	PublicLabel CellLengthLabel = "CellLength";
+	PublicLabel ParticleRadiusLabel = "ParticleRadius";
 }
 
 
@@ -33,13 +32,11 @@ std::string SPHSurfaceConstructionCommand::getName()
 SPHSurfaceConstructionCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	triangleMeshId(::TriangleMeshIdLabel, -1),
-	effectLength(::EffectLengthLabel, 1.0),
-	cellLength(::CellLengthLabel, 0.5)
+	particleRadius(::ParticleRadiusLabel, 1.0)
 {
 	add(&particleSystemId);
 	add(&triangleMeshId);
-	add(&effectLength);
-	add(&cellLength);
+	add(&particleRadius);
 }
 
 SPHSurfaceConstructionCommand::Results::Results()// :
@@ -66,7 +63,7 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 	auto positions = ps->getPositions();
 
 	SPHSurfaceBuilder builder;
-	builder.buildAnisotoropic(positions, args.effectLength.getValue());
+	builder.buildAnisotoropic(positions, args.particleRadius.getValue());
 	//auto shape = builder.getVolume();
 	//sp->resetShape(std::move(shape));
 

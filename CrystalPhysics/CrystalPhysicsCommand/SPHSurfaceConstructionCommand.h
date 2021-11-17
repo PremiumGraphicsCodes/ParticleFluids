@@ -14,8 +14,7 @@ public:
 		//Command::Arg<int> sparseVolumeId;
 		Command::Arg<int> triangleMeshId;
 
-		Command::Arg<float> effectLength;
-		Command::Arg<float> cellLength;
+		Command::Arg<float> particleRadius;
 
 		Args();
 	};

@@ -68,5 +68,4 @@ class SPHSurfaceConstructionCommand:
    CommandNameLabel="SPHSurfaceConstructionCommand"
    ParticleSystemIdLabel="ParticleSystemId"
    TriangleMeshIdLabel="TriangleMeshId"
-   EffectLengthLabel="EffectLength"
-   CellLengthLabel="CellLength"
+   ParticleRadiusLabel="ParticleRadius"

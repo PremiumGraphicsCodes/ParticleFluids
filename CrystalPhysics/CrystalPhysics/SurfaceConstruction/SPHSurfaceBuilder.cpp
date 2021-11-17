@@ -25,7 +25,7 @@ namespace {
 			return (2.0f / 3.0f - q * q + 0.5f * q * q * q);
 		}
 		else if (q < 2) {
-			return (std::pow(2 - q, 3) / 6.0f);
+			return (std::pow(2.0f - q, 3.0f) / 6.0f);
 		}
 		else {
 			return 0;
@@ -35,10 +35,10 @@ namespace {
 
 void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius)
 {
-	const auto searchRadius = particleRadius * 2.25;
+	const auto searchRadius = particleRadius * 2.25f;
 
 	for (auto p : positions) {
-		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, 1.0f));
+		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, particleRadius));
 	}
 
 	CompactSpaceHash3d spaceHash(searchRadius, (int)particles.size());
@@ -70,11 +70,11 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 
 void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float particleRadius)
 {
-	const auto searchRadius = particleRadius * 2.25;
+	const auto searchRadius = particleRadius * 2.25f;
 	const SPHKernel kernel(searchRadius);
 
 	for (auto p : positions) {
-		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, 0.1f * 0.1f * 0.1f));
+		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, particleRadius));
 	}
 
 	calculateAnisotropy(searchRadius);
