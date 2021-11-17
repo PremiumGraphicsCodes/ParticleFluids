@@ -57,23 +57,20 @@ class FluidProperty(bpy.types.PropertyGroup) :
   stiffness_prop : bpy.props.FloatProperty(
     name="stiffness",
     description="Stiffness",
-    default=0.25,
+    default=100.0,
     min = 0.0,
-    max = 100.0,
   )
   particle_radius_prop : FloatProperty(
     name="particle_radius",
     description="ParticleRadius",
-    default=0.2,
+    default=0.3,
     min=0.0,
-    max=100.0,
   )
   viscosity_prop : FloatProperty(
     name="viscosity",
     description="Viscosity",
     default = 10.0,
     min = 0.0,
-    max = 100.0,
   )
   is_static_prop : BoolProperty(
     name="is_static",
