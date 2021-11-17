@@ -134,7 +134,8 @@ void MVPFluidSolver::simulate()
 		}
 
 		// solve incompressibility.
-		for (int i = 0; i < 2; ++i) {
+		double relaxationCoe = 1.0;
+		for (int i = 0; i < 3; ++i) {
 			for (auto particle : fluidParticles) {
 //				particle->reset(false);
 				particle->updateMassPositions();
@@ -145,8 +146,9 @@ void MVPFluidSolver::simulate()
 				const auto particle = fluidParticles[i];
 				particle->updateInnerPoints();
 				//particle->calculateDensity();
-				particle->calculatePressureForce(1.0f, dt);
+				particle->calculatePressureForce(relaxationCoe, dt);
 			}
+			relaxationCoe *= 0.85;
 
 
 			//for (auto particle : fluidParticles) {

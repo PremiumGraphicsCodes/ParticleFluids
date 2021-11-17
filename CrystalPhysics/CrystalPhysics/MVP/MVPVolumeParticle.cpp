@@ -97,7 +97,7 @@ void MVPVolumeParticle::calculateVorticity()
 void MVPVolumeParticle::stepTime(const float dt)
 {
 	const auto dv = this->position - averagedCenter;
-	this->force += dv / dt / dt * this->density * this->pressureCoe;
+	this->force += dv /*/ dt / dt*/ * this->density * this->pressureCoe;
 
 
 	const auto acc = (force) / getDensity();

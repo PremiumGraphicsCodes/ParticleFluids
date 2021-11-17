@@ -16,14 +16,11 @@ class CSGBoundaryView : public IView
 public:
 	explicit CSGBoundaryView(const std::string& name, Scene::World* model);
 
-	Physics::CSGBoundaryScene* getBoundary() const { return boundary.get(); }
+	Physics::CSGBoundaryScene* getBoundary() const;// { return boundary.get(); }
 
 private:
-	void onApply();
-
 	Scene::World* world;
 	Box3dView boxView;
-	Button applyButton;	
 	std::unique_ptr<Physics::CSGBoundaryScene> boundary;
 };
 

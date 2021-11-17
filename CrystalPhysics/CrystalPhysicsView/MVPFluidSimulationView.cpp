@@ -20,7 +20,7 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	startButton("Start"),
 	resetButton("Reset"),
 	boundaryView("Boundary", model),
-	pressureCoeView("PressureCoe", 0.25f),
+	pressureCoeView("PressureCoe", 100.f),
 	viscosityCoeView("ViscosityCoe", 10.0f),
 	timeStepView("TimeStep", 0.03f),
 	radiusView("SearchRadius", 2.25f)
@@ -61,6 +61,8 @@ void MVPFluidSimulationView::onStart()
 
 void MVPFluidSimulationView::onReset()
 {
+	this->solver.clear();
+
 	fluidScene->clearParticles();
 	this->addFluid();
 
@@ -83,7 +85,7 @@ void MVPFluidSimulationView::addFluid()
 
 	MVPParticleBuilder builder;
 	const auto radius = 2.00;
-	const auto length = radius * 1.0;
+	const auto length = radius * 1.00;
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {

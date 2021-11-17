@@ -10,13 +10,9 @@ using namespace Crystal::Physics;
 CSGBoundaryView::CSGBoundaryView(const std::string& name, Scene::World* model) :
 	IView(name),
 	boxView("Box"),
-	applyButton("Apply"),
 	world(model)
 {
 	add(&boxView);
-	add(&applyButton);
-	auto applyFunc = [=]() { onApply(); };
-	applyButton.setFunction(applyFunc);
 
 	boxView.setValue(Box3d(Vector3dd(0, 0.0, 0.0), Vector3dd(100.0, 1000.0, 40.0)));
 
@@ -24,10 +20,11 @@ CSGBoundaryView::CSGBoundaryView(const std::string& name, Scene::World* model) :
 	boundary->add(boxView.getValue());
 }
 
-void CSGBoundaryView::onApply()
+CSGBoundaryScene* CSGBoundaryView::getBoundary() const
 {
-	boundary->clear();
+	boundary->clearBoxes();
 	boundary->add(boxView.getValue());
+	//boundary->getPresenter()->createView(world->getRenderer());
 
-	boundary->getPresenter()->createView(world->getRenderer());
+	return boundary.get();
 }
