@@ -16,6 +16,8 @@
 #include "CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
 //#include "Crystal/Shape/PolygonMeshBuilder.h"
 
+#include <iostream>
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
@@ -60,14 +62,12 @@ namespace {
 
 SPHSurfaceBuilderView::SPHSurfaceBuilderView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
-	searchRadiusView("SearchRadius"),
-//	cellLengthView("CellLength"),
+	particleRadiusView("SearchRadius", 1.0f),
+	thresholdView("Threshold", 1.0f),
 	colorMapView("ColorMap")
 {
-	searchRadiusView.setValue(1.0f);
-	add(&searchRadiusView);
-//	cellLengthView.setValue(0.5f);
-//	add(&cellLengthView);
+	add(&particleRadiusView);
+	add(&thresholdView);
 	add(&colorMapView);
 }
 
@@ -107,11 +107,21 @@ void SPHSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	//builder.buildIsotoropic(positions, searchRadiusView.getValue());
-	builder.buildAnisotoropic(positions, searchRadiusView.getValue());
+	//builder.buildIsotoropic(positions, particleRadiusView.getValue());
+	builder.buildAnisotoropic(positions, particleRadiusView.getValue());
+	auto volume = builder.getVolume();
+	const auto nodes = volume->getNodes();
+	double maxValue = std::numeric_limits<double>::lowest();
+	double minValue = std::numeric_limits<double>::max();
+	for (auto n : nodes) {
+		maxValue = std::max(maxValue, n.second->getValue());
+		minValue = std::min(minValue, n.second->getValue());
+	}
+	std::cout << minValue << std::endl;
+	std::cout << maxValue << std::endl;
 
 	MarchingCubesAlgo mcAlgo;
-	mcAlgo.build(*builder.getVolume(), 1.0e-3);
+	mcAlgo.build(*volume, thresholdView.getValue());
 
 	//PolygonMeshBuilder pmBuilder;
 	auto mesh = std::make_unique<TriangleMesh>();
@@ -142,18 +152,17 @@ void SPHSurfaceBuilderView::onOk()
 	getWorld()->getScenes()->addScene(wfScene);
 	*/
 
-	/*
-	auto volume = builder.getVolume();
+//	auto volume = builder.getVolume();
 	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(volume));
 	auto presenter = svScene->getPresenter();
 
 	auto colorMap = this->colorMapView.getValue();
-	colorMap.setMax(1.0f);
+	colorMap.setMin(minValue);
+	colorMap.setMax(maxValue);
 	static_cast<SparseVolumePresenter*>(presenter)->setColorMap(colorMap);
-	presenter->createView(world->getRenderer(), *world->getGLFactory());
+	presenter->createView(world->getRenderer());
 
 	getWorld()->getScenes()->addScene(svScene);
-	*/
 	/*
 	WireFrameBuilder wfBuilder;
 	for (const auto& p : particles) {
