@@ -43,6 +43,7 @@ SPHSurfaceConstructionCommand::Args::Args() :
 	add(&particleSystemId);
 	add(&triangleMeshId);
 	add(&particleRadius);
+	add(&cellLength);
 	add(&threshold);
 	add(&isIsotorpic);
 }

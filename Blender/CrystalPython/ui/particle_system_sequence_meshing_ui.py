@@ -44,7 +44,7 @@ class MeshingRunner :
         self.__bl_mesh.mesh.create_empty("")
             
         builder = SurfaceBuilder(model.scene)
-        builder.build_isotorpic(ps.id, self.__bl_mesh.mesh.id, particle_radius, prop.threshold_prop)
+        builder.build_isotorpic(ps.id, self.__bl_mesh.mesh.id, particle_radius, prop.cell_length_prop, prop.threshold_prop)
         self.__bl_mesh.update()
 
         basename_without_ext = os.path.splitext(os.path.basename(file_path))[0]
@@ -124,6 +124,14 @@ class MeshingProperty(bpy.types.PropertyGroup) :
         max = 100.0,
         )
 
+    cell_length_prop : bpy.props.FloatProperty(
+        name="cell_length",
+        description="CellLength",
+        default=1.0,
+        min = 0.0,
+        max = 100.0,
+    )
+
     threshold_prop : bpy.props.FloatProperty(
         name="threshold",
         description="Threshold",
@@ -143,6 +151,7 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         self.layout.prop(prop, "input_path_prop", text="InputPath")
         self.layout.prop(prop, "output_path_prop", text="OutputPath")
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
+        self.layout.prop(prop, "cell_length_prop", text="CellLength")
         self.layout.prop(prop, "threshold_prop", text="Threshold")
         if not runner.is_running() :
             self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")

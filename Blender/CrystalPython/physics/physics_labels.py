@@ -69,5 +69,6 @@ class SPHSurfaceConstructionCommand:
    ParticleSystemIdLabel="ParticleSystemId"
    TriangleMeshIdLabel="TriangleMeshId"
    ParticleRadiusLabel="ParticleRadius"
+   CellLengthLabel="CellLength"
    ThresholdLabel="Threshold"
    IsIsotropicLabel="IsIsotoropic"

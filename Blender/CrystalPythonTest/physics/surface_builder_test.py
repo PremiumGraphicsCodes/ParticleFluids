@@ -14,7 +14,7 @@ class SurfaceBuilderTest(unittest.TestCase):
         triangle_mesh.create_empty("")
 
         builder = SurfaceBuilder(scene)
-        builder.build_anisotorpic(particle_system.id, triangle_mesh.id, 1.0, 1.0)
+        builder.build_anisotorpic(particle_system.id, triangle_mesh.id, 1.0, 1.0, 1.0)
 
 if __name__ == '__main__':
     unittest.main()
