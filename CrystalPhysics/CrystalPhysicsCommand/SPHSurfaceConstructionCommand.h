@@ -16,6 +16,7 @@ public:
 
 		Command::Arg<float> particleRadius;
 		Command::Arg<float> threshold;
+		Command::Arg<bool> isIsotorpic;
 
 		Args();
 	};

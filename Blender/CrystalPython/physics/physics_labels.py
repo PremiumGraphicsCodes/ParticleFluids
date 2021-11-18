@@ -70,3 +70,4 @@ class SPHSurfaceConstructionCommand:
    TriangleMeshIdLabel="TriangleMeshId"
    ParticleRadiusLabel="ParticleRadius"
    ThresholdLabel="Threshold"
+   IsIsotropicLabel="IsIsotoropic"
