@@ -62,7 +62,7 @@ namespace {
 
 SPHSurfaceBuilderView::SPHSurfaceBuilderView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
-	particleRadiusView("SearchRadius", 1.0f),
+	particleRadiusView("ParticleRadius", 1.0f),
 	thresholdView("Threshold", 1.0f),
 	colorMapView("ColorMap")
 {
@@ -120,6 +120,7 @@ void SPHSurfaceBuilderView::onOk()
 	std::cout << minValue << std::endl;
 	std::cout << maxValue << std::endl;
 
+	/*
 	MarchingCubesAlgo mcAlgo;
 	mcAlgo.build(*volume, thresholdView.getValue());
 
@@ -133,6 +134,7 @@ void SPHSurfaceBuilderView::onOk()
 
 	scene->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(scene);
+	*/
 	/*
 	WireFrameBuilder wfBuilder;
 

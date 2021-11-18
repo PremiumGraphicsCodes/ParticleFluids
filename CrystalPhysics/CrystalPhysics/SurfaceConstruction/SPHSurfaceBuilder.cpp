@@ -62,7 +62,8 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 		for (auto n : neighbors) {
 			auto sp = static_cast<SPHSurfaceParticle*>(n);
 			const auto v = n->getPosition() - pos;
-			const auto w = kernel.getCubicSpline(v) * sp->getMass() / sp->getDensity();
+			const auto coe = 1400.0f / searchRadius / searchRadius / searchRadius;
+			const auto w = coe * kernel.getCubicSpline(v) * sp->getMass() / sp->getDensity();
 			node.second->setValue(w + node.second->getValue());
 		}
 	}
@@ -95,28 +96,30 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 
 
 	auto& nodes = volume->getNodes();
+	/*
 	std::vector<SparseVolumeNode<double>*> ns;
 	ns.reserve(nodes.size());
 	for (auto n : nodes) {
 		ns.push_back(n.second);
 	}
+	*/
 
 	//for (auto& node : nodes) {
 #pragma omp parallel for
-	for (int i = 0; i < ns.size(); ++i) {
-		auto node = ns[i];
-		const auto pos = node->getPosition();
+	for (auto node : nodes) {
+		//auto node = ns[i];
+		const auto pos = node.second->getPosition();
 		const auto neighbors = spaceHash.findNeighbors(pos);
 		for (auto n : neighbors) {
 			auto sp = static_cast<SPHSurfaceParticle*>(n);
-			auto m = sp->getMatrix();
-			//auto m = Matrix3df(1.0, 0, 0, 0, 1, 0, 0, 0, 1) / searchRadius;
+			//auto m = sp->getMatrix();
+			auto m = Matrix3df(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5) / searchRadius;
 			const auto v = Vector3dd(sp->getPosition()) - pos;
-			const auto distance = m * v;
-			const auto d = glm::length(distance);
+			const Vector3df distance = m * v;
+			//const auto d = glm::length(distance);
 			const auto det = glm::determinant(m);
-			const auto w = ::getCubicSpline(d, searchRadius) * det * sp->getMass() / sp->getDensity();
-			node->setValue(w + node->getValue());
+			const auto w = kernel.getCubicSpline(v) * det * sp->getMass() / sp->getDensity();
+			node.second->setValue(w + node.second->getValue());
 			//const auto distance = getDistanceSquared(sp->getPosition(), pos);
 		}
 		//		n.second->getValue();
