@@ -12,6 +12,11 @@ class BLTriangleMesh :
     self.mesh = TriangleMeshScene(scene)
     self.bl_mesh = None
 
+  def build(self, name) :
+    self.bl_mesh = bpy.data.meshes.new(name = name)
+    obj = bpy.data.objects.new(name, self.bl_mesh)
+    bpy.context.collection.objects.link(obj)
+
   def convert_to_polygon_mesh(self, name) :
     self.bl_mesh = bpy.data.meshes.new(name = name)
     obj = bpy.data.objects.new(name, self.bl_mesh)

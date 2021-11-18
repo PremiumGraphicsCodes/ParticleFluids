@@ -15,6 +15,7 @@ public:
 		Command::Arg<int> triangleMeshId;
 
 		Command::Arg<float> particleRadius;
+		Command::Arg<float> threshold;
 
 		Args();
 	};

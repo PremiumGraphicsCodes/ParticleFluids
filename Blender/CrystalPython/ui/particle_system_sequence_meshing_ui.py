@@ -15,9 +15,13 @@ class MeshingRunner :
     def __init__(self) :
         self.__is_running = False
         self.__frame = 0
+        self.__bl_mesh = None
 
     def start(self) :
         self.__is_running = True
+        if self.__bl_mesh == None :
+            self.__bl_mesh = BLTriangleMesh(model.scene)
+            self.__bl_mesh.build("Surface")
 
     def stop(self) :
         self.__is_running = False
@@ -36,20 +40,21 @@ class MeshingRunner :
         ps.create_empty("")
         FileIO.import_txt(model.scene, ps.id, file_path)
         
-        mesh = TriangleMeshScene(model.scene)
-        mesh.create_empty("")
+        self.__bl_mesh.mesh = TriangleMeshScene(model.scene)
+        self.__bl_mesh.mesh.create_empty("")
             
         builder = SurfaceBuilder(model.scene)
-        builder.build_anisotorpic(ps.id, mesh.id, particle_radius)
+        builder.build_anisotorpic(ps.id, self.__bl_mesh.mesh.id, particle_radius, prop.threshold_prop)
+        self.__bl_mesh.update()
 
         basename_without_ext = os.path.splitext(os.path.basename(file_path))[0]
         export_file_path = os.path.join(output_path, basename_without_ext + ".stl")
-        mesh.export_stl(export_file_path)
+        self.__bl_mesh.mesh.export_stl(export_file_path)
 
 #            FileIO.ex
             #mesh.convert_to_polygon_mesh("")
         model.scene.delete(ps.id, False)
-        model.scene.delete(mesh.id, False)
+        model.scene.delete(self.__bl_mesh.mesh.id, False)
         self.__frame = frame
 
     def is_running(self) :
@@ -118,6 +123,13 @@ class MeshingProperty(bpy.types.PropertyGroup) :
         min = 0.0,
         max = 100.0,
         )
+
+    threshold_prop : bpy.props.FloatProperty(
+        name="threshold",
+        description="Threshold",
+        default=1.0,
+        min = 0.0,
+        )
         
 class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
     bl_label = "PSSeqMeshing"
@@ -131,6 +143,7 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         self.layout.prop(prop, "input_path_prop", text="InputPath")
         self.layout.prop(prop, "output_path_prop", text="OutputPath")
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
+        self.layout.prop(prop, "threshold_prop", text="Threshold")
         if not runner.is_running() :
             self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
         else :

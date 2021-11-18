@@ -15,6 +15,7 @@ namespace {
 	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
 	PublicLabel TriangleMeshIdLabel = "TriangleMeshId";
 	PublicLabel ParticleRadiusLabel = "ParticleRadius";
+	PublicLabel ThresholdLabel = "Threshold";
 }
 
 
@@ -32,11 +33,13 @@ std::string SPHSurfaceConstructionCommand::getName()
 SPHSurfaceConstructionCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	triangleMeshId(::TriangleMeshIdLabel, -1),
-	particleRadius(::ParticleRadiusLabel, 1.0)
+	particleRadius(::ParticleRadiusLabel, 1.0),
+	threshold(::ThresholdLabel, 1.0f)
 {
 	add(&particleSystemId);
 	add(&triangleMeshId);
 	add(&particleRadius);
+	add(&threshold);
 }
 
 SPHSurfaceConstructionCommand::Results::Results()// :
@@ -68,7 +71,7 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 	//sp->resetShape(std::move(shape));
 
 	MarchingCubesAlgo mcAlgo;
-	mcAlgo.build(*builder.getVolume(), 1.0e-3);
+	mcAlgo.build(*builder.getVolume(), args.threshold.getValue());
 
 	//PolygonMeshBuilder pmBuilder;
 	auto mesh = std::make_unique<TriangleMesh>();

@@ -69,3 +69,4 @@ class SPHSurfaceConstructionCommand:
    ParticleSystemIdLabel="ParticleSystemId"
    TriangleMeshIdLabel="TriangleMeshId"
    ParticleRadiusLabel="ParticleRadius"
+   ThresholdLabel="Threshold"
