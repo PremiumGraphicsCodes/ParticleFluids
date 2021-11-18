@@ -44,7 +44,7 @@ class MeshingRunner :
         self.__bl_mesh.mesh.create_empty("")
             
         builder = SurfaceBuilder(model.scene)
-        builder.build_anisotorpic(ps.id, self.__bl_mesh.mesh.id, particle_radius, prop.threshold_prop)
+        builder.build_isotorpic(ps.id, self.__bl_mesh.mesh.id, particle_radius, prop.threshold_prop)
         self.__bl_mesh.update()
 
         basename_without_ext = os.path.splitext(os.path.basename(file_path))[0]

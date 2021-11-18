@@ -15,6 +15,7 @@ namespace {
 	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
 	PublicLabel TriangleMeshIdLabel = "TriangleMeshId";
 	PublicLabel ParticleRadiusLabel = "ParticleRadius";
+	PublicLabel CellLengthLabel = "CellLength";
 	PublicLabel ThresholdLabel = "Threshold";
 	PublicLabel IsIsotropicLabel = "IsIsotoropic";
 }
@@ -35,6 +36,7 @@ SPHSurfaceConstructionCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	triangleMeshId(::TriangleMeshIdLabel, -1),
 	particleRadius(::ParticleRadiusLabel, 1.0),
+	cellLength(::CellLengthLabel, 1.0),
 	threshold(::ThresholdLabel, 1.0f),
 	isIsotorpic(::IsIsotropicLabel, true)
 {
@@ -66,15 +68,18 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 		return false;
 	}
 
-	auto positions = ps->getPositions();
+	const auto positions = ps->getPositions();
+
+	const auto particleRadius = args.particleRadius.getValue();
+	const auto cellLength = args.cellLength.getValue();
 
 	SPHSurfaceBuilder builder;
 	std::unique_ptr<SparseVolumed> volume;
 	if (args.isIsotorpic.getValue()) {
-		builder.buildIsotoropic(positions, args.particleRadius.getValue());
+		builder.buildIsotoropic(positions, particleRadius, cellLength);
 	}
 	else {
-		builder.buildAnisotoropic(positions, args.particleRadius.getValue());
+		builder.buildAnisotoropic(positions, args.particleRadius.getValue(), cellLength);
 	}
 
 	MarchingCubesAlgo mcAlgo;

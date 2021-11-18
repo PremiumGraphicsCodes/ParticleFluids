@@ -63,10 +63,12 @@ namespace {
 SPHSurfaceBuilderView::SPHSurfaceBuilderView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	particleRadiusView("ParticleRadius", 1.0f),
+	cellLengthView("CellLength", 1.0),
 	thresholdView("Threshold", 1.0f),
 	colorMapView("ColorMap")
 {
 	add(&particleRadiusView);
+	add(&cellLengthView);
 	add(&thresholdView);
 	add(&colorMapView);
 }
@@ -107,8 +109,8 @@ void SPHSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	//builder.buildIsotoropic(positions, particleRadiusView.getValue());
-	builder.buildAnisotoropic(positions, particleRadiusView.getValue());
+	//builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+	builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
 	auto volume = builder.getVolume();
 	const auto nodes = volume->getNodes();
 	double maxValue = std::numeric_limits<double>::lowest();
