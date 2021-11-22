@@ -5,6 +5,8 @@
 #include "../../Crystal/Util/UnCopyable.h"
 
 #include <map>
+#include <vector>
+#include <list>
 #include <array>
 
 namespace Crystal {
@@ -86,11 +88,21 @@ public:
 
 	bool exists(const std::array<size_t, 3>& index) const;
 
+	Math::Vector3dd getCellLength() const;
+
 private:
+
+	std::array<int, 3> toIndex(const Math::Vector3df& pos) const;
+
+	int toHash(const Math::Vector3df& pos) const;
+
+	int toHash(const std::array<int, 3>& index) const;
+
 	std::map< std::array<size_t, 3>, SparseVolumeNode<T>*> nodes;
 
 	Math::Box3dd boundingBox;
 	std::array<size_t, 3> resolutions;
+	std::vector<std::list<Shape::IParticle*>> table;
 };
 
 using SparseVolumef = SparseVolume<float>;

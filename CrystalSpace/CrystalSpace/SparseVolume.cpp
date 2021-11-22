@@ -1,7 +1,14 @@
 #include "SparseVolume.h"
+#include <bitset>
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;
+
+namespace {
+	constexpr long int p1 = 73856093;
+	constexpr long int p2 = 19349663;
+	constexpr long int p3 = 83492791;
+}
 
 template class SparseVolumeNode<bool>;
 template class SparseVolumeNode<float>;
@@ -57,6 +64,43 @@ bool SparseVolume<T>::exists(const std::array<size_t, 3>& index) const
 {
 	auto iter = nodes.find(index);
 	return iter != nodes.end();
+}
+
+template<typename T>
+std::array<int, 3> SparseVolume<T>::toIndex(const Vector3df& pos) const
+{
+	const int ix = static_cast<int>((pos[0]) / resolutions[0]);
+	const int iy = static_cast<int>((pos[1]) / resolutions[1]);
+	const int iz = static_cast<int>((pos[2]) / resolutions[2]);
+	return { ix, iy, iz };
+}
+
+template<typename T>
+int SparseVolume<T>::toHash(const Vector3df& pos) const
+{
+	return toHash(toIndex(pos));
+}
+
+template<typename T>
+int SparseVolume<T>::toHash(const std::array<int, 3>& index) const
+{
+	std::bitset<32> x = index[0] * p1;
+	std::bitset<32> y = index[1] * p2;
+	std::bitset<32> z = index[2] * p3;
+	//assert(x >= 0);
+	//assert(y >= 0);
+	//assert(z >= 0);
+	const auto value = (x ^ y ^ z).to_ulong();
+	return value % table.size();
+}
+
+template<typename T>
+Vector3dd SparseVolume<T>::getCellLength() const
+{
+	const auto lx = boundingBox.getLength().x / resolutions[0];
+	const auto ly = boundingBox.getLength().y / resolutions[1];
+	const auto lz = boundingBox.getLength().z / resolutions[2];
+	return Vector3dd(lx, ly, lz);
 }
 
 
