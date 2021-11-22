@@ -29,7 +29,7 @@ void SVSphereView::onOk()
 	for (size_t ix = 0; ix < resolution[0]; ++ix) {
 		for (size_t iy = 0; iy < resolution[1]; ++iy) {
 			for (size_t iz = 0; iz < resolution[2]; ++iz) {
-				const std::array<size_t,3> index = { ix, iy, iz };
+				const std::array<int,3> index = { ix, iy, iz };
 				const auto p = sv->getPositionAt(index);
 				if(Crystal::Math::getDistanceSquared(p, center) < rad * rad) {
 					const auto d = Crystal::Math::getDistance(p, center) / rad;

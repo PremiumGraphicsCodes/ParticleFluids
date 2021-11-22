@@ -23,9 +23,10 @@ template<typename T>
 class SparseVolumeNode : public Shape::IParticle
 {
 public:
-	explicit SparseVolumeNode(const Math::Vector3dd& position) :
+	SparseVolumeNode(const Math::Vector3dd& position, const std::array<int,3>& index) :
 		position(position),
-		value(0.0)
+		value(0.0),
+		index(index)
 	{}
 
 	Math::Vector3dd getPosition() const override { return position; }
@@ -34,9 +35,12 @@ public:
 
 	void setValue(const T v) { this->value = v; }
 
+	std::array<int, 3> getIndex() const { return index; }
+
 private:
 	Math::Vector3dd position;
 	T value;
+	const std::array<int, 3> index;
 };
 
 template<typename T>

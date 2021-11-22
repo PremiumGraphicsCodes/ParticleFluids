@@ -38,10 +38,10 @@ Vector3dd SparseVolume<T>::getPositionAt(const std::array<int, 3>& index) const
 template<typename T>
 SparseVolumeNode<T>* SparseVolume<T>::findNode(const std::array<int, 3>& index) const
 {
-	const auto pos = getPositionAt(index);
-	const auto nodes = table[ toHash(pos) ];
+	const auto nodes = table[ toHash(index) ];
 	for (auto n : nodes) {
-		if (n->getPosition() == pos) {
+		const auto ix = n->getIndex();
+		if (index == ix) {
 			return n;
 		}
 	}
@@ -52,7 +52,7 @@ template<typename T>
 SparseVolumeNode<T>* SparseVolume<T>::createNode(const std::array<int, 3>& index)
 {
 	const auto pos = getPositionAt(index);
-	auto node = new SparseVolumeNode<T>(pos);
+	auto node = new SparseVolumeNode<T>(pos, index);
 	const auto i = toHash(index);
 	table[i].push_back(node);
 	return node;
