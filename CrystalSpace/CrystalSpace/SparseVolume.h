@@ -37,7 +37,6 @@ public:
 private:
 	Math::Vector3dd position;
 	T value;
-	//std::array<int,3> index;
 };
 
 template<typename T>
@@ -45,12 +44,15 @@ class SparseVolume : private UnCopyable
 {
 public:
 	SparseVolume()
-	{}
+	{
+		table.resize(10000);
+	}
 
 	SparseVolume(const Math::Box3dd& bb, const std::array<size_t, 3>& resolutions) :
 		boundingBox(bb),
 		resolutions(resolutions)
 	{
+		table.resize(10000);
 	}
 
 	~SparseVolume()
@@ -72,37 +74,32 @@ public:
 
 	Math::Box3dd getBoundingBox() const { return boundingBox; }
 
-	SparseVolumeNode<T>* createNode(const std::array<size_t, 3>& index);
+	SparseVolumeNode<T>* createNode(const std::array<int, 3>& index);
 
-	Math::Vector3dd getPositionAt(const std::array<size_t, 3>& index) const;
+	Math::Vector3dd getPositionAt(const std::array<int, 3>& index) const;
 
-	SparseVolumeNode<T>* findNode(const std::array<size_t, 3>& index) { return nodes[index]; }
+	SparseVolumeNode<T>* findNode(const std::array<int, 3>& index) const;
 
-	std::map< std::array<size_t, 3>, SparseVolumeNode<T>*> getNodes() const { return nodes; }
+	void addValue(const std::array<int, 3>& index, const T value);
 
-	std::map< std::array<size_t, 3>, SparseVolumeNode<T>*>& getNodes() { return nodes; }
+	T getValueAt(const std::array<int, 3>& index) const;
 
-	void addValue(const std::array<size_t, 3>& index, const T value);
-
-	T getValueAt(const std::array<size_t, 3>& index) const;
-
-	bool exists(const std::array<size_t, 3>& index) const;
+	bool exists(const std::array<int, 3>& index) const;
 
 	Math::Vector3dd getCellLength() const;
 
-private:
+	std::list<SparseVolumeNode<T>*> getNodes() const;
 
+private:
 	std::array<int, 3> toIndex(const Math::Vector3df& pos) const;
 
 	int toHash(const Math::Vector3df& pos) const;
 
 	int toHash(const std::array<int, 3>& index) const;
 
-	std::map< std::array<size_t, 3>, SparseVolumeNode<T>*> nodes;
-
 	Math::Box3dd boundingBox;
 	std::array<size_t, 3> resolutions;
-	std::vector<std::list<Shape::IParticle*>> table;
+	std::vector<std::list<SparseVolumeNode<T>*>> table;
 };
 
 using SparseVolumef = SparseVolume<float>;

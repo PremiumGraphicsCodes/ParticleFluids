@@ -53,6 +53,7 @@ size_t MarchingCubesAlgo::build(const Volume<double>& volume, const double isoLe
 	return triangles.size();
 }
 
+/*
 void MarchingCubesAlgo::build(const SparseVolume<double>& volume, const float isoLevel)
 {
 	const auto nodes = volume.getNodes();
@@ -60,7 +61,7 @@ void MarchingCubesAlgo::build(const SparseVolume<double>& volume, const float is
 	for (const auto& n : nodes) {
 		std::array<MCCell::Vertex, 8> vertices;
 
-		const auto ii = n.first;
+		const auto ii = first;
 		const auto i = ii[0];
 		const auto j = ii[1];
 		const auto k = ii[2];
@@ -99,6 +100,7 @@ void MarchingCubesAlgo::build(const SparseVolume<double>& volume, const float is
 		march(cell, isoLevel);
 	}
 }
+*/
 
 
 /*
