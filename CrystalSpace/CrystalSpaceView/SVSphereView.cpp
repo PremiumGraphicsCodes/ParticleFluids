@@ -26,9 +26,9 @@ void SVSphereView::onOk()
 
 	const auto center = sphere.getCenter();
 	const auto rad = sphere.getRadius();
-	for (size_t ix = 0; ix < resolution[0]; ++ix) {
-		for (size_t iy = 0; iy < resolution[1]; ++iy) {
-			for (size_t iz = 0; iz < resolution[2]; ++iz) {
+	for (int ix = 0; ix < resolution[0]; ++ix) {
+		for (int iy = 0; iy < resolution[1]; ++iy) {
+			for (int iz = 0; iz < resolution[2]; ++iz) {
 				const std::array<int,3> index = { ix, iy, iz };
 				const auto p = sv->getPositionAt(index);
 				if(Crystal::Math::getDistanceSquared(p, center) < rad * rad) {
