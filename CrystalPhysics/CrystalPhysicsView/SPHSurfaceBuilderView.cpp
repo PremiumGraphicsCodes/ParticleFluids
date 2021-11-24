@@ -116,8 +116,8 @@ void SPHSurfaceBuilderView::onOk()
 	double maxValue = std::numeric_limits<double>::lowest();
 	double minValue = std::numeric_limits<double>::max();
 	for (auto n : nodes) {
-		maxValue = std::max(maxValue, n.second->getValue());
-		minValue = std::min(minValue, n.second->getValue());
+		maxValue = std::max(maxValue, n->getValue());
+		minValue = std::min(minValue, n->getValue());
 	}
 	std::cout << minValue << std::endl;
 	std::cout << maxValue << std::endl;

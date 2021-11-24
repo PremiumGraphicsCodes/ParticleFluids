@@ -55,16 +55,16 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 	this->volume = createSparseVolume(positions, searchRadius, cellLength);
 
 
-	auto& nodes = volume->getNodes();
+	auto nodes = volume->getNodes();
 	for (auto& node : nodes) {
-		const auto pos = node.second->getPosition();
+		const auto pos = node->getPosition();
 		const auto neighbors = spaceHash.findNeighbors(pos);
 		for (auto n : neighbors) {
 			auto sp = static_cast<SPHSurfaceParticle*>(n);
 			const auto v = n->getPosition() - pos;
 			const auto coe = 1400.0f / searchRadius / searchRadius / searchRadius;
 			const auto w = coe * kernel.getCubicSpline(v) * sp->getMass() / sp->getDensity();
-			node.second->setValue(w + node.second->getValue());
+			node->setValue(w + node->getValue());
 		}
 	}
 }
@@ -95,7 +95,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 	this->volume = createSparseVolume(positions, searchRadius, cellLength);
 
 
-	auto& nodes = volume->getNodes();
+	auto nodes = volume->getNodes();
 	/*
 	std::vector<SparseVolumeNode<double>*> ns;
 	ns.reserve(nodes.size());
@@ -108,7 +108,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 //#pragma omp parallel for
 	for (auto node : nodes) {
 		//auto node = ns[i];
-		const auto pos = node.second->getPosition();
+		const auto pos = node->getPosition();
 		const auto neighbors = spaceHash.findNeighbors(pos);
 		for (auto n : neighbors) {
 			auto sp = static_cast<SPHSurfaceParticle*>(n);
@@ -119,7 +119,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 			//const auto d = glm::length(distance);
 			const auto det = glm::determinant(m);
 			const auto w = kernel.getCubicSpline(v) * det * sp->getMass() / sp->getDensity();
-			node.second->setValue(w + node.second->getValue());
+			node->setValue(w + node->getValue());
 			//const auto distance = getDistanceSquared(sp->getPosition(), pos);
 		}
 		//		n.second->getValue();
@@ -145,7 +145,7 @@ std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::
 
 	const auto i = static_cast<int>( searchRadius / cellLength );
 
-	std::set<std::array<size_t, 3>> indices;
+	std::set<std::array<int, 3>> indices;
 	for (const auto& p : particles) {
 		const auto localPosition = p - origin;
 		const auto ip = localPosition / (double)cellLength;
@@ -154,18 +154,9 @@ std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::
 			for (int iy = -i; iy <= i; iy++) {
 				for (int iz = -i; iz <= i; iz++) {
 					const auto ixx = ip[0] + ix;
-					if (ixx <= 0) {
-						continue;
-					}
 					const auto iyy = ip[1] + iy;
-					if (iyy <= 0) {
-						continue;
-					}
 					const auto izz = ip[2] + iz;
-					if (izz <= 0) {
-						continue;
-					}
-					std::array<size_t, 3> index = { ixx, iyy, izz };
+					std::array<int, 3> index = { ixx, iyy, izz };
 					indices.insert(index);
 				}
 			}
@@ -173,7 +164,7 @@ std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::
 	}
 
 	std::array<size_t, 3> resolution{ resx, resy, resz };
-	auto sv = std::make_unique<SparseVolumed>(bb, resolution);
+	auto sv = std::make_unique<SparseVolumed>(bb, resolution, particles.size());
 	for (const auto& index : indices) {
 		sv->createNode(index);
 	}
