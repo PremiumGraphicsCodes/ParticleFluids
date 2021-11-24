@@ -63,12 +63,7 @@ bool SparseVolumeNodeSetCommand::execute(World* world)
 	assert(indicesz.size() == values.size());
 
 	for (int i = 0; i < indicesx.size(); ++i) {
-		std::array<size_t, 3> index
-		{
-			static_cast<size_t>(indicesx[i]),
-			static_cast<size_t>(indicesy[i]),
-			static_cast<size_t>(indicesz[i])
-		};
+		std::array<int, 3> index({ indicesx[i], indicesy[i], indicesz[i] });
 		auto n = shape->createNode(index);
 		n->setValue(values[i]);
 	}
