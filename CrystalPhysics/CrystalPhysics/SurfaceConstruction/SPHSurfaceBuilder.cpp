@@ -35,7 +35,7 @@ namespace {
 
 void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius, const float cellLength)
 {
-	const auto searchRadius = particleRadius * 2.25f;
+	const auto searchRadius = particleRadius;
 
 	for (auto p : positions) {
 		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, particleRadius));
@@ -60,9 +60,15 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 		const auto ix = (int)(pp.x / cellLength);
 		const auto iy = (int)(pp.y / cellLength);
 		const auto iz = (int)(pp.z / cellLength);
-		const std::array<int,3> index = { ix, iy, iz };
-		if (!this->volume->exists(index)) {
-			this->volume->createNode(index);
+		for (int i = ix - 1; i <= ix + 1; ++i) {
+			for (int j = iy - 1; j <= iy + 1; ++j) {
+				for (int k = iz - 1; k <= iz + 1; ++k) {
+					const std::array<int, 3> index = { i, j, k };
+					if (!this->volume->exists(index)) {
+						this->volume->createNode(index);
+					}
+				}
+			}
 		}
 	}
 
