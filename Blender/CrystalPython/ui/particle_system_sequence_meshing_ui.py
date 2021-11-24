@@ -62,6 +62,9 @@ class MeshingRunner :
 
 runner = MeshingRunner()
 
+def my_handler(scene):
+    print("Frame Change", scene.frame_current)
+
 class ParticleSystemSequenceMeshingOperator(bpy.types.Operator) :
     bl_idname = "pg.particlesystemsequencemeshingoperator"
     bl_label = "ParticleSystem"
@@ -82,6 +85,7 @@ class ParticleSystemSequenceMeshingOperator(bpy.types.Operator) :
             if not runner.is_running():
                 # モーダルモードを開始
                 context.window_manager.modal_handler_add(self)
+                bpy.app.handlers.frame_change_pre.append(my_handler)
                 runner.start()
 
                 print("simulation start")
