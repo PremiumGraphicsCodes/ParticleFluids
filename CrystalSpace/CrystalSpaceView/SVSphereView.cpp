@@ -22,7 +22,7 @@ void SVSphereView::onOk()
 	const auto sphere = sphereView.getValue();
 	const auto res = static_cast<size_t>(resolutionView.getValue());
 	const std::array<size_t, 3> resolution = { res, res, res };
-	auto sv = std::make_unique<SparseVolumed>(sphere.getBoundingBox(), resolution);
+	auto sv = std::make_unique<SparseVolumed>(sphere.getBoundingBox(), resolution, res*res*res);
 
 	const auto center = sphere.getCenter();
 	const auto rad = sphere.getRadius();

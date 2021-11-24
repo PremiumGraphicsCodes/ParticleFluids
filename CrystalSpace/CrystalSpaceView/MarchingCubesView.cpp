@@ -2,9 +2,8 @@
 
 #include "../CrystalSpace/MarchingCubesAlgo.h"
 #include "CrystalScene/Scene/VolumeScene.h"
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
-//#include "../../Crystal/Math/Gaussian.h"
-#include "CrystalScene/Scene/PolygonMeshScene.h"
+#include "../../Crystal/Shape/TriangleMeshBuilder.h"
+#include "CrystalScene/Scene/TriangleMeshScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -28,7 +27,7 @@ void MarchingCubesView::onOk()
 	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 	//Volume<double> v(box, { 100, 100, 100 });
 
-	SparseVolumed v(box, { 100,100,100 });
+	SparseVolumed v(box, { 100,100,100 }, 1000000);
 
 	const auto center = box.getCenter();
 	const auto radius = 5.0;
@@ -47,23 +46,15 @@ void MarchingCubesView::onOk()
 		}
 	}
 
-	/*
 	MarchingCubesAlgo algo;
 	algo.build(v, 0.30f);
 	const auto& triangles = algo.getTriangles();
-	PolygonMeshBuilder builder;
+	TriangleMeshBuilder builder;
 	for (const auto& t : triangles) {
 		builder.add(t);
 	}
-	auto scene = new PolygonMeshScene(getWorld()->getNextSceneId(), "", std::move(builder.build()));
-
-	PolygonMeshScene::FaceGroup group(builder.getFaces(), nullptr);
-	scene->addGroup(group);
+	auto scene = new TriangleMeshScene(getWorld()->getNextSceneId(), "", std::move(builder.build()));
 
 	scene->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(scene);
-	//builder.pushCurrentFaceGroup();
-	//getWorld()->getObjectFactory()->createPolygonMeshScene(builder.(), "MarchingCubes");
-	//getWorld()->updateViewModel();
-	*/
 }

@@ -49,14 +49,14 @@ class SparseVolume : private UnCopyable
 public:
 	SparseVolume()
 	{
-		table.resize(10000);
+		table.resize(100);
 	}
 
-	SparseVolume(const Math::Box3dd& bb, const std::array<size_t, 3>& resolutions) :
+	SparseVolume(const Math::Box3dd& bb, const std::array<size_t, 3>& resolutions, const size_t tableSize) :
 		boundingBox(bb),
 		resolutions(resolutions)
 	{
-		table.resize(10000);
+		table.resize(tableSize);
 	}
 
 	~SparseVolume()
