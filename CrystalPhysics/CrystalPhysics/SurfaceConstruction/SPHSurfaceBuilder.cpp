@@ -53,10 +53,25 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 	}
 
 	this->volume = createSparseVolume(positions, searchRadius, cellLength);
+	const auto min = this->volume->getBoundingBox().getMin();
 
+	for (const auto& p : particles) {
+		const auto pp = p->getPosition() - min;
+		const auto ix = (int)(pp.x / cellLength);
+		const auto iy = (int)(pp.y / cellLength);
+		const auto iz = (int)(pp.z / cellLength);
+		const std::array<int,3> index = { ix, iy, iz };
+		if (!this->volume->exists(index)) {
+			this->volume->createNode(index);
+		}
+	}
 
 	auto nodes = volume->getNodes();
-	for (auto& node : nodes) {
+	std::vector<SparseVolumeNode<double>*> ns(nodes.begin(), nodes.end());
+#pragma omp parallel for
+	for(int i = 0; i < ns.size(); ++i) {
+		auto node = ns[i];
+//	for (auto& node : nodes) {
 		const auto pos = node->getPosition();
 		const auto neighbors = spaceHash.findNeighbors(pos);
 		for (auto n : neighbors) {
@@ -143,31 +158,8 @@ std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::
 	const auto resy = static_cast<int>(length.y / cellLength);
 	const auto resz = static_cast<int>(length.z / cellLength);
 
-	const auto i = static_cast<int>( searchRadius / cellLength );
-
-	std::set<std::array<int, 3>> indices;
-	for (const auto& p : particles) {
-		const auto localPosition = p - origin;
-		const auto ip = localPosition / (double)cellLength;
-		//const auto startIx = std::max<int>(0, ip.x - i);
-		for (int ix = -i; ix <= i; ix++) {
-			for (int iy = -i; iy <= i; iy++) {
-				for (int iz = -i; iz <= i; iz++) {
-					const auto ixx = ip[0] + ix;
-					const auto iyy = ip[1] + iy;
-					const auto izz = ip[2] + iz;
-					std::array<int, 3> index = { ixx, iyy, izz };
-					indices.insert(index);
-				}
-			}
-		}
-	}
-
 	std::array<size_t, 3> resolution{ resx, resy, resz };
 	auto sv = std::make_unique<SparseVolumed>(bb, resolution, particles.size());
-	for (const auto& index : indices) {
-		sv->createNode(index);
-	}
 	return sv;
 }
 

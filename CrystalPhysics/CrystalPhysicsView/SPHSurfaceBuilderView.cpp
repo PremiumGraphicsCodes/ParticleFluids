@@ -89,15 +89,15 @@ void SPHSurfaceBuilderView::onOk()
 	*/
 	//sphere.getPosition()
 
-	const Sphere3d sphere(Vector3dd(0, 0, 0), 5.0);
+	const Sphere3d sphere(Vector3dd(50, 50, 50), 50.0);
 	const Box3d box = sphere.getBoundingBox();
 	const auto center = sphere.getCenter();
-	for (int i = 0; i < 10; ++i) {
-		for (int j = 0; j < 10; ++j) {
-			for (int k = 0; k < 10; ++k) {
-				const auto u = i / 10.0;
-				const auto v = j / 10.0;
-				const auto w = k / 10.0;
+	for (int i = 0; i < 100; ++i) {
+		for (int j = 0; j < 100; ++j) {
+			for (int k = 0; k < 100; ++k) {
+				const auto u = i / 100.0;
+				const auto v = j / 100.0;
+				const auto w = k / 100.0;
 				const auto p = box.getPosition(u,v,w);
 				if (sphere.isInside(p)) {
 					positions.push_back(p);
@@ -109,8 +109,8 @@ void SPHSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	//builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
-	builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+	builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+	//builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
 	auto volume = builder.getVolume();
 	const auto nodes = volume->getNodes();
 	double maxValue = std::numeric_limits<double>::lowest();
@@ -161,8 +161,7 @@ void SPHSurfaceBuilderView::onOk()
 	auto presenter = svScene->getPresenter();
 
 	auto colorMap = this->colorMapView.getValue();
-	colorMap.setMin(minValue);
-	colorMap.setMax(maxValue);
+	colorMap.setMinMax(minValue,maxValue);
 	static_cast<SparseVolumePresenter*>(presenter)->setColorMap(colorMap);
 	presenter->createView(world->getRenderer());
 
