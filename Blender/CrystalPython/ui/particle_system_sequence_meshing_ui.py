@@ -27,12 +27,8 @@ class MeshingRunner :
 
     def step(self, frame) :
         prop = bpy.context.scene.meshing_property
-        input_path = prop.input_path_prop
-        output_path = prop.output_path_prop
-        particle_radius = prop.particle_radius_prop
 
-        # TODO ファイル一覧の取得
-        file_path = os.path.join(input_path, "test" + str(frame) + ".txt")
+        file_path = os.path.join(prop.input_path_prop, "test" + str(frame) + ".txt")
         ps = ParticleSystemScene(model.scene)
         ps.create_empty("")
         FileIO.import_txt(model.scene, ps.id, file_path)
@@ -41,12 +37,13 @@ class MeshingRunner :
         self.__bl_mesh.mesh.create_empty("")
             
         builder = SurfaceBuilder(model.scene)
-        builder.build_isotorpic(ps.id, self.__bl_mesh.mesh.id, particle_radius, prop.cell_length_prop, prop.threshold_prop)
+        builder.build_isotorpic(ps.id, self.__bl_mesh.mesh.id, prop.particle_radius_prop, prop.cell_length_prop, prop.threshold_prop)
         self.__bl_mesh.update()
 
-        basename_without_ext = os.path.splitext(os.path.basename(file_path))[0]
-        export_file_path = os.path.join(output_path, basename_without_ext + ".stl")
-        self.__bl_mesh.mesh.export_stl(export_file_path)
+        if prop.do_export_stl_prop :
+            basename_without_ext = os.path.splitext(os.path.basename(file_path))[0]
+            export_file_path = os.path.join(prop.output_path_prop, basename_without_ext + ".stl")
+            self.__bl_mesh.mesh.export_stl(export_file_path)
 
 #            FileIO.ex
             #mesh.convert_to_polygon_mesh("")
@@ -83,6 +80,12 @@ class MeshingProperty(bpy.types.PropertyGroup) :
         maxlen=1024,
         subtype='DIR_PATH'
         )
+
+    do_export_stl_prop : bpy.props.BoolProperty(
+        name="Export",
+        description="Export",
+        default=False
+    )
 
     output_path_prop : bpy.props.StringProperty(
         name="output_path",
@@ -125,6 +128,7 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
     def draw(self, context):
         prop = context.scene.meshing_property
         self.layout.prop(prop, "input_path_prop", text="InputPath")
+        self.layout.prop(prop, "do_export_stl_prop", text="Export")
         self.layout.prop(prop, "output_path_prop", text="OutputPath")
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
