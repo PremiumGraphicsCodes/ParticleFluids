@@ -14,7 +14,6 @@ import glob
 class MeshingRunner :
     def __init__(self) :
         self.__is_running = False
-        self.__frame = 0
         self.__bl_mesh = None
 
     def start(self) :
@@ -27,8 +26,6 @@ class MeshingRunner :
         self.__is_running = False
 
     def step(self, frame) :
-        if frame == self.__frame :
-            return
         prop = bpy.context.scene.meshing_property
         input_path = prop.input_path_prop
         output_path = prop.output_path_prop
@@ -55,7 +52,6 @@ class MeshingRunner :
             #mesh.convert_to_polygon_mesh("")
         model.scene.delete(ps.id, False)
         model.scene.delete(self.__bl_mesh.mesh.id, False)
-        self.__frame = frame
 
     def is_running(self) :
         return self.__is_running
@@ -63,43 +59,19 @@ class MeshingRunner :
 runner = MeshingRunner()
 
 def my_handler(scene):
-    print("Frame Change", scene.frame_current)
+    if runner.is_running() :
+        runner.step(scene.frame_current)
 
 class ParticleSystemSequenceMeshingOperator(bpy.types.Operator) :
     bl_idname = "pg.particlesystemsequencemeshingoperator"
     bl_label = "ParticleSystem"
     bl_description = "Hello"
     
-    def modal(self, context, event):
-        if runner.is_running() :
-            runner.step(bpy.context.scene.frame_current)
-
-        if context.area:
-            context.area.tag_redraw()
-
-        return {'PASS_THROUGH'}
-
-    def invoke(self, context, event):
-        if context.area.type == 'VIEW_3D':
-            # [開始] ボタンが押された時の処理
-            if not runner.is_running():
-                # モーダルモードを開始
-                context.window_manager.modal_handler_add(self)
-                bpy.app.handlers.frame_change_pre.append(my_handler)
-                runner.start()
-
-                print("simulation start")
-                return {'RUNNING_MODAL'}
-            # [終了] ボタンが押された時の処理
-            else:
-                runner.stop()
-                print("simulation stop")
-                return {'FINISHED'}
-        else:
-            return {'CANCELLED'}
-
     def execute(self, context) :
-
+        if not runner.is_running() :
+            runner.start()
+        else :
+            runner.stop()
         return {'FINISHED'}
 
 
@@ -173,9 +145,10 @@ class ParticleSystemSequenceMeshingUI :
         for c in classes:
             bpy.utils.register_class(c)
         bpy.types.Scene.meshing_property = bpy.props.PointerProperty(type=MeshingProperty)
-
+        bpy.app.handlers.frame_change_pre.append(my_handler)
 
     def unregister():
         for c in classes:
             bpy.utils.unregister_class(c)
         del bpy.types.Scene.meshing_property
+#        bpy.app.handlers.frame_change_pre.remove(my_handler)
