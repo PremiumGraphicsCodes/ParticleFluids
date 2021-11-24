@@ -10,7 +10,7 @@ class ParticleSystemSequenceImporter :
         self.ps = None
         self.__running = False
 
-    def init(self):
+    def build(self):
         if self.ps == None :
             self.ps = BLParticleSystem(model.scene)
             self.ps.ps.create_empty("")
@@ -22,10 +22,8 @@ class ParticleSystemSequenceImporter :
     def stop(self):
         self.__running = False
 
-    def step(self):
-        time_step = bpy.context.scene.frame_current
-        file_path = os.path.join("tmp_txt", "test" + str(time_step) + ".txt")
-
+    def step(self, frame):
+        file_path = os.path.join("tmp_txt", "test" + str(frame) + ".txt")
         FileIO.import_txt(model.scene, self.ps.ps.id, file_path)
         self.ps.update()
 
@@ -34,42 +32,27 @@ class ParticleSystemSequenceImporter :
 
 animator = ParticleSystemSequenceImporter()
 
+def on_frame_changed_ps_seq_importer(scene):
+    if animator.ps == None :
+        return
+
+    if animator.is_running() :
+        animator.step(scene.frame_current)
+
 class ParticleSystemSequenceImportOperator(bpy.types.Operator):
     bl_idname = "pg.particlesystemsequenceimportoperator"
     bl_label = "ParticleSystem"
     bl_description = "Hello"
 
-    def modal(self, context, event):
-        active_obj = context.active_object
+    def execute(self, context) :
+        if animator.ps == None :
+            animator.build()
 
-        if animator.is_running() :
-            animator.step()
-
-        # エリアを再描画
-        if context.area:
-            context.area.tag_redraw()
-
-        return {'PASS_THROUGH'}
-
-    def invoke(self, context, event):
-        if context.area.type == 'VIEW_3D':
-            # [開始] ボタンが押された時の処理
-            if not animator.is_running():
-                # モーダルモードを開始
-                context.window_manager.modal_handler_add(self)
-                animator.init()
-                animator.start()
-
-                print("animation start")
-                return {'RUNNING_MODAL'}
-            # [終了] ボタンが押された時の処理
-            else:
-                animator.stop()
-                print("animation stop")
-                return {'FINISHED'}
-        else:
-            return {'CANCELLED'}
-
+        if not animator.is_running() :
+            animator.start()
+        else :
+            animator.stop()
+        return {'FINISHED'}
 
 class ParticleSystemSequenceImportPanel(bpy.types.Panel):
     bl_label = "PSSeqImport"
@@ -81,9 +64,9 @@ class ParticleSystemSequenceImportPanel(bpy.types.Panel):
     def draw(self, context):
         op = ParticleSystemSequenceImportOperator
         if not animator.is_running():
-            self.layout.operator(op.bl_idname,text="ImportStart", icon='PLAY')
+            self.layout.operator(op.bl_idname,text="Start", icon='PLAY')
         else:
-            self.layout.operator(op.bl_idname,text="ImportStop", icon='PAUSE')
+            self.layout.operator(op.bl_idname,text="Stop", icon='PAUSE')
 
 classes = [
   ParticleSystemSequenceImportOperator,
@@ -94,6 +77,8 @@ class ParticleSystemSequenceImportUI :
     def register():
         for c in classes:
             bpy.utils.register_class(c)
+        #animator.init()
+        bpy.app.handlers.frame_change_pre.append(on_frame_changed_ps_seq_importer)
 
     def unregister():
         for c in classes:
