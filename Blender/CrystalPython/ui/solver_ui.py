@@ -17,12 +17,6 @@ from scene.file_io import FileIO
 
 from ui.bl_solver import BLSolver
 
-def find_fluid_prop_by_name(context, name) :
-  for prop in bpy.context.scene.fluid_properties :
-    if prop.name_prop == name :
-      return prop 
-
-
 class SolverUpdateOperator(bpy.types.Operator):
     bl_idname = "pg.solverupdateoperator"
     bl_label = "Delete"
@@ -42,39 +36,21 @@ class SolverUpdateOperator(bpy.types.Operator):
         solver.export_dir_path = context.scene.solver_property.export_dir_path
         return {'FINISHED'}
 
+def on_frame_changed_solver(scene):
+    if model.bl_solver.is_running() :
+        model.bl_solver.step(scene.frame_current)
+
 class SolverStartOperator(bpy.types.Operator):
     bl_idname = "pg.solverstartoperator"
     bl_label = "SolverStart"
     bl_description = "Hello"
 
-    def modal(self, context, event):
-        solver = model.bl_solver
-        if solver.is_running() :
-            solver.step(bpy.context.scene.frame_current)
-
-        if context.area:
-            context.area.tag_redraw()
-
-        return {'PASS_THROUGH'}
-
-    def invoke(self, context, event):
-        solver = model.bl_solver
-        if context.area.type == 'VIEW_3D':
-            # [開始] ボタンが押された時の処理
-            if not solver.is_running():
-                # モーダルモードを開始
-                context.window_manager.modal_handler_add(self)
-                solver.start()
-
-                print("simulation start")
-                return {'RUNNING_MODAL'}
-            # [終了] ボタンが押された時の処理
-            else:
-                solver.stop()
-                print("simulation stop")
-                return {'FINISHED'}
-        else:
-            return {'CANCELLED'}
+    def execute(self, context) :
+        if not model.bl_solver.is_running() :
+            model.bl_solver.start()
+        else :
+            model.bl_solver.stop()
+        return {'FINISHED'}
 
 class SolverProperty(bpy.types.PropertyGroup) :
     name_prop : StringProperty(
@@ -138,6 +114,7 @@ class SolverUI :
         bpy.types.Scene.solver_property = bpy.props.PointerProperty(type=SolverProperty)
         model.bl_solver = BLSolver()
         model.bl_solver.build()
+        bpy.app.handlers.frame_change_pre.append(on_frame_changed_solver)
 
     def unregister():
         for c in classes:
