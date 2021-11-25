@@ -16,7 +16,7 @@ class SPHSurfaceBuilder
 public:
 	//void add(Shape::IParticle* particle);
 
-	void buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius, const float cellLength);
+	void buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius);
 
 	void buildAnisotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius, const float cellLength);
 
@@ -25,7 +25,7 @@ public:
 	std::unique_ptr<Space::SparseVolumed> getVolume() { return std::move(volume); }
 
 private:
-	std::unique_ptr<Space::SparseVolumed> createSparseVolume(const std::vector<Math::Vector3dd>& particles, const float searchRadius, const float cellLength);
+	std::unique_ptr<Space::SparseVolumed> createSparseVolume(const std::vector<Math::Vector3dd>& particles, const float cellLength);
 
 	void calculateAnisotropy(const float searchRadius);
 	

@@ -33,7 +33,7 @@ namespace {
 	}
 }
 
-void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius, const float cellLength)
+void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius)
 {
 	const auto searchRadius = particleRadius;
 
@@ -52,13 +52,13 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 		p->calculateDensity(neighbors, searchRadius, kernel);
 	}
 
-	this->volume = createSparseVolume(positions, searchRadius, cellLength);
+	this->volume = createSparseVolume(positions, particleRadius);
 
 	for (const auto& p : particles) {
 		const auto pp = p->getPosition();
-		const auto ix = (int)(pp.x / cellLength);
-		const auto iy = (int)(pp.y / cellLength);
-		const auto iz = (int)(pp.z / cellLength);
+		const auto ix = (int)(pp.x / particleRadius);
+		const auto iy = (int)(pp.y / particleRadius);
+		const auto iz = (int)(pp.z / particleRadius);
 		for (int i = ix - 1; i <= ix + 1; ++i) {
 			for (int j = iy - 1; j <= iy + 1; ++j) {
 				for (int k = iz - 1; k <= iz + 1; ++k) {
@@ -112,7 +112,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 	}
 	*/
 
-	this->volume = createSparseVolume(positions, searchRadius, cellLength);
+	this->volume = createSparseVolume(positions, cellLength);
 
 
 	auto nodes = volume->getNodes();
@@ -146,7 +146,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 	}
 }
 
-std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float searchRadius,  const float cellLength)
+std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float cellLength)
 {
 	Vector3dd resolution{ cellLength, cellLength, cellLength };
 	auto sv = std::make_unique<SparseVolumed>(resolution, particles.size());
