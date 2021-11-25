@@ -149,6 +149,18 @@ std::vector<IParticle*> CompactSpaceHash3d::findNeighbors(const Vector3dd& posit
 	return neighbors;
 }
 
+std::vector<IParticle*> CompactSpaceHash3d::find(const std::array<unsigned int,3>& index)
+{
+	const auto hash = toHash(index);
+	const auto& cells = table[hash];
+	const auto cellId = toZIndex(index);
+	auto iter = std::find_if(cells.begin(), cells.end(), [cellId](CompactSpaceCell* cell) { return cell->cellId == cellId; });
+	if (iter == cells.end()) {
+		return {};
+	}
+	const auto& particles = (*iter)->particles;
+}
+
 std::array<unsigned int, 3> CompactSpaceHash3d::toIndex(const Vector3df& pos) const
 {
 	const auto ix = static_cast<unsigned int>((pos[0]) / divideLength);

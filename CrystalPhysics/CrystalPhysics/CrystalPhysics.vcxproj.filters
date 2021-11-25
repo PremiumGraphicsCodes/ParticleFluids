@@ -151,6 +151,9 @@
     <ClInclude Include="MVP\MVPBoundarySolver.h">
       <Filter>MVP\Boundary</Filter>
     </ClInclude>
+    <ClInclude Include="MVPSurfaceBuilder.h">
+      <Filter>SurfaceReconstruction</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
@@ -265,6 +268,9 @@
     </ClCompile>
     <ClCompile Include="MVP\MVPBoundarySolver.cpp">
       <Filter>MVP\Boundary</Filter>
+    </ClCompile>
+    <ClCompile Include="MVPSurfaceBuilder.cpp">
+      <Filter>SurfaceReconstruction</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -169,6 +169,7 @@
     <ClInclude Include="DFSPH\DFSPHBoundarySolver.h" />
     <ClInclude Include="DFSPH\DFSPHParticle.h" />
     <ClInclude Include="IPhysicsParticle.h" />
+    <ClInclude Include="MVPSurfaceBuilder.h" />
     <ClInclude Include="MVP\IMVPFluidScene.h" />
     <ClInclude Include="MVP\MVPBoundaryParticle.h" />
     <ClInclude Include="MVP\MVPBoundaryScene.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="DFSPH\DFFluidSolver.cpp" />
     <ClCompile Include="DFSPH\DFSPHBoundarySolver.cpp" />
     <ClCompile Include="DFSPH\DFSPHParticle.cpp" />
+    <ClCompile Include="MVPSurfaceBuilder.cpp" />
     <ClCompile Include="MVP\IMVPFluidScene.cpp" />
     <ClCompile Include="MVP\MVPBoundaryParticle.cpp" />
     <ClCompile Include="MVP\MVPBoundaryScene.cpp" />
