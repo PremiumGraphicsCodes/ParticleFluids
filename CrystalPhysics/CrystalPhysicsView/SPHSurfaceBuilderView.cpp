@@ -89,6 +89,7 @@ void SPHSurfaceBuilderView::onOk()
 	*/
 	//sphere.getPosition()
 
+	/*
 	const Sphere3d sphere(Vector3dd(50, 50, 50), 50.0);
 	const Box3d box = sphere.getBoundingBox();
 	const auto center = sphere.getCenter();
@@ -105,6 +106,8 @@ void SPHSurfaceBuilderView::onOk()
 			}
 		}
 	}
+	*/
+	positions.emplace_back(0, 0, 0);
 
 	auto world = getWorld();
 
@@ -122,7 +125,6 @@ void SPHSurfaceBuilderView::onOk()
 	std::cout << minValue << std::endl;
 	std::cout << maxValue << std::endl;
 
-	/*
 	MarchingCubesAlgo mcAlgo;
 	mcAlgo.build(*volume, thresholdView.getValue());
 
@@ -136,7 +138,6 @@ void SPHSurfaceBuilderView::onOk()
 
 	scene->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(scene);
-	*/
 	/*
 	WireFrameBuilder wfBuilder;
 
