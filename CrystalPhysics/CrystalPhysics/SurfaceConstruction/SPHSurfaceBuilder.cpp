@@ -53,10 +53,9 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 	}
 
 	this->volume = createSparseVolume(positions, searchRadius, cellLength);
-	const auto min = this->volume->getBoundingBox().getMin();
 
 	for (const auto& p : particles) {
-		const auto pp = p->getPosition() - min;
+		const auto pp = p->getPosition();
 		const auto ix = (int)(pp.x / cellLength);
 		const auto iy = (int)(pp.y / cellLength);
 		const auto iz = (int)(pp.z / cellLength);
@@ -149,23 +148,8 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 
 std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float searchRadius,  const float cellLength)
 {
-	Box3dd bb = Box3dd::createDegeneratedBox();
-	for (const auto& p : particles) {
-		bb.add(p);
-	}
-
-	bb.add(bb.getMin() - Vector3dd(cellLength));
-	bb.add(bb.getMax() + Vector3dd(cellLength));
-
-	const auto origin = bb.getMin();
-
-	const auto length = bb.getLength();
-	const auto resx = static_cast<int>(length.x / cellLength);
-	const auto resy = static_cast<int>(length.y / cellLength);
-	const auto resz = static_cast<int>(length.z / cellLength);
-
-	std::array<size_t, 3> resolution{ resx, resy, resz };
-	auto sv = std::make_unique<SparseVolumed>(bb, resolution, particles.size());
+	Vector3dd resolution{ cellLength, cellLength, cellLength };
+	auto sv = std::make_unique<SparseVolumed>(resolution, particles.size());
 	return sv;
 }
 

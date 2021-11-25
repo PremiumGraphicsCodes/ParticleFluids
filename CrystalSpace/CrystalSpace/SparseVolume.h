@@ -52,9 +52,8 @@ public:
 		table.resize(100);
 	}
 
-	SparseVolume(const Math::Box3dd& bb, const std::array<size_t, 3>& resolutions, const size_t tableSize) :
-		boundingBox(bb),
-		resolutions(resolutions)
+	SparseVolume(const Math::Vector3dd& cellLength, const size_t tableSize) :
+		cellLength(cellLength)
 	{
 		table.resize(tableSize);
 	}
@@ -65,18 +64,6 @@ public:
 	}
 
 	void clear();
-
-	void setBox(const Math::Box3dd& bb)
-	{
-		this->boundingBox = bb;
-	}
-
-	void setResolution(const std::array<size_t, 3>& resolution)
-	{
-		this->resolutions = resolution;
-	}
-
-	Math::Box3dd getBoundingBox() const { return boundingBox; }
 
 	SparseVolumeNode<T>* createNode(const std::array<int, 3>& index);
 
@@ -94,6 +81,8 @@ public:
 
 	std::list<SparseVolumeNode<T>*> getNodes() const;
 
+	Math::Box3dd getBoundingBox() const;
+
 private:
 	std::array<int, 3> toIndex(const Math::Vector3df& pos) const;
 
@@ -101,8 +90,7 @@ private:
 
 	int toHash(const std::array<int, 3>& index) const;
 
-	Math::Box3dd boundingBox;
-	std::array<size_t, 3> resolutions;
+	Math::Vector3dd cellLength;
 	std::vector<std::list<SparseVolumeNode<T>*>> table;
 };
 

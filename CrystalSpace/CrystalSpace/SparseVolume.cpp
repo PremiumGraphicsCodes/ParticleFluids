@@ -28,11 +28,10 @@ void SparseVolume<T>::clear()
 template<typename T>
 Vector3dd SparseVolume<T>::getPositionAt(const std::array<int, 3>& index) const
 {
-	const auto u = index[0] / static_cast<double>(resolutions[0]);
-	const auto v = index[1] / static_cast<double>(resolutions[1]);
-	const auto w = index[2] / static_cast<double>(resolutions[2]);
-
-	return boundingBox.getPosition(u, v, w);
+	const auto x = index[0] * cellLength[0];
+	const auto y = index[1] * cellLength[1];
+	const auto z = index[2] * cellLength[2];
+	return Vector3dd(x, y, z);
 }
 
 template<typename T>
@@ -85,9 +84,9 @@ bool SparseVolume<T>::exists(const std::array<int, 3>& index) const
 template<typename T>
 std::array<int, 3> SparseVolume<T>::toIndex(const Vector3df& pos) const
 {
-	const int ix = static_cast<int>((pos[0]) / resolutions[0]);
-	const int iy = static_cast<int>((pos[1]) / resolutions[1]);
-	const int iz = static_cast<int>((pos[2]) / resolutions[2]);
+	const int ix = static_cast<int>((pos[0]) / cellLength[0]);
+	const int iy = static_cast<int>((pos[1]) / cellLength[1]);
+	const int iz = static_cast<int>((pos[2]) / cellLength[2]);
 	return { ix, iy, iz };
 }
 
@@ -113,10 +112,7 @@ int SparseVolume<T>::toHash(const std::array<int, 3>& index) const
 template<typename T>
 Vector3dd SparseVolume<T>::getCellLength() const
 {
-	const auto lx = boundingBox.getLength().x / resolutions[0];
-	const auto ly = boundingBox.getLength().y / resolutions[1];
-	const auto lz = boundingBox.getLength().z / resolutions[2];
-	return Vector3dd(lx, ly, lz);
+	return cellLength;
 }
 
 template<typename T>
@@ -131,6 +127,17 @@ std::list<SparseVolumeNode<T>*> SparseVolume<T>::getNodes() const
 	return nodes;
 }
 
+template<typename T>
+Box3dd SparseVolume<T>::getBoundingBox() const
+{
+	auto box = Box3dd::createDegeneratedBox();
+
+	const auto nodes = getNodes();
+	for (auto n : nodes) {
+		box.add( n->getPosition() );
+	}
+	return box;
+}
 
 template class SparseVolume<bool>;
 template class SparseVolume<float>;
