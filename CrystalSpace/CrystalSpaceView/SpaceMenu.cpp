@@ -15,6 +15,7 @@
 #include "MeshToParticleView.h"
 
 #include "SVSphereView.h"
+#include "SVBoxView.h"
 #include "VoxelSphereView.h"
 #include "VoxelizerView.h"
 #include "ScanLineVoxelizerView.h"
@@ -50,10 +51,10 @@ void SpaceMenu::onShow()
 			control->setWindow(new ZOrderSearchView(world, canvas));
 		}
 		if (ImGui::MenuItem("Octree")) {
-			control->setWindow(new OctreeView(getWorld(), getCanvas()));
+			control->setWindow(new OctreeView(world, canvas));
 		}
 		if (ImGui::MenuItem("LinearOctree")) {
-			control->setWindow(new LinearOctreeView(getWorld(), getCanvas()));
+			control->setWindow(new LinearOctreeView(world, canvas));
 		}
 		if (ImGui::MenuItem("Intersection")) {
 			control->setWindow(new IntersectionView("Intersection",getWorld(), getCanvas()));
@@ -74,7 +75,10 @@ void SpaceMenu::onShow()
 			control->setWindow(new MeshToParticleView("MeshToParticle",getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("SVSphere")) {
-			control->setWindow(new SVSphereView("SVSphere", getWorld(), getCanvas()));
+			control->setWindow(new SVSphereView("SVSphere", world, canvas));
+		}
+		if (ImGui::MenuItem("SVBox")) {
+			control->setWindow(new SVBoxView("SVBox", world, canvas));
 		}
 		if (ImGui::MenuItem("VoxelSphere")) {
 			control->setWindow(new VoxelSphereView("VoxelSphere", getWorld(), getCanvas()));

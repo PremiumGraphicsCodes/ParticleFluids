@@ -58,6 +58,9 @@
     <ClCompile Include="ScanLineVoxelizerView.cpp">
       <Filter>Voxel\Voxelizer</Filter>
     </ClCompile>
+    <ClCompile Include="SVBoxView.cpp">
+      <Filter>Volume\SparseVolume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpaceHashView.h">
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="ScanLineVoxelizerView.h">
       <Filter>Voxel\Voxelizer</Filter>
+    </ClInclude>
+    <ClInclude Include="SVBoxView.h">
+      <Filter>Volume\SparseVolume</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

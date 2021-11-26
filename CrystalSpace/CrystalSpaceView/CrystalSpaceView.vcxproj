@@ -174,6 +174,7 @@
     <ClCompile Include="OctreeView.cpp" />
     <ClCompile Include="RayTracerView.cpp" />
     <ClCompile Include="SpaceHashView.cpp" />
+    <ClCompile Include="SVBoxView.cpp" />
     <ClCompile Include="SVSphereView.cpp" />
     <ClCompile Include="UniformGrid3dView.cpp" />
     <ClCompile Include="VolumeView.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="OctreeView.h" />
     <ClInclude Include="RayTracerView.h" />
     <ClInclude Include="SpaceHashView.h" />
+    <ClInclude Include="SVBoxView.h" />
     <ClInclude Include="SVSphereView.h" />
     <ClInclude Include="UniformGrid3dView.h" />
     <ClInclude Include="VolumeView.h" />
