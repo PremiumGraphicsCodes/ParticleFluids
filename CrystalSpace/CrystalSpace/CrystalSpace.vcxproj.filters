@@ -94,6 +94,9 @@
     <ClInclude Include="TriangleBoxOverlapCalculator.h">
       <Filter>Intersection</Filter>
     </ClInclude>
+    <ClInclude Include="SparseVolumeBuilder.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MarchingCubesAlgo.cpp">
@@ -178,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="TriangleBoxOverlapCalculator.cpp">
       <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="SparseVolumeBuilder.cpp">
+      <Filter>Volume</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

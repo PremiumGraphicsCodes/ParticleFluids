@@ -39,6 +39,7 @@
     <ClCompile Include="IntersectionCalculatorTest.cpp" />
     <ClCompile Include="LinearOctreeTest.cpp" />
     <ClCompile Include="OverlapTest.cpp" />
+    <ClCompile Include="SparseVolumeBuilderTest.cpp" />
     <ClCompile Include="SparseVolumeTest.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="ZIndexedSearchAlgoTest.cpp" />
@@ -86,6 +87,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

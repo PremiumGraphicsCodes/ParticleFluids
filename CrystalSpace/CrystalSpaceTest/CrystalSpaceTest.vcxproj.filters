@@ -15,6 +15,9 @@
     <ClCompile Include="CompactSpaceHash3dTest.cpp">
       <Filter>Search</Filter>
     </ClCompile>
+    <ClCompile Include="SparseVolumeBuilderTest.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
