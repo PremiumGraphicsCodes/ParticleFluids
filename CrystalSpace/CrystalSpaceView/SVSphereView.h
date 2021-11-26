@@ -15,7 +15,7 @@ public:
 
 private:
 	Sphere3dView sphereView;
-	IntView resolutionView;
+	FloatView cellLengthView;
 };
 
 	}

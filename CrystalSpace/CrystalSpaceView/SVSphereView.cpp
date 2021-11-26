@@ -1,7 +1,9 @@
 #include "SVSphereView.h"
 
 #include "../../CrystalSpace/CrystalSpace/SparseVolume.h"
+#include "CrystalSpace/CrystalSpace/SparseVolumeBuilder.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -10,18 +12,27 @@ using namespace Crystal::Space;
 SVSphereView::SVSphereView(const std::string& name, World* world, Canvas* canvas) :
 	ISVAddView(name, world, canvas),
 	sphereView("Sphere"),
-	resolutionView("Resolution")
+	cellLengthView("Resolution", 1.0f)
 {
 	add(&sphereView);
-	add(&resolutionView);
-	resolutionView.setValue(10);
+	sphereView.setValue(Sphere3dd(Vector3dd(0, 0, 0), 5.0));
+	add(&cellLengthView);
 }
 
 void SVSphereView::onOk()
 {
 	const auto sphere = sphereView.getValue();
-	const auto res = static_cast<size_t>(resolutionView.getValue());
-	const std::array<size_t, 3> resolution = { res, res, res };
+	const auto cellLength = cellLengthView.getValue();
+
+	SparseVolumeBuilder builder;
+	builder.build({ cellLength, cellLength, cellLength }, 100);
+	builder.add(sphere);
+	auto sv = builder.get();
+	auto nodes = sv->getNodes();
+	for (auto n : nodes) {
+		n->setValue(1.0f);
+	}
+	/*
 	auto sv = std::make_unique<SparseVolumed>(sphere.getBoundingBox(), resolution, res*res*res);
 
 	const auto center = sphere.getCenter();
@@ -40,6 +51,7 @@ void SVSphereView::onOk()
 			}
 		}
 	}
+	*/
 
 	ISVAddView::addVolume(std::move(sv));
 }
