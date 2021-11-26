@@ -77,7 +77,7 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 	SPHSurfaceBuilder builder;
 	std::unique_ptr<SparseVolumed> volume;
 	if (args.isIsotorpic.getValue()) {
-		builder.buildIsotoropic(positions, particleRadius);
+		builder.buildIsotoropic(positions, particleRadius, cellLength);
 	}
 	else {
 		builder.buildAnisotoropic(positions, args.particleRadius.getValue(), cellLength);

@@ -112,7 +112,7 @@ void SPHSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	builder.buildIsotoropic(positions, particleRadiusView.getValue());
+	builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
 	//builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
 	auto volume = builder.getVolume();
 	const auto nodes = volume->getNodes();

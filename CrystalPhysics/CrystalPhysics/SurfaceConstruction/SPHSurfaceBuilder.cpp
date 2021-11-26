@@ -1,15 +1,18 @@
 
 #include "SPHSurfaceBuilder.h"
 
-#include "../../../Crystal/Shape/IParticle.h"
-#include "../../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
-#include "../../../CrystalSpace/CrystalSpace/SparseVolume.h"
+#include "Crystal/Shape/IParticle.h"
+#include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+#include "CrystalSpace/CrystalSpace/SparseVolume.h"
+#include "CrystalSpace/CrystalSpace/SparseVolumeBuilder.h"
 
-#include <set>
+//#include <set>
 //#include <map>
 
 #include "WPCA.h"
 #include "../SPHKernel.h"
+
+#include "Crystal/Math/Sphere3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -33,10 +36,10 @@ namespace {
 	}
 }
 
-void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius)
+void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius, const float cellLength)
 {
 	const auto searchRadius = particleRadius; //* 8.0;
-	const auto cellLength = searchRadius * 0.5;
+	//const auto cellLength = searchRadius * 0.5;
 
 	for (auto p : positions) {
 		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, particleRadius));
@@ -53,24 +56,17 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 		p->calculateDensity(neighbors, searchRadius, kernel);
 	}
 
-	this->volume = createSparseVolume(positions, cellLength);
+	SparseVolumeBuilder builder;
+	builder.build(Vector3df(cellLength, cellLength, cellLength), particles.size());
+	//this->volume = createSparseVolume(positions, cellLength);
 
 	for (const auto& p : particles) {
 		const auto pp = p->getPosition();
-		const auto ix = (int)(pp.x / cellLength);
-		const auto iy = (int)(pp.y / cellLength);
-		const auto iz = (int)(pp.z / cellLength);
-		for (int i = ix - 2; i <= ix + 1; ++i) {
-			for (int j = iy - 2; j <= iy + 1; ++j) {
-				for (int k = iz - 2; k <= iz + 1; ++k) {
-					const std::array<int, 3> index = { i, j, k };
-					if (!this->volume->exists(index)) {
-						this->volume->createNode(index);
-					}
-				}
-			}
-		}
+		Sphere3dd s(pp, searchRadius * 1.5);
+		builder.add(s);
 	}
+
+	this->volume = builder.get();
 
 	auto nodes = volume->getNodes();
 	std::vector<SparseVolumeNode<double>*> ns(nodes.begin(), nodes.end());
