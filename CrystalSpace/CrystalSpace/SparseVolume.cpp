@@ -84,9 +84,28 @@ bool SparseVolume<T>::exists(const std::array<int, 3>& index) const
 template<typename T>
 std::array<int, 3> SparseVolume<T>::toIndex(const Vector3df& pos) const
 {
-	const int ix = static_cast<int>((pos[0]) / cellLength[0]);
-	const int iy = static_cast<int>((pos[1]) / cellLength[1]);
-	const int iz = static_cast<int>((pos[2]) / cellLength[2]);
+	Vector3df p = pos;
+	if (p.x > 0.0) {
+		p.x = pos.x + cellLength.x * 0.5f;
+	}
+	else {
+		p.x = pos.x - cellLength.x * 0.5f;
+	}
+	if (p.y > 0.0) {
+		p.y = pos.y + cellLength.y * 0.5f;
+	}
+	else {
+		p.y = pos.y - cellLength.y * 0.5f;
+	}
+	if (p.z > 0.0) {
+		p.z = pos.z + cellLength.z * 0.5f;
+	}
+	else {
+		p.z = pos.z - cellLength.z * 0.5f;
+	}
+	const int ix = static_cast<int>(p[0] / cellLength[0]);
+	const int iy = static_cast<int>(p[1] / cellLength[1]);
+	const int iz = static_cast<int>(p[2] / cellLength[2]);
 	return { ix, iy, iz };
 }
 

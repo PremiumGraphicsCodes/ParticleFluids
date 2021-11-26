@@ -158,7 +158,7 @@ std::vector<IParticle*> CompactSpaceHash3d::find(const std::array<unsigned int,3
 	if (iter == cells.end()) {
 		return {};
 	}
-	const auto& particles = (*iter)->particles;
+	return (*iter)->particles;
 }
 
 std::array<unsigned int, 3> CompactSpaceHash3d::toIndex(const Vector3df& pos) const

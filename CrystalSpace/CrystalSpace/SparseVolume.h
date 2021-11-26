@@ -52,7 +52,7 @@ public:
 		table.resize(100);
 	}
 
-	SparseVolume(const Math::Vector3dd& cellLength, const size_t tableSize) :
+	SparseVolume(const Math::Vector3df& cellLength, const size_t tableSize) :
 		cellLength(cellLength)
 	{
 		table.resize(tableSize);
@@ -83,14 +83,15 @@ public:
 
 	Math::Box3dd getBoundingBox() const;
 
-private:
 	std::array<int, 3> toIndex(const Math::Vector3df& pos) const;
+
+private:
 
 	int toHash(const Math::Vector3df& pos) const;
 
 	int toHash(const std::array<int, 3>& index) const;
 
-	Math::Vector3dd cellLength;
+	Math::Vector3df cellLength;
 	std::vector<std::list<SparseVolumeNode<T>*>> table;
 };
 
