@@ -48,6 +48,9 @@ void TMSurfacePresenter::updateView()
 void TMSurfacePresenter::updateScreenView()
 {
 //	const auto objectId = model->getId();
+	if (model->getShape() == nullptr) {
+		return;
+	}
 	const auto& faces = model->getShape()->getFaces();
 
 	TriangleBuffer buffer;

@@ -6,6 +6,7 @@
 #include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/TriangleMeshScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -42,6 +43,10 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 
 	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
 
+	tmScene = new TriangleMeshScene(world->getNextSceneId(), "", nullptr);
+	tmScene->getPresenter()->createView(world->getRenderer());
+	world->getScenes()->addScene(tmScene);
+
 	world->addAnimation(&solver);
 	world->addAnimation(&updator);
 
@@ -53,7 +58,7 @@ void MVPFluidSimulationView::onStart()
 
 	fluidScene->getPresenter()->createView(world->getRenderer());
 	updator.add(fluidScene);
-
+	updator.add(tmScene);
 
 	//CameraFitCommand cameraCommand;
 	//cameraCommand.execute(world);
@@ -102,6 +107,7 @@ void MVPFluidSimulationView::addFluid()
 	solver.addFluidScene(fluidScene);
 	solver.addBoundary(boundaryView.getBoundary());
 	solver.setEffectLength(radiusView.getValue());
+	solver.setTriangleMeshScene(tmScene);
 
 	solver.setMaxTimeStep(this->timeStepView.getValue());
 	solver.setupBoundaries();

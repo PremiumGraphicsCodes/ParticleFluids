@@ -3,14 +3,19 @@
 #include <vector>
 #include <list>
 
+#include "CrystalScene/Scene/IScene.h"
 #include "Crystal/Math/Vector3d.h"
 #include "Crystal/Math/Box3d.h"
 #include "Crystal/Shape/IParticle.h"
 #include "CrystalScene/Scene/IAnimator.h"
+#include "Crystal/Math/Triangle3d.h"
 
 #include "MVPBoundarySolver.h"
 
 namespace Crystal {
+	namespace Scene {
+		class TriangleMeshScene;
+	}
 	namespace Physics {
 		class MVPVolumeParticle;
 		class MVPFluidScene;
@@ -35,6 +40,8 @@ public:
 
 	void addEmitterScene(MVPFluidEmitterScene* scene);
 
+	void setTriangleMeshScene(Scene::TriangleMeshScene* scene) { this->tmScene = scene; }
+
 	void addBoundary(CSGBoundaryScene* scene) { this->csgBoundaries.push_back(scene); }
 
 	void setMaxTimeStep(const float maxTimeStep) { this->maxTimeStep = maxTimeStep; }
@@ -46,6 +53,8 @@ public:
 	void simulate();
 
 	void step() override;
+
+	//std::vector<Math::Triangle3d> getTriangles() const { return triangles; }
 
 private:
 
@@ -62,6 +71,7 @@ private:
 	float maxTimeStep = 0.03f;
 	int currentTimeStep = 0;
 	Math::Vector3df externalForce;
+	Scene::TriangleMeshScene* tmScene;
 };
 
 class MVPUpdater : public Scene::IAnimator
@@ -69,12 +79,12 @@ class MVPUpdater : public Scene::IAnimator
 public:
 	MVPUpdater() {}
 
-	void add(Physics::IMVPFluidScene* f) { fluids.push_back(f); }
+	void add(Scene::IScene* f) { fluids.push_back(f); }
 
 	void step() override;
 
 private:
-	std::list<Physics::IMVPFluidScene*> fluids;
+	std::list<Scene::IScene*> fluids;
 };
 
 
