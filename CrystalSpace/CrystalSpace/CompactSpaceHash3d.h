@@ -40,11 +40,15 @@ public:
 
 	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
 
-	std::vector<Shape::IParticle*> find(const std::array<unsigned int,3>& position);
+	std::vector<Shape::IParticle*> find(const Math::Vector3dd& positions) const;
+
+	std::vector<Shape::IParticle*> find(const std::array<unsigned int,3>& position) const;
 
 	std::array<unsigned int, 3> toIndex(const Math::Vector3df& pos) const;
 
 	void setCheckFunc(std::function<bool(Shape::IParticle*, Shape::IParticle*)> func) { this->checkFunc = func; }
+
+	bool isEmpty(const Math::Vector3df& pos) const;
 
 	std::vector<CompactSpaceCell*> getCells() const { return cells; }
 

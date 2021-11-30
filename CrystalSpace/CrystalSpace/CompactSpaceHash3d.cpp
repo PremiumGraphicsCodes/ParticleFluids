@@ -149,7 +149,12 @@ std::vector<IParticle*> CompactSpaceHash3d::findNeighbors(const Vector3dd& posit
 	return neighbors;
 }
 
-std::vector<IParticle*> CompactSpaceHash3d::find(const std::array<unsigned int,3>& index)
+std::vector<IParticle*> CompactSpaceHash3d::find(const Math::Vector3dd& positions) const
+{
+	return find(toIndex(positions));
+}
+
+std::vector<IParticle*> CompactSpaceHash3d::find(const std::array<unsigned int,3>& index) const
 {
 	const auto hash = toHash(index);
 	const auto& cells = table[hash];
@@ -189,4 +194,10 @@ unsigned int CompactSpaceHash3d::toHash(const std::array<unsigned int, 3>& index
 unsigned int CompactSpaceHash3d::toZIndex(const std::array<unsigned int, 3>& index) const
 {
 	return zCurve.encode(index);
+}
+
+bool CompactSpaceHash3d::isEmpty(const Vector3df& pos) const
+{
+	const auto pts = find( toIndex(pos) );
+	return pts.empty();
 }

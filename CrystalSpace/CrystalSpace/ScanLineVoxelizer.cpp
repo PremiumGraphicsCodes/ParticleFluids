@@ -3,7 +3,6 @@
 #include "../../Crystal/Shape/TriangleMesh.h"
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Math/Ray3d.h"
-#include "SpaceHash3d.h"
 #include "Overlap.h"
 #include "IntersectionCalculator.h"
 
@@ -24,7 +23,7 @@ void ScanLineVoxelizer::voxelize(const std::vector<Triangle3d>& triangles, const
 	std::array<size_t, 3> ress = { xres, yres, zres };
 
 	const int size = static_cast<int>( triangles.size() * 3 );
-	SpaceHash3d table(res, size);
+	table = std::make_unique<SpaceHash3d>(res, size);
 
 	const auto cellLength = Vector3dd(res);
 
@@ -37,27 +36,49 @@ void ScanLineVoxelizer::voxelize(const std::vector<Triangle3d>& triangles, const
 				for (auto z = smallBB.getMinZ(); z < smallBB.getMaxZ() + res + e; z += res) {
 					const Vector3dd p(x, y, z);
 					auto particle = new Particle<Triangle3d>(p, triangle);
-					table.add(particle);
+					table->add(particle);
 				}
 			}
 		}
 	}
 
+	const auto array3d = scanX(space, ress, cellLength);
+
+	this->voxel = std::make_unique<Voxel>(space, ress);
+	voxel->fill(false);
+	for (int i = 0; i < xres; ++i) {
+		for (int j = 0; j < yres; ++j) {
+			for (int k = 0; k < zres; ++k) {
+				if (array3d.get(i, j, k) % 2 == 1) {
+					voxel->setValue(i, j, k, true);
+				}
+			}
+		}
+	}
+
+	for (auto p : particles) {
+		delete p;
+	}
+
+}
+
+Array3d<unsigned int> ScanLineVoxelizer::scanX(const Box3dd& space, const std::array<size_t,3>& ress, const Math::Vector3dd& cellLength)
+{
 	Array3d<unsigned int> array3d(ress, 0);
 	const auto& resolutions = array3d.getResolutions();
 
 	//const Ray3d ray(Vector3dd(0, 5, 5), Vector3dd(1, 0, 0));
-	for (size_t j = 0; j < yres; ++j) {
+	for (size_t j = 0; j < ress[1]; ++j) {
 		const auto y = space.getMinY() + j * cellLength.y;
-		for (size_t k = 0; k < zres; ++k) {
+		for (size_t k = 0; k < ress[2]; ++k) {
 			const auto z = space.getMinZ() + k * cellLength.z;
 			const Ray3d ray(Vector3dd(space.getMinX(), y, z), Vector3dd(1, 0, 0));
 			std::list<double> params;
-			for (size_t i = 0; i < xres; ++i) {
+			for (size_t i = 0; i < ress[0]; ++i) {
 				const auto x = space.getMinX() + i * cellLength.x;
 				const Vector3dd pos(x, y, z);
-				if (!table.isEmpty(pos)) {
-					const auto ps = table.getParticles(pos);
+				if (!table->isEmpty(pos)) {
+					const auto ps = table->getParticles(pos);
 					for (auto p : ps) {
 						auto pt = static_cast<Particle<Triangle3d>*>(p);
 						const auto triangle = pt->getAttribute();
@@ -76,21 +97,5 @@ void ScanLineVoxelizer::voxelize(const std::vector<Triangle3d>& triangles, const
 			}
 		}
 	}
-
-	this->voxel = std::make_unique<Voxel>(space, ress);
-	voxel->fill(false);
-	for (int i = 0; i < xres; ++i) {
-		for (int j = 0; j < yres; ++j) {
-			for (int k = 0; k < zres; ++k) {
-				if (array3d.get(i, j, k) % 2 == 1) {
-					voxel->setValue(i, j, k, true);
-				}
-			}
-		}
-	}
-
-	for (auto p : particles) {
-		delete p;
-	}
-
+	return array3d;
 }
