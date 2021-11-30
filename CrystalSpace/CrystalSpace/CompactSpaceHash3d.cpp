@@ -67,6 +67,7 @@ void CompactSpaceHash3d::add(IParticle* particle)
 	});
 	if (iter == cells.end()) {
 		auto cell = new CompactSpaceCell();
+		cell->index = index;
 		cell->cellId = cellId;
 		cell->particles.reserve(64);
 		cell->particles.push_back(particle);

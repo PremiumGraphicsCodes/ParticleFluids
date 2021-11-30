@@ -17,6 +17,7 @@ class CompactSpaceCell
 public:
 	unsigned int cellId;
 	//Math::Vector3df center;
+	std::array<unsigned int, 3> index;
 	std::vector<Shape::IParticle*> particles;
 };
 

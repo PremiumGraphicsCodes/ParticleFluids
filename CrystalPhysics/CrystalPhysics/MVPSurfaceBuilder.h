@@ -22,7 +22,7 @@ public:
 
 private:
 	//Space::SparseVolumef volume;
-	CompactSpaceHash3d hash;
+	Space::CompactSpaceHash3d hash;
 
 };
 	}
