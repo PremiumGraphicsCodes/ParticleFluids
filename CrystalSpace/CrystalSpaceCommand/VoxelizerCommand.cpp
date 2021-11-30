@@ -59,9 +59,16 @@ bool VoxelizerCommand::execute(World* scene)
 	const auto bb = pmScene->getShape()->getBoundingBox();
 	const auto p1 = bb.getMin() - Vector3dd(divideLength);
 	const auto p2 = bb.getMax() + Vector3dd(divideLength);
+
+	const auto faces = pmScene->getShape()->getFaces();
+	std::vector<Triangle3d> triangles;
+	for (const auto& f : faces) {
+		triangles.emplace_back(f.triangle);
+	}
+
 	const Math::Box3dd space(p1, p2);
 	ScanLineVoxelizer converter;
-	converter.voxelize(*pmScene->getShape(), space, divideLength);
+	converter.voxelize(triangles, space, divideLength);
 	voxelScene->setShape(converter.getVoxel());
 	return true;
 }
