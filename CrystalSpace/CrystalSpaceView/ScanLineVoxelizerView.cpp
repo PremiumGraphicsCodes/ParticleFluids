@@ -36,11 +36,16 @@ void ScanLineVoxelizerView::onOk()
 	//const Sphere3dd sphere(Vector3dd(5, 5, 5), 5);
 	//builder.add(sphere, 32, 32);
 	auto mesh = builder.build();
+	std::vector<Triangle3d> triangles;
+	const auto fs = mesh->getFaces();
+	for (auto f : fs) {
+		triangles.push_back(f.triangle);
+	}
 
 	const Box3d space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 
 	ScanLineVoxelizer voxelizer;
-	voxelizer.voxelize(*mesh, space, 1.0);
+	voxelizer.voxelize(triangles, space, 1.0);
 	auto voxel = voxelizer.getVoxel();
 
 	const auto& intersections = voxelizer.getIntersections();

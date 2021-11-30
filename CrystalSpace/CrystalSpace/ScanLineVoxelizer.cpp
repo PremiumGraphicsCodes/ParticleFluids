@@ -16,27 +16,20 @@ namespace {
 	const auto e = 1.0e-18;
 }
 
-void ScanLineVoxelizer::voxelize(const TriangleMesh& mesh, const Box3dd& space, const double res)
+void ScanLineVoxelizer::voxelize(const std::vector<Triangle3d>& triangles, const Box3dd& space, const double res)
 {
 	const auto xres = static_cast<size_t>(space.getLength().x / res) + 1;
 	const auto yres = static_cast<size_t>(space.getLength().y / res) + 1;
 	const auto zres = static_cast<size_t>(space.getLength().z / res) + 1;
 	std::array<size_t, 3> ress = { xres, yres, zres };
 
-	const auto& faces = mesh.getFaces();
-	const int size = static_cast<int>( faces.size() * 3 );
+	const int size = static_cast<int>( triangles.size() * 3 );
 	SpaceHash3d table(res, size);
 
-	const auto voxelSize = Vector3dd(res);
+	const auto cellLength = Vector3dd(res);
 
 	std::vector<Particle<Triangle3d>*> particles;
-	for (const auto& f : faces) {
-		const auto triangle = f.triangle;//f.toTriangle(polygon.getPositions());
-		/*
-		if (triangle.getArea() < e) {
-			continue;
-		}
-		*/
+	for (const auto& triangle : triangles) {
 		const auto smallBB = triangle.getBoundingBox();
 
 		for (auto x = smallBB.getMinX(); x < smallBB.getMaxX() + res + e; x += res) {
@@ -55,13 +48,13 @@ void ScanLineVoxelizer::voxelize(const TriangleMesh& mesh, const Box3dd& space, 
 
 	//const Ray3d ray(Vector3dd(0, 5, 5), Vector3dd(1, 0, 0));
 	for (size_t j = 0; j < yres; ++j) {
-		const auto y = space.getMinY() + j * voxelSize.y;
+		const auto y = space.getMinY() + j * cellLength.y;
 		for (size_t k = 0; k < zres; ++k) {
-			const auto z = space.getMinZ() + k * voxelSize.z;
+			const auto z = space.getMinZ() + k * cellLength.z;
 			const Ray3d ray(Vector3dd(space.getMinX(), y, z), Vector3dd(1, 0, 0));
 			std::list<double> params;
 			for (size_t i = 0; i < xres; ++i) {
-				const auto x = space.getMinX() + i * voxelSize.x;
+				const auto x = space.getMinX() + i * cellLength.x;
 				const Vector3dd pos(x, y, z);
 				if (!table.isEmpty(pos)) {
 					const auto ps = table.getParticles(pos);
@@ -80,21 +73,7 @@ void ScanLineVoxelizer::voxelize(const TriangleMesh& mesh, const Box3dd& space, 
 				params.sort();
 				params.unique([](auto p1, auto p2) { return std::fabs(p1 - p2) < 1.0e-6; });
 				array3d.set(i, j, k, params.size());
-//				const auto iCount = intersections.size();
-//				array3d.set(i, j, k, iCount);
 			}
-//			params.unique();
-//			params.sort();
-
-//			table.isEmpty()
-//			IntersectionCalculator::calculateIntersectionParameters()
-			/*
-			rayTracer.trace(ray, res);
-			auto is = rayTracer.getIntersections();
-			for (const auto& i : is) {
-				this->intersections.push_back(i);
-			}
-			*/
 		}
 	}
 

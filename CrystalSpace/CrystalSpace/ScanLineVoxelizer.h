@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Math/Triangle3d.h"
 #include "Voxel.h"
 
 #include <vector>
@@ -15,7 +16,7 @@ namespace Crystal {
 class ScanLineVoxelizer
 {
 public:
-	void voxelize(const Shape::TriangleMesh& mesh, const Math::Box3dd& space, const double res);
+	void voxelize(const std::vector<Math::Triangle3d>& triangles, const Math::Box3dd& space, const double res);
 
 	std::unique_ptr<Voxel> getVoxel() { return std::move(voxel); }
 
