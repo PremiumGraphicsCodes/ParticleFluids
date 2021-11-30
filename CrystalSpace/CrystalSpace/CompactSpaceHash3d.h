@@ -16,6 +16,7 @@ class CompactSpaceCell
 {
 public:
 	unsigned int cellId;
+	//Math::Vector3df center;
 	std::vector<Shape::IParticle*> particles;
 };
 
@@ -46,6 +47,8 @@ public:
 
 	std::array<unsigned int, 3> toIndex(const Math::Vector3df& pos) const;
 
+	Math::Vector3df toPosition(const std::array<unsigned int, 3>& index) const;
+
 	void setCheckFunc(std::function<bool(Shape::IParticle*, Shape::IParticle*)> func) { this->checkFunc = func; }
 
 	bool isEmpty(const Math::Vector3df& pos) const;
@@ -62,6 +65,8 @@ private:
 	unsigned int toHash(const std::array<unsigned int, 3>& index) const;
 
 	unsigned int toZIndex(const std::array<unsigned int, 3>& index) const;
+
+	std::array<unsigned int, 3> fromZIndex(unsigned int index) const;
 
 	double divideLength;
 	

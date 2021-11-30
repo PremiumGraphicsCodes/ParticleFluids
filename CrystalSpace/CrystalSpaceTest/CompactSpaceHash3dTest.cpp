@@ -32,3 +32,21 @@ TEST(CompactSpaceHash3dTest, TestSolveInteractions)
 	const auto neighbors = spaceHash.findNeighbors(&point1);
 	EXPECT_EQ(1, neighbors.size());
 }
+
+TEST(CompactSpaceHash3dTest, TestToIndex)
+{
+	CompactSpaceHash3d spaceHash(1.0, 10);
+	const auto ix = spaceHash.toIndex(Vector3df(0.5, 1.5, 2.5));
+	EXPECT_EQ(ix[0], 0);
+	EXPECT_EQ(ix[1], 1);
+	EXPECT_EQ(ix[2], 2);
+}
+
+TEST(CompactSpaceHash3dTest, TestToPosition)
+{
+	CompactSpaceHash3d spaceHash(1.0, 10);
+	const auto p = spaceHash.toPosition({ 0,1,2 });
+	EXPECT_EQ(p.x, 0.0);
+	EXPECT_EQ(p.y, 1.0);
+	EXPECT_EQ(p.z, 2.0);
+}

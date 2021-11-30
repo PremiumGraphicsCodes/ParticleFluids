@@ -2,6 +2,9 @@
 
 #include <vector>
 #include "Crystal/Math/Vector3d.h"
+#include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+#include "CrystalSpace/CrystalSpace/SparseVolume.h"
+#include "CrystalPhysics/CrystalPhysics/MVP/MVPMassParticle.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -9,9 +12,17 @@ namespace Crystal {
 class MVPSurfaceBuilder
 {
 public:
-	void build(const std::vector<Math::Vector3df>& positions, const float searchRadius);
+	void build(const size_t tableSize, const float searchRadius);
+
+	void add(MVPMassParticle* massParticle);
+
+	void buildVolume();
+
+	//float getVolumeAt(const Math::Vector3df& pos);
 
 private:
+	//Space::SparseVolumef volume;
+	CompactSpaceHash3d hash;
 
 };
 	}

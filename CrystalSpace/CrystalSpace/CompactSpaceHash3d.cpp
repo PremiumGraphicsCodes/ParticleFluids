@@ -174,6 +174,14 @@ std::array<unsigned int, 3> CompactSpaceHash3d::toIndex(const Vector3df& pos) co
 	return { ix, iy, iz };
 }
 
+Vector3df CompactSpaceHash3d::toPosition(const std::array<unsigned int, 3>& index) const
+{
+	const auto x = divideLength * index[0];
+	const auto y = divideLength * index[1];
+	const auto z = divideLength * index[2];
+	return Vector3df(x, y, z);
+}
+
 unsigned int CompactSpaceHash3d::toHash(const Vector3df& pos) const
 {
 	return toHash(toIndex(pos));
@@ -194,6 +202,11 @@ unsigned int CompactSpaceHash3d::toHash(const std::array<unsigned int, 3>& index
 unsigned int CompactSpaceHash3d::toZIndex(const std::array<unsigned int, 3>& index) const
 {
 	return zCurve.encode(index);
+}
+
+std::array<unsigned int, 3> CompactSpaceHash3d::fromZIndex(unsigned int index) const
+{
+	return zCurve.decode(index);
 }
 
 bool CompactSpaceHash3d::isEmpty(const Vector3df& pos) const
