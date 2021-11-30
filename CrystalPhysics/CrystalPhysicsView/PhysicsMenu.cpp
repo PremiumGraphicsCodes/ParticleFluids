@@ -8,6 +8,7 @@
 
 #include "MeshBoundaryView.h"
 #include "SPHSurfaceBuilderView.h"
+#include "MVPSurfaceBuilderView.h"
 
 #include "CrystalScene/AppBase/imgui.h"
 
@@ -52,6 +53,9 @@ void PhysicsMenu::onShow()
 	if (ImGui::BeginMenu("SPHSurface")) {
 		if(ImGui::MenuItem("SPHSurface")) {
 			control->setWindow(new SPHSurfaceBuilderView("SPHSurface", getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("MVPSurface")) {
+			control->setWindow(new MVPSurfaceBuilderView("MVPSurface", getWorld(), getCanvas()));
 		}
 		ImGui::EndMenu();
 	}
