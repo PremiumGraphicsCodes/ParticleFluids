@@ -60,6 +60,7 @@ class PhysicsSolverUpdateCommand:
    EmitterSceneIdsLabel="EmitterSceneIds"
    CSGBoundarySceneIdsLabel="CSGBoundarySceneIds"
    MeshBoundarySceneIdsLabel="MeshBoundarySceneIds"
+   SurfaceMeshSceneIdLabel="SurfaceMeshSceneId"
    EffectLengthLabel="EffectLength"
    ExternalForceLabel="ExternalForce"
    TimeStepLabel="TimeStep"

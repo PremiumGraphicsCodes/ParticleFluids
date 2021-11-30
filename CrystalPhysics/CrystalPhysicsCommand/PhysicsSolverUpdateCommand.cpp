@@ -6,6 +6,7 @@
 #include "../CrystalPhysics/CSGBoundaryScene.h"
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/TriangleMeshScene.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
@@ -16,6 +17,7 @@ namespace {
 	PublicLabel EmitterSceneIdsLabel = "EmitterSceneIds";
 	PublicLabel CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
 	PublicLabel MeshBoundarySceneIdsLabel = "MeshBoundarySceneIds";
+	PublicLabel SurfaceMeshSceneIdLabel = "SurfaceMeshSceneId";
 	PublicLabel EffectLengthLabel = "EffectLength";
 	PublicLabel ExternalForceLabel = "ExternalForce";
 	PublicLabel TimeStepLabel = "TimeStep";
@@ -37,6 +39,7 @@ PhysicsSolverUpdateCommand::Args::Args() :
 	fluidSceneIds(::FluidSceneIdsLabel, {}),
 	emitterSceneIds(::EmitterSceneIdsLabel, {}),
 	csgBoundarySceneIds(::CSGBoundarySceneIdsLabel, {}),
+	surfaceMeshSceneId(::SurfaceMeshSceneIdLabel, -1),
 	meshBoundarySceneIds(::MeshBoundarySceneIdsLabel, {}),
 	effectLength(::EffectLengthLabel, 2.0f),
 	externalForce(::ExternalForceLabel, Vector3df(0,-9.8f, 0.0)),
@@ -47,6 +50,7 @@ PhysicsSolverUpdateCommand::Args::Args() :
 	add(&fluidSceneIds);
 	add(&emitterSceneIds);
 	add(&csgBoundarySceneIds);
+	add(&surfaceMeshSceneId);
 	add(&meshBoundarySceneIds);
 	add(&effectLength);
 	add(&externalForce);
@@ -98,6 +102,12 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 	for (const auto id : boundaryIds) {
 		auto scene = world->getScenes()->findSceneById<CSGBoundaryScene*>(id);
 		solver->addBoundary(scene);
+	}
+
+	const auto meshId = args.surfaceMeshSceneId.getValue();
+	if (meshId != -1) {
+		auto scene = world->getScenes()->findSceneById<TriangleMeshScene*>(meshId);
+		solver->setTriangleMeshScene(scene);
 	}
 
 	solver->setExternalForce(args.externalForce.getValue());

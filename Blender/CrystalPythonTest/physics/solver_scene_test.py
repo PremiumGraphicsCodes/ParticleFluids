@@ -1,5 +1,6 @@
 import unittest
 from scene.particle_system_scene import *
+from scene.triangle_mesh_scene import TriangleMeshScene
 from physics.fluid_scene import *
 from physics.solver_scene import *
 from physics.csg_boundary_scene import CSGBoundaryScene
@@ -29,8 +30,12 @@ class SolverSceneTest(unittest.TestCase):
         boundary.send()
         boundaries.append(boundary)
 
+        tmScene = TriangleMeshScene(scene)
+        tmScene.create_empty("")
+
         solver.fluids = fluids
         solver.boundaries = boundaries
         solver.external_force = Vector3df(0.0, 0.0, -9.8)
+        solver.surfaceMesh = tmScene
         solver.send()
         solver.simulate()
