@@ -29,6 +29,8 @@ private:
 
 	Util::Array3d<unsigned int> scanY(const Math::Box3dd& space, const std::array<size_t, 3>& ress, const Math::Vector3dd& cellLength);
 
+	Util::Array3d<unsigned int> scanZ(const Math::Box3dd& space, const std::array<size_t, 3>& ress, const Math::Vector3dd& cellLength);
+
 	//Math::Vector3dd toPosition(const std::array<unsigned int, 3>& index) const;
 
 	std::unique_ptr<Voxel> voxel;
