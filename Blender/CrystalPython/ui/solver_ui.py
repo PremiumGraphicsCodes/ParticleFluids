@@ -14,8 +14,8 @@ from ui.bl_fluid import BLFluid
 from ui.bl_boundary import BLBoundary
 from CrystalPLI import Vector3df
 from scene.file_io import FileIO
-
 from ui.bl_solver import BLSolver
+from bpy.app.handlers import persistent
 
 class SolverUpdateOperator(bpy.types.Operator):
     bl_idname = "pg.solverupdateoperator"
@@ -36,8 +36,11 @@ class SolverUpdateOperator(bpy.types.Operator):
         solver.export_dir_path = context.scene.solver_property.export_dir_path
         return {'FINISHED'}
 
+@persistent
 def on_frame_changed_solver(scene):
+    print("OnChangedFrame")
     if model.bl_solver.is_running() :
+        print("OnRunSolver")
         model.bl_solver.step(scene.frame_current)
 
 class SolverStartOperator(bpy.types.Operator):

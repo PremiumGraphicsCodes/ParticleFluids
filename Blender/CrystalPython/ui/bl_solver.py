@@ -45,15 +45,6 @@ class BLSolver :
             boundaries.append( bl_boundary.boundary )
         self.__solver.boundaries = boundaries
 
-        if self.__bl_mesh == None :
-            self.__bl_mesh = BLTriangleMesh(model.scene)
-            self.__bl_mesh.build("Surface")
-            self.__bl_mesh.mesh = TriangleMeshScene(model.scene)
-            self.__bl_mesh.mesh.create_empty("")
-
-
-        self.__solver.surfaceMesh = self.__bl_mesh.mesh
-
         self.__solver.external_force = self.__external_force
         self.__solver.time_step = self.__time_step
         self.__solver.send()
@@ -70,13 +61,11 @@ class BLSolver :
         for bl_fluid in self.__bl_fluids :
             bl_fluid.update()
 
-        self.__bl_mesh.update()
-
 #        model.scene.delete(self.__bl_mesh.mesh.id, False)
 
         
-        file_path = os.path.join(self.__export_dir_path, "test" + str(frame) + ".txt")
-        self.__solver.export_txt(file_path)
+        #file_path = os.path.join(self.__export_dir_path, "test" + str(frame) + ".txt")
+        #self.__solver.export_txt(file_path)
 
     def is_running(self):
         return self.__running
