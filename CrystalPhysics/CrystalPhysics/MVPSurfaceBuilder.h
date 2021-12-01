@@ -14,6 +14,7 @@ namespace Crystal {
 class MVPSurfaceBuilder
 {
 public:
+	void build(const std::vector<Math::Vector3dd>& positions, const double radius, const double threshold);
 
 	void build(const Space::CompactSpaceHash3d& hash, const double threshold);
 

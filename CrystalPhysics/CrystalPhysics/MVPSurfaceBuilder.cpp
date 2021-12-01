@@ -8,6 +8,21 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
+void MVPSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const double radius, const double threshold)
+{
+	CompactSpaceHash3d spaceHash;
+	spaceHash.setup(radius, positions.size());
+	ParticleSystem<float> ps;
+	for (auto p : positions) {
+		ps.add(p, 0.0);
+	}
+	auto particles = ps.getIParticles();
+	for (auto p : particles) {
+		spaceHash.add(p);
+	}
+	build(spaceHash, threshold);
+}
+
 void MVPSurfaceBuilder::build(const CompactSpaceHash3d& hash, const double threshold)
 {
 	auto cells = hash.getCells();

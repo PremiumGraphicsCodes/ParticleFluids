@@ -5,6 +5,7 @@
 #include "CrystalScene/Scene/TriangleMeshScene.h"
 #include "CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 #include "CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
+#include "CrystalPhysics/CrystalPhysics/MVPSurfaceBuilder.h"
 
 #include "../../CrystalPhysics/CrystalPhysics/SurfaceConstruction/SPHSurfaceBuilder.h"
 
@@ -74,6 +75,16 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 	const auto particleRadius = args.particleRadius.getValue();
 	const auto cellLength = args.cellLength.getValue();
 
+	MVPSurfaceBuilder builder;
+	builder.build(positions, particleRadius, args.threshold.getValue());
+	auto mesh = std::make_unique<TriangleMesh>();
+	const auto triangles = builder.getTriangles();
+	for (const auto& t : triangles) {
+		mesh->addFace(TriangleFace(t));
+	}
+	sp->setShape(std::move(mesh));
+
+	/*
 	SPHSurfaceBuilder builder;
 	std::unique_ptr<SparseVolumed> volume;
 	if (args.isIsotorpic.getValue()) {
@@ -93,6 +104,7 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 		mesh->addFace(TriangleFace(t));
 	}
 	sp->setShape(std::move(mesh));
+	*/
 	//sp->
 	//results.newId.setValue(fluidScene->getId());
 	return true;
