@@ -5,7 +5,6 @@ from ui.model import Model as model
 from physics.solver_scene import SolverScene
 from ui.bl_fluid import BLFluid
 from ui.bl_boundary import BLBoundary
-from ui.bl_triangle_mesh import BLTriangleMesh
 from CrystalPLI import Vector3df
 from scene.file_io import FileIO
 
@@ -18,7 +17,6 @@ class BLSolver :
         self.__external_force = Vector3df(0.0, 0.0, -9.8)
         self.__time_step = 0.01
         self.__export_dir_path = "tmp_txt"
-        self.__bl_mesh = None
 
     def build(self):
         if self.__solver != None :
@@ -45,12 +43,6 @@ class BLSolver :
             boundaries.append( bl_boundary.boundary )
         self.__solver.boundaries = boundaries
 
-        self.__bl_mesh = BLTriangleMesh(model.scene)
-        self.__bl_mesh.mesh.create_empty("")
-        self.__bl_mesh.convert_to_polygon_mesh("")               
-
-        self.__solver.surfaceMesh = self.__bl_mesh.mesh
-
         self.__solver.external_force = self.__external_force
         self.__solver.time_step = self.__time_step
         self.__solver.send()
@@ -66,8 +58,6 @@ class BLSolver :
         self.__solver.simulate()
         for bl_fluid in self.__bl_fluids :
             bl_fluid.update()
-
-        self.__bl_mesh.update()
         
         file_path = os.path.join(self.__export_dir_path, "test" + str(frame) + ".txt")
         self.__solver.export_txt(file_path)

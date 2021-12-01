@@ -20,14 +20,12 @@ using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
 MVPFluidSolver::MVPFluidSolver() :
-	externalForce(0.0, -9.8f, 0.0),
-	tmScene(nullptr)
+	externalForce(0.0, -9.8f, 0.0)
 {}
 
 MVPFluidSolver::MVPFluidSolver(const int id) :
 	IAnimator(id),
-	externalForce(0.0, -9.8f, 0.0),
-	tmScene(nullptr)
+	externalForce(0.0, -9.8f, 0.0)
 {}
 
 void MVPFluidSolver::setupBoundaries()
@@ -43,7 +41,6 @@ void MVPFluidSolver::clear()
 	maxTimeStep = 0.03f;
 	boundarySolver.clear();
 	currentTimeStep = 0;
-	tmScene = nullptr;
 }
 
 void MVPFluidSolver::addFluidScene(MVPFluidScene* scene)
@@ -179,18 +176,6 @@ void MVPFluidSolver::simulate()
 		densityError += particle->getDensity() / (double)fluidParticles.size();
 	}
 	std::cout << densityError << std::endl;
-
-	if (this->tmScene != nullptr) {
-		MVPSurfaceBuilder surfaceBuilder;
-		surfaceBuilder.build(spaceHash, 0.5);
-		auto mesh = std::make_unique<TriangleMesh>();
-		const auto triangles = surfaceBuilder.getTriangles();
-		for (const auto& t : triangles) {
-			mesh->addFace(TriangleFace(t));
-		}
-		this->tmScene->setShape(std::move(mesh));
-		//this->triangles = surfaceBuilder.getTriangles();
-	}
 
 	currentTimeStep++;
 }

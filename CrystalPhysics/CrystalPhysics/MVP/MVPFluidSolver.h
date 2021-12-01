@@ -13,9 +13,6 @@
 #include "MVPBoundarySolver.h"
 
 namespace Crystal {
-	namespace Scene {
-		class TriangleMeshScene;
-	}
 	namespace Physics {
 		class MVPVolumeParticle;
 		class MVPFluidScene;
@@ -39,8 +36,6 @@ public:
 	void addBoundaryScene(MVPFluidScene* scene);
 
 	void addEmitterScene(MVPFluidEmitterScene* scene);
-
-	void setTriangleMeshScene(Scene::TriangleMeshScene* scene) { this->tmScene = scene; }
 
 	void addBoundary(CSGBoundaryScene* scene) { this->csgBoundaries.push_back(scene); }
 
@@ -71,7 +66,6 @@ private:
 	float maxTimeStep = 0.03f;
 	int currentTimeStep = 0;
 	Math::Vector3df externalForce;
-	Scene::TriangleMeshScene* tmScene;
 };
 
 class MVPUpdater : public Scene::IAnimator

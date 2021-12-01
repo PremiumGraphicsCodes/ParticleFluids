@@ -12,7 +12,6 @@ class SolverScene :
         self.effect_length = 2.25
         self.fluids = []
         self.boundaries = []
-        self.surfaceMesh = None
         self.external_force = Vector3df(0.0, 0.0, -9.8)
 
     def create(self) :
@@ -32,7 +31,6 @@ class SolverScene :
             boundary_ids.append(b.id)
         set_arg_int_vector(PhysicsSolverUpdateCommand.FluidSceneIdsLabel, fluid_ids)
         set_arg_int_vector(PhysicsSolverUpdateCommand.CSGBoundarySceneIdsLabel, boundary_ids)
-        set_arg_int(PhysicsSolverUpdateCommand.SurfaceMeshSceneIdLabel, self.surfaceMesh.id)
         set_arg_vector3df(PhysicsSolverUpdateCommand.ExternalForceLabel, self.external_force)
         set_arg_float(PhysicsSolverUpdateCommand.TimeStepLabel, self.time_step)
         set_arg_float(PhysicsSolverUpdateCommand.EffectLengthLabel, self.effect_length)
