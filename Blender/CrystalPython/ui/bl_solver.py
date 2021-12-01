@@ -34,6 +34,9 @@ class BLSolver :
     def add_boundary(self, bl_boundary) :
         self.__bl_boundaries.append(bl_boundary)
 
+    def set_export_path(self, dir_path) :
+        self.__export_dir_path = dir_path
+
     def send(self) :
         fluids = []
         for bl_fluid in self.__bl_fluids :
@@ -60,12 +63,9 @@ class BLSolver :
         self.__solver.simulate()
         for bl_fluid in self.__bl_fluids :
             bl_fluid.update()
-
-#        model.scene.delete(self.__bl_mesh.mesh.id, False)
-
         
-        #file_path = os.path.join(self.__export_dir_path, "test" + str(frame) + ".txt")
-        #self.__solver.export_txt(file_path)
+        file_path = os.path.join(self.__export_dir_path, "test" + str(frame) + ".txt")
+        self.__solver.export_txt(file_path)
 
     def is_running(self):
         return self.__running

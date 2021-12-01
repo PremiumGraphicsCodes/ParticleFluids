@@ -33,7 +33,7 @@ class SolverUpdateOperator(bpy.types.Operator):
             bl_boundary.reset()
             solver.add_boundary(bl_boundary)
         solver.send()
-        solver.export_dir_path = context.scene.solver_property.export_dir_path
+        solver.set_export_path( context.scene.solver_property.export_dir_path )
         return {'FINISHED'}
 
 @persistent
