@@ -13,12 +13,12 @@ void MVPSurfaceBuilder::build(const CompactSpaceHash3d& hash, const double thres
 	auto cells = hash.getCells();
 
 	for (auto c : cells) {
-		const std::array<unsigned int, 3> ii = c->index;
+		const std::array<int, 3> ii = c->index;
 		const auto i = ii[0];
 		const auto j = ii[1];
 		const auto k = ii[2];
 
-		std::array< std::array<unsigned int, 3>, 8> indices;
+		std::array< std::array<int, 3>, 8> indices;
 		indices[0] = ii;
 		indices[1] = { i+1, j, k };
 		indices[2] = { i+1, j+1, k };
