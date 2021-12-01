@@ -17,7 +17,7 @@ class CompactSpaceCell
 public:
 	unsigned int cellId;
 	//Math::Vector3df center;
-	std::array<unsigned int, 3> index;
+	std::array<int, 3> index;
 	std::vector<Shape::IParticle*> particles;
 };
 
@@ -44,11 +44,11 @@ public:
 
 	std::vector<Shape::IParticle*> find(const Math::Vector3dd& positions) const;
 
-	std::vector<Shape::IParticle*> find(const std::array<unsigned int,3>& position) const;
+	std::vector<Shape::IParticle*> find(const std::array<int,3>& position) const;
 
-	std::array<unsigned int, 3> toIndex(const Math::Vector3df& pos) const;
+	std::array<int, 3> toIndex(const Math::Vector3df& pos) const;
 
-	Math::Vector3df toPosition(const std::array<unsigned int, 3>& index) const;
+	Math::Vector3df toPosition(const std::array<int, 3>& index) const;
 
 	void setCheckFunc(std::function<bool(Shape::IParticle*, Shape::IParticle*)> func) { this->checkFunc = func; }
 
@@ -63,11 +63,11 @@ private:
 
 	unsigned int toHash(const Math::Vector3df& pos) const;
 
-	unsigned int toHash(const std::array<unsigned int, 3>& index) const;
+	unsigned int toHash(const std::array<int, 3>& index) const;
 
-	unsigned int toZIndex(const std::array<unsigned int, 3>& index) const;
+	unsigned int toZIndex(const std::array<int, 3>& index) const;
 
-	std::array<unsigned int, 3> fromZIndex(unsigned int index) const;
+	//std::array<int, 3> fromZIndex(unsigned int index) const;
 
 	double divideLength;
 	

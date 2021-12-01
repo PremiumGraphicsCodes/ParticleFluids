@@ -45,8 +45,13 @@ TEST(CompactSpaceHash3dTest, TestToIndex)
 TEST(CompactSpaceHash3dTest, TestToPosition)
 {
 	CompactSpaceHash3d spaceHash(1.0, 10);
-	const auto p = spaceHash.toPosition({ 0,1,2 });
-	EXPECT_EQ(p.x, 0.0);
-	EXPECT_EQ(p.y, 1.0);
-	EXPECT_EQ(p.z, 2.0);
+	const auto p1 = spaceHash.toPosition({ 0,1,2 });
+	EXPECT_EQ(p1.x, 0.0);
+	EXPECT_EQ(p1.y, 1.0);
+	EXPECT_EQ(p1.z, 2.0);
+
+	const auto p2 = spaceHash.toPosition({ -1,-2,-3 });
+	EXPECT_EQ(p2.x, -1.0);
+	EXPECT_EQ(p2.y, -2.0);
+	EXPECT_EQ(p2.z, -3.0);
 }
