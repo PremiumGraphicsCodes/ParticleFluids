@@ -39,7 +39,6 @@ private:
 	Physics::MVPFluidScene* boundaryScene;
 	Physics::MVPFluidEmitterScene* emitterScene;
 	Physics::CSGBoundaryScene* csgScene;
-	//Scene::TriangleMeshScene* tmScene;
 	Physics::MVPFluidSolver solver;
 	Physics::MVPUpdater updator;
 	CSGBoundaryView boundaryView;

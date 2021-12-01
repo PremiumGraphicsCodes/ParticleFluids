@@ -8,6 +8,7 @@ from scene.particle_system_scene import ParticleSystemScene
 from scene.triangle_mesh_scene import TriangleMeshScene
 from scene.file_io import FileIO
 from scene.scene import *
+from bpy.app.handlers import persistent
 import os
 import glob
 
@@ -55,6 +56,7 @@ class MeshingRunner :
 
 runner = MeshingRunner()
 
+@persistent
 def my_handler(scene):
     if runner.is_running() :
         runner.step(scene.frame_current)

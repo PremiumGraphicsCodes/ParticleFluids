@@ -11,13 +11,16 @@ class FluidAddOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
+    selected_mesh = self.get_selected_mesh(context)
+    if selected_mesh == None :
+      return {'‘CANCELLED’'}
+
     fluid = BLFluid(model.scene)
     fluid.build()
     #fluid.convert_to_polygon_mesh("Fluid01")
     model.bl_fluids["Fluid01"] = fluid
     prop = context.scene.fluid_properties.add()
     prop.name_prop = "Fluid01"
-    selected_mesh = self.get_selected_mesh(context)
     fluid.convert_from_polygon_mesh(selected_mesh)
     fluid.convert_to_polygon_mesh("Fluid01")
     fluid.prop = prop
