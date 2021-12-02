@@ -57,19 +57,25 @@ class BLTriangleMesh :
     #self.mesh.create_polygon_mesh_scene("", positions, normals, [], 0)
     triangles = Triangle3ddVector()
     for pl in mesh.polygons:
-      print("polygon index:{0:2} ".format(pl.index), end="")
-      print("vertices:", end="")
-      for vi in pl.vertices:
-        print("{0:2}, ".format(vi), end="")
-      v0 = positions[pl.vertices[0]]
-      v1 = positions[pl.vertices[1]]
-      v2 = positions[pl.vertices[2]]
-      v3 = positions[pl.vertices[3]]
-      triangle1 = Triangle3dd(v0, v1, v2)
-      triangles.add(triangle1)
-      triangle2 = Triangle3dd(v0, v2, v3)
-      triangles.add(triangle2)
-      print("")
+#      print("polygon index:{0:2} ".format(pl.index), end="")
+#     print("vertices:", end="")
+#      for vi in pl.vertices:
+#        print("{0:2}, ".format(vi), end="")
+      if len(pl.vertices) == 3 :
+        v0 = positions[pl.vertices[0]]
+        v1 = positions[pl.vertices[1]]
+        v2 = positions[pl.vertices[2]]
+        triangle1 = Triangle3dd(v0, v1, v2)
+        triangles.add(triangle1)    
+      elif len(pl.vertices) == 4 :
+        v0 = positions[pl.vertices[0]]
+        v1 = positions[pl.vertices[1]]
+        v2 = positions[pl.vertices[2]]
+        v3 = positions[pl.vertices[3]]
+        triangle1 = Triangle3dd(v0, v1, v2)
+        triangles.add(triangle1)
+        triangle2 = Triangle3dd(v0, v2, v3)
+        triangles.add(triangle2)
     self.mesh.create(triangles, "")
 
   def update(self):
