@@ -8,6 +8,45 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
+void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const unsigned int res, const double threshold)
+{
+	if (volumeParticles.empty()) {
+		return;
+	}
+	const auto radius = volumeParticles.front()->getRadius();
+	const auto tableSize = volumeParticles.size() * volumeParticles.front()->getMassParticles().size();
+	CompactSpaceHash3d spaceHash;
+	spaceHash.setup(radius, tableSize);
+	for (auto vp : volumeParticles) {
+		const auto& mps = vp->getMassParticles();
+		for (auto mp : mps) {
+			spaceHash.add(mp);
+		}
+	}
+	const auto r = radius;
+	const auto l = r * 2.0f;
+	for (auto vp : volumeParticles) {
+		const auto min = vp->getPositionf() - Vector3df(r, r, r);
+		const auto max = vp->getPositionf() + Vector3df(r, r, r);
+		const Box3df box(min, max);
+		MCCell cell;
+		cell.vertices[0].position = min; // box.getPosition(0.25, 0.25, 0.25);
+		cell.vertices[1].position = min + Vector3df(l, 0, 0); //box.getPosition(0.75, 0.25, 0.25);
+		cell.vertices[2].position = min + Vector3df(l, l, 0); //box.getPosition(0.75, 0.75, 0.25);
+		cell.vertices[3].position = min + Vector3df(0, l, 0); //box.getPosition(0.25, 0.75, 0.25);
+		cell.vertices[4].position = min + Vector3df(0, 0, l);//box.getPosition(0.25, 0.25, 0.75);
+		cell.vertices[5].position = min + Vector3df(l, 0, l);//box.getPosition(0.75, 0.25, 0.75);
+		cell.vertices[6].position = min + Vector3df(l, l, l);//box.getPosition(0.75, 0.75, 0.75);
+		cell.vertices[7].position = min + Vector3df(0, l, l);//box.getPosition(0.25, 0.75, 0.75);
+
+		for (int i = 0; i < 8; ++i) {
+			const auto count = spaceHash.find(cell.vertices[i].position);
+			cell.vertices[i].value = static_cast<double>(count.size());
+		}
+		mc.march(cell, threshold);
+	}
+}
+
 void MVPSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const double radius, const double threshold)
 {
 	CompactSpaceHash3d spaceHash;

@@ -14,6 +14,8 @@
 #include "Crystal/Math/Ellipsoid3d.h"
 
 #include "CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
+
+#include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
 //#include "Crystal/Shape/PolygonMeshBuilder.h"
 
 #include <iostream>
@@ -40,16 +42,19 @@ MVPSurfaceBuilderView::MVPSurfaceBuilderView(const std::string& name, World* mod
 
 void MVPSurfaceBuilderView::onOk()
 {
-	std::vector<Vector3dd> positions;
-
-	positions.emplace_back(0, 0, 0);
-
-	CompactSpaceHash3d spaceHash;
-	spaceHash.setup(1.0, 100);
-	for (double x = 10; x < 20; x+=1.0) {
-		for (double y = 10; y < 20; y += 1.0) {
-			for (double z = 10; z < 20; z += 1.0) {
-				spaceHash.add(new Particle<double>(Vector3dd(x, y, z), 1.0));
+	MVPParticleBuilder pbuilder;
+	const auto radius = 0.20;
+	const auto length = radius * 1.00;
+	std::vector<MVPVolumeParticle*> mvps;
+	for (int i = 0; i < 20; ++i) {
+		for (int j = 0; j < 20; ++j) {
+			for (int k = 0; k < 20; ++k) {
+				//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
+				const auto p = Vector3dd(i * length, j * length, k * length);
+				auto mp = pbuilder.create(p, length, 3, 3, 3, 1.0f);
+				mvps.push_back(mp);
+				//				mp->distributePoints(3, 3, 3, 1.00f);
+//				fluidScene->addParticle(mp);
 			}
 		}
 	}
@@ -57,7 +62,7 @@ void MVPSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	MVPSurfaceBuilder builder;
-	builder.build(spaceHash, 0.5);
+	builder.build(mvps, 0.0, 0.5);
 
 	/*
 	MarchingCubesAlgo mcAlgo;
