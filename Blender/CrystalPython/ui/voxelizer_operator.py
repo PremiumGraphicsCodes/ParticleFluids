@@ -21,6 +21,8 @@ class VoxelizerOperator(bpy.types.Operator) :
 
   def execute(self, context) :
       selected_mesh = self.get_selected_mesh(context)
+      if selected_mesh == None :
+        return
       mesh = BLTriangleMesh(model.scene)
       mesh.convert_from_polygon_mesh(selected_mesh)
       voxel = BLVoxel(model.scene)
@@ -41,7 +43,8 @@ class VoxelizerOperator(bpy.types.Operator) :
   def get_selected_mesh(self, context) :
     for o in bpy.data.objects:
       if o.type == 'MESH' and o.select_get():
-        return o.to_mesh()
+        return o
+        #return o.to_mesh()
     return None
 
 def set_divide_length(self, value) :

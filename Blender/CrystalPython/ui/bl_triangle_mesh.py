@@ -11,15 +11,16 @@ class BLTriangleMesh :
   def __init__(self, scene):
     self.mesh = TriangleMeshScene(scene)
     self.bl_mesh = None
+    self.obj = None
 
   def build(self, name) :
     self.bl_mesh = bpy.data.meshes.new(name = name)
-    obj = bpy.data.objects.new(name, self.bl_mesh)
-    bpy.context.collection.objects.link(obj)
+    self.obj = bpy.data.objects.new(name, self.bl_mesh)
+    bpy.context.collection.objects.link(self.obj)
 
   def convert_to_polygon_mesh(self, name) :
     self.bl_mesh = bpy.data.meshes.new(name = name)
-    obj = bpy.data.objects.new(name, self.bl_mesh)
+    self.obj = bpy.data.objects.new(name, self.bl_mesh)
 
     coords = []
     faces = []
@@ -35,28 +36,36 @@ class BLTriangleMesh :
     self.bl_mesh.from_pydata(coords, [], faces)
     
     # Display name and update the mesh
-    obj.show_name = True
+    self.obj.show_name = True
     self.bl_mesh.update()
-    bpy.context.collection.objects.link(obj)
+    bpy.context.collection.objects.link(self.obj)
 
 #      triangle.
 
 #    self.mesh.
 #    mesh.from_pydata()
 
-  def convert_from_polygon_mesh(self, mesh) :
+  def convert_from_polygon_mesh(self, obj) :
+    self.bl_mesh = obj.to_mesh()
+    self.obj = obj
     #meshes = bpy.data.meshes
 
+    matrix_world = self.obj.matrix_world
+    print('---matrix_world---')
+    print(matrix_world)
+
     positions = []
-    print("num of vertices:", len(mesh.vertices))
-    for vt in mesh.vertices:
+    print("num of vertices:", len(self.bl_mesh.vertices))
+    for vt in self.bl_mesh.vertices:
       print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
-      p = Vector3dd(vt.co[0], vt.co[1], vt.co[2])
+      vvv = matrix_world @ vt.co
+#      vt.transform(matrix_world)
+      p = Vector3dd(vvv[0], vvv[1], vvv[2])
       positions.append(p)
 
     #self.mesh.create_polygon_mesh_scene("", positions, normals, [], 0)
     triangles = Triangle3ddVector()
-    for pl in mesh.polygons:
+    for pl in self.bl_mesh.polygons:
 #      print("polygon index:{0:2} ".format(pl.index), end="")
 #     print("vertices:", end="")
 #      for vi in pl.vertices:
