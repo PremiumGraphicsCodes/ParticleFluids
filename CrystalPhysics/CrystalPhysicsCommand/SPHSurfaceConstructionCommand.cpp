@@ -5,6 +5,7 @@
 #include "CrystalScene/Scene/TriangleMeshScene.h"
 #include "CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 #include "CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
+#include "CrystalPhysics/CrystalPhysics/MVP/MVPParticleBuilder.h"
 #include "CrystalPhysics/CrystalPhysics/MVPSurfaceBuilder.h"
 
 #include "../../CrystalPhysics/CrystalPhysics/SurfaceConstruction/SPHSurfaceBuilder.h"
@@ -75,14 +76,26 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 	const auto particleRadius = args.particleRadius.getValue();
 	const auto cellLength = args.cellLength.getValue();
 
+	MVPParticleBuilder pbuilder;
+	std::vector<MVPVolumeParticle*> mvps;
+	for (const auto& p : positions) {
+		auto mp = pbuilder.create(p, particleRadius, 3, 3, 3, 1.0f);
+		mvps.push_back(mp);
+	}
+
+
 	MVPSurfaceBuilder builder;
-	builder.build(positions, particleRadius, args.threshold.getValue());
+	builder.build(mvps, 0, args.threshold.getValue());
 	auto mesh = std::make_unique<TriangleMesh>();
 	const auto triangles = builder.getTriangles();
 	for (const auto& t : triangles) {
 		mesh->addFace(TriangleFace(t));
 	}
 	sp->setShape(std::move(mesh));
+
+	for (auto mp : mvps) {
+		delete mp;
+	}
 
 	/*
 	SPHSurfaceBuilder builder;

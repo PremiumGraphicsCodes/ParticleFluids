@@ -40,7 +40,7 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 		cell.vertices[7].position = min + Vector3df(0, l, l);//box.getPosition(0.25, 0.75, 0.75);
 
 		for (int i = 0; i < 8; ++i) {
-			const auto count = spaceHash.find(cell.vertices[i].position);
+			const auto count = spaceHash.findNeighbors(cell.vertices[i].position);
 			cell.vertices[i].value = static_cast<double>(count.size());
 		}
 		mc.march(cell, threshold);
