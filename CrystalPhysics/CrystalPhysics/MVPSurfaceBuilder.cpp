@@ -75,13 +75,16 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 		for (int i = 0; i < 8; ++i) {
 			const auto c = sp.findNode(indices[i]);
 			if (c == nullptr) {
-				continue;
+				cell.vertices[i].position = sp.getPositionAt(indices[i]);
+				cell.vertices[i].value = 0.0f;
 			}
-			//const auto px = indices[i][0] * radius;
-			//const auto py = indices[i][1] * radius;
-			//const auto pz = indices[i][2] * radius;
-			cell.vertices[i].position = Vector3dd( c->getPosition() );
-			cell.vertices[i].value = c->getValue();
+			else {
+				//const auto px = indices[i][0] * radius;
+				//const auto py = indices[i][1] * radius;
+				//const auto pz = indices[i][2] * radius;
+				cell.vertices[i].position = Vector3dd(c->getPosition());
+				cell.vertices[i].value = c->getValue();
+			}
 		}
 		mc.march(cell, threshold);
 	}
