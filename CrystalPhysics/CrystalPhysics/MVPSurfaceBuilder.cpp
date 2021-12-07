@@ -10,19 +10,6 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
-namespace {
-	struct ZIndexedCell {
-		unsigned int zIndex;
-		std::array<int, 3> index;
-		float value;
-
-		bool operator<(const ZIndexedCell& rhs) {
-			return zIndex < rhs.zIndex;
-		}
-	};
-
-}
-
 void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const int res, const double threshold)
 {
 	if (volumeParticles.empty()) {
@@ -47,12 +34,7 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 //#pragma omp parallel for
 	for (int i = 0; i < size; ++i) {
 		auto vp = volumeParticles[i];
-		//for (auto vp : volumeParticles) {
-		const auto min = vp->getPositionf() - Vector3df(l, l, l);
-		const auto max = vp->getPositionf() + Vector3df(l, l, l);
-		const Box3df box(min, max);
-		Util::Array3d<MCCell::Vertex> grid(res + 1, res + 1, res + 1);
-		const auto index = spaceHash.toIndex(vp->getPosition());
+		const auto index = sp.toIndex(vp->getPosition());
 		for (int i = -res; i <= res; ++i) {
 			for (int j = -res; j <= res; ++j) {
 				for (int k = -res; k <= res; ++k) {
@@ -95,6 +77,9 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 			if (c == nullptr) {
 				continue;
 			}
+			//const auto px = indices[i][0] * radius;
+			//const auto py = indices[i][1] * radius;
+			//const auto pz = indices[i][2] * radius;
 			cell.vertices[i].position = Vector3dd( c->getPosition() );
 			cell.vertices[i].value = c->getValue();
 		}

@@ -85,7 +85,7 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 
 
 	MVPSurfaceBuilder builder;
-	builder.build(mvps, 1, args.threshold.getValue());
+	builder.build(mvps, 2, args.threshold.getValue());
 	auto mesh = std::make_unique<TriangleMesh>();
 	const auto triangles = builder.getTriangles();
 	for (const auto& t : triangles) {
