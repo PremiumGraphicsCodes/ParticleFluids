@@ -27,9 +27,13 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 	const auto r = radius;
 	const auto l = r * 2.0f;
 
-	for (auto vp : volumeParticles) {
-		const auto min = vp->getPositionf() - Vector3df(r, r, r);
-		const auto max = vp->getPositionf() + Vector3df(r, r, r);
+	const auto size = volumeParticles.size();
+//#pragma omp parallel for
+	for(int i = 0; i < size; ++i) {
+		auto vp = volumeParticles[i];
+	//for (auto vp : volumeParticles) {
+		const auto min = vp->getPositionf() - Vector3df(l, l, l);
+		const auto max = vp->getPositionf() + Vector3df(l, l, l);
 		const Box3df box(min, max);
 		Util::Array3d<MCCell::Vertex> grid(res + 1, res + 1, res + 1);
 		for (int i = 0; i <= res; ++i) {
