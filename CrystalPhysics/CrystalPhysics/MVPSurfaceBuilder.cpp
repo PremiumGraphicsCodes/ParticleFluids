@@ -74,6 +74,53 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 			}
 		}
 	}
+	/*
+	const auto size = volumeParticles.size();
+	//#pragma omp parallel for
+	for (int i = 0; i < size; ++i) {
+		auto vp = volumeParticles[i];
+		//for (auto vp : volumeParticles) {
+		const auto min = vp->getPositionf() - Vector3df(l, l, l);
+		const auto max = vp->getPositionf() + Vector3df(l, l, l);
+		const Box3df box(min, max);
+
+		const auto p = vp->getPosition();
+		const auto ix = int(p.x / radius);
+		const auto iy = int(p.y / radius);
+		const auto iz = int(p.z / radius);
+		std::array<int, 3> index = { ix, iy, iz };
+
+		Util::Array3d<MCCell::Vertex> grid(res * 2 + 1, res * 2 + 1, res * 2 + 1);
+		for (int i = -(int)res; i <= res; ++i) {
+			for (int j = -(int)res; j <= res; ++j) {
+				for (int k = -(int)res; k <= res; ++k) {
+					const auto p = spaceHash.toPosition({ ix + i, iy + j, iz + k });
+					const auto c = spaceHash.find(p);
+					MCCell::Vertex v;
+					v.position = p;
+					v.value = static_cast<double>(c.size());
+					grid.set(i + res, j + res, k + res, v);
+				}
+			}
+		}
+		for (int i = 0; i < res * 2; ++i) {
+			for (int j = 0; j < res * 2; ++j) {
+				for (int k = 0; k < res * 2; ++k) {
+					MCCell cell;
+					cell.vertices[0] = grid.get(i, j, k);
+					cell.vertices[1] = grid.get(i + 1, j, k);
+					cell.vertices[2] = grid.get(i + 1, j + 1, k);
+					cell.vertices[3] = grid.get(i, j + 1, k);
+					cell.vertices[4] = grid.get(i, j, k + 1);
+					cell.vertices[5] = grid.get(i + 1, j, k + 1);
+					cell.vertices[6] = grid.get(i + 1, j + 1, k + 1);
+					cell.vertices[7] = grid.get(i, j + 1, k + 1);
+					mc.march(cell, threshold);
+				}
+			}
+		}
+	}
+	*/
 }
 
 void MVPSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const double radius, const double threshold)
