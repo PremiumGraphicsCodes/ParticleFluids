@@ -2,6 +2,7 @@
 
 #include "Crystal/Shape/ParticleSystem.h"
 #include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+#include "Crystal/Util/Array3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -25,31 +26,49 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 	}
 	const auto r = radius;
 	const auto l = r * 2.0f;
+
 	for (auto vp : volumeParticles) {
 		const auto min = vp->getPositionf() - Vector3df(r, r, r);
 		const auto max = vp->getPositionf() + Vector3df(r, r, r);
 		const Box3df box(min, max);
-		MCCell cell;
-		cell.vertices[0].position = min; // box.getPosition(0.25, 0.25, 0.25);
-		cell.vertices[1].position = min + Vector3df(l, 0, 0); //box.getPosition(0.75, 0.25, 0.25);
-		cell.vertices[2].position = min + Vector3df(l, l, 0); //box.getPosition(0.75, 0.75, 0.25);
-		cell.vertices[3].position = min + Vector3df(0, l, 0); //box.getPosition(0.25, 0.75, 0.25);
-		cell.vertices[4].position = min + Vector3df(0, 0, l);//box.getPosition(0.25, 0.25, 0.75);
-		cell.vertices[5].position = min + Vector3df(l, 0, l);//box.getPosition(0.75, 0.25, 0.75);
-		cell.vertices[6].position = min + Vector3df(l, l, l);//box.getPosition(0.75, 0.75, 0.75);
-		cell.vertices[7].position = min + Vector3df(0, l, l);//box.getPosition(0.25, 0.75, 0.75);
-
-		for (int i = 0; i < 8; ++i) {
-			const auto ix = int(cell.vertices[i].position.x / radius);
-			const auto iy = int(cell.vertices[i].position.y / radius);
-			const auto iz = int(cell.vertices[i].position.z / radius);
-			std::array<int, 3> index = { ix, iy, iz };
-			cell.vertices[i].position = spaceHash.toPosition(index);
-			const auto c = spaceHash.findNeighbors(cell.vertices[i].position);
-			const auto count = c;/// spaceHash.find(c);
-			cell.vertices[i].value = static_cast<double>(count.size());
+		Util::Array3d<MCCell::Vertex> grid(res + 1, res + 1, res + 1);
+		for (int i = 0; i <= res; ++i) {
+			const auto u = i / 1.0;
+			for (int j = 0; j <= res; ++j) {
+				const auto v = j / 1.0;
+				for (int k = 0; k <= res; ++k) {
+					const auto w = k / 1.0;
+					const auto p = box.getPosition(u, v, w);
+					/*
+					const auto ix = int(p.x / radius);
+					const auto iy = int(p.y / radius);
+					const auto iz = int(p.z / radius);
+					std::array<int, 3> index = { ix, iy, iz };
+					*/
+					const auto c = spaceHash.findNeighbors(p);
+					MCCell::Vertex v;
+					v.position = p;
+					v.value = static_cast<double>(c.size());
+					grid.set(i,j,k, v);
+				}
+			}
 		}
-		mc.march(cell, threshold);
+		for (int i = 0; i < res; ++i) {
+			for (int j = 0; j < res; ++j) {
+				for (int k = 0; k < res; ++k) {
+					MCCell cell;
+					cell.vertices[0] = grid.get(i, j, k);
+					cell.vertices[1] = grid.get(i+1, j, k);
+					cell.vertices[2] = grid.get(i+1, j+1, k);
+					cell.vertices[3] = grid.get(i,   j+1, k);
+					cell.vertices[4] = grid.get(i,   j, k+1);
+					cell.vertices[5] = grid.get(i+1, j, k+1);
+					cell.vertices[6] = grid.get(i+1, j+1, k+1);
+					cell.vertices[7] = grid.get(i,   j+1, k+1);
+					mc.march(cell, threshold);
+				}
+			}
+		}
 	}
 }
 

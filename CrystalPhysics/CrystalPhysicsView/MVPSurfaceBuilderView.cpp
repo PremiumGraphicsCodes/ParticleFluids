@@ -62,7 +62,7 @@ void MVPSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	MVPSurfaceBuilder builder;
-	builder.build(mvps, 0.0, thresholdView.getValue());
+	builder.build(mvps, 3, thresholdView.getValue());
 
 	/*
 	MarchingCubesAlgo mcAlgo;
