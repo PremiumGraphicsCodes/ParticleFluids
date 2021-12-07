@@ -3,13 +3,27 @@
 #include "Crystal/Shape/ParticleSystem.h"
 #include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 #include "Crystal/Util/Array3d.h"
+#include <algorithm>
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
-void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const unsigned int res, const double threshold)
+namespace {
+	struct ZIndexedCell {
+		unsigned int zIndex;
+		std::array<int, 3> index;
+		float value;
+
+		bool operator<(const ZIndexedCell& rhs) {
+			return zIndex < rhs.zIndex;
+		}
+	};
+
+}
+
+void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const int res, const double threshold)
 {
 	if (volumeParticles.empty()) {
 		return;
@@ -27,53 +41,66 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 	const auto r = radius;
 	const auto l = r * 2.0f;
 
+	SparseVolumef sp(Vector3df(radius), tableSize);
+
 	const auto size = volumeParticles.size();
 //#pragma omp parallel for
-	for(int i = 0; i < size; ++i) {
+	for (int i = 0; i < size; ++i) {
 		auto vp = volumeParticles[i];
-	//for (auto vp : volumeParticles) {
+		//for (auto vp : volumeParticles) {
 		const auto min = vp->getPositionf() - Vector3df(l, l, l);
 		const auto max = vp->getPositionf() + Vector3df(l, l, l);
 		const Box3df box(min, max);
 		Util::Array3d<MCCell::Vertex> grid(res + 1, res + 1, res + 1);
-		for (int i = 0; i <= res; ++i) {
-			const auto u = i / 1.0;
-			for (int j = 0; j <= res; ++j) {
-				const auto v = j / 1.0;
-				for (int k = 0; k <= res; ++k) {
-					const auto w = k / 1.0;
-					const auto p = box.getPosition(u, v, w);
-					/*
-					const auto ix = int(p.x / radius);
-					const auto iy = int(p.y / radius);
-					const auto iz = int(p.z / radius);
-					std::array<int, 3> index = { ix, iy, iz };
-					*/
-					const auto c = spaceHash.findNeighbors(p);
-					MCCell::Vertex v;
-					v.position = p;
-					v.value = static_cast<double>(c.size());
-					grid.set(i,j,k, v);
-				}
-			}
-		}
-		for (int i = 0; i < res; ++i) {
-			for (int j = 0; j < res; ++j) {
-				for (int k = 0; k < res; ++k) {
-					MCCell cell;
-					cell.vertices[0] = grid.get(i, j, k);
-					cell.vertices[1] = grid.get(i+1, j, k);
-					cell.vertices[2] = grid.get(i+1, j+1, k);
-					cell.vertices[3] = grid.get(i,   j+1, k);
-					cell.vertices[4] = grid.get(i,   j, k+1);
-					cell.vertices[5] = grid.get(i+1, j, k+1);
-					cell.vertices[6] = grid.get(i+1, j+1, k+1);
-					cell.vertices[7] = grid.get(i,   j+1, k+1);
-					mc.march(cell, threshold);
+		const auto index = spaceHash.toIndex(vp->getPosition());
+		for (int i = -res; i <= res; ++i) {
+			for (int j = -res; j <= res; ++j) {
+				for (int k = -res; k <= res; ++k) {
+					std::array<int, 3> ix = { index[0] + i, index[1] + j, index[2] + k };
+					if (!sp.exists(ix)) {
+						sp.createNode(ix);
+					}
 				}
 			}
 		}
 	}
+
+	const auto nodes= sp.getNodes();
+	for (auto node : nodes) {
+		const auto p = node->getPosition();
+		const auto count = float( spaceHash.findNeighbors(p).size() );
+		node->setValue(count);
+	}
+
+	for (auto node : nodes) {
+		const auto ii = node->getIndex();
+
+		const auto i = ii[0];
+		const auto j = ii[1];
+		const auto k = ii[2];
+
+		std::array<std::array<int, 3>,8> indices;
+		indices[0] = { i,j,k };
+		indices[1] = { i + 1,j,k };
+		indices[2] = { i + 1, j + 1,k };
+		indices[3] = { i,j + 1,k };
+		indices[4] = { i,j,k+1 };
+		indices[5] = { i + 1,j,k+1 };
+		indices[6] = { i + 1, j + 1,k+1 };
+		indices[7] = { i,j + 1,k+1 };
+
+		MCCell cell;
+		for (int i = 0; i < 8; ++i) {
+			const auto c = sp.findNode(indices[i]);
+			if (c == nullptr) {
+				continue;
+			}
+			cell.vertices[i].position = Vector3dd( c->getPosition() );
+			cell.vertices[i].value = c->getValue();
+		}
+		mc.march(cell, threshold);
+	}
+
 	/*
 	const auto size = volumeParticles.size();
 	//#pragma omp parallel for

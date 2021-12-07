@@ -48,6 +48,10 @@ public:
 
 	std::array<int, 3> toIndex(const Math::Vector3df& pos) const;
 
+	unsigned int toZIndex(const std::array<int, 3>& index) const;
+
+	std::array<unsigned int, 3> fromZIndex(unsigned int index) const;
+
 	Math::Vector3df toPosition(const std::array<int, 3>& index) const;
 
 	void setCheckFunc(std::function<bool(Shape::IParticle*, Shape::IParticle*)> func) { this->checkFunc = func; }
@@ -65,7 +69,6 @@ private:
 
 	unsigned int toHash(const std::array<int, 3>& index) const;
 
-	unsigned int toZIndex(const std::array<int, 3>& index) const;
 
 	//std::array<int, 3> fromZIndex(unsigned int index) const;
 

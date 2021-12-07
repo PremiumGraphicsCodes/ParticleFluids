@@ -15,7 +15,7 @@ namespace Crystal {
 class MVPSurfaceBuilder
 {
 public:
-	void build(const std::vector<MVPVolumeParticle*>& particles, const unsigned int res, const double threshold);
+	void build(const std::vector<MVPVolumeParticle*>& particles, const int res, const double threshold);
 
 	void build(const std::vector<Math::Vector3dd>& positions, const double radius, const double threshold);
 

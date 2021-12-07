@@ -205,12 +205,10 @@ unsigned int CompactSpaceHash3d::toZIndex(const std::array<int, 3>& index) const
 	return zCurve.encode({ (unsigned int)index[0], (unsigned int)index[1], (unsigned int)index[2] });
 }
 
-/*
 std::array<unsigned int, 3> CompactSpaceHash3d::fromZIndex(unsigned int index) const
 {
 	return zCurve.decode(index);
 }
-*/
 
 bool CompactSpaceHash3d::isEmpty(const Vector3df& pos) const
 {
