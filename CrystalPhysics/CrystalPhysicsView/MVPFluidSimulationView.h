@@ -36,7 +36,7 @@ private:
 	void addEmitter();
 
 	Physics::MVPFluidScene* fluidScene;
-	Physics::MVPFluidScene* boundaryScene;
+	Physics::MVPFluidScene* staticScene;
 	Physics::MVPFluidEmitterScene* emitterScene;
 	Physics::CSGBoundaryScene* csgScene;
 	Physics::MVPFluidSolver solver;
