@@ -46,5 +46,7 @@ class SolverScene :
     def export_txt(self, file_path) :
         fluid_ids = []
         for f in self.fluids :
+            if f.is_boundary :
+                continue
             fluid_ids.append(f.id)
         return FileIO.export_txt(self.scene,fluid_ids, file_path)
