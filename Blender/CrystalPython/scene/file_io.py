@@ -26,6 +26,7 @@ class FileIO :
 
     def export_stl(scene, triangle_mesh_id, file_path) :
         create_scene_command(STLFileExportCommand.CommandNameLabel)
+        set_arg_bool(STLFileExportCommand.IsBinaryLabel, True)
         set_arg_int_vector(STLFileExportCommand.IdsLabel, triangle_mesh_id)
         set_arg_string(STLFileExportCommand.FilePathLabel, file_path)
         is_ok = execute_command(scene.world)
