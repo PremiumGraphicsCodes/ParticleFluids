@@ -87,7 +87,7 @@ void MVPFluidSimulationView::addFluid()
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
 
 	this->staticScene->setPressureCoe(pressureCoeView.getValue());
-	this->staticScene->setViscosityCoe(viscosityCoeView.getValue());
+	this->staticScene->setViscosityCoe(viscosityCoeView.getValue()*5.0);
 
 	//this->boundaryScene->setPressureCoe(pressureCoeView.getValue());
 	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());

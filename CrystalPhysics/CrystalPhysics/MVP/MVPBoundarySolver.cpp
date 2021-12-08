@@ -26,10 +26,13 @@ void MVPBoundarySolver::setup(const float effectLength)
 	//spaceHash.setup(searchRadius, boundaryParticles.size());
 
 	for (auto bp : boundaryParticles) {
+		spaceHash->add(bp);
+		/*
 		const auto& microParticles = bp->getPoints();
 		for (auto mp : microParticles) {
 			spaceHash->add(mp);
 		}
+		*/
 	}
 }
 

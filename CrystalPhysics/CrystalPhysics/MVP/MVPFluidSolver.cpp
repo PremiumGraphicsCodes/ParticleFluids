@@ -94,11 +94,17 @@ void MVPFluidSolver::simulate()
 		spaceHash.add(particle);
 	}
 
+	//boundarySolver.setup(searchRadius);
+
 #pragma omp parallel for
 	for(int i = 0; i < fluidParticles.size(); ++i) {
 		const auto particle = fluidParticles[i];
 		const auto& neighbors = spaceHash.findNeighbors(particle);
 		for (auto n : neighbors) {
+			particle->addNeighbor(static_cast<MVPVolumeParticle*>(n));
+		}
+		const auto staticNeighbors = boundarySolver.findNeighbors(particle->getPositionf());
+		for (auto n : staticNeighbors) {
 			particle->addNeighbor(static_cast<MVPVolumeParticle*>(n));
 		}
 	}
