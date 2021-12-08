@@ -5,6 +5,13 @@ from physics.fluid_scene import FluidScene
 from ui.bl_fluid import BLFluid
 from ui.model import Model as model
 
+next_fluid_id = 0
+
+def create_next_name() :
+  global next_fluid_id
+  next_fluid_id += 1
+  return "Fluid" + str(next_fluid_id)
+
 class FluidAddOperator(bpy.types.Operator) :
   bl_idname = "pg.fluidaddoperator"
   bl_label = "FluidAdd"
@@ -18,11 +25,13 @@ class FluidAddOperator(bpy.types.Operator) :
     fluid = BLFluid(model.scene)
     fluid.build()
     #fluid.convert_to_polygon_mesh("Fluid01")
-    model.bl_fluids["Fluid01"] = fluid
+
+    name = create_next_name()
+    model.bl_fluids[name] = fluid
     prop = context.scene.fluid_properties.add()
-    prop.name_prop = "Fluid01"
+    prop.name_prop = name
     fluid.convert_from_polygon_mesh(selected_mesh)
-    fluid.convert_to_polygon_mesh("Fluid01")
+    fluid.convert_to_polygon_mesh(name)
     fluid.prop = prop
     return {'FINISHED'}
 
