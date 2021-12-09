@@ -1,4 +1,5 @@
 import bpy
+from bpy.app.handlers import persistent
 from ui.model import Model as model
 from ui.bl_triangle_mesh import BLTriangleMesh
 from CrystalPLI import Vector3dd, Vector3ddVector
@@ -17,19 +18,21 @@ class TriangleMeshSequenceImporter :
             self.tm.convert_to_polygon_mesh("")               
 
     def start(self):
+        if self.tm == None :
+            self.init()
+
         self.__running = True
 
     def stop(self):
         self.__running = False
 
-    def step(self):
-        time_step = bpy.context.scene.frame_current
+    def step(self, time_step):
         dir_path = bpy.context.scene.tm_seq_import_prop.path
 
         file_path = os.path.join(dir_path, "test" + str(time_step) + ".stl")
 
         self.tm.mesh.import_stl(file_path)
-        triangles = self.tm.mesh.get_triangles()
+#        triangles = self.tm.mesh.get_triangles()
         self.tm.update()
 
     def is_running(self):
@@ -37,41 +40,22 @@ class TriangleMeshSequenceImporter :
 
 animator = TriangleMeshSequenceImporter()
 
+@persistent
+def on_frame_changed_tm_mesh_seq_import(scene):
+    if animator.is_running() :
+        animator.step(scene.frame_current)
+
 class TriangleMeshSequenceImportOperator(bpy.types.Operator):
     bl_idname = "pg.trianglemeshsequenceimportoperator"
     bl_label = "ParticleSystem"
     bl_description = "Hello"
 
-    def modal(self, context, event):
-        active_obj = context.active_object
-
-        if animator.is_running() :
-            animator.step()
-
-        # エリアを再描画
-        if context.area:
-            context.area.tag_redraw()
-
-        return {'PASS_THROUGH'}
-
-    def invoke(self, context, event):
-        if context.area.type == 'VIEW_3D':
-            # [開始] ボタンが押された時の処理
-            if not animator.is_running():
-                # モーダルモードを開始
-                context.window_manager.modal_handler_add(self)
-                animator.init()
-                animator.start()
-
-                print("animation start")
-                return {'RUNNING_MODAL'}
-            # [終了] ボタンが押された時の処理
-            else:
-                animator.stop()
-                print("animation stop")
-                return {'FINISHED'}
-        else:
-            return {'CANCELLED'}
+    def execute(self, context) :
+        if not animator.is_running() :
+            animator.start()
+        else :
+            animator.stop()
+        return {'FINISHED'}
 
 class TriangleMeshSequenceImportProperties(bpy.types.PropertyGroup):
     path : bpy.props.StringProperty(
@@ -113,7 +97,7 @@ class TriangleMeshSequenceImportUI :
         for c in classes:
             bpy.utils.register_class(c)
         bpy.types.Scene.tm_seq_import_prop = bpy.props.PointerProperty(type=TriangleMeshSequenceImportProperties)
-
+        bpy.app.handlers.frame_change_pre.append(on_frame_changed_tm_mesh_seq_import)
 
     def unregister():
         for c in classes:
