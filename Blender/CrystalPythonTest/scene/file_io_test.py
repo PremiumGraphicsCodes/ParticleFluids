@@ -23,8 +23,8 @@ class FileIOTest(unittest.TestCase):
         scene = Scene(World())
         ps = ParticleSystemScene(scene)
         ps.create_empty("")
-        FileIO.import_pcd(scene, ps.id, "macro2.pcd")
-        ##FileIO.import_pcd(scene, ps.id, "PCDBinaryFile.pcd")
+        #FileIO.import_pcd(scene, ps.id, "macro2.pcd")
+        FileIO.import_pcd(scene, ps.id, "PCDBinaryFile.pcd")
 
     def __create_test_particle_system(self, scene) :
         positions = Vector3ddVector()

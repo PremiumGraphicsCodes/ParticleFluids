@@ -38,6 +38,9 @@
     <ClCompile Include="PCDBinaryFileWriterTest.cpp">
       <Filter>PCD</Filter>
     </ClCompile>
+    <ClCompile Include="PCDBinaryFileReaderTest.cpp">
+      <Filter>PCD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

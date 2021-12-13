@@ -8,7 +8,7 @@
 namespace Crystal {
 	namespace IO {
 
-class PCDFileReader
+class PCDBinaryFileReader
 {
 public:
 	bool read(std::istream& stream);
@@ -20,11 +20,12 @@ public:
 private:
 	PCDFile::Header readHeader(std::istream& stream);
 
-	PCDFile::Data readData(std::istream& stream);
-	
+	PCDFile::Data readData(std::istream& stream, const int howMany);
+
 private:
 	bool isOk;
 	PCDFile pcd;
 };
+
 	}
 }
