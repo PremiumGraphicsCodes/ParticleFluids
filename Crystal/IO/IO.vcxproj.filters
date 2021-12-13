@@ -63,6 +63,9 @@
     <ClInclude Include="TXTFileWriter.h">
       <Filter>TXT</Filter>
     </ClInclude>
+    <ClInclude Include="PCDBinaryFileWriter.h">
+      <Filter>PCD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLASCIIFileReader.cpp">
@@ -112,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="TXTFileWriter.cpp">
       <Filter>TXT</Filter>
+    </ClCompile>
+    <ClCompile Include="PCDBinaryFileWriter.cpp">
+      <Filter>PCD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
