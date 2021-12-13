@@ -29,10 +29,10 @@ class MeshingRunner :
     def step(self, frame) :
         prop = bpy.context.scene.meshing_property
 
-        file_path = os.path.join(prop.input_path_prop, "test" + str(frame) + ".txt")
+        file_path = os.path.join(prop.input_path_prop, "macro" + str(frame) + ".pcd")
         ps = ParticleSystemScene(model.scene)
         ps.create_empty("")
-        FileIO.import_txt(model.scene, ps.id, file_path)
+        FileIO.import_pcd(model.scene, ps.id, file_path)
         
         self.__bl_mesh.mesh = TriangleMeshScene(model.scene)
         self.__bl_mesh.mesh.create_empty("")

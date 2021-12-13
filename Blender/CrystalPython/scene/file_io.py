@@ -1,4 +1,4 @@
-from scene.scene_labels import TXTFileImportCommand, TXTFileExportCommand, STLFileImportCommand, STLFileExportCommand
+from scene.scene_labels import TXTFileImportCommand, TXTFileExportCommand, STLFileImportCommand, STLFileExportCommand, PCDFileImportCommand
 from scene.scene import *
 import CrystalPLI
 
@@ -14,6 +14,13 @@ class FileIO :
         create_scene_command(TXTFileExportCommand.CommandNameLabel)
         set_arg_int_vector(TXTFileExportCommand.IdsLabel, particle_system_ids)
         set_arg_string(TXTFileExportCommand.FilePathLabel, file_path)
+        is_ok = execute_command(scene.world)
+        return is_ok
+
+    def import_pcd(scene, particle_system_id, file_path) :
+        create_scene_command(PCDFileImportCommand.CommandNameLabel)
+        set_arg_int(PCDFileImportCommand.ParticleSystemIdLabel, particle_system_id)
+        set_arg_string(PCDFileImportCommand.FilePathLabel, file_path)
         is_ok = execute_command(scene.world)
         return is_ok
 

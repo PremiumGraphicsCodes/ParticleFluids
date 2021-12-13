@@ -14,14 +14,12 @@ public:
 		Args();
 
 		Arg< std::string > filePath;
+		Arg< int > particleSystemId;
 	};
 
 	struct Results : IResults
 	{
 		Results();
-
-		Result<int> newId;
-		//Result< int > newId;
 	};
 
 	PCDFileImportCommand() :

@@ -23,8 +23,8 @@ class ParticleSystemSequenceImporter :
         self.__running = False
 
     def step(self, frame):
-        file_path = os.path.join("tmp_txt", "test" + str(frame) + ".txt")
-        FileIO.import_txt(model.scene, self.ps.ps.id, file_path)
+        file_path = os.path.join("tmp_txt", "macro" + str(frame) + ".pcd")
+        FileIO.import_pcd(model.scene, self.ps.ps.id, file_path)
         self.ps.update()
 
     def is_running(self):

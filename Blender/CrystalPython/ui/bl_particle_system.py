@@ -29,6 +29,7 @@ class BLParticleSystem :
 
   def update(self):
       positions = self.ps.get_positions()
+      print(len(positions.values))
       bm = bmesh.new()   # create an empty BMesh
       for p in positions.values:
         bm.verts.new((p.x, p.y, p.z))  # add a new vert

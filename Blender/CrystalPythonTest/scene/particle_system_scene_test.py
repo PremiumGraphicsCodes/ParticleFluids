@@ -31,11 +31,11 @@ class ParticleSystemSceneTest(unittest.TestCase):
         particle_system = self.__create_test_particle_system(scene)
         #particle_system.export_pcd_file("test.pcd")
 
-    def test_import_pcd(self):
-        scene = Scene(World())
-        particle_system = ParticleSystemScene(scene)
-        particle_system.import_pcd_file("test.pcd")
-        self.assertEqual(1, particle_system.id)
+    #def test_import_pcd(self):
+    #    scene = Scene(World())
+    #    particle_system = ParticleSystemScene(scene)
+    #    particle_system.import_pcd_file("test.pcd")
+    #    self.assertEqual(1, particle_system.id)
 
     def test_get_positions(self):
         scene = Scene(World())

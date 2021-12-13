@@ -9,7 +9,7 @@ namespace PCDFileImportLabels
 {
 	PublicLabel CommandNameLabel = "PCDFileImport";
 	PublicLabel FilePathLabel = "FilePath";
-	PublicLabel NewIdLabel = "NewId";
+	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
 }
 
 using namespace Crystal::Shape;
@@ -18,15 +18,15 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 PCDFileImportCommand::Args::Args() :
-	filePath(PCDFileImportLabels::FilePathLabel, "")
+	filePath(PCDFileImportLabels::FilePathLabel, ""),
+	particleSystemId(PCDFileImportLabels::ParticleSystemIdLabel, -1)
 {
 	add(&filePath);
+	add(&particleSystemId);
 }
 
-PCDFileImportCommand::Results::Results() :
-	newId(PCDFileImportLabels::NewIdLabel, -1)
+PCDFileImportCommand::Results::Results()
 {
-	add(&newId);
 }
 
 std::string PCDFileImportCommand::getName()
@@ -36,18 +36,23 @@ std::string PCDFileImportCommand::getName()
 
 bool PCDFileImportCommand::execute(Crystal::Scene::World* scene)
 {
-	PCDFileReader reader;
-	if (reader.read(args.filePath.getValue())) {
-		const auto& positions = reader.getPCD().data.positions;
-		ParticleAttribute attr;
-		attr.color = glm::vec4(0, 0, 0, 0);
-		attr.size = 1.0;
-		auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
-		auto s = new ParticleSystemScene(scene->getNextSceneId(), "PCD", std::move(shape));
-		scene->getScenes()->addScene(s);
-		results.newId.setValue(s->getId());
-		//results.isOk.setValue( true );
-		return true;
+	const auto id = args.particleSystemId.getValue();
+	const auto filePath = args.filePath.getValue();
+	const auto psScene = scene->getScenes()->findSceneById<ParticleSystemScene*>(id);
+	if (psScene == nullptr) {
+		return false;
 	}
-	return false;
+
+	PCDFileReader reader;
+	const auto isOk = reader.read(args.filePath.getValue());
+	if (!isOk) {
+		return false;
+	}
+	const auto& positions = reader.getPCD().data.positions;
+	ParticleAttribute attr;
+	attr.color = glm::vec4(0, 0, 0, 0);
+	attr.size = 1.0;
+	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
+	psScene->resetShape(std::move(shape));
+	return true;
 }

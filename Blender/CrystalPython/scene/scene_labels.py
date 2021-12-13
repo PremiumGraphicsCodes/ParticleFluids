@@ -147,7 +147,7 @@ class PCDFileExportCommand:
 class PCDFileImportCommand:
    CommandNameLabel="PCDFileImport"
    FilePathLabel="FilePath"
-   NewIdLabel="NewId"
+   ParticleSystemIdLabel="ParticleSystemId"
 class PickCommand:
    PickCommandLabel="Pick"
    PositionLabel="Position"

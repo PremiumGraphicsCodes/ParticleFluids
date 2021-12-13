@@ -23,7 +23,7 @@ private:
 	PCDFile::Data readData(std::istream& stream);
 
 	PCDFile::Data readBinaryData(std::istream& stream, const int howMany);
-
+	
 private:
 	bool isOk;
 	PCDFile pcd;

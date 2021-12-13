@@ -31,7 +31,7 @@ namespace {
 
 bool PCDFileReader::read(const std::filesystem::path& filename)
 {
-	std::ifstream stream(filename);
+	std::ifstream stream(filename, std::ios::in | std::ios::binary);
 	if (!stream.is_open()) {
 		return false;
 	}
@@ -104,10 +104,16 @@ PCDFile::Data PCDFileReader::readBinaryData(std::istream& stream, const int howM
 	PCDFile::Data data;
 
 	for (int i = 0; i < howMany; ++i) {
-		const auto x = ::read_binary_as<float>(stream);
-		const auto y = ::read_binary_as<float>(stream);
-		const auto z = ::read_binary_as<float>(stream);
-		const auto c = ::read_binary_as<float>(stream);
+//		const auto x = ::read_binary_as<float>(stream);
+//		const auto y = ::read_binary_as<float>(stream);
+//		const auto z = ::read_binary_as<float>(stream);
+//		const auto c = ::read_binary_as<float>(stream);
+		float x,y,z,c;
+		stream.read((char*)&x, sizeof(float));
+		stream.read((char*)&y, sizeof(float));
+		stream.read((char*)&z, sizeof(float));
+		stream.read((char*)&c, sizeof(float));
+
 		data.positions.push_back(Vector3dd(x, y, z));
 	}
 
