@@ -75,5 +75,5 @@ TEST(STLASCIIFileReaderTest, TestReadNan)
 
 	STLASCIIFileReader reader;
 	const auto isOk = reader.read(stream);
-	EXPECT_TRUE(isOk);
+	EXPECT_FALSE(isOk);
 }
