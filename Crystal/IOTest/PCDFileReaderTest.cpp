@@ -4,7 +4,7 @@
 using namespace Crystal::IO;
 
 // from http://pointclouds.org/documentation/tutorials/pcd_file_format.php
-TEST(PCDFileReaderTest, TestRead)
+TEST(PCDFileReaderTest, TestReadASCII)
 {
 	std::stringstream stream;
 	stream
@@ -29,4 +29,13 @@ TEST(PCDFileReaderTest, TestRead)
 
 	const auto& pcd = reader.getPCD();
 	EXPECT_EQ(5, pcd.data.positions.size()) << std::endl;
+}
+
+TEST(PCDFileReaderTest, TestReadBinary)
+{
+	PCDFileReader reader;
+	EXPECT_TRUE(reader.read("./PCDBinaryFileWriterTest.pcd"));
+
+	const auto& pcd = reader.getPCD();
+	EXPECT_EQ(3, pcd.data.positions.size()) << std::endl;
 }

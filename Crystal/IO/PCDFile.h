@@ -11,6 +11,7 @@ struct PCDFile
 	{
 		int width = 0;
 		int points = 0;
+		bool isBinary = false;
 	};
 	struct Data
 	{
