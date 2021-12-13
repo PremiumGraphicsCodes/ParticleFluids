@@ -50,3 +50,15 @@ class SolverScene :
                 continue
             fluid_ids.append(f.id)
         return FileIO.export_txt(self.scene,fluid_ids, file_path)
+
+    def export_pcd(self, file_path) :
+        fluid_ids = []
+        for f in self.fluids :
+            if f.is_boundary :
+                continue
+            fluid_ids.append(f.id)
+        create_physics_command(PhysicsSolverExportCommand.CommandNameLabel)
+        set_arg_int_vector(PhysicsSolverExportCommand.FluidIdsLabel, fluid_ids)
+        set_arg_string(PhysicsSolverExportCommand.FilePathLabel, file_path)
+        is_ok = execute_command(self.scene.world)
+        return is_ok

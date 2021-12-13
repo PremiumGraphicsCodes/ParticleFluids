@@ -34,3 +34,5 @@ class SolverSceneTest(unittest.TestCase):
         solver.external_force = Vector3df(0.0, 0.0, -9.8)
         solver.send()
         solver.simulate()
+
+        #solver.export_pcd("export_pcd.pcd")

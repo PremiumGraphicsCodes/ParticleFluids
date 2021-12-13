@@ -53,6 +53,10 @@ class MeshBoundarySceneUpdateCommand:
 class PhysicsSolverCreateCommand:
    CommandNameLabel="PhysicsSolverCreateCommand"
    NewIdLabel="NewId"
+class PhysicsSolverExportCommand:
+   CommandNameLabel="PhysicsSolverExportCommand"
+   FluidIdsLabel="FluidIds"
+   FilePathLabel="FilePath"
 class PhysicsSolverUpdateCommand:
    CommandNameLabel="PhysicsSolverUpdateCommand"
    IdLabel="Id"
