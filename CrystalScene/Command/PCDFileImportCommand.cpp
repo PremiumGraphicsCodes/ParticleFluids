@@ -1,6 +1,6 @@
 #include "PCDFileImportCommand.h"
 
-#include "../../Crystal/IO/PCDFileReader.h"
+#include "../../Crystal/IO/PCDBinaryFileReader.h"
 #include "../Scene/ParticleSystemScene.h"
 
 #include "PublicLabel.h"
@@ -43,7 +43,7 @@ bool PCDFileImportCommand::execute(Crystal::Scene::World* scene)
 		return false;
 	}
 
-	PCDFileReader reader;
+	PCDBinaryFileReader reader;
 	const auto isOk = reader.read(args.filePath.getValue());
 	if (!isOk) {
 		return false;
