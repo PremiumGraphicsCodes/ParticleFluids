@@ -35,6 +35,9 @@
     <ClCompile Include="TXTFileReaderTest.cpp">
       <Filter>TXT</Filter>
     </ClCompile>
+    <ClCompile Include="PCDBinaryFileWriterTest.cpp">
+      <Filter>PCD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

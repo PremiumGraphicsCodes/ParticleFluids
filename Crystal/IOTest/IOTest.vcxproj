@@ -49,6 +49,7 @@
     <ClCompile Include="MTLFileWriterTest.cpp" />
     <ClCompile Include="OBJFileReaderTest.cpp" />
     <ClCompile Include="OBJFileWriterTest.cpp" />
+    <ClCompile Include="PCDBinaryFileWriterTest.cpp" />
     <ClCompile Include="PCDFileReaderTest.cpp" />
     <ClCompile Include="PCDFileWriterTest.cpp" />
     <ClCompile Include="STLASCIIFileReaderTest.cpp" />

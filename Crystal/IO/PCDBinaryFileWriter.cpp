@@ -6,8 +6,12 @@ using namespace Crystal::IO;
 
 bool PCDBinaryFileWriter::write(const std::filesystem::path& filename, const PCDFile& pcd)
 {
-	std::fstream ifs(filename, std::ios::binary);
-	return write(ifs, pcd);
+	std::fstream stream;
+	stream.open(filename, std::ios_base::out | std::ios_base::trunc | std::ios_base::binary);
+	if (!stream.is_open()) {
+		return false;
+	}
+	return write(stream, pcd);
 }
 
 bool PCDBinaryFileWriter::write(std::ostream& stream, const PCDFile& pcd)
@@ -55,9 +59,12 @@ bool PCDBinaryFileWriter::write(std::ostream& stream, const PCDFile::Data& data)
 	const auto& positions = data.positions;
 	for (const auto& p : positions) {
 		const float color = 0.0f;
-		stream.write((char*)&p.x, sizeof(float));
-		stream.write((char*)&p.y, sizeof(float));
-		stream.write((char*)&p.z, sizeof(float));
+		const float px = static_cast<float>(p.x);
+		const float py = static_cast<float>(p.y);
+		const float pz = static_cast<float>(p.z);
+		stream.write((char*)&px, sizeof(px));
+		stream.write((char*)&py, sizeof(py));
+		stream.write((char*)&pz, sizeof(pz));
 		stream.write((char*)&color, sizeof(float));
 	}
 	return true;
