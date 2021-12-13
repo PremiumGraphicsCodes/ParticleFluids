@@ -12,6 +12,7 @@
 #include "MeshBoundarySceneUpdateCommand.h"
 #include "PhysicsSolverCreateCommand.h"
 #include "PhysicsSolverUpdateCommand.h"
+#include "PhysicsSolverExportCommand.h"
 #include "SPHSurfaceConstructionCommand.h"
 
 using namespace Crystal::Command;
@@ -54,6 +55,9 @@ std::unique_ptr<ICommand> PhysicsCommandFactory::create(const std::string& name)
 	}
 	else if (name == PhysicsSolverUpdateCommand::getName()) {
 		return std::make_unique<PhysicsSolverUpdateCommand>();
+	}
+	else if (name == PhysicsSolverExportCommand::getName()) {
+		return std::make_unique<PhysicsSolverExportCommand>();
 	}
 	else if (name == SPHSurfaceConstructionCommand::getName()) {
 		return std::make_unique<SPHSurfaceConstructionCommand>();

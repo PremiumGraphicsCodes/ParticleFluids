@@ -39,6 +39,9 @@
     <ClCompile Include="EmitterSceneUpdateCommand.cpp">
       <Filter>EmitterScene</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsSolverExportCommand.cpp">
+      <Filter>FluidSolver</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -78,6 +81,9 @@
     </ClInclude>
     <ClInclude Include="EmitterSceneUpdateCommand.h">
       <Filter>EmitterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsSolverExportCommand.h">
+      <Filter>FluidSolver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
