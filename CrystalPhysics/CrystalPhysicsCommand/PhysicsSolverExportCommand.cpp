@@ -9,6 +9,7 @@ namespace {
 	PublicLabel CommandNameLabel = "PhysicsSolverExportCommand";
 	PublicLabel FluidIdsLabel = "FluidIds";
 	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel DoExportMicroLabel = "DoExportMicro";
 }
 
 using namespace Crystal::Math;
@@ -23,10 +24,12 @@ std::string PhysicsSolverExportCommand::getName()
 
 PhysicsSolverExportCommand::Args::Args() :
 	fluidIds(::FluidIdsLabel, {}),
-	filePath(::FilePathLabel, "")
+	filePath(::FilePathLabel, ""),
+	doExportMicro(::DoExportMicroLabel, false)
 {
 	add(&fluidIds);
 	add(&filePath);
+	add(&doExportMicro);
 }
 
 PhysicsSolverExportCommand::Results::Results()
@@ -46,8 +49,18 @@ bool PhysicsSolverExportCommand::execute(World* world)
 			return false;
 		}
 		const auto macroParticles = fluid->getParticles();
-		for (const auto mp : macroParticles) {
-			pcd.data.positions.push_back( mp->getPosition() );
+		if (args.doExportMicro.getValue()) {
+			for (const auto mp : macroParticles) {
+				const auto micros = mp->getMassParticles();
+				for (const auto micro : micros) {
+					pcd.data.positions.push_back(micro->getPosition());
+				}
+			}
+		}
+		else {
+			for (const auto mp : macroParticles) {
+				pcd.data.positions.push_back(mp->getPosition());
+			}
 		}
 	}
 	pcd.header.width = pcd.data.positions.size();

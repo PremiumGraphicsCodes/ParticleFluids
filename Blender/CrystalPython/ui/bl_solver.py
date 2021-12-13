@@ -64,8 +64,12 @@ class BLSolver :
         for bl_fluid in self.__bl_fluids :
             bl_fluid.update()
         
-        file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".pcd")
-        self.__solver.export_pcd(file_path)
+        macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".pcd")
+        self.__solver.export_pcd(macro_file_path, False)
+
+        micro_file_path = os.path.join(self.__export_dir_path, "micro" + str(frame) + ".pcd")
+        self.__solver.export_pcd(micro_file_path, True)
+
 
     def is_running(self):
         return self.__running

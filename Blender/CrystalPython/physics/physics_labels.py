@@ -57,6 +57,7 @@ class PhysicsSolverExportCommand:
    CommandNameLabel="PhysicsSolverExportCommand"
    FluidIdsLabel="FluidIds"
    FilePathLabel="FilePath"
+   DoExportMicroLabel="DoExportMicro"
 class PhysicsSolverUpdateCommand:
    CommandNameLabel="PhysicsSolverUpdateCommand"
    IdLabel="Id"

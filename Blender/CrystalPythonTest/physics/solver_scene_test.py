@@ -35,4 +35,5 @@ class SolverSceneTest(unittest.TestCase):
         solver.send()
         solver.simulate()
 
-        #solver.export_pcd("export_pcd.pcd")
+        solver.export_pcd("export_macro.pcd", False)
+        solver.export_pcd("export_micro.pcd", True)
