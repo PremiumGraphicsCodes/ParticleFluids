@@ -29,26 +29,30 @@ class MeshingRunner :
     def step(self, frame) :
         prop = bpy.context.scene.meshing_property
 
-        file_path = os.path.join(prop.input_path_prop, "macro" + str(frame) + ".pcd")
-        ps = ParticleSystemScene(model.scene)
-        ps.create_empty("")
-        FileIO.import_pcd(model.scene, ps.id, file_path)
+        volume_file_path = os.path.join(prop.input_path_prop, "macro" + str(frame) + ".pcd")
+        volume_ps = ParticleSystemScene(model.scene)
+        volume_ps.create_empty("")
+        FileIO.import_pcd(model.scene, volume_ps.id, volume_file_path)
+
+        mass_file_path = os.path.join(prop.input_path_prop, "micro" + str(frame) + ".pcd")
+        mass_ps = ParticleSystemScene(model.scene)
+        mass_ps.create_empty("")
+        FileIO.import_pcd(model.scene, mass_ps.id, mass_file_path)
         
         self.__bl_mesh.mesh = TriangleMeshScene(model.scene)
         self.__bl_mesh.mesh.create_empty("")
             
         builder = SurfaceBuilder(model.scene)
-        builder.build_isotorpic(ps.id, self.__bl_mesh.mesh.id, prop.particle_radius_prop, prop.cell_length_prop, prop.threshold_prop)
+        builder.build_mvp_surface(volume_ps.id, mass_ps.id, self.__bl_mesh.mesh.id, prop.particle_radius_prop, prop.threshold_prop)
         self.__bl_mesh.update()
 
         if prop.do_export_stl_prop :
-            basename_without_ext = os.path.splitext(os.path.basename(file_path))[0]
-            export_file_path = os.path.join(prop.output_path_prop, basename_without_ext + ".stl")
+#            basename_without_ext = os.path.splitext(os.path.basename(volume_file_path))[0]
+            export_file_path = os.path.join(prop.output_path_prop, "mesh" + str(frame) + ".stl") #basename_without_ext + ".stl")
             self.__bl_mesh.mesh.export_stl(export_file_path)
 
-#            FileIO.ex
-            #mesh.convert_to_polygon_mesh("")
-        model.scene.delete(ps.id, False)
+        model.scene.delete(mass_ps.id, False)
+        model.scene.delete(volume_ps.id, False)
         model.scene.delete(self.__bl_mesh.mesh.id, False)
 
     def is_running(self) :
@@ -133,7 +137,7 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         self.layout.prop(prop, "do_export_stl_prop", text="Export")
         self.layout.prop(prop, "output_path_prop", text="OutputPath")
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
-        self.layout.prop(prop, "cell_length_prop", text="CellLength")
+        #self.layout.prop(prop, "cell_length_prop", text="CellLength")
         self.layout.prop(prop, "threshold_prop", text="Threshold")
         if not runner.is_running() :
             self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
