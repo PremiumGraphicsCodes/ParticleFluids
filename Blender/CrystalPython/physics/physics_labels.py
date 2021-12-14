@@ -50,6 +50,13 @@ class MeshBoundarySceneUpdateCommand:
    IdLabel="Id"
    MeshIdLabel="MeshId"
    NameLabel="Name"
+class MVPSurfaceConstructionCommand:
+   CommandNameLabel="MPVSurfaceConstructionCommand"
+   VolumeParticleSystemIdLabel="VolumeParticleSystemId"
+   MassParticleSystemIdLabel="MassParticleSystemId"
+   TriangleMeshIdLabel="TriangleMeshId"
+   ParticleRadiusLabel="ParticleRadius"
+   ThresholdLabel="Threshold"
 class PhysicsSolverCreateCommand:
    CommandNameLabel="PhysicsSolverCreateCommand"
    NewIdLabel="NewId"

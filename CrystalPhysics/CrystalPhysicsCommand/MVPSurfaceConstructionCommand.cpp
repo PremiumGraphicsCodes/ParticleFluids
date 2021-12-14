@@ -72,4 +72,12 @@ bool MVPSurfaceConstructionCommand::execute(World* world)
 	builder.buildMasses(massParticles->getPositions(), args.particleRadius.getValue());
 	builder.buildCells(args.threshold.getValue());
 
+	auto mesh = std::make_unique<TriangleMesh>();
+	const auto triangles = builder.getTriangles();
+	for (const auto& t : triangles) {
+		mesh->addFace(TriangleFace(t));
+	}
+	tm->setShape(std::move(mesh));
+
+	return true;
 }

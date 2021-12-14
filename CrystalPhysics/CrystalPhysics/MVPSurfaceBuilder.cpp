@@ -59,6 +59,10 @@ void MVPSurfaceBuilder::buildVolumes(const std::vector<Vector3dd>& positions, co
 
 void MVPSurfaceBuilder::buildMasses(const std::vector<Vector3dd>& massParticles, const double radius)
 {
+	if (massParticles.empty()) {
+		return;
+	}
+
 	ParticleSystem<float> ps(massParticles, 0.0f);
 	auto pts = ps.getIParticles();
 

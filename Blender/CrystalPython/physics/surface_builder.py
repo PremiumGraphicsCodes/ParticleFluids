@@ -27,3 +27,13 @@ class SurfaceBuilder :
         set_arg_bool(SPHSurfaceConstructionCommand.IsIsotropicLabel, False)
         is_ok = execute_command(self.scene.world)
         return is_ok
+
+    def build_mvp_surface(self, volume_particle_system_id, mass_particle_system_id, triangle_mesh_id, particle_radius, threshold) :
+        create_physics_command(MVPSurfaceConstructionCommand.CommandNameLabel)
+        set_arg_int(MVPSurfaceConstructionCommand.VolumeParticleSystemIdLabel, volume_particle_system_id)
+        set_arg_int(MVPSurfaceConstructionCommand.MassParticleSystemIdLabel, mass_particle_system_id)
+        set_arg_int(MVPSurfaceConstructionCommand.TriangleMeshIdLabel, triangle_mesh_id)
+        set_arg_float(MVPSurfaceConstructionCommand.ParticleRadiusLabel, particle_radius)
+        set_arg_float(MVPSurfaceConstructionCommand.ThresholdLabel, threshold)
+        is_ok = execute_command(self.scene.world)
+        return is_ok
