@@ -22,6 +22,7 @@ class BLFluid :
         self.fluid.source_particle_system_id = self.source_ps.id
         self.fluid.pressure = 0.25
         self.fluid.viscosity = 10.0
+        self.fluid.vorticity = 0.05
         self.fluid.send()
 
     def convert_from_polygon_mesh(self, mesh) :
@@ -71,6 +72,7 @@ class BLFluid :
         self.fluid.particle_radius = self.prop.particle_radius_prop
         self.fluid.stiffness = self.prop.stiffness_prop
         self.fluid.viscosity = self.prop.viscosity_prop
+        self.fluid.vorticity = self.prop.vorticity_prop
         self.fluid.is_boundary = self.prop.is_static_prop
         self.fluid.send()
         self.update()

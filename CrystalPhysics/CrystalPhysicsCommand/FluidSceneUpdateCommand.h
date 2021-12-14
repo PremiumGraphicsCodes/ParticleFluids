@@ -16,6 +16,7 @@ public:
 		Command::Arg<float> density;
 		Command::Arg<float> stiffness;
 		Command::Arg<float> viscosity;
+		Command::Arg<float> vorticity;
 		Command::Arg<bool> isBoundary;
 		Command::Arg<std::string> name;
 

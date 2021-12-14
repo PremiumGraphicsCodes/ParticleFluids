@@ -12,6 +12,7 @@ class FluidScene :
         self.density = 1.0
         self.stiffness = 0.25
         self.viscosity = 10.0
+        self.vorticity = 0.05
         self.is_boundary = False
         self.name = ""
 
@@ -28,6 +29,7 @@ class FluidScene :
         set_arg_float(FluidSceneUpdateCommand.DensityLabel, self.density)
         set_arg_float(FluidSceneUpdateCommand.StiffnessLabel, self.stiffness)
         set_arg_float(FluidSceneUpdateCommand.ViscosityLabel, self.viscosity)
+        set_arg_float(FluidSceneUpdateCommand.VorticityLabel, self.vorticity)
         set_arg_bool(FluidSceneUpdateCommand.IsBoundary, self.is_boundary)
         set_arg_string(FluidSceneUpdateCommand.NameLabel, self.name)
         is_ok = execute_command(self.scene.world)

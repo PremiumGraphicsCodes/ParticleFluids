@@ -36,6 +36,7 @@ class FluidSceneUpdateCommand:
    ParticleRadiusLabel="ParticleRadius"
    StiffnessLabel="Stiffness"
    ViscosityLabel="Viscosity"
+   VorticityLabel="Vorticity"
    DensityLabel="Density"
    IsBoundary="IsBoundary"
    NameLabel="Name"
