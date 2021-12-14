@@ -6,6 +6,8 @@
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
+#include "CrystalPhysics/CrystalPhysics/MVPSurfaceBuilder.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 //using namespace Crystal::Space;
@@ -52,12 +54,22 @@ MVPSurfaceConstructionCommand::MVPSurfaceConstructionCommand() :
 
 bool MVPSurfaceConstructionCommand::execute(World* world)
 {
-	auto ps = world->getScenes()->findSceneById<IParticleSystemScene*>(args.volumeParticleSystemId.getValue());
-	if (ps == nullptr) {
+	auto volumeParticles = world->getScenes()->findSceneById<IParticleSystemScene*>(args.volumeParticleSystemId.getValue());
+	if (volumeParticles == nullptr) {
+		return false;
+	}
+	auto massParticles = world->getScenes()->findSceneById<IParticleSystemScene*>(args.massParticleSystemId.getValue());
+	if (massParticles == nullptr) {
 		return false;
 	}
 	auto tm = world->getScenes()->findSceneById<TriangleMeshScene*>(args.triangleMeshId.getValue());
 	if (tm == nullptr) {
 		return false;
 	}
+
+	MVPSurfaceBuilder builder;
+	builder.buildVolumes(volumeParticles->getPositions(), args.particleRadius.getValue(), 2);
+	builder.buildMasses(massParticles->getPositions(), args.particleRadius.getValue());
+	builder.buildCells(args.threshold.getValue());
+
 }

@@ -15,13 +15,13 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 	if (volumeParticles.empty()) {
 		return;
 	}
-	std::vector<IParticle*> vps;
-	std::vector<IParticle*> massParticles;
+	std::vector<Vector3dd> vps;
+	std::vector<Vector3dd> massParticles;
 	for (auto vp : volumeParticles) {
-		vps.push_back(vp);
+		vps.push_back(vp->getPosition());
 		const auto mps = vp->getMassParticles();
 		for (auto mp : mps) {
-			massParticles.push_back(mp);
+			massParticles.push_back(mp->getPosition());
 		}
 	}
 	const auto radius = volumeParticles.front()->getRadius();
@@ -30,7 +30,7 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 	buildCells(threshold);
 }
 
-void MVPSurfaceBuilder::buildVolumes(const std::vector<IParticle*>& positions, const double radius, const int res)
+void MVPSurfaceBuilder::buildVolumes(const std::vector<Vector3dd>& positions, const double radius, const int res)
 {
 	if (positions.empty()) {
 		return;
@@ -43,7 +43,7 @@ void MVPSurfaceBuilder::buildVolumes(const std::vector<IParticle*>& positions, c
 
 	for (int i = 0; i < positions.size(); ++i) {
 		auto vp = positions[i];
-		const auto index = this->sparseVolume->toIndex(vp->getPosition());
+		const auto index = this->sparseVolume->toIndex(vp);
 		for (int i = -res; i <= res; ++i) {
 			for (int j = -res; j <= res; ++j) {
 				for (int k = -res; k <= res; ++k) {
@@ -57,13 +57,16 @@ void MVPSurfaceBuilder::buildVolumes(const std::vector<IParticle*>& positions, c
 	}
 }
 
-void MVPSurfaceBuilder::buildMasses(const std::vector<IParticle*>& massParticles, const double radius)
+void MVPSurfaceBuilder::buildMasses(const std::vector<Vector3dd>& massParticles, const double radius)
 {
+	ParticleSystem<float> ps(massParticles, 0.0f);
+	auto pts = ps.getIParticles();
+
 	const int tableSize = massParticles.size();
 
 	CompactSpaceHash3d spaceHash;
 	spaceHash.setup(radius, tableSize);
-	for (auto mp : massParticles) {
+	for (auto mp : pts) {
 		spaceHash.add(mp);
 	}
 
