@@ -20,6 +20,8 @@ public:
 
 	void setViscosityCoe(const float c);
 
+	void setVorticityCoe(const float c);
+
 	//KFFluidScene* getScene() { return scene; }
 
 	void reset(bool resetMicro);
@@ -78,6 +80,7 @@ public:
 private:
 	float pressureCoe;
 	float radius;
+	float vorticityCoe;
 	std::vector<MVPMassParticle*> massParticles;
 	std::vector<MVPMassParticle*> innerPoints;
 	std::vector<MVPVolumeParticle*> neighbors;

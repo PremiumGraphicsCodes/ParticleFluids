@@ -23,6 +23,7 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	boundaryView("Boundary", model),
 	pressureCoeView("PressureCoe", 100.f),
 	viscosityCoeView("ViscosityCoe", 10.0f),
+	vorticityCoeView("VortictyCoe", 0.05f),
 	timeStepView("TimeStep", 0.03f),
 	radiusView("SearchRadius", 0.20f)
 {
@@ -35,6 +36,7 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	add(&boundaryView);
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
+	add(&vorticityCoeView);
 	add(&timeStepView);
 	add(&radiusView);
 
@@ -85,6 +87,7 @@ void MVPFluidSimulationView::addFluid()
 
 	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
+	this->fluidScene->setViscosityCoe(vorticityCoeView.getValue());
 
 	this->staticScene->setPressureCoe(pressureCoeView.getValue());
 	this->staticScene->setViscosityCoe(viscosityCoeView.getValue()*5.0);

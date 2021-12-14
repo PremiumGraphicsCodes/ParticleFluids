@@ -14,7 +14,8 @@ using namespace Crystal::Physics;
 MVPVolumeParticle::MVPVolumeParticle(const float radius, const Vector3dd& position) :
 	radius(radius),
 	position(position),
-	restMass(0.0f)
+	restMass(0.0f),
+	vorticityCoe(0.05f)
 {}
 
 MVPVolumeParticle::~MVPVolumeParticle()
@@ -38,6 +39,11 @@ void MVPVolumeParticle::setViscosityCoe(const float c)
 	for (auto p : massParticles) {
 		p->setViscosityCoe(c);
 	}
+}
+
+void MVPVolumeParticle::setVorticityCoe(const float c)
+{
+	this->vorticityCoe = c;
 }
 
 void MVPVolumeParticle::reset(bool resetMicro)
@@ -90,7 +96,7 @@ void MVPVolumeParticle::calculateVorticity()
 	for (auto mp : innerPoints) {
 		const auto p = (mp->position - this->position);
 		const auto v = (mp->getVelocity() - this->velocity);
-		vorticity += glm::cross(p, v) * 0.05f;
+		vorticity += glm::cross(p, v) * this->vorticityCoe;
 	}
 }
 
