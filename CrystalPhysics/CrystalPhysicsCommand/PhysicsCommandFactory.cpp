@@ -14,6 +14,7 @@
 #include "PhysicsSolverUpdateCommand.h"
 #include "PhysicsSolverExportCommand.h"
 #include "SPHSurfaceConstructionCommand.h"
+#include "MVPSurfaceConstructionCommand.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::Physics;
@@ -61,6 +62,9 @@ std::unique_ptr<ICommand> PhysicsCommandFactory::create(const std::string& name)
 	}
 	else if (name == SPHSurfaceConstructionCommand::getName()) {
 		return std::make_unique<SPHSurfaceConstructionCommand>();
+	}
+	else if (name == MVPSurfaceConstructionCommand::getName()) {
+		return std::make_unique<MVPSurfaceConstructionCommand>();
 	}
 	assert(false);
 	return nullptr;

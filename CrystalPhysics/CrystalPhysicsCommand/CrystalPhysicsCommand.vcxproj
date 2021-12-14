@@ -194,6 +194,7 @@
     <ClCompile Include="FluidSimulationCommand.cpp" />
     <ClCompile Include="MeshBoundarySceneCreateCommand.cpp" />
     <ClCompile Include="MeshBoundarySceneUpdateCommand.cpp" />
+    <ClCompile Include="MVPSurfaceConstructionCommand.cpp" />
     <ClCompile Include="PhysicsCommandFactory.cpp" />
     <ClCompile Include="PhysicsSolverCreateCommand.cpp" />
     <ClCompile Include="PhysicsSolverExportCommand.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="FluidSimulationCommand.h" />
     <ClInclude Include="MeshBoundarySceneCreateCommand.h" />
     <ClInclude Include="MeshBoundarySceneUpdateCommand.h" />
+    <ClInclude Include="MVPSurfaceConstructionCommand.h" />
     <ClInclude Include="PhysicsSolverExportCommand.h" />
     <ClInclude Include="PhysicsSolverUpdateCommand.h" />
     <ClInclude Include="PhysicsCommandFactory.h" />

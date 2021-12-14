@@ -42,6 +42,9 @@
     <ClCompile Include="PhysicsSolverExportCommand.cpp">
       <Filter>FluidSolver</Filter>
     </ClCompile>
+    <ClCompile Include="MVPSurfaceConstructionCommand.cpp">
+      <Filter>SurfaceConstruction</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -84,6 +87,9 @@
     </ClInclude>
     <ClInclude Include="PhysicsSolverExportCommand.h">
       <Filter>FluidSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="MVPSurfaceConstructionCommand.h">
+      <Filter>SurfaceConstruction</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
