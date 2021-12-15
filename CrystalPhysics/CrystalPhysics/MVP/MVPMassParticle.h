@@ -22,7 +22,7 @@ public:
 
 	void updateVelocity(const Math::Vector3df& centerVelocity);
 
-	void updateVector();
+	void updateVector(const float dt);
 
 	float getMass() const { return mass; }
 

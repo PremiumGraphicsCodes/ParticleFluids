@@ -170,7 +170,7 @@ void MVPFluidSolver::simulate()
 			particle->stepTime(dt);
 			const auto massPs = particle->getMassParticles();
 			for (auto mp : massPs) {
-				mp->updateVector();
+				mp->updateVector(dt);
 			}
 		}
 

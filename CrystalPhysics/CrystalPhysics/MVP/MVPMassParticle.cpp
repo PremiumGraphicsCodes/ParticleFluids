@@ -43,14 +43,14 @@ void MVPMassParticle::updatePosition(const Vector3df& parentPosition)
 
 void MVPMassParticle::updateVelocity(const Vector3df& parentVelocity)
 {
-	//const auto vv = glm::cross(vector, parent->getVorticity());
-	this->velocity = parentVelocity; //+ vv;
+	const auto vv = glm::cross(parent->getVorticity(), vector);
+	this->velocity = parentVelocity + vv;
 }
 
-void MVPMassParticle::updateVector()
+void MVPMassParticle::updateVector(const float dt)
 {
 	const auto l = Math::getLength(vector);
-	const auto vv = glm::cross(vector, parent->getVorticity()) * 0.10f;
+	const auto vv = glm::cross(parent->getVorticity(), vector) * dt;
 	this->vector += vv;
 	this->vector = glm::normalize(this->vector) * l;
 }
