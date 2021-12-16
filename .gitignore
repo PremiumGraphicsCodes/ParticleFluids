@@ -317,3 +317,5 @@ Blender/CrystalPython/ui/__pycache__/bl_fluid.cpython-39.pyc
 Blender/CrystalPython/ui/__pycache__/bl_fluid.cpython-39.pyc
 /Blender/CrystalPython/tmp_stl/*.stl
 *.pcd
+Blender/CrystalPython/tmp_stl.zip
+Blender/CrystalPython/tmp_txt.zip
