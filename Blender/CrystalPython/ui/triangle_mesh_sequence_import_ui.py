@@ -29,7 +29,7 @@ class TriangleMeshSequenceImporter :
     def step(self, time_step):
         dir_path = bpy.context.scene.tm_seq_import_prop.path
 
-        file_path = os.path.join(dir_path, "test" + str(time_step) + ".stl")
+        file_path = os.path.join(dir_path, "mesh" + str(time_step) + ".stl")
 
         self.tm.mesh.import_stl(file_path)
 #        triangles = self.tm.mesh.get_triangles()
