@@ -54,6 +54,8 @@ void MVPSurfaceBuilder::buildVolumes(const std::vector<Vector3dd>& positions, co
 				}
 			}
 		}
+		auto n = this->sparseVolume->findNode(index);
+		n->setValue(1);
 	}
 }
 
@@ -66,20 +68,14 @@ void MVPSurfaceBuilder::buildMasses(const std::vector<Vector3dd>& massParticles,
 	ParticleSystem<float> ps(massParticles, 0.0f);
 	auto pts = ps.getIParticles();
 
-	const int tableSize = massParticles.size();
 
-	CompactSpaceHash3d spaceHash;
-	spaceHash.setup(radius, tableSize);
-	for (auto mp : pts) {
-		spaceHash.add(mp);
+	for (auto mp : massParticles) {
+		const auto index = this->sparseVolume->toIndex(mp);
+		auto n = this->sparseVolume->findNode(index);
+		n->setValue(n->getValue() + 1);
 	}
 
 	const auto nodes = this->sparseVolume->getNodes();
-	for (auto node : nodes) {
-		const auto p = node->getPosition();
-		const auto count = float(spaceHash.findNeighbors(p).size());
-		node->setValue(count);
-	}
 
 	for (auto node : nodes) {
 		const auto ii = node->getIndex();

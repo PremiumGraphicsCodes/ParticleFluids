@@ -68,7 +68,7 @@ bool MVPSurfaceConstructionCommand::execute(World* world)
 	}
 
 	MVPSurfaceBuilder builder;
-	builder.buildVolumes(volumeParticles->getPositions(), args.particleRadius.getValue(), 2);
+	builder.buildVolumes(volumeParticles->getPositions(), args.particleRadius.getValue(), 1);
 	builder.buildMasses(massParticles->getPositions(), args.particleRadius.getValue());
 	builder.buildCells(args.threshold.getValue());
 
