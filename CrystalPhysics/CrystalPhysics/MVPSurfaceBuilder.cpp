@@ -69,10 +69,20 @@ void MVPSurfaceBuilder::buildMasses(const std::vector<Vector3dd>& massParticles,
 	auto pts = ps.getIParticles();
 
 
+	auto res = 1;
 	for (auto mp : massParticles) {
 		const auto index = this->sparseVolume->toIndex(mp);
-		auto n = this->sparseVolume->findNode(index);
-		n->setValue(n->getValue() + 1);
+		for (int i = -res; i <= res; ++i) {
+			for (int j = -res; j <= res; ++j) {
+				for (int k = -res; k <= res; ++k) {
+					std::array<int, 3> ix = { index[0] + i, index[1] + j, index[2] + k };
+					auto n = this->sparseVolume->findNode(index);
+					if (n != nullptr) {
+						n->setValue(n->getValue() + 1);
+					}
+				}
+			}
+		}
 	}
 
 	const auto nodes = this->sparseVolume->getNodes();
