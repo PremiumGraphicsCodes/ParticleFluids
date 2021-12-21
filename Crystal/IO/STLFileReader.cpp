@@ -19,7 +19,7 @@ namespace {
 
 bool STLFileReader::isBinary(const std::filesystem::path& filePath)
 {
-	std::ifstream stream(filePath);
+	std::ifstream stream(filePath, std::ios::binary);
 	if (!stream.is_open()) {
 		return false;
 	}

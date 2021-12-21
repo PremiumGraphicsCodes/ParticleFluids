@@ -46,7 +46,6 @@ bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 	}
 
 	const auto isBinary = STLFileReader::isBinary(args.filePath.getValue());
-
 	if (!isBinary) {
 		STLASCIIFileReader reader;
 		const auto isOk = reader.read(args.filePath.getValue());
@@ -74,6 +73,9 @@ bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 			auto mesh = std::make_unique<TriangleMesh>();
 			const auto faces = stl.faces;
 			for (const auto& f : faces) {
+				if (f.triangle.getArea() < 1.0e-12) {
+					continue;
+				}
 				TriangleFace tf(f.triangle, f.normal);
 				mesh->addFace(tf);
 			}

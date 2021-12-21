@@ -48,5 +48,6 @@ bool STLBinaryFileReader::read(std::istream& stream)
 		STLFace face(Triangle3d(vertices), fn);
 		stl.faces.push_back(face);
 	}
-	return stream.good();
+	return true;
+	//return stream.good();
 }

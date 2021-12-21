@@ -319,3 +319,4 @@ Blender/CrystalPython/ui/__pycache__/bl_fluid.cpython-39.pyc
 *.pcd
 Blender/CrystalPython/tmp_stl.zip
 Blender/CrystalPython/tmp_txt.zip
+/CrystalScene/CommandTest/mesh72.stl
