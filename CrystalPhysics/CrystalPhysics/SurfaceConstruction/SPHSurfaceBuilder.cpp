@@ -101,6 +101,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 
 	CompactSpaceHash3d spaceHash(searchRadius, (int)particles.size());
 
+
 	for (const auto& p : particles) {
 		spaceHash.add(p.get());
 	}
@@ -117,7 +118,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 
 	for (const auto& p : particles) {
 		const auto pp = p->getPosition();
-		Sphere3dd s(pp, searchRadius * 1.5);
+		Sphere3dd s(pp, searchRadius * 2.0);
 		builder.add(s);
 	}
 
@@ -141,8 +142,8 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 		const auto neighbors = spaceHash.findNeighbors(pos);
 		for (auto n : neighbors) {
 			auto sp = static_cast<SPHSurfaceParticle*>(n);
-			//auto m = sp->getMatrix();
-			auto m = Matrix3df(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5) / searchRadius;
+			auto m = sp->getMatrix();
+			//auto m = Matrix3df(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5) / searchRadius;
 			const auto v = Vector3dd(sp->getPosition()) - pos;
 			const Vector3df distance = m * v;
 			//const auto d = glm::length(distance);
@@ -172,7 +173,9 @@ void SPHSurfaceBuilder::calculateAnisotropy(const float searchRadius)
 		spaceHash.add(p.get());
 	}
 
-	for (const auto& p : particles) {
+#pragma omp parallel for
+	for (int i = 0; i < particles.size(); ++i) {
+		auto& p = particles[i];
 		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
 		p->calculateDensity(neighbors, searchRadius, kernel);
 		WPCA wpca;

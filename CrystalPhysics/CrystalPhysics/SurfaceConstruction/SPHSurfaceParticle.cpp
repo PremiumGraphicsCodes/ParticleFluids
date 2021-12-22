@@ -9,7 +9,7 @@ using namespace Crystal::Physics;
 
 namespace {
 	constexpr auto kr = 4.0;
-	constexpr auto ks = 1400.0;
+	constexpr auto ks = 1.0;//1400.0;
 }
 
 /*
@@ -46,7 +46,6 @@ void SPHSurfaceParticle::calculateAnisotoropicMatrix(const std::vector<IParticle
 	Matrix3dd scaleMatrix = ::identitiyMatrix<double>();
 	if (neighbors.size() < 25) {
 		scaleMatrix *= 0.5;
-		//		p->matrix = scaleMatrix;
 	}
 	else {
 		auto evs = result.eigenValues;
