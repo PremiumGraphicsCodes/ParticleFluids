@@ -44,7 +44,7 @@ class MeshingRunner :
             
         builder = SurfaceBuilder(model.scene)
         #builder.build_mvp_surface(volume_ps.id, mass_ps.id, self.__bl_mesh.mesh.id, prop.particle_radius_prop,prop.threshold_prop)
-        builder.build_isotorpic(volume_ps.id, self.__bl_mesh.mesh.id, prop.particle_radius_prop, prop.cell_length_prop, prop.threshold_prop)
+        builder.build_anisotorpic(volume_ps.id, self.__bl_mesh.mesh.id, prop.particle_radius_prop, prop.cell_length_prop, prop.threshold_prop)
         self.__bl_mesh.update()
 
         if prop.do_export_stl_prop :

@@ -90,7 +90,7 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 
 void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float particleRadius, const float cellLength)
 {
-	const auto searchRadius = particleRadius * 2.25f;
+	const auto searchRadius = particleRadius;
 	const SPHKernel kernel(searchRadius);
 
 	for (auto p : positions) {
@@ -111,8 +111,17 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 	}
 	*/
 
-	this->volume = createSparseVolume(positions, cellLength);
+	SparseVolumeBuilder builder;
+	builder.build(Vector3df(cellLength, cellLength, cellLength), particles.size());
+	//this->volume = createSparseVolume(positions, cellLength);
 
+	for (const auto& p : particles) {
+		const auto pp = p->getPosition();
+		Sphere3dd s(pp, searchRadius * 1.5);
+		builder.add(s);
+	}
+
+	this->volume = builder.get();
 
 	auto nodes = volume->getNodes();
 	/*
@@ -122,10 +131,11 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 		ns.push_back(n.second);
 	}
 	*/
+	std::vector<SparseVolumeNode<double>*> ns(nodes.begin(), nodes.end());
 
-	//for (auto& node : nodes) {
-//#pragma omp parallel for
-	for (auto node : nodes) {
+#pragma omp parallel for
+	for (int i = 0; i < ns.size(); ++i) {
+		auto node = ns[i];
 		//auto node = ns[i];
 		const auto pos = node->getPosition();
 		const auto neighbors = spaceHash.findNeighbors(pos);
