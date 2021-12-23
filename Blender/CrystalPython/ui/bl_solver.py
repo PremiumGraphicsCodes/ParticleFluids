@@ -67,8 +67,8 @@ class BLSolver :
         macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".pcd")
         self.__solver.export_pcd(macro_file_path, False)
 
-        micro_file_path = os.path.join(self.__export_dir_path, "micro" + str(frame) + ".pcd")
-        self.__solver.export_pcd(micro_file_path, True)
+        #micro_file_path = os.path.join(self.__export_dir_path, "micro" + str(frame) + ".pcd")
+        #self.__solver.export_pcd(micro_file_path, True)
 
 
     def is_running(self):

@@ -48,7 +48,7 @@ from ui.panel_sample import SampleUI
 def register():
   VoxelizerUI.register()
   MeshingUI.register()
-#  ParticleSystemGenerateUI.register()
+  ParticleSystemGenerateUI.register()
 #  ParticleSystemAnimationUI.register()
 #  ParticleSystemImportUI.register()
 #  ParticleSystemExportUI.register()
@@ -68,7 +68,7 @@ def unregister():
 
   MeshingUI.unregister()
   VoxelizerUI.unregister()
-#  ParticleSystemGenerateUI.unregister()
+  ParticleSystemGenerateUI.unregister()
 #  ParticleSystemAnimationUI.unregister()
 #  ParticleSystemImportUI.unregister()
 #  ParticleSystemExportUI.unregister()

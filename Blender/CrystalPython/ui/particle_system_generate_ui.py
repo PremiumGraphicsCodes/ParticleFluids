@@ -12,7 +12,10 @@ class ParticleSystemGenerateOperator(bpy.types.Operator) :
   def execute(self, context) :
       pc = BLParticleSystem(model.scene)
       positions = Vector3ddVector()
-      positions.add(Vector3dd(0.0, 0.0, 0.0))
+      for x in range(0,100) :
+        for y in range(0,100) :
+          for z in range(0,10) :
+            positions.add(Vector3dd(x, y, z))
       pc.ps.create_empty("")
       pc.ps.set_positions(positions)
       pc.convert_to_polygon_mesh("")      
@@ -21,7 +24,7 @@ class ParticleSystemGenerateOperator(bpy.types.Operator) :
 class ParticleSystemGeneratePanel(bpy.types.Panel):
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
-  bl_category = "ParticleFluids"
+  bl_category = "PFTools"
   bl_label = "ParticleSystemGenerate"
 
   def draw(self, context):
