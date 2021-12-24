@@ -20,7 +20,7 @@ Box3dd DynamicOctree::calculateBox(const std::vector<IParticle*>& particles, con
 	}
 	const auto maxLength = std::max( std::max(b.getLength().x, b.getLength().y), b.getLength().z );
 	const auto l = maxLength / cellLength;
-	const auto level = std::floor( std::log2(l) + 1.0);
+	const auto level = std::max(3.0, std::floor( std::log2(l) + 1.0));
 	const auto ll = std::pow(2, level);
 	const auto minIndex = ( b.getMin() / (double)cellLength);
 	const auto ix = std::floor(minIndex[0]) * cellLength;
@@ -74,4 +74,18 @@ std::list<DynamicOctree*> DynamicOctree::toSerialList()
 		results.insert(results.end(), list.begin(), list.end());
 	}
 	return results;
+}
+
+std::vector<Volume<float>*> DynamicOctree::toVolumes()
+{
+	const auto trees = toSerialList();
+	std::vector < Volume<float>* > volumes;
+	for (auto t : trees) {
+		if (!t->isEmpty()) {
+			std::array<size_t, 3> res{ 4, 4, 4 };
+			auto v = new Volume<float>(t->getBox(), res);
+			volumes.push_back(v);
+		}
+	}
+	return volumes;
 }

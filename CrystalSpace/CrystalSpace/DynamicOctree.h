@@ -5,6 +5,7 @@
 
 #include "Crystal/Math/Box3d.h"
 #include "Crystal/Shape/IParticle.h"
+#include "Crystal/Shape/Volume.h"
 
 namespace Crystal {
 	namespace Space {
@@ -25,6 +26,8 @@ public:
 	void divide(const float cellLength, const std::vector<Shape::IParticle*>& particles);
 
 	std::list<DynamicOctree*> toSerialList();
+
+	std::vector<Shape::Volume<float>*> toVolumes();
 
 	bool isEmpty() const { return particles.empty(); }
 
