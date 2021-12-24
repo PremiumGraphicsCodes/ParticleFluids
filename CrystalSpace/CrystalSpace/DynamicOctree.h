@@ -27,7 +27,7 @@ public:
 
 	std::list<DynamicOctree*> toSerialList();
 
-	std::vector<Shape::Volume<double>*> toVolumes();
+	std::vector<Shape::Volume<double>*> toVolumes(const float cellLength);
 
 	bool isEmpty() const { return particles.empty(); }
 

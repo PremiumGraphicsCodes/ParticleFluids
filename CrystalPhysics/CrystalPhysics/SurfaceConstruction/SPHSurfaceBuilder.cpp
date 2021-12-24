@@ -77,7 +77,7 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 	const auto bb = DynamicOctree::calculateBox(ps, cellLength);
 	DynamicOctree octree(bb);
 	octree.divide(cellLength, ps);
-	this->volumes = octree.toVolumes();
+	this->volumes = octree.toVolumes(cellLength);
 
 	octree.clear();
 
@@ -131,7 +131,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 	const auto bb = DynamicOctree::calculateBox(ps, cellLength);
 	DynamicOctree octree(bb);
 	octree.divide(cellLength, ps);
-	this->volumes = octree.toVolumes();
+	this->volumes = octree.toVolumes(cellLength);
 
 	octree.clear();
 

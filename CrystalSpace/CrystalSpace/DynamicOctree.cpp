@@ -76,14 +76,17 @@ std::list<DynamicOctree*> DynamicOctree::toSerialList()
 	return results;
 }
 
-std::vector<Volume<double>*> DynamicOctree::toVolumes()
+std::vector<Volume<double>*> DynamicOctree::toVolumes(const float cellLength)
 {
 	const auto trees = toSerialList();
 	std::vector < Volume<double>* > volumes;
 	for (auto t : trees) {
 		if (!t->isEmpty()) {
 			std::array<size_t, 3> res{ 4, 4, 4 };
-			auto v = new Volume<double>(t->getBox(), res);
+			const auto b = t->getBox();
+			const auto v1 = b.getMin();
+			const auto v2 = b.getMax() + Vector3dd(cellLength);
+			auto v = new Volume<double>(Box3d(v1,v2), res);
 			volumes.push_back(v);
 		}
 	}
