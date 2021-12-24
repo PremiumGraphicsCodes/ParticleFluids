@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <list>
 
 #include "Crystal/Math/Box3d.h"
 #include "Crystal/Shape/IParticle.h"
@@ -19,9 +20,12 @@ public:
 
 	void divide(const float cellLength, const std::vector<Shape::IParticle*>& particles);
 
+	std::list<DynamicOctree*> toSerialList();
+
 private:
 	Math::Box3dd bb;
 	std::vector<Shape::IParticle*> particles;
+	std::list<DynamicOctree*> children;
 };
 
 	}
