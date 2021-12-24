@@ -15,7 +15,9 @@ public:
 		bb(bb)
 	{}
 
-	void divide(const float cellLength);
+	void add(Shape::IParticle* p) { this->particles.push_back(p); }
+
+	void divide(const float cellLength, const std::vector<Shape::IParticle*>& particles);
 
 private:
 	Math::Box3dd bb;

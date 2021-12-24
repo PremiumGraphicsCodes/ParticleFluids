@@ -18,6 +18,9 @@
     <ClCompile Include="SparseVolumeBuilderTest.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
+    <ClCompile Include="DynamicOctreeTest.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

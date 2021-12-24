@@ -36,6 +36,7 @@
   <ItemGroup>
     <ClCompile Include="CompactSpaceHash3dTest.cpp" />
     <ClCompile Include="DistanceCalculatorTest.cpp" />
+    <ClCompile Include="DynamicOctreeTest.cpp" />
     <ClCompile Include="IntersectionCalculatorTest.cpp" />
     <ClCompile Include="LinearOctreeTest.cpp" />
     <ClCompile Include="OverlapTest.cpp" />

@@ -1,14 +1,23 @@
 #include "DynamicOctree.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
-void DynamicOctree::divide(const float cellLength)
+void DynamicOctree::divide(const float cellLength, const std::vector<IParticle*>& particles)
 {
-	if (this->particles.empty()) {
+	std::vector<IParticle*> inParticles;
+	for (auto p : particles) {
+		if (bb.contains(p->getPosition(), cellLength)) {
+			inParticles.push_back(p);
+		}
+	}
+
+	if (inParticles.empty()) {
 		return;
 	}
 	if (this->bb.getLength().x < cellLength * 4.0) {
+		this->particles = inParticles;
 		return;
 	}
 
@@ -19,18 +28,12 @@ void DynamicOctree::divide(const float cellLength)
 				const auto v1 = bb.getPosition(u, v, w);
 				const auto v2 = bb.getPosition(u + 0.5, v + 0.5, w + 0.5);
 				const Box3dd subSpace(v1, v2);
-				children.push_back(DynamicOctree(subSpace));
-			}
-		}
-	}
-	for (auto p : particles) {
-		for (auto& c : children) {
-			if (c.bb.contains(p->getPosition(), 1.0e-12)) {
-				c.particles.push_back(p);
+				DynamicOctree child(subSpace);
+				child.divide(cellLength, inParticles);
 			}
 		}
 	}
 	for (auto& c : children) {
-		c.divide(cellLength);
+		c.divide(cellLength, inParticles);
 	}
 }
