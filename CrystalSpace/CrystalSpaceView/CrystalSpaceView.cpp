@@ -36,7 +36,7 @@ int main(int, char**)
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 	window.add(new ShapeMenu("Shape", &model, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &model, &canvas, control));
-	window.add(new SpaceMenu("Algo", &model, &canvas, control));
+	window.add(new SpaceMenu("Space", &model, &canvas, control));
 
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));
 

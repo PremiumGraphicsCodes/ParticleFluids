@@ -10,6 +10,7 @@
 #include "VolumeConvertView.h"
 #include "OctreeView.h"
 #include "LinearOctreeView.h"
+#include "DynamicOctreeView.h"
 #include "SpaceHashView.h"
 #include "UniformGrid3dView.h"
 #include "MeshToParticleView.h"
@@ -55,6 +56,9 @@ void SpaceMenu::onShow()
 		}
 		if (ImGui::MenuItem("LinearOctree")) {
 			control->setWindow(new LinearOctreeView(world, canvas));
+		}
+		if (ImGui::MenuItem("DynamicOctree")) {
+			control->setWindow(new DynamicOctreeView(world, canvas));
 		}
 		if (ImGui::MenuItem("Intersection")) {
 			control->setWindow(new IntersectionView("Intersection",getWorld(), getCanvas()));

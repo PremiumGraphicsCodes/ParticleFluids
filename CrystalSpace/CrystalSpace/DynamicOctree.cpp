@@ -4,6 +4,32 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
+void DynamicOctree::clear()
+{
+	for (auto c : children) {
+		c->clear();
+		delete c;
+	}
+}
+
+Box3dd DynamicOctree::calculateBox(const std::vector<IParticle*>& particles, const float cellLength)
+{
+	Box3dd b = Box3dd::createDegeneratedBox();
+	for (auto p : particles) {
+		b.add(p->getPosition());
+	}
+	const auto maxLength = std::max( std::max(b.getLength().x, b.getLength().y), b.getLength().z );
+	const auto l = maxLength / cellLength;
+	const auto level = std::floor( std::log2(l) + 1.0);
+	const auto ll = std::pow(2, level);
+	const auto minIndex = ( b.getMin() / (double)cellLength);
+	const auto ix = std::floor(minIndex[0]) * cellLength;
+	const auto iy = std::floor(minIndex[1]) * cellLength;
+	const auto iz = std::floor(minIndex[2]) * cellLength;
+	const Vector3dd v1(ix, iy, iz);
+	return Box3dd(v1, v1 + ll * cellLength);
+}
+
 void DynamicOctree::divide(const float cellLength, const std::vector<IParticle*>& particles)
 {
 	if (this->bb.getLength().x < cellLength * 4.0) {

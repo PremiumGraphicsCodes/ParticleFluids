@@ -160,6 +160,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DynamicOctreeView.cpp" />
     <ClCompile Include="ScanLineVoxelizerView.cpp" />
     <ClCompile Include="SpaceMenu.cpp" />
     <ClCompile Include="CompactSpaceHash3dView.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="ZOrderSearchView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DynamicOctreeView.h" />
     <ClInclude Include="ScanLineVoxelizerView.h" />
     <ClInclude Include="SpaceMenu.h" />
     <ClInclude Include="CompactSpaceHash3dView.h" />
