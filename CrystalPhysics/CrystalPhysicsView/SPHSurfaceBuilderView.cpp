@@ -89,16 +89,15 @@ void SPHSurfaceBuilderView::onOk()
 	*/
 	//sphere.getPosition()
 
-	/*
-	const Sphere3d sphere(Vector3dd(50, 50, 50), 50.0);
+	const Sphere3d sphere(Vector3dd(50, 50, 50), 10.0);
 	const Box3d box = sphere.getBoundingBox();
 	const auto center = sphere.getCenter();
-	for (int i = 0; i < 100; ++i) {
-		for (int j = 0; j < 100; ++j) {
-			for (int k = 0; k < 100; ++k) {
-				const auto u = i / 100.0;
-				const auto v = j / 100.0;
-				const auto w = k / 100.0;
+	for (int i = 0; i < 10; ++i) {
+		for (int j = 0; j < 10; ++j) {
+			for (int k = 0; k < 10; ++k) {
+				const auto u = i / 10.0;
+				const auto v = j / 10.0;
+				const auto w = k / 10.0;
 				const auto p = box.getPosition(u,v,w);
 				if (sphere.isInside(p)) {
 					positions.push_back(p);
@@ -106,15 +105,16 @@ void SPHSurfaceBuilderView::onOk()
 			}
 		}
 	}
-	*/
-	positions.emplace_back(0, 0, 0);
+	//positions.emplace_back(0, 0, 0);
 
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
-	//builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
-	auto volume = builder.getVolume();
+	//builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+	builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+
+	auto volumes = builder.getVolumes();
+	/*
 	const auto nodes = volume->getNodes();
 	double maxValue = std::numeric_limits<double>::lowest();
 	double minValue = std::numeric_limits<double>::max();
@@ -124,9 +124,15 @@ void SPHSurfaceBuilderView::onOk()
 	}
 	std::cout << minValue << std::endl;
 	std::cout << maxValue << std::endl;
-
+	*/
 	MarchingCubesAlgo mcAlgo;
-	mcAlgo.build(*volume, thresholdView.getValue());
+	for (auto v : volumes) {
+		mcAlgo.build(*v, thresholdView.getValue());
+	}
+
+	for (auto v : volumes) {
+		delete v;
+	}
 
 	//PolygonMeshBuilder pmBuilder;
 	auto mesh = std::make_unique<TriangleMesh>();
@@ -138,26 +144,8 @@ void SPHSurfaceBuilderView::onOk()
 
 	scene->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(scene);
+
 	/*
-	WireFrameBuilder wfBuilder;
-
-	auto& particles = builder.getParticles();
-	for (auto& p : particles) {
-		const auto m = p->getMatrix();
-		Sphere3d s(p->getPosition(), 1.0);
-		//wfBuilder.build(s, 10, 10);
-		::build(s, 10, 10, m,  wfBuilder);
-	}
-	auto wf = wfBuilder.createWireFrame();
-	WireFrameAttribute attr;
-	attr.color = glm::vec4(1, 1, 1, 1);
-	attr.width = 1.0f;
-	WireFrameScene* wfScene = new WireFrameScene(getWorld()->getNextSceneId(), "WF", std::move(wf), attr);
-	wfScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
-	getWorld()->getScenes()->addScene(wfScene);
-	*/
-
-//	auto volume = builder.getVolume();
 	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(volume));
 	auto presenter = svScene->getPresenter();
 
@@ -167,10 +155,5 @@ void SPHSurfaceBuilderView::onOk()
 	presenter->createView(world->getRenderer());
 
 	getWorld()->getScenes()->addScene(svScene);
-	/*
-	WireFrameBuilder wfBuilder;
-	for (const auto& p : particles) {
-		wfBuilder.build()
-	}
 	*/
 }

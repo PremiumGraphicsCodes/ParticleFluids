@@ -5,6 +5,7 @@
 
 #include "SPHSurfaceParticle.h"
 
+#include "Crystal/Shape/Volume.h"
 #include "../../../CrystalSpace/CrystalSpace/SparseVolume.h"
 
 namespace Crystal {
@@ -22,6 +23,8 @@ public:
 
 	const std::vector<std::unique_ptr<SPHSurfaceParticle>>& getParticles() const { return particles; }
 
+	std::vector < Shape::Volume<double>* > getVolumes() { return volumes; }
+
 	std::unique_ptr<Space::SparseVolumed> getVolume() { return std::move(volume); }
 
 private:
@@ -30,6 +33,8 @@ private:
 	void calculateAnisotropy(const float searchRadius);
 	
 	//std::vector<Shape::IParticle*> particles;
+
+	std::vector<Shape::Volume<double>*> volumes;
 
 	std::unique_ptr<Space::SparseVolumed> volume;
 	std::vector<std::unique_ptr<SPHSurfaceParticle>> particles;

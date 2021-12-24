@@ -5,6 +5,7 @@
 #include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 #include "CrystalSpace/CrystalSpace/SparseVolume.h"
 #include "CrystalSpace/CrystalSpace/SparseVolumeBuilder.h"
+#include "CrystalSpace/CrystalSpace/DynamicOctree.h"
 
 //#include <set>
 //#include <map>
@@ -106,51 +107,45 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 		spaceHash.add(p.get());
 	}
 
-	/*
+	std::vector<IParticle*> ps;
 	for (const auto& p : particles) {
-		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
-	}
-	*/
-
-	SparseVolumeBuilder builder;
-	builder.build(Vector3df(cellLength, cellLength, cellLength), particles.size());
-	//this->volume = createSparseVolume(positions, cellLength);
-
-	for (const auto& p : particles) {
-		const auto pp = p->getPosition();
-		Sphere3dd s(pp, searchRadius * 2.0);
-		builder.add(s);
+		ps.push_back(p.get());
 	}
 
-	this->volume = builder.get();
+	const auto bb = DynamicOctree::calculateBox(ps, cellLength);
+	DynamicOctree octree(bb);
+	octree.divide(cellLength, ps);
+	this->volumes = octree.toVolumes();
 
-	auto nodes = volume->getNodes();
-	/*
-	std::vector<SparseVolumeNode<double>*> ns;
-	ns.reserve(nodes.size());
-	for (auto n : nodes) {
-		ns.push_back(n.second);
-	}
-	*/
-	std::vector<SparseVolumeNode<double>*> ns(nodes.begin(), nodes.end());
+	octree.clear();
+
 
 #pragma omp parallel for
-	for (int i = 0; i < ns.size(); ++i) {
-		auto node = ns[i];
+	for (int i = 0; i < volumes.size(); ++i) {
+		auto vol = volumes[i];
 		//auto node = ns[i];
-		const auto pos = node->getPosition();
-		const auto neighbors = spaceHash.findNeighbors(pos);
-		for (auto n : neighbors) {
-			auto sp = static_cast<SPHSurfaceParticle*>(n);
-			auto m = sp->getMatrix();
-			//auto m = Matrix3df(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5) / searchRadius;
-			const auto v = Vector3dd(sp->getPosition()) - pos;
-			const Vector3df distance = m * v;
-			//const auto d = glm::length(distance);
-			const auto det = glm::determinant(m);
-			const auto w = kernel.getCubicSpline(v) * det * sp->getMass() / sp->getDensity();
-			node->setValue(w + node->getValue());
-			//const auto distance = getDistanceSquared(sp->getPosition(), pos);
+		const auto res = vol->getResolutions();
+		for (int i = 0; i < res[0]; ++i) {
+			for (int j = 0; j < res[1]; ++j) {
+				for (int k = 0; k < res[2]; ++k) {
+					const auto pos = vol->getCellPosition(i, j, k);
+					const auto neighbors = spaceHash.findNeighbors(pos);
+					for (auto n : neighbors) {
+						auto sp = static_cast<SPHSurfaceParticle*>(n);
+						auto m = sp->getMatrix();
+						//auto m = Matrix3df(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5) / searchRadius;
+						const auto v = Vector3dd(sp->getPosition()) - pos;
+						const Vector3df distance = m * v;
+						//const auto d = glm::length(distance);
+						const auto det = glm::determinant(m);
+						const auto w = kernel.getCubicSpline(v) * det * sp->getMass() / sp->getDensity();
+						const auto value = vol->getValue(i, j, k);
+						vol->setValue(i,j,k, w + value);
+						//const auto distance = getDistanceSquared(sp->getPosition(), pos);
+					}
+
+				}
+			}
 		}
 		//		n.second->getValue();
 	}
