@@ -16,6 +16,8 @@
 #include "CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
 //#include "Crystal/Shape/PolygonMeshBuilder.h"
 
+#include "Crystal/IO/PCDBinaryFileReader.h"
+
 #include <iostream>
 
 using namespace Crystal::Math;
@@ -107,11 +109,15 @@ void SPHSurfaceBuilderView::onOk()
 	}
 	//positions.emplace_back(0, 0, 0);
 
+	//Crystal::IO::PCDBinaryFileReader reader;
+	//reader.read("C://Dev//cgstudio4//Blender//CrystalPython//tmp_txt/macro1.pcd");
+	//positions = reader.getPCD().data.positions;
+
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	//builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
-	builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+	builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+	//builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
 
 	auto volumes = builder.getVolumes();
 	/*

@@ -86,8 +86,13 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 	}
 
 	MarchingCubesAlgo mcAlgo;
-	mcAlgo.build(*builder.getVolume(), args.threshold.getValue());
-
+	auto volumes = builder.getVolumes();
+	for (auto v : volumes) {
+		mcAlgo.build(*v, args.threshold.getValue());
+	}
+	for (auto v : volumes) {
+		delete v;
+	}
 	//PolygonMeshBuilder pmBuilder;
 	auto mesh = std::make_unique<TriangleMesh>();
 	const auto triangles = mcAlgo.getTriangles();

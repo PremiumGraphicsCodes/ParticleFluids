@@ -69,22 +69,38 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 		builder.add(s);
 	}
 
-	this->volume = builder.get();
+	std::vector<IParticle*> ps;
+	for (const auto& p : particles) {
+		ps.push_back(p.get());
+	}
 
-	auto nodes = volume->getNodes();
-	std::vector<SparseVolumeNode<double>*> ns(nodes.begin(), nodes.end());
+	const auto bb = DynamicOctree::calculateBox(ps, cellLength);
+	DynamicOctree octree(bb);
+	octree.divide(cellLength, ps);
+	this->volumes = octree.toVolumes();
+
+	octree.clear();
+
 #pragma omp parallel for
-	for(int i = 0; i < ns.size(); ++i) {
-		auto node = ns[i];
-//	for (auto& node : nodes) {
-		const auto pos = node->getPosition();
-		const auto neighbors = spaceHash.findNeighbors(pos);
-		for (auto n : neighbors) {
-			auto sp = static_cast<SPHSurfaceParticle*>(n);
-			const auto v = n->getPosition() - pos;
-			const auto coe = 1400.0f / searchRadius / searchRadius / searchRadius;
-			const auto w = coe * kernel.getCubicSpline(v) * sp->getMass() / sp->getDensity();
-			node->setValue(w + node->getValue());
+	for (int i = 0; i < volumes.size(); ++i) {
+		auto vol = volumes[i];
+
+		const auto res = vol->getResolutions();
+		for (int i = 0; i < res[0]; ++i) {
+			for (int j = 0; j < res[1]; ++j) {
+				for (int k = 0; k < res[2]; ++k) {
+					const auto pos = vol->getCellPosition(i, j, k);
+					const auto neighbors = spaceHash.findNeighbors(pos);
+					for (auto n : neighbors) {
+						auto sp = static_cast<SPHSurfaceParticle*>(n);
+						const auto v = n->getPosition() - pos;
+						const auto coe = 1400.0f / searchRadius / searchRadius / searchRadius;
+						const auto w = coe * kernel.getCubicSpline(v) * sp->getMass() / sp->getDensity();
+						const auto value = vol->getValue(i, j, k);
+						vol->setValue(i, j, k, w + value);
+					}
+				}
+			}
 		}
 	}
 }
