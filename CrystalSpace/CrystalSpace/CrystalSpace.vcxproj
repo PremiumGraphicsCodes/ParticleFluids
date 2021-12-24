@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="CompactSpaceHash3d.h" />
     <ClInclude Include="DistanceCalculator.h" />
+    <ClInclude Include="DynamicOctree.h" />
     <ClInclude Include="IndexedSortSearchAlgo.h" />
     <ClInclude Include="IndexedParticle.h" />
     <ClInclude Include="IntersectionCalculator.h" />
@@ -190,6 +191,7 @@
   <ItemGroup>
     <ClCompile Include="CompactSpaceHash3d.cpp" />
     <ClCompile Include="DistanceCalculator.cpp" />
+    <ClCompile Include="DynamicOctree.cpp" />
     <ClCompile Include="IndexedSortSearchAlgo.cpp" />
     <ClCompile Include="IndexedParticle.cpp" />
     <ClCompile Include="IntersectionCalculator.cpp" />

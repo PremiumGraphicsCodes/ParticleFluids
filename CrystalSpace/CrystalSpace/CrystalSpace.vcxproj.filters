@@ -97,6 +97,9 @@
     <ClInclude Include="SparseVolumeBuilder.h">
       <Filter>Volume</Filter>
     </ClInclude>
+    <ClInclude Include="DynamicOctree.h">
+      <Filter>Search\Octree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MarchingCubesAlgo.cpp">
@@ -184,6 +187,9 @@
     </ClCompile>
     <ClCompile Include="SparseVolumeBuilder.cpp">
       <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicOctree.cpp">
+      <Filter>Search\Octree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
