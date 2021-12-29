@@ -96,8 +96,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;..\ThirdParty\openvdb\openvdb\Debug\openvdb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbbmalloc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_iostreams-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_regex-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_system-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\Half-2_3.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\blosc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\tbb_debug.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../CrystalViewer/ThirdParty\glfw-3.3\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;openvdb.lib;tbbmalloc_debug.lib;boost_iostreams-vc140-mt-gd.lib;boost_regex-vc140-mt-gd.lib;boost_system-vc140-mt-gd.lib;blosc.lib;tbb_debug.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../CrystalScene/ThirdParty\glfw-3.3\lib-vc2019;$(VCPKGPath)\debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -150,7 +150,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../CrystalScene/ThirdParty\glfw-3.3\lib-vc2019;C:\Dev\vcpkg\installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../CrystalScene/ThirdParty\glfw-3.3\lib-vc2019;$(VCPKGPath)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>openvdb.lib;tbbmalloc.lib;boost_iostreams-vc140-mt.lib;boost_regex-vc140-mt.lib;boost_system-vc140-mt.lib;blosc.lib;Half-2_5.lib;Iex-2_5.lib;Imath-2_5.lib;IexMath-2_5.lib;tbb.lib;zlib.lib;opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
