@@ -2,8 +2,8 @@
 
 #include "VDBParticleSystemScene.h"
 
-#include "../../Crystal/Scene/SceneShader.h"
-#include "../../Crystal/Scene/PointShaderScene.h"
+#include "../../CrystalScene/Scene/SceneShader.h"
+#include "../../CrystalScene/Scene/PointShaderScene.h"
 #include "VDBParticleSystemImpl.h"
 #include "Converter.h"
 //#include "PointShaderScene.h"
@@ -22,15 +22,16 @@ VDBParticleSystemPresenter::VDBParticleSystemPresenter(VDBParticleSystemScene* m
 {
 }
 
-void VDBParticleSystemPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void VDBParticleSystemPresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
+		this->view->setShader(sceneShader->getRenderers()->getPointShader());
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 
+	/*
 	{
 		this->parentIdView = new PointShaderScene(model->getName());
 		this->parentIdView->setShader(sceneShader->getObjectRenderer()->getPointShader());
@@ -44,11 +45,13 @@ void VDBParticleSystemPresenter::createView(SceneShader* sceneShader, GLObjectFa
 		this->childIdView->build(glFactory);
 		sceneShader->getChildIdRenderer()->addScene(this->childIdView);
 	}
+	*/
 	updateView();
 }
 
-void VDBParticleSystemPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+void VDBParticleSystemPresenter::removeView(SceneShader* sceneShader)
 {
+	/*
 	this->view->release(factory);
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
@@ -60,6 +63,7 @@ void VDBParticleSystemPresenter::removeView(SceneShader* sceneShader, GLObjectFa
 	this->childIdView->release(factory);
 	sceneShader->getParentIdRenderer()->removeScene(this->childIdView);
 	delete this->childIdView;
+	*/
 }
 
 void VDBParticleSystemPresenter::updateView()

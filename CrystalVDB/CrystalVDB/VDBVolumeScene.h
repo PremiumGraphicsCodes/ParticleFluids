@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "../../Crystal/Scene/IShapeScene.h"
+#include "../../CrystalScene/Scene/IShapeScene.h"
 
 #include "../../Crystal/Math/Box3d.h"
 

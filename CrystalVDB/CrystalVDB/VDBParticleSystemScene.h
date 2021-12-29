@@ -3,7 +3,7 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Util/UnCopyable.h"
 
-#include "../../Crystal/Scene/IParticleSystemScene.h"
+#include "../../CrystalScene/Scene/IParticleSystemScene.h"
 #include "VDBParticleSystemPresenter.h"
 
 #include <memory>

@@ -87,7 +87,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\ThirdParty\openvdb\openvdb\..;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\include;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\include\OpenEXR;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(VDBPath);$(VCPKGPath)\include;../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -120,15 +120,8 @@
     <PostBuildEvent>
       <Message>
       </Message>
-      <Command>setlocal
-powershell -noprofile -executionpolicy Bypass -file C:/Users/PremiumGraphics/Desktop/vcpkg-2020.06/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary C:/Users/PremiumGraphics/Documents/GitHub/cgstudio4/CrystalAlgo/ThirdParty/openvdb/openvdb/cmd/Debug/vdb_print.exe -installedDir C:/Users/PremiumGraphics/Desktop/vcpkg-2020.06/installed/x64-windows/debug/bin -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>..\ThirdParty\openvdb\openvdb\Debug\openvdb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbbmalloc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_iostreams-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_regex-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_system-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\Half-2_3.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\blosc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\zlibd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
@@ -146,7 +139,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\ThirdParty\openvdb\openvdb\..;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\include;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\include\OpenEXR;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(VDBPath);$(VCPKGPath)\include;../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DisableSpecificWarnings>4244;4251;4267;4275;4305</DisableSpecificWarnings>
@@ -178,15 +171,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message>
       </Message>
-      <Command>setlocal
-powershell -noprofile -executionpolicy Bypass -file C:/Users/PremiumGraphics/Desktop/vcpkg-2020.06/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary C:/Users/PremiumGraphics/Documents/GitHub/cgstudio4/CrystalAlgo/ThirdParty/openvdb/openvdb/cmd/Release/vdb_print.exe -installedDir C:/Users/PremiumGraphics/Desktop/vcpkg-2020.06/installed/x64-windows/bin -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>..\Release\openvdb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbbmalloc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\boost_iostreams-vc140-mt.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\boost_regex-vc140-mt.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\boost_system-vc140-mt.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\Half-2_3.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\blosc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
@@ -326,9 +312,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
       <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Scene\Scene.vcxproj">
-      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Shader\Shader.vcxproj">
       <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>

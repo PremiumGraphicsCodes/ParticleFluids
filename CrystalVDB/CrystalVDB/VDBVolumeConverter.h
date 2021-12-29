@@ -16,7 +16,7 @@ public:
 
 	void toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystemScene* ps) const;
 
-	void toVDB(const Space::SparseVolumeScene& sv, VDBVolumeScene* vdb);
+	//void toVDB(const Space::SparseVolumeScene& sv, VDBVolumeScene* vdb);
 
 private:
 };

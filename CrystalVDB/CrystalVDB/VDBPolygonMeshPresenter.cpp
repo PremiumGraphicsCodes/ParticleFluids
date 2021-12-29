@@ -2,8 +2,8 @@
 
 #include "VDBPolygonMeshScene.h"
 
-#include "../../Crystal/Scene/SceneShader.h"
-#include "../../Crystal/Scene/LineShaderScene.h"
+#include "../../CrystalScene/Scene/SceneShader.h"
+#include "../../CrystalScene/Scene/LineShaderScene.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
@@ -16,8 +16,9 @@ VDBPolygonMeshPresenter::VDBPolygonMeshPresenter(VDBPolygonMeshScene* model) :
 {
 }
 
-void VDBPolygonMeshPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void VDBPolygonMeshPresenter::createView(SceneShader* sceneShader)
 {
+	/*
 	{
 		this->view = new LineShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
@@ -28,13 +29,16 @@ void VDBPolygonMeshPresenter::createView(SceneShader* sceneShader, GLObjectFacto
 	}
 
 	updateView();
+	*/
 }
 
-void VDBPolygonMeshPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void VDBPolygonMeshPresenter::removeView(SceneShader* sceneShader)
 {
+	/*
 	this->view->release(glFactory);
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
+	*/
 }
 
 void VDBPolygonMeshPresenter::updateView()

@@ -5,8 +5,8 @@
 #include "VDBVolumeImpl.h"
 #include "Converter.h"
 
-#include "../../Crystal/Scene/SceneShader.h"
-#include "../../Crystal/Scene/PointShaderScene.h"
+#include "../../CrystalScene/Scene/SceneShader.h"
+#include "../../CrystalScene/Scene/PointShaderScene.h"
 //#include "PointShaderScene.h"
 
 using namespace Crystal::Shader;
@@ -21,8 +21,9 @@ VDBVolumePresenter::VDBVolumePresenter(VDBVolumeScene* model) :
 {
 }
 
-void VDBVolumePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void VDBVolumePresenter::createView(SceneShader* sceneShader)
 {
+	/*
 	{
 		this->view = new PointShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
@@ -30,13 +31,16 @@ void VDBVolumePresenter::createView(SceneShader* sceneShader, GLObjectFactory& g
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	updateView();
+	*/
 }
 
-void VDBVolumePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+void VDBVolumePresenter::removeView(SceneShader* sceneShader)
 {
+	/*
 	this->view->release(factory);
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
+	*/
 }
 
 void VDBVolumePresenter::updateView()

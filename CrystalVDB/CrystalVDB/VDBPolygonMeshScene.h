@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Math/Vector3d.h"
 
-#include "../../Crystal/Scene/IShapeScene.h"
+#include "../../CrystalScene/Scene/IShapeScene.h"
 
 #include "VDBPolygonMeshPresenter.h"
 

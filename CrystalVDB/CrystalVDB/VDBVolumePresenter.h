@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Scene/IPresenter.h"
+#include "../../CrystalScene/Scene/IPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -14,9 +14,9 @@ class VDBVolumePresenter : public Scene::IPresenter
 public:
 	explicit VDBVolumePresenter(VDBVolumeScene* model);
 
-	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void createView(Scene::SceneShader* sceneShader) override;
 
-	void removeView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+	void removeView(Scene::SceneShader* sceneShader) override;
 
 	void updateView() override;
 

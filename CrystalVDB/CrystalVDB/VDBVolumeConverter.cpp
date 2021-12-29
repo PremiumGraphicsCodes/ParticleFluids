@@ -51,6 +51,7 @@ void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParti
     }
 }
 
+/*
 void VDBVolumeConverter::toVDB(const SparseVolumeScene& sv, VDBVolumeScene* vdb)
 {
     auto impl = vdb->getImpl();
@@ -88,4 +89,4 @@ void VDBVolumeConverter::toVDB(const SparseVolumeScene& sv, VDBVolumeScene* vdb)
     );
     impl->setTransformMatrix(matrix);
     */
-}
+//}
