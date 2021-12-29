@@ -1,7 +1,7 @@
 #include "VDBPSMenu.h"
 
-#include "../../Crystal/Scene/World.h"
-#include "../../CrystalViewer/AppBase/imgui.h"
+#include "CrystalScene/Scene/World.h"
+#include "CrystalScene/AppBase/imgui.h"
 
 #include "VDBPSBoxView.h"
 #include "PSToVolumeView.h"

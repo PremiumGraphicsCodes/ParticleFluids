@@ -1,6 +1,6 @@
 #include "VDBPSBoxView.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 
 using namespace Crystal::Math;
@@ -43,6 +43,6 @@ void VDBPSBox::onOk()
 	for (const auto& p : positions) {
 		scene->add(p, 1.0f);
 	}
-	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	scene->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(scene);
 }

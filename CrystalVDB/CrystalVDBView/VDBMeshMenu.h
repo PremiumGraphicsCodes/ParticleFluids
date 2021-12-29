@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../CrystalViewer/AppBase/IMenu.h"
-#include "../../CrystalViewer/AppBase/ControlPanel.h"
+#include "CrystalScene/AppBase/IMenu.h"
+#include "CrystalScene/AppBase/ControlPanel.h"
 
 namespace Crystal {
 	namespace UI {

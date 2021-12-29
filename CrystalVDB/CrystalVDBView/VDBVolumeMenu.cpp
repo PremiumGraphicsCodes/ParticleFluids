@@ -5,7 +5,7 @@
 #include "VolumeToPSView.h"
 #include "ToVDBVolumeView.h"
 
-#include "../../CrystalViewer/AppBase/imgui.h"
+#include "CrystalScene/AppBase/imgui.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;

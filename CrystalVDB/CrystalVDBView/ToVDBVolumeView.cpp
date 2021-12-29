@@ -24,6 +24,7 @@ ToVDBVolumeView::ToVDBVolumeView(const std::string& name, World* model, Canvas* 
 
 void ToVDBVolumeView::onOk()
 {
+	/*
 	std::array<int, 3> resolution =
 	{
 		resolutionView.getValue(),
@@ -54,7 +55,8 @@ void ToVDBVolumeView::onOk()
 
 	VDBVolumeScene* dest = new VDBVolumeScene();
 	VDBVolumeConverter converter;
-	converter.toVDB(svScene, dest);
-	dest->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	//converter.toVDB(svScene, dest);
+	dest->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(dest);
+	*/
 }

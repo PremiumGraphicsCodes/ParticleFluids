@@ -4,10 +4,10 @@
 #include "../CrystalVDB/VDBFileWriter.h"
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 
-#include "../../CrystalViewer/AppBase/imgui.h"
+#include "CrystalScene/AppBase/imgui.h"
 
-#include "../../CrystalViewer/AppBase/FileOpenMenu.h"
-#include "../../CrystalViewer/AppBase/FileSaveMenu.h"
+#include "CrystalScene/AppBase/FileOpenMenu.h"
+#include "CrystalScene/AppBase/FileSaveMenu.h"
 
 #include "../VDBCommand/VDBFileReadCommand.h"
 //#include "../VDBCommand/PublicLabels/VDBFileReadLabels.h"
@@ -52,7 +52,7 @@ void VDBFileMenu::onShow()
 						for (const auto& id : newIds) {
 							auto ps = world->getScenes()->findSceneById(id);
 							auto presenter = ps->getPresenter();
-							presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+							presenter->createView(getWorld()->getRenderer());
 						}
 						std::cout << "import suceeded." << std::endl;
 					}

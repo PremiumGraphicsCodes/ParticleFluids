@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../CrystalViewer/AppBase/IOkCancelView.h"
-#include "../../CrystalViewer/AppBase/Sphere3dView.h"
-#include "../../CrystalViewer/AppBase/IntView.h"
+#include "CrystalScene/AppBase/IOkCancelView.h"
+#include "CrystalScene/AppBase/Sphere3dView.h"
+#include "CrystalScene/AppBase/IntView.h"
 
 namespace Crystal {
 	namespace UI {

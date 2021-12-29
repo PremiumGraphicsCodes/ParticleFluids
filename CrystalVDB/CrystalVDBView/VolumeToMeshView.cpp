@@ -27,7 +27,7 @@ void VolumeToMeshView::onOk()
 	VDBVolumeConverter vToMesh;
 	auto mesh = new VDBPolygonMeshScene();
 	vToMesh.toMesh(grid, mesh);
-	mesh->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	mesh->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(mesh);
 
 	//EXPECT_FALSE(mesh->getVerticesf().empty());

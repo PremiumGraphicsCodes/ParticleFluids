@@ -27,6 +27,6 @@ void VDBVolumeView::onOk()
 	}
 	volume->setScale(scaleView.getValue());
 
-	volume->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	volume->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(volume);
 }

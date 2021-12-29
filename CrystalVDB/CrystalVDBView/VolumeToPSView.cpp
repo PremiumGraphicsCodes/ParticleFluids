@@ -25,6 +25,6 @@ void VolumeToPSView::onOk()
 	VDBVolumeConverter converter;
 	auto ps = new VDBParticleSystemScene(getWorld()->getNextSceneId(), "VolumeToPS");
 	converter.toParticleSystem(*volume, ps);
-	ps->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	ps->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(ps);
 }

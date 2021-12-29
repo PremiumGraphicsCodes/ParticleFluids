@@ -25,5 +25,5 @@ void OBJFileImportView::onOk()
 	command.execute(getWorld());
 	auto newId = std::any_cast<int>( command.getResult(::VDBMeshIdLabel) );
 	auto mesh = getWorld()->getScenes()->findSceneById<VDBPolygonMeshScene*>(newId);
-	mesh->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	mesh->getPresenter()->createView(getWorld()->getRenderer());
 }

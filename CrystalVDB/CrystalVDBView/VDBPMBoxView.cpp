@@ -3,7 +3,6 @@
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 
-#include "../../Crystal/Scene/MaterialScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
@@ -39,6 +38,6 @@ void VDBPMBoxView::onOk()
 
 	mesh->updateNormals();
 
-	mesh->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	mesh->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(mesh);
 }
