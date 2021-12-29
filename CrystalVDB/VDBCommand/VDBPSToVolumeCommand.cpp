@@ -2,8 +2,8 @@
 
 #include "PublicLabels/VDBPSToVolumeLabels.h"
 
-#include "../../Crystal/Scene/IParticleSystemScene.h"
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "CrystalScene/Scene/IParticleSystemScene.h"
+#include "CrystalScene/Scene/PolygonMeshScene.h"
 
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 #include "../CrystalVDB/VDBParticleSystemConverter.h"

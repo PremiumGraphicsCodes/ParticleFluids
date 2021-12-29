@@ -2,9 +2,9 @@
 
 #include <memory>
 
-#include "../../Crystal/Util/UnCopyable.h"
-#include "../../CrystalViewer/Command/ICommand.h"
-#include "../../CrystalViewer/Command/CommandFactory.h"
+#include "Crystal/Util/UnCopyable.h"
+#include "CrystalScene/Command/ICommand.h"
+#include "CrystalScene/Command/CommandFactory.h"
 
 namespace Crystal {
 	namespace VDB {

@@ -304,6 +304,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrystalScene\AppBase\AppBase.vcxproj">
+      <Project>{8bcd40a1-4223-4e7a-a84a-93fbf1b6ffd8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrystalScene\Command\Command.vcxproj">
+      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrystalScene\Scene\Scene.vcxproj">
+      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
+      <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
       <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
     </ProjectReference>
@@ -318,16 +330,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
       <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\PremiumGraphics\Documents\GitHub\cgstudio4\CrystalAlgo\ThirdParty\openvdb\ZERO_CHECK.vcxproj">
-      <Project>{C33DEA87-3659-3691-A427-D0799AC97529}</Project>
-      <Name>ZERO_CHECK</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\PremiumGraphics\Documents\GitHub\cgstudio4\CrystalAlgo\ThirdParty\openvdb\openvdb\openvdb_shared.vcxproj">
-      <Project>{95F31074-D88C-3718-B8F1-F6F2F054F609}</Project>
-      <Name>openvdb_shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

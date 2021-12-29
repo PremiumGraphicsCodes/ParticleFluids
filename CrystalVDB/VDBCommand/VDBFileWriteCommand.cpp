@@ -3,7 +3,7 @@
 #include "../CrystalVDB/VDBFileWriter.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
 #include "PublicLabels/VDBFileWriteLabels.h"
 

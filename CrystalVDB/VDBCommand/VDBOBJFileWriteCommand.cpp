@@ -1,7 +1,7 @@
 #include "VDBOBJFileWriteCommand.h"
 
-#include "../../Crystal/IO/OBJFileWriter.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "Crystal/IO/OBJFileWriter.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 

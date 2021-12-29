@@ -46,7 +46,7 @@ bool ToVDBVolumeCommand::execute(World* world)
 	}
 
 	VDBVolumeConverter converter;
-	converter.toVDB(*svScene, vdbVolScene);
+	//converter.toVDB(*svScene, vdbVolScene);
 
 	return true;
 }

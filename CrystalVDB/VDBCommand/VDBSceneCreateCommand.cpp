@@ -42,17 +42,17 @@ bool VDBSceneCreateCommand::execute(World* world)
 		for (const auto& p : positions) {
 			mesh->add(p, 1.0);
 		}
-		world->addScene(1, mesh);
+		world->addScene(mesh);
 		results.newId.setValue(mesh->getId());
 	}
 	else if (typeName == ::SceneType_VDBMeshLabel) {
 		auto mesh = new VDBPolygonMeshScene(world->getNextSceneId(), name);
-		world->addScene(1, mesh);
+		world->addScene(mesh);
 		results.newId.setValue(mesh->getId());
 	}
 	else if (typeName == ::SceneType_VDBVolumeLabel) {
 		auto mesh = new VDBVolumeScene(world->getNextSceneId(), name);
-		world->addScene(1, mesh);
+		world->addScene(mesh);
 		results.newId.setValue(mesh->getId());
 	}
 	else {
