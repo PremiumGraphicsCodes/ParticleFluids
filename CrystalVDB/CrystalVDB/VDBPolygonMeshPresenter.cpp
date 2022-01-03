@@ -18,27 +18,22 @@ VDBPolygonMeshPresenter::VDBPolygonMeshPresenter(VDBPolygonMeshScene* model) :
 
 void VDBPolygonMeshPresenter::createView(SceneShader* sceneShader)
 {
-	/*
 	{
 		this->view = new LineShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
-		this->view->build(glFactory);
-
+		this->view->setShader(sceneShader->getRenderers()->getWireShader());
+		this->view->build(*sceneShader->getGLFactory());
 
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 
 	updateView();
-	*/
 }
 
 void VDBPolygonMeshPresenter::removeView(SceneShader* sceneShader)
 {
-	/*
-	this->view->release(glFactory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
-	*/
 }
 
 void VDBPolygonMeshPresenter::updateView()

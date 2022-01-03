@@ -51,11 +51,11 @@ void VDBParticleSystemPresenter::createView(SceneShader* sceneShader)
 
 void VDBParticleSystemPresenter::removeView(SceneShader* sceneShader)
 {
-	/*
-	this->view->release(factory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 
+	/*
 	this->parentIdView->release(factory);
 	sceneShader->getParentIdRenderer()->removeScene(this->parentIdView);
 	delete this->parentIdView;

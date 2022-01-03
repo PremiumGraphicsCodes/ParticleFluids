@@ -23,24 +23,20 @@ VDBVolumePresenter::VDBVolumePresenter(VDBVolumeScene* model) :
 
 void VDBVolumePresenter::createView(SceneShader* sceneShader)
 {
-	/*
 	{
 		this->view = new PointShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
+		this->view->setShader(sceneShader->getRenderers()->getPointShader());
+		this->view->build(*sceneShader->getGLFactory());
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	updateView();
-	*/
 }
 
 void VDBVolumePresenter::removeView(SceneShader* sceneShader)
 {
-	/*
-	this->view->release(factory);
+	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
-	*/
 }
 
 void VDBVolumePresenter::updateView()
