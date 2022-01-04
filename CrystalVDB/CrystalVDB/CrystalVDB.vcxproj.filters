@@ -47,6 +47,9 @@
     <ClCompile Include="VDBVolumeImpl.cpp">
       <Filter>Volume\Private</Filter>
     </ClCompile>
+    <ClCompile Include="VDBFilter.cpp">
+      <Filter>Filter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -123,6 +126,9 @@
     </Filter>
     <Filter Include="Converter\Private">
       <UniqueIdentifier>{0f07a8f8-2e2f-46b1-84e9-eb32e7f913f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Filter">
+      <UniqueIdentifier>{62d5c720-21b3-4457-951b-6e44979ddd15}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
