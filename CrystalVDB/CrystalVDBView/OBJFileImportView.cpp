@@ -1,7 +1,6 @@
 #include "OBJFileImportView.h"
 
 #include "../VDBCommand/VDBOBJFileReadCommand.h"
-#include "../VDBCommand/PublicLabels/VDBOBJFileReadLabels.h"
 
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 
@@ -19,6 +18,7 @@ OBJFileImportView::OBJFileImportView(const std::string& name, World* model, Canv
 
 void OBJFileImportView::onOk()
 {
+	/*
 	VDBOBJFileReadCommand::Args args;
 	args.filePath.setValue(fileOpenView.getFileName());
 	VDBOBJFileReadCommand command(args);
@@ -26,4 +26,5 @@ void OBJFileImportView::onOk()
 	auto newId = std::any_cast<int>( command.getResult(::VDBMeshIdLabel) );
 	auto mesh = getWorld()->getScenes()->findSceneById<VDBPolygonMeshScene*>(newId);
 	mesh->getPresenter()->createView(getWorld()->getRenderer());
+	*/
 }

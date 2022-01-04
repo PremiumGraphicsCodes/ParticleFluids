@@ -1,6 +1,11 @@
 #include "VDBInitCommand.h"
 
-#include "PublicLabels/VDBInitLabels.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace
+{
+	PublicLabel CommandNameLabel = "VDBInit";
+}
 
 #include "../CrystalVDB/VDBAdapter.h"
 

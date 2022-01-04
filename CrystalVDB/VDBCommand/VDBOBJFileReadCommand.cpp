@@ -3,7 +3,14 @@
 #include "../../Crystal/IO/OBJFileReader.h"
 
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
-#include "PublicLabels/VDBOBJFileReadLabels.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace
+{
+	PublicLabel CommandNameLabel = "VDBOBJFileRead";
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel VDBMeshIdLabel = "VDBMeshId";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

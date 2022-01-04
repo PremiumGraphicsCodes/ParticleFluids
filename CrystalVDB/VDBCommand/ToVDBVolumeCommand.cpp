@@ -1,6 +1,12 @@
 #include "ToVDBVolumeCommand.h"
 
-#include "PublicLabels/ToVDBVolumeLabels.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace {
+	PublicLabel SparseVolumeIdLabel = "SparseVolumeId";
+	PublicLabel VDBVolumeIdLabel = "VDBVolumeId";
+	PublicLabel CommandNameLabel = "ToVDBVolumeCommand";
+}
 
 #include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 

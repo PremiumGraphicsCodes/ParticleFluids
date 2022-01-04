@@ -5,7 +5,15 @@
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
 
-#include "PublicLabels/VDBFileReadLabels.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace
+{
+	PublicLabel CommandNameLabel = "VDBFileRead";
+	PublicLabel RadiusLabel = "Radius";
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel NewIdLabel = "NewId";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

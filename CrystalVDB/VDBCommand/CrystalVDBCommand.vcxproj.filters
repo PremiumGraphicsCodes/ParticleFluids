@@ -19,48 +19,13 @@
     <ClInclude Include="VDBFileReadCommand.h" />
     <ClInclude Include="VDBFileWriteCommand.h" />
     <ClInclude Include="VDBInitCommand.h" />
-    <ClInclude Include="PublicLabels\VDBInitLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
-    <ClInclude Include="PublicLabels\VDBFileReadLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
-    <ClInclude Include="PublicLabels\VDBFileWriteLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VDBOBJFileWriteCommand.h" />
-    <ClInclude Include="PublicLabels\VDBOBJFileWriteLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VDBOBJFileReadCommand.h" />
-    <ClInclude Include="PublicLabels\VDBOBJFileReadLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VDBSceneCreateCommand.h" />
-    <ClInclude Include="PublicLabels\VDBSceneCreateLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VDBMeshToVolumeCommand.h" />
-    <ClInclude Include="PublicLabels\VDBMeshToVolumeLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VDBPSToVolumeCommand.h" />
-    <ClInclude Include="PublicLabels\VDBPSToVolumeLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VDBVolumeToMeshCommand.h" />
     <ClInclude Include="VDBVolumeToPSCommand.h" />
-    <ClInclude Include="PublicLabels\VDBVolumeToPSLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="ToVDBVolumeCommand.h" />
-    <ClInclude Include="PublicLabels\ToVDBVolumeLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="PublicLabels">
-      <UniqueIdentifier>{4b63a7ad-68a1-41c4-8511-c0b297c2fb63}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>

@@ -5,7 +5,14 @@
 
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 
-#include "PublicLabels/VDBOBJFileWriteLabels.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace
+{
+	PublicLabel CommandNameLabel = "VDBOBJFileWrite";
+	PublicLabel VDBMeshIdLabel = "VDBMeshId";
+	PublicLabel FilePathLabel = "FilePath";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

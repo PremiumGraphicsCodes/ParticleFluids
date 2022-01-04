@@ -4,7 +4,19 @@
 #include "../../CrystalVDB/CrystalVDB/VDBPolygonMeshScene.h"
 #include "../../CrystalVDB/CrystalVDB/VDBVolumeScene.h"
 
-#include "PublicLabels/VDBSceneCreateLabels.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace
+{
+	PublicLabel CommandNameLabel = "VDBSceneCreate";
+	PublicLabel SceneTypeLabel = "SceneType";
+	PublicLabel SceneType_VDBPointsLabel = "VDBPoints";
+	PublicLabel SceneType_VDBMeshLabel = "VDBMesh";
+	PublicLabel SceneType_VDBVolumeLabel = "VDBVolume";
+	PublicLabel NameLabel = "Name";
+	PublicLabel NewIdLabel = "NewId";
+	PublicLabel PositionsLabel = "Positions";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

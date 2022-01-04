@@ -1,6 +1,14 @@
 #include "VDBPSToVolumeCommand.h"
 
-#include "PublicLabels/VDBPSToVolumeLabels.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace
+{
+	PublicLabel CommandNameLabel = "VDBParticleSystemToMesh";
+	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
+	PublicLabel VolumeIdLabel = "VolumeId";
+	PublicLabel RadiusLabel = "Radius";
+}
 
 #include "CrystalScene/Scene/IParticleSystemScene.h"
 #include "CrystalScene/Scene/PolygonMeshScene.h"

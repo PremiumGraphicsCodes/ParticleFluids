@@ -5,7 +5,15 @@
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 
-#include "PublicLabels/VDBFileWriteLabels.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace
+{
+	PublicLabel CommandNameLabel = "OpenVDBFileWrite";
+	PublicLabel ParticleSystemIdsLabel = "ParticleSystemIds";
+	PublicLabel VDBVolumeIdsLabel = "VDBVolumeIds";
+	PublicLabel FilePathLabel = "FilePath";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
