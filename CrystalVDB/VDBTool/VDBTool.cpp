@@ -2,9 +2,27 @@
 //
 
 #include <iostream>
+#include "CrystalVDB/VDBCommand/VDBInitCommand.h"
+#include "CrystalVDB/VDBCommand/VDBPSToVolumeCommand.h"
+
+using namespace Crystal::VDB;
 
 int main()
 {
+    Crystal::Scene::World world;
+
+    {
+        VDBInitCommand command;
+        command.execute(&world);
+    }
+
+    {
+        VDBPSToVolumeCommand command;
+        VDBPSToVolumeCommand::Args args;
+        args.particleSystemId.setValue(1);
+        //command.set
+    }
+
     std::cout << "Hello World!\n";
 }
 
