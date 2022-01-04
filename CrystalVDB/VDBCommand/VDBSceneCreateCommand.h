@@ -4,36 +4,44 @@
 #include <vector>
 
 namespace Crystal {
-	namespace Command {
+	namespace VDB {
 
-class VDBSceneCreateCommand : public ICommand
+class VDBSceneCreateCommand : public Command::ICommand
 {
 public:
-	VDBSceneCreateCommand() :
-		ICommand(&args, &results)
-	{}
-
-	struct Args : IArgs
+	struct Args : Command::IArgs
 	{
-		Arg<std::string> sceneType;
-		Arg<std::string> name;
-		Arg<std::vector<Math::Vector3dd>> positions;
+		Command::Arg<std::string> sceneType;
+		Command::Arg<std::string> name;
+		Command::Arg<std::vector<Math::Vector3dd>> positions;
 		
 		Args();
 	};
 
-	struct Results : IResults
+	struct Results : Command::IResults
 	{
 		Results();
 
-		Result<int> newId;
+		Command::Result<int> newId;
 	};
+
+	VDBSceneCreateCommand() :
+		Command::ICommand(&args, &results)
+	{}
+
+	explicit VDBSceneCreateCommand(const Args& args) :
+		args(args),
+		Command::ICommand(&this->args, &results)
+	{
+	}
 
 	static std::string getName();
 
 	std::string getCommandName() const { return getName(); }
 
 	bool execute(Scene::World* scene) override;
+
+	const Results& getResults() const { return results; }
 
 private:
 	Args args;

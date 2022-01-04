@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include "CrystalVDB/VDBCommand/VDBInitCommand.h"
+#include "CrystalVDB/VDBCommand/VDBPCDFileReadCommand.h"
+#include "CrystalVDB/VDBCommand/ToVDBVolumeCommand.h"
+#include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
 #include "CrystalVDB/VDBCommand/VDBPSToVolumeCommand.h"
 
 using namespace Crystal::VDB;
@@ -16,23 +19,34 @@ int main()
         command.execute(&world);
     }
 
+    int psId = -1;
     {
-        VDBPSToVolumeCommand command;
+        VDBPCDFileReadCommand::Args args;
+        args.filePath.setValue("C://Dev//cgstudio4//Blender//CrystalPython//tmp_txt//macro1.pcd");
+        VDBPCDFileReadCommand command(args);
+        command.execute(&world);
+        psId = std::any_cast<int>( command.getResult("VDBPSId") );
+    }
+
+    int volumeId = -1;
+    {
+        VDBSceneCreateCommand::Args args;
+        args.sceneType.setValue("VDBVolume");
+        VDBSceneCreateCommand command(args);
+        command.execute(&world);
+        volumeId = std::any_cast<int>(command.getResults().newId.value);
+    }
+
+    double radius = 0.1;
+    {
         VDBPSToVolumeCommand::Args args;
-        args.particleSystemId.setValue(1);
-        //command.set
+        args.particleSystemId.setValue(psId);
+        args.vdbVolumeId.setValue(volumeId);
+        args.radius.setValue(radius);
+        VDBPSToVolumeCommand command(args);
+        command.execute(&world);
     }
 
     std::cout << "Hello World!\n";
 }
 
-// プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
-// プログラムのデバッグ: F5 または [デバッグ] > [デバッグの開始] メニュー
-
-// 作業を開始するためのヒント: 
-//    1. ソリューション エクスプローラー ウィンドウを使用してファイルを追加/管理します 
-//   2. チーム エクスプローラー ウィンドウを使用してソース管理に接続します
-//   3. 出力ウィンドウを使用して、ビルド出力とその他のメッセージを表示します
-//   4. エラー一覧ウィンドウを使用してエラーを表示します
-//   5. [プロジェクト] > [新しい項目の追加] と移動して新しいコード ファイルを作成するか、[プロジェクト] > [既存の項目の追加] と移動して既存のコード ファイルをプロジェクトに追加します
-//   6. 後ほどこのプロジェクトを再び開く場合、[ファイル] > [開く] > [プロジェクト] と移動して .sln ファイルを選択します

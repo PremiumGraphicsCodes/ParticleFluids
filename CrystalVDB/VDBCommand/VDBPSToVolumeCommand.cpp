@@ -41,6 +41,11 @@ VDBPSToVolumeCommand::VDBPSToVolumeCommand() :
 	ICommand(&args, &results)
 {}
 
+VDBPSToVolumeCommand::VDBPSToVolumeCommand(const Args& args) :
+	args(args),
+	ICommand(&this->args, &results)
+{}
+
 std::string VDBPSToVolumeCommand::getName()
 {
 	return ::CommandNameLabel;

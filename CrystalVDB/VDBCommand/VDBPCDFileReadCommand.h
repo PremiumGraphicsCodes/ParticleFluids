@@ -5,26 +5,27 @@
 namespace Crystal {
 	namespace VDB {
 
-class VDBPSToVolumeCommand : public Command::ICommand
+class VDBPCDFileReadCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
 	{
 		Args();
 
-		Command::Arg<int> particleSystemId;
-		Command::Arg<int> vdbVolumeId;
-		Command::Arg<double> radius;
+		Command::Arg<std::string> filePath;
 	};
 
 	struct Results : Command::IResults
 	{
 		Results();
+
+		Command::Result<int> vdbPsId;
+		//Command::Result<std::vector<int>> newIds;
 	};
 
-	VDBPSToVolumeCommand();
+	VDBPCDFileReadCommand();
 
-	explicit VDBPSToVolumeCommand(const Args& args);
+	explicit VDBPCDFileReadCommand(const Args& args);
 
 	static std::string getName();
 
