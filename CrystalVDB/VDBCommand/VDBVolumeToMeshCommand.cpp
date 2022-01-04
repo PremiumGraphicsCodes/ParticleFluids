@@ -1,11 +1,19 @@
 #include "VDBVolumeToMeshCommand.h"
 
-#include "PublicLabels/VDBVolumeToMeshLabels.h"
-
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 #include "../CrystalVDB/VDBPolygonMeshConverter.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
 #include "../CrystalVDB/VDBVolumeConverter.h"
+
+#include "CrystalScene/Command/Public/PublicLabel.h"
+
+namespace
+{
+	PublicLabel CommandNameLabel = "VDBVolumeToMesh";
+	PublicLabel VolumeIdLabel = "VolumeId";
+	PublicLabel VDBMeshIdLabel = "VDBMeshId";
+	PublicLabel AdaptivityLabel = "Adaptivity";
+}
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
@@ -13,10 +21,12 @@ using namespace Crystal::VDB;
 
 VDBVolumeToMeshCommand::Args::Args() :
 	vdbVolumeId(::VolumeIdLabel, -1),
-	vdbMeshId(::VDBMeshIdLabel, -1)
+	vdbMeshId(::VDBMeshIdLabel, -1),
+	adaptivity(::AdaptivityLabel, 0.0)
 {
 	add(&vdbVolumeId);
 	add(&vdbMeshId);
+	add(&adaptivity);
 }
 
 VDBVolumeToMeshCommand::Results::Results()
@@ -44,7 +54,7 @@ bool VDBVolumeToMeshCommand::execute(World* world)
 	}
 
 	VDBVolumeConverter converter;
-	converter.toMesh(*volume, mesh);
+	converter.toMesh(*volume, mesh, args.adaptivity.getValue());
 
 	return true;
 }

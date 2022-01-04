@@ -21,32 +21,32 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{0aa3c227-939a-4b73-a27c-9d6be4f2adbc}</ProjectGuid>
-    <RootNamespace>OpenVDBCommand</RootNamespace>
+    <ProjectGuid>{b47c066e-c338-47a1-93b6-c86fd7083ffb}</ProjectGuid>
+    <RootNamespace>VDBTool</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -86,14 +86,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -103,14 +100,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -120,16 +114,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>../../;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -139,84 +128,18 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>../../;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CrystalViewer\Command\Command.vcxproj">
-      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
-      <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\IO\IO.vcxproj">
-      <Project>{198160cc-5ed1-499d-ad45-90dbac4852f8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
-      <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Scene\Scene.vcxproj">
-      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Shader\Shader.vcxproj">
-      <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
-      <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\CrystalVDB\CrystalVDB.vcxproj">
-      <Project>{516a29d3-e143-4d8a-8067-24b2d24a6643}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="PublicLabels\ToVDBVolumeLabels.h" />
-    <ClInclude Include="PublicLabels\VDBVolumeToPSLabels.h" />
-    <ClInclude Include="PublicLabels\VDBMeshToVolumeLabels.h" />
-    <ClInclude Include="PublicLabels\VDBOBJFileReadLabels.h" />
-    <ClInclude Include="PublicLabels\VDBOBJFileWriteLabels.h" />
-    <ClInclude Include="PublicLabels\VDBPSToVolumeLabels.h" />
-    <ClInclude Include="PublicLabels\VDBSceneCreateLabels.h" />
-    <ClInclude Include="ToVDBVolumeCommand.h" />
-    <ClInclude Include="VDBCommandFactory.h" />
-    <ClInclude Include="VDBFileReadCommand.h" />
-    <ClInclude Include="VDBFileWriteCommand.h" />
-    <ClInclude Include="VDBInitCommand.h" />
-    <ClInclude Include="PublicLabels\VDBInitLabels.h" />
-    <ClInclude Include="PublicLabels\VDBFileReadLabels.h" />
-    <ClInclude Include="PublicLabels\VDBFileWriteLabels.h" />
-    <ClInclude Include="VDBVolumeToPSCommand.h" />
-    <ClInclude Include="VDBMeshToVolumeCommand.h" />
-    <ClInclude Include="VDBOBJFileReadCommand.h" />
-    <ClInclude Include="VDBOBJFileWriteCommand.h" />
-    <ClInclude Include="VDBSceneCreateCommand.h" />
-    <ClInclude Include="VDBPSToVolumeCommand.h" />
-    <ClInclude Include="VDBVolumeToMeshCommand.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="ToVDBVolumeCommand.cpp" />
-    <ClCompile Include="VDBCommandFactory.cpp" />
-    <ClCompile Include="VDBFileReadCommand.cpp" />
-    <ClCompile Include="VDBFileWriteCommand.cpp" />
-    <ClCompile Include="VDBInitCommand.cpp" />
-    <ClCompile Include="VDBVolumeToPSCommand.cpp" />
-    <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
-    <ClCompile Include="VDBOBJFileReadCommand.cpp" />
-    <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
-    <ClCompile Include="VDBSceneCreateCommand.cpp" />
-    <ClCompile Include="VDBPSToVolumeCommand.cpp" />
-    <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
+    <ClCompile Include="VDBTool.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

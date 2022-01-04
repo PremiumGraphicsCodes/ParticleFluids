@@ -1,9 +1,6 @@
 #pragma once
 
 namespace Crystal {
-	namespace Space {
-		class SparseVolumeScene;
-	}
 	namespace VDB {
 		class VDBVolumeScene;
 		class VDBPolygonMeshScene;
@@ -12,11 +9,9 @@ namespace Crystal {
 class VDBVolumeConverter
 {
 public:
-	void toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScene* mesh);
+	void toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScene* mesh, const double adaptivity);
 
 	void toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystemScene* ps) const;
-
-	//void toVDB(const Space::SparseVolumeScene& sv, VDBVolumeScene* vdb);
 
 private:
 };

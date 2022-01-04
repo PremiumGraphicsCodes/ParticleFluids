@@ -49,9 +49,6 @@
       <Filter>PublicLabels</Filter>
     </ClInclude>
     <ClInclude Include="VDBVolumeToMeshCommand.h" />
-    <ClInclude Include="PublicLabels\VDBVolumeToMeshLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VDBVolumeToPSCommand.h" />
     <ClInclude Include="PublicLabels\VDBVolumeToPSLabels.h">
       <Filter>PublicLabels</Filter>
