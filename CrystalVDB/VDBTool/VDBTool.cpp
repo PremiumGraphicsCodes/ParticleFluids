@@ -38,7 +38,7 @@ int main()
         volumeId = std::any_cast<int>(command.getResults().newId.value);
     }
 
-    double radius = 0.1;
+    double radius = 0.5;
     {
         VDBPSToVolumeCommand::Args args;
         args.particleSystemId.setValue(psId);

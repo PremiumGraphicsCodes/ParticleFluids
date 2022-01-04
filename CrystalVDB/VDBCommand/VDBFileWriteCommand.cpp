@@ -50,7 +50,8 @@ std::string VDBFileWriteCommand::getName()
 bool VDBFileWriteCommand::execute(World* world)
 {
 	VDBFileWriter writer;
-	const auto isOk = writer.open(args.filePath.getValue());
+	const std::string str(args.filePath.getValue());
+	const auto isOk = writer.open(str);
 	if (!isOk) {
 		return false;
 	}
