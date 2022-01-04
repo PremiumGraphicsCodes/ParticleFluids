@@ -26,6 +26,8 @@ public:
 
 	VDBFileWriteCommand();
 
+	explicit VDBFileWriteCommand(const Args& args);
+
 	static std::string getName();
 
 	std::string getCommandName() const { return getName(); }

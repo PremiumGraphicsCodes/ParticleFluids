@@ -7,6 +7,7 @@
 #include "CrystalVDB/VDBCommand/ToVDBVolumeCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
 #include "CrystalVDB/VDBCommand/VDBPSToVolumeCommand.h"
+#include "CrystalVDB/VDBCommand/VDBFileWriteCommand.h"
 
 using namespace Crystal::VDB;
 
@@ -46,6 +47,15 @@ int main()
         VDBPSToVolumeCommand command(args);
         command.execute(&world);
     }
+
+    {
+        VDBFileWriteCommand::Args args;
+        args.filePath.setValue("volume.vdb");
+        args.vdbVolumeIds.setValue({ volumeId });
+        VDBFileWriteCommand command(args);
+        command.execute(&world);
+    }
+
 
     std::cout << "Hello World!\n";
 }

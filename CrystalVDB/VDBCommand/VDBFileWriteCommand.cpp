@@ -37,6 +37,11 @@ VDBFileWriteCommand::VDBFileWriteCommand() :
 	ICommand(&args, &results)
 {}
 
+VDBFileWriteCommand::VDBFileWriteCommand(const Args& args) :
+	args(args),
+	ICommand(&this->args, &results)
+{}
+
 std::string VDBFileWriteCommand::getName()
 {
 	return ::CommandNameLabel;
