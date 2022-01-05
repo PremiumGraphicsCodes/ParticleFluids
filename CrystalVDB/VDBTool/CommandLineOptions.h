@@ -9,9 +9,12 @@ namespace Crystal {
 struct CommandLineOptions
 {
     std::string inputPsFilePath = "C://Dev//cgstudio4//Blender//CrystalPython//tmp_txt//macro1.pcd";
+    std::string outputMeshFilePath = "mesh.obj";
     double particleRadius = 1.0;
     double voxelSize = 0.5;
-    std::string outputMeshFilePath = "mesh.obj";
+    double meshAdaptivity = 0.0;
+    int smoothingWidth = 1;
+    int smoothingIteration = 1;
 
     void parse(const std::vector<std::string>& strs) {
         for (int i = 0; i < strs.size(); ++i) {
@@ -31,6 +34,18 @@ struct CommandLineOptions
             else if (str == "-v") {
                 i++;
                 this->voxelSize = std::stod(strs[i]);
+            }
+            else if (str == "-a") {
+                i++;
+                this->meshAdaptivity = std::stod(strs[i]);
+            }
+            else if (str == "-sw") {
+                i++;
+                this->smoothingWidth = std::stoi(strs[i]);
+            }
+            else if (str == "-si") {
+                i++;
+                this->smoothingIteration = std::stoi(strs[i]);
             }
         }
     }
