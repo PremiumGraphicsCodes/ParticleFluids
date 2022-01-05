@@ -19,6 +19,7 @@ VDBVolumePresenter::VDBVolumePresenter(VDBVolumeScene* model) :
 	model(model),
 	view(nullptr)
 {
+	this->colorMap = ColorMap(0.0, 1.0, ColorTable::createDefaultTable(270));
 }
 
 void VDBVolumePresenter::createView(SceneShader* sceneShader)
@@ -53,10 +54,11 @@ void VDBVolumePresenter::updateScreenView()
 	auto transform = grid->transform();
 	PointBuffer pb;
 	for (auto iter = grid->cbeginValueOn(); iter; ++iter) {
-		auto c = iter.getCoord();
+		//auto c = iter.getCoord();
 		auto coord = transform.indexToWorld(iter.getCoord());
 		auto value = *iter;
-		pb.add(Converter::fromVDB(coord), ColorRGBAf(1, 1, 1, 1), 1.0f);
+		const auto c = colorMap.getColor((float)value);
+		pb.add(Converter::fromVDB(coord), c, 1.0f);
 	}
 	this->view->send(pb);
 	this->view->setVisible(true);
