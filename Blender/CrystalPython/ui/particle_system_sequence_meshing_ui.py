@@ -11,6 +11,7 @@ from scene.scene import *
 from bpy.app.handlers import persistent
 import os
 import glob
+import subprocess
 
 class MeshingRunner :
     def __init__(self) :
@@ -30,32 +31,23 @@ class MeshingRunner :
         prop = bpy.context.scene.meshing_property
 
         volume_file_path = os.path.join(prop.input_path_prop, "macro" + str(frame) + ".pcd")
-        volume_ps = ParticleSystemScene(model.scene)
-        volume_ps.create_empty("")
-        FileIO.import_pcd(model.scene, volume_ps.id, volume_file_path)
+        export_file_path = os.path.join(prop.output_path_prop, "mesh" + str(frame) + ".obj") #basename_without_ext + ".stl")
 
-        #mass_file_path = os.path.join(prop.input_path_prop, "micro" + str(frame) + ".pcd")
-        #mass_ps = ParticleSystemScene(model.scene)
-        #mass_ps.create_empty("")
-        #FileIO.import_pcd(model.scene, mass_ps.id, mass_file_path)
-        
-        self.__bl_mesh.mesh = TriangleMeshScene(model.scene)
-        self.__bl_mesh.mesh.create_empty("")
+        params = []
+        params.append('VDBTool')
+        params.append("-i")
+        params.append(str(volume_file_path))
+        params.append("-o")
+        params.append(str(export_file_path))
+        params.append("-r")
+        params.append(str(prop.particle_radius_prop))
+        params.append("-v")
+        params.append(str(prop.cell_length_prop))
+        params.append("-a")
+        params.append(str(1.0))
             
-        builder = SurfaceBuilder(model.scene)
-        #builder.build_mvp_surface(volume_ps.id, mass_ps.id, self.__bl_mesh.mesh.id, prop.particle_radius_prop,prop.threshold_prop)
-        builder.build_anisotorpic(volume_ps.id, self.__bl_mesh.mesh.id, prop.particle_radius_prop, prop.cell_length_prop, prop.threshold_prop)
-        self.__bl_mesh.update()
-
-        if prop.do_export_stl_prop :
-#            basename_without_ext = os.path.splitext(os.path.basename(volume_file_path))[0]
-            export_file_path = os.path.join(prop.output_path_prop, "mesh" + str(frame) + ".stl") #basename_without_ext + ".stl")
-            self.__bl_mesh.mesh.export_stl(export_file_path)
-
-        #model.scene.delete(mass_ps.id, False)
-        model.scene.delete(volume_ps.id, False)
-        model.scene.delete(self.__bl_mesh.mesh.id, False)
-
+        result = subprocess.run(params, shell=True)
+            
     def is_running(self) :
         return self.__is_running
 
@@ -113,7 +105,7 @@ class MeshingProperty(bpy.types.PropertyGroup) :
     cell_length_prop : bpy.props.FloatProperty(
         name="cell_length",
         description="CellLength",
-        default=1.0,
+        default=0.5,
         min = 0.0,
         max = 100.0,
     )
