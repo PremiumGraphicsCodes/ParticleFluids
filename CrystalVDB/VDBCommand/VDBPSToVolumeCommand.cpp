@@ -1,15 +1,6 @@
 #include "VDBPSToVolumeCommand.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
-
-namespace
-{
-	PublicLabel CommandNameLabel = "VDBParticleSystemToMesh";
-	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
-	PublicLabel VolumeIdLabel = "VolumeId";
-	PublicLabel RadiusLabel = "Radius";
-}
-
 #include "CrystalScene/Scene/IParticleSystemScene.h"
 #include "CrystalScene/Scene/PolygonMeshScene.h"
 
@@ -19,6 +10,15 @@ namespace
 #include "../CrystalVDB/VDBVolumeScene.h"
 #include "../CrystalVDB/VDBVolumeConverter.h"
 
+namespace
+{
+	PublicLabel CommandNameLabel = "VDBParticleSystemToMesh";
+	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
+	PublicLabel VolumeIdLabel = "VolumeId";
+	PublicLabel RadiusLabel = "Radius";
+	PublicLabel VoxelSizeLabel = "VoxelSize";
+}
+
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
@@ -26,11 +26,13 @@ using namespace Crystal::VDB;
 VDBPSToVolumeCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	vdbVolumeId(::VolumeIdLabel, -1),
-	radius(::RadiusLabel, 5.0)
+	radius(::RadiusLabel, 5.0),
+	voxelSize(::VoxelSizeLabel, 1.0)
 {
 	add(&particleSystemId);
 	add(&vdbVolumeId);
 	add(&radius);
+	add(&voxelSize);
 }
 
 VDBPSToVolumeCommand::Results::Results()
@@ -63,7 +65,7 @@ bool VDBPSToVolumeCommand::execute(World* world)
 	}
 
 	VDBParticleSystemConverter psConverter;
-	psConverter.toVolume(*scene, args.radius.getValue(), volume);
+	psConverter.toVolume(*scene, args.radius.getValue(), args.voxelSize.getValue(), volume);
 	
 	return true;
 }

@@ -15,6 +15,7 @@ public:
 		Command::Arg<int> particleSystemId;
 		Command::Arg<int> vdbVolumeId;
 		Command::Arg<double> radius;
+		Command::Arg<double> voxelSize;
 	};
 
 	struct Results : Command::IResults

@@ -53,7 +53,7 @@ bool VDBPCDFileReadCommand::execute(World* world)
 	const auto pcd = reader.getPCD();
 	auto scene = new VDBParticleSystemScene(world->getNextSceneId(), "PCDImport");
 	for (const auto& p : pcd.data.positions) {
-		scene->add(p, 1.0);
+		scene->add(p, 0.1);
 	}
 	world->getScenes()->addScene(scene);
 

@@ -12,7 +12,7 @@ namespace Crystal {
 class VDBParticleSystemConverter
 {
 public:
-	void toVolume(const VDBParticleSystemScene& particles, const float radius, VDBVolumeScene* volume);
+	void toVolume(const VDBParticleSystemScene& particles, const float radius, const float voxelSize, VDBVolumeScene* volume);
 
 	void fromVDB(const VDBParticleSystemScene& src, Scene::ParticleSystemScene* ps);
 

@@ -38,12 +38,14 @@ int main()
         volumeId = std::any_cast<int>(command.getResults().newId.value);
     }
 
-    double radius = 0.5;
+    double radius = 2.0;
+    double voxelSize = 1.0;
     {
         VDBPSToVolumeCommand::Args args;
         args.particleSystemId.setValue(psId);
         args.vdbVolumeId.setValue(volumeId);
         args.radius.setValue(radius);
+        args.voxelSize.setValue(voxelSize);
         VDBPSToVolumeCommand command(args);
         command.execute(&world);
     }

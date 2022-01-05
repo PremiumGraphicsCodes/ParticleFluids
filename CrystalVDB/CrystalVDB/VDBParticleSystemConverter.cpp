@@ -16,10 +16,10 @@ using namespace Crystal::Shape;
 using namespace Crystal::VDB;
 using namespace Crystal::Scene;
 
-void VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particles, const float radius, VDBVolumeScene* volume)
+void VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particles, const float radius, const float voxelSize, VDBVolumeScene* volume)
 {
     // Rasterize into an SDF.
-    auto sdf = createLevelSet<FloatGrid>();
+    auto sdf = createLevelSet<FloatGrid>(voxelSize);
     //sdf->setName("density");
     auto p = particles.getImpl();
     if (p->size() == 0) {
