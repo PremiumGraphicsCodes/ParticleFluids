@@ -44,6 +44,12 @@
     <ClCompile Include="ToVDBVolumeView.cpp">
       <Filter>Volume\Converter</Filter>
     </ClCompile>
+    <ClCompile Include="VDBSphereView.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBFilterView.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VolumeToMeshView.h">
@@ -89,6 +95,9 @@
       <Filter>Volume\Converter</Filter>
     </ClInclude>
     <ClInclude Include="VDBSphereView.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBFilterView.h">
       <Filter>Volume</Filter>
     </ClInclude>
   </ItemGroup>

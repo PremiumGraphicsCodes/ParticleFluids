@@ -1,4 +1,4 @@
-#include "VDBVolumeView.h"
+#include "VDBSphereView.h"
 
 //#include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
@@ -8,21 +8,21 @@ using namespace Crystal::UI;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBVolumeView::VDBVolumeView(const std::string& name, World* model, Canvas* canvas) :
+VDBSphereView::VDBSphereView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	scaleView("Scale", 1.0)
 {
 	add(&scaleView);
 }
 
-void VDBVolumeView::onOk()
+void VDBSphereView::onOk()
 {
-	auto volume = new VDBVolumeScene(getWorld()->getNextSceneId(), "VDBVolume");
-	for (int i = 0; i < 10; ++i) {
-		for (int j = 0; j < 10; ++j) {
-			for (int k = 0; k < 10; ++k) {
-				const auto dist = i * i + j * j + k * k;
-				const auto v = std::sqrt(dist) / 10.0;
+	auto volume = new VDBVolumeScene(getWorld()->getNextSceneId(), "VDBSphere");
+	for (int i = -5; i <= 5; ++i) {
+		for (int j = -5; j <= 5; ++j) {
+			for (int k = -5; k <= 5; ++k) {
+				const auto dist = std::sqrt(i * i + j * j + k * k);
+				const auto v = 1.0 - dist / 5.0;
 				volume->setValue({ i,j,k }, v);
 			}
 		}

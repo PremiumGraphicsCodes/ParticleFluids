@@ -189,7 +189,9 @@
     <ClCompile Include="OBJFileImportView.cpp" />
     <ClCompile Include="ToVDBVolumeView.cpp" />
     <ClCompile Include="VDBFileMenu.cpp" />
+    <ClCompile Include="VDBFilterView.cpp" />
     <ClCompile Include="VDBMeshMenu.cpp" />
+    <ClCompile Include="VDBSphereView.cpp" />
     <ClCompile Include="VDBView.cpp" />
     <ClCompile Include="VDBPSMenu.cpp" />
     <ClCompile Include="PSToVolumeView.cpp" />
@@ -205,6 +207,7 @@
     <ClInclude Include="OBJFileImportView.h" />
     <ClInclude Include="ToVDBVolumeView.h" />
     <ClInclude Include="VDBFileMenu.h" />
+    <ClInclude Include="VDBFilterView.h" />
     <ClInclude Include="VDBPSMenu.h" />
     <ClInclude Include="PSToVolumeView.h" />
     <ClInclude Include="OBJFileExportView.h" />

@@ -9,7 +9,7 @@ using namespace Crystal::VDB;
 
 void VDBFilter::median(int width, int iteration)
 {
-	auto grid = this->src->getImpl()->getPtr()->deepCopy();
+	auto grid = this->src->getImpl()->getPtr();
 	openvdb::tools::Filter<openvdb::FloatGrid> filter(*grid);
 	filter.median(width, iteration);
 }
