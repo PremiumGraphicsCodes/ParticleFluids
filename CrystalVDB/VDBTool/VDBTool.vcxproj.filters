@@ -3,4 +3,8 @@
   <ItemGroup>
     <ClCompile Include="VDBTool.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PSToMeshTool.h" />
+    <ClInclude Include="CommandLineOptions.h" />
+  </ItemGroup>
 </Project>

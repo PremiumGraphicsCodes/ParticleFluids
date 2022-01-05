@@ -11,39 +11,19 @@
 #include "CrystalVDB/VDBCommand/VDBVolumeToMeshCommand.h"
 #include "CrystalVDB/VDBCommand/VDBOBJFileWriteCommand.h"
 
+#include "CommandLineOptions.h"
+
 using namespace Crystal::VDB;
-
-struct CommandLineOptions
-{
-    std::string inputPsFilePath = "C://Dev//cgstudio4//Blender//CrystalPython//tmp_txt//macro1.pcd";
-    double particleRadius = 1.0;
-    double voxelSize = 0.5;
-    std::string outputMeshFilePath = "mesh.obj";
-
-    void parse(int argc, char* argv[]) {
-        for (int i = 0; i < argc; ++i) {
-            std::string str(argv[i]);
-            if (str == "-i") {
-                i++;
-                this->inputPsFilePath = argv[i];
-            }
-            else if (str == "-o") {
-                i++;
-                this->outputMeshFilePath = argv[i];
-            }
-            else if (str == "-r") {
-                i++;
-                std::string s(argv[i]);
-                this->particleRadius = std::stod(s);
-            }
-        }
-    }
-};
+using namespace Crystal::VDBTool;
 
 int main(int argc, char* argv[])
 {
     CommandLineOptions options;
-    options.parse(argc, argv);
+    std::vector<std::string> strs;
+    for (int i = 0; i < argc; ++i) {
+        strs.push_back(argv[i]);
+    }
+    options.parse(strs);
 
     Crystal::Scene::World world;
 
