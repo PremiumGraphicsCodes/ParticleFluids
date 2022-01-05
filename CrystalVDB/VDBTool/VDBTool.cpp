@@ -8,6 +8,7 @@
 #include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
 #include "CrystalVDB/VDBCommand/VDBPSToVolumeCommand.h"
 #include "CrystalVDB/VDBCommand/VDBFileWriteCommand.h"
+#include "CrystalVDB/VDBCommand/VDBVolumeToMeshCommand.h"
 
 using namespace Crystal::VDB;
 
@@ -38,8 +39,8 @@ int main()
         volumeId = std::any_cast<int>(command.getResults().newId.value);
     }
 
-    double radius = 2.0;
-    double voxelSize = 1.0;
+    double radius = 1.0;
+    double voxelSize = 0.5;
     {
         VDBPSToVolumeCommand::Args args;
         args.particleSystemId.setValue(psId);
@@ -47,9 +48,15 @@ int main()
         args.radius.setValue(radius);
         args.voxelSize.setValue(voxelSize);
         VDBPSToVolumeCommand command(args);
-        command.execute(&world);
+        std::cout << "Converting PS to Volume" << std::endl;
+        const auto isOk = command.execute(&world);
+        if (!isOk) {
+            std::cout << "Failed" << std::endl;
+            std::exit(1);
+        }
     }
 
+    /*
     {
         VDBFileWriteCommand::Args args;
         args.filePath.setValue("volume.vdb");
@@ -57,6 +64,27 @@ int main()
         VDBFileWriteCommand command(args);
         command.execute(&world);
     }
+    */
+
+    int meshId = -1;
+    {
+        VDBSceneCreateCommand::Args args;
+        args.sceneType.setValue("VDBMesh");
+        VDBSceneCreateCommand command(args);
+        std::cout << "Creating Empty Mesh" << std::endl;
+        const auto isOk = command.execute(&world);
+        if (!isOk) {
+            std::cout << "Failed" << std::endl;
+            std::exit(1);
+        }
+        meshId = std::any_cast<int>(command.getResults().newId.value);
+    }
+    /*
+    {
+        VDBVolumeToMeshCommand::Args args;
+        args.vdbMeshId
+    }
+    */
 
 
     std::cout << "Hello World!\n";
