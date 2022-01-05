@@ -1,11 +1,14 @@
 #pragma once
 
+#include "CommandLineOptions.h"
+
 namespace Crystal {
-	namespace VDB {
+	namespace VDBTool {
 
 class PSToMeshTool
 {
-
+public:
+	void execute(const CommandLineOptions& options);
 };
 	}
 }

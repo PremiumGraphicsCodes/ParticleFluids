@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="PSToMeshTool.cpp" />
     <ClCompile Include="VDBTool.cpp" />
   </ItemGroup>
   <ItemGroup>
