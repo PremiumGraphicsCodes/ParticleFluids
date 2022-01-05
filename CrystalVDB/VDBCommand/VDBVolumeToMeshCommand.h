@@ -24,6 +24,8 @@ public:
 
 	VDBVolumeToMeshCommand();
 
+	explicit VDBVolumeToMeshCommand(const Args& args);
+
 	static std::string getName();
 
 	std::string getCommandName() const { return getName(); }

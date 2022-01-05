@@ -9,6 +9,7 @@
 #include "CrystalVDB/VDBCommand/VDBPSToVolumeCommand.h"
 #include "CrystalVDB/VDBCommand/VDBFileWriteCommand.h"
 #include "CrystalVDB/VDBCommand/VDBVolumeToMeshCommand.h"
+#include "CrystalVDB/VDBCommand/VDBOBJFileWriteCommand.h"
 
 using namespace Crystal::VDB;
 
@@ -66,12 +67,12 @@ int main()
     }
     */
 
+    std::cout << "Creating Empty Mesh" << std::endl;
     int meshId = -1;
     {
         VDBSceneCreateCommand::Args args;
         args.sceneType.setValue("VDBMesh");
         VDBSceneCreateCommand command(args);
-        std::cout << "Creating Empty Mesh" << std::endl;
         const auto isOk = command.execute(&world);
         if (!isOk) {
             std::cout << "Failed" << std::endl;
@@ -79,14 +80,21 @@ int main()
         }
         meshId = std::any_cast<int>(command.getResults().newId.value);
     }
-    /*
+
+    std::cout << "Converting Volume to Mesh...";
     {
         VDBVolumeToMeshCommand::Args args;
-        args.vdbMeshId
+        args.vdbVolumeId.setValue(volumeId);
+        args.vdbMeshId.setValue(meshId);
+        VDBVolumeToMeshCommand command(args);
+        const auto isOk = command.execute(&world);
+        if (!isOk) {
+            std::cout << "Failed" << std::endl;
+            std::exit(1);
+        }
+        else {
+            std::cout << "Succeeded" << std::endl;
+        }
     }
-    */
 
-
-    std::cout << "Hello World!\n";
 }
-
