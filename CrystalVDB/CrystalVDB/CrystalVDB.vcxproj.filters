@@ -98,6 +98,9 @@
     <ClInclude Include="VDBVolumeImpl.h">
       <Filter>Volume\Private</Filter>
     </ClInclude>
+    <ClInclude Include="VDBFilter.h">
+      <Filter>Filter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

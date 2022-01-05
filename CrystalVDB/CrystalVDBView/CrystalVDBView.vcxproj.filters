@@ -88,6 +88,9 @@
     <ClInclude Include="ToVDBVolumeView.h">
       <Filter>Volume\Converter</Filter>
     </ClInclude>
+    <ClInclude Include="VDBSphereView.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">

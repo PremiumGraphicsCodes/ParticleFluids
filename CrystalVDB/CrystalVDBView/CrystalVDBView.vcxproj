@@ -211,6 +211,7 @@
     <ClInclude Include="VDBMeshMenu.h" />
     <ClInclude Include="VDBPSBoxView.h" />
     <ClInclude Include="VDBPMBoxView.h" />
+    <ClInclude Include="VDBSphereView.h" />
     <ClInclude Include="VDBVolumeMenu.h" />
     <ClInclude Include="VDBVolumeView.h" />
     <ClInclude Include="VolumeToMeshView.h" />

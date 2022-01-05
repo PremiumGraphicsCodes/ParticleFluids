@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../CrystalScene/Scene/IPresenter.h"
+#include "../../Crystal/Graphics/ColorMap.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -30,6 +31,7 @@ private:
 private:
 	VDBVolumeScene* model;
 	Scene::PointShaderScene* view;
+	Graphics::ColorMap colorMap;
 };
 
 	}

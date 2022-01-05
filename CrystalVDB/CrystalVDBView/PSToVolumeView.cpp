@@ -17,10 +17,12 @@ using namespace Crystal::VDB;
 PSToVolumeView::PSToVolumeView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	particleSystemSelectView("ParticleSystem", model, canvas),
-	radiusView("Radius", 5.0)
+	radiusView("Radius", 1.0),
+	voxelSizeView("VoxelSize", 0.5)
 {
 	add(&particleSystemSelectView);
 	add(&radiusView);
+	add(&voxelSizeView);
 }
 
 void PSToVolumeView::onOk()
@@ -39,6 +41,6 @@ void PSToVolumeView::onOk()
 
 	VDBParticleSystemConverter converter;
 	VDBVolumeScene* volume = new VDBVolumeScene();
-	converter.toVolume(ps, radiusView.getValue(), volume);
+	converter.toVolume(ps, radiusView.getValue(), voxelSizeView.getValue(), volume);
 	std::cout << "voxels = " << volume->getActiveVoxelCount() << std::endl;;
 }

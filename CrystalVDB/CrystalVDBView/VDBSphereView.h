@@ -6,10 +6,10 @@
 namespace Crystal {
 	namespace UI {
 
-class VDBVolumeView : public IOkCancelView
+class VDBSphereView : public IOkCancelView
 {
 public:
-	VDBVolumeView(const std::string& name, Scene::World* model, Canvas* canvas);
+	VDBSphereView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

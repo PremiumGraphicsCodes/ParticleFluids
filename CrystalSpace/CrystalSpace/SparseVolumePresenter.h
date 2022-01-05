@@ -34,8 +34,6 @@ private:
 	Scene::PointShaderScene* view;
 	SparseVolumeScene* model;
 	Graphics::ColorMap colorMap;
-	//PointShaderScene* parentIdView;
-	//PointShaderScene* childIdView;
 };
 
 	}
