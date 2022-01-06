@@ -1,10 +1,36 @@
-﻿// MeshToPSTool.cpp : このファイルには 'main' 関数が含まれています。プログラム実行の開始と終了がそこで行われます。
-//
-
-#include <iostream>
+﻿#include <iostream>
 #include "CrystalVDB/VDBCommand/VDBInitCommand.h"
+#include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
+//#include "CrystalVDB/VDBCommand/VDBSTLFileReadCommand.h"
+#include "CrystalVDB/VDBCommand/VDBMeshToVolumeCommand.h"
+#include "CrystalVDB/VDBCommand/VDBVolumeToPSCommand.h"
 
 using namespace Crystal::VDB;
+
+struct CommandLineOptions
+{
+    std::string inputMeshFilePath = "C://Dev//cgstudio4//Blender//CrystalPython//tmp_txt//macro1.pcd";
+    std::string outputPsFilePath = "mesh.stl";
+    double divideLength = 1.0;
+
+    void parse(const std::vector<std::string>& strs) {
+        for (int i = 0; i < strs.size(); ++i) {
+            std::string str = strs[i];
+            if (str == "-i") {
+                i++;
+                this->inputMeshFilePath = strs[i];
+            }
+            else if (str == "-o") {
+                i++;
+                this->outputPsFilePath = strs[i];
+            }
+            else if (str == "-l") {
+                i++;
+                this->divideLength = std::stod(strs[i]);
+            }
+        }
+    }
+};
 
 int main()
 {
@@ -23,16 +49,46 @@ int main()
         }
     }
 
-    std::cout << "Hello World!\n";
+    int volumeId = -1;
+    {
+        VDBSceneCreateCommand::Args args;
+        args.sceneType.setValue("VDBVolume");
+        VDBSceneCreateCommand command(args);
+        command.execute(&world);
+        volumeId = std::any_cast<int>(command.getResults().newId.value);
+    }
+
+    int meshId = -1;
+    std::cout << "Converting Mesh to Volume...";
+    {
+        VDBMeshToVolumeCommand::Args args;
+        args.divideLength.setValue(1.0);
+        args.vdbMeshId.setValue(meshId);
+        args.vdbVolumeId.setValue(volumeId);
+        VDBMeshToVolumeCommand command(args);
+        const auto isOk = command.execute(&world);
+        if (isOk) {
+            std::cout << "Succeeded" << std::endl;
+        }
+        else {
+            std::cout << "Failed" << std::endl;
+            std::exit(1);
+        }
+    }
+
+    int particleSystemId = -1;
+    {
+        VDBVolumeToPSCommand::Args args;
+        args.vdbParticleSystemId.setValue( particleSystemId );
+        args.vdbVolumeId.setValue( volumeId );
+        VDBVolumeToPSCommand command(args);
+        const auto isOk = command.execute(&world);
+        if (isOk) {
+            std::cout << "Succeeded" << std::endl;
+        }
+        else {
+            std::cout << "Failed" << std::endl;
+            std::exit(1);
+        }
+    }
 }
-
-// プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
-// プログラムのデバッグ: F5 または [デバッグ] > [デバッグの開始] メニュー
-
-// 作業を開始するためのヒント: 
-//    1. ソリューション エクスプローラー ウィンドウを使用してファイルを追加/管理します 
-//   2. チーム エクスプローラー ウィンドウを使用してソース管理に接続します
-//   3. 出力ウィンドウを使用して、ビルド出力とその他のメッセージを表示します
-//   4. エラー一覧ウィンドウを使用してエラーを表示します
-//   5. [プロジェクト] > [新しい項目の追加] と移動して新しいコード ファイルを作成するか、[プロジェクト] > [既存の項目の追加] と移動して既存のコード ファイルをプロジェクトに追加します
-//   6. 後ほどこのプロジェクトを再び開く場合、[ファイル] > [開く] > [プロジェクト] と移動して .sln ファイルを選択します

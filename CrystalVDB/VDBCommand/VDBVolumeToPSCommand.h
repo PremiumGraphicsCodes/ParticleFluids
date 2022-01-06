@@ -24,6 +24,8 @@ public:
 
 	VDBVolumeToPSCommand();
 
+	explicit VDBVolumeToPSCommand(const Args& args);
+
 	static std::string getName();
 
 	std::string getCommandName() const { return getName(); }

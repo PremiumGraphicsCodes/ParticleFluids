@@ -40,6 +40,11 @@ VDBMeshToVolumeCommand::VDBMeshToVolumeCommand() :
 	ICommand(&args, &results)
 {}
 
+VDBMeshToVolumeCommand::VDBMeshToVolumeCommand(const Args& args) :
+	args(args),
+	ICommand(&this->args, &results)
+{}
+
 std::string VDBMeshToVolumeCommand::getName()
 {
 	return ::CommandNameLabel;
