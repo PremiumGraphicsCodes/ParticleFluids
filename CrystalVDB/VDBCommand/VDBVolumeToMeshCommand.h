@@ -14,6 +14,7 @@ public:
 
 		Command::Arg<int> vdbVolumeId;
 		Command::Arg<int> vdbMeshId;
+		Command::Arg<double> threshold;
 		Command::Arg<double> adaptivity;
 	};
 

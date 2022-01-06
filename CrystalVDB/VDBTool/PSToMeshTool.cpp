@@ -123,6 +123,7 @@ void PSToMeshTool::execute(const CommandLineOptions& options)
         VDBVolumeToMeshCommand::Args args;
         args.vdbVolumeId.setValue(volumeId);
         args.vdbMeshId.setValue(meshId);
+        args.threshold.setValue(options.threshold);
         args.adaptivity.setValue(options.meshAdaptivity);
         VDBVolumeToMeshCommand command(args);
         const auto isOk = command.execute(&world);

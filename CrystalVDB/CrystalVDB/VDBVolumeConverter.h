@@ -9,7 +9,7 @@ namespace Crystal {
 class VDBVolumeConverter
 {
 public:
-	void toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScene* mesh, const double adaptivity);
+	void toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScene* mesh, const double threshold, const double adaptivity);
 
 	void toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystemScene* ps) const;
 

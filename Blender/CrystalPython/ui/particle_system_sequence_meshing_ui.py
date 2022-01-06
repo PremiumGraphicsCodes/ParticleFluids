@@ -45,7 +45,7 @@ class MeshingRunner :
         params.append("-v")
         params.append(str(prop.cell_length_prop))
         params.append("-a")
-        params.append(str(1.0))
+        params.append(str(prop.mesh_adaptivity_prop))
             
         result = subprocess.run(params, shell=True)
         if result != -1 :
@@ -126,6 +126,13 @@ class MeshingProperty(bpy.types.PropertyGroup) :
         default=1.0,
         min = 0.0,
         )
+
+    mesh_adaptivity_prop : bpy.props.FloatProperty(
+        name="mesh_adaptivity",
+        description = "Adaptivity",
+        default = 1.0,
+        min = 0.0,
+    )
         
 class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
     bl_label = "PSSeqMeshing"
@@ -142,6 +149,7 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
         self.layout.prop(prop, "threshold_prop", text="Threshold")
+        self.layout.prop(prop, "mesh_adaptivity_prop", text="Adaptivity")
         if not runner.is_running() :
             self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
         else :

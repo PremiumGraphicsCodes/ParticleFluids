@@ -12,6 +12,7 @@ namespace
 	PublicLabel CommandNameLabel = "VDBVolumeToMesh";
 	PublicLabel VolumeIdLabel = "VolumeId";
 	PublicLabel VDBMeshIdLabel = "VDBMeshId";
+	PublicLabel ThresholdLabel = "Threshold";
 	PublicLabel AdaptivityLabel = "Adaptivity";
 }
 
@@ -22,10 +23,12 @@ using namespace Crystal::VDB;
 VDBVolumeToMeshCommand::Args::Args() :
 	vdbVolumeId(::VolumeIdLabel, -1),
 	vdbMeshId(::VDBMeshIdLabel, -1),
+	threshold(::ThresholdLabel, 0.0),
 	adaptivity(::AdaptivityLabel, 0.0)
 {
 	add(&vdbVolumeId);
 	add(&vdbMeshId);
+	add(&threshold);
 	add(&adaptivity);
 }
 
@@ -59,7 +62,7 @@ bool VDBVolumeToMeshCommand::execute(World* world)
 	}
 
 	VDBVolumeConverter converter;
-	converter.toMesh(*volume, mesh, args.adaptivity.getValue());
+	converter.toMesh(*volume, mesh, args.threshold.getValue(), args.adaptivity.getValue());
 
 	return true;
 }

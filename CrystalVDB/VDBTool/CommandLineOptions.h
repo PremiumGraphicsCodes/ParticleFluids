@@ -12,6 +12,7 @@ struct CommandLineOptions
     std::string outputMeshFilePath = "mesh.stl";
     double particleRadius = 1.0;
     double voxelSize = 0.5;
+    double threshold = 0.0;
     double meshAdaptivity = 0.0;
     int smoothingWidth = 1;
     int smoothingIteration = 1;
@@ -34,6 +35,10 @@ struct CommandLineOptions
             else if (str == "-v") {
                 i++;
                 this->voxelSize = std::stod(strs[i]);
+            }
+            else if (str == "-t") {
+                i++;
+                this->threshold = std::stod(strs[i]);
             }
             else if (str == "-a") {
                 i++;

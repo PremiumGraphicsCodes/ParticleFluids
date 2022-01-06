@@ -14,25 +14,19 @@
 #include "VDBPolygonMeshImpl.h"
 #include "VDBParticleSystemImpl.h"
 #include "VDBParticleSystemScene.h"
-
 #include "Converter.h"
 
-#include "../../Crystal/Math/Matrix4d.h"
-
-#include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
-
-using namespace Crystal::Space;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-void VDBVolumeConverter::toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScene* mesh, const double adaptivity)
+void VDBVolumeConverter::toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScene* mesh, const double threshold, const double adaptivity)
 {   
     auto impl = mesh->getImpl();
     impl->clear();
     auto grid = volume.getImpl()->getPtr();
     std::vector<openvdb::Vec3I> triangles;
     std::vector<openvdb::Vec4I> quads;
-    openvdb::tools::volumeToMesh(*grid, impl->points, triangles, quads, 0.0, adaptivity);
+    openvdb::tools::volumeToMesh(*grid, impl->points, triangles, quads, threshold, adaptivity);
     for (const auto& t : triangles) {
         Crystal::VDB::VDBPolygonMeshImpl::TriangleFace face;
         face.indices = t;
