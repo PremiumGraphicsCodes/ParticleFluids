@@ -44,19 +44,19 @@ class MeshingRunner :
         params.append(str(prop.particle_radius_prop))
         params.append("-v")
         params.append(str(prop.cell_length_prop))
+        params.append("-t")
+        params.append(str(prop.threshold_prop))
         params.append("-a")
         params.append(str(prop.mesh_adaptivity_prop))
+        params.append("-sw")
+        params.append(str(prop.smoothing_width_prop))
+        params.append("-si")
+        params.append(str(prop.smoothing_iter_prop))
             
         result = subprocess.run(params, shell=True)
         if result != -1 :
             self.__bl_mesh.mesh.import_stl(export_file_path)
             self.__bl_mesh.update()
-
-    def get_selected_obj(self, context) :
-        for o in bpy.data.objects:
-            if o.type == 'MESH' and o.select_get():
-                return o
-        return None
             
     def is_running(self) :
         return self.__is_running
@@ -123,7 +123,7 @@ class MeshingProperty(bpy.types.PropertyGroup) :
     threshold_prop : bpy.props.FloatProperty(
         name="threshold",
         description="Threshold",
-        default=1.0,
+        default=0.0,
         min = 0.0,
         )
 
@@ -132,6 +132,20 @@ class MeshingProperty(bpy.types.PropertyGroup) :
         description = "Adaptivity",
         default = 1.0,
         min = 0.0,
+    )
+
+    smoothing_width_prop : bpy.props.IntProperty(
+        name="smoothing_width",
+        description = "SmoothingWidth",
+        default = 1,
+        min = 0,
+    )
+
+    smoothing_iter_prop : bpy.props.IntProperty(
+        name="smoothing_iter",
+        description = "SmoothingIiter",
+        default = 1,
+        min = 0,
     )
         
 class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
@@ -150,6 +164,8 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
         self.layout.prop(prop, "threshold_prop", text="Threshold")
         self.layout.prop(prop, "mesh_adaptivity_prop", text="Adaptivity")
+        self.layout.prop(prop, "smoothing_width_prop", text="SmoothingWidth")
+        self.layout.prop(prop, "smoothing_iter_prop", text="SmoothingIter")
         if not runner.is_running() :
             self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
         else :
