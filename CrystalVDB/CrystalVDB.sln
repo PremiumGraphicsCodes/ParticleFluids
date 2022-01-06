@@ -36,6 +36,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBTool", "VDBTool\VDBTool.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBToolTest", "VDBToolTest\VDBToolTest.vcxproj", "{D5F35344-9DDA-46BB-8622-2BEA86C02AB4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MeshToPSTool", "MeshToPSTool\MeshToPSTool.vcxproj", "{CDA969AB-0EDF-4047-9045-EB0284FEE875}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -354,6 +356,28 @@ Global
 		{D5F35344-9DDA-46BB-8622-2BEA86C02AB4}.RelWithDebInfo|x64.Build.0 = Release|x64
 		{D5F35344-9DDA-46BB-8622-2BEA86C02AB4}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
 		{D5F35344-9DDA-46BB-8622-2BEA86C02AB4}.RelWithDebInfo|x86.Build.0 = Release|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.Debug|x64.ActiveCfg = Debug|x64
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.Debug|x64.Build.0 = Debug|x64
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.Debug|x86.ActiveCfg = Debug|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.Debug|x86.Build.0 = Debug|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.MinSizeRel|Any CPU.ActiveCfg = Debug|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.MinSizeRel|Any CPU.Build.0 = Debug|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.MinSizeRel|x64.ActiveCfg = Debug|x64
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.MinSizeRel|x64.Build.0 = Debug|x64
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.MinSizeRel|x86.ActiveCfg = Debug|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.MinSizeRel|x86.Build.0 = Debug|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.Release|Any CPU.ActiveCfg = Release|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.Release|x64.ActiveCfg = Release|x64
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.Release|x64.Build.0 = Release|x64
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.Release|x86.ActiveCfg = Release|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.Release|x86.Build.0 = Release|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.RelWithDebInfo|Any CPU.ActiveCfg = Debug|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.RelWithDebInfo|Any CPU.Build.0 = Debug|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.RelWithDebInfo|x64.ActiveCfg = Release|x64
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.RelWithDebInfo|x64.Build.0 = Release|x64
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
+		{CDA969AB-0EDF-4047-9045-EB0284FEE875}.RelWithDebInfo|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
