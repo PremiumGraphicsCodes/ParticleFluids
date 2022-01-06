@@ -21,10 +21,9 @@ class MeshingRunner :
     def start(self) :
         self.__is_running = True
         if self.__bl_mesh == None :
-            name = "Surface"
-            self.__bl_mesh = bpy.data.meshes.new(name = name)
-            self.__obj = bpy.data.objects.new(name, self.__bl_mesh)
-            bpy.context.collection.objects.link(self.__obj)
+            self.__bl_mesh = BLTriangleMesh(model.scene)
+            self.__bl_mesh.mesh.create_empty("")
+            self.__bl_mesh.convert_to_polygon_mesh("")               
 
     def stop(self) :
         self.__is_running = False
@@ -49,13 +48,9 @@ class MeshingRunner :
         params.append(str(1.0))
             
         result = subprocess.run(params, shell=True)
-        #bpy.data.meshes.remove(self.__bl_mesh)
-        bpy.ops.import_mesh.stl(filepath=export_file_path)
-        tmp_obj = self.get_selected_obj(bpy.context)
-        self.__bl_mesh = tmp_obj.data
-        self.__obj.data = tmp_obj.data
-        bpy.data.objects.remove(tmp_obj)
-        #self.__bl_mesh.update()
+        if result != -1 :
+            self.__bl_mesh.mesh.import_stl(export_file_path)
+            self.__bl_mesh.update()
 
     def get_selected_obj(self, context) :
         for o in bpy.data.objects:
