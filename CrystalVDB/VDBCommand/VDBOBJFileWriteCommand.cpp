@@ -1,11 +1,8 @@
 #include "VDBOBJFileWriteCommand.h"
 
 #include "Crystal/IO/OBJFileWriter.h"
-#include "CrystalScene/Scene/ParticleSystemScene.h"
-
-#include "../CrystalVDB/VDBPolygonMeshScene.h"
-
 #include "CrystalScene/Command/Public/PublicLabel.h"
+#include "../CrystalVDB/VDBPolygonMeshScene.h"
 
 namespace
 {

@@ -15,6 +15,7 @@
     <ClCompile Include="ToVDBVolumeCommand.cpp" />
     <ClCompile Include="VDBPCDFileReadCommand.cpp" />
     <ClCompile Include="VDBSmoothingCommand.cpp" />
+    <ClCompile Include="VDBSTLFileWriteCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -31,5 +32,6 @@
     <ClInclude Include="ToVDBVolumeCommand.h" />
     <ClInclude Include="VDBPCDFileReadCommand.h" />
     <ClInclude Include="VDBSmoothingCommand.h" />
+    <ClInclude Include="VDBSTLFileWriteCommand.h" />
   </ItemGroup>
 </Project>

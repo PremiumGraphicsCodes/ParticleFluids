@@ -8,7 +8,7 @@
 #include "CrystalVDB/VDBCommand/VDBPSToVolumeCommand.h"
 #include "CrystalVDB/VDBCommand/VDBFileWriteCommand.h"
 #include "CrystalVDB/VDBCommand/VDBVolumeToMeshCommand.h"
-#include "CrystalVDB/VDBCommand/VDBOBJFileWriteCommand.h"
+#include "CrystalVDB/VDBCommand/VDBSTLFileWriteCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSmoothingCommand.h"
 
 using namespace Crystal::VDB;
@@ -135,12 +135,12 @@ void PSToMeshTool::execute(const CommandLineOptions& options)
         }
     }
 
-    std::cout << "Writing OBJ ...";
+    std::cout << "Writing STL ...";
     {
-        VDBOBJFileWriteCommand::Args args;
+        VDBSTLFileWriteCommand::Args args;
         args.filePath.setValue(options.outputMeshFilePath);
         args.vdbMeshId.setValue(meshId);
-        VDBOBJFileWriteCommand command(args);
+        VDBSTLFileWriteCommand command(args);
         const auto isOk = command.execute(&world);
         if (isOk) {
             std::cout << "Succeeded" << std::endl;

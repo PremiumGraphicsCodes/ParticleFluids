@@ -9,7 +9,7 @@ namespace Crystal {
 struct CommandLineOptions
 {
     std::string inputPsFilePath = "C://Dev//cgstudio4//Blender//CrystalPython//tmp_txt//macro1.pcd";
-    std::string outputMeshFilePath = "mesh.obj";
+    std::string outputMeshFilePath = "mesh.stl";
     double particleRadius = 1.0;
     double voxelSize = 0.5;
     double meshAdaptivity = 0.0;
