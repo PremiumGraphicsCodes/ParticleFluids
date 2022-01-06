@@ -158,7 +158,8 @@ copy ..\x64\Debug\*.pyd ..\CrystalPython\</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\x64\Release\*.pyd ..\CrystalPythonTest\
-copy ..\x64\Release\*.pyd ..\CrystalPython\</Command>
+copy ..\x64\Release\*.pyd ..\CrystalPython\
+copy ..\..\CrystalVDB\x64\Release\VDBTool.exe ..\CrystalPython\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
