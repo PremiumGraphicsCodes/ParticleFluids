@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include "CrystalVDB/VDBCommand/VDBInitCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
-//#include "CrystalVDB/VDBCommand/VDBSTLFileReadCommand.h"
+#include "CrystalVDB/VDBCommand/VDBSTLFileReadCommand.h"
 #include "CrystalVDB/VDBCommand/VDBMeshToVolumeCommand.h"
 #include "CrystalVDB/VDBCommand/VDBVolumeToPSCommand.h"
 
@@ -49,6 +49,39 @@ int main()
         }
     }
 
+    std::cout << "Creating VDB Mesh...";
+    int meshId = -1;
+    {
+        VDBSceneCreateCommand::Args args;
+        args.sceneType.setValue("VDBMesh");
+        VDBSceneCreateCommand command(args);
+        const auto isOk = command.execute(&world);
+        if (isOk) {
+            std::cout << "Succeeded" << std::endl;
+        }
+        else {
+            std::cout << "Failed" << std::endl;
+            std::exit(1);
+        }
+        std::any_cast<int>(command.getResults().newId.value);
+    }
+
+    std::cout << "Reading STL...";
+    {
+        VDBSTLFileReadCommand::Args args;
+        args.filePath.setValue(args.filePath.getValue());
+        args.vdbMeshId.setValue(args.vdbMeshId.getValue());
+        VDBSTLFileReadCommand command(args);
+        const auto isOk = command.execute(&world);
+        if (isOk) {
+            std::cout << "Succeeded" << std::endl;
+        }
+        else {
+            std::cout << "Failed" << std::endl;
+            std::exit(1);
+        }
+    }
+
     int volumeId = -1;
     {
         VDBSceneCreateCommand::Args args;
@@ -58,7 +91,6 @@ int main()
         volumeId = std::any_cast<int>(command.getResults().newId.value);
     }
 
-    int meshId = -1;
     std::cout << "Converting Mesh to Volume...";
     {
         VDBMeshToVolumeCommand::Args args;
