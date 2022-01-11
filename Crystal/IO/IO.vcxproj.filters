@@ -69,6 +69,9 @@
     <ClInclude Include="PCDBinaryFileReader.h">
       <Filter>PCD</Filter>
     </ClInclude>
+    <ClInclude Include="PLYFileWriter.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLASCIIFileReader.cpp">
@@ -125,6 +128,9 @@
     <ClCompile Include="PCDBinaryFileReader.cpp">
       <Filter>PCD</Filter>
     </ClCompile>
+    <ClCompile Include="PLYFileWriter.cpp">
+      <Filter>PLY</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="STL">
@@ -144,6 +150,9 @@
     </Filter>
     <Filter Include="TXT">
       <UniqueIdentifier>{375bc317-3767-460e-a372-65aa3d14d82d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PLY">
+      <UniqueIdentifier>{1fe38c16-2533-4b6a-8a7f-dee858e85017}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

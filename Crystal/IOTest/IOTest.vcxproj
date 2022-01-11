@@ -53,6 +53,7 @@
     <ClCompile Include="PCDBinaryFileWriterTest.cpp" />
     <ClCompile Include="PCDFileReaderTest.cpp" />
     <ClCompile Include="PCDFileWriterTest.cpp" />
+    <ClCompile Include="PLYFileWriterTest.cpp" />
     <ClCompile Include="STLASCIIFileReaderTest.cpp" />
     <ClCompile Include="STLASCIIFileWriterTest.cpp" />
     <ClCompile Include="STLFileReaderTest.cpp" />
