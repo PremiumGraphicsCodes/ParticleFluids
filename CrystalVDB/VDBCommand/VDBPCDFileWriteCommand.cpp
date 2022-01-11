@@ -44,21 +44,23 @@ std::string VDBPCDFileWriteCommand::getName()
 
 bool VDBPCDFileWriteCommand::execute(World* world)
 {
-	/*
 	const auto filePath = args.filePath.getValue();
-	Crystal::IO::PCDBinaryFileReader reader;
-	const auto isOk = reader.read(filePath);
+
+	auto scene = world->getScenes()->findSceneById<VDBParticleSystemScene*>(args.vdbPsId.getValue());
+	if (scene == nullptr) {
+		return false;
+	}
+
+	const auto points = scene->getPositions();
+	Crystal::IO::PCDFile pcd;
+	pcd.header.points = points.size();
+	pcd.header.width = points.size();
+	pcd.data.positions = points;
+
+	Crystal::IO::PCDBinaryFileWriter writer;
+	const auto isOk = writer.write(filePath, pcd);
 	if (!isOk) {
 		return false;
 	}
-	const auto pcd = reader.getPCD();
-	auto scene = new VDBParticleSystemScene(world->getNextSceneId(), "PCDImport");
-	for (const auto& p : pcd.data.positions) {
-		scene->add(p, 1.0);
-	}
-	world->getScenes()->addScene(scene);
-
-	results.vdbPsId.setValue(scene->getId());
-	*/
 	return true;
 }

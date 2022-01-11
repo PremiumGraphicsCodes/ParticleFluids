@@ -4,14 +4,14 @@
 #include "CrystalVDB/VDBCommand/VDBSTLFileReadCommand.h"
 #include "CrystalVDB/VDBCommand/VDBMeshToVolumeCommand.h"
 #include "CrystalVDB/VDBCommand/VDBVolumeToPSCommand.h"
-//#include "CrystalVDB/VDBCommand/VDB"
+#include "CrystalVDB/VDBCommand/VDBPCDFileWriteCommand.h"
 
 using namespace Crystal::VDB;
 
 struct CommandLineOptions
 {
     std::string inputMeshFilePath = "cube.stl";
-    std::string outputPsFilePath = "mesh.stl";
+    std::string outputPsFilePath = "points.pcd";
     double divideLength = 0.1;
 
     void parse(const std::vector<std::string>& strs) {
@@ -97,7 +97,7 @@ int main()
     std::cout << "Converting Mesh to Volume...";
     {
         VDBMeshToVolumeCommand::Args args;
-        args.divideLength.setValue(1.0);
+        args.divideLength.setValue(options.divideLength);
         args.vdbMeshId.setValue(meshId);
         args.vdbVolumeId.setValue(volumeId);
         VDBMeshToVolumeCommand command(args);
@@ -111,20 +111,46 @@ int main()
         }
     }
 
+    std::cout << "Creating VDB Points...";
     int psId = -1;
     {
         VDBSceneCreateCommand::Args args;
         args.sceneType.setValue("VDBPoints");
         VDBSceneCreateCommand command(args);
-        command.execute(&world);
+        const auto isOk = command.execute(&world);
+        if (isOk) {
+            std::cout << "Succeeded" << std::endl;
+        }
+        else {
+            std::cout << "Failed" << std::endl;
+            std::exit(1);
+        }
+
         psId = std::any_cast<int>(command.getResults().newId.value);
     }
 
+    std::cout << "Converting Volume to Points...";
     {
         VDBVolumeToPSCommand::Args args;
         args.vdbParticleSystemId.setValue( psId );
         args.vdbVolumeId.setValue( volumeId );
         VDBVolumeToPSCommand command(args);
+        const auto isOk = command.execute(&world);
+        if (isOk) {
+            std::cout << "Succeeded" << std::endl;
+        }
+        else {
+            std::cout << "Failed" << std::endl;
+            std::exit(1);
+        }
+    }
+
+    std::cout << "Writing PCD File...";
+    {
+        VDBPCDFileWriteCommand::Args args;
+        args.vdbPsId.setValue(psId);
+        args.filePath.setValue(options.outputPsFilePath);
+        VDBPCDFileWriteCommand command(args);
         const auto isOk = command.execute(&world);
         if (isOk) {
             std::cout << "Succeeded" << std::endl;

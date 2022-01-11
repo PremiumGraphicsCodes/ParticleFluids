@@ -16,13 +16,15 @@ void VDBPolygonMeshConverter::toVolume(const VDBPolygonMeshScene& mesh, VDBVolum
 {
 	const auto scale = 1.0 / divideLength;
 	openvdb::math::Transform::Ptr xform = openvdb::math::Transform::createLinearTransform(divideLength);
+	const auto triangles = mesh.getImpl()->getTriangles();
 	const auto quads = mesh.getImpl()->getQuads();
 	std::vector<openvdb::Vec3s> points = mesh.getImpl()->points;
 	for (auto& p : points) {
 		p *= scale;
 	}
-	openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec4I> m(points, quads);
-	auto result = openvdb::tools::meshToVolume<openvdb::FloatGrid>(m, *xform);
+	openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec3I> m1(points, triangles);
+	//openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec4I> m2(points, quads);
+	auto result = openvdb::tools::meshToVolume<openvdb::FloatGrid>(m1, *xform);
 	auto impl = new VDBVolumeImpl(result);
 	//impl->setScale(1.0 / divideLength);
 	delete volume->getImpl();
