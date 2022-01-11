@@ -26,7 +26,7 @@ class SAMPLE34_OT_DrawStar(bpy.types.Operator):
         if not cls.is_running():
             # 描画関数の登録
             cls.__handle = bpy.types.SpaceView3D.draw_handler_add(
-                cls.__draw, (context, ), 'WINDOW', 'POST_PIXEL'
+                cls.__draw, (context, ), 'WINDOW', 'POST_VIEW'
             )
 
     @classmethod
@@ -43,23 +43,22 @@ class SAMPLE34_OT_DrawStar(bpy.types.Operator):
         sc = context.scene
 
         # ビルトインのシェーダを取得
-        shader = gpu.shader.from_builtin('2D_UNIFORM_COLOR')
+        shader = gpu.shader.from_builtin('3D_UNIFORM_COLOR')
 
         # 頂点データを作成
         center = sc.sample34_center
         radius = sc.sample34_size / 2.0
         angle = 72 * math.pi / 180
         data = {"pos": [
-            [center[0], center[1] + radius],
-            [center[0] + radius * math.sin(angle), center[1] + radius * math.cos(angle)],
-            [center[0] + radius * math.sin(2 * angle), center[1] + radius * math.cos(2 * angle)],
-            [center[0] - radius * math.sin(2 * angle), center[1] + radius * math.cos(2 * angle)],
-            [center[0] - radius * math.sin(angle), center[1] + radius * math.cos(angle)]
+            [0.0, 0.0, 0.0],
+            [1.0, 0.0, 0.0],
+            [1.0, 1.0, 0.0],
+            [0.0, 1.0, 0.0],
         ]}
 
         # インデックスデータを作成
         indices = [
-            [0, 2], [2, 4], [4, 1], [1, 3], [3, 0]
+            [0, 1], [1, 2], [2, 3], [3, 0]
         ]
 
         # バッチを作成
