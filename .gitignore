@@ -323,3 +323,6 @@ Blender/CrystalPython/tmp_txt.zip
 /CrystalVDB/VDBTool/volume.vdb
 Blender/CrystalPython/VDBTool.exe
 /CrystalVDB/VDBTool/mesh.stl
+/Blender/CrystalPython/MeshToPSTool.exe
+/Blender/CrystalPython/tmp_fs_mesh.stl
+/Blender/CrystalPython/tmp_fs_ps.stl

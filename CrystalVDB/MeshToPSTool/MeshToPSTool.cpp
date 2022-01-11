@@ -33,9 +33,14 @@ struct CommandLineOptions
     }
 };
 
-int main()
+int main(int argc, char* argv[])
 {
     CommandLineOptions options;
+    std::vector<std::string> strs;
+    for (int i = 0; i < argc; ++i) {
+        strs.push_back(argv[i]);
+    }
+    options.parse(strs);
 
     Crystal::Scene::World world;
 

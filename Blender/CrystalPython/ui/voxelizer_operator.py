@@ -9,8 +9,11 @@ from ui.bl_particle_system import BLParticleSystem
 from ui.bl_triangle_mesh import BLTriangleMesh
 from ui.bl_voxel import BLVoxel
 from space.voxel_scene import Voxelizer
+from scene.file_io import FileIO
 
 from ui.model import Model as model
+import os
+import subprocess
 
 divide_length = 0.2
 
@@ -20,24 +23,37 @@ class VoxelizerOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
+      global divide_length
+
       selected_mesh = self.get_selected_mesh(context)
       if selected_mesh == None :
         return
       mesh = BLTriangleMesh(model.scene)
+
+      mesh_file_path = "tmp_fs_mesh.stl"
+      ps_file_path = "tmp_fs_ps.stl"
+
       mesh.convert_from_polygon_mesh(selected_mesh)
-      voxel = BLVoxel(model.scene)
-      voxel.build()
-      voxelizer = Voxelizer(model.scene)
-#      scene = bpy.types.Scene
-#      divide_length = float(scene.divide_length_prop) 
-      global divide_length
-      voxelizer.voxelize(mesh.mesh.id, voxel.voxel.id, divide_length)
-      values = voxel.voxel.get_values()
-      #voxel.convert_to_polygon_mesh("voxel")
-      ps = BLParticleSystem(model.scene)
-      ps.ps.create_empty("")
-      voxel.voxel.convert_to_ps(ps.ps.id)
-      ps.convert_to_polygon_mesh("ps")
+      mesh.mesh.export_stl(mesh_file_path)
+
+      params = []
+      params.append('MeshToPSTool')
+      params.append("-i")
+      params.append(mesh_file_path)
+      params.append("-o")
+      params.append(ps_file_path)
+      params.append("-l")
+      params.append(str(divide_length))          
+      
+      result = subprocess.run(params, shell=True)
+      if result != -1 :
+        ps = BLParticleSystem(model.scene)
+        ps.ps.create_empty("")
+        ps.convert_to_polygon_mesh("")               
+
+        FileIO.import_pcd(model.scene, ps.ps.id, ps_file_path)
+        ps.update()
+
       return {'FINISHED'}
 
   def get_selected_mesh(self, context) :
