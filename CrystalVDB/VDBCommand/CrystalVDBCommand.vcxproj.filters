@@ -2,10 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="VDBCommandFactory.cpp" />
-    <ClCompile Include="VDBFileReadCommand.cpp" />
-    <ClCompile Include="VDBFileWriteCommand.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
-    <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
     <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
@@ -13,17 +10,32 @@
     <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
     <ClCompile Include="VDBVolumeToPSCommand.cpp" />
     <ClCompile Include="ToVDBVolumeCommand.cpp" />
-    <ClCompile Include="VDBPCDFileReadCommand.cpp" />
     <ClCompile Include="VDBSmoothingCommand.cpp" />
-    <ClCompile Include="VDBSTLFileWriteCommand.cpp" />
-    <ClCompile Include="VDBSTLFileReadCommand.cpp" />
+    <ClCompile Include="VDBOBJFileWriteCommand.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBPCDFileReadCommand.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBSTLFileReadCommand.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBSTLFileWriteCommand.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBFileReadCommand.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBFileWriteCommand.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBPCDFileWriteCommand.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
-    <ClInclude Include="VDBFileReadCommand.h" />
-    <ClInclude Include="VDBFileWriteCommand.h" />
     <ClInclude Include="VDBInitCommand.h" />
-    <ClInclude Include="VDBOBJFileWriteCommand.h" />
     <ClInclude Include="VDBOBJFileReadCommand.h" />
     <ClInclude Include="VDBSceneCreateCommand.h" />
     <ClInclude Include="VDBMeshToVolumeCommand.h" />
@@ -31,9 +43,32 @@
     <ClInclude Include="VDBVolumeToMeshCommand.h" />
     <ClInclude Include="VDBVolumeToPSCommand.h" />
     <ClInclude Include="ToVDBVolumeCommand.h" />
-    <ClInclude Include="VDBPCDFileReadCommand.h" />
     <ClInclude Include="VDBSmoothingCommand.h" />
-    <ClInclude Include="VDBSTLFileWriteCommand.h" />
-    <ClInclude Include="VDBSTLFileReadCommand.h" />
+    <ClInclude Include="VDBOBJFileWriteCommand.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBPCDFileReadCommand.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBSTLFileReadCommand.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBSTLFileWriteCommand.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBFileReadCommand.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBFileWriteCommand.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBPCDFileWriteCommand.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="IO">
+      <UniqueIdentifier>{3e91be6a-2223-4d75-815a-5b562735f18c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
