@@ -31,7 +31,6 @@ sys.path += [addon_dirpath]
 import bpy
 
 from ui.voxelizer_operator import VoxelizerUI
-from ui.meshing_ui import MeshingUI
 from ui.particle_system_import_ui import ParticleSystemImportUI
 from ui.fluid_ui import FluidUI
 from ui.boundary_ui import BoundaryUI
@@ -40,26 +39,20 @@ from ui.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
 from ui.particle_system_sequence_meshing_ui import ParticleSystemSequenceMeshingUI
 from ui.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
 from ui.model import Model 
-from ui.panel_sample import SampleUI
 
 def register():
   VoxelizerUI.register()
-  MeshingUI.register()
   ParticleSystemSequenceImportUI.register()
   ParticleSystemSequenceMeshingUI.register()
   TriangleMeshSequenceImportUI.register()
   FluidUI.register()
   BoundaryUI.register()
   SolverUI.register()
-#  SampleUI.register()
-
-  #bpy.types.Scene.tutorial_comment = StringProperty(default = "")
 
 def unregister():
   Model.scene.clear(0)
   Model.scene.clear(1)
 
-  MeshingUI.unregister()
   VoxelizerUI.unregister()
   ParticleSystemSequenceImportUI.unregister()
   ParticleSystemSequenceMeshingUI.unregister()
@@ -67,9 +60,6 @@ def unregister():
   FluidUI.unregister()
   BoundaryUI.unregister()
   SolverUI.unregister()
-#  SampleUI.unregister()
-
-  #del bpy.types.Scene.tutorial_comment
 
 if __name__ == "__main__":
   register()
