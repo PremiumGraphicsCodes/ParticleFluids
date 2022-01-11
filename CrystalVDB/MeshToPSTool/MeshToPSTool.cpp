@@ -9,9 +9,9 @@ using namespace Crystal::VDB;
 
 struct CommandLineOptions
 {
-    std::string inputMeshFilePath = "C://Dev//cgstudio4//Blender//CrystalPython//tmp_txt//macro1.pcd";
+    std::string inputMeshFilePath = "cube.stl";
     std::string outputPsFilePath = "mesh.stl";
-    double divideLength = 1.0;
+    double divideLength = 0.1;
 
     void parse(const std::vector<std::string>& strs) {
         for (int i = 0; i < strs.size(); ++i) {
@@ -34,6 +34,8 @@ struct CommandLineOptions
 
 int main()
 {
+    CommandLineOptions options;
+
     Crystal::Scene::World world;
 
     std::cout << "Initializing VDB...";
@@ -63,14 +65,14 @@ int main()
             std::cout << "Failed" << std::endl;
             std::exit(1);
         }
-        std::any_cast<int>(command.getResults().newId.value);
+        meshId = std::any_cast<int>(command.getResults().newId.value);
     }
 
     std::cout << "Reading STL...";
     {
         VDBSTLFileReadCommand::Args args;
-        args.filePath.setValue(args.filePath.getValue());
-        args.vdbMeshId.setValue(args.vdbMeshId.getValue());
+        args.filePath.setValue(options.inputMeshFilePath);
+        args.vdbMeshId.setValue(meshId);
         VDBSTLFileReadCommand command(args);
         const auto isOk = command.execute(&world);
         if (isOk) {
@@ -108,10 +110,18 @@ int main()
         }
     }
 
-    int particleSystemId = -1;
+    int psId = -1;
+    {
+        VDBSceneCreateCommand::Args args;
+        args.sceneType.setValue("VDBPoints");
+        VDBSceneCreateCommand command(args);
+        command.execute(&world);
+        psId = std::any_cast<int>(command.getResults().newId.value);
+    }
+
     {
         VDBVolumeToPSCommand::Args args;
-        args.vdbParticleSystemId.setValue( particleSystemId );
+        args.vdbParticleSystemId.setValue( psId );
         args.vdbVolumeId.setValue( volumeId );
         VDBVolumeToPSCommand command(args);
         const auto isOk = command.execute(&world);
