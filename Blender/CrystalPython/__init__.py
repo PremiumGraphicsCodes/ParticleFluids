@@ -12,7 +12,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 bl_info = {
-    "name" : "TestVSCode",
+    "name" : "FastFluids",
     "author" : "PremiumGraphics",
     "description" : "",
     "blender" : (2, 80, 0),
@@ -32,13 +32,10 @@ import bpy
 
 from ui.voxelizer_operator import VoxelizerUI
 from ui.meshing_ui import MeshingUI
-from ui.particle_system_generate_ui import ParticleSystemGenerateUI
 from ui.particle_system_import_ui import ParticleSystemImportUI
-from ui.particle_system_export_ui import ParticleSystemExportUI
 from ui.fluid_ui import FluidUI
 from ui.boundary_ui import BoundaryUI
 from ui.solver_ui import SolverUI
-from ui.particle_system_animation_ui import ParticleSystemAnimationUI
 from ui.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
 from ui.particle_system_sequence_meshing_ui import ParticleSystemSequenceMeshingUI
 from ui.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
@@ -48,10 +45,6 @@ from ui.panel_sample import SampleUI
 def register():
   VoxelizerUI.register()
   MeshingUI.register()
-  ParticleSystemGenerateUI.register()
-#  ParticleSystemAnimationUI.register()
-#  ParticleSystemImportUI.register()
-#  ParticleSystemExportUI.register()
   ParticleSystemSequenceImportUI.register()
   ParticleSystemSequenceMeshingUI.register()
   TriangleMeshSequenceImportUI.register()
@@ -68,10 +61,6 @@ def unregister():
 
   MeshingUI.unregister()
   VoxelizerUI.unregister()
-  ParticleSystemGenerateUI.unregister()
-#  ParticleSystemAnimationUI.unregister()
-#  ParticleSystemImportUI.unregister()
-#  ParticleSystemExportUI.unregister()
   ParticleSystemSequenceImportUI.unregister()
   ParticleSystemSequenceMeshingUI.unregister()
   TriangleMeshSequenceImportUI.unregister()
