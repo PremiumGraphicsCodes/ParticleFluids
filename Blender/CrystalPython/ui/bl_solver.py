@@ -20,6 +20,7 @@ class BLSolver :
         self.__time_step = 0.01
         self.__export_dir_path = "tmp_txt"
         self.__bl_mesh = None
+        self.__iteration = 1
 
     def build(self):
         if self.__solver != None :
@@ -58,9 +59,13 @@ class BLSolver :
     def stop(self):
         self.__running = False
 
-    def step(self, frame):
+    def set_iteration(self, iter) :
+        self.__iteration = iter
 
-        self.__solver.simulate()
+    def step(self, frame):
+        for i in range(0, self.__iteration) :
+            self.__solver.simulate()
+
         for bl_fluid in self.__bl_fluids :
             bl_fluid.update()
         

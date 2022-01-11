@@ -33,6 +33,7 @@ class SolverUpdateOperator(bpy.types.Operator):
             bl_boundary.reset()
             solver.add_boundary(bl_boundary)
         solver.send()
+        solver.set_iteration( context.scene.solver_property.iteration_prop )
         solver.set_export_path( context.scene.solver_property.export_dir_path )
         return {'FINISHED'}
 
@@ -82,8 +83,13 @@ class SolverProperty(bpy.types.PropertyGroup) :
         maxlen=1024,
         subtype='DIR_PATH',
     )
+    iteration_prop : bpy.props.IntProperty(
+        name="iteration_prop",
+        description ="Iteration",
+        default =1,
+        min = 1,
+    )
 
-# UI
 class SolverPanel(bpy.types.Panel):
     bl_label = "Solver"
     bl_space_type = 'VIEW_3D'
@@ -97,6 +103,7 @@ class SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
+        self.layout.prop(solver_property, "iteration_prop", text="Iteration")
         self.layout.operator(SolverUpdateOperator.bl_idname, text="Reset")
         if not model.bl_solver.is_running() :
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
