@@ -84,11 +84,25 @@ classes = [
   BoundaryPanel,
 ]
 
+import bpy
+import gpu
+from gpu_extras.batch import batch_for_shader
+
+coords = [(1, 1, 1), (-2, 0, 0), (-2, -1, 3), (0, 1, 1)]
+shader = gpu.shader.from_builtin('3D_UNIFORM_COLOR')
+batch = batch_for_shader(shader, 'LINES', {"pos": coords})
+
+def draw():
+    shader.bind()
+    shader.uniform_float("color", (1, 1, 0, 1))
+    batch.draw(shader)
+
 class BoundaryUI :
   def register():
     for c in classes:
       bpy.utils.register_class(c)
     bpy.types.Scene.boundary_properties = bpy.props.CollectionProperty(type=BoundaryProperty)
+    bpy.types.SpaceView3D.draw_handler_add(draw, (), 'WINDOW', 'POST_VIEW')
 
   def unregister() :
     del bpy.types.Scene.boundary_properties
