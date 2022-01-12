@@ -42,32 +42,54 @@ class SAMPLE34_OT_DrawStar(bpy.types.Operator):
     def __draw(cls, context):
         sc = context.scene
 
-        # ビルトインのシェーダを取得
-        shader = gpu.shader.from_builtin('3D_UNIFORM_COLOR')
+        vertex_shader = """
+                    uniform mat4 MVPMatrix;
+                    in vec3 pos;
+                    in vec4 color;
 
-        # 頂点データを作成
-        center = sc.sample34_center
-        radius = sc.sample34_size / 2.0
-        angle = 72 * math.pi / 180
-        data = {"pos": [
+                    out vec4 vColor;
+
+                    void main()
+                    {
+                        gl_Position = MVPMatrix * vec4(pos, 1.0);
+                        vColor = color;
+                    }
+        """
+
+        fragment_shader = """
+                    in vec4 vColor;
+
+                    void main()
+                    {
+                        gl_FragColor = vColor;
+                    }
+        """
+        # ビルトインのシェーダを取得
+        shader = gpu.types.GPUShader(vertex_shader, fragment_shader)
+
+
+        data = [
             [0.0, 0.0, 0.0],
             [1.0, 0.0, 0.0],
             [1.0, 1.0, 0.0],
             [0.0, 1.0, 0.0],
-        ]}
+        ]
 
-        # インデックスデータを作成
-        indices = [
-            [0, 1], [1, 2], [2, 3], [3, 0]
+        color = [
+            [1.0, 1.0, 1.0, 1.0],
+            [1.0, 1.0, 1.0, 1.0],
+            [1.0, 1.0, 1.0, 1.0],
+            [1.0, 1.0, 1.0, 1.0],
         ]
 
         # バッチを作成
-        batch = batch_for_shader(shader, 'LINES', data, indices=indices)
+        batch = batch_for_shader(shader, 'POINTS', {"pos" : data, "color" : color})
 
         # シェーダのパラメータ設定
-        color = [0.5, 1.0, 1.0, 1.0]
+#        color = [0.5, 1.0, 1.0, 1.0]
         shader.bind()
-        shader.uniform_float("color", color)
+        matrix = bpy.context.region_data.perspective_matrix
+        shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
 
         # 描画
         batch.draw(shader)
