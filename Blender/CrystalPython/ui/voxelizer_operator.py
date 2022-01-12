@@ -7,7 +7,6 @@ from bpy.props import (
 
 from ui.bl_particle_system import BLParticleSystem
 from ui.bl_triangle_mesh import BLTriangleMesh
-from ui.bl_voxel import BLVoxel
 from space.voxel_scene import Voxelizer
 from scene.file_io import FileIO
 
