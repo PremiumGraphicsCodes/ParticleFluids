@@ -33,7 +33,6 @@ import bpy
 from ui.voxelizer_operator import VoxelizerUI
 from ui.particle_system_import_ui import ParticleSystemImportUI
 from ui.fluid_ui import FluidUI
-from ui.boundary_ui import BoundaryUI
 from ui.solver_ui import SolverUI
 from ui.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
 from ui.particle_system_sequence_meshing_ui import ParticleSystemSequenceMeshingUI
@@ -47,7 +46,6 @@ def register():
   ParticleSystemSequenceMeshingUI.register()
   TriangleMeshSequenceImportUI.register()
   FluidUI.register()
-  BoundaryUI.register()
   SolverUI.register()
   DrawSample.register()
 
@@ -60,7 +58,6 @@ def unregister():
   ParticleSystemSequenceMeshingUI.unregister()
   TriangleMeshSequenceImportUI.unregister()
   FluidUI.unregister()
-  BoundaryUI.unregister()
   SolverUI.unregister()
   DrawSample.unregister()
 

@@ -12,10 +12,12 @@ from ui.model import Model as model
 from physics.solver_scene import SolverScene
 from ui.bl_fluid import BLFluid
 from ui.bl_boundary import BLBoundary
-from CrystalPLI import Vector3df
+from CrystalPLI import Vector3df, Vector3dd, Box3dd
 from scene.file_io import FileIO
 from ui.bl_solver import BLSolver
 from bpy.app.handlers import persistent
+
+bl_boundary = None
 
 class SolverUpdateOperator(bpy.types.Operator):
     bl_idname = "pg.solverupdateoperator"
@@ -29,9 +31,18 @@ class SolverUpdateOperator(bpy.types.Operator):
         for bl_fluid in model.bl_fluids.values() :
             bl_fluid.reset()
             solver.add_fluid(bl_fluid)
-        for bl_boundary in model.bl_boundaries.values() :
-            bl_boundary.reset()
-            solver.add_boundary(bl_boundary)
+
+        global bl_boundary
+        if bl_boundary == None :
+            bl_boundary = BLBoundary(model.scene)
+            bl_boundary.build()
+
+        min = context.scene.solver_property.min
+        max = context.scene.solver_property.max
+        bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
+        bl_boundary.boundary.send()
+        solver.add_boundary(bl_boundary)
+
         solver.send()
         solver.set_iteration( context.scene.solver_property.iteration_prop )
         solver.set_export_path( context.scene.solver_property.export_dir_path )
@@ -76,6 +87,16 @@ class SolverProperty(bpy.types.PropertyGroup) :
         min=-100.0,
         max=100.0,
     )
+    min : bpy.props.FloatVectorProperty(
+        name="min",
+        description="Min",
+        default=(-1.0, -1.0, -1.0)
+    )
+    max : bpy.props.FloatVectorProperty(
+        name="max",
+        description="Max",
+        default=(1.0, 1.0, 1.0)
+    )
     export_dir_path : bpy.props.StringProperty(
         name="export_dir",
         description="Path to Directory",
@@ -90,6 +111,7 @@ class SolverProperty(bpy.types.PropertyGroup) :
         min = 1,
     )
 
+
 class SolverPanel(bpy.types.Panel):
     bl_label = "Solver"
     bl_space_type = 'VIEW_3D'
@@ -102,6 +124,8 @@ class SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "name_prop", text="Name")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
+        self.layout.prop(solver_property, "min", text="Min")
+        self.layout.prop(solver_property, "max", text="Max")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
         self.layout.prop(solver_property, "iteration_prop", text="Iteration")
         self.layout.operator(SolverUpdateOperator.bl_idname, text="Reset")
@@ -117,6 +141,11 @@ classes = [
     SolverProperty,
 ]
 
+def draw_boundary() :
+  global bl_boundary
+  if bl_boundary != None :
+    bl_boundary.draw()
+
 class SolverUI :
     def register():
         for c in classes:
@@ -125,6 +154,7 @@ class SolverUI :
         model.bl_solver = BLSolver()
         model.bl_solver.build()
         bpy.app.handlers.frame_change_pre.append(on_frame_changed_solver)
+        bpy.types.SpaceView3D.draw_handler_add(draw_boundary, (), 'WINDOW', 'POST_VIEW')
 
     def unregister():
         for c in classes:

@@ -18,8 +18,6 @@ def get_position(box, u, v, w) :
 class BLBoundary :
     def __init__(self, scene) :
         self.boundary = None
-        self.me = None
-        self.prop = None
 
     def build(self) :
         self.boundary = CSGBoundaryScene(model.scene)

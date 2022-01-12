@@ -6,5 +6,4 @@ class Model :
   world = World()
   scene = Scene(world)
   bl_fluids = {}
-  bl_boundaries = {}
   bl_solver = None
