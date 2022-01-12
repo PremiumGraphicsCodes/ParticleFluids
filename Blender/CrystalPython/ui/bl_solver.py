@@ -66,8 +66,8 @@ class BLSolver :
         for i in range(0, self.__iteration) :
             self.__solver.simulate()
 
-        for bl_fluid in self.__bl_fluids :
-            bl_fluid.update()
+        #for bl_fluid in self.__bl_fluids :
+        #    bl_fluid.update()
         
         macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".pcd")
         self.__solver.export_pcd(macro_file_path, False)

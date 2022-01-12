@@ -1,17 +1,21 @@
 import bpy
 import bmesh
+import gpu
 
 from ui.model import Model as model
 from physics.fluid_scene import FluidScene
 from scene.particle_system_scene import ParticleSystemScene
 from CrystalPLI import Vector3dd, Vector3ddVector
+from bpy.props import FloatProperty, FloatVectorProperty
+from gpu_extras.batch import batch_for_shader
+
 
 class BLFluid :
     def __init__(self, scene):
         self.source_ps = None
         self.fluid = None
-        self.me = None
         self.prop = None
+        self.shader = None
 
     def build(self) :
         self.fluid = FluidScene(model.scene)
@@ -25,6 +29,32 @@ class BLFluid :
         self.fluid.vorticity = 0.05
         self.fluid.send()
 
+        vertex_shader = """
+                    uniform mat4 MVPMatrix;
+                    in vec3 pos;
+                    in vec4 color;
+
+                    out vec4 vColor;
+
+                    void main()
+                    {
+                        gl_Position = MVPMatrix * vec4(pos, 1.0);
+                        vColor = color;
+                    }
+        """
+
+        fragment_shader = """
+                    in vec4 vColor;
+
+                    void main()
+                    {
+                        gl_FragColor = vColor;
+                    }
+        """
+        # ビルトインのシェーダを取得
+        self.shader = gpu.types.GPUShader(vertex_shader, fragment_shader)
+
+
     def convert_from_polygon_mesh(self, mesh) :
         positions = Vector3ddVector()
         print("num of vertices:", len(mesh.vertices))
@@ -36,37 +66,25 @@ class BLFluid :
         self.fluid.send()
 #        self.me = mesh
         
-    def convert_to_polygon_mesh(self, ob_name):
-        # Create new mesh and a new object
-        self.me = bpy.data.meshes.new(name = ob_name)
-        ob = bpy.data.objects.new(ob_name, self.me)
-        
+    def render(self):
         positions = self.fluid.get_positions()
         coords = []
+        colors = []
         for p in positions.values :
             coords.append( (p.x, p.y, p.z))
-        
-        # Make a mesh from a list of vertices/edges/faces
-        self.me.from_pydata(coords, [], [])
-        
-        # Display name and update the mesh
-        ob.show_name = True
-        self.me.update()
-        bpy.context.collection.objects.link(ob)
+            colors.append( (1.0, 1.0, 1.0, 1.0))
 
-    def update(self):
-        positions = self.fluid.get_positions()
-        p = positions.values[0]
-        print(p.x)
-        print(p.y)
-        print(p.z)
+        # バッチを作成
+        batch = batch_for_shader(self.shader, 'POINTS', {"pos" : coords, "color" : colors})
 
-        bm = bmesh.new()   # create an empty BMesh
-        for p in positions.values:
-            bm.verts.new((p.x, p.y, p.z))  # add a new vert
-        bm.to_mesh(self.me)
-        bm.free()
-        self.me.update()
+        # シェーダのパラメータ設定
+#        color = [0.5, 1.0, 1.0, 1.0]
+        self.shader.bind()
+        matrix = bpy.context.region_data.perspective_matrix
+        self.shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
+
+        # 描画
+        batch.draw(self.shader)
 
     def reset(self):
         self.fluid.particle_radius = self.prop.particle_radius_prop
@@ -75,4 +93,3 @@ class BLFluid :
         self.fluid.vorticity = self.prop.vorticity_prop
         self.fluid.is_boundary = self.prop.is_static_prop
         self.fluid.send()
-        self.update()

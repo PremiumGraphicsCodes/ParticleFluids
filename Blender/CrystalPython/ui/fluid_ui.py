@@ -31,7 +31,6 @@ class FluidAddOperator(bpy.types.Operator) :
     prop = context.scene.fluid_properties.add()
     prop.name_prop = name
     fluid.convert_from_polygon_mesh(selected_mesh)
-    fluid.convert_to_polygon_mesh(name)
     fluid.prop = prop
     return {'FINISHED'}
 

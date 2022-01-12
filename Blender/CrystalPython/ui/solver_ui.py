@@ -142,9 +142,11 @@ classes = [
 ]
 
 def draw_boundary() :
-  global bl_boundary
-  if bl_boundary != None :
-    bl_boundary.draw()
+    global bl_boundary
+    for bl_fluid in model.bl_fluids.values() :
+        bl_fluid.render()
+    if bl_boundary != None :
+        bl_boundary.draw()
 
 class SolverUI :
     def register():
