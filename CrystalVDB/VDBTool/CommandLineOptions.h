@@ -9,7 +9,7 @@ namespace Crystal {
 struct CommandLineOptions
 {
     std::string inputPsFilePath = "C://Dev//cgstudio4//Blender//CrystalPython//tmp_txt//macro1.pcd";
-    std::string outputMeshFilePath = "mesh.stl";
+    std::string outputVolumeFilePath = "volume.vdb";
     double particleRadius = 1.0;
     double voxelSize = 0.5;
     double threshold = 0.0;
@@ -26,7 +26,7 @@ struct CommandLineOptions
             }
             else if (str == "-o") {
                 i++;
-                this->outputMeshFilePath = strs[i];
+                this->outputVolumeFilePath = strs[i];
             }
             else if (str == "-r") {
                 i++;

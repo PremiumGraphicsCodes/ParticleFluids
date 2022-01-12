@@ -31,32 +31,32 @@ class MeshingRunner :
     def step(self, frame) :
         prop = bpy.context.scene.meshing_property
 
-        volume_file_path = os.path.join(prop.input_path_prop, "macro" + str(frame) + ".pcd")
-        export_file_path = os.path.join(prop.output_path_prop, "mesh" + str(frame) + ".stl") #basename_without_ext + ".stl")
+        ps_file_path = os.path.join(prop.input_path_prop, "macro" + str(frame) + ".pcd")
+        export_file_path = os.path.join(prop.output_path_prop, "volume" + str(frame) + ".vdb") #basename_without_ext + ".stl")
 
         params = []
         params.append('VDBTool')
         params.append("-i")
-        params.append(str(volume_file_path))
+        params.append(str(ps_file_path))
         params.append("-o")
         params.append(str(export_file_path))
         params.append("-r")
         params.append(str(prop.particle_radius_prop))
         params.append("-v")
         params.append(str(prop.cell_length_prop))
-        params.append("-t")
-        params.append(str(prop.threshold_prop))
-        params.append("-a")
-        params.append(str(prop.mesh_adaptivity_prop))
+        #params.append("-t")
+        #params.append(str(prop.threshold_prop))
+        #params.append("-a")
+        #params.append(str(prop.mesh_adaptivity_prop))
         params.append("-sw")
         params.append(str(prop.smoothing_width_prop))
         params.append("-si")
         params.append(str(prop.smoothing_iter_prop))
             
         result = subprocess.run(params, shell=True)
-        if result != -1 :
-            self.__bl_mesh.mesh.import_stl(export_file_path)
-            self.__bl_mesh.update()
+#        if result != -1 :
+#            self.__bl_mesh.mesh.import_stl(export_file_path)
+#            self.__bl_mesh.update()
             
     def is_running(self) :
         return self.__is_running
@@ -162,8 +162,8 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         self.layout.prop(prop, "output_path_prop", text="OutputPath")
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
-        self.layout.prop(prop, "threshold_prop", text="Threshold")
-        self.layout.prop(prop, "mesh_adaptivity_prop", text="Adaptivity")
+#        self.layout.prop(prop, "threshold_prop", text="Threshold")
+#        self.layout.prop(prop, "mesh_adaptivity_prop", text="Adaptivity")
         self.layout.prop(prop, "smoothing_width_prop", text="SmoothingWidth")
         self.layout.prop(prop, "smoothing_iter_prop", text="SmoothingIter")
         if not runner.is_running() :

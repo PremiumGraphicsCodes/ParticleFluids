@@ -91,16 +91,24 @@ void PSToMeshTool::execute(const CommandLineOptions& options)
             std::exit(1);
         }
     }
-    /*
+
+    std::cout << "Writing Volume...";
     {
         VDBFileWriteCommand::Args args;
-        args.filePath.setValue("volume.vdb");
+        args.filePath.setValue(options.outputVolumeFilePath);
         args.vdbVolumeIds.setValue({ volumeId });
         VDBFileWriteCommand command(args);
-        command.execute(&world);
+        const auto isOk = command.execute(&world);
+        if (isOk) {
+            std::cout << "Succeeded" << std::endl;
+        }
+        else {
+            std::cout << "Failed" << std::endl;
+            std::exit(1);
+        }
     }
-    */
 
+    /*
     std::cout << "Creating Empty Mesh...";
     int meshId = -1;
     {
@@ -151,5 +159,5 @@ void PSToMeshTool::execute(const CommandLineOptions& options)
             std::exit(1);
         }
     }
-
+    */
 }
