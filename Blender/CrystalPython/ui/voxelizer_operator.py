@@ -10,9 +10,14 @@ from ui.bl_triangle_mesh import BLTriangleMesh
 from space.voxel_scene import Voxelizer
 from scene.file_io import FileIO
 
-from ui.model import Model as model
 import os
 import subprocess
+
+from CrystalPLI import World
+from scene.scene import Scene
+
+world = World()
+scene = Scene(world)
 
 divide_length = 0.2
 
@@ -22,12 +27,13 @@ class VoxelizerOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
+      global scene
       global divide_length
 
       selected_mesh = self.get_selected_mesh(context)
       if selected_mesh == None :
         return
-      mesh = BLTriangleMesh(model.scene)
+      mesh = BLTriangleMesh(scene)
 
       mesh_file_path = "tmp_fs_mesh.stl"
       ps_file_path = "tmp_fs_ps.stl"
@@ -46,11 +52,11 @@ class VoxelizerOperator(bpy.types.Operator) :
       
       result = subprocess.run(params, shell=True)
       if result != -1 :
-        ps = BLParticleSystem(model.scene)
+        ps = BLParticleSystem(scene)
         ps.ps.create_empty("")
         ps.convert_to_polygon_mesh("")               
 
-        FileIO.import_pcd(model.scene, ps.ps.id, ps_file_path)
+        FileIO.import_pcd(scene, ps.ps.id, ps_file_path)
         ps.update()
 
       return {'FINISHED'}

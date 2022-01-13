@@ -8,7 +8,6 @@ from bpy.props import (
     StringProperty
 )
 
-from ui.model import Model as model
 from physics.solver_scene import SolverScene
 from ui.bl_fluid import BLFluid
 from ui.bl_boundary import BLBoundary
@@ -17,16 +16,23 @@ from scene.file_io import FileIO
 from ui.bl_solver import BLSolver
 from bpy.app.handlers import persistent
 
+from CrystalPLI import World
+from scene.scene import Scene
+
+world = World()
+scene = Scene(world)
+
 bl_solver = BLSolver()
 bl_boundary = None
 bl_fluids = []
 
 def find_all_fluids() :
+    global scene
     fluids = []
     for o in bpy.data.objects:
         if o.type == 'MESH' and o.ps_fluid.is_active_prop :
-            fluid = BLFluid(model.scene)
-            fluid.build()
+            fluid = BLFluid(scene)
+            fluid.build(scene)
             fluid.convert_from_polygon_mesh(o.to_mesh())
             fluid.reset(o.ps_fluid)
             fluids.append(fluid)
@@ -39,8 +45,9 @@ class SolverUpdateOperator(bpy.types.Operator):
     solver_name : StringProperty()
     
     def execute(self, context) :
+        global scene
         global solver
-        bl_solver.build()
+        bl_solver.build(scene)
         bl_solver.reset()
 
         global bl_fluids
@@ -51,8 +58,8 @@ class SolverUpdateOperator(bpy.types.Operator):
 
         global bl_boundary
         if bl_boundary == None :
-            bl_boundary = BLBoundary(model.scene)
-            bl_boundary.build()
+            bl_boundary = BLBoundary(scene)
+            bl_boundary.build(scene)
 
         min = context.scene.solver_property.min
         max = context.scene.solver_property.max
@@ -178,6 +185,9 @@ class SolverUI :
         bpy.types.SpaceView3D.draw_handler_add(draw_boundary, (), 'WINDOW', 'POST_VIEW')
 
     def unregister():
+        #Model.scene.clear(0)
+        #Model.scene.clear(1)
+
         for c in classes:
             bpy.utils.unregister_class(c)
         del bpy.types.Scene.solver_property

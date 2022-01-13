@@ -1,10 +1,15 @@
 import bpy
 from bpy.app.handlers import persistent
-from ui.model import Model as model
 from ui.bl_triangle_mesh import BLTriangleMesh
 from CrystalPLI import Vector3dd, Vector3ddVector
 from scene.file_io import FileIO
 import os
+
+from CrystalPLI import World
+from scene.scene import Scene
+
+world = World()
+scene = Scene(world)
 
 class TriangleMeshSequenceImporter :
     def __init__(self) :
@@ -12,8 +17,9 @@ class TriangleMeshSequenceImporter :
         self.__running = False
 
     def init(self):
+        global scene
         if self.tm == None :
-            self.tm = BLTriangleMesh(model.scene)
+            self.tm = BLTriangleMesh(scene)
             self.tm.mesh.create_empty("")
             self.tm.convert_to_polygon_mesh("")               
 

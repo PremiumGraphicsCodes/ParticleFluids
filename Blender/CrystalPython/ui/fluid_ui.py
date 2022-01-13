@@ -3,45 +3,6 @@ from bpy.props import FloatProperty, StringProperty, BoolProperty
 
 from physics.fluid_scene import FluidScene
 from ui.bl_fluid import BLFluid
-from ui.model import Model as model
-
-next_fluid_id = 0
-
-def create_next_name() :
-  global next_fluid_id
-  next_fluid_id += 1
-  return "Fluid" + str(next_fluid_id)
-
-class FluidAddOperator(bpy.types.Operator) :
-  bl_idname = "pg.fluidaddoperator"
-  bl_label = "FluidAdd"
-  bl_options = {"REGISTER", "UNDO"}
-
-  def execute(self, context) :
-    selected_mesh = self.get_selected_mesh(context)
-    if selected_mesh == None :
-      return {'‘CANCELLED’'}
-
-    fluid = BLFluid(model.scene)
-    fluid.build()
-    #fluid.convert_to_polygon_mesh("Fluid01")
-
-    name = create_next_name()
-    model.bl_fluids[name] = fluid
-    #prop = context.scene.fluid_properties.add()
-
-    bpy.context.active_object.ps_fluid = FluidProperty()#prop
-    #reference_object.some_property
-    #prop.name_prop = name
-    #fluid.convert_from_polygon_mesh(selected_mesh)
-    #fluid.prop = prop
-    return {'FINISHED'}
-
-  def get_selected_mesh(self, context) :
-    for o in bpy.data.objects:
-      if o.type == 'MESH' and o.select_get():
-        return o.to_mesh()
-    return None
 
 class FluidProperty(bpy.types.PropertyGroup) :
   is_active_prop : BoolProperty(
@@ -95,14 +56,11 @@ class FluidPanel(bpy.types.Panel) :
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
       layout.prop(fluid_property, "vorticity_prop", text="Vorticity")
       layout.prop(fluid_property, "is_static_prop", text="Static")
-    else :
-      layout.operator(FluidAddOperator.bl_idname, text="Add")
 #    for fluid_property in context.scene.fluid_properties :
 #      op_del = layout.operator(FluidDeleteOperator.bl_idname, text="Delete")
 #      op_del.fluid_name = fluid_property.name_prop
 
 classes = [
-  FluidAddOperator,
   FluidProperty,
   FluidPanel,  
 ]

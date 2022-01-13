@@ -1,9 +1,14 @@
 import bpy
-from ui.model import Model as model
 from ui.bl_particle_system import BLParticleSystem
 from CrystalPLI import Vector3dd, Vector3ddVector
 from scene.file_io import FileIO
 import os
+
+from CrystalPLI import World
+from scene.scene import Scene
+
+world = World()
+scene = Scene(world)
 
 class ParticleSystemSequenceImporter :
     def __init__(self) :
@@ -11,8 +16,9 @@ class ParticleSystemSequenceImporter :
         self.__running = False
 
     def build(self):
+        global scene
         if self.ps == None :
-            self.ps = BLParticleSystem(model.scene)
+            self.ps = BLParticleSystem(scene)
             self.ps.ps.create_empty("")
             self.ps.convert_to_polygon_mesh("")               
 
@@ -23,8 +29,9 @@ class ParticleSystemSequenceImporter :
         self.__running = False
 
     def step(self, frame):
+        global scene
         file_path = os.path.join("tmp_txt", "macro" + str(frame) + ".pcd")
-        FileIO.import_pcd(model.scene, self.ps.ps.id, file_path)
+        FileIO.import_pcd(scene, self.ps.ps.id, file_path)
         self.ps.update()
 
     def is_running(self):

@@ -2,9 +2,11 @@ import bpy
 import bmesh
 from CrystalPLI import Vector3dd, Vector3ddVector, Box3dd
 from physics.csg_boundary_scene import CSGBoundaryScene
-from ui.model import Model as model
 import gpu
 from gpu_extras.batch import batch_for_shader
+from CrystalPLI import World
+from scene.scene import Scene
+
 
 def get_position(box, u, v, w) :
     lx = box.max.x - box.min.x
@@ -19,8 +21,8 @@ class BLBoundary :
     def __init__(self, scene) :
         self.boundary = None
 
-    def build(self) :
-        self.boundary = CSGBoundaryScene(model.scene)
+    def build(self, scene) :
+        self.boundary = CSGBoundaryScene(scene)
         self.boundary.create()
         self.boundary.bounding_box = Box3dd(Vector3dd(0,0,0), Vector3dd(10,10,10))
         self.boundary.send()

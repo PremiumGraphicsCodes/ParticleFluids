@@ -1,7 +1,6 @@
 import bpy
 import os
 
-from ui.model import Model as model
 from physics.solver_scene import SolverScene
 from ui.bl_fluid import BLFluid
 from ui.bl_boundary import BLBoundary
@@ -22,11 +21,11 @@ class BLSolver :
         self.__bl_mesh = None
         self.__iteration = 1
 
-    def build(self):
+    def build(self, scene):
         if self.__solver != None :
             return
 
-        self.__solver = SolverScene(model.scene)
+        self.__solver = SolverScene(scene)
         self.__solver.create()
         
     def add_fluid(self, bl_fluid) :

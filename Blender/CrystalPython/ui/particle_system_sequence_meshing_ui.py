@@ -1,5 +1,4 @@
 import bpy
-from ui.model import Model as model
 from ui.bl_particle_system import BLParticleSystem
 from ui.bl_triangle_mesh import BLTriangleMesh
 from physics.surface_builder import SurfaceBuilder
@@ -13,15 +12,24 @@ import os
 import glob
 import subprocess
 
+from CrystalPLI import World
+from scene.scene import Scene
+
+
+world = World()
+scene = Scene(world)
+
+
 class MeshingRunner :
     def __init__(self) :
         self.__is_running = False
         self.__bl_mesh = None
 
     def start(self) :
+        global scene
         self.__is_running = True
         if self.__bl_mesh == None :
-            self.__bl_mesh = BLTriangleMesh(model.scene)
+            self.__bl_mesh = BLTriangleMesh(scene)
             self.__bl_mesh.mesh.create_empty("")
             self.__bl_mesh.convert_to_polygon_mesh("")               
 

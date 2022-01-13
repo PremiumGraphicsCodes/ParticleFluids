@@ -2,13 +2,14 @@ import bpy
 import bmesh
 import gpu
 
-from ui.model import Model as model
 from physics.fluid_scene import FluidScene
 from scene.particle_system_scene import ParticleSystemScene
 from CrystalPLI import Vector3dd, Vector3ddVector
 from bpy.props import FloatProperty, FloatVectorProperty
 from gpu_extras.batch import batch_for_shader
 
+from CrystalPLI import World
+from scene.scene import Scene
 
 class BLFluid :
     def __init__(self, scene):
@@ -16,9 +17,9 @@ class BLFluid :
         self.fluid = None
         self.shader = None
 
-    def build(self) :
-        self.fluid = FluidScene(model.scene)
-        self.source_ps = ParticleSystemScene(model.scene)
+    def build(self, scene) :
+        self.fluid = FluidScene(scene)
+        self.source_ps = ParticleSystemScene(scene)
         self.source_ps.create_empty("")
 
         self.fluid.create()
