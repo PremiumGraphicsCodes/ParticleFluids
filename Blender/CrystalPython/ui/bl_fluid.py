@@ -17,6 +17,9 @@ class BLFluid :
         self.fluid = None
         self.shader = None
 
+    def clear(self) :
+        del self.shader
+
     def build(self, scene) :
         self.fluid = FluidScene(scene)
         self.source_ps = ParticleSystemScene(scene)

@@ -210,6 +210,9 @@ class SolverUI :
 
     def unregister():
         Renderer.handle_remove()
+        global bl_fluids
+        for fluid in bl_fluids :
+            fluid.clear()
         #Model.scene.clear(0)
         #Model.scene.clear(1)
  #       bpy.types.SpaceView3D.draw_handler_remove(draw_boundary, 'WINDOW')
