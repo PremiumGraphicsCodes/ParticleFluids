@@ -28,10 +28,9 @@ class FluidAddOperator(bpy.types.Operator) :
 
     name = create_next_name()
     model.bl_fluids[name] = fluid
-    prop = context.scene.fluid_properties.add()
+    #prop = context.scene.fluid_properties.add()
 
-    bpy.types.Material.ps_fluid = bpy.props.PointerProperty(type=FluidProperty)
-    bpy.context.object.active_material.ps_fluid
+    bpy.context.active_object.ps_fluid = FluidProperty()#prop
     #reference_object.some_property
     #prop.name_prop = name
     #fluid.convert_from_polygon_mesh(selected_mesh)
@@ -107,8 +106,8 @@ class FluidPanel(bpy.types.Panel) :
  
   def draw(self, context):
     layout = self.layout
-    if hasattr(bpy.context.object.active_material, "ps_fluid") :
-      fluid_property = bpy.context.object.active_material.ps_fluid
+    if bpy.context.active_object.ps_fluid != None :
+      fluid_property = bpy.context.active_object.ps_fluid
       layout.prop(fluid_property, "name_prop", text="Name")
       layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
@@ -133,6 +132,7 @@ class FluidUI :
     for c in classes:
       bpy.utils.register_class(c)
     bpy.types.Scene.fluid_properties = bpy.props.CollectionProperty(type=FluidProperty)
+    bpy.types.Object.ps_fluid = bpy.props.PointerProperty(name="PSFluid", type=FluidProperty)
 #    fluid_prop = bpy.context.scene.fluid_properties.add()
     
   def unregister() :
