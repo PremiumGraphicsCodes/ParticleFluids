@@ -17,8 +17,8 @@ from scene.file_io import FileIO
 from ui.bl_solver import BLSolver
 from bpy.app.handlers import persistent
 
+bl_solver = BLSolver()
 bl_boundary = None
-
 bl_fluids = []
 
 def find_all_fluids() :
@@ -39,14 +39,15 @@ class SolverUpdateOperator(bpy.types.Operator):
     solver_name : StringProperty()
     
     def execute(self, context) :
-        solver = model.bl_solver
-        solver.reset()
+        global solver
+        bl_solver.build()
+        bl_solver.reset()
 
         global bl_fluids
         bl_fluids = find_all_fluids()
 
         for bl_fluid in bl_fluids :
-            solver.add_fluid(bl_fluid)
+            bl_solver.add_fluid(bl_fluid)
 
         global bl_boundary
         if bl_boundary == None :
@@ -57,20 +58,21 @@ class SolverUpdateOperator(bpy.types.Operator):
         max = context.scene.solver_property.max
         bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
         bl_boundary.boundary.send()
-        solver.add_boundary(bl_boundary)
+        bl_solver.add_boundary(bl_boundary)
 
-        solver.send()
-        solver.set_iteration( context.scene.solver_property.iteration_prop )
-        solver.set_export_path( context.scene.solver_property.export_dir_path )
+        bl_solver.send()
+        bl_solver.set_iteration( context.scene.solver_property.iteration_prop )
+        bl_solver.set_export_path( context.scene.solver_property.export_dir_path )
         return {'FINISHED'}
 
 
 @persistent
 def on_frame_changed_solver(scene):
+    global bl_solver
     print("OnChangedFrame")
-    if model.bl_solver.is_running() :
+    if bl_solver.is_running() :
         print("OnRunSolver")
-        model.bl_solver.step(scene.frame_current)
+        bl_solver.step(scene.frame_current)
 
 class SolverStartOperator(bpy.types.Operator):
     bl_idname = "pg.solverstartoperator"
@@ -78,10 +80,10 @@ class SolverStartOperator(bpy.types.Operator):
     bl_description = "Hello"
 
     def execute(self, context) :
-        if not model.bl_solver.is_running() :
-            model.bl_solver.start()
+        if not bl_solver.is_running() :
+            bl_solver.start()
         else :
-            model.bl_solver.stop()
+            bl_solver.stop()
         return {'FINISHED'}
 
 class SolverProperty(bpy.types.PropertyGroup) :
@@ -137,6 +139,7 @@ class SolverPanel(bpy.types.Panel):
     bl_context = "objectmode"
 
     def draw(self, context):
+        global bl_solver
         solver_property = context.scene.solver_property
         self.layout.prop(solver_property, "name_prop", text="Name")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
@@ -146,7 +149,7 @@ class SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
         self.layout.prop(solver_property, "iteration_prop", text="Iteration")
         self.layout.operator(SolverUpdateOperator.bl_idname, text="Reset")
-        if not model.bl_solver.is_running() :
+        if not bl_solver.is_running() :
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
         else :
             self.layout.operator(SolverStartOperator.bl_idname,text="Stop", icon='PAUSE')
@@ -171,8 +174,6 @@ class SolverUI :
         for c in classes:
             bpy.utils.register_class(c)
         bpy.types.Scene.solver_property = bpy.props.PointerProperty(type=SolverProperty)
-        model.bl_solver = BLSolver()
-        model.bl_solver.build()
         bpy.app.handlers.frame_change_pre.append(on_frame_changed_solver)
         bpy.types.SpaceView3D.draw_handler_add(draw_boundary, (), 'WINDOW', 'POST_VIEW')
 

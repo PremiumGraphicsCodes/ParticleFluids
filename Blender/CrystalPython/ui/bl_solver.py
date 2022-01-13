@@ -80,7 +80,7 @@ class BLSolver :
         return self.__running
 
     def reset(self):
-        for bl_fluid in self.__bl_fluids :
-            bl_fluid.reset()
+#        for bl_fluid in self.__bl_fluids :
+#            bl_fluid.reset()
         self.__bl_fluids.clear()
         self.__bl_boundaries.clear()
