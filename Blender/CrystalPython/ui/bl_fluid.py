@@ -14,7 +14,6 @@ class BLFluid :
     def __init__(self, scene):
         self.source_ps = None
         self.fluid = None
-        self.prop = None
         self.shader = None
 
     def build(self) :
@@ -86,10 +85,10 @@ class BLFluid :
         # 描画
         batch.draw(self.shader)
 
-    def reset(self):
-        self.fluid.particle_radius = self.prop.particle_radius_prop
-        self.fluid.stiffness = self.prop.stiffness_prop
-        self.fluid.viscosity = self.prop.viscosity_prop
-        self.fluid.vorticity = self.prop.vorticity_prop
-        self.fluid.is_boundary = self.prop.is_static_prop
+    def reset(self, prop):
+        self.fluid.particle_radius = prop.particle_radius_prop
+        self.fluid.stiffness = prop.stiffness_prop
+        self.fluid.viscosity = prop.viscosity_prop
+        self.fluid.vorticity = prop.vorticity_prop
+        self.fluid.is_boundary = prop.is_static_prop
         self.fluid.send()

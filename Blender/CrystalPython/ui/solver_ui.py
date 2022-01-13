@@ -19,6 +19,19 @@ from bpy.app.handlers import persistent
 
 bl_boundary = None
 
+bl_fluids = []
+
+def find_all_fluids() :
+    fluids = []
+    for o in bpy.data.objects:
+        if o.type == 'MESH' and o.ps_fluid.is_active_prop :
+            fluid = BLFluid(model.scene)
+            fluid.build()
+            fluid.convert_from_polygon_mesh(o.to_mesh())
+            fluid.reset(o.ps_fluid)
+            fluids.append(fluid)
+    return fluids
+
 class SolverUpdateOperator(bpy.types.Operator):
     bl_idname = "pg.solverupdateoperator"
     bl_label = "Delete"
@@ -28,8 +41,11 @@ class SolverUpdateOperator(bpy.types.Operator):
     def execute(self, context) :
         solver = model.bl_solver
         solver.reset()
-        for bl_fluid in model.bl_fluids.values() :
-            bl_fluid.reset()
+
+        global bl_fluids
+        bl_fluids = find_all_fluids()
+
+        for bl_fluid in bl_fluids :
             solver.add_fluid(bl_fluid)
 
         global bl_boundary
@@ -47,6 +63,7 @@ class SolverUpdateOperator(bpy.types.Operator):
         solver.set_iteration( context.scene.solver_property.iteration_prop )
         solver.set_export_path( context.scene.solver_property.export_dir_path )
         return {'FINISHED'}
+
 
 @persistent
 def on_frame_changed_solver(scene):
@@ -142,8 +159,9 @@ classes = [
 ]
 
 def draw_boundary() :
+    global bl_fluids
     global bl_boundary
-    for bl_fluid in model.bl_fluids.values() :
+    for bl_fluid in bl_fluids :
         bl_fluid.render()
     if bl_boundary != None :
         bl_boundary.draw()
