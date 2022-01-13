@@ -96,11 +96,11 @@ class FluidProperty(bpy.types.PropertyGroup) :
   )
 
 class FluidPanel(bpy.types.Panel) :
-  bl_space_type = "VIEW_3D"
-  bl_region_type = "UI"
-  bl_category = "PFFluid"
-  bl_label = "Fluid"
-  
+  bl_space_type = "PROPERTIES"
+  bl_region_type = "WINDOW"
+  bl_category = "physics"
+  bl_label = "ParticleFluid"
+ 
   def draw(self, context):
     layout = self.layout
     layout.operator(FluidAddOperator.bl_idname, text="Add")
