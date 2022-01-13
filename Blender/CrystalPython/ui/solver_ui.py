@@ -168,13 +168,36 @@ classes = [
     SolverProperty,
 ]
 
-def draw_boundary() :
-    global bl_fluids
-    global bl_boundary
-    for bl_fluid in bl_fluids :
-        bl_fluid.render()
-    if bl_boundary != None :
-        bl_boundary.draw()
+class Renderer(bpy.types.Operator) :
+    bl_idname = "view3d.text_renderer"
+    bl_label = "Text renderer"
+
+    __handle = None    # 描画関数
+
+    # 「View3D」領域の描画関数を登録
+    @staticmethod
+    def handle_add():
+        Renderer.__handle = bpy.types.SpaceView3D.draw_handler_add(
+            Renderer.render_text,
+            (), 'WINDOW', 'POST_VIEW')
+
+    # 「View3D」領域の描画関数を登録解除
+    @staticmethod
+    def handle_remove():
+        if Renderer.__handle is not None:
+            bpy.types.SpaceView3D.draw_handler_remove(
+                Renderer.__handle, 'WINDOW')
+            Renderer.__handle = None
+
+    # 「View3D」領域の描画関数本体
+    @staticmethod
+    def render_text():  
+        global bl_fluids
+        global bl_boundary
+        for bl_fluid in bl_fluids :
+            bl_fluid.render()
+        if bl_boundary != None :
+            bl_boundary.draw()
 
 class SolverUI :
     def register():
@@ -182,12 +205,14 @@ class SolverUI :
             bpy.utils.register_class(c)
         bpy.types.Scene.solver_property = bpy.props.PointerProperty(type=SolverProperty)
         bpy.app.handlers.frame_change_pre.append(on_frame_changed_solver)
-        bpy.types.SpaceView3D.draw_handler_add(draw_boundary, (), 'WINDOW', 'POST_VIEW')
+        Renderer.handle_add()
+#        bpy.types.SpaceView3D.draw_handler_add(draw_boundary, (), 'WINDOW', 'POST_VIEW')
 
     def unregister():
+        Renderer.handle_remove()
         #Model.scene.clear(0)
         #Model.scene.clear(1)
-
+ #       bpy.types.SpaceView3D.draw_handler_remove(draw_boundary, 'WINDOW')
         for c in classes:
             bpy.utils.unregister_class(c)
         del bpy.types.Scene.solver_property

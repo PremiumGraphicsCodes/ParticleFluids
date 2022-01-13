@@ -36,7 +36,6 @@ from ui.solver_ui import SolverUI
 from ui.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
 from ui.particle_system_sequence_meshing_ui import ParticleSystemSequenceMeshingUI
 from ui.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
-from ui.draw_sample import DrawSample
 
 def register():
   VoxelizerUI.register()
@@ -45,7 +44,6 @@ def register():
   TriangleMeshSequenceImportUI.register()
   FluidUI.register()
   SolverUI.register()
-  DrawSample.register()
 
 def unregister():
   #Model.scene.clear(0)
@@ -57,7 +55,6 @@ def unregister():
   TriangleMeshSequenceImportUI.unregister()
   FluidUI.unregister()
   SolverUI.unregister()
-  DrawSample.unregister()
 
 if __name__ == "__main__":
   register()
