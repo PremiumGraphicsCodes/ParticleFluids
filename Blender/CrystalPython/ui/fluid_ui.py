@@ -43,30 +43,11 @@ class FluidAddOperator(bpy.types.Operator) :
         return o.to_mesh()
     return None
 
-class FluidDeleteOperator(bpy.types.Operator):
-    bl_idname = "pg.fluiddeleteoperator"
-    bl_label = "Delete"
-    bl_description = "Hello"
-    fluid_name : StringProperty()
-
-    def execute(self, context) :
-        fluid = model.bl_fluids[self.fluid_name]
-        model.scene.delete( fluid.fluid.id, False )
-        del fluid
-        index = 0
-        for fluid_property in context.scene.fluid_properties :
-            if fluid_property.name_prop == self.fluid_name :
-                context.scene.fluid_properties.remove(index)
-                break
-            index+=1
-
-        return {'FINISHED'}    
-
 class FluidProperty(bpy.types.PropertyGroup) :
-  name_prop : bpy.props.StringProperty(
-    name="name",
-    description="Name",
-    default="Fluid01"
+  is_active_prop : BoolProperty(
+    name="is_active",
+    description="Active",
+    default = False,
   )
   stiffness_prop : bpy.props.FloatProperty(
     name="stiffness",
@@ -101,14 +82,14 @@ class FluidProperty(bpy.types.PropertyGroup) :
 class FluidPanel(bpy.types.Panel) :
   bl_space_type = "PROPERTIES"
   bl_region_type = "WINDOW"
-  bl_category = "physics"
+  bl_context = "physics"
   bl_label = "ParticleFluid"
  
   def draw(self, context):
     layout = self.layout
     if bpy.context.active_object.ps_fluid != None :
       fluid_property = bpy.context.active_object.ps_fluid
-      layout.prop(fluid_property, "name_prop", text="Name")
+      layout.prop(fluid_property, "is_active_prop", text="Active")
       layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
@@ -122,7 +103,6 @@ class FluidPanel(bpy.types.Panel) :
 
 classes = [
   FluidAddOperator,
-  FluidDeleteOperator,
   FluidProperty,
   FluidPanel,  
 ]
@@ -131,12 +111,11 @@ class FluidUI :
   def register():
     for c in classes:
       bpy.utils.register_class(c)
-    bpy.types.Scene.fluid_properties = bpy.props.CollectionProperty(type=FluidProperty)
     bpy.types.Object.ps_fluid = bpy.props.PointerProperty(name="PSFluid", type=FluidProperty)
 #    fluid_prop = bpy.context.scene.fluid_properties.add()
     
   def unregister() :
-    del bpy.types.Scene.fluid_properties
+    del bpy.types.Object.ps_fluid
     for c in classes:
       bpy.utils.unregister_class(c)
  
