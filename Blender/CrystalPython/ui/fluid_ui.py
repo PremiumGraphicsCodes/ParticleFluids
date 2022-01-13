@@ -29,9 +29,13 @@ class FluidAddOperator(bpy.types.Operator) :
     name = create_next_name()
     model.bl_fluids[name] = fluid
     prop = context.scene.fluid_properties.add()
-    prop.name_prop = name
-    fluid.convert_from_polygon_mesh(selected_mesh)
-    fluid.prop = prop
+
+    bpy.types.Material.ps_fluid = bpy.props.PointerProperty(type=FluidProperty)
+    bpy.context.object.active_material.ps_fluid
+    #reference_object.some_property
+    #prop.name_prop = name
+    #fluid.convert_from_polygon_mesh(selected_mesh)
+    #fluid.prop = prop
     return {'FINISHED'}
 
   def get_selected_mesh(self, context) :
@@ -104,15 +108,15 @@ class FluidPanel(bpy.types.Panel) :
   def draw(self, context):
     layout = self.layout
     layout.operator(FluidAddOperator.bl_idname, text="Add")
-    for fluid_property in context.scene.fluid_properties :
-      layout.prop(fluid_property, "name_prop", text="Name")
-      layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
-      layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
-      layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
-      layout.prop(fluid_property, "vorticity_prop", text="Vorticity")
-      layout.prop(fluid_property, "is_static_prop", text="Static")
-      op_del = layout.operator(FluidDeleteOperator.bl_idname, text="Delete")
-      op_del.fluid_name = fluid_property.name_prop
+#    for fluid_property in context.scene.fluid_properties :
+#      layout.prop(fluid_property, "name_prop", text="Name")
+#      layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
+#      layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
+#      layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
+#      layout.prop(fluid_property, "vorticity_prop", text="Vorticity")
+#      layout.prop(fluid_property, "is_static_prop", text="Static")
+#      op_del = layout.operator(FluidDeleteOperator.bl_idname, text="Delete")
+#      op_del.fluid_name = fluid_property.name_prop
 
 classes = [
   FluidAddOperator,
