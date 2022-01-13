@@ -107,14 +107,17 @@ class FluidPanel(bpy.types.Panel) :
  
   def draw(self, context):
     layout = self.layout
-    layout.operator(FluidAddOperator.bl_idname, text="Add")
+    if hasattr(bpy.context.object.active_material, "ps_fluid") :
+      fluid_property = bpy.context.object.active_material.ps_fluid
+      layout.prop(fluid_property, "name_prop", text="Name")
+      layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
+      layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
+      layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
+      layout.prop(fluid_property, "vorticity_prop", text="Vorticity")
+      layout.prop(fluid_property, "is_static_prop", text="Static")
+    else :
+      layout.operator(FluidAddOperator.bl_idname, text="Add")
 #    for fluid_property in context.scene.fluid_properties :
-#      layout.prop(fluid_property, "name_prop", text="Name")
-#      layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
-#      layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
-#      layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
-#      layout.prop(fluid_property, "vorticity_prop", text="Vorticity")
-#      layout.prop(fluid_property, "is_static_prop", text="Static")
 #      op_del = layout.operator(FluidDeleteOperator.bl_idname, text="Delete")
 #      op_del.fluid_name = fluid_property.name_prop
 
