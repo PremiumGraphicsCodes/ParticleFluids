@@ -1,5 +1,6 @@
 import bpy
 import os
+import threading
 
 from bpy.props import (
     IntProperty,
@@ -82,18 +83,15 @@ class SolverStartOperator(bpy.types.Operator):
     bl_description = "Hello"
 
     def execute(self, context) :
-        if not bl_solver.is_running() :
-            bl_solver.start()
-        else :
-            bl_solver.stop()
+        thread = threading.Thread(target=bl_solver.start)
+        thread.start()
+        #if not bl_solver.is_running() :
+        #    bl_solver.start()
+        #else :
+        #    bl_solver.stop()
         return {'FINISHED'}
 
 class SolverProperty(bpy.types.PropertyGroup) :
-    name_prop : StringProperty(
-        name="name",
-        description="Name",
-        default="Solver01"
-    )
     time_step_prop : FloatProperty(
         name="time_step",
         description="TimeStep",
@@ -143,7 +141,6 @@ class SolverPanel(bpy.types.Panel):
     def draw(self, context):
         global bl_solver
         solver_property = context.scene.solver_property
-        self.layout.prop(solver_property, "name_prop", text="Name")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
         self.layout.prop(solver_property, "min", text="Min")
