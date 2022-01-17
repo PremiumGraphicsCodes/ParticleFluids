@@ -23,8 +23,6 @@ world = World()
 scene = Scene(world)
 
 bl_solver = BLSolver()
-bl_boundary = None
-bl_fluids = []
 
 def find_all_fluids() :
     global scene
@@ -50,16 +48,13 @@ class SolverUpdateOperator(bpy.types.Operator):
         bl_solver.build(scene)
         bl_solver.reset()
 
-        global bl_fluids
         bl_fluids = find_all_fluids()
 
         for bl_fluid in bl_fluids :
             bl_solver.add_fluid(bl_fluid)
 
-        global bl_boundary
-        if bl_boundary == None :
-            bl_boundary = BLBoundary(scene)
-            bl_boundary.build(scene)
+        bl_boundary = BLBoundary(scene)
+        bl_boundary.build(scene)
 
         min = context.scene.solver_property.min
         max = context.scene.solver_property.max
@@ -169,12 +164,8 @@ classes = [
 ]
 
 def on_draw_solver() :
-    global bl_fluids
-    global bl_boundary
-    for bl_fluid in bl_fluids :
-        bl_fluid.render()
-    if bl_boundary != None :
-        bl_boundary.draw()
+    global bl_solver
+    bl_solver.render()
 
 class SolverUI :
     def register():
@@ -185,12 +176,6 @@ class SolverUI :
         bpy.types.SpaceView3D.draw_handler_add(on_draw_solver, (), 'WINDOW', 'POST_VIEW')
 
     def unregister():
-        global bl_fluids
-        for fluid in bl_fluids :
-            fluid.clear()
-        #Model.scene.clear(0)
-        #Model.scene.clear(1)
- #       bpy.types.SpaceView3D.draw_handler_remove(draw_boundary, 'WINDOW')
         for c in classes:
             bpy.utils.unregister_class(c)
         del bpy.types.Scene.solver_property

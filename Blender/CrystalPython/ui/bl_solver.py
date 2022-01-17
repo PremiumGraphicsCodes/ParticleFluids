@@ -83,3 +83,9 @@ class BLSolver :
 #            bl_fluid.reset()
         self.__bl_fluids.clear()
         self.__bl_boundaries.clear()
+
+    def render(self):
+        for bl_fluid in self.__bl_fluids :
+            bl_fluid.render()
+        for bl_boundary in self.__bl_boundaries :
+            bl_boundary.draw()
