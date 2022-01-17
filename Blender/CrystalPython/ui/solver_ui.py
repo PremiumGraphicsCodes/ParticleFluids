@@ -68,13 +68,19 @@ class SolverStartOperator(bpy.types.Operator):
 
     def execute(self, context) :
         reset()
-        thread = threading.Thread(target=bl_solver.start)
-        thread.start()
-        #if not bl_solver.is_running() :
-        #    bl_solver.start()
-        #else :
-        #    bl_solver.stop()
+        if not bl_solver.is_running() :
+            bl_solver.start()
+        else :
+            bl_solver.stop()
         return {'FINISHED'}
+
+@persistent
+def on_frame_changed_solver(scene):
+    global bl_solver
+    print("OnChangedFrame")
+    if bl_solver.is_running() :
+        print("OnRunSolver")
+        bl_solver.step(scene.frame_current)
 
 class SolverProperty(bpy.types.PropertyGroup) :
     start_frame_prop : IntProperty(
@@ -138,8 +144,6 @@ class SolverPanel(bpy.types.Panel):
     def draw(self, context):
         global bl_solver
         solver_property = context.scene.solver_property
-        self.layout.prop(solver_property, "start_frame_prop", text="StartFrame")
-        self.layout.prop(solver_property, "end_frame_prop", text="EndFrame")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
         self.layout.prop(solver_property, "min", text="Min")
@@ -166,6 +170,7 @@ class SolverUI :
         for c in classes:
             bpy.utils.register_class(c)
         bpy.types.Scene.solver_property = bpy.props.PointerProperty(type=SolverProperty)
+        bpy.app.handlers.frame_change_pre.append(on_frame_changed_solver)        
         bpy.types.SpaceView3D.draw_handler_add(on_draw_solver, (), 'WINDOW', 'POST_VIEW')
 
     def unregister():

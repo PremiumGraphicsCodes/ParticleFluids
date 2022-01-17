@@ -54,8 +54,6 @@ class BLSolver :
 
     def start(self):
         self.__running = True
-        for i in range(self.start_frame, self.end_frame) :
-            self.step(i)
 
     def stop(self):
         self.__running = False
