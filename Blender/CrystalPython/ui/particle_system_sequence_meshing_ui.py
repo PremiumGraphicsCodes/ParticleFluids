@@ -160,7 +160,7 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
     bl_label = "PSSeqMeshing"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = "PFTools"
+    bl_category = "VDBTools"
     bl_context = "objectmode"
 
     def draw(self, context):

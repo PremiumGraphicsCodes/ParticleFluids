@@ -97,7 +97,7 @@ def clear_props():
 class VoxelizerPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
-  bl_category = "PFTools"
+  bl_category = "VDBTools"
   bl_label = "Voxelize"
   
   def draw(self, context):
