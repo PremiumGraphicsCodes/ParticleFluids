@@ -24,6 +24,7 @@ class MeshingRunner :
     def __init__(self) :
         self.__is_running = False
         self.__bl_mesh = None
+        self.tmp_volumes = []
 
     def start(self) :
         global scene
@@ -62,9 +63,12 @@ class MeshingRunner :
         params.append(str(prop.smoothing_iter_prop))
             
         result = subprocess.run(params, shell=True)
-#        if result != -1 :
-#            self.__bl_mesh.mesh.import_stl(export_file_path)
-#            self.__bl_mesh.update()
+        if result != -1 :
+            for o in self.tmp_volumes :
+                bpy.data.objects.remove(o)                
+
+            bpy.ops.object.volume_import(filepath=export_file_path, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+            self.tmp_volumes = bpy.context.selected_objects
             
     def is_running(self) :
         return self.__is_running
