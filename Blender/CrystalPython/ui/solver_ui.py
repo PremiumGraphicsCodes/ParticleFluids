@@ -37,45 +37,29 @@ def find_all_fluids() :
             fluids.append(fluid)
     return fluids
 
-class SolverUpdateOperator(bpy.types.Operator):
-    bl_idname = "pg.solverupdateoperator"
-    bl_label = "Delete"
-    bl_description = "Hello"
-    solver_name : StringProperty()
+def reset() :
+    bl_solver.build(scene)
+    bl_solver.reset()
+
+    bl_fluids = find_all_fluids()
+
+    for bl_fluid in bl_fluids :
+        bl_solver.add_fluid(bl_fluid)
+
+    bl_boundary = BLBoundary(scene)
+    bl_boundary.build(scene)
+
+    min = bpy.context.scene.solver_property.min
+    max = bpy.context.scene.solver_property.max
+    bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
+    bl_boundary.boundary.send()
+    bl_solver.add_boundary(bl_boundary)
     
-    def execute(self, context) :
-        global scene
-        global solver
-        bl_solver.build(scene)
-        bl_solver.reset()
-
-        bl_fluids = find_all_fluids()
-
-        for bl_fluid in bl_fluids :
-            bl_solver.add_fluid(bl_fluid)
-
-        bl_boundary = BLBoundary(scene)
-        bl_boundary.build(scene)
-
-        min = context.scene.solver_property.min
-        max = context.scene.solver_property.max
-        bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
-        bl_boundary.boundary.send()
-        bl_solver.add_boundary(bl_boundary)
-
-        bl_solver.send()
-        bl_solver.set_iteration( context.scene.solver_property.iteration_prop )
-        bl_solver.set_export_path( context.scene.solver_property.export_dir_path )
-        return {'FINISHED'}
-
-
-@persistent
-def on_frame_changed_solver(scene):
-    global bl_solver
-    print("OnChangedFrame")
-    if bl_solver.is_running() :
-        print("OnRunSolver")
-        bl_solver.step(scene.frame_current)
+    bl_solver.send()
+    bl_solver.set_start_frame(bpy.context.scene.solver_property.start_frame_prop)
+    bl_solver.set_end_frame(bpy.context.scene.solver_property.end_frame_prop)
+    bl_solver.set_iteration( bpy.context.scene.solver_property.iteration_prop )
+    bl_solver.set_export_path( bpy.context.scene.solver_property.export_dir_path )
 
 class SolverStartOperator(bpy.types.Operator):
     bl_idname = "pg.solverstartoperator"
@@ -83,6 +67,7 @@ class SolverStartOperator(bpy.types.Operator):
     bl_description = "Hello"
 
     def execute(self, context) :
+        reset()
         thread = threading.Thread(target=bl_solver.start)
         thread.start()
         #if not bl_solver.is_running() :
@@ -92,6 +77,18 @@ class SolverStartOperator(bpy.types.Operator):
         return {'FINISHED'}
 
 class SolverProperty(bpy.types.PropertyGroup) :
+    start_frame_prop : IntProperty(
+        name = "start_frame",
+        description="StartFrame",
+        default=0,
+        min=0,
+    )
+    end_frame_prop : IntProperty(
+        name = "end_frame",
+        description="EndFrame",
+        default=250,
+        min=0,
+    )
     time_step_prop : FloatProperty(
         name="time_step",
         description="TimeStep",
@@ -141,13 +138,14 @@ class SolverPanel(bpy.types.Panel):
     def draw(self, context):
         global bl_solver
         solver_property = context.scene.solver_property
+        self.layout.prop(solver_property, "start_frame_prop", text="StartFrame")
+        self.layout.prop(solver_property, "end_frame_prop", text="EndFrame")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
         self.layout.prop(solver_property, "min", text="Min")
         self.layout.prop(solver_property, "max", text="Max")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
         self.layout.prop(solver_property, "iteration_prop", text="Iteration")
-        self.layout.operator(SolverUpdateOperator.bl_idname, text="Reset")
         if not bl_solver.is_running() :
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
         else :
@@ -155,7 +153,6 @@ class SolverPanel(bpy.types.Panel):
 
 classes = [
     SolverStartOperator,
-    SolverUpdateOperator,
     SolverPanel,
     SolverProperty,
 ]
@@ -169,7 +166,6 @@ class SolverUI :
         for c in classes:
             bpy.utils.register_class(c)
         bpy.types.Scene.solver_property = bpy.props.PointerProperty(type=SolverProperty)
-        bpy.app.handlers.frame_change_pre.append(on_frame_changed_solver)
         bpy.types.SpaceView3D.draw_handler_add(on_draw_solver, (), 'WINDOW', 'POST_VIEW')
 
     def unregister():

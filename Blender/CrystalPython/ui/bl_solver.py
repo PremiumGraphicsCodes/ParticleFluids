@@ -54,11 +54,17 @@ class BLSolver :
 
     def start(self):
         self.__running = True
-        for i in range(0, 100) :
+        for i in range(self.start_frame, self.end_frame) :
             self.step(i)
 
     def stop(self):
         self.__running = False
+
+    def set_start_frame(self, frame) :
+        self.start_frame = frame
+
+    def set_end_frame(self, frame):
+        self.end_frame = frame
 
     def set_iteration(self, iter) :
         self.__iteration = iter
@@ -66,16 +72,9 @@ class BLSolver :
     def step(self, frame):
         for i in range(0, self.__iteration) :
             self.__solver.simulate()
-
-        #for bl_fluid in self.__bl_fluids :
-        #    bl_fluid.update()
         
         macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".pcd")
         self.__solver.export_pcd(macro_file_path, False)
-
-        #micro_file_path = os.path.join(self.__export_dir_path, "micro" + str(frame) + ".pcd")
-        #self.__solver.export_pcd(micro_file_path, True)
-
 
     def is_running(self):
         return self.__running
