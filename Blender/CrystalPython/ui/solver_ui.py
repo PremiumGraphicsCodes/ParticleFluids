@@ -87,6 +87,11 @@ def on_frame_changed_solver(scene):
             bl_solver.export_vdb(scene.frame_current)
 
 class SolverProperty(bpy.types.PropertyGroup) :
+    is_active_prop : bpy.props.BoolProperty(
+        name ="active",
+        description = "Active",
+        default = False,
+    )
     start_frame_prop : IntProperty(
         name = "start_frame",
         description="StartFrame",
@@ -168,6 +173,7 @@ class SolverPanel(bpy.types.Panel):
     def draw(self, context):
         global bl_solver
         solver_property = context.scene.solver_property
+        self.layout.prop(solver_property, "is_active_prop", text="Active")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
         self.layout.prop(solver_property, "min", text="Min")
@@ -190,7 +196,8 @@ classes = [
 
 def on_draw_solver() :
     global bl_solver
-    bl_solver.render()
+    if bpy.context.scene.solver_property.is_active_prop :
+        bl_solver.render()
 
 class SolverUI :
     def register():

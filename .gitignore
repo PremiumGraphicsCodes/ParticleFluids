@@ -327,3 +327,4 @@ Blender/CrystalPython/VDBTool.exe
 /Blender/CrystalPython/tmp_fs_mesh.stl
 /Blender/CrystalPython/tmp_fs_ps.stl
 /Blender/CrystalPython/tmp_stl
+/Blender/CrystalPython/tmp_txt/*.vdb
