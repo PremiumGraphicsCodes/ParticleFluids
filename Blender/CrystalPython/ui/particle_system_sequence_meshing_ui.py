@@ -57,10 +57,10 @@ class MeshingRunner :
         #params.append(str(prop.threshold_prop))
         #params.append("-a")
         #params.append(str(prop.mesh_adaptivity_prop))
-        params.append("-sw")
-        params.append(str(prop.smoothing_width_prop))
-        params.append("-si")
-        params.append(str(prop.smoothing_iter_prop))
+        #params.append("-sw")
+        #params.append(str(prop.smoothing_width_prop))
+        #params.append("-si")
+        #params.append(str(prop.smoothing_iter_prop))
             
         result = subprocess.run(params, shell=True)
         if result != -1 :
@@ -102,12 +102,6 @@ class MeshingProperty(bpy.types.PropertyGroup) :
         subtype='DIR_PATH'
         )
 
-    do_export_stl_prop : bpy.props.BoolProperty(
-        name="Export",
-        description="Export",
-        default=False
-    )
-
     output_path_prop : bpy.props.StringProperty(
         name="output_path",
         description="Path to Directory",
@@ -131,34 +125,6 @@ class MeshingProperty(bpy.types.PropertyGroup) :
         min = 0.0,
         max = 100.0,
     )
-
-    threshold_prop : bpy.props.FloatProperty(
-        name="threshold",
-        description="Threshold",
-        default=0.0,
-        min = 0.0,
-        )
-
-    mesh_adaptivity_prop : bpy.props.FloatProperty(
-        name="mesh_adaptivity",
-        description = "Adaptivity",
-        default = 1.0,
-        min = 0.0,
-    )
-
-    smoothing_width_prop : bpy.props.IntProperty(
-        name="smoothing_width",
-        description = "SmoothingWidth",
-        default = 1,
-        min = 0,
-    )
-
-    smoothing_iter_prop : bpy.props.IntProperty(
-        name="smoothing_iter",
-        description = "SmoothingIiter",
-        default = 1,
-        min = 0,
-    )
         
 class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
     bl_label = "PSSeqMeshing"
@@ -170,14 +136,9 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
     def draw(self, context):
         prop = context.scene.meshing_property
         self.layout.prop(prop, "input_path_prop", text="InputPath")
-        self.layout.prop(prop, "do_export_stl_prop", text="Export")
         self.layout.prop(prop, "output_path_prop", text="OutputPath")
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
-#        self.layout.prop(prop, "threshold_prop", text="Threshold")
-#        self.layout.prop(prop, "mesh_adaptivity_prop", text="Adaptivity")
-        self.layout.prop(prop, "smoothing_width_prop", text="SmoothingWidth")
-        self.layout.prop(prop, "smoothing_iter_prop", text="SmoothingIter")
         if not runner.is_running() :
             self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
         else :
