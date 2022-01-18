@@ -75,6 +75,7 @@ void PSToMeshTool::execute(const CommandLineOptions& options)
         }
     }
 
+    /*
     std::cout << "Smoothing...";
     {
         VDBSmoothingCommand::Args args;
@@ -91,6 +92,7 @@ void PSToMeshTool::execute(const CommandLineOptions& options)
             std::exit(1);
         }
     }
+    */
 
     std::cout << "Writing Volume...";
     {
