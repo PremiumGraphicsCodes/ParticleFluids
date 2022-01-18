@@ -8,6 +8,7 @@ from ui.bl_triangle_mesh import BLTriangleMesh
 from scene.triangle_mesh_scene import TriangleMeshScene
 from CrystalPLI import Vector3df
 from scene.file_io import FileIO
+import subprocess
 
 class BLSolver :
     def __init__(self) :
@@ -67,12 +68,52 @@ class BLSolver :
     def set_iteration(self, iter) :
         self.__iteration = iter
 
+    def set_vdb_particle_radius(self, radius) :
+        self.__vdb_particle_radius = radius
+
+    def set_vdb_cell_length(self, length) :
+        self.__vdb_cell_length = length
+
     def step(self, frame):
         for i in range(0, self.__iteration) :
             self.__solver.simulate()
         
         macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".pcd")
         self.__solver.export_pcd(macro_file_path, False)
+
+    def export_vdb(self, frame) :
+        #prop = bpy.context.scene.meshing_property
+
+        ps_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".pcd")
+        export_file_path = os.path.join(self.__export_dir_path, "volume" + str(frame) + ".vdb") #basename_without_ext + ".stl")
+
+        params = []
+        params.append('VDBTool')
+        params.append("-i")
+        params.append(str(ps_file_path))
+        params.append("-o")
+        params.append(str(export_file_path))
+        params.append("-r")
+        params.append(str(self.__vdb_particle_radius))
+        params.append("-v")
+        params.append(str(self.__vdb_cell_length))
+        #params.append("-t")
+        #params.append(str(prop.threshold_prop))
+        #params.append("-a")
+        #params.append(str(prop.mesh_adaptivity_prop))
+        #params.append("-sw")
+        #params.append(str(prop.smoothing_width_prop))
+        #params.append("-si")
+        #params.append(str(prop.smoothing_iter_prop))
+            
+        result = subprocess.run(params, shell=True)
+        if result != -1 :
+            for o in self.tmp_volumes :
+                bpy.data.objects.remove(o)                
+
+            bpy.ops.object.volume_import(filepath=export_file_path, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+            self.tmp_volumes = bpy.context.selected_objects
+
 
     def is_running(self):
         return self.__running
