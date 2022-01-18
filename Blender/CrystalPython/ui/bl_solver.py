@@ -74,6 +74,12 @@ class BLSolver :
     def set_vdb_cell_length(self, length) :
         self.__vdb_cell_length = length
 
+    def set_vdb_smooth_width(self, width) :
+        self.__vdb_smooth_width = width
+
+    def set_vdb_smooth_iter(self, iter) :
+        self.__vdb_smooth_iter = iter
+
     def step(self, frame):
         for i in range(0, self.__iteration) :
             self.__solver.simulate()
@@ -101,18 +107,13 @@ class BLSolver :
         #params.append(str(prop.threshold_prop))
         #params.append("-a")
         #params.append(str(prop.mesh_adaptivity_prop))
-        #params.append("-sw")
-        #params.append(str(prop.smoothing_width_prop))
-        #params.append("-si")
-        #params.append(str(prop.smoothing_iter_prop))
+        params.append("-sw")
+        params.append(str(self.__vdb_smooth_width))
+        params.append("-si")
+        params.append(str(self.__vdb_smooth_iter))
             
         result = subprocess.run(params, shell=True)
-        if result != -1 :
-            for o in self.tmp_volumes :
-                bpy.data.objects.remove(o)                
-
-            bpy.ops.object.volume_import(filepath=export_file_path, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
-            self.tmp_volumes = bpy.context.selected_objects
+#        if result != -1 :
 
 
     def is_running(self):

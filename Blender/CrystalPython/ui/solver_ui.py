@@ -62,6 +62,8 @@ def reset() :
     bl_solver.set_export_path( bpy.context.scene.solver_property.export_dir_path )
     bl_solver.set_vdb_particle_radius( bpy.context.scene.solver_property.vdb_particle_radius_prop)
     bl_solver.set_vdb_cell_length(bpy.context.scene.solver_property.vdb_cell_length_prop)
+    bl_solver.set_vdb_smooth_width(bpy.context.scene.solver_property.vdb_volume_smooth_width)
+    bl_solver.set_vdb_smooth_iter(bpy.context.scene.solver_property.vdb_volume_smooth_iter)
 
 class SolverStartOperator(bpy.types.Operator):
     bl_idname = "pg.solverstartoperator"
@@ -153,13 +155,24 @@ class SolverProperty(bpy.types.PropertyGroup) :
         min = 0.0,
         max = 100.0,
         )
-
     vdb_cell_length_prop : bpy.props.FloatProperty(
         name="cell_length",
         description="CellLength",
         default=0.5,
         min = 0.0,
         max = 100.0,
+    )
+    vdb_volume_smooth_width : bpy.props.IntProperty(
+        name ="smooth_width",
+        description="SmoothWidth",
+        default = 1,
+        min = 0
+    )
+    vdb_volume_smooth_iter : bpy.props.IntProperty(
+        name="smooth_iter",
+        description="SmootthIter",
+        default = 1,
+        min = 0
     )
 
 
@@ -183,6 +196,8 @@ class SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "vdb_export_prop", text="ExportVDB")
         self.layout.prop(solver_property, "vdb_particle_radius_prop", text="VDBRadius")
         self.layout.prop(solver_property, "vdb_cell_length_prop", text="VDBCellLength")
+        self.layout.prop(solver_property, "vdb_volume_smooth_width", text="SmoothWidth")
+        self.layout.prop(solver_property, "vdb_volume_smooth_iter", text="SmoothIter")
         if not bl_solver.is_running() :
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
         else :
