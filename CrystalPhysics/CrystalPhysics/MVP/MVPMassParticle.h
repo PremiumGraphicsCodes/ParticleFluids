@@ -18,6 +18,8 @@ public:
 
 	MVPVolumeParticle* getParent() { return parent; }
 
+	void setParent(MVPVolumeParticle* p) { this->parent = p; }
+
 	void updatePosition(const Math::Vector3df& centerPosition);
 
 	void updateVelocity(const Math::Vector3df& centerVelocity);

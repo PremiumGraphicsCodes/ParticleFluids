@@ -22,7 +22,11 @@ public:
 		particles.push_back(mp);
 	}
 
-	std::vector<MVPVolumeParticle*> getParticles() const { return particles; }
+	std::list<MVPVolumeParticle*> getParticles() const { return particles; }
+
+	void remove(MVPVolumeParticle* p) { particles.remove(p); }
+
+	void add(MVPVolumeParticle* p) { particles.push_back(p); }
 
 	void clearParticles();
 
@@ -48,7 +52,7 @@ public:
 
 private:
 	std::unique_ptr<MVPFluidScenePresenter> controller;
-	std::vector<MVPVolumeParticle*> particles;
+	std::list<MVPVolumeParticle*> particles;
 	float pressureCoe;
 	float viscosityCoe;
 };

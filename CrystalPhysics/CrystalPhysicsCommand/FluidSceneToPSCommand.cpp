@@ -38,6 +38,7 @@ FluidSceneToPSCommand::FluidSceneToPSCommand() :
 
 bool FluidSceneToPSCommand::execute(World* world)
 {
+	/*
 	auto fluidScene = world->getScenes()->findSceneById<MVPFluidScene*>(args.fluidId.getValue());
 	if (fluidScene == nullptr) {
 		return false;
@@ -53,6 +54,7 @@ bool FluidSceneToPSCommand::execute(World* world)
 	for (int i = 0; i < macroPositions.size(); ++i) {
 		particles[i]->moveTo(macroPositions[i]->getPosition());
 	}
+	*/
 
 	return true;
 }

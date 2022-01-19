@@ -183,6 +183,51 @@ void MVPFluidSolver::simulate()
 	}
 	std::cout << densityError << std::endl;
 
+	/*
+	for (auto f : fluids) {
+		const auto fps = f->getParticles();
+		std::vector<MVPVolumeParticle*> ps;
+		for (auto p : fps) {
+			if (p->getDensity() < 0.75) {
+				ps.push_back(p);
+			}
+		}
+		for (auto p : ps) {
+			const auto masses = p->getMassParticles();
+			for (auto m : masses) {
+				MVPVolumeParticle* vp = new MVPVolumeParticle(p->getRadius() * 0.50, m->getPosition());
+				vp->setVelocity(m->getVelocity());
+				vp->addMassParticle(m);
+				m->setParent(vp);
+				vp->setRestMass(m->getMass());
+				f->add(vp);
+			}
+			p->clearMasses();
+			f->remove(p);
+			delete p;
+		}
+	}
+
+	for (auto f : fluids) {
+		const auto fps = f->getParticles();
+		for (auto p : fps) {
+			if (p->getDensity() > 1.5) {
+				const auto ns = p->getNeighbors();
+				for (auto n : ns) {
+					const auto mps = p->getMassParticles();
+					if (mps.size() < 8) {
+						for (auto m : mps) {
+							p->addMassParticle(m);
+							m->setParent(
+						}
+					}
+				}
+			}
+		}
+
+	}
+	*/
+
 	currentTimeStep++;
 }
 

@@ -16,6 +16,10 @@ public:
 
 	~MVPVolumeParticle();
 
+	void clearMasses() { this->massParticles.clear(); }
+
+	//void setVelocity(const Math::Vector3df& v) { this->velocity = v; }
+
 	void setPressureCoe(const float c);
 
 	void setViscosityCoe(const float c);
@@ -76,6 +80,8 @@ public:
 	Math::Vector3df getAveragedCenter() const { return averagedCenter; }
 
 	const std::vector<MVPMassParticle*>& getMassParticles() const { return massParticles; }
+
+	const std::vector<MVPVolumeParticle*>& getNeighbors() const { return neighbors; }
 
 private:
 	float pressureCoe;
