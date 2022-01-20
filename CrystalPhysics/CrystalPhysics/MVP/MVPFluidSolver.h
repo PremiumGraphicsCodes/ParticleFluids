@@ -60,6 +60,7 @@ private:
 	
 	std::list<MVPFluidScene*> fluids;
 	std::list<MVPFluidEmitterScene*> emitters;
+	//std::list<MVPMassParticle*> tinyParticles;
 	MVPBoundarySolver boundarySolver;
 	std::list<CSGBoundaryScene*> csgBoundaries;
 	float effectLength = 2.0f;

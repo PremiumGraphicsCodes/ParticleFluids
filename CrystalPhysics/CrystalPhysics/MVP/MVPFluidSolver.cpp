@@ -183,7 +183,6 @@ void MVPFluidSolver::simulate()
 	}
 	std::cout << densityError << std::endl;
 
-	/*
 	for (auto f : fluids) {
 		const auto fps = f->getParticles();
 		std::vector<MVPVolumeParticle*> ps;
@@ -208,11 +207,30 @@ void MVPFluidSolver::simulate()
 		}
 	}
 
+	/*
 	for (auto f : fluids) {
+
+		std::list<IParticle*> tinyParticles;
 		const auto fps = f->getParticles();
 		for (auto p : fps) {
-			if (p->getDensity() > 1.5) {
-				const auto ns = p->getNeighbors();
+			if (p->getMassParticles().size() == 1) {
+				tinyParticles.push_back(p);
+			}
+		}
+		CompactSpaceHash3d spaceHash(searchRadius * 0.5, tinyParticles.size());
+		for (auto p : fps) {
+			spaceHash.add(p);
+		}
+		for (auto p : fps) {
+			const auto neighbors = spaceHash.findNeighbors(p->getPosition());
+			if (neighbors.size() >= 8) {
+				std::cout << "IsAbleToMerge" << std::endl;
+			}
+		}
+		*/
+
+
+		/*
 				for (auto n : ns) {
 					const auto mps = p->getMassParticles();
 					if (mps.size() < 8) {
@@ -221,12 +239,8 @@ void MVPFluidSolver::simulate()
 							m->setParent(
 						}
 					}
-				}
-			}
-		}
-
-	}
-	*/
+					*/
+	//}
 
 	currentTimeStep++;
 }
