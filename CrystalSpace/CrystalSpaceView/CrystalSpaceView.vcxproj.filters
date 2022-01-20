@@ -64,6 +64,7 @@
     <ClCompile Include="DynamicOctreeView.cpp">
       <Filter>Search</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleDownSamplerView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpaceHashView.h">
@@ -128,6 +129,7 @@
     <ClInclude Include="DynamicOctreeView.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleDownSamplerView.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Intersection">
