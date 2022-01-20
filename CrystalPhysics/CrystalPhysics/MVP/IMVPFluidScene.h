@@ -16,17 +16,15 @@ public:
 
 	virtual ~IMVPFluidScene();
 
-	void addParticle(MVPVolumeParticle* mp) {
-		mp->setPressureCoe(this->pressureCoe);
-		mp->setViscosityCoe(this->viscosityCoe);
+	void addParticle(MVPMassParticle* mp) {
 		particles.push_back(mp);
 	}
 
-	std::list<MVPVolumeParticle*> getParticles() const { return particles; }
+	std::list<MVPMassParticle*> getParticles() const { return particles; }
 
-	void remove(MVPVolumeParticle* p) { particles.remove(p); }
+	void remove(MVPMassParticle* p) { particles.remove(p); }
 
-	void add(MVPVolumeParticle* p) { particles.push_back(p); }
+	void add(MVPMassParticle* p) { particles.push_back(p); }
 
 	void clearParticles();
 
@@ -52,7 +50,7 @@ public:
 
 private:
 	std::unique_ptr<MVPFluidScenePresenter> controller;
-	std::list<MVPVolumeParticle*> particles;
+	std::list<MVPMassParticle*> particles;
 	float pressureCoe;
 	float viscosityCoe;
 };

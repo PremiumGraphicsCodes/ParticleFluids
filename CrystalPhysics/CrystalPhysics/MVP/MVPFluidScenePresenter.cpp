@@ -10,7 +10,7 @@ using namespace Crystal::Physics;
 MVPFluidScenePresenter::MVPFluidScenePresenter(IMVPFluidScene* model) :
 	model(model),
 	view(nullptr),
-	mode(Mode::Density)
+	mode(Mode::Uniform)
 {
 	colorMap = ColorMap(2.0f, 3.0f, ColorTable::createDefaultTable(270));
 }
@@ -35,13 +35,15 @@ void MVPFluidScenePresenter::updateView()
 		if (mode == Mode::Uniform) {
 			c = glm::vec4(1, 1, 1, 0.25);
 		}
+		/*
 		else if (mode == Mode::Density) {
 			c = colorMap.getInterpolatedColor(p->getDensity());
 		}
+		*/
 		else {
 			assert(false);
 		}
-		pb.add(p->getPosition(), c, 10.0);
+		pb.add(p->getPosition(), c, 100.0);
 		/*
 		const auto& pts = p->getPoints();
 		for (auto pp : pts) {

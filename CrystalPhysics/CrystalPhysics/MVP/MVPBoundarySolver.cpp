@@ -10,7 +10,7 @@ using namespace Crystal::Physics;
 
 void MVPBoundarySolver::setup(const float effectLength)
 {
-	std::vector<MVPVolumeParticle*> boundaryParticles;
+	std::vector<MVPMassParticle*> boundaryParticles;
 	for (auto b : boundaries) {
 		const auto bp = b->getParticles();
 		boundaryParticles.insert(boundaryParticles.end(), bp.begin(), bp.end());
@@ -20,7 +20,7 @@ void MVPBoundarySolver::setup(const float effectLength)
 		return;
 	}
 
-	const auto hashSize = boundaryParticles.front()->getPoints().size() * boundaryParticles.size();
+	const auto hashSize = boundaryParticles.size();
 	const auto searchRadius = effectLength;
 	spaceHash = std::make_unique<CompactSpaceHash3d>(searchRadius, boundaryParticles.size());
 	//spaceHash.setup(searchRadius, boundaryParticles.size());

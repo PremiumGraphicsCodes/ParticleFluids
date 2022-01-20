@@ -86,8 +86,8 @@ bool FluidSceneUpdateCommand::execute(World* world)
 		for (const auto& p : positions) {
 			//auto mp = new MVPVolumeParticle(radius, p);
 			//mp->addMassParticle();// distributePoints(3, 3, 3, density);
-			auto mp = builder.create(p, radius, 3, 3, 3, 1.0f);
-			fluidScene->addParticle(mp);
+			//auto mp = builder.create(p, radius, 3, 3, 3, 1.0f);
+			//fluidScene->addParticle(mp);
 		}
 	}
 

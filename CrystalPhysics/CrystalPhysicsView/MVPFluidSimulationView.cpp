@@ -59,9 +59,9 @@ void MVPFluidSimulationView::onStart()
 	onReset();
 
 	fluidScene->getPresenter()->createView(world->getRenderer());
-	staticScene->getPresenter()->createView(world->getRenderer());
+	//staticScene->getPresenter()->createView(world->getRenderer());
 	updator.add(fluidScene);
-	updator.add(staticScene);
+	//updator.add(staticScene);
 }
 
 void MVPFluidSimulationView::onReset()
@@ -99,12 +99,12 @@ void MVPFluidSimulationView::addFluid()
 		MVPParticleBuilder builder;
 		const auto radius = 0.20;
 		const auto length = radius * 1.00;
-		for (int i = 0; i < 20; ++i) {
-			for (int j = 0; j < 20; ++j) {
-				for (int k = 0; k < 20; ++k) {
+		for (int i = 0; i < 10; ++i) {
+			for (int j = 0; j < 10; ++j) {
+				for (int k = 0; k < 10; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = builder.create(p, length, 3, 3, 3, 1.0f);
+					auto mp = new MVPMassParticle(nullptr, p, 1.0f);
 					//				mp->distributePoints(3, 3, 3, 1.00f);
 					fluidScene->addParticle(mp);
 				}
@@ -120,8 +120,7 @@ void MVPFluidSimulationView::addFluid()
 				for (int k = 0; k < 20; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = builder.create(p, length, 3, 3, 3, 1.0f);
-					//				mp->distributePoints(3, 3, 3, 1.00f);
+					auto mp = new MVPMassParticle(nullptr, p, 1.0f);
 					staticScene->addParticle(mp);
 				}
 			}
@@ -131,7 +130,7 @@ void MVPFluidSimulationView::addFluid()
 
 	solver.clear();
 	solver.addFluidScene(fluidScene);
-	solver.addBoundaryScene(staticScene);
+	//solver.addBoundaryScene(staticScene);
 	solver.addBoundary(boundaryView.getBoundary());
 	solver.setEffectLength(radiusView.getValue());
 

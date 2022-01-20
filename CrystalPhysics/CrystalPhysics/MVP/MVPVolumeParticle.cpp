@@ -14,15 +14,18 @@ using namespace Crystal::Physics;
 MVPVolumeParticle::MVPVolumeParticle(const float radius, const Vector3dd& position) :
 	radius(radius),
 	position(position),
+	velocity(0, 0, 0),
 	restMass(0.0f),
 	vorticityCoe(0.05f)
 {}
 
 MVPVolumeParticle::~MVPVolumeParticle()
 {
+	/*
 	for (auto p : massParticles) {
 		delete p;
 	}
+	*/
 	//points.clear();
 }
 
@@ -51,10 +54,12 @@ void MVPVolumeParticle::reset(bool resetMicro)
 	this->force = Math::Vector3df(0, 0, 0);
 	this->averagedCenter = this->position;
 	//this->dv = Math::Vector3df(0, 0, 0);
+	/*
 	if (resetMicro) {
 		this->neighbors.clear();
 		this->neighbors.reserve(64);
 	}
+	*/
 }
 
 void MVPVolumeParticle::calculateDensity()
@@ -79,36 +84,49 @@ void MVPVolumeParticle::calculatePressureForce(const float relaxationCoe, const 
 		averagedCenter += (mp->position) / static_cast<float>(innerPoints.size());// mp->getPressureCoe();
 	}
 	this->averagedCenter = averagedCenter;
+	assert(!::isnan(this->averagedCenter.x));
+
 }
 
 void MVPVolumeParticle::calculateViscosityForce()
 {
 	Math::Vector3df f(0, 0, 0);
 	for (auto mp : innerPoints) {
-		f -= ( this->velocity - mp->getVelocity()) * mp->getMass() * mp->getViscosityCoe();
+		f -= (this->velocity - mp->getVelocity()) * mp->getMass() * 1.0f;//mp->getViscosityCoe();
 	}
+	assert(!::isnan(f.x));
 	this->force += f;
 }
 
 void MVPVolumeParticle::calculateVorticity()
 {
+	/*
 	vorticity = Vector3df(0, 0, 0);
 	for (auto mp : innerPoints) {
 		const auto p = (mp->position - this->position);
 		const auto v = (mp->getVelocity() - this->velocity);
 		vorticity += glm::cross(p, v) * this->vorticityCoe;
 	}
+	*/
 }
 
 void MVPVolumeParticle::stepTime(const float dt)
 {
 	const auto dv = this->position - averagedCenter;
-	this->force += dv /*/ dt / dt*/ * this->density * this->pressureCoe;
+	this->force += dv /*/ dt / dt*/ * this->density * 100.0f;//this->pressureCoe;
 
 
 	const auto acc = (force) / getDensity();
 	this->velocity += acc * dt;
+	assert(!::isnan(this->velocity.x));
+
 	this->position += this->velocity * dt;
+	assert(!::isnan(this->position.x));
+
+	for (auto m : massParticles) {
+		m->updateVelocity(this->velocity);
+		m->updatePosition(this->position);
+	}
 }
 
 float MVPVolumeParticle::getDensity() const
@@ -126,6 +144,7 @@ void MVPVolumeParticle::updateMassPositions()
 void MVPVolumeParticle::updateMassVelocities()
 {
 	for (auto mp : this->massParticles) {
+		assert(!::isnan(this->velocity.x));
 		mp->updateVelocity(this->velocity);
 	}
 }
@@ -144,4 +163,5 @@ void MVPVolumeParticle::updateInnerPoints()
 			}
 		}
 	}
+	assert(!innerPoints.empty());
 }

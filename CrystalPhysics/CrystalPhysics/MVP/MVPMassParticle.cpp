@@ -8,15 +8,22 @@ using namespace Crystal::Physics;
 
 MVPMassParticle::MVPMassParticle(MVPVolumeParticle* parent, const Math::Vector3df& point, const float mass) :
 	parent(parent),
-	vector(point),
 	mass(mass)
 //	pressureCoe(parent->getScene()->getPressureCoe()),
 //	viscosityCoe(parent->getScene()->getViscosityCoe())
 {
-	updatePosition(parent->getPositionf());
-	updateVelocity(parent->getVelocity());
+	this->position = point;
+	//updatePosition(parent->getPositionf());
+	//updateVelocity(parent->getVelocity());
 }
 
+void MVPMassParticle::setParent(MVPVolumeParticle* p)
+{
+	this->parent = p;
+	this->vector = this->position - p->getPositionf();
+	//updatePosition(parent->getPositionf());
+	//updateVelocity(parent->getVelocity());
+}
 
 Vector3dd MVPMassParticle::getPosition() const
 {
@@ -30,8 +37,9 @@ Vector3df MVPMassParticle::getVelocity() const
 
 void MVPMassParticle::updatePosition(const Vector3df& parentPosition)
 {
-	//const auto v = (parent->getPositionf() - this->position);
+	//this->position += v;
 	this->position = parentPosition + parent->getRadius() * vector;
+	assert(!::isnan(this->position.x));
 
 	//const auto vv = glm::cross(vector, parent->getVorticity()) * 0.00f;
 	//this->position += vv;
@@ -43,7 +51,9 @@ void MVPMassParticle::updatePosition(const Vector3df& parentPosition)
 
 void MVPMassParticle::updateVelocity(const Vector3df& parentVelocity)
 {
+	assert(!::isnan(this->velocity.x));
 	this->velocity = parentVelocity;
+	assert(!::isnan(this->velocity.x));
 	/*
 	if (Math::getLength(parent->getVorticity()) > 1.0e-3) {
 		this->velocity += glm::cross(parent->getVorticity(), vector);
@@ -51,6 +61,7 @@ void MVPMassParticle::updateVelocity(const Vector3df& parentVelocity)
 	*/
 }
 
+/*
 void MVPMassParticle::updateVector(const float dt)
 {
 	const auto l = Math::getLength(vector);
@@ -58,3 +69,4 @@ void MVPMassParticle::updateVector(const float dt)
 	this->vector += vv;
 	this->vector = glm::normalize(this->vector) * l;
 }
+*/

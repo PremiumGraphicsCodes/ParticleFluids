@@ -18,13 +18,13 @@ public:
 
 	MVPVolumeParticle* getParent() { return parent; }
 
-	void setParent(MVPVolumeParticle* p) { this->parent = p; }
+	void setParent(MVPVolumeParticle* p);
 
 	void updatePosition(const Math::Vector3df& centerPosition);
 
 	void updateVelocity(const Math::Vector3df& centerVelocity);
 
-	void updateVector(const float dt);
+	//void updateVector(const float dt);
 
 	float getMass() const { return mass; }
 

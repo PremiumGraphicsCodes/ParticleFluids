@@ -65,26 +65,57 @@ void MVPFluidSolver::step()
 
 void MVPFluidSolver::simulate()
 {
-	std::vector<MVPVolumeParticle*> fluidParticles;
+	std::vector<MVPMassParticle*> massParticles;
 
 	for (auto emitter : emitters) {
 		emitter->emitParticle(currentTimeStep);
 		const auto ps = emitter->getParticles();
-		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
+		massParticles.insert(massParticles.end(), ps.begin(), ps.end());
 	}
 
 	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
-		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
+		massParticles.insert(massParticles.end(), ps.begin(), ps.end());
 	}
 
-	for (auto particle : fluidParticles) {
-		particle->reset(true);
-	}
-
-	if (fluidParticles.empty()) {
+	if (massParticles.empty()) {
 		currentTimeStep++;
 		return;
+	}
+
+	std::vector<MVPVolumeParticle*> fluidParticles;
+	{
+		const auto leafSize = effectLength * 1.0;
+		CompactSpaceHash3d spaceHash(leafSize, massParticles.size());
+		for (auto p : massParticles) {
+			spaceHash.add(p);
+		}
+		const auto cells = spaceHash.getCells();
+
+		for (auto c : cells) {
+			Vector3dd center(0, 0, 0);
+			Vector3dd velocity(0, 0, 0);
+			for (auto p : c->particles) {
+				auto mp = static_cast<MVPMassParticle*>(p);
+				center += p->getPosition();
+				velocity += mp->getVelocity();
+			}
+			center /= static_cast<float>(c->particles.size());
+			velocity /= static_cast<float>(c->particles.size());
+			MVPVolumeParticle* vp = new MVPVolumeParticle(leafSize * 2.0, center);
+			for (auto p : c->particles) {
+				auto mp = static_cast<MVPMassParticle*>(p);
+				mp->setParent(vp);
+				vp->addMassParticle(mp);
+			}
+			vp->setVelocity(velocity);
+			fluidParticles.push_back(vp);			
+			vp->setRestMass(massParticles.front()->getMass() * 8.0);
+			vp->reset(false);
+		}
+		for (auto p : massParticles) {
+			assert(p->getParent() != nullptr);
+		}
 	}
 
 	const auto hashSize = fluidParticles.size();
@@ -125,7 +156,7 @@ void MVPFluidSolver::simulate()
 			particle->updateInnerPoints();
 			particle->calculateDensity();
 			particle->calculateViscosityForce();
-			particle->calculateVorticity();
+			//particle->calculateVorticity();
 		}
 		
 
@@ -168,10 +199,12 @@ void MVPFluidSolver::simulate()
 		for (auto particle : fluidParticles) {
 			//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
 			particle->stepTime(dt);
+			/*
 			const auto massPs = particle->getMassParticles();
 			for (auto mp : massPs) {
 				mp->updateVector(dt);
 			}
+			*/
 		}
 
 		time += dt;
@@ -182,6 +215,10 @@ void MVPFluidSolver::simulate()
 		densityError += particle->getDensity() / (double)fluidParticles.size();
 	}
 	std::cout << densityError << std::endl;
+
+	for (auto vp : fluidParticles) {
+		delete vp;
+	}
 
 	/*
 	for (auto f : fluids) {

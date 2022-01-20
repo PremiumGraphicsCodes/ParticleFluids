@@ -50,12 +50,14 @@ bool PhysicsSolverExportCommand::execute(World* world)
 		}
 		const auto macroParticles = fluid->getParticles();
 		if (args.doExportMicro.getValue()) {
+			/*
 			for (const auto mp : macroParticles) {
 				const auto micros = mp->getMassParticles();
 				for (const auto micro : micros) {
 					pcd.data.positions.push_back(micro->getPosition());
 				}
 			}
+			*/
 		}
 		else {
 			for (const auto mp : macroParticles) {
