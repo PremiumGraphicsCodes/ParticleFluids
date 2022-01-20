@@ -21,6 +21,7 @@
 #include "VoxelizerView.h"
 #include "ScanLineVoxelizerView.h"
 #include "RayTracerView.h"
+#include "ParticleDownSamplerView.h"
 
 #include "CrystalScene/AppBase/imgui.h"
 
@@ -95,6 +96,9 @@ void SpaceMenu::onShow()
 		}
 		if (ImGui::MenuItem("RayTracer")) {
 			control->setWindow(new RayTracerView("RayTracer", world, canvas));
+		}
+		if (ImGui::MenuItem("ParticleDownSampler")) {
+			control->setWindow(new ParticleDownSamplerView("ParticleDownSampler", world, canvas));
 		}
 		ImGui::EndMenu();
 	}

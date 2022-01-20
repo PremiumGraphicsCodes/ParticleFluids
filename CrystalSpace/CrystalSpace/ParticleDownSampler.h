@@ -12,9 +12,7 @@ namespace Crystal {
 class ParticleDownSampler
 {
 public:
-	static Math::Box3dd calculateBox(const std::vector<Shape::IParticle*>& particles, const float cellLength);
-
-	static std::vector<Math::Vector3df> downSample(const std::vector<Shape::IParticle*>& particles, const float leafSize, const Math::Box3df& bb);
+	static std::vector<Math::Vector3dd> downSample(const std::vector<Shape::IParticle*>& particles, const float leafSize);
 
 private:
 };
