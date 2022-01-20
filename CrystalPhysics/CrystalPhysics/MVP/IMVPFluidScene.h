@@ -26,6 +26,8 @@ public:
 
 	void remove(MVPVolumeParticle* p) { particles.remove(p); }
 
+	void removeDegeneratedVolumes();
+
 	void add(MVPVolumeParticle* p) { particles.push_back(p); }
 
 	void clearParticles();

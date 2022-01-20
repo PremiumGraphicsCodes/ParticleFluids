@@ -202,45 +202,52 @@ void MVPFluidSolver::simulate()
 				f->add(vp);
 			}
 			p->clearMasses();
-			f->remove(p);
-			delete p;
 		}
 	}
 
-	/*
 	for (auto f : fluids) {
+		f->removeDegeneratedVolumes();
+	}
 
-		std::list<IParticle*> tinyParticles;
+	std::list<IParticle*> tinyParticles;
+	for (auto f : fluids) {
 		const auto fps = f->getParticles();
 		for (auto p : fps) {
 			if (p->getMassParticles().size() == 1) {
 				tinyParticles.push_back(p);
 			}
 		}
-		CompactSpaceHash3d spaceHash(searchRadius * 0.5, tinyParticles.size());
-		for (auto p : fps) {
-			spaceHash.add(p);
-		}
-		for (auto p : fps) {
-			const auto neighbors = spaceHash.findNeighbors(p->getPosition());
-			if (neighbors.size() >= 8) {
-				std::cout << "IsAbleToMerge" << std::endl;
+	}
+	CompactSpaceHash3d spaceHash2(searchRadius * 0.5, tinyParticles.size());
+	for (auto p : tinyParticles) {
+		spaceHash2.add(p);
+	}
+	for (auto p : tinyParticles) {
+		const auto neighbors = spaceHash2.findNeighbors(p);
+		if (neighbors.size() >= 7) {
+			std::cout << "IsAbleToMerge" << std::endl;
+			auto target = static_cast<MVPVolumeParticle*>(p);
+			Vector3df newPosition = target->getPositionf();
+			Vector3df newVelocity = target->getVelocity();
+			for (int i = 0; i < 7; ++i) {
+				auto n = static_cast<MVPVolumeParticle*>(neighbors[i]);
+				auto m = n->getMassParticles().front();
+				target->addMassParticle(m);
+				m->setParent(target);
+				n->clearMasses();
+				newPosition += n->getPositionf();
+				newVelocity += n->getVelocity();
 			}
+			newPosition /= 8.0f;
+			target->setPosition(newPosition);
+			newVelocity /= 8.0f;
+			target->setVelocity(newVelocity);
+			break;
 		}
-		*/
-
-
-		/*
-				for (auto n : ns) {
-					const auto mps = p->getMassParticles();
-					if (mps.size() < 8) {
-						for (auto m : mps) {
-							p->addMassParticle(m);
-							m->setParent(
-						}
-					}
-					*/
-	//}
+	}
+	for (auto f : fluids) {
+		f->removeDegeneratedVolumes();
+	}
 
 	currentTimeStep++;
 }

@@ -18,6 +18,8 @@ public:
 
 	void clearMasses() { this->massParticles.clear(); }
 
+	void setPosition(const Math::Vector3df& p) { this->position = p; }
+
 	//void setVelocity(const Math::Vector3df& v) { this->velocity = v; }
 
 	void setPressureCoe(const float c);
