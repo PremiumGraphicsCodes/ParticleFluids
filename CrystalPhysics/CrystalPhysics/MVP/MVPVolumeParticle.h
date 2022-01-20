@@ -48,6 +48,8 @@ public:
 
 	void stepTime(const float dt);
 
+	void setRadius(const float r) { this->radius = r; }
+
 	float getRadius() const { return radius; }
 
 	std::vector<MVPMassParticle*> getPoints() { return massParticles; }

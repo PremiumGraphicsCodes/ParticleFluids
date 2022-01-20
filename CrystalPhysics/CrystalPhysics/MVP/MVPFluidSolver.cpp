@@ -238,6 +238,7 @@ void MVPFluidSolver::simulate()
 				newPosition += n->getPositionf();
 				newVelocity += n->getVelocity();
 			}
+			target->setRadius(target->getRadius() * 2.0);
 			newPosition /= 8.0f;
 			target->setPosition(newPosition);
 			newVelocity /= 8.0f;
