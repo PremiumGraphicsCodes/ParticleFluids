@@ -28,7 +28,7 @@ void DynamicOctreeView::onOk()
 	DynamicOctree octree(Box3dd(Vector3dd(0,0,0), Vector3dd(16,16,16)));
 	octree.divide(1.0, { &p1, &p2 });
 
-	const auto volumes = octree.toVolumes();
+	const auto volumes = octree.toVolumes(1.0f);
 
 	WireFrameBuilder wfBuilder;
 	/*
