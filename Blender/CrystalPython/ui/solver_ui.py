@@ -54,7 +54,7 @@ def reset() :
     bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
     bl_boundary.boundary.send()
     bl_solver.add_boundary(bl_boundary)
-    bl_solver.set_effect_length(bpy.context.scene.solver_property.vdb_particle_radius_prop)
+    bl_solver.set_effect_length(bpy.context.scene.solver_property.search_radius_prop)
     
     bl_solver.send()
     bl_solver.set_start_frame(bpy.context.scene.solver_property.start_frame_prop)
@@ -120,6 +120,12 @@ class SolverProperty(bpy.types.PropertyGroup) :
         default=(0.0, 0.0, -9.8),
         min=-100.0,
         max=100.0,
+    )
+    search_radius_prop : FloatProperty(
+        name="search_radius",
+        description="SearchRadius",
+        default = 1.0,
+        min = -0.0
     )
     min : bpy.props.FloatVectorProperty(
         name="min",
@@ -190,6 +196,7 @@ class SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "is_active_prop", text="Active")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
+        self.layout.prop(solver_property, "search_radius_prop", text="SearchRadius")
         self.layout.prop(solver_property, "min", text="Min")
         self.layout.prop(solver_property, "max", text="Max")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
