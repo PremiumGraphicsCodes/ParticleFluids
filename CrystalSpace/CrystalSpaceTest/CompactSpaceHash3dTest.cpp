@@ -21,7 +21,7 @@ private:
 	Vector3dd position;
 };
 
-TEST(CompactSpaceHash3dTest, TestSolveInteractions)
+TEST(CompactSpaceHash3dTest, TestFindNeighbors)
 {
 	CompactSpaceHash3d spaceHash(1.0, 10);
 
@@ -54,4 +54,17 @@ TEST(CompactSpaceHash3dTest, TestToPosition)
 	EXPECT_EQ(p2.x, -1.0);
 	EXPECT_EQ(p2.y, -2.0);
 	EXPECT_EQ(p2.z, -3.0);
+}
+
+TEST(CompactSpaceHash3dTest, TestRemove)
+{
+	CompactSpaceHash3d spaceHash(1.0, 10);
+
+	TestPoint point1(Vector3dd(1, 1, 1));
+	TestPoint point2(Vector3dd(1, 1, 1));
+	spaceHash.add(&point1);
+	spaceHash.add(&point2);
+	spaceHash.remove(&point2);
+	const auto neighbors = spaceHash.findNeighbors(&point1);
+	EXPECT_TRUE(neighbors.empty());
 }

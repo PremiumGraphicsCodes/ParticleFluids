@@ -38,6 +38,8 @@ public:
 
 	void add(Shape::IParticle* particle);
 
+	void remove(Shape::IParticle* particle);
+
 	std::vector<Shape::IParticle*> findNeighbors(Shape::IParticle* particle);
 
 	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
