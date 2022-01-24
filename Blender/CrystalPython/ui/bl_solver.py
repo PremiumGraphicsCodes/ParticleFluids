@@ -85,7 +85,7 @@ class BLSolver :
             self.__solver.simulate()
         
         macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".pcd")
-        self.__solver.export_pcd(macro_file_path, False)
+        self.__solver.export_pcd(macro_file_path, True)
 
     def export_vdb(self, frame) :
         #prop = bpy.context.scene.meshing_property

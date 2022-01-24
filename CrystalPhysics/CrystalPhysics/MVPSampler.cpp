@@ -48,6 +48,7 @@ void MVPSampler::merge(const std::list<MVPFluidScene*>& fluids, const double sea
 			}
 		}
 	}
+	MVPFluidScene* fluid = fluids.front();
 	CompactSpaceHash3d spaceHash(searchRadius * 0.5, tinyParticles.size());
 	for (auto p : tinyParticles) {
 		spaceHash.add(p);
@@ -63,6 +64,7 @@ void MVPSampler::merge(const std::list<MVPFluidScene*>& fluids, const double sea
 			double r = 0.0;
 			for (int i = 0; i < 8; ++i) {
 				auto n = static_cast<MVPVolumeParticle*>(neighbors[i]);
+				//fluid = n->
 				r = n->getRadius();
 				auto m = n->getMassParticles().front();
 				masses.push_back(m);
@@ -81,6 +83,8 @@ void MVPSampler::merge(const std::list<MVPFluidScene*>& fluids, const double sea
 				target->addMassParticle(m);
 				m->setParent(target);
 			}
+			target->setRestMass(masses[0]->getMass() * 8.0 * 1.25);
+			fluid->addParticle(target);
 		}
 	}
 	for (auto f : fluids) {
