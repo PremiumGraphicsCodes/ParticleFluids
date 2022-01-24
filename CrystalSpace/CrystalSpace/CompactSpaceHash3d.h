@@ -40,6 +40,8 @@ public:
 
 	void remove(Shape::IParticle* particle);
 
+	bool has(Shape::IParticle* particle);
+
 	std::vector<Shape::IParticle*> findNeighbors(Shape::IParticle* particle);
 
 	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);

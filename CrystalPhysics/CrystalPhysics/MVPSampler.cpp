@@ -48,32 +48,39 @@ void MVPSampler::merge(const std::list<MVPFluidScene*>& fluids, const double sea
 			}
 		}
 	}
-	CompactSpaceHash3d spaceHash2(searchRadius * 0.5, tinyParticles.size());
+	CompactSpaceHash3d spaceHash(searchRadius * 0.5, tinyParticles.size());
 	for (auto p : tinyParticles) {
-		spaceHash2.add(p);
+		spaceHash.add(p);
 	}
 	for (auto p : tinyParticles) {
-		const auto neighbors = spaceHash2.findNeighbors(p);
-		if (neighbors.size() >= 7) {
-			std::cout << "IsAbleToMerge" << std::endl;
-			auto target = static_cast<MVPVolumeParticle*>(p);
-			Vector3df newPosition = target->getPositionf();
-			Vector3df newVelocity = target->getVelocity();
-			for (int i = 0; i < 7; ++i) {
+		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
+		if (neighbors.size() >= 8) {
+			//std::cout << "IsAbleToMerge" << std::endl;
+			//auto target = static_cast<MVPVolumeParticle*>(p);
+			Vector3df newPosition(0,0,0);
+			Vector3df newVelocity(0,0,0);
+			std::vector<MVPMassParticle*> masses;
+			double r = 0.0;
+			for (int i = 0; i < 8; ++i) {
 				auto n = static_cast<MVPVolumeParticle*>(neighbors[i]);
+				r = n->getRadius();
 				auto m = n->getMassParticles().front();
-				target->addMassParticle(m);
-				m->setParent(target);
+				masses.push_back(m);
+				//target->addMassParticle(m);
+				//m->setParent(target);
 				n->clearMasses();
 				newPosition += n->getPositionf();
 				newVelocity += n->getVelocity();
+				spaceHash.remove(n);
 			}
-			target->setRadius(target->getRadius() * 2.0);
 			newPosition /= 8.0f;
-			target->setPosition(newPosition);
 			newVelocity /= 8.0f;
+			MVPVolumeParticle* target = new MVPVolumeParticle(r * 2.0, newPosition);
 			target->setVelocity(newVelocity);
-			break;
+			for (auto m : masses) {
+				target->addMassParticle(m);
+				m->setParent(target);
+			}
 		}
 	}
 	for (auto f : fluids) {

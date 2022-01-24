@@ -74,6 +74,11 @@ void MVPFluidSolver::simulate()
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
 	}
 
+	if( currentTimeStep % 5 == 0 ) {
+		MVPSampler sampler;
+		sampler.merge(fluids, effectLength);
+	}
+
 	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
@@ -187,9 +192,6 @@ void MVPFluidSolver::simulate()
 	MVPSampler sampler;
 	if (currentTimeStep % 2 == 0) {
 		sampler.split(fluids);
-	}
-	else {
-		sampler.merge(fluids, searchRadius);
 	}
 
 	currentTimeStep++;

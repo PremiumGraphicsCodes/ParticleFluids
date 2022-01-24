@@ -92,6 +92,17 @@ void CompactSpaceHash3d::remove(IParticle* particle)
 	ps.erase(std::remove(ps.begin(), ps.end(), particle), ps.end());
 }
 
+bool CompactSpaceHash3d::has(IParticle* particle)
+{
+	const auto& index = toIndex(particle->getPosition());
+	const auto hashIndex = toHash(index);
+	const auto cellId = toZIndex(index);
+
+	auto& cells = table[hashIndex];
+	auto iter = std::find_if(cells.begin(), cells.end(), [cellId](CompactSpaceCell* cell) { return cell->cellId == cellId; });
+	return iter != cells.end();
+}
+
 std::vector<IParticle*> CompactSpaceHash3d::findNeighbors(IParticle* particle)
 {
 	const auto position = particle->getPosition();
