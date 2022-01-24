@@ -29,7 +29,6 @@ class BLFluid :
         self.fluid.source_particle_system_id = self.source_ps.id
         self.fluid.pressure = 0.25
         self.fluid.viscosity = 10.0
-        self.fluid.vorticity = 0.05
         self.fluid.send()
 
         vertex_shader = """
@@ -93,6 +92,5 @@ class BLFluid :
         self.fluid.particle_radius = prop.particle_radius_prop
         self.fluid.stiffness = prop.stiffness_prop
         self.fluid.viscosity = prop.viscosity_prop
-        self.fluid.vorticity = prop.vorticity_prop
         self.fluid.is_boundary = prop.is_static_prop
         self.fluid.send()

@@ -28,12 +28,6 @@ class FluidProperty(bpy.types.PropertyGroup) :
     default = 10.0,
     min = 0.0,
   )
-  vorticity_prop : FloatProperty(
-    name ="vorticity",
-    description="Vorticity",
-    default = 0.05,
-    min = 0.0,
-  )
   is_static_prop : BoolProperty(
     name="is_static",
     description="Boundary",
@@ -54,7 +48,6 @@ class FluidPanel(bpy.types.Panel) :
       layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
-      layout.prop(fluid_property, "vorticity_prop", text="Vorticity")
       layout.prop(fluid_property, "is_static_prop", text="Static")
 #    for fluid_property in context.scene.fluid_properties :
 #      op_del = layout.operator(FluidDeleteOperator.bl_idname, text="Delete")
