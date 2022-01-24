@@ -154,6 +154,9 @@
     <ClInclude Include="MVPSurfaceBuilder.h">
       <Filter>SurfaceReconstruction</Filter>
     </ClInclude>
+    <ClInclude Include="MVPSampler.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
@@ -271,6 +274,9 @@
     </ClCompile>
     <ClCompile Include="MVPSurfaceBuilder.cpp">
       <Filter>SurfaceReconstruction</Filter>
+    </ClCompile>
+    <ClCompile Include="MVPSampler.cpp">
+      <Filter>MVP</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
