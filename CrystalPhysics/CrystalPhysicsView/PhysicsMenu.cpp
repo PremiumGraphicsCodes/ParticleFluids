@@ -9,6 +9,7 @@
 #include "MeshBoundaryView.h"
 #include "SPHSurfaceBuilderView.h"
 #include "MVPSurfaceBuilderView.h"
+#include "MVPSamplerView.h"
 
 #include "CrystalScene/AppBase/imgui.h"
 
@@ -32,6 +33,9 @@ void PhysicsMenu::onShow()
 		}
 		if (ImGui::MenuItem("MVPFluid")) {
 			control->setWindow(new MVPFluidSimulationView(getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("MVPSampler")) {
+			control->setWindow(new MVPSamplerView("MVPSampler",world, canvas));
 		}
 		if (ImGui::MenuItem("PBSPHFluid")) {
 			control->setWindow(new PBSPHFluidSimulationView(getWorld(), getCanvas()));

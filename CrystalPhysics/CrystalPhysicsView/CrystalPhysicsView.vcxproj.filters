@@ -10,8 +10,15 @@
     <ClCompile Include="MeshBoundaryView.cpp" />
     <ClCompile Include="SPHSurfaceBuilderView.cpp" />
     <ClCompile Include="SPHFlameSimulationView.cpp" />
-    <ClCompile Include="MVPFluidSimulationView.cpp" />
-    <ClCompile Include="MVPSurfaceBuilderView.cpp" />
+    <ClCompile Include="MVPFluidSimulationView.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVPSamplerView.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVPSurfaceBuilderView.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
@@ -22,7 +29,19 @@
     <ClInclude Include="MeshBoundaryView.h" />
     <ClInclude Include="SPHSurfaceBuilderView.h" />
     <ClInclude Include="SPHFlameSimulationView.h" />
-    <ClInclude Include="MVPFluidSimulationView.h" />
-    <ClInclude Include="MVPSurfaceBuilderView.h" />
+    <ClInclude Include="MVPFluidSimulationView.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="MVPSamplerView.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="MVPSurfaceBuilderView.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="MVP">
+      <UniqueIdentifier>{0bf1766f-8214-4be3-a508-94db4a5ee80d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
