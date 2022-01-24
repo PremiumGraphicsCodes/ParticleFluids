@@ -51,6 +51,7 @@ void MVPMassParticle::updateVelocity(const Vector3df& parentVelocity)
 	*/
 }
 
+/*
 void MVPMassParticle::updateVector(const float dt)
 {
 	const auto l = Math::getLength(vector);
@@ -58,3 +59,4 @@ void MVPMassParticle::updateVector(const float dt)
 	this->vector += vv;
 	this->vector = glm::normalize(this->vector) * l;
 }
+*/

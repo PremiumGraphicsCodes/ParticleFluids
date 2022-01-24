@@ -90,6 +90,7 @@ void MVPVolumeParticle::calculateViscosityForce()
 	this->force += f;
 }
 
+/*
 void MVPVolumeParticle::calculateVorticity()
 {
 	vorticity = Vector3df(0, 0, 0);
@@ -99,6 +100,7 @@ void MVPVolumeParticle::calculateVorticity()
 		vorticity += glm::cross(p, v) * this->vorticityCoe;
 	}
 }
+*/
 
 void MVPVolumeParticle::stepTime(const float dt)
 {

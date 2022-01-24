@@ -14,7 +14,6 @@ namespace {
 	PublicLabel ParticleRadiusLabel = "ParticleRadius";
 	PublicLabel StiffnessLabel = "Stiffness";
 	PublicLabel ViscosityLabel = "Viscosity";
-	PublicLabel VorticityLabel = "Vorticity";
 	PublicLabel DensityLabel = "Density";
 	PublicLabel IsBoundary = "IsBoundary";
 	PublicLabel NameLabel = "Name";
@@ -37,7 +36,6 @@ FluidSceneUpdateCommand::Args::Args() :
 	stiffness(::StiffnessLabel, 1.0f),
 	density(::DensityLabel, 1.0f),
 	viscosity(::ViscosityLabel, 1.0f),
-	vorticity(::VorticityLabel, 0.05f),
 	isBoundary(::IsBoundary, false),
 	name(::NameLabel, std::string("FluidScene"))
 {
@@ -47,7 +45,6 @@ FluidSceneUpdateCommand::Args::Args() :
 	add(&stiffness);
 	add(&density);
 	add(&viscosity);
-	add(&vorticity);
 	add(&isBoundary);
 	add(&name);
 }
@@ -70,7 +67,6 @@ bool FluidSceneUpdateCommand::execute(World* world)
 	fluidScene->setName(args.name.getValue());
 	fluidScene->setPressureCoe(args.stiffness.getValue());
 	fluidScene->setViscosityCoe(args.viscosity.getValue());
-	fluidScene->setViscosityCoe(args.vorticity.getValue());
 	fluidScene->setBoundary(args.isBoundary.getValue());
 
 	const auto psId = args.particleSystemId.getValue();

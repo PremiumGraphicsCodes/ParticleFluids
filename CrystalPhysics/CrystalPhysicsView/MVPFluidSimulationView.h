@@ -44,7 +44,6 @@ private:
 	CSGBoundaryView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;
-	FloatView vorticityCoeView;
 	FloatView timeStepView;
 	FloatView radiusView;
 	Button startButton;

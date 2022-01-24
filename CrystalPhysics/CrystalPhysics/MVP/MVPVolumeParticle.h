@@ -60,8 +60,6 @@ public:
 
 	Math::Vector3df getVelocity() const { return velocity; }
 
-	Math::Vector3df getVorticity() const { return vorticity; }
-
 	void addForce(const Math::Vector3dd& force) { this->force += force; }
 
 	float getDensity() const;
@@ -77,9 +75,6 @@ public:
 	void setVelocity(const Math::Vector3df& velocity) { this->velocity = velocity; }
 
 	void setRestMass(const float m) { this->restMass = m; }
-
-	//void moveTo(const Math::Vector3df& predictedPosition) { this->predictedPosition = predictedPosition; }
-	//Math::Vector3df dv;
 
 	Math::Vector3df getAveragedCenter() const { return averagedCenter; }
 
@@ -98,7 +93,6 @@ private:
 	Math::Vector3df position;
 	Math::Vector3df predictedPosition;
 	Math::Vector3df velocity;
-	Math::Vector3df vorticity;
 	Math::Vector3df averagedCenter;
 	float restMass;
 	float density;

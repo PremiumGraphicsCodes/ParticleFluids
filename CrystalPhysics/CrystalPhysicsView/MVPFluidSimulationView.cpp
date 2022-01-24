@@ -23,7 +23,6 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	boundaryView("Boundary", model),
 	pressureCoeView("PressureCoe", 100.f),
 	viscosityCoeView("ViscosityCoe", 10.0f),
-	vorticityCoeView("VortictyCoe", 0.05f),
 	timeStepView("TimeStep", 0.03f),
 	radiusView("SearchRadius", 0.20f)
 {
@@ -36,7 +35,6 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	add(&boundaryView);
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
-	add(&vorticityCoeView);
 	add(&timeStepView);
 	add(&radiusView);
 
@@ -87,8 +85,7 @@ void MVPFluidSimulationView::addFluid()
 
 	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
-	this->fluidScene->setViscosityCoe(vorticityCoeView.getValue());
-
+	
 	this->staticScene->setPressureCoe(pressureCoeView.getValue());
 	this->staticScene->setViscosityCoe(viscosityCoeView.getValue()*5.0);
 
@@ -99,9 +96,9 @@ void MVPFluidSimulationView::addFluid()
 		MVPParticleBuilder builder;
 		const auto radius = 0.10;
 		const auto length = radius * 0.5;
-		for (int i = 0; i < 100; ++i) {
-			for (int j = 0; j < 100; ++j) {
-				for (int k = 0; k < 100; ++k) {
+		for (int i = 0; i < 20; ++i) {
+			for (int j = 0; j < 20; ++j) {
+				for (int k = 0; k < 20; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
 					auto mp = builder.create(p, length, 3, 3, 3, 0.25f);
