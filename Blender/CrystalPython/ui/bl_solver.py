@@ -38,6 +38,9 @@ class BLSolver :
     def set_export_path(self, dir_path) :
         self.__export_dir_path = dir_path
 
+    def set_effect_length(self, effect_radius) :
+        self.__solver.effect_length = effect_radius
+
     def send(self) :
         fluids = []
         for bl_fluid in self.__bl_fluids :

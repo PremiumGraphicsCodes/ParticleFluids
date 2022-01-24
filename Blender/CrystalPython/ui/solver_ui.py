@@ -54,6 +54,7 @@ def reset() :
     bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
     bl_boundary.boundary.send()
     bl_solver.add_boundary(bl_boundary)
+    bl_solver.set_effect_length(bpy.context.scene.solver_property.vdb_particle_radius_prop)
     
     bl_solver.send()
     bl_solver.set_start_frame(bpy.context.scene.solver_property.start_frame_prop)
