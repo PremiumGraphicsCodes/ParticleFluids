@@ -74,6 +74,10 @@ void MVPFluidSolver::simulate()
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
 	}
 
+	if (fluids.empty()) {
+		return;
+	}
+
 	if( currentTimeStep % 5 == 0 ) {
 		MVPSampler sampler;
 		sampler.merge(fluids, effectLength);
@@ -131,7 +135,7 @@ void MVPFluidSolver::simulate()
 			particle->updateInnerPoints();
 			particle->calculateDensity();
 			particle->calculateViscosityForce();
-			particle->calculateVorticity();
+			//particle->calculateVorticity();
 		}
 		
 
@@ -175,9 +179,11 @@ void MVPFluidSolver::simulate()
 			//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
 			particle->stepTime(dt);
 			const auto massPs = particle->getMassParticles();
+			/*
 			for (auto mp : massPs) {
 				mp->updateVector(dt);
 			}
+			*/
 		}
 
 		time += dt;

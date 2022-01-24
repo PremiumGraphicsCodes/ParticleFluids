@@ -97,30 +97,31 @@ void MVPFluidSimulationView::addFluid()
 
 	{
 		MVPParticleBuilder builder;
-		const auto radius = 0.20;
-		const auto length = radius * 1.00;
-		for (int i = 0; i < 20; ++i) {
-			for (int j = 0; j < 20; ++j) {
-				for (int k = 0; k < 20; ++k) {
+		const auto radius = 0.10;
+		const auto length = radius * 0.5;
+		for (int i = 0; i < 100; ++i) {
+			for (int j = 0; j < 100; ++j) {
+				for (int k = 0; k < 100; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = builder.create(p, length, 3, 3, 3, 1.0f);
+					auto mp = builder.create(p, length, 3, 3, 3, 0.25f);
 					//				mp->distributePoints(3, 3, 3, 1.00f);
 					fluidScene->addParticle(mp);
 				}
 			}
 		}
 	}
+	/*
 	{
 		MVPParticleBuilder builder;
-		const auto radius = 0.20;
-		const auto length = radius * 1.00;
+		const auto radius = 0.10;
+		const auto length = radius * 0.5;
 		for (int i = 40; i < 60; ++i) {
 			for (int j = 0; j < 20; ++j) {
 				for (int k = 0; k < 20; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = builder.create(p, length, 3, 3, 3, 1.0f);
+					auto mp = builder.create(p, length, 3, 3, 3, 0.25f);
 					//				mp->distributePoints(3, 3, 3, 1.00f);
 					staticScene->addParticle(mp);
 				}
@@ -128,6 +129,7 @@ void MVPFluidSimulationView::addFluid()
 		}
 
 	}
+	*/
 
 	solver.clear();
 	solver.addFluidScene(fluidScene);

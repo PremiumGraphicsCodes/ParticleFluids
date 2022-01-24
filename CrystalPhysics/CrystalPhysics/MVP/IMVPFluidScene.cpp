@@ -45,17 +45,26 @@ std::vector<Vector3dd> IMVPFluidScene::getPositions() const
 	}
 	return positions;
 }
+#include <algorithm>
+#include <iterator>
 
 void IMVPFluidScene::removeDegeneratedVolumes()
 {
+	this->particles.sort();
 	std::list<MVPVolumeParticle*> vps;
 	for (auto v : particles) {
 		if (v->getMassParticles().empty()) {
 			vps.push_back(v);
 		}
 	}
+	std::list<MVPVolumeParticle*> diffs;
+	std::set_difference(
+		this->particles.begin(), this->particles.end(),
+		vps.begin(), vps.end(),
+		std::inserter(diffs, diffs.end())
+	);
+	this->particles = diffs;
 	for (auto v : vps) {
-		remove(v);
 		delete v;
 	}
 }
