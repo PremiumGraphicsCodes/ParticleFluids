@@ -45,36 +45,58 @@ std::vector<IParticle*> MVPBoundarySolver::findNeighbors(const Vector3dd& positi
 	return spaceHash->findNeighbors(position);
 }
 
-MVPVolumeParticle* MVPBoundarySolver::createGphost(const Vector3df& p, const float radius)
+MVPVolumeParticle* MVPBoundarySolver::createGphost(const Vector3df& p, MVPVolumeParticle* particle)
 {
-	const auto e = 1.0e-12;
+	const auto radius = particle->getRadius();
+	auto massP = particle->getMassParticles().front();
+	const auto mass = massP->getMass();
+
 	auto vp = new MVPVolumeParticle(radius, p);
-	for (float x = -radius; x < radius + e; x += radius * 2.0) {
-		for (float y = -radius; y < radius + e; y += radius * 2.0) {
-			for (float z = -radius; z < radius + e; z += radius * 2.0) {
-				MVPMassParticle* mp = new MVPMassParticle(vp, Vector3df(x, y, z), 1.0f);
-				mp->setParent(vp);
-				vp->addMassParticle(mp);
+	if (particle->getMassParticles().size() == 1) {
+		MVPMassParticle* mp = new MVPMassParticle(vp, Vector3df(0, 0, 0), mass);
+		mp->setParent(vp);
+		vp->addMassParticle(mp);
+	}
+	else {
+		const auto e = 1.0e-12;
+		for (float x = -radius; x < radius + e; x += radius * 2.0) {
+			for (float y = -radius; y < radius + e; y += radius * 2.0) {
+				for (float z = -radius; z < radius + e; z += radius * 2.0) {
+					MVPMassParticle* mp = new MVPMassParticle(vp, Vector3df(x, y, z), mass * 8.0);
+					mp->setParent(vp);
+					vp->addMassParticle(mp);
+				}
 			}
 		}
 	}
+	vp->setPressureCoe(massP->getPressureCoe());
+	vp->setViscosityCoe(massP->getViscosityCoe());
+
 	return vp;
 }
 
-void MVPBoundarySolver::solveDensity(MVPVolumeParticle* particle)
+void MVPBoundarySolver::createGphosts(MVPVolumeParticle* particle)
 {
 	for (const auto& csg : csgBoundaries) {
 		for (const auto& boundary : csg->getBoxes()) {
 			auto position = particle->getPosition();
-			if (position.y < boundary.getMinY()) {
-				position.y = boundary.getMinY();
-				auto vp = createGphost(position, particle->getRadius());
+			if (position.y < boundary.getMinY() - particle->getRadius()) {
+				position.y = boundary.getMinY() - particle->getRadius();
+				auto vp = createGphost(position, particle);
 				particle->addNeighbor(vp);
+				this->ghosts.push_back(vp);
 			}
 		}
 	}
 }
 
+void MVPBoundarySolver::clearGphosts()
+{
+	for (auto g : ghosts) {
+		delete g;
+	}
+	ghosts.clear();
+}
 
 void MVPBoundarySolver::solvePressure(MVPVolumeParticle* particle, const double dt)
 {

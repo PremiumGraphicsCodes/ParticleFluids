@@ -44,8 +44,6 @@ public:
 
 	void calculateViscosityForce();
 
-	void calculateVorticity();
-
 	void stepTime(const float dt);
 
 	void setRadius(const float r) { this->radius = r; }
@@ -84,8 +82,9 @@ public:
 
 private:
 	float pressureCoe;
+	float viscosityCoe;
 	float radius;
-	float vorticityCoe;
+	//float vorticityCoe;
 	std::vector<MVPMassParticle*> massParticles;
 	std::vector<MVPMassParticle*> innerPoints;
 	std::vector<MVPVolumeParticle*> neighbors;

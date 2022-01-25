@@ -110,7 +110,7 @@ void MVPFluidSolver::simulate()
 	//boundarySolver.setup(searchRadius);
 
 #pragma omp parallel for
-	for(int i = 0; i < fluidParticles.size(); ++i) {
+	for (int i = 0; i < fluidParticles.size(); ++i) {
 		const auto particle = fluidParticles[i];
 		const auto& neighbors = spaceHash.findNeighbors(particle);
 		for (auto n : neighbors) {
@@ -120,6 +120,10 @@ void MVPFluidSolver::simulate()
 		for (auto n : staticNeighbors) {
 			particle->addNeighbor(static_cast<MVPVolumeParticle*>(n));
 		}
+	}
+
+	for(auto particle : fluidParticles) {
+		boundarySolver.createGphosts(particle);
 	}
 
 	double time = 0.0;
@@ -197,6 +201,8 @@ void MVPFluidSolver::simulate()
 		densityError += particle->getDensity() / (double)fluidParticles.size();
 	}
 	std::cout << densityError << std::endl;
+
+	boundarySolver.clearGphosts();
 
 	MVPSampler sampler;
 	if (currentTimeStep % 2 == 0) {
