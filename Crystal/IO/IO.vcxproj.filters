@@ -72,6 +72,9 @@
     <ClInclude Include="PLYFileWriter.h">
       <Filter>PLY</Filter>
     </ClInclude>
+    <ClInclude Include="PLYFileReader.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLASCIIFileReader.cpp">
@@ -129,6 +132,9 @@
       <Filter>PCD</Filter>
     </ClCompile>
     <ClCompile Include="PLYFileWriter.cpp">
+      <Filter>PLY</Filter>
+    </ClCompile>
+    <ClCompile Include="PLYFileReader.cpp">
       <Filter>PLY</Filter>
     </ClCompile>
   </ItemGroup>
