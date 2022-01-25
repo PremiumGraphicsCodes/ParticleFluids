@@ -16,7 +16,7 @@ public:
 
 	bool read(const std::filesystem::path& filename);
 
-	std::vector<Math::Vector3df> getPositions() const { return positions; }
+	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
 private:
 	//PCDFile::Header readHeader(std::istream& stream);
@@ -24,7 +24,7 @@ private:
 	//PCDFile::Data readData(std::istream& stream);
 
 private:
-	std::vector<Math::Vector3df> positions;
+	std::vector<Math::Vector3dd> positions;
 	//PCDFile pcd;
 };
 	}

@@ -164,6 +164,7 @@
     <ClInclude Include="ParticleSystemGetCommand.h" />
     <ClInclude Include="ParticleSystemSetCommand.h" />
     <ClInclude Include="PLYFileExportCommand.h" />
+    <ClInclude Include="PLYFileImportCommand.h" />
     <ClInclude Include="PolygonMeshAddFacesCommand.h" />
     <ClInclude Include="PolygonMeshAddVerticesCommand.h" />
     <ClInclude Include="PresenterSetCommand.h" />
@@ -250,6 +251,7 @@
     <ClCompile Include="PCDFileImportCommand.cpp" />
     <ClCompile Include="PickCommand.cpp" />
     <ClCompile Include="PLYFileExportCommand.cpp" />
+    <ClCompile Include="PLYFileImportCommand.cpp" />
     <ClCompile Include="PolygonMeshAddFacesCommand.cpp" />
     <ClCompile Include="PolygonMeshAddVerticesCommand.cpp" />
     <ClCompile Include="PolygonMeshCreateCommand.cpp" />

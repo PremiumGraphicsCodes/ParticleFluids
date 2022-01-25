@@ -153,6 +153,9 @@
     <ClInclude Include="PLYFileExportCommand.h">
       <Filter>File\PLY</Filter>
     </ClInclude>
+    <ClInclude Include="PLYFileImportCommand.h">
+      <Filter>File\PLY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -302,6 +305,9 @@
       <Filter>File\TXT</Filter>
     </ClCompile>
     <ClCompile Include="PLYFileExportCommand.cpp">
+      <Filter>File\PLY</Filter>
+    </ClCompile>
+    <ClCompile Include="PLYFileImportCommand.cpp">
       <Filter>File\PLY</Filter>
     </ClCompile>
   </ItemGroup>

@@ -37,6 +37,7 @@
 #include "OBJFileImportCommand.h"
 #include "STLFileImportCommand.h"
 #include "PCDFileImportCommand.h"
+#include "PLYFileImportCommand.h"
 #include "TXTFileImportCommand.h"
 #include "OBJFileExportCommand.h"
 #include "STLFileExportCommand.h"
@@ -162,6 +163,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == PCDFileImportCommand::getName()) {
 		return std::make_unique<PCDFileImportCommand>();
+	}
+	else if (name == PLYFileImportCommand::getName()) {
+		return std::make_unique<PLYFileImportCommand>();
 	}
 	else if (name == TXTFileImportCommand::getName()) {
 		return std::make_unique<TXTFileImportCommand>();
