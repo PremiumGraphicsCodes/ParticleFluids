@@ -37,7 +37,7 @@ public:
 
 	void addEmitterScene(MVPFluidEmitterScene* scene);
 
-	void addBoundary(CSGBoundaryScene* scene) { this->csgBoundaries.push_back(scene); }
+	void addBoundary(CSGBoundaryScene* scene);
 
 	void setMaxTimeStep(const float maxTimeStep) { this->maxTimeStep = maxTimeStep; }
 
@@ -54,15 +54,11 @@ public:
 private:
 
 	float calculateTimeStep(const std::vector<MVPVolumeParticle*>& particles);
-
-	void solveBoundary(MVPVolumeParticle* particle, const double dt);
-	//void solveBoundary(const std::vector<MacroParticle*>& particles);
 	
 	std::list<MVPFluidScene*> fluids;
 	std::list<MVPFluidEmitterScene*> emitters;
 	//std::list<MVPMassParticle*> tinyParticles;
 	MVPBoundarySolver boundarySolver;
-	std::list<CSGBoundaryScene*> csgBoundaries;
 	float effectLength = 2.0f;
 	float maxTimeStep = 0.03f;
 	int currentTimeStep = 0;

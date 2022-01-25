@@ -2,6 +2,7 @@
 
 #include "MVPVolumeParticle.h"
 #include "MVPFluidScene.h"
+#include "../CSGBoundaryScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -42,4 +43,44 @@ std::vector<IParticle*> MVPBoundarySolver::findNeighbors(const Vector3dd& positi
 		return {};
 	}
 	return spaceHash->findNeighbors(position);
+}
+
+void MVPBoundarySolver::solvePressure(MVPVolumeParticle* particle, const double dt)
+{
+	for (const auto& csg : csgBoundaries) {
+		for (const auto& boundary : csg->getBoxes()) {
+			auto position = particle->getPosition();
+			if (position.y < boundary.getMinY()) {
+				const auto distance = boundary.getMinY() - position.y;
+				const auto overlap = Vector3dd(0, distance, 0);
+				particle->addForce(overlap / dt / dt);
+			}
+			if (position.y > boundary.getMaxY()) {
+				const auto distance = boundary.getMaxY() - position.y;
+				const auto overlap = Vector3dd(0, distance, 0);
+				particle->addForce(overlap / dt / dt);
+			}
+			if (position.x > boundary.getMaxX()) {
+				const auto distance = boundary.getMaxX() - position.x;
+				const auto overlap = Vector3dd(distance, 0, 0);
+				particle->addForce(overlap / dt / dt);
+			}
+			if (position.x < boundary.getMinX()) {
+				const auto distance = boundary.getMinX() - position.x;
+				const auto overlap = Vector3dd(distance, 0, 0);
+				particle->addForce(overlap / dt / dt);
+			}
+			if (position.z > boundary.getMaxZ()) {
+				const auto distance = boundary.getMaxZ() - position.z;
+				const auto overlap = Vector3dd(0, 0, distance);
+				particle->addForce(overlap / dt / dt);
+			}
+			if (position.z < boundary.getMinZ()) {
+				const auto distance = boundary.getMinZ() - position.z;
+				const auto overlap = Vector3dd(0, 0, distance);
+				particle->addForce(overlap / dt / dt);
+			}
+		}
+	}
+
 }

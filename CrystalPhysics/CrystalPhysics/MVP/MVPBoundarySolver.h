@@ -9,6 +9,8 @@
 namespace Crystal {
 	namespace Physics {
 		class MVPFluidScene;
+		class CSGBoundaryScene;
+		class MVPVolumeParticle;
 
 class MVPBoundarySolver
 {
@@ -21,14 +23,20 @@ public:
 
 	void clear() {
 		boundaries.clear();
+		csgBoundaries.clear();
 		//		spaceHash.clear();
 	}
 
 	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
 
+	void add(CSGBoundaryScene* csg) { this->csgBoundaries.push_back(csg); }
+
+	void solvePressure(MVPVolumeParticle* particle, const double dt);
+
 private:
 	std::list<MVPFluidScene*> boundaries;
 	std::unique_ptr<Space::CompactSpaceHash3d> spaceHash;
+	std::list<CSGBoundaryScene*> csgBoundaries;
 };
 
 	}

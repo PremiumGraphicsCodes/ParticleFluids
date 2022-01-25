@@ -5,7 +5,6 @@
 
 #include "MVPFluidScene.h"
 #include "MVPFluidEmitterScene.h"
-#include "../CSGBoundaryScene.h"
 
 #include "../../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 #include "CrystalScene/Scene/TriangleMeshScene.h"
@@ -38,7 +37,6 @@ void MVPFluidSolver::clear()
 {
 	fluids.clear();
 	emitters.clear();
-	csgBoundaries.clear();
 	maxTimeStep = 0.03f;
 	boundarySolver.clear();
 	currentTimeStep = 0;
@@ -52,6 +50,11 @@ void MVPFluidSolver::addFluidScene(MVPFluidScene* scene)
 void MVPFluidSolver::addEmitterScene(MVPFluidEmitterScene* scene)
 {
 	this->emitters.push_back(scene);
+}
+
+void MVPFluidSolver::addBoundary(CSGBoundaryScene* scene)
+{
+	this->boundarySolver.add(scene);
 }
 
 void MVPFluidSolver::addBoundaryScene(MVPFluidScene* scene)
@@ -143,7 +146,7 @@ void MVPFluidSolver::simulate()
 		for (int i = 0; i < fluidParticles.size(); ++i) {
 			const auto particle = fluidParticles[i];
 			//boundarySolver.createMacro(particle);
-			solveBoundary(particle, dt);
+			boundarySolver.solvePressure(particle, dt);
 		}
 
 		for (auto particle : fluidParticles) {
@@ -218,44 +221,6 @@ float MVPFluidSolver::calculateTimeStep(const std::vector<MVPVolumeParticle*>& p
 	//return std::min(dt, maxTimeStep);
 }
 
-void MVPFluidSolver::solveBoundary(MVPVolumeParticle* particle, const double dt)
-{
-	for (const auto& csg : csgBoundaries) {
-		for (const auto& boundary : csg->getBoxes()) {
-			auto position = particle->getPosition();
-			if (position.y < boundary.getMinY()) {
-				const auto distance = boundary.getMinY() - position.y;
-				const auto overlap = Vector3dd(0, distance, 0);
-				particle->addForce(overlap / dt / dt);
-			}
-			if (position.y > boundary.getMaxY()) {
-				const auto distance = boundary.getMaxY() - position.y;
-				const auto overlap = Vector3dd(0, distance, 0);
-				particle->addForce(overlap / dt / dt);
-			}
-			if (position.x > boundary.getMaxX()) {
-				const auto distance = boundary.getMaxX() - position.x;
-				const auto overlap = Vector3dd(distance, 0, 0);
-				particle->addForce(overlap / dt / dt);
-			}
-			if (position.x < boundary.getMinX()) {
-				const auto distance = boundary.getMinX() - position.x;
-				const auto overlap = Vector3dd(distance, 0, 0);
-				particle->addForce(overlap / dt / dt);
-			}
-			if (position.z > boundary.getMaxZ()) {
-				const auto distance = boundary.getMaxZ() - position.z;
-				const auto overlap = Vector3dd(0, 0, distance);
-				particle->addForce(overlap / dt / dt);
-			}
-			if (position.z < boundary.getMinZ()) {
-				const auto distance = boundary.getMinZ() - position.z;
-				const auto overlap = Vector3dd(0, 0, distance);
-				particle->addForce(overlap / dt / dt);
-			}
-		}
-	}
-}
 
 void MVPUpdater::step()
 {
