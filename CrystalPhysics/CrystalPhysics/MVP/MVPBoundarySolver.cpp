@@ -77,11 +77,37 @@ MVPVolumeParticle* MVPBoundarySolver::createGphost(const Vector3df& p, MVPVolume
 
 void MVPBoundarySolver::createGphosts(MVPVolumeParticle* particle)
 {
+	const auto r = particle->getRadius();
 	for (const auto& csg : csgBoundaries) {
 		for (const auto& boundary : csg->getBoxes()) {
 			auto position = particle->getPosition();
-			if (position.y < boundary.getMinY() - particle->getRadius()) {
-				position.y = boundary.getMinY() - particle->getRadius();
+			if (position.y < boundary.getMinY() - r) {
+				position.y = boundary.getMinY() - r;
+				auto vp = createGphost(position, particle);
+				particle->addNeighbor(vp);
+				this->ghosts.push_back(vp);
+			}
+			if (position.x > boundary.getMaxX() + r) {
+				const auto distance = boundary.getMinX() + r;
+				auto vp = createGphost(position, particle);
+				particle->addNeighbor(vp);
+				this->ghosts.push_back(vp);
+			}
+			if (position.x < boundary.getMinX() - r) {
+				const auto distance = boundary.getMinX() - r;
+				auto vp = createGphost(position, particle);
+				particle->addNeighbor(vp);
+				this->ghosts.push_back(vp);
+			}
+			if (position.z > boundary.getMaxZ() + r) {
+				const auto distance = boundary.getMaxZ() + r;
+				auto vp = createGphost(position, particle);
+				particle->addNeighbor(vp);
+				this->ghosts.push_back(vp);
+			}
+			if (position.z < boundary.getMinZ() - r) {
+				const auto distance = boundary.getMinZ() - r;
+				const auto overlap = Vector3dd(0, 0, distance);
 				auto vp = createGphost(position, particle);
 				particle->addNeighbor(vp);
 				this->ghosts.push_back(vp);
