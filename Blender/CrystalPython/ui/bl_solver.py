@@ -21,6 +21,7 @@ class BLSolver :
         self.__export_dir_path = "tmp_txt"
         self.__bl_mesh = None
         self.__iteration = 1
+        self.__tmp_meshes = []
 
     def build(self, scene):
         if self.__solver != None :
@@ -87,13 +88,18 @@ class BLSolver :
         for i in range(0, self.__iteration) :
             self.__solver.simulate()
         
-        macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".pcd")
+        macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".ply")
         self.__solver.export_pcd(macro_file_path, True)
+
+        #for o in self.__tmp_meshes :
+        #    bpy.data.objects.remove(o)     
+        #bpy.ops.import_mesh.ply(filepath=macro_file_path)
+        #self.__tmp_meshes = bpy.context.selected_objects
 
     def export_vdb(self, frame) :
         #prop = bpy.context.scene.meshing_property
 
-        ps_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".pcd")
+        ps_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".ply")
         export_file_path = os.path.join(self.__export_dir_path, "volume" + str(frame) + ".vdb") #basename_without_ext + ".stl")
 
         params = []

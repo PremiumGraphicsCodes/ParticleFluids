@@ -153,6 +153,15 @@ class PickCommand:
    PositionLabel="Position"
    ParentIdLabel="ParentId"
    ChildIdLabel="ChildId"
+class PLYFileExportCommand:
+   CommandNameLabel="PLYFileExport"
+   FilePathLabel="FilePath"
+   IdsLabel="Ids"
+   IsBinaryLabel="IsBinary"
+class PLYFileImportCommand:
+   CommandNameLabel="PLYFileImport"
+   FilePathLabel="FilePath"
+   ParticleSystemIdLabel="ParticleSystemId"
 class PolygonMeshAddFacesCommand:
    CommandNameLabel="PolygonMeshAddFaces"
    PolygonMeshIdLabel="PolygonMeshId"

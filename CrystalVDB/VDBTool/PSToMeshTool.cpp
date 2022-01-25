@@ -2,7 +2,8 @@
 
 #include <iostream>
 #include "CrystalVDB/VDBCommand/VDBInitCommand.h"
-#include "CrystalVDB/VDBCommand/VDBPCDFileReadCommand.h"
+//#include "CrystalVDB/VDBCommand/VDBPCDFileReadCommand.h"
+#include "CrystalVDB/VDBCommand/VDBPLYFileReadCommand.h"
 #include "CrystalVDB/VDBCommand/ToVDBVolumeCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
 #include "CrystalVDB/VDBCommand/VDBPSToVolumeCommand.h"
@@ -32,11 +33,11 @@ void PSToMeshTool::execute(const CommandLineOptions& options)
     }
 
     int psId = -1;
-    std::cout << "Reading PCD File...";
+    std::cout << "Reading PLY File...";
     {
-        VDBPCDFileReadCommand::Args args;
+        VDBPLYFileReadCommand::Args args;
         args.filePath.setValue(options.inputPsFilePath);
-        VDBPCDFileReadCommand command(args);
+        VDBPLYFileReadCommand command(args);
         const auto isOk = command.execute(&world);
         if (isOk) {
             std::cout << "Succeeded" << std::endl;

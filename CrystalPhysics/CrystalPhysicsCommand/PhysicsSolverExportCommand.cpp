@@ -3,6 +3,7 @@
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
+#include "Crystal/IO/PLYFileWriter.h"
 #include "Crystal/IO/PCDBinaryFileWriter.h"
 
 namespace {
@@ -42,6 +43,7 @@ PhysicsSolverExportCommand::PhysicsSolverExportCommand() :
 
 bool PhysicsSolverExportCommand::execute(World* world)
 {
+	/*
 	PCDFile pcd;
 	for (const auto id : args.fluidIds.getValue()) {
 		auto fluid = world->getScenes()->findSceneById<MVPFluidScene*>(id);
@@ -69,5 +71,35 @@ bool PhysicsSolverExportCommand::execute(World* world)
 	PCDBinaryFileWriter writer;
 	const auto isOk = writer.write(args.filePath.getValue(), pcd);
 
+	return isOk;
+	*/
+	PLYFile file;
+	for (const auto id : args.fluidIds.getValue()) {
+		auto fluid = world->getScenes()->findSceneById<MVPFluidScene*>(id);
+		if (fluid == nullptr) {
+			return false;
+		}
+		const auto macroParticles = fluid->getParticles();
+		if (args.doExportMicro.getValue()) {
+			for (const auto mp : macroParticles) {
+				const auto micros = mp->getMassParticles();
+				for (const auto micro : micros) {
+					PLYPoint p;
+					p.position = micro->getPosition();
+					file.vertices.push_back(p);
+				}
+			}
+		}
+		else {
+			for (const auto mp : macroParticles) {
+				PLYPoint p;
+				p.position = mp->getPosition();
+				file.vertices.push_back(p);
+			}
+		}
+	}
+
+	PLYFileWriter writer;
+	const auto isOk = writer.write(args.filePath.getValue(), file);
 	return isOk;
 }

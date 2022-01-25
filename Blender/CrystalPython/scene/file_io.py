@@ -1,4 +1,4 @@
-from scene.scene_labels import TXTFileImportCommand, TXTFileExportCommand, STLFileImportCommand, STLFileExportCommand, PCDFileImportCommand
+from scene.scene_labels import TXTFileImportCommand, TXTFileExportCommand, STLFileImportCommand, STLFileExportCommand, PCDFileImportCommand, PLYFileExportCommand
 from scene.scene import *
 import CrystalPLI
 
