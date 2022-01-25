@@ -150,6 +150,9 @@
     <ClInclude Include="TXTFileExportCommand.h">
       <Filter>File\TXT</Filter>
     </ClInclude>
+    <ClInclude Include="PLYFileExportCommand.h">
+      <Filter>File\PLY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -298,6 +301,9 @@
     <ClCompile Include="TXTFileExportCommand.cpp">
       <Filter>File\TXT</Filter>
     </ClCompile>
+    <ClCompile Include="PLYFileExportCommand.cpp">
+      <Filter>File\PLY</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -362,6 +368,9 @@
     </Filter>
     <Filter Include="File\TXT">
       <UniqueIdentifier>{d656cd53-3765-411c-b9b5-78e4ceda7b34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File\PLY">
+      <UniqueIdentifier>{fec2cc50-ffa8-49f5-90a0-d802f3a569ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

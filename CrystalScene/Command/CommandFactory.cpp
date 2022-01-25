@@ -41,6 +41,7 @@
 #include "OBJFileExportCommand.h"
 #include "STLFileExportCommand.h"
 #include "PCDFileExportCommand.h"
+#include "PLYFileExportCommand.h"
 #include "TXTFileExportCommand.h"
 #include "SceneGetCommand.h"
 #include "SceneSetCommand.h"
@@ -173,6 +174,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == PCDFileExportCommand::getName()) {
 		return std::make_unique<PCDFileExportCommand>();
+	}
+	else if (name == PLYFileExportCommand::getName()) {
+		return std::make_unique<PLYFileExportCommand>();
 	}
 	else if (name == TXTFileExportCommand::getName()) {
 		return std::make_unique<TXTFileExportCommand>();
