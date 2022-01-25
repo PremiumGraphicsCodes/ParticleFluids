@@ -45,6 +45,37 @@ std::vector<IParticle*> MVPBoundarySolver::findNeighbors(const Vector3dd& positi
 	return spaceHash->findNeighbors(position);
 }
 
+MVPVolumeParticle* MVPBoundarySolver::createGphost(const Vector3df& p, const float radius)
+{
+	const auto e = 1.0e-12;
+	auto vp = new MVPVolumeParticle(radius, p);
+	for (float x = -radius; x < radius + e; x += radius * 2.0) {
+		for (float y = -radius; y < radius + e; y += radius * 2.0) {
+			for (float z = -radius; z < radius + e; z += radius * 2.0) {
+				MVPMassParticle* mp = new MVPMassParticle(vp, Vector3df(x, y, z), 1.0f);
+				mp->setParent(vp);
+				vp->addMassParticle(mp);
+			}
+		}
+	}
+	return vp;
+}
+
+void MVPBoundarySolver::solveDensity(MVPVolumeParticle* particle)
+{
+	for (const auto& csg : csgBoundaries) {
+		for (const auto& boundary : csg->getBoxes()) {
+			auto position = particle->getPosition();
+			if (position.y < boundary.getMinY()) {
+				position.y = boundary.getMinY();
+				auto vp = createGphost(position, particle->getRadius());
+				particle->addNeighbor(vp);
+			}
+		}
+	}
+}
+
+
 void MVPBoundarySolver::solvePressure(MVPVolumeParticle* particle, const double dt)
 {
 	for (const auto& csg : csgBoundaries) {

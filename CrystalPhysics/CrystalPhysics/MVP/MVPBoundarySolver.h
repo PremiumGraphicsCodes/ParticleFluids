@@ -31,12 +31,17 @@ public:
 
 	void add(CSGBoundaryScene* csg) { this->csgBoundaries.push_back(csg); }
 
+	MVPVolumeParticle* createGphost(const Math::Vector3df& p, const float radius);
+
+	void solveDensity(MVPVolumeParticle* particle);
+
 	void solvePressure(MVPVolumeParticle* particle, const double dt);
 
 private:
 	std::list<MVPFluidScene*> boundaries;
 	std::unique_ptr<Space::CompactSpaceHash3d> spaceHash;
 	std::list<CSGBoundaryScene*> csgBoundaries;
+	//MVPVolumeParticle* vp;
 };
 
 	}
