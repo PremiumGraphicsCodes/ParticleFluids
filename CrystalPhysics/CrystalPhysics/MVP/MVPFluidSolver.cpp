@@ -160,7 +160,7 @@ void MVPFluidSolver::simulate()
 
 		// solve incompressibility.
 		double relaxationCoe = 1.0;
-		for (int i = 0; i < 3; ++i) {
+		for (int i = 0; i < 2; ++i) {
 			for (auto particle : fluidParticles) {
 //				particle->reset(false);
 				particle->updateMassPositions();

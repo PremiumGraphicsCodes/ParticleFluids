@@ -25,7 +25,7 @@ void MVPSampler::split(const std::list<MVPFluidScene*>& fluids)
 				vp->setVelocity(m->getVelocity());
 				vp->addMassParticle(m);
 				m->setParent(vp);
-				vp->setRestMass(m->getMass());
+				vp->setRestMass(m->getMass() * 1.25);
 				f->add(vp);
 			}
 			p->clearMasses();
