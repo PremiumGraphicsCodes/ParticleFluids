@@ -87,6 +87,12 @@ void MVPBoundarySolver::createGphosts(MVPVolumeParticle* particle)
 				particle->addNeighbor(vp);
 				this->ghosts.push_back(vp);
 			}
+			if (position.y > boundary.getMaxY() + r) {
+				const auto distance = boundary.getMinY() + r;
+				auto vp = createGphost(position, particle);
+				particle->addNeighbor(vp);
+				this->ghosts.push_back(vp);
+			}
 			if (position.x > boundary.getMaxX() + r) {
 				const auto distance = boundary.getMinX() + r;
 				auto vp = createGphost(position, particle);
