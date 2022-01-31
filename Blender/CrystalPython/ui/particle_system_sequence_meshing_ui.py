@@ -14,34 +14,41 @@ import subprocess
 
 from CrystalPLI import World
 from scene.scene import Scene
-
+from bpy_extras.io_utils import ImportHelper
 
 world = World()
 scene = Scene(world)
 
 
-class MeshingRunner :
-    def __init__(self) :
-        self.__is_running = False
-        self.__bl_mesh = None
-        self.tmp_volumes = []
+class ParticleSystemSequenceMeshingOperator(bpy.types.Operator, ImportHelper) :
+    bl_idname = "pg.particlesystemsequencemeshingoperator"
+    bl_label = "ParticleSystem"
+#    bl_description = "Hello"
+    filter_glob : bpy.props.StringProperty(
+            default="*.ply",
+            options={'HIDDEN'}
+            )
 
-    def start(self) :
-        global scene
-        self.__is_running = True
-        if self.__bl_mesh == None :
-            self.__bl_mesh = BLTriangleMesh(scene)
-            self.__bl_mesh.mesh.create_empty("")
-            self.__bl_mesh.convert_to_polygon_mesh("")               
+    files : bpy.props.CollectionProperty(
+        name="PLY files",
+        type=bpy.types.OperatorFileListElement,
+        )
 
-    def stop(self) :
-        self.__is_running = False
+    directory : bpy.props.StringProperty(subtype='DIR_PATH')
+ 
+    def execute(self, context) :
+        for file in self.files :
+            print(file.name)
+            self.convert(file.name)
 
-    def step(self, frame) :
+        return {'FINISHED'}
+
+    def convert(self, file_name) :
         prop = bpy.context.scene.meshing_property
 
-        ps_file_path = os.path.join(prop.input_path_prop, "macro" + str(frame) + ".pcd")
-        export_file_path = os.path.join(prop.output_path_prop, "volume" + str(frame) + ".vdb") #basename_without_ext + ".stl")
+        ps_file_path = os.path.join(self.directory, file_name)
+        basename_without_ext = os.path.splitext(os.path.basename(file_name))[0]
+        export_file_path = os.path.join(self.directory, basename_without_ext + ".vdb") #basename_without_ext + ".stl")
 
         params = []
         params.append('VDBTool')
@@ -63,34 +70,12 @@ class MeshingRunner :
         #params.append(str(prop.smoothing_iter_prop))
             
         result = subprocess.run(params, shell=True)
-        if result != -1 :
-            for o in self.tmp_volumes :
-                bpy.data.objects.remove(o)                
+        #if result != -1 :
+            #for o in self.tmp_volumes :
+            #    bpy.data.objects.remove(o)                
 
-            bpy.ops.object.volume_import(filepath=export_file_path, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
-            self.tmp_volumes = bpy.context.selected_objects
-            
-    def is_running(self) :
-        return self.__is_running
-
-runner = MeshingRunner()
-
-@persistent
-def my_handler(scene):
-    if runner.is_running() :
-        runner.step(scene.frame_current)
-
-class ParticleSystemSequenceMeshingOperator(bpy.types.Operator) :
-    bl_idname = "pg.particlesystemsequencemeshingoperator"
-    bl_label = "ParticleSystem"
-    bl_description = "Hello"
-    
-    def execute(self, context) :
-        if not runner.is_running() :
-            runner.start()
-        else :
-            runner.stop()
-        return {'FINISHED'}
+            #bpy.ops.object.volume_import(filepath=export_file_path, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
+            #self.tmp_volumes = bpy.context.selected_objects
 
 
 class MeshingProperty(bpy.types.PropertyGroup) :
@@ -139,10 +124,7 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         self.layout.prop(prop, "output_path_prop", text="OutputPath")
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
-        if not runner.is_running() :
-            self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
-        else :
-            self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Stop", icon='PAUSE')
+        self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
 
 classes = [
     ParticleSystemSequenceMeshingOperator,
@@ -150,12 +132,12 @@ classes = [
     MeshingProperty
 ]
 
+
 class ParticleSystemSequenceMeshingUI :
     def register():
         for c in classes:
             bpy.utils.register_class(c)
         bpy.types.Scene.meshing_property = bpy.props.PointerProperty(type=MeshingProperty)
-        bpy.app.handlers.frame_change_pre.append(my_handler)
 
     def unregister():
         for c in classes:
