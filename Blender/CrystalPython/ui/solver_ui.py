@@ -19,6 +19,7 @@ from bpy.app.handlers import persistent
 
 from CrystalPLI import World
 from scene.scene import Scene
+import threading
 
 world = World()
 scene = Scene(world)
@@ -61,10 +62,6 @@ def reset() :
     bl_solver.set_end_frame(bpy.context.scene.solver_property.end_frame_prop)
     bl_solver.set_iteration( bpy.context.scene.solver_property.iteration_prop )
     bl_solver.set_export_path( bpy.context.scene.solver_property.export_dir_path )
-    bl_solver.set_vdb_particle_radius( bpy.context.scene.solver_property.vdb_particle_radius_prop)
-    bl_solver.set_vdb_cell_length(bpy.context.scene.solver_property.vdb_cell_length_prop)
-    bl_solver.set_vdb_smooth_width(bpy.context.scene.solver_property.vdb_volume_smooth_width)
-    bl_solver.set_vdb_smooth_iter(bpy.context.scene.solver_property.vdb_volume_smooth_iter)
 
 class SolverStartOperator(bpy.types.Operator):
     bl_idname = "pg.solverstartoperator"
@@ -78,16 +75,6 @@ class SolverStartOperator(bpy.types.Operator):
         else :
             bl_solver.stop()
         return {'FINISHED'}
-
-@persistent
-def on_frame_changed_solver(scene):
-    global bl_solver
-    print("OnChangedFrame")
-    if bl_solver.is_running() :
-        print("OnRunSolver")
-        bl_solver.step(scene.frame_current)
-        if bpy.context.scene.solver_property.vdb_export_prop :
-            bl_solver.export_vdb(scene.frame_current)
 
 class SolverProperty(bpy.types.PropertyGroup) :
     is_active_prop : bpy.props.BoolProperty(
@@ -150,38 +137,6 @@ class SolverProperty(bpy.types.PropertyGroup) :
         default =1,
         min = 1,
     )
-    vdb_export_prop : bpy.props.BoolProperty(
-        name = "export_vdb",
-        description = "ExportVDB",
-        default = False,
-    )
-    vdb_particle_radius_prop : bpy.props.FloatProperty(
-        name="particle_radius",
-        description="ParticleRadius",
-        default=1.0,
-        min = 0.0,
-        max = 100.0,
-        )
-    vdb_cell_length_prop : bpy.props.FloatProperty(
-        name="cell_length",
-        description="CellLength",
-        default=0.5,
-        min = 0.0,
-        max = 100.0,
-    )
-    vdb_volume_smooth_width : bpy.props.IntProperty(
-        name ="smooth_width",
-        description="SmoothWidth",
-        default = 1,
-        min = 0
-    )
-    vdb_volume_smooth_iter : bpy.props.IntProperty(
-        name="smooth_iter",
-        description="SmootthIter",
-        default = 1,
-        min = 0
-    )
-
 
 class SolverPanel(bpy.types.Panel):
     bl_label = "Solver"
@@ -194,6 +149,8 @@ class SolverPanel(bpy.types.Panel):
         global bl_solver
         solver_property = context.scene.solver_property
         self.layout.prop(solver_property, "is_active_prop", text="Active")
+        self.layout.prop(solver_property, "start_frame_prop", text="StartFrame")
+        self.layout.prop(solver_property, "end_frame_prop", text="EndFrame")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
         self.layout.prop(solver_property, "search_radius_prop", text="SearchRadius")
@@ -201,11 +158,6 @@ class SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "max", text="Max")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
         self.layout.prop(solver_property, "iteration_prop", text="Iteration")
-        self.layout.prop(solver_property, "vdb_export_prop", text="ExportVDB")
-        self.layout.prop(solver_property, "vdb_particle_radius_prop", text="VDBRadius")
-        self.layout.prop(solver_property, "vdb_cell_length_prop", text="VDBCellLength")
-        self.layout.prop(solver_property, "vdb_volume_smooth_width", text="SmoothWidth")
-        self.layout.prop(solver_property, "vdb_volume_smooth_iter", text="SmoothIter")
         if not bl_solver.is_running() :
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
         else :
@@ -227,7 +179,6 @@ class SolverUI :
         for c in classes:
             bpy.utils.register_class(c)
         bpy.types.Scene.solver_property = bpy.props.PointerProperty(type=SolverProperty)
-        bpy.app.handlers.frame_change_pre.append(on_frame_changed_solver)        
         bpy.types.SpaceView3D.draw_handler_add(on_draw_solver, (), 'WINDOW', 'POST_VIEW')
 
     def unregister():

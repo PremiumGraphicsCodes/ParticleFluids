@@ -11,6 +11,7 @@ from bpy.app.handlers import persistent
 import os
 import glob
 import subprocess
+import threading
 
 from CrystalPLI import World
 from scene.scene import Scene
@@ -19,29 +20,19 @@ from bpy_extras.io_utils import ImportHelper
 world = World()
 scene = Scene(world)
 
+class MeshingRunner :
+    def __init__(self) :
+        self.files = []
 
-class ParticleSystemSequenceMeshingOperator(bpy.types.Operator, ImportHelper) :
-    bl_idname = "pg.particlesystemsequencemeshingoperator"
-    bl_label = "ParticleSystem"
-#    bl_description = "Hello"
-    filter_glob : bpy.props.StringProperty(
-            default="*.ply",
-            options={'HIDDEN'}
-            )
+    def add_file(self, file) :
+        self.files.append(file)
 
-    files : bpy.props.CollectionProperty(
-        name="PLY files",
-        type=bpy.types.OperatorFileListElement,
-        )
+    def set_dir(self, dir) :
+        self.directory = dir
 
-    directory : bpy.props.StringProperty(subtype='DIR_PATH')
- 
-    def execute(self, context) :
+    def run(self):
         for file in self.files :
-            print(file.name)
-            self.convert(file.name)
-
-        return {'FINISHED'}
+            self.convert(file)
 
     def convert(self, file_name) :
         prop = bpy.context.scene.meshing_property
@@ -77,6 +68,33 @@ class ParticleSystemSequenceMeshingOperator(bpy.types.Operator, ImportHelper) :
             #bpy.ops.object.volume_import(filepath=export_file_path, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))
             #self.tmp_volumes = bpy.context.selected_objects
 
+
+runner = MeshingRunner()
+
+class ParticleSystemSequenceMeshingOperator(bpy.types.Operator, ImportHelper) :
+    bl_idname = "pg.particlesystemsequencemeshingoperator"
+    bl_label = "ParticleSystem"
+#    bl_description = "Hello"
+    filter_glob : bpy.props.StringProperty(
+            default="*.ply",
+            options={'HIDDEN'}
+            )
+
+    files : bpy.props.CollectionProperty(
+        name="PLY files",
+        type=bpy.types.OperatorFileListElement,
+        )
+
+    directory : bpy.props.StringProperty(subtype='DIR_PATH')
+ 
+    def execute(self, context) :
+        runner = MeshingRunner()
+        runner.set_dir(self.directory)
+        for file in self.files :
+            runner.add_file(file.name) 
+        thread = threading.Thread(target=runner.run)
+        thread.start()
+        return {'FINISHED'}
 
 class MeshingProperty(bpy.types.PropertyGroup) :        
     particle_radius_prop : bpy.props.FloatProperty(

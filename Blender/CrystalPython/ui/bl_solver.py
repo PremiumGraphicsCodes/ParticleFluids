@@ -8,7 +8,7 @@ from ui.bl_triangle_mesh import BLTriangleMesh
 from scene.triangle_mesh_scene import TriangleMeshScene
 from CrystalPLI import Vector3df
 from scene.file_io import FileIO
-import subprocess
+import threading
 
 class BLSolver :
     def __init__(self) :
@@ -59,6 +59,8 @@ class BLSolver :
 
     def start(self):
         self.__running = True
+        thread = threading.Thread(target=self.run)
+        thread.start()
 
     def stop(self):
         self.__running = False
@@ -72,17 +74,9 @@ class BLSolver :
     def set_iteration(self, iter) :
         self.__iteration = iter
 
-    def set_vdb_particle_radius(self, radius) :
-        self.__vdb_particle_radius = radius
-
-    def set_vdb_cell_length(self, length) :
-        self.__vdb_cell_length = length
-
-    def set_vdb_smooth_width(self, width) :
-        self.__vdb_smooth_width = width
-
-    def set_vdb_smooth_iter(self, iter) :
-        self.__vdb_smooth_iter = iter
+    def run(self) :
+        for i in range(0, self.end_frame) :
+            self.step(i)
 
     def step(self, frame):
         for i in range(0, self.__iteration) :
@@ -95,35 +89,6 @@ class BLSolver :
         #    bpy.data.objects.remove(o)     
         #bpy.ops.import_mesh.ply(filepath=macro_file_path)
         #self.__tmp_meshes = bpy.context.selected_objects
-
-    def export_vdb(self, frame) :
-        #prop = bpy.context.scene.meshing_property
-
-        ps_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".ply")
-        export_file_path = os.path.join(self.__export_dir_path, "volume" + str(frame) + ".vdb") #basename_without_ext + ".stl")
-
-        params = []
-        params.append('VDBTool')
-        params.append("-i")
-        params.append(str(ps_file_path))
-        params.append("-o")
-        params.append(str(export_file_path))
-        params.append("-r")
-        params.append(str(self.__vdb_particle_radius))
-        params.append("-v")
-        params.append(str(self.__vdb_cell_length))
-        #params.append("-t")
-        #params.append(str(prop.threshold_prop))
-        #params.append("-a")
-        #params.append(str(prop.mesh_adaptivity_prop))
-        params.append("-sw")
-        params.append(str(self.__vdb_smooth_width))
-        params.append("-si")
-        params.append(str(self.__vdb_smooth_iter))
-            
-        result = subprocess.run(params, shell=True)
-#        if result != -1 :
-
 
     def is_running(self):
         return self.__running
