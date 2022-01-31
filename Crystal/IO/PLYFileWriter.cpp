@@ -5,16 +5,16 @@
 using namespace Crystal::Math;
 using namespace Crystal::IO;
 
-bool PLYFileWriter::write(const std::filesystem::path& filename, const PLYFile& pcd)
+bool PLYFileWriter::writeASCII(const std::filesystem::path& filename, const PLYFile& pcd)
 {
 	std::ofstream stream(filename);
 	if (!stream.is_open()) {
 		return false;
 	}
-	return write(stream, pcd);
+	return writeASCII(stream, pcd);
 }
 
-bool PLYFileWriter::write(std::ostream& stream, const PLYFile& pcd)
+bool PLYFileWriter::writeASCII(std::ostream& stream, const PLYFile& pcd)
 {
 	stream << "ply" << std::endl;
 	stream << "format ascii 1.0" << std::endl;

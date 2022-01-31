@@ -23,16 +23,16 @@ namespace {
 	}
 }
 
-bool PLYFileReader::read(const std::filesystem::path& filename)
+bool PLYFileReader::readASCII(const std::filesystem::path& filename)
 {
 	std::ifstream stream(filename); //, std::ios::in | std::ios::binary);
 	if (!stream.is_open()) {
 		return false;
 	}
-	return read(stream);
+	return readASCII(stream);
 }
 
-bool PLYFileReader::read(std::istream& stream)
+bool PLYFileReader::readASCII(std::istream& stream)
 {
 	unsigned int count = 0;
 	std::string str;

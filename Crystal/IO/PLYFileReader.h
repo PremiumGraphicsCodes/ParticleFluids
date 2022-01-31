@@ -12,9 +12,9 @@ namespace Crystal {
 class PLYFileReader
 {
 public:
-	bool read(const std::filesystem::path& filename);
+	bool readASCII(const std::filesystem::path& filename);
 
-	bool read(std::istream& stream);
+	bool readASCII(std::istream& stream);
 
 	bool readBinary(const std::filesystem::path& filename);
 

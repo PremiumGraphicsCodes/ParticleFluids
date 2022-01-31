@@ -46,7 +46,7 @@ bool VDBPLYFileReadCommand::execute(World* world)
 {
 	const auto filePath = args.filePath.getValue();
 	Crystal::IO::PLYFileReader reader;
-	const auto isOk = reader.read(filePath);
+	const auto isOk = reader.readBinary(filePath);
 	if (!isOk) {
 		return false;
 	}

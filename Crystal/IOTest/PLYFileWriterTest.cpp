@@ -14,7 +14,7 @@ TEST(PLYFileWriterTest, TestWriteASCII)
 	ply.vertices.push_back(PLYPoint(Vector3dd(3, 4, 5)));
 
 	PLYFileWriter writer;
-	EXPECT_TRUE(writer.write("PLYWriteTestASCII.ply", ply));
+	EXPECT_TRUE(writer.writeASCII("PLYWriteTestASCII.ply", ply));
 }
 
 TEST(PLYFileWriterTest, TestWriteBinary)

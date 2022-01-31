@@ -54,7 +54,7 @@ bool PLYFileExportCommand::execute(World* world)
 	}
 	PLYFileWriter writer;
 	std::filesystem::path filePath(args.filePath.getValue());
-	const auto isOk = writer.write(filePath, file);
+	const auto isOk = writer.writeBinary(filePath, file);
 	//this->results.isOk.setValue( isOk );
 	return isOk;
 }

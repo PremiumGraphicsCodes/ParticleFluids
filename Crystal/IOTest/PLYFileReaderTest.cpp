@@ -8,7 +8,7 @@ using namespace Crystal::IO;
 TEST(PLYFileReaderTest, TestReadASCII)
 {
 	PLYFileReader reader;
-	const auto isOk = reader.read("PLYWriteTestASCII.ply");
+	const auto isOk = reader.readASCII("PLYWriteTestASCII.ply");
 	EXPECT_TRUE(isOk);
 }
 

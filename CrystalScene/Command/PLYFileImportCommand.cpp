@@ -44,7 +44,7 @@ bool PLYFileImportCommand::execute(Crystal::Scene::World* scene)
 	}
 
 	PLYFileReader reader;
-	const auto isOk = reader.read(args.filePath.getValue());
+	const auto isOk = reader.readBinary(args.filePath.getValue());
 	if (!isOk) {
 		return false;
 	}

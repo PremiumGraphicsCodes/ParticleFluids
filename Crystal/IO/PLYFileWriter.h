@@ -29,9 +29,9 @@ struct PLYFile
 class PLYFileWriter
 {
 public:
-	bool write(const std::filesystem::path& filename, const PLYFile& pcd);
+	bool writeASCII(const std::filesystem::path& filename, const PLYFile& pcd);
 
-	bool write(std::ostream& stream, const PLYFile& pcd);
+	bool writeASCII(std::ostream& stream, const PLYFile& pcd);
 
 	bool writeBinary(const std::filesystem::path& filename, const PLYFile& pcd);
 
