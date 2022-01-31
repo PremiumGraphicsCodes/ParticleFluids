@@ -11,3 +11,10 @@ TEST(PLYFileReaderTest, TestReadASCII)
 	const auto isOk = reader.read("PLYWriteTestASCII.ply");
 	EXPECT_TRUE(isOk);
 }
+
+TEST(PLYFileReaderTest, TestReadBinary)
+{
+	PLYFileReader reader;
+	const auto isOk = reader.readBinary("PLYWriteTestBinary.ply");
+	EXPECT_TRUE(isOk);
+}
