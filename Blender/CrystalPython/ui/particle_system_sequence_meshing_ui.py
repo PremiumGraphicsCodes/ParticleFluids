@@ -78,23 +78,7 @@ class ParticleSystemSequenceMeshingOperator(bpy.types.Operator, ImportHelper) :
             #self.tmp_volumes = bpy.context.selected_objects
 
 
-class MeshingProperty(bpy.types.PropertyGroup) :
-    input_path_prop : bpy.props.StringProperty(
-        name="input_path",
-        description="Path to Directory",
-        default="tmp_txt",
-        maxlen=1024,
-        subtype='DIR_PATH'
-        )
-
-    output_path_prop : bpy.props.StringProperty(
-        name="output_path",
-        description="Path to Directory",
-        default="tmp_stl",
-        maxlen=1024,
-        subtype='DIR_PATH'
-    )
-        
+class MeshingProperty(bpy.types.PropertyGroup) :        
     particle_radius_prop : bpy.props.FloatProperty(
         name="particle_radius",
         description="ParticleRadius",
@@ -120,8 +104,6 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
 
     def draw(self, context):
         prop = context.scene.meshing_property
-        self.layout.prop(prop, "input_path_prop", text="InputPath")
-        self.layout.prop(prop, "output_path_prop", text="OutputPath")
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
         self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
