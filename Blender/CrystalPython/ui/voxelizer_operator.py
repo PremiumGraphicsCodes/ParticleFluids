@@ -41,8 +41,10 @@ class VoxelizerOperator(bpy.types.Operator) :
       mesh.convert_from_polygon_mesh(selected_mesh)
       mesh.mesh.export_stl(mesh_file_path)
 
+      addon_dirpath = os.path.dirname(__file__)
+      tool_path = os.path.join(addon_dirpath, '../vdb/MeshToPSTool')
       params = []
-      params.append('MeshToPSTool')
+      params.append(tool_path)
       params.append("-i")
       params.append(mesh_file_path)
       params.append("-o")

@@ -40,9 +40,12 @@ class MeshingRunner :
         ps_file_path = os.path.join(self.directory, file_name)
         basename_without_ext = os.path.splitext(os.path.basename(file_name))[0]
         export_file_path = os.path.join(self.directory, basename_without_ext + ".vdb") #basename_without_ext + ".stl")
+        
+        addon_dirpath = os.path.dirname(__file__)
+        tool_path = os.path.join(addon_dirpath, '../vdb/VDBTool')
 
         params = []
-        params.append('VDBTool')
+        params.append(tool_path)
         params.append("-i")
         params.append(str(ps_file_path))
         params.append("-o")
