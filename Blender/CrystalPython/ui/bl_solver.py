@@ -81,6 +81,9 @@ class BLSolver :
     def step(self, frame):
         for i in range(0, self.__iteration) :
             self.__solver.simulate()
+
+        for fluid in self.__bl_fluids :
+            fluid.send_shader()
         
         macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".ply")
         self.__solver.export_pcd(macro_file_path, True)

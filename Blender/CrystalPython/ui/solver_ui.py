@@ -148,7 +148,7 @@ class SolverPanel(bpy.types.Panel):
     def draw(self, context):
         global bl_solver
         solver_property = context.scene.solver_property
-        self.layout.prop(solver_property, "is_active_prop", text="Active")
+        self.layout.prop(solver_property, "is_active_prop", text="Render")
         self.layout.prop(solver_property, "start_frame_prop", text="StartFrame")
         self.layout.prop(solver_property, "end_frame_prop", text="EndFrame")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")

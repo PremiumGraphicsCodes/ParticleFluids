@@ -16,6 +16,9 @@ class BLFluid :
         self.source_ps = None
         self.fluid = None
         self.shader = None
+        self.coords = []
+        self.colors = []
+
 
     def clear(self) :
         del self.shader
@@ -67,25 +70,27 @@ class BLFluid :
         self.source_ps.set_positions(positions)
         self.fluid.send()
 #        self.me = mesh
-        
-    def render(self):
+
+    def send_shader(self):
         positions = self.fluid.get_positions()
-        coords = []
-        colors = []
+        self.coords = []
+        self.colors = []
         for p in positions.values :
-            coords.append( (p.x, p.y, p.z))
-            colors.append( (1.0, 1.0, 1.0, 1.0))
+            self.coords.append( (p.x, p.y, p.z))
+            self.colors.append( (1.0, 1.0, 1.0, 1.0))
 
         # バッチを作成
-        batch = batch_for_shader(self.shader, 'POINTS', {"pos" : coords, "color" : colors})
 
         # シェーダのパラメータ設定
 #        color = [0.5, 1.0, 1.0, 1.0]
+        
+    def render(self):
+        batch = batch_for_shader(self.shader, 'POINTS', {"pos" : self.coords, "color" : self.colors})
+
+        # 描画
         self.shader.bind()
         matrix = bpy.context.region_data.perspective_matrix
         self.shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
-
-        # 描画
         batch.draw(self.shader)
 
     def reset(self, prop):
