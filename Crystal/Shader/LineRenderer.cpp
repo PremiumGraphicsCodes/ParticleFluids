@@ -12,7 +12,8 @@ namespace {
 	constexpr const char* fragColorLabel = "fragColor";
 }
 
-LineRenderer::LineRenderer()
+LineRenderer::LineRenderer() :
+	shader(nullptr)
 {
 }
 
@@ -80,31 +81,32 @@ void LineRenderer::render(const Buffer& buffer)
 
 std::string LineRenderer::getBuiltInVsSource() const
 {
-	std::ostringstream stream;
-	stream
-		<< "#version 150" << std::endl
-		<< "in vec3 position;" << std::endl
-		<< "in vec4 color;" << std::endl
-		<< "out vec4 vColor;" << std::endl
-		<< "uniform mat4 projectionMatrix;" << std::endl
-		<< "uniform mat4 modelviewMatrix;" << std::endl
-		<< "void main(void)" << std::endl
-		<< "{" << std::endl
-		<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position, 1.0);" << std::endl
-		<< "	vColor = color;" << std::endl
-		<< "}";
-	return stream.str();
+	const std::string str = R"(
+#version 150
+in vec3 position;
+in vec4 color;
+out vec4 vColor;
+uniform mat4 projectionMatrix;
+uniform mat4 modelviewMatrix;
+
+void main(void) {
+	gl_Position = projectionMatrix * modelviewMatrix * vec4(position, 1.0);
+	vColor = color;
+}
+)";
+	return str;
 }
 
 std::string LineRenderer::getBuiltInFsSource() const
 {
-	std::ostringstream stream;
-	stream
-		<< "#version 150" << std::endl
-		<< "in vec4 vColor;" << std::endl
-		<< "out vec4 fragColor;" << std::endl
-		<< "void main(void) {" << std::endl
-		<< "	fragColor = vColor;" << std::endl
-		<< "}" << std::endl;
-	return stream.str();
+	const std::string str = R"(
+#version 150
+in vec4 vColor;
+out vec4 fragColor;
+
+void main(void) {
+	fragColor = vColor;
+}
+)";
+	return str;
 }
