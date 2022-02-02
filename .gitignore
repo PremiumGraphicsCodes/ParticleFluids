@@ -330,3 +330,5 @@ Blender/CrystalPython/VDBTool.exe
 /Blender/CrystalPython/tmp_txt/*.vdb
 Blender/CrystalPythonTest/test_export.stl
 *.ply
+*.dll
+*.exe

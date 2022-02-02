@@ -31,15 +31,11 @@ public:
 
 	bool link(const ShaderUnit& vertexShader, const ShaderUnit& fragmentShader);
 
-	bool link(const ShaderUnit& vertexShader, const ShaderUnit& fragmentShader, const ShaderUnit& geometryShader);
+	bool link(const std::vector<ShaderUnit>& shaders);
 
 	bool build(const std::string& vSource, const std::string& fSource);
 
-	bool build(const std::string& vSource, const std::string& gSource, const std::string& fSource);
-
 	bool buildFromFile(const std::string& vFile, const std::string& fFile);
-
-	bool buildFromFile(const std::string& vFile, const std::string& gFile, const std::string& fFile);
 
 	void release();
 

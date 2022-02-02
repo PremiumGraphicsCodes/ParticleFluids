@@ -17,6 +17,7 @@ public:
 		VERTEX,
 		FRAGMENT,
 		GEOMETRY,
+		COMPUTE,
 	};
 
 	bool compile(const std::string& source, const ShaderUnit::Stage stage);

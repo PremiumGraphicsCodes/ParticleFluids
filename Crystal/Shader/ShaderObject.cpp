@@ -103,16 +103,18 @@ bool ShaderObject::link(const ShaderUnit& vertexShader, const ShaderUnit& fragme
 	return true;
 }
 
-bool ShaderObject::link(const ShaderUnit& vertexShader, const ShaderUnit& fragmentShader, const ShaderUnit& geometryShader)
+bool ShaderObject::link(const std::vector<ShaderUnit>& shaders)
 {
 	clear();
 
 	assert(glGetError() == GL_NO_ERROR);
 
 	handle = glCreateProgram();
-	glAttachShader(handle, vertexShader.getID());
-	glAttachShader(handle, fragmentShader.getID());
-	glAttachShader(handle, geometryShader.getID());
+	for (const auto& s : shaders) {
+		glAttachShader(handle, s.getID());
+		glAttachShader(handle, s.getID());
+		glAttachShader(handle, s.getID());
+	}
 
 	GLint success;
 	glLinkProgram(handle);
@@ -159,40 +161,9 @@ bool ShaderObject::build(const std::string& vSource, const std::string& fSource)
 	//positionLocation = glGetUniformLocation( shader.getId(), "position" );
 }
 
-
-bool ShaderObject::build(const std::string& vSource, const std::string& gSource, const std::string& fSource)
-{
-	ShaderUnit vShader;
-	ShaderUnit gShader;
-	ShaderUnit fShader;
-	if (!vShader.compile(vSource, ShaderUnit::Stage::VERTEX)) {
-		log += vShader.getLog();
-		return false;
-	}
-	if (!gShader.compile(gSource, ShaderUnit::Stage::GEOMETRY)) {
-		log += gShader.getLog();
-		return false;
-	}
-	if (!fShader.compile(fSource, ShaderUnit::Stage::FRAGMENT)) {
-		log += fShader.getLog();
-		return false;
-	}
-	if (!link(vShader, fShader, gShader)) {
-		return false;
-	}
-
-	return true;
-	//positionLocation = glGetUniformLocation( shader.getId(), "position" );
-}
-
 bool ShaderObject::buildFromFile(const std::string& vFile, const std::string& fFile)
 {
 	return build(::getStrFromFile(vFile), ::getStrFromFile(fFile));
-}
-
-bool ShaderObject::buildFromFile(const std::string& vFile, const std::string& gFile, const std::string& fFile)
-{
-	return build(::getStrFromFile(vFile), ::getStrFromFile(gFile), ::getStrFromFile(fFile));
 }
 
 void ShaderObject::release()

@@ -56,6 +56,9 @@ bool ShaderUnit::compile(const std::string& source, const ShaderUnit::Stage stag
 	else if (stage == ShaderUnit::Stage::GEOMETRY) {
 		id = glCreateShader(GL_GEOMETRY_SHADER);
 	}
+	else if (stage == ShaderUnit::Stage::COMPUTE) {
+		id = glCreateShader(GL_COMPUTE_SHADER);
+	}
 	else {
 		assert(false);
 		return false;
