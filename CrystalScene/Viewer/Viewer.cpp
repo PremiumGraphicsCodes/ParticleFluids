@@ -7,16 +7,14 @@
 #include "../AppBase/ShapeMenu.h"
 #include "../AppBase/AppearanceMenu.h"
 #include "../AppBase/SelectionMenu.h"
-
 #include "../AppBase/SceneListPanel.h"
-
 #include "../AppBase/ControlPanel.h"
-
 #include "../AppBase/Canvas.h"
 
 #include "../Scene/World.h"
 
 #include "ColorMenu.h"
+#include "CSMenu.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -46,6 +44,7 @@ int main(int, char**)
 	window.add(new AppearanceMenu("Appearance", &world, &canvas, control));
 	window.add(new SelectionMenu("Selection", &world, &canvas, control));
 	window.add(new ColorMenu("Color", &world, &canvas, control));
+	window.add(new CSMenu("ComputeShader", &world, &canvas, control));
 
 	window.add(new SceneListPanel("SceneList", &world, &canvas, control));
 

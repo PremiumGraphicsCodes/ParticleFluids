@@ -112,8 +112,6 @@ bool ShaderObject::link(const std::vector<ShaderUnit>& shaders)
 	handle = glCreateProgram();
 	for (const auto& s : shaders) {
 		glAttachShader(handle, s.getID());
-		glAttachShader(handle, s.getID());
-		glAttachShader(handle, s.getID());
 	}
 
 	GLint success;
