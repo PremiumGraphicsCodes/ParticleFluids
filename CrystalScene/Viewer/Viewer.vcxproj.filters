@@ -3,8 +3,19 @@
   <ItemGroup>
     <ClCompile Include="Viewer.cpp" />
     <ClCompile Include="ColorMenu.cpp" />
+    <ClCompile Include="CSSampleView.cpp">
+      <Filter>CSSample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColorMenu.h" />
+    <ClInclude Include="CSSampleView.h">
+      <Filter>CSSample</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CSSample">
+      <UniqueIdentifier>{0306dbaf-d71a-4fa9-affc-d059dc79171f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
