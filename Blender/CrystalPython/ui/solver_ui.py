@@ -76,6 +76,24 @@ class SolverStartOperator(bpy.types.Operator):
             bl_solver.stop()
         return {'FINISHED'}
 
+class SolverPauseOperator(bpy.types.Operator):
+    bl_idname = "pg.solverpauseoperator"
+    bl_label = "SolverPause"
+    bl_description = "Hello"
+
+    def execute(self, context) :
+        #bl_solver.pause()
+        return {'FINISHED'}
+
+class SolverCancelOperator(bpy.types.Operator):
+    bl_idname = "pg.solvercanceloperator"
+    bl_label = "SolverCancel"
+    bl_description = "Hello"
+
+    def execute(self, context) :
+        #bl_solver.stop()
+        return {'FINISHED'}        
+
 class SolverProperty(bpy.types.PropertyGroup) :
     is_active_prop : bpy.props.BoolProperty(
         name ="active",
@@ -167,10 +185,14 @@ class SolverPanel(bpy.types.Panel):
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
         else :
             self.layout.operator(SolverStartOperator.bl_idname,text="Stop", icon='PAUSE')
+        #self.layout.operator(SolverPauseOperator.bl_idname,text="Pause", icon='PAUSE')
+        #self.layout.operator(SolverPauseOperator.bl_idname,text="Cancel", icon='PAUSE')
         self.layout.prop(solver_property, "progress_prop", text="Progress")
 
 classes = [
     SolverStartOperator,
+    SolverPauseOperator,
+    SolverCancelOperator,
     SolverPanel,
     SolverProperty,
 ]
