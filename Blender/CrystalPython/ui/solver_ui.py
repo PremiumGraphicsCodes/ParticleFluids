@@ -137,6 +137,11 @@ class SolverProperty(bpy.types.PropertyGroup) :
         default =1,
         min = 1,
     )
+    progress_prop : bpy.props.IntProperty(
+        name="progress",
+        description="Progress",
+        default = 0,   
+    )
 
 class SolverPanel(bpy.types.Panel):
     bl_label = "Solver"
@@ -162,6 +167,7 @@ class SolverPanel(bpy.types.Panel):
             self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
         else :
             self.layout.operator(SolverStartOperator.bl_idname,text="Stop", icon='PAUSE')
+        self.layout.prop(solver_property, "progress_prop", text="Progress")
 
 classes = [
     SolverStartOperator,
