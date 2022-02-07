@@ -39,9 +39,9 @@ public:
 
 	void translate(const Math::Vector3dd& v) override {};
 
-	void transform(const Math::Matrix3dd& m) override {};
+	void transform(const Math::Matrix3dd& m) override;
 
-	void transform(const Math::Matrix4dd& m) override {};
+	void transform(const Math::Matrix4dd& m) override;
 
 	Scene::IPresenter* getPresenter() { return presenter.get(); };
 

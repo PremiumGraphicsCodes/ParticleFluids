@@ -10,7 +10,7 @@
 #include "CrystalVDB/VDBCommand/VDBFileWriteCommand.h"
 #include "CrystalVDB/VDBCommand/VDBVolumeToMeshCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSTLFileWriteCommand.h"
-#include "CrystalVDB/VDBCommand/VDBSmoothingCommand.h"
+//#include "CrystalVDB/VDBCommand/VDBSmoothingCommand.h"
 
 using namespace Crystal::VDB;
 using namespace Crystal::VDBTool;
@@ -76,6 +76,7 @@ void PSToMeshTool::execute(const CommandLineOptions& options)
         }
     }
 
+    /*
     std::cout << "Smoothing...";
     {
         VDBSmoothingCommand::Args args;
@@ -92,6 +93,7 @@ void PSToMeshTool::execute(const CommandLineOptions& options)
             std::exit(1);
         }
     }
+    */
 
     std::cout << "Writing Volume...";
     {

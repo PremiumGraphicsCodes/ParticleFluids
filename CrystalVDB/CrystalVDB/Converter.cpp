@@ -100,3 +100,22 @@ std::array<unsigned int, 4> Converter::fromVDB(const openvdb::Vec4I& src)
 {
     return { src[0], src[1], src[2], src[3] };
 }
+
+openvdb::Mat3R Converter::toVDB(const Crystal::Math::Matrix3dd& src)
+{
+    return openvdb::Mat3R(
+        src[0][0], src[0][1], src[0][2],
+        src[1][0], src[1][1], src[1][2],
+        src[2][0], src[2][1], src[2][2]
+    );
+}
+
+openvdb::Mat4R Crystal::VDB::Converter::toVDB(const Math::Matrix4dd& src)
+{
+    return openvdb::Mat4R(
+        src[0][0], src[0][1], src[0][2], src[0][3],
+        src[1][0], src[1][1], src[1][2], src[1][3],
+        src[2][0], src[2][1], src[2][2], src[2][3],
+        src[3][0], src[3][1], src[3][2], src[3][3]
+    );
+}

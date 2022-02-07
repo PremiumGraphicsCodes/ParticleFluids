@@ -16,6 +16,9 @@
 #include "VDBParticleSystemScene.h"
 #include "Converter.h"
 
+#include "CrystalSpace/CrystalSpace/SparseVolume.h"
+
+using namespace Crystal::Space;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
@@ -49,4 +52,12 @@ void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParti
         auto coord = transform.indexToWorld(iter.getCoord());
         ps->getImpl()->add(coord, 1.0);
     }
+}
+
+void VDBVolumeConverter::fromSparseVolume(const SparseVolume<float>& sp, VDBVolumeScene* volume) const
+{
+    const auto bb = sp.getBoundingBox();
+    //Converter::toVDB()
+    //volume->getImpl()->getPtr()->
+    //volume->setValue()
 }

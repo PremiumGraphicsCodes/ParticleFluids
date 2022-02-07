@@ -24,12 +24,7 @@ void VDBVolumeImpl::setScale(const double sx, const double sy, const double sz)
 
 void VDBVolumeImpl::setTransformMatrix(const Math::Matrix4dd& matrix)
 {
-	openvdb::Mat4R m;
-	for (int i = 0; i < 4; ++i) {
-		for (int j = 0; j < 4; ++j) {
-			m[i][j] = matrix[i][j];
-		}
-	}
+	const auto m = Converter::toVDB(matrix);
 	this->getPtr()->setTransform(openvdb::math::Transform::createLinearTransform(m));
 }
 

@@ -3,6 +3,8 @@
 #include <openvdb/openvdb.h>
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Box3d.h"
+#include "../../Crystal/Math/Matrix3d.h"
+#include "../../Crystal/Math/Matrix4d.h"
 
 namespace Crystal {
     namespace VDB {
@@ -35,6 +37,10 @@ public:
     static openvdb::Vec4I toVDB(const std::array<unsigned int, 4>& indices);
 
     static std::array<unsigned int, 4> fromVDB(const openvdb::Vec4I& src);
+
+    static openvdb::Mat3R toVDB(const Math::Matrix3dd& src);
+
+    static openvdb::Mat4R toVDB(const Math::Matrix4dd& src);
 
 };
 

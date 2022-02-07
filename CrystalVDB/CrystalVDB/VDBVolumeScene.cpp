@@ -73,6 +73,22 @@ int VDBVolumeScene::getActiveVoxelCount() const
 	return impl->getPtr()->activeVoxelCount();
 }
 
+void VDBVolumeScene::transform(const Matrix3dd& m)
+{
+	/*
+	const auto mm = Converter::toVDB(m);
+	math::Transform transform;
+	math::Mat4d m4d(mm)
+	transform.createLinearTransform(mm);
+	impl->getPtr()->setTransform(transform);
+	*/
+}
+
+void VDBVolumeScene::transform(const Math::Matrix4dd& m)
+{
+	impl->setTransformMatrix(m);
+}
+
 Box3dd VDBVolumeScene::getBoundingBox() const
 {
 	auto grid = impl->getPtr();
