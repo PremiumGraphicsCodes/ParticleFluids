@@ -116,8 +116,8 @@ void SPHSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	//builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
-	auto sp = builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+	auto sp = builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+	//auto sp = builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
 
 	//auto volumes = builder.getVolumes();
 	/*

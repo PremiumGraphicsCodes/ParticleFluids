@@ -85,6 +85,7 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 		builder.buildAnisotoropic(positions, args.particleRadius.getValue(), cellLength);
 	}
 
+	/*
 	MarchingCubesAlgo mcAlgo;
 	auto volumes = builder.getVolumes();
 	for (auto v : volumes) {
@@ -100,6 +101,7 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 		mesh->addFace(TriangleFace(t));
 	}
 	sp->setShape(std::move(mesh));
+	*/
 	//sp->
 	//results.newId.setValue(fluidScene->getId());
 	return true;
