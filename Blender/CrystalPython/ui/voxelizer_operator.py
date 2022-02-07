@@ -84,9 +84,8 @@ def init_props():
     scene.divide_length_prop = FloatProperty(
         name="divide_length",
         description="DivideLength",
-        default=0.2,
+        default=1.0,
         min=0.0,
-        max=100.0,
         get=get_divide_length,
         set=set_divide_length
     )

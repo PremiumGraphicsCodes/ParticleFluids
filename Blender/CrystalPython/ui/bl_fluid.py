@@ -85,6 +85,8 @@ class BLFluid :
 #        color = [0.5, 1.0, 1.0, 1.0]
         
     def render(self):
+        if self.fluid.is_boundary :
+            return
         batch = batch_for_shader(self.shader, 'POINTS', {"pos" : self.coords, "color" : self.colors})
 
         # 描画

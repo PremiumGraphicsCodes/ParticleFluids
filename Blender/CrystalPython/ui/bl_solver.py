@@ -75,7 +75,7 @@ class BLSolver :
         self.__iteration = iter
 
     def run(self) :
-        for i in range(0, self.end_frame) :
+        for i in range(self.start_frame, self.end_frame) :
             self.step(i)
             bpy.context.scene.frame_current = i
 

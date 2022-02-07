@@ -19,7 +19,7 @@ class FluidProperty(bpy.types.PropertyGroup) :
   particle_radius_prop : FloatProperty(
     name="particle_radius",
     description="ParticleRadius",
-    default=0.3,
+    default=1.0,
     min=0.0,
   )
   viscosity_prop : FloatProperty(

@@ -111,7 +111,7 @@ class SolverProperty(bpy.types.PropertyGroup) :
     search_radius_prop : FloatProperty(
         name="search_radius",
         description="SearchRadius",
-        default = 1.0,
+        default = 3.0,
         min = -0.0
     )
     min : bpy.props.FloatVectorProperty(
