@@ -116,10 +116,10 @@ void SPHSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
-	//builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+	//builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
+	auto sp = builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
 
-	auto volumes = builder.getVolumes();
+	//auto volumes = builder.getVolumes();
 	/*
 	const auto nodes = volume->getNodes();
 	double maxValue = std::numeric_limits<double>::lowest();
@@ -132,13 +132,7 @@ void SPHSurfaceBuilderView::onOk()
 	std::cout << maxValue << std::endl;
 	*/
 	MarchingCubesAlgo mcAlgo;
-	for (auto v : volumes) {
-		mcAlgo.build(*v, thresholdView.getValue());
-	}
-
-	for (auto v : volumes) {
-		delete v;
-	}
+	mcAlgo.build(*sp, thresholdView.getValue());
 
 	//PolygonMeshBuilder pmBuilder;
 	auto mesh = std::make_unique<TriangleMesh>();
