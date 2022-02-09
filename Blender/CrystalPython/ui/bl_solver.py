@@ -60,6 +60,7 @@ class BLSolver :
         self.__solver.send()
 
     def start(self):
+        self.__current_frame = self.start_frame
         self.__running = True
         thread = threading.Thread(target=self.run)
         thread.start()
@@ -77,14 +78,10 @@ class BLSolver :
         self.__iteration = iter
 
     def run(self) :
-        #win = bpy.context.window_manager
-        #win.progress_begin(self.start_frame, self.end_frame)
-        for i in range(self.start_frame, self.end_frame) :
+        for i in range(self.__current_frame, self.end_frame) :
+            print("runnning frame" + str(i))
             self.step(i)
-        #    bpy.context.scene.frame_current = i
-            bpy.context.scene.solver_property.progress_prop = i
-        #    win.progress_update(i)
-        #win.progress_end()
+            self.__current_frame += 1
 
     def step(self, frame):
         for i in range(0, self.__iteration) :
@@ -95,11 +92,6 @@ class BLSolver :
         
         macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".ply")
         self.__solver.export_pcd(macro_file_path, True)
-
-        #for o in self.__tmp_meshes :
-        #    bpy.data.objects.remove(o)     
-        #bpy.ops.import_mesh.ply(filepath=macro_file_path)
-        #self.__tmp_meshes = bpy.context.selected_objects
 
     def is_running(self):
         return self.__running
