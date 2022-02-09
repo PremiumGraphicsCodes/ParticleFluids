@@ -36,6 +36,7 @@ from ui.solver_ui import SolverUI
 from ui.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
 from ui.particle_system_sequence_meshing_ui import ParticleSystemSequenceMeshingUI
 from ui.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
+from ui.thread_sample import ThreadSampleUI
 
 def register():
   VoxelizerUI.register()
@@ -44,11 +45,13 @@ def register():
   TriangleMeshSequenceImportUI.register()
   FluidUI.register()
   SolverUI.register()
+  ThreadSampleUI.register()
 
 def unregister():
   #Model.scene.clear(0)
   #Model.scene.clear(1)
 
+  ThreadSampleUI.unregister()
   VoxelizerUI.unregister()
   ParticleSystemSequenceImportUI.unregister()
   ParticleSystemSequenceMeshingUI.unregister()
