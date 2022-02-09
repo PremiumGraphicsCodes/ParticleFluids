@@ -91,7 +91,8 @@ class BLSolver :
             if(self.__running) :
                 print("runnning frame" + str(i))
                 self.step(i)
-                self.__current_frame += 1
+                self.__current_frame = i
+                bpy.context.scene.frame_current = i
 
     def step(self, frame):
         for i in range(0, self.__iteration) :
