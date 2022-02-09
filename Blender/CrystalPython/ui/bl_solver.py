@@ -19,9 +19,11 @@ class BLSolver :
         self.__external_force = Vector3df(0.0, 0.0, -9.8)
         self.__time_step = 0.01
         self.__export_dir_path = "tmp_txt"
-        self.__bl_mesh = None
         self.__iteration = 1
-        self.__tmp_meshes = []
+        self.__current_frame = 0
+
+    def get_current_frame(self) :
+        return self.__current_frame
 
     def build(self, scene):
         if self.__solver != None :
