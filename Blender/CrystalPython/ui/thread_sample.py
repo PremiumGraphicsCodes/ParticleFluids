@@ -56,8 +56,8 @@ class ThreadPauseOperator(bpy.types.Operator):
       return {'FINISHED'}
 
 class ThreadCancelOperator(bpy.types.Operator):
-    bl_idname = "pg.solvercanceloperator"
-    bl_label = "SolverCancel"
+    bl_idname = "pg.threadrcanceloperator"
+    bl_label = "ThreadCancel"
     bl_description = "Hello"
 
     def execute(self, context) :
