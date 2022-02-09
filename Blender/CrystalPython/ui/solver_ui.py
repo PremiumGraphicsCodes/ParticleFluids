@@ -70,10 +70,7 @@ class SolverStartOperator(bpy.types.Operator):
 
     def execute(self, context) :
         reset()
-        if not bl_solver.is_running() :
-            bl_solver.start()
-        else :
-            bl_solver.stop()
+        bl_solver.start()
         return {'FINISHED'}
 
 class SolverPauseOperator(bpy.types.Operator):
@@ -82,7 +79,16 @@ class SolverPauseOperator(bpy.types.Operator):
     bl_description = "Hello"
 
     def execute(self, context) :
-        #bl_solver.pause()
+        bl_solver.pause()
+        return {'FINISHED'}
+
+class SolverResumeOperator(bpy.types.Operator):
+    bl_idname = "pg.solverresumeoperator"
+    bl_label = "SolverResume"
+    bl_description = "Hello"
+
+    def execute(self, context) :
+        bl_solver.resume()
         return {'FINISHED'}
 
 class SolverCancelOperator(bpy.types.Operator):
@@ -91,7 +97,7 @@ class SolverCancelOperator(bpy.types.Operator):
     bl_description = "Hello"
 
     def execute(self, context) :
-        #bl_solver.stop()
+        bl_solver.stop()
         return {'FINISHED'}        
 
 class SolverProperty(bpy.types.PropertyGroup) :
@@ -181,17 +187,18 @@ class SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "max", text="Max")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
         self.layout.prop(solver_property, "iteration_prop", text="Iteration")
-        if not bl_solver.is_running() :
-            self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
-        else :
-            self.layout.operator(SolverStartOperator.bl_idname,text="Stop", icon='PAUSE')
-        #self.layout.operator(SolverPauseOperator.bl_idname,text="Pause", icon='PAUSE')
-        #self.layout.operator(SolverPauseOperator.bl_idname,text="Cancel", icon='PAUSE')
+        self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
+        if bl_solver.is_running() :
+            self.layout.operator(SolverPauseOperator.bl_idname,text="Pause", icon='PAUSE')
+        else :            
+            self.layout.operator(SolverResumeOperator.bl_idname, text="Resume")
+        self.layout.operator(SolverCancelOperator.bl_idname,text="Cancel", icon='PAUSE')
         self.layout.prop(solver_property, "progress_prop", text="Progress")
 
 classes = [
     SolverStartOperator,
     SolverPauseOperator,
+    SolverResumeOperator,
     SolverCancelOperator,
     SolverPanel,
     SolverProperty,

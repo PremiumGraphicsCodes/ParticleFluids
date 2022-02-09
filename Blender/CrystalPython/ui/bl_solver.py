@@ -65,8 +65,17 @@ class BLSolver :
         thread = threading.Thread(target=self.run)
         thread.start()
 
+    def pause(self):
+        self.__running = False
+
+    def resume(self):
+        thread = threading.Thread(target=self.run)
+        thread.start()
+        self.__running = True
+
     def stop(self):
         self.__running = False
+        self.__current_frame = 0
 
     def set_start_frame(self, frame) :
         self.start_frame = frame
@@ -79,9 +88,10 @@ class BLSolver :
 
     def run(self) :
         for i in range(self.__current_frame, self.end_frame) :
-            print("runnning frame" + str(i))
-            self.step(i)
-            self.__current_frame += 1
+            if(self.__running) :
+                print("runnning frame" + str(i))
+                self.step(i)
+                self.__current_frame += 1
 
     def step(self, frame):
         for i in range(0, self.__iteration) :
