@@ -25,20 +25,28 @@ class MeshingRunner :
         self.__files = []
         self.__running = False
         self.__directory = ""
+        self.__current_index = 0
+
+    def is_running(self) :
+        return self.__running
 
     def set_dir(self, dir) :
         self.__directory = dir
 
     def set_files(self, files) :
-        self.__files = sorted(files)
+        self.__files = files
 
     def run(self):
-        for file in self.__files :
+        count = len(self.__files)
+        start = self.__current_index
+        for i in range(start, count) :
             if self.__running :
+                file = self.__files[i]
                 self.convert(file)
+                self.__current_index = i
 
     def start(self):
-        #self.__current_frame = self.start_frame
+        self.__current_index = 0
         self.__running = True
         thread = threading.Thread(target=self.run)
         thread.start()
@@ -46,14 +54,14 @@ class MeshingRunner :
     def pause(self):
         self.__running = False
 
+    def stop(self):
+        self.__running = False
+        self.__current_index = 0
+
     def resume(self):
         thread = threading.Thread(target=self.run)
         thread.start()
         self.__running = True
-
-    def stop(self):
-        self.__running = False
-        self.__current_file = ""
 
     def convert(self, file_name) :
         prop = bpy.context.scene.meshing_property
@@ -123,6 +131,24 @@ class ParticleSystemSequenceMeshingPauseOperator(bpy.types.Operator) :
         runner.pause()
         return {'FINISHED'}
 
+class ParticleSystemSequenceMeshingResumeOperator(bpy.types.Operator) :
+    bl_idname = "pg.particlesystemsequencemeshingresumeoperator"
+    bl_label = "ParticleSystem"
+
+    def execute(self, context) :
+        global runner
+        runner.resume()
+        return {'FINISHED'}
+
+class ParticleSystemSequenceMeshingCancelOperator(bpy.types.Operator) :
+    bl_idname = "pg.particlesystemsequencemeshingcanceloperator"
+    bl_label = "ParticleSystem"
+
+    def execute(self, context) :
+        global runner
+        runner.stop()
+        return {'FINISHED'}
+
 class MeshingProperty(bpy.types.PropertyGroup) :        
     particle_radius_prop : bpy.props.FloatProperty(
         name="particle_radius",
@@ -152,11 +178,17 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
         self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
-        self.layout.operator(ParticleSystemSequenceMeshingPauseOperator.bl_idname, text="Pause", icon="PAUSE")
+        if runner.is_running() :            
+            self.layout.operator(ParticleSystemSequenceMeshingPauseOperator.bl_idname, text="Pause", icon="PAUSE")
+        else :
+            self.layout.operator(ParticleSystemSequenceMeshingResumeOperator.bl_idname, text="Resume")
+        self.layout.operator(ParticleSystemSequenceMeshingCancelOperator.bl_idname, text="Cancel")
 
 classes = [
     ParticleSystemSequenceMeshingOperator,
     ParticleSystemSequenceMeshingPauseOperator,
+    ParticleSystemSequenceMeshingResumeOperator,
+    ParticleSystemSequenceMeshingCancelOperator,
     ParticleSystemSequenceMeshingPanel,
     MeshingProperty
 ]
