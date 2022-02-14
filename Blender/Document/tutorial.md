@@ -1,46 +1,54 @@
 # ParticleFluids Tutorial
 
-2021 premiumgraphics
+2022 premiumgraphics
 
-## 画面構成
-タブが4つあります．
+## インストール
+Microsoft社のHPからVisualStudio2019ランタイム(x64)をインストールします．
 
-- PFFluid
-- PFBoundary
-- PFSolver
-- PFTools
+本アドオンはソルバー本体と，OpenVDBツールから構成されています．
+シミュレーション自体はOpenVDBを用いることなく実行できますが，
+プリ、ポストまでBlender上で完結させることができます．
 
-## シミュレーションの流れ
-
-## データ構造
+## チュートリアル1 Hello, Fluids!
 
 ### Particle Systemデータの作成
 
-Particleデータを作成します。
-ポリゴンを選択し，[PFTools]->[Voxelizer]と選択します．
-ここではBlenderデフォルトの[Cube]をそのまま用います．
-ここで[DivideLength]を[0.1],[Name]を[FluidSource01]とします。
-するとツリー上に[FluidSource01]というオブジェクトが現れます．
+- Blenderデフォルトの[Cube]の[ScaleX],[ScaleY],[ScaleZ]をそれぞれ10,10,10とします．
+- [Cube]を選択したまま，[Voxelizer]->[MeshToPS]を選択し，[Convert]を押します．
+- するとツリー上に[ParticleSystem01]というオブジェクトが現れます．
+
+![MeshToPS](/images/MeshToPS.PNG) 
 
 ### Fluidデータの作成
 
-[PFFluid]->[Add]で新しいFluidを作ります．
-先ほど作成した[FluidSource01]を選択し，[SetSource]ボタンを押します．
-[Name]を[Fluid01]とします．
-するとツリー上に[Fluid01]というオブジェクトが現れます．
+- 先ほど作成した[ParticleSystem01]を選択し，[Physics]タブを開きます．
+- [ParticleFluids]ボタンを押します．
+- パラメータ設定用タブが開きます．
 
-### Boundaryの作成
-[PFBoundary]タブでBoundaryを追加します．
-今回は[-1,-1,-1],[1,1,1]のBoxのままにします．
-[Name]を[Boundary01]とします．
-するとツリー上に[Boundary01]というオブジェクトが現れます．
+![MeshToPS](/images/Fluid.PNG) 
 
 ### シミュレーションの開始
 [PFSolver]タブでSolverを追加します．
 [Start]ボタンでシミュレーションが開始されます．
 [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
+plyファイルが連番で出力されてます．
+
+### VDBボリュームへの変換
+[PFSolver]タブでSolverを追加します．
+[Start]ボタンでシミュレーションが開始されます．
+[ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
 
 ### Meshing
-作成されたファイルはParticleSystemデータであるため，ポリゴン化をする必要があります．
-[PFTools]に[PSSeqMeshing]を選び，先ほど出力したディレクトリを，[ImportPath]で設定します．
+Blender標準の機能で連番のOpenVDBファイルを入力として扱うことができます．
 
+## チュートリアル2 Add Boundary
+
+### 障害物の作成
+[PFBoundary]タブでBoundaryを追加します．
+今回は[-1,-1,-1],[1,1,1]のBoxのままにします．
+[Name]を[Boundary01]とします．
+するとツリー上に[Boundary01]というオブジェクトが現れます．
+
+
+## それから
+自由にParticleSystemを追加したり削除したりして自分のCGを作ってみてください．

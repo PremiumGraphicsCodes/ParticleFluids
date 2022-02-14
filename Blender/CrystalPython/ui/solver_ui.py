@@ -47,14 +47,14 @@ def reset() :
     for bl_fluid in bl_fluids :
         bl_solver.add_fluid(bl_fluid)
 
-    bl_boundary = BLBoundary(scene)
-    bl_boundary.build(scene)
+    #bl_boundary = BLBoundary(scene)
+    #bl_boundary.build(scene)
 
-    min = bpy.context.scene.solver_property.min
-    max = bpy.context.scene.solver_property.max
-    bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
-    bl_boundary.boundary.send()
-    bl_solver.add_boundary(bl_boundary)
+    #min = bpy.context.scene.solver_property.min
+    #max = bpy.context.scene.solver_property.max
+    #bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
+    #bl_boundary.boundary.send()
+    #bl_solver.add_boundary(bl_boundary)
     bl_solver.set_effect_length(bpy.context.scene.solver_property.search_radius_prop)
     
     bl_solver.send()
@@ -138,16 +138,16 @@ class SolverProperty(bpy.types.PropertyGroup) :
         default = 3.0,
         min = -0.0
     )
-    min : bpy.props.FloatVectorProperty(
-        name="min",
-        description="Min",
-        default=(-1.0, -1.0, -1.0)
-    )
-    max : bpy.props.FloatVectorProperty(
-        name="max",
-        description="Max",
-        default=(1.0, 1.0, 1.0)
-    )
+#    min : bpy.props.FloatVectorProperty(
+#        name="min",
+#        description="Min",
+#        default=(-1.0, -1.0, -1.0)
+#    )
+#    max : bpy.props.FloatVectorProperty(
+#        name="max",
+#        description="Max",
+#        default=(1.0, 1.0, 1.0)
+#    )
     export_dir_path : bpy.props.StringProperty(
         name="export_dir",
         description="Path to Directory",
@@ -183,8 +183,8 @@ class PARTICLE_FLUIDS_PT_SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
         self.layout.prop(solver_property, "search_radius_prop", text="SearchRadius")
-        self.layout.prop(solver_property, "min", text="Min")
-        self.layout.prop(solver_property, "max", text="Max")
+#        self.layout.prop(solver_property, "min", text="Min")
+#        self.layout.prop(solver_property, "max", text="Max")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
         self.layout.prop(solver_property, "iteration_prop", text="Iteration")
 
