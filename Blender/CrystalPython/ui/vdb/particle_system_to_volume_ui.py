@@ -96,7 +96,7 @@ class VDBConverter :
 
 runner = VDBConverter()
 
-class ParticleSystemSequenceMeshingOperator(bpy.types.Operator, ImportHelper) :
+class PARTICLE_FLUIDS_PSToVolumeOperator(bpy.types.Operator, ImportHelper) :
     bl_idname = "pg.particlesystemsequencemeshingoperator"
     bl_label = "ParticleSystem"
 #    bl_description = "Hello"
@@ -177,7 +177,7 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         prop = context.scene.meshing_property
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
-        self.layout.operator(ParticleSystemSequenceMeshingOperator.bl_idname, text="Start", icon = "PLAY")
+        self.layout.operator(PARTICLE_FLUIDS_PSToVolumeOperator.bl_idname, text="Start", icon = "PLAY")
         if runner.is_running() :            
             self.layout.operator(ParticleSystemSequenceMeshingPauseOperator.bl_idname, text="Pause", icon="PAUSE")
         else :
@@ -185,7 +185,7 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         self.layout.operator(ParticleSystemSequenceMeshingCancelOperator.bl_idname, text="Cancel")
 
 classes = [
-    ParticleSystemSequenceMeshingOperator,
+    PARTICLE_FLUIDS_PSToVolumeOperator,
     ParticleSystemSequenceMeshingPauseOperator,
     ParticleSystemSequenceMeshingResumeOperator,
     ParticleSystemSequenceMeshingCancelOperator,

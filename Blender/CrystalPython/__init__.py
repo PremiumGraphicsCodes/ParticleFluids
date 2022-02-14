@@ -30,11 +30,11 @@ sys.path += [addon_dirpath]
 
 import bpy
 
-from ui.voxelizer_operator import VoxelizerUI
+from ui.vdb.voxelizer_operator import VoxelizerUI
 from ui.fluid_ui import FluidUI
 from ui.solver_ui import SolverUI
 #from ui.sandbox.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
-from ui.particle_system_sequence_meshing_ui import ParticleSystemSequenceMeshingUI
+from ui.vdb.particle_system_to_volume_ui import ParticleSystemSequenceMeshingUI
 #from ui.sandbox.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
 #from ui.thread_sample import ThreadSampleUI
 
