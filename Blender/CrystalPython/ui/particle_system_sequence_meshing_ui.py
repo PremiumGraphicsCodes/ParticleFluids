@@ -20,7 +20,7 @@ from bpy_extras.io_utils import ImportHelper
 world = World()
 scene = Scene(world)
 
-class MeshingRunner :
+class VDBConverter :
     def __init__(self) :
         self.__files = []
         self.__running = False
@@ -94,7 +94,7 @@ class MeshingRunner :
             #self.tmp_volumes = bpy.context.selected_objects
 
 
-runner = MeshingRunner()
+runner = VDBConverter()
 
 class ParticleSystemSequenceMeshingOperator(bpy.types.Operator, ImportHelper) :
     bl_idname = "pg.particlesystemsequencemeshingoperator"

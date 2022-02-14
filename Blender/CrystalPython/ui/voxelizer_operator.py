@@ -75,7 +75,7 @@ class VoxelizerPropertyGroup(bpy.types.PropertyGroup):
     min = 0.0
   )
 
-class VOXELIZER_PT_Panel(bpy.types.Panel) :
+class PARTICLE_FLUIDS_Voxelizer_PT_Panel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
   bl_category = "VDBTools"
@@ -88,7 +88,7 @@ class VOXELIZER_PT_Panel(bpy.types.Panel) :
 
 classes = [
   VoxelizerOperator,
-  VOXELIZER_PT_Panel,
+  PARTICLE_FLUIDS_Voxelizer_PT_Panel,
   VoxelizerPropertyGroup
 ]
 

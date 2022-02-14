@@ -167,7 +167,7 @@ class SolverProperty(bpy.types.PropertyGroup) :
         default = 0,   
     )
 
-class SolverPanel(bpy.types.Panel):
+class PARTICLE_FLUIDS_PT_SolverPanel(bpy.types.Panel):
     bl_label = "Solver"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
@@ -200,7 +200,7 @@ classes = [
     SolverPauseOperator,
     SolverResumeOperator,
     SolverCancelOperator,
-    SolverPanel,
+    PARTICLE_FLUIDS_PT_SolverPanel,
     SolverProperty,
 ]
 

@@ -33,29 +33,26 @@ import bpy
 from ui.voxelizer_operator import VoxelizerUI
 from ui.fluid_ui import FluidUI
 from ui.solver_ui import SolverUI
-from ui.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
+#from ui.sandbox.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
 from ui.particle_system_sequence_meshing_ui import ParticleSystemSequenceMeshingUI
-from ui.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
-from ui.thread_sample import ThreadSampleUI
+#from ui.sandbox.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
+#from ui.thread_sample import ThreadSampleUI
 
 def register():
   VoxelizerUI.register()
-  ParticleSystemSequenceImportUI.register()
+#  ParticleSystemSequenceImportUI.register()
   ParticleSystemSequenceMeshingUI.register()
-  TriangleMeshSequenceImportUI.register()
+#  TriangleMeshSequenceImportUI.register()
   FluidUI.register()
   SolverUI.register()
-  ThreadSampleUI.register()
+#  ThreadSampleUI.register()
 
 def unregister():
-  #Model.scene.clear(0)
-  #Model.scene.clear(1)
-
-  ThreadSampleUI.unregister()
+#  ThreadSampleUI.unregister()
   VoxelizerUI.unregister()
-  ParticleSystemSequenceImportUI.unregister()
+#  ParticleSystemSequenceImportUI.unregister()
   ParticleSystemSequenceMeshingUI.unregister()
-  TriangleMeshSequenceImportUI.unregister()
+#  TriangleMeshSequenceImportUI.unregister()
   FluidUI.unregister()
   SolverUI.unregister()
 
