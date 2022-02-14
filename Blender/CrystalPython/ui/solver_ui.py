@@ -64,7 +64,7 @@ def reset() :
     bl_solver.set_export_path( bpy.context.scene.solver_property.export_dir_path )
 
 class PARTICLE_FLUIDS_OT_SolverStartOperator(bpy.types.Operator):
-    bl_idname = "pg.solverstartoperator"
+    bl_idname = "pf.solverstartoperator"
     bl_label = "SolverStart"
     bl_description = "Hello"
 
@@ -74,7 +74,7 @@ class PARTICLE_FLUIDS_OT_SolverStartOperator(bpy.types.Operator):
         return {'FINISHED'}
 
 class PARTICLE_FLUIDS_OT_SolverPauseOperator(bpy.types.Operator):
-    bl_idname = "pg.solverpauseoperator"
+    bl_idname = "pf.solverpauseoperator"
     bl_label = "SolverPause"
     bl_description = "Hello"
 
@@ -83,7 +83,7 @@ class PARTICLE_FLUIDS_OT_SolverPauseOperator(bpy.types.Operator):
         return {'FINISHED'}
 
 class PARTICLE_FLUIDS_OT_SolverResumeOperator(bpy.types.Operator):
-    bl_idname = "pg.solverresumeoperator"
+    bl_idname = "pf.solverresumeoperator"
     bl_label = "SolverResume"
     bl_description = "Hello"
 
@@ -92,7 +92,7 @@ class PARTICLE_FLUIDS_OT_SolverResumeOperator(bpy.types.Operator):
         return {'FINISHED'}
 
 class PARTICLE_FLUIDS_OT_SolverCancelOperator(bpy.types.Operator):
-    bl_idname = "pg.solvercanceloperator"
+    bl_idname = "pf.solvercanceloperator"
     bl_label = "SolverCancel"
     bl_description = "Hello"
 
@@ -151,7 +151,7 @@ class SolverProperty(bpy.types.PropertyGroup) :
     export_dir_path : bpy.props.StringProperty(
         name="export_dir",
         description="Path to Directory",
-        default="tmp_txt",
+        default="C:/tmp",
         maxlen=1024,
         subtype='DIR_PATH',
     )
@@ -187,13 +187,16 @@ class PARTICLE_FLUIDS_PT_SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "max", text="Max")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
         self.layout.prop(solver_property, "iteration_prop", text="Iteration")
-        self.layout.operator(PARTICLE_FLUIDS_OT_SolverStartOperator.bl_idname,text="Start", icon='PLAY')
+
+        self.layout.separator()
+        row = self.layout.row(align=False)
+        row.operator(PARTICLE_FLUIDS_OT_SolverStartOperator.bl_idname,text="Start", icon='PLAY')
         if bl_solver.is_running() :
-            self.layout.operator(PARTICLE_FLUIDS_OT_SolverPauseOperator.bl_idname,text="Pause", icon='PAUSE')
+            row.operator(PARTICLE_FLUIDS_OT_SolverPauseOperator.bl_idname,text="Pause", icon='PAUSE')
         else :            
-            self.layout.operator(PARTICLE_FLUIDS_OT_SolverResumeOperator.bl_idname, text="Resume")
-        self.layout.operator(PARTICLE_FLUIDS_OT_SolverCancelOperator.bl_idname,text="Cancel", icon='PAUSE')
-        self.layout.prop(solver_property, "progress_prop", text="Progress")
+            row.operator(PARTICLE_FLUIDS_OT_SolverResumeOperator.bl_idname, text="Resume")
+        row.operator(PARTICLE_FLUIDS_OT_SolverCancelOperator.bl_idname,text="Cancel", icon='PAUSE')
+        self.layout.separator()
 
 classes = [
     PARTICLE_FLUIDS_OT_SolverStartOperator,

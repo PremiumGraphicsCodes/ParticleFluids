@@ -72,7 +72,7 @@ class VDBConverter :
         export_file_path = os.path.join(self.__directory, basename_without_ext + ".vdb") #basename_without_ext + ".stl")
         
         addon_dirpath = os.path.dirname(__file__)
-        tool_path = os.path.join(addon_dirpath, '../vdb/VDBTool')
+        tool_path = os.path.join(addon_dirpath, '../../vdb/VDBTool')
 
         params = []
         params.append(tool_path)
@@ -96,7 +96,7 @@ class VDBConverter :
 
 runner = VDBConverter()
 
-class PARTICLE_FLUIDS_PSToVolumeStartOperator(bpy.types.Operator, ImportHelper) :
+class PARTICLE_FLUIDS_OT_PSToVolumeStartOperator(bpy.types.Operator, ImportHelper) :
     bl_idname = "pg.particlesystemsequencemeshingoperator"
     bl_label = "ParticleSystem"
 #    bl_description = "Hello"
@@ -122,7 +122,7 @@ class PARTICLE_FLUIDS_PSToVolumeStartOperator(bpy.types.Operator, ImportHelper) 
         runner.start()
         return {'FINISHED'}
 
-class PARTICLE_FLUIDS_PSToVolumePauseOperator(bpy.types.Operator) :
+class PARTICLE_FLUIDS_OT_PSToVolumePauseOperator(bpy.types.Operator) :
     bl_idname = "pg.particlesystemsequencemeshingpauseoperator"
     bl_label = "ParticleSystem"
 
@@ -131,7 +131,7 @@ class PARTICLE_FLUIDS_PSToVolumePauseOperator(bpy.types.Operator) :
         runner.pause()
         return {'FINISHED'}
 
-class PARTICLE_FLUIDS_PSToVolumeResumeOperator(bpy.types.Operator) :
+class PARTICLE_FLUIDS_OT_PSToVolumeResumeOperator(bpy.types.Operator) :
     bl_idname = "pg.particlesystemsequencemeshingresumeoperator"
     bl_label = "ParticleSystem"
 
@@ -140,7 +140,7 @@ class PARTICLE_FLUIDS_PSToVolumeResumeOperator(bpy.types.Operator) :
         runner.resume()
         return {'FINISHED'}
 
-class PARTICLE_FLUIDS_PSToVolumeCancelOperator(bpy.types.Operator) :
+class PARTICLE_FLUIDS_OT_PSToVolumeCancelOperator(bpy.types.Operator) :
     bl_idname = "pg.particlesystemsequencemeshingcanceloperator"
     bl_label = "ParticleSystem"
 
@@ -180,21 +180,21 @@ class PARTICLE_FLUIDS_PT_PSToVolumePanel(bpy.types.Panel):
 
         self.layout.separator()
         row = self.layout.row(align=False)
-        row.operator(PARTICLE_FLUIDS_PSToVolumeStartOperator.bl_idname, text="Start", icon = "PLAY")
+        row.operator(PARTICLE_FLUIDS_OT_PSToVolumeStartOperator.bl_idname, text="Start", icon = "PLAY")
         if runner.is_running() :            
-            row.operator(PARTICLE_FLUIDS_PSToVolumePauseOperator.bl_idname, text="Pause", icon="PAUSE")
+            row.operator(PARTICLE_FLUIDS_OT_PSToVolumePauseOperator.bl_idname, text="Pause", icon="PAUSE")
         else :
-            row.operator(PARTICLE_FLUIDS_PSToVolumeResumeOperator.bl_idname, text="Resume", icon="PLAY")
-        row.operator(PARTICLE_FLUIDS_PSToVolumeCancelOperator.bl_idname, text="Cancel", icon="CANCEL")
+            row.operator(PARTICLE_FLUIDS_OT_PSToVolumeResumeOperator.bl_idname, text="Resume", icon="PLAY")
+        row.operator(PARTICLE_FLUIDS_OT_PSToVolumeCancelOperator.bl_idname, text="Cancel", icon="CANCEL")
         self.layout.separator()
 
 classes = [
-    PARTICLE_FLUIDS_PSToVolumeStartOperator,
-    PARTICLE_FLUIDS_PSToVolumePauseOperator,
-    PARTICLE_FLUIDS_PSToVolumeResumeOperator,
-    PARTICLE_FLUIDS_PSToVolumeCancelOperator,
-    PARTICLE_FLUIDS_PSToVolumeProperty,
+    PARTICLE_FLUIDS_OT_PSToVolumeStartOperator,
+    PARTICLE_FLUIDS_OT_PSToVolumePauseOperator,
+    PARTICLE_FLUIDS_OT_PSToVolumeResumeOperator,
+    PARTICLE_FLUIDS_OT_PSToVolumeCancelOperator,
     PARTICLE_FLUIDS_PT_PSToVolumePanel,
+    PARTICLE_FLUIDS_PSToVolumeProperty,
 ]
 
 class PARTICLE_FLUIDS_PSToVolumeUI :
