@@ -34,17 +34,30 @@ class FluidProperty(bpy.types.PropertyGroup) :
     default = False,
   )
 
-class FluidPanel(bpy.types.Panel) :
+class SAMPLE27_OT_Nop(bpy.types.Operator):
+    bl_idname = "object.sample27_nop"
+    bl_label = "NOP"
+    bl_description = "何もしない"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+      is_active = bpy.context.active_object.ps_fluid.is_active_prop
+      bpy.context.active_object.ps_fluid.is_active_prop = not is_active
+      return {'FINISHED'}
+
+class PARTICLE_FLUID_PT_FluidPanel(bpy.types.Panel) :
   bl_space_type = "PROPERTIES"
   bl_region_type = "WINDOW"
   bl_context = "physics"
+  bl_category = "ParticleFluid"
   bl_label = "ParticleFluid"
  
   def draw(self, context):
     layout = self.layout
-    if bpy.context.active_object.ps_fluid != None :
+    layout.operator(SAMPLE27_OT_Nop.bl_idname, text="ParticleFluid")    
+    if bpy.context.active_object.ps_fluid.is_active_prop == True :
       fluid_property = bpy.context.active_object.ps_fluid
-      layout.prop(fluid_property, "is_active_prop", text="Active")
+#      layout.prop(fluid_property, "is_active_prop", text="Active")
       layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
@@ -54,11 +67,12 @@ class FluidPanel(bpy.types.Panel) :
 #      op_del.fluid_name = fluid_property.name_prop
 
 classes = [
+  SAMPLE27_OT_Nop,
   FluidProperty,
-  FluidPanel,  
+  PARTICLE_FLUID_PT_FluidPanel,  
 ]
 
-class FluidUI :
+class PARTICLE_FLUIDS_FluidUI :
   def register():
     for c in classes:
       bpy.utils.register_class(c)
