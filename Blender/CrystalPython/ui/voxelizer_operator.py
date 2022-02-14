@@ -1,5 +1,4 @@
 import bpy
-import CrystalPLI
 
 from bpy.props import (
     FloatProperty,
@@ -19,8 +18,6 @@ from scene.scene import Scene
 world = World()
 scene = Scene(world)
 
-divide_length = 0.2
-
 class VoxelizerOperator(bpy.types.Operator) :
   bl_idname = "pg.voxelizeroperator"
   bl_label = "MeshToPS"
@@ -28,7 +25,7 @@ class VoxelizerOperator(bpy.types.Operator) :
 
   def execute(self, context) :
       global scene
-      global divide_length
+      divide_length = context.scene.voxelizer_property.divide_length
 
       selected_mesh = self.get_selected_mesh(context)
       if selected_mesh == None :
@@ -70,32 +67,15 @@ class VoxelizerOperator(bpy.types.Operator) :
         #return o.to_mesh()
     return None
 
-def set_divide_length(self, value) :
-    global divide_length
-    divide_length = value
-    return None
+class VoxelizerPropertyGroup(bpy.types.PropertyGroup):
+  divide_length : bpy.props.FloatProperty(
+    name="divide_length",
+    description="",
+    default=1.0,
+    min = 0.0
+  )
 
-def get_divide_length(self):
-  global divide_length
-  return divide_length
-
-def init_props():
-    scene = bpy.types.Scene
-    scene.divide_length_prop = FloatProperty(
-        name="divide_length",
-        description="DivideLength",
-        default=1.0,
-        min=0.0,
-        get=get_divide_length,
-        set=set_divide_length
-    )
-
-def clear_props():
-    scene = bpy.types.Scene
-    del scene.divide_length_prop
-
-
-class VoxelizerPanel(bpy.types.Panel) :
+class VOXELIZER_PT_Panel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
   bl_category = "VDBTools"
@@ -103,22 +83,23 @@ class VoxelizerPanel(bpy.types.Panel) :
   
   def draw(self, context):
     layout = self.layout
-    layout.prop(context.scene, "divide_length_prop", text="DivideLength")
+    layout.prop(context.scene.voxelizer_property, "divide_length", text="DivideLength")
     layout.operator(VoxelizerOperator.bl_idname, text="Voxelize")
 
 classes = [
   VoxelizerOperator,
-  VoxelizerPanel,
+  VOXELIZER_PT_Panel,
+  VoxelizerPropertyGroup
 ]
 
 class VoxelizerUI :
   def register():
-    init_props()
     for c in classes:
       bpy.utils.register_class(c)
+    bpy.types.Scene.voxelizer_property = bpy.props.PointerProperty(type=VoxelizerPropertyGroup)
 
   def unregister() :
-    clear_props()
+    del bpy.types.Scene.voxelizer_property
     for c in classes:
       bpy.utils.unregister_class(c)
  
