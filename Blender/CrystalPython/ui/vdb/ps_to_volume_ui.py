@@ -64,7 +64,7 @@ class VDBConverter :
         self.__running = True
 
     def convert(self, file_name) :
-        prop = bpy.context.scene.meshing_property
+        prop = bpy.context.scene.ps_to_volumeproperty
         print("converting " + file_name)
 
         ps_file_path = os.path.join(self.__directory, file_name)
@@ -140,7 +140,7 @@ class PARTICLE_FLUIDS_PSToVolumeResumeOperator(bpy.types.Operator) :
         runner.resume()
         return {'FINISHED'}
 
-class ParticleSystemSequenceMeshingCancelOperator(bpy.types.Operator) :
+class PARTICLE_FLUIDS_PSToVolumeCancelOperator(bpy.types.Operator) :
     bl_idname = "pg.particlesystemsequencemeshingcanceloperator"
     bl_label = "ParticleSystem"
 
@@ -166,15 +166,15 @@ class PARTICLE_FLUIDS_PSToVolumeProperty(bpy.types.PropertyGroup) :
         max = 100.0,
     )
         
-class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
-    bl_label = "PSSeqMeshing"
+class PARTICLE_FLUIDS_PT_PSToVolumePanel(bpy.types.Panel):
+    bl_label = "PSToVolume"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = "VDBTools"
     bl_context = "objectmode"
 
     def draw(self, context):
-        prop = context.scene.meshing_property
+        prop = context.scene.ps_to_volumeproperty
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
 
@@ -184,26 +184,26 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         if runner.is_running() :            
             row.operator(PARTICLE_FLUIDS_PSToVolumePauseOperator.bl_idname, text="Pause", icon="PAUSE")
         else :
-            row.operator(PARTICLE_FLUIDS_PSToVolumeResumeOperator.bl_idname, text="Resume")
-        row.operator(ParticleSystemSequenceMeshingCancelOperator.bl_idname, text="Cancel")
+            row.operator(PARTICLE_FLUIDS_PSToVolumeResumeOperator.bl_idname, text="Resume", icon="PLAY")
+        row.operator(PARTICLE_FLUIDS_PSToVolumeCancelOperator.bl_idname, text="Cancel", icon="CANCEL")
         self.layout.separator()
 
 classes = [
     PARTICLE_FLUIDS_PSToVolumeStartOperator,
     PARTICLE_FLUIDS_PSToVolumePauseOperator,
     PARTICLE_FLUIDS_PSToVolumeResumeOperator,
-    ParticleSystemSequenceMeshingCancelOperator,
-    ParticleSystemSequenceMeshingPanel,
-    PARTICLE_FLUIDS_PSToVolumeProperty
+    PARTICLE_FLUIDS_PSToVolumeCancelOperator,
+    PARTICLE_FLUIDS_PSToVolumeProperty,
+    PARTICLE_FLUIDS_PT_PSToVolumePanel,
 ]
 
 class PARTICLE_FLUIDS_PSToVolumeUI :
     def register():
         for c in classes:
             bpy.utils.register_class(c)
-        bpy.types.Scene.meshing_property = bpy.props.PointerProperty(type=PARTICLE_FLUIDS_PSToVolumeProperty)
+        bpy.types.Scene.ps_to_volumeproperty = bpy.props.PointerProperty(type=PARTICLE_FLUIDS_PSToVolumeProperty)
 
     def unregister():
         for c in classes:
             bpy.utils.unregister_class(c)
-        del bpy.types.Scene.meshing_property
+        del bpy.types.Scene.ps_to_volumeproperty

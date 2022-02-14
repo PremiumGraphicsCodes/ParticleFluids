@@ -30,16 +30,16 @@ sys.path += [addon_dirpath]
 
 import bpy
 
-from ui.vdb.voxelizer_operator import VoxelizerUI
+from ui.vdb.mesh_to_ps_ui import PARTICLE_FLUIDS_MeshToPSUI
+from ui.vdb.ps_to_volume_ui import PARTICLE_FLUIDS_PSToVolumeUI
 from ui.fluid_ui import FluidUI
 from ui.solver_ui import SolverUI
-from ui.vdb.ps_to_volume_ui import PARTICLE_FLUIDS_PSToVolumeUI
 #from ui.sandbox.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
 #from ui.sandbox.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
 #from ui.thread_sample import ThreadSampleUI
 
 def register():
-  VoxelizerUI.register()
+  PARTICLE_FLUIDS_MeshToPSUI.register()
   PARTICLE_FLUIDS_PSToVolumeUI.register()
   FluidUI.register()
   SolverUI.register()
@@ -48,7 +48,7 @@ def register():
 #  ThreadSampleUI.register()
 
 def unregister():
-  VoxelizerUI.unregister()
+  PARTICLE_FLUIDS_MeshToPSUI.unregister()
   PARTICLE_FLUIDS_PSToVolumeUI.unregister()
   FluidUI.unregister()
   SolverUI.unregister()
