@@ -33,28 +33,29 @@ import bpy
 from ui.vdb.voxelizer_operator import VoxelizerUI
 from ui.fluid_ui import FluidUI
 from ui.solver_ui import SolverUI
+from ui.vdb.ps_to_volume_ui import PARTICLE_FLUIDS_PSToVolumeUI
 #from ui.sandbox.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
-from ui.vdb.particle_system_to_volume_ui import ParticleSystemSequenceMeshingUI
 #from ui.sandbox.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
 #from ui.thread_sample import ThreadSampleUI
 
 def register():
   VoxelizerUI.register()
-#  ParticleSystemSequenceImportUI.register()
-  ParticleSystemSequenceMeshingUI.register()
-#  TriangleMeshSequenceImportUI.register()
+  PARTICLE_FLUIDS_PSToVolumeUI.register()
   FluidUI.register()
   SolverUI.register()
+#  ParticleSystemSequenceImportUI.register()
+#  TriangleMeshSequenceImportUI.register()
 #  ThreadSampleUI.register()
 
 def unregister():
-#  ThreadSampleUI.unregister()
   VoxelizerUI.unregister()
-#  ParticleSystemSequenceImportUI.unregister()
-  ParticleSystemSequenceMeshingUI.unregister()
-#  TriangleMeshSequenceImportUI.unregister()
+  PARTICLE_FLUIDS_PSToVolumeUI.unregister()
   FluidUI.unregister()
   SolverUI.unregister()
+#  ThreadSampleUI.unregister()
+#  ParticleSystemSequenceImportUI.unregister()
+#  TriangleMeshSequenceImportUI.unregister()
+
 
 if __name__ == "__main__":
   register()

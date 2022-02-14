@@ -96,7 +96,7 @@ class VDBConverter :
 
 runner = VDBConverter()
 
-class PARTICLE_FLUIDS_PSToVolumeOperator(bpy.types.Operator, ImportHelper) :
+class PARTICLE_FLUIDS_PSToVolumeStartOperator(bpy.types.Operator, ImportHelper) :
     bl_idname = "pg.particlesystemsequencemeshingoperator"
     bl_label = "ParticleSystem"
 #    bl_description = "Hello"
@@ -122,7 +122,7 @@ class PARTICLE_FLUIDS_PSToVolumeOperator(bpy.types.Operator, ImportHelper) :
         runner.start()
         return {'FINISHED'}
 
-class ParticleSystemSequenceMeshingPauseOperator(bpy.types.Operator) :
+class PARTICLE_FLUIDS_PSToVolumePauseOperator(bpy.types.Operator) :
     bl_idname = "pg.particlesystemsequencemeshingpauseoperator"
     bl_label = "ParticleSystem"
 
@@ -131,7 +131,7 @@ class ParticleSystemSequenceMeshingPauseOperator(bpy.types.Operator) :
         runner.pause()
         return {'FINISHED'}
 
-class ParticleSystemSequenceMeshingResumeOperator(bpy.types.Operator) :
+class PARTICLE_FLUIDS_PSToVolumeResumeOperator(bpy.types.Operator) :
     bl_idname = "pg.particlesystemsequencemeshingresumeoperator"
     bl_label = "ParticleSystem"
 
@@ -149,7 +149,7 @@ class ParticleSystemSequenceMeshingCancelOperator(bpy.types.Operator) :
         runner.stop()
         return {'FINISHED'}
 
-class MeshingProperty(bpy.types.PropertyGroup) :        
+class PARTICLE_FLUIDS_PSToVolumeProperty(bpy.types.PropertyGroup) :        
     particle_radius_prop : bpy.props.FloatProperty(
         name="particle_radius",
         description="ParticleRadius",
@@ -177,30 +177,33 @@ class ParticleSystemSequenceMeshingPanel(bpy.types.Panel):
         prop = context.scene.meshing_property
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
-        self.layout.operator(PARTICLE_FLUIDS_PSToVolumeOperator.bl_idname, text="Start", icon = "PLAY")
+
+        self.layout.separator()
+        row = self.layout.row(align=False)
+        row.operator(PARTICLE_FLUIDS_PSToVolumeStartOperator.bl_idname, text="Start", icon = "PLAY")
         if runner.is_running() :            
-            self.layout.operator(ParticleSystemSequenceMeshingPauseOperator.bl_idname, text="Pause", icon="PAUSE")
+            row.operator(PARTICLE_FLUIDS_PSToVolumePauseOperator.bl_idname, text="Pause", icon="PAUSE")
         else :
-            self.layout.operator(ParticleSystemSequenceMeshingResumeOperator.bl_idname, text="Resume")
-        self.layout.operator(ParticleSystemSequenceMeshingCancelOperator.bl_idname, text="Cancel")
+            row.operator(PARTICLE_FLUIDS_PSToVolumeResumeOperator.bl_idname, text="Resume")
+        row.operator(ParticleSystemSequenceMeshingCancelOperator.bl_idname, text="Cancel")
+        self.layout.separator()
 
 classes = [
-    PARTICLE_FLUIDS_PSToVolumeOperator,
-    ParticleSystemSequenceMeshingPauseOperator,
-    ParticleSystemSequenceMeshingResumeOperator,
+    PARTICLE_FLUIDS_PSToVolumeStartOperator,
+    PARTICLE_FLUIDS_PSToVolumePauseOperator,
+    PARTICLE_FLUIDS_PSToVolumeResumeOperator,
     ParticleSystemSequenceMeshingCancelOperator,
     ParticleSystemSequenceMeshingPanel,
-    MeshingProperty
+    PARTICLE_FLUIDS_PSToVolumeProperty
 ]
 
-class ParticleSystemSequenceMeshingUI :
+class PARTICLE_FLUIDS_PSToVolumeUI :
     def register():
         for c in classes:
             bpy.utils.register_class(c)
-        bpy.types.Scene.meshing_property = bpy.props.PointerProperty(type=MeshingProperty)
+        bpy.types.Scene.meshing_property = bpy.props.PointerProperty(type=PARTICLE_FLUIDS_PSToVolumeProperty)
 
     def unregister():
         for c in classes:
             bpy.utils.unregister_class(c)
         del bpy.types.Scene.meshing_property
-#        bpy.app.handlers.frame_change_pre.remove(my_handler)
