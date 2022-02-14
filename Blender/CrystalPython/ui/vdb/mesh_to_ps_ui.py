@@ -1,9 +1,5 @@
 import bpy
 
-from bpy.props import (
-    FloatProperty,
-)
-
 from ui.bl_particle_system import BLParticleSystem
 from ui.bl_triangle_mesh import BLTriangleMesh
 from space.voxel_scene import Voxelizer
@@ -18,7 +14,7 @@ from scene.scene import Scene
 world = World()
 scene = Scene(world)
 
-class VoxelizerOperator(bpy.types.Operator) :
+class PARTICLE_FLUIDS_OT_VoxelizerOperator(bpy.types.Operator) :
   bl_idname = "pg.voxelizeroperator"
   bl_label = "MeshToPS"
   bl_options = {"REGISTER", "UNDO"}
@@ -26,20 +22,21 @@ class VoxelizerOperator(bpy.types.Operator) :
   def execute(self, context) :
       global scene
       divide_length = context.scene.voxelizer_property.divide_length
+      export_dir_path = context.scene.voxelizer_property.export_dir_path
 
       selected_mesh = self.get_selected_mesh(context)
       if selected_mesh == None :
         return
       mesh = BLTriangleMesh(scene)
 
-      mesh_file_path = "tmp_fs_mesh.stl"
-      ps_file_path = "tmp_fs_ps.stl"
+      mesh_file_path = os.path.join(export_dir_path, "tmp_fs_mesh.stl")
+      ps_file_path = os.path.join(export_dir_path,"tmp_fs_ps.stl")
 
       mesh.convert_from_polygon_mesh(selected_mesh)
       mesh.mesh.export_stl(mesh_file_path)
 
       addon_dirpath = os.path.dirname(__file__)
-      tool_path = os.path.join(addon_dirpath, '../vdb/MeshToPSTool')
+      tool_path = os.path.join(addon_dirpath, '../../vdb/MeshToPSTool')
       params = []
       params.append(tool_path)
       params.append("-i")
@@ -74,6 +71,13 @@ class VoxelizerPropertyGroup(bpy.types.PropertyGroup):
     default=1.0,
     min = 0.0
   )
+  export_dir_path : bpy.props.StringProperty(
+    name="export_dir",
+    description="Path to Directory",
+    default="C:/tmp",
+    maxlen=1024,
+    subtype='DIR_PATH',
+  )
 
 class PARTICLE_FLUIDS_PT_Voxelizer_Panel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
@@ -84,10 +88,11 @@ class PARTICLE_FLUIDS_PT_Voxelizer_Panel(bpy.types.Panel) :
   def draw(self, context):
     layout = self.layout
     layout.prop(context.scene.voxelizer_property, "divide_length", text="DivideLength")
-    layout.operator(VoxelizerOperator.bl_idname, text="Voxelize")
+    layout.prop(context.scene.voxelizer_property, "export_dir_path", text="ExportDir")
+    layout.operator(PARTICLE_FLUIDS_OT_VoxelizerOperator.bl_idname, text="Voxelize")
 
 classes = [
-  VoxelizerOperator,
+  PARTICLE_FLUIDS_OT_VoxelizerOperator,
   PARTICLE_FLUIDS_PT_Voxelizer_Panel,
   VoxelizerPropertyGroup
 ]

@@ -4,7 +4,7 @@ from bpy.props import FloatProperty, StringProperty, BoolProperty
 from physics.fluid_scene import FluidScene
 from ui.bl_fluid import BLFluid
 
-class FluidProperty(bpy.types.PropertyGroup) :
+class PARTICLE_FLUID_FluidProperty(bpy.types.PropertyGroup) :
   is_active_prop : BoolProperty(
     name="is_active",
     description="Active",
@@ -34,7 +34,7 @@ class FluidProperty(bpy.types.PropertyGroup) :
     default = False,
   )
 
-class SAMPLE27_OT_Nop(bpy.types.Operator):
+class PARTICLE_FLUID_OT_Activate(bpy.types.Operator):
     bl_idname = "object.sample27_nop"
     bl_label = "NOP"
     bl_description = "何もしない"
@@ -54,7 +54,7 @@ class PARTICLE_FLUID_PT_FluidPanel(bpy.types.Panel) :
  
   def draw(self, context):
     layout = self.layout
-    layout.operator(SAMPLE27_OT_Nop.bl_idname, text="ParticleFluid")    
+    layout.operator(PARTICLE_FLUID_OT_Activate.bl_idname, text="ParticleFluid")    
     if bpy.context.active_object.ps_fluid.is_active_prop == True :
       fluid_property = bpy.context.active_object.ps_fluid
 #      layout.prop(fluid_property, "is_active_prop", text="Active")
@@ -67,8 +67,8 @@ class PARTICLE_FLUID_PT_FluidPanel(bpy.types.Panel) :
 #      op_del.fluid_name = fluid_property.name_prop
 
 classes = [
-  SAMPLE27_OT_Nop,
-  FluidProperty,
+  PARTICLE_FLUID_OT_Activate,
+  PARTICLE_FLUID_FluidProperty,
   PARTICLE_FLUID_PT_FluidPanel,  
 ]
 
@@ -76,7 +76,7 @@ class PARTICLE_FLUIDS_FluidUI :
   def register():
     for c in classes:
       bpy.utils.register_class(c)
-    bpy.types.Object.ps_fluid = bpy.props.PointerProperty(name="PSFluid", type=FluidProperty)
+    bpy.types.Object.ps_fluid = bpy.props.PointerProperty(name="PSFluid", type=PARTICLE_FLUID_FluidProperty)
 #    fluid_prop = bpy.context.scene.fluid_properties.add()
     
   def unregister() :

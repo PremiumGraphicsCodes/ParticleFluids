@@ -63,7 +63,7 @@ def reset() :
     bl_solver.set_iteration( bpy.context.scene.solver_property.iteration_prop )
     bl_solver.set_export_path( bpy.context.scene.solver_property.export_dir_path )
 
-class SolverStartOperator(bpy.types.Operator):
+class PARTICLE_FLUIDS_OT_SolverStartOperator(bpy.types.Operator):
     bl_idname = "pg.solverstartoperator"
     bl_label = "SolverStart"
     bl_description = "Hello"
@@ -73,7 +73,7 @@ class SolverStartOperator(bpy.types.Operator):
         bl_solver.start()
         return {'FINISHED'}
 
-class SolverPauseOperator(bpy.types.Operator):
+class PARTICLE_FLUIDS_OT_SolverPauseOperator(bpy.types.Operator):
     bl_idname = "pg.solverpauseoperator"
     bl_label = "SolverPause"
     bl_description = "Hello"
@@ -82,7 +82,7 @@ class SolverPauseOperator(bpy.types.Operator):
         bl_solver.pause()
         return {'FINISHED'}
 
-class SolverResumeOperator(bpy.types.Operator):
+class PARTICLE_FLUIDS_OT_SolverResumeOperator(bpy.types.Operator):
     bl_idname = "pg.solverresumeoperator"
     bl_label = "SolverResume"
     bl_description = "Hello"
@@ -91,7 +91,7 @@ class SolverResumeOperator(bpy.types.Operator):
         bl_solver.resume()
         return {'FINISHED'}
 
-class SolverCancelOperator(bpy.types.Operator):
+class PARTICLE_FLUIDS_OT_SolverCancelOperator(bpy.types.Operator):
     bl_idname = "pg.solvercanceloperator"
     bl_label = "SolverCancel"
     bl_description = "Hello"
@@ -187,19 +187,19 @@ class PARTICLE_FLUIDS_PT_SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "max", text="Max")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
         self.layout.prop(solver_property, "iteration_prop", text="Iteration")
-        self.layout.operator(SolverStartOperator.bl_idname,text="Start", icon='PLAY')
+        self.layout.operator(PARTICLE_FLUIDS_OT_SolverStartOperator.bl_idname,text="Start", icon='PLAY')
         if bl_solver.is_running() :
-            self.layout.operator(SolverPauseOperator.bl_idname,text="Pause", icon='PAUSE')
+            self.layout.operator(PARTICLE_FLUIDS_OT_SolverPauseOperator.bl_idname,text="Pause", icon='PAUSE')
         else :            
-            self.layout.operator(SolverResumeOperator.bl_idname, text="Resume")
-        self.layout.operator(SolverCancelOperator.bl_idname,text="Cancel", icon='PAUSE')
+            self.layout.operator(PARTICLE_FLUIDS_OT_SolverResumeOperator.bl_idname, text="Resume")
+        self.layout.operator(PARTICLE_FLUIDS_OT_SolverCancelOperator.bl_idname,text="Cancel", icon='PAUSE')
         self.layout.prop(solver_property, "progress_prop", text="Progress")
 
 classes = [
-    SolverStartOperator,
-    SolverPauseOperator,
-    SolverResumeOperator,
-    SolverCancelOperator,
+    PARTICLE_FLUIDS_OT_SolverStartOperator,
+    PARTICLE_FLUIDS_OT_SolverPauseOperator,
+    PARTICLE_FLUIDS_OT_SolverResumeOperator,
+    PARTICLE_FLUIDS_OT_SolverCancelOperator,
     PARTICLE_FLUIDS_PT_SolverPanel,
     SolverProperty,
 ]
