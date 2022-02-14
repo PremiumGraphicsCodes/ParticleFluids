@@ -5,11 +5,17 @@
 ## インストール
 Microsoft社のHPからVisualStudio2019ランタイム(x64)をインストールします．
 
+[VisualC++runtime](https://docs.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170
+ "VisualC++runtime")
+
+下にあるX64を選択します．
+
+## 構成
 本アドオンはソルバー本体と，OpenVDBツールから構成されています．
 シミュレーション自体はOpenVDBを用いることなく実行できますが，
 プリ、ポストまでBlender上で完結させることができます．
 
-## チュートリアル1 Hello, Fluids!
+## チュートリアル Hello, Fluids!
 
 ### Particle Systemデータの作成
 
@@ -32,22 +38,31 @@ Microsoft社のHPからVisualStudio2019ランタイム(x64)をインストール
 [Start]ボタンでシミュレーションが開始されます．
 [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
 plyファイルが連番で出力されてます．
+![Start](/images/start.PNG) 
+
+### 障害物の作成
+この時点では障害物（床）がないため，粒子が落ちていくだけです．
+現実的には障害物を設定しておく必要があります．
+
+本アドオンでは，障害物の設定もFluidと同様に行うことができます．
+[Static]チェックボックスをマークするだけです．
+
+### 再びシミュレーションの開始
+
 
 ### VDBボリュームへの変換
-[PFSolver]タブでSolverを追加します．
-[Start]ボタンでシミュレーションが開始されます．
-[ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
+[PFSolver]->[Start]を押すとダイアログが表示されます．
+ここで先ほど出力したplyファイルを選択します．
+(BlenderではCtrl+Aで全選択できます)
+![PSToVolume](/images/PSToVolume.PNG) 
+[Convert]ボタンを押すとコンバート処理が始まり，同じフォルダにVDB形式のデータが作成されます．
 
 ### Meshing
 Blender標準の機能で連番のOpenVDBファイルを入力として扱うことができます．
+![VDBImport](/images/VDBImport.PNG) 
 
-## チュートリアル2 Add Boundary
 
-### 障害物の作成
-[PFBoundary]タブでBoundaryを追加します．
-今回は[-1,-1,-1],[1,1,1]のBoxのままにします．
-[Name]を[Boundary01]とします．
-するとツリー上に[Boundary01]というオブジェクトが現れます．
+
 
 
 ## それから
