@@ -1,5 +1,4 @@
 import bpy
-import bmesh
 import gpu
 
 from physics.fluid_scene import FluidScene
@@ -13,26 +12,28 @@ from scene.scene import Scene
 
 class BLFluid :
     def __init__(self, scene):
-        self.source_ps = None
-        self.fluid = None
-        self.shader = None
-        self.coords = []
-        self.colors = []
+        self.__source_ps = None
+        self.__fluid = None
+        self.__shader = None
+        self.__coords = []
+        self.__colors = []
 
+    def get_fluid(self):
+        return self.__fluid
 
     def clear(self) :
-        del self.shader
+        del self.__shader
 
     def build(self, scene) :
-        self.fluid = FluidScene(scene)
-        self.source_ps = ParticleSystemScene(scene)
-        self.source_ps.create_empty("")
+        self.__fluid = FluidScene(scene)
+        self.__source_ps = ParticleSystemScene(scene)
+        self.__source_ps.create_empty("")
 
-        self.fluid.create()
-        self.fluid.source_particle_system_id = self.source_ps.id
-        self.fluid.pressure = 0.25
-        self.fluid.viscosity = 10.0
-        self.fluid.send()
+        self.__fluid.create()
+        self.__fluid.source_particle_system_id = self.__source_ps.id
+        self.__fluid.pressure = 0.25
+        self.__fluid.viscosity = 10.0
+        self.__fluid.send()
 
         vertex_shader = """
                     uniform mat4 MVPMatrix;
@@ -56,9 +57,7 @@ class BLFluid :
                         gl_FragColor = vColor;
                     }
         """
-        # ビルトインのシェーダを取得
-        self.shader = gpu.types.GPUShader(vertex_shader, fragment_shader)
-
+        self.__shader = gpu.types.GPUShader(vertex_shader, fragment_shader)
 
     def convert_from_polygon_mesh(self, mesh) :
         positions = Vector3ddVector()
@@ -67,37 +66,32 @@ class BLFluid :
 #            print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
             p = Vector3dd(vt.co[0], vt.co[1], vt.co[2])
             positions.add(p)
-        self.source_ps.set_positions(positions)
-        self.fluid.send()
+        self.__source_ps.set_positions(positions)
+        self.__fluid.send()
 #        self.me = mesh
 
     def send_shader(self):
-        positions = self.fluid.get_positions()
-        self.coords = []
-        self.colors = []
+        positions = self.__fluid.get_positions()
+        self.__coords = []
+        self.__colors = []
         for p in positions.values :
-            self.coords.append( (p.x, p.y, p.z))
-            self.colors.append( (1.0, 1.0, 1.0, 1.0))
-
-        # バッチを作成
-
-        # シェーダのパラメータ設定
-#        color = [0.5, 1.0, 1.0, 1.0]
+            self.__coords.append( (p.x, p.y, p.z))
+            self.__colors.append( (1.0, 1.0, 1.0, 1.0))
         
     def render(self):
-        if self.fluid.is_boundary :
+        if self.__fluid.is_boundary :
             return
-        batch = batch_for_shader(self.shader, 'POINTS', {"pos" : self.coords, "color" : self.colors})
+        batch = batch_for_shader(self.__shader, 'POINTS', {"pos" : self.__coords, "color" : self.__colors})
 
         # 描画
-        self.shader.bind()
+        self.__shader.bind()
         matrix = bpy.context.region_data.perspective_matrix
-        self.shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
-        batch.draw(self.shader)
+        self.__shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
+        batch.draw(self.__shader)
 
     def reset(self, prop):
-        self.fluid.particle_radius = prop.particle_radius_prop
-        self.fluid.stiffness = prop.stiffness_prop
-        self.fluid.viscosity = prop.viscosity_prop
-        self.fluid.is_boundary = prop.is_static_prop
-        self.fluid.send()
+        self.__fluid.particle_radius = prop.particle_radius_prop
+        self.__fluid.stiffness = prop.stiffness_prop
+        self.__fluid.viscosity = prop.viscosity_prop
+        self.__fluid.is_boundary = prop.is_static_prop
+        self.__fluid.send()

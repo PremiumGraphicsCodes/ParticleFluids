@@ -47,7 +47,7 @@ class BLSolver :
     def send(self) :
         fluids = []
         for bl_fluid in self.__bl_fluids :
-            fluids.append( bl_fluid.fluid )
+            fluids.append( bl_fluid.get_fluid() )
         self.__solver.fluids = fluids
 
         boundaries = []
