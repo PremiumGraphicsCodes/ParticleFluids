@@ -7,16 +7,13 @@ using namespace Crystal::Math;
 using namespace Crystal::Shader;
 //using namespace Crystal::Scene;
 
-/*
 namespace {
-	constexpr char* positionLabel = "position";
-	constexpr char* colorLabel = "color";
-	constexpr char* sizeLabel = "pointSize";
-	constexpr char* projectionMatrixLabel = "projectionMatrix";
-	constexpr char* modelViewMatrixLabel = "modelviewMatrix";
-	constexpr char* fragColorLabel = "fragColor";
+	constexpr auto positionLabel = "position";
+	constexpr auto normalLabel = "normal";
+	constexpr auto projectionMatrixLabel = "projectionMatrix";
+	constexpr auto modelViewMatrixLabel = "modelviewMatrix";
+	constexpr auto fragColorLabel = "fragColor";
 }
-*/
 
 SSNormalRenderer::SSNormalRenderer() :
 	shader(nullptr)
@@ -31,9 +28,11 @@ ShaderBuildStatus SSNormalRenderer::build(GLObjectFactory& factory)
 	ShaderUnit vs;
 	vs.compileFromFile("./GLSL/SSNormal.glvs", ShaderUnit::Stage::VERTEX);
 
-	/*
+	ShaderUnit fs;
+	fs.compileFromFile("./GLSL/SSNormal.glfs", ShaderUnit::Stage::FRAGMENT);
+
 	shader = factory.createShaderObject();
-	const auto isOk = shader->build(vsSource, fsSource);
+	const auto isOk = shader->link({ vs, fs });
 	status.log = shader->getLog();
 	if (!isOk) {
 		status.isOk = false;
@@ -44,6 +43,8 @@ ShaderBuildStatus SSNormalRenderer::build(GLObjectFactory& factory)
 	shader->findUniformLocation(::modelViewMatrixLabel);
 
 	shader->findAttribLocation(::positionLabel);
+	shader->findAttribLocation(::normalLabel);
+	/*
 	shader->findAttribLocation(::colorLabel);
 	shader->findAttribLocation(::sizeLabel);
 	*/
