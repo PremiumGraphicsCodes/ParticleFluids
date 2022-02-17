@@ -23,6 +23,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="physics\emitter_scene.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="physics\surface_builder.py">
       <SubType>Code</SubType>
     </Compile>

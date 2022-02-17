@@ -332,3 +332,4 @@ Blender/CrystalPythonTest/test_export.stl
 *.ply
 *.dll
 *.exe
+/SandBox/CrystalPhoton/CrystalPhotonViewer/imgui.ini
