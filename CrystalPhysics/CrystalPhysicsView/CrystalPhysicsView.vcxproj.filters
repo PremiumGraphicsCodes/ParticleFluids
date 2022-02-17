@@ -22,6 +22,9 @@
     <ClCompile Include="SSNormalRenderer.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleDepthRenderer.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
@@ -42,6 +45,9 @@
       <Filter>MVP</Filter>
     </ClInclude>
     <ClInclude Include="SSNormalRenderer.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleDepthRenderer.h">
       <Filter>Shader</Filter>
     </ClInclude>
   </ItemGroup>

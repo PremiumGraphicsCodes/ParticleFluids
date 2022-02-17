@@ -13,6 +13,7 @@
 #include "PhysicsMenu.h"
 
 #include "SSNormalRenderer.h"
+#include "ParticleDepthRenderer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -30,8 +31,11 @@ int main(int, char**)
 		return 0;
 	}
 
+	auto glFactory = world.getRenderer()->getGLFactory();
 	Crystal::Shader::SSNormalRenderer ssNormalRenderer;
-	ssNormalRenderer.build(*world.getRenderer()->getGLFactory());
+	ssNormalRenderer.build(*glFactory);
+	Crystal::Shader::ParticleDepthRenderer pdRenderer;
+	pdRenderer.build(*glFactory);
 
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);
