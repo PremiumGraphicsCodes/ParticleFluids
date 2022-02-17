@@ -25,23 +25,26 @@ But using OpenVDB tools, you can do the whole process including pre-processing a
 
 ## Creating particles
 
+
+![MeshToPS](./images/Mesh.png) 
+
 Using our OpenVDB tool, you can create particles from meshes.
 
-![MeshToPS](/images/MeshToPS.PNG) 
+![MeshToPS](./images/MeshToPS.PNG) 
 
 Using our OpenVDB tool, you can create particles from meshes.
 
 ### Making Fluids
-![PSToFluid](/images/Fluid.PNG) 
+![PSToFluid](./images/Fluid.PNG) 
 
 To simulate fluids, you have to add parameters to the particles.
 
 ### Start Simulation
-![Start](/images/Start.PNG) 
+![Start](./images/Start.PNG) 
 
 ### Convert to VDB volume
-![PSToVolume](/images/PSToVolume.PNG) 
+![PSToVolume](./images/PSToVolume.PNG) 
 
 ### Convert VDB volume to Mesh
-![VDBImport](/images/VDBImport.PNG) 
+![VDBImport](./images/VDBImport.PNG) 
 Using Blender's standard functions, you can make mesh from VDB volume.

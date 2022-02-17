@@ -32,7 +32,7 @@ graph TB
 - Blenderデフォルトの[Cube]の[ScaleX],[ScaleY],[ScaleZ]をそれぞれ10,10,10とします．
 
 
-![Mesh](./images/Mesh.PNG) 
+![Mesh](./images/Mesh.png) 
 
 - [Cube]を選択したまま，[Voxelizer]->[MeshToPS]を選択し，[Convert]を押します．
 - するとツリー上に[ParticleSystem01]というオブジェクトが現れます．
