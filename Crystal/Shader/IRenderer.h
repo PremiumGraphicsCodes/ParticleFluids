@@ -12,7 +12,7 @@ class IRenderer
 public:
 	IRenderer() {}
 
-	~IRenderer() {}
+	virtual ~IRenderer() {}
 
 	virtual ShaderBuildStatus build(Shader::GLObjectFactory& factory) = 0;
 

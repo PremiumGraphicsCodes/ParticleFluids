@@ -35,34 +35,30 @@ void OnScreenRenderer::release(GLObjectFactory& factory)
 
 std::string OnScreenRenderer::getBuildinVertexShaderSource()
 {
-	std::ostringstream stream;
-	stream
-		<< "#version 150" << std::endl
-		<< "in vec2 position;" << std::endl
-		<< "out vec2 texCoord;" << std::endl
-		<< "void main(void) {" << std::endl
-		<< "	texCoord = (position + vec2(1.0,1.0))/2.0;" << std::endl
-		<< "	gl_Position = vec4(position, 0.0, 1.0);" << std::endl
-		<< "}" << std::endl;
-	ShaderUnit vertexShader;
-	bool b = vertexShader.compile(stream.str(), ShaderUnit::Stage::VERTEX);
-	return stream.str();
+	const std::string str = R"(
+#version 150
+in vec2 position;
+out vec2 texCoord;
+void main(void) {
+	texCoord = (position + vec2(1.0,1.0))/2.0;
+	gl_Position = vec4(position, 0.0, 1.0);
+}
+)";
+	return str;
 }
 
 std::string OnScreenRenderer::getBuildinFragmentShaderSource()
 {
-	std::ostringstream stream;
-	stream
-		<< "#version 150" << std::endl
-		<< "uniform sampler2D texture;" << std::endl
-		<< "in vec2 texCoord;" << std::endl
-		<< "out vec4 fragColor;" << std::endl
-		<< "void main(void) {" << std::endl
-		<< "	fragColor = texture2D(texture, texCoord);" << std::endl
-		<< "}" << std::endl;
-	ShaderUnit fragmentShader;
-	bool b = fragmentShader.compile(stream.str(), ShaderUnit::Stage::FRAGMENT);
-	return stream.str();
+	const std::string str = R"(
+#version 150
+uniform sampler2D texture;
+in vec2 texCoord;
+out vec4 fragColor;
+void main(void) {
+	fragColor = texture2D(texture, texCoord);
+}
+)";
+	return str;
 }
 
 void OnScreenRenderer::findLocation()
