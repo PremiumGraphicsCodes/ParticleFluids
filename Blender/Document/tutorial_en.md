@@ -8,6 +8,16 @@ First of all, please visit the URL and download Visual Studio2019 runtime(x64).
 # Configuration
 This add-on consists of solver and OpenVDB tools.
 
+## Flow of Simulation
+
+```mermaid
+graph TB
+  A[Particle Generation] --> B[Simulation]
+  B --> C[ConvertToVDB]
+  C --> D[VDBToMesh]
+```
+
+
 ## Tutorial1
 
 Fluid simulation can be done without OpenVDB tools.
@@ -27,7 +37,7 @@ Using our OpenVDB tool, you can create particles from meshes.
 To simulate fluids, you have to add parameters to the particles.
 
 ### Start Simulation
-![Start](/images/start.PNG) 
+![Start](/images/Start.PNG) 
 
 ### Convert to VDB volume
 ![PSToVolume](/images/PSToVolume.PNG) 

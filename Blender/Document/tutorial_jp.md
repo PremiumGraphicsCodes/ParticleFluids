@@ -15,6 +15,16 @@ Microsoft社のHPからVisualStudio2019ランタイム(x64)をインストール
 シミュレーション自体はOpenVDBを用いることなく実行できますが，
 プリ、ポストまでBlender上で完結させることができます．
 
+## シミュレーションの流れ
+
+```mermaid
+graph TB
+  A[Particle Generation] --> B[Simulation]
+  B --> C[ConvertToVDB]
+  C --> D[VDBToMesh]
+```
+
+
 ## チュートリアル Hello, Fluids!
 
 ### Particle Systemデータの作成
@@ -38,7 +48,7 @@ Microsoft社のHPからVisualStudio2019ランタイム(x64)をインストール
 [Start]ボタンでシミュレーションが開始されます．
 [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
 plyファイルが連番で出力されてます．
-![Start](/images/start.PNG) 
+![Start](/images/Start.PNG) 
 
 ### 障害物の作成
 この時点では障害物（床）がないため，粒子が落ちていくだけです．
