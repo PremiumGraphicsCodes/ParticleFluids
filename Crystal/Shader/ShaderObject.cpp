@@ -76,33 +76,6 @@ void ShaderObject::clear()
 	}
 }
 
-bool ShaderObject::link(const ShaderUnit& vertexShader, const ShaderUnit& fragmentShader)
-{
-	clear();
-
-	assert(glGetError() == GL_NO_ERROR);
-
-	handle = glCreateProgram();
-	glAttachShader(handle, vertexShader.getID());
-	glAttachShader(handle, fragmentShader.getID());
-
-	GLint success;
-	glLinkProgram(handle);
-	glGetProgramiv(handle, GL_LINK_STATUS, &success);
-
-	GLchar infoLog[2048];
-	glGetProgramInfoLog(handle, 2048, NULL, infoLog);
-	log += infoLog;
-
-	if (success == 0) {
-		return false;
-	}
-
-	assert(glGetError() == GL_NO_ERROR);
-
-	return true;
-}
-
 bool ShaderObject::link(const std::vector<ShaderUnit>& shaders)
 {
 	clear();
@@ -150,7 +123,7 @@ bool ShaderObject::build(const std::string& vSource, const std::string& fSource)
 	}
 	assert(glGetError() == GL_NO_ERROR);
 
-	if (!link(vShader, fShader)) {
+	if (!link({ vShader, fShader })) {
 		return false;
 	}
 

@@ -29,8 +29,6 @@ public:
 
 	void clear() override;
 
-	bool link(const ShaderUnit& vertexShader, const ShaderUnit& fragmentShader);
-
 	bool link(const std::vector<ShaderUnit>& shaders);
 
 	bool build(const std::string& vSource, const std::string& fSource);
