@@ -29,6 +29,9 @@
     <Compile Include="physics\csg_boundary_scene_test.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="physics\emitter_scene_test.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="physics\fluid_scene_test.py">
       <SubType>Code</SubType>
     </Compile>

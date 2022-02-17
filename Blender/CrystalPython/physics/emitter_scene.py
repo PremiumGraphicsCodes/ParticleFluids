@@ -11,6 +11,9 @@ class FluidScene :
         self.density = 1.0
         self.stiffness = 0.25
         self.viscosity = 10.0
+        self.start_step = 0
+        self.end_step = 100
+        self.interval = 5
 
     def create(self) :
         create_physics_command(EmitterSceneCreateCommand.CommandNameLabel)
@@ -25,7 +28,9 @@ class FluidScene :
         set_arg_float(EmitterSceneUpdateCommand.DensityLabel, self.density)
         set_arg_float(EmitterSceneUpdateCommand.StiffnessLabel, self.stiffness)
         set_arg_float(EmitterSceneUpdateCommand.ViscosityLabel, self.viscosity)
-        #set_arg_bool(FluidSceneUpdateCommand.IsBoundary, self.is_boundary)
+        set_arg_int(EmitterSceneUpdateCommand.StartStepLabel, self.start_step)
+        set_arg_int(EmitterSceneUpdateCommand.EndStepLabel, self.end_step)
+        set_arg_int(EmitterSceneUpdateCommand.IntervalLabel, self.interval)
         #set_arg_string(FluidSceneUpdateCommand.NameLabel, self.name)
         is_ok = execute_command(self.scene.world)
         return is_ok

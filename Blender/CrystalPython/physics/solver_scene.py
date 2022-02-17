@@ -11,6 +11,7 @@ class SolverScene :
         self.time_step = 0.03
         self.effect_length = 2.25
         self.fluids = []
+        self.emitters = []
         self.boundaries = []
         self.external_force = Vector3df(0.0, 0.0, -9.8)
 
@@ -26,10 +27,14 @@ class SolverScene :
         fluid_ids = []
         for f in self.fluids :
             fluid_ids.append(f.id)
+        emitter_ids = []
+        for e in self.emitters :
+            emitter_ids.append(e.id)
         boundary_ids = []
         for b in self.boundaries :
             boundary_ids.append(b.id)
         set_arg_int_vector(PhysicsSolverUpdateCommand.FluidSceneIdsLabel, fluid_ids)
+        set_arg_int_vector(PhysicsSolverUpdateCommand.EmitterSceneIdsLabel, emitter_ids)
         set_arg_int_vector(PhysicsSolverUpdateCommand.CSGBoundarySceneIdsLabel, boundary_ids)
         set_arg_vector3df(PhysicsSolverUpdateCommand.ExternalForceLabel, self.external_force)
         set_arg_float(PhysicsSolverUpdateCommand.TimeStepLabel, self.time_step)
@@ -49,6 +54,8 @@ class SolverScene :
             if f.is_boundary :
                 continue
             fluid_ids.append(f.id)
+        for e in self.emitters :
+            fluid_ids.append(e.id)
         return FileIO.export_txt(self.scene,fluid_ids, file_path)
 
     def export_pcd(self, file_path, do_export_micro) :
@@ -57,6 +64,8 @@ class SolverScene :
             if f.is_boundary :
                 continue
             fluid_ids.append(f.id)
+        for e in self.emitters :
+            fluid_ids.append(e.id)
         create_physics_command(PhysicsSolverExportCommand.CommandNameLabel)
         set_arg_int_vector(PhysicsSolverExportCommand.FluidIdsLabel, fluid_ids)
         set_arg_string(PhysicsSolverExportCommand.FilePathLabel, file_path)
