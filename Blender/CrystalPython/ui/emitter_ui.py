@@ -1,5 +1,5 @@
 import bpy
-from bpy.props import FloatProperty, BoolProperty
+from bpy.props import IntProperty, FloatProperty, BoolProperty
 
 #from physics.fluid_scene import FluidScene
 from ui.bl_emitter import BLEmitter
@@ -28,6 +28,24 @@ class PARTICLE_FLUID_EmitterProperty(bpy.types.PropertyGroup) :
     default = 10.0,
     min = 0.0,
   )
+  start_step_prop : IntProperty(
+    name="start_step",
+    description="StartStep",
+    default=1,
+    min=0
+  )
+  end_step_prop : IntProperty(
+    name="end_step",
+    description="EndStep",
+    default=100,
+    min=0
+  )
+  interval_prop : IntProperty(
+    name="interval",
+    description="Interval",
+    default=5,
+    min=1
+  )
 
 class PARTICLE_FLUID_OT_Emitter_Activate(bpy.types.Operator):
     bl_idname = "pf.emitteractivate"
@@ -55,6 +73,9 @@ class PARTICLE_FLUID_PT_EmitterPanel(bpy.types.Panel) :
       layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
+      layout.prop(fluid_property, "start_step_prop", text="StartStep")
+      layout.prop(fluid_property, "end_step_prop", text="EndStep")
+      layout.prop(fluid_property, "interval_prop", text="Interval")
 #
 classes = [
   PARTICLE_FLUID_OT_Emitter_Activate,
