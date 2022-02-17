@@ -1,7 +1,7 @@
 import bpy
 import gpu
 
-from physics.fluid_scene import EmitterScene
+from physics.emitter_scene import EmitterScene
 from scene.particle_system_scene import ParticleSystemScene
 from CrystalPLI import Vector3dd, Vector3ddVector
 from bpy.props import FloatProperty, FloatVectorProperty

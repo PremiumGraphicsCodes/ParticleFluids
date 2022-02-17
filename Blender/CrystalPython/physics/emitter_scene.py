@@ -2,7 +2,7 @@ from physics.physics_labels import EmitterSceneCreateCommand, EmitterSceneUpdate
 from scene.scene import Scene
 from CrystalPLI import *
 
-class FluidScene :
+class EmitterScene :
     def __init__(self, scene) :
         self.scene = scene
         self.id = 0
@@ -34,23 +34,3 @@ class FluidScene :
         #set_arg_string(FluidSceneUpdateCommand.NameLabel, self.name)
         is_ok = execute_command(self.scene.world)
         return is_ok
-
-   #CommandNameLabel="EmitterSceneUpdateCommand"
-   #IdLabel="Id"
-   #ParticleSystemIdLabel="ParticleSystemId"
-   #ParticleRadiusLabel="ParticleRadius"
-   #StiffnessLabel="Stiffness"
-   #ViscosityLabel="Viscosity"
-   #InitialVelocityLabel="InitialVelocity"
-   #DensityLabel="Density"
-   #NameLabel="Name"
-   #StartStepLabel="StartStep"
-   #EndStepLabel="EndStep"
-   #IntervalLabel="Interval"
-
-    #def get_positions(self) :
-    #    create_scene_command(ParticleSystemGetCommand.CommandNameLabel)
-    #    set_arg_int(ParticleSystemGetCommand.PSIdLabel, self.id)
-    #    is_ok = execute_command(self.scene.world)
-    #    return get_result_vector3dd_vector(ParticleSystemGetCommand.PositionsLabel)
-
