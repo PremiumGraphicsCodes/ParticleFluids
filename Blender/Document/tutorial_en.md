@@ -1,41 +1,37 @@
 # ParticleFluids Tutorial
 
-2021 premiumgraphics
+2022 premiumgraphics
 
-## 画面構成
-The Particle Fluids has 4 tabs on Blender window.
+# Install
+First of all, please visit the URL and download Visual Studio2019 runtime(x64).
 
-- PFFluid
-- PFBoundary
-- PFSolver
-- PFTools
+# Configuration
+This add-on consists of solver and OpenVDB tools.
 
 ## Tutorial1
 
-### Create Source Mesh
-[]
+Fluid simulation can be done without OpenVDB tools.
+But using OpenVDB tools, you can do the whole process including pre-processing and post-processing.
 
-### Create Particle System
+## Creating particles
 
-Particleデータを作成します。
-ポリゴンを選択し，[PFTools]->[Voxelizer]と選択します。
-ここで[DivideLength]を[0.1],[Name]を[FluidSource01]とします。
-するとツリー上に[FluidSource01]というオブジェクトが現れます．
+Using our OpenVDB tool, you can create particles from meshes.
 
-### Fluidデータの作成
+![MeshToPS](/images/MeshToPS.PNG) 
 
-### Create Fluid Object
-[PFFluid]->[Add]で新しいFluidを作ります．
-先ほど作成した[FluidSource01]を選択し，[SetSource]ボタンを押します．
-[Name]を[Fluid01]とします．
+Using our OpenVDB tool, you can create particles from meshes.
 
-### Solverの設定
-[PFSolver]で[Fluid01]，[]
+### Making Fluids
+![PSToFluid](/images/Fluid.PNG) 
 
-### Boundaryの作成
+To simulate fluids, you have to add parameters to the particles.
 
-## チュートリアル2
-Box以外のBoundaryも追加してみましょう．
-本アドオンにおいては，Fluidの作成と同様にBoundaryを追加することができます．
+### Start Simulation
+![Start](/images/start.PNG) 
 
-### Particleデータの作成
+### Convert to VDB volume
+![PSToVolume](/images/PSToVolume.PNG) 
+
+### Convert VDB volume to Mesh
+![VDBImport](/images/VDBImport.PNG) 
+Using Blender's standard functions, you can make mesh from VDB volume.
