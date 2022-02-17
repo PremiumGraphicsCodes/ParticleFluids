@@ -13,7 +13,9 @@
 #include "PhysicsMenu.h"
 
 #include "SSNormalRenderer.h"
+#include "SSAbsorptionRenderer.h"
 #include "ParticleDepthRenderer.h"
+#include "SSFluidRenderer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -34,8 +36,12 @@ int main(int, char**)
 	auto glFactory = world.getRenderer()->getGLFactory();
 	Crystal::Shader::SSNormalRenderer ssNormalRenderer;
 	ssNormalRenderer.build(*glFactory);
+	Crystal::Shader::SSAbsorptionRenderer ssAbsorptionRenderer;
+	ssAbsorptionRenderer.build(*glFactory);
 	Crystal::Shader::ParticleDepthRenderer pdRenderer;
 	pdRenderer.build(*glFactory);
+	Crystal::Shader::SSFluidRenderer ssfr;
+	ssfr.build(*glFactory);
 
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);

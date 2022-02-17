@@ -1,7 +1,7 @@
 #version 150
 uniform sampler2D surfaceTexture;
 uniform sampler2D reflectionTexture;
-//<< "uniform sampler2D refractionTexture;
+uniform sampler2D refractionTexture;
 uniform sampler2D absorptionTexture;
 uniform sampler2D backgroundTexture;
 in vec2 texCoord;

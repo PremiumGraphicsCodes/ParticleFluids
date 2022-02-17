@@ -168,6 +168,8 @@
     <ClCompile Include="PhysicsMenu.cpp" />
     <ClCompile Include="SPHFlameSimulationView.cpp" />
     <ClCompile Include="SPHSurfaceBuilderView.cpp" />
+    <ClCompile Include="SSAbsorptionRenderer.cpp" />
+    <ClCompile Include="SSFluidRenderer.cpp" />
     <ClCompile Include="SSNormalRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +223,8 @@
     <ClInclude Include="PhysicsMenu.h" />
     <ClInclude Include="SPHFlameSimulationView.h" />
     <ClInclude Include="SPHSurfaceBuilderView.h" />
+    <ClInclude Include="SSAbsorptionRenderer.h" />
+    <ClInclude Include="SSFluidRenderer.h" />
     <ClInclude Include="SSNormalRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

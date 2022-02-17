@@ -25,6 +25,12 @@
     <ClCompile Include="ParticleDepthRenderer.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
+    <ClCompile Include="SSAbsorptionRenderer.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="SSFluidRenderer.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
@@ -48,6 +54,12 @@
       <Filter>Shader</Filter>
     </ClInclude>
     <ClInclude Include="ParticleDepthRenderer.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="SSAbsorptionRenderer.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="SSFluidRenderer.h">
       <Filter>Shader</Filter>
     </ClInclude>
   </ItemGroup>
