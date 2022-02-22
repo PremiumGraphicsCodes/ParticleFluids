@@ -183,7 +183,7 @@
   <ItemGroup>
     <ClCompile Include="CrystalGPUView.cpp" />
     <ClCompile Include="CSMenu.cpp" />
-    <ClCompile Include="CSSampleView.cpp" />
+    <ClCompile Include="CSSampleRenderer.cpp" />
     <ClCompile Include="ParticleDepthRenderer.cpp" />
     <ClCompile Include="SSAbsorptionRenderer.cpp" />
     <ClCompile Include="SSFluidRenderer.cpp" />
@@ -193,7 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CSMenu.h" />
-    <ClInclude Include="CSSampleView.h" />
+    <ClInclude Include="CSSampleRenderer.h" />
     <ClInclude Include="ParticleDepthRenderer.h" />
     <ClInclude Include="SSAbsorptionRenderer.h" />
     <ClInclude Include="SSFluidRenderer.h" />

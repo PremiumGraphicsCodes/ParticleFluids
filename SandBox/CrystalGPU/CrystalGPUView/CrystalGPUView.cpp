@@ -18,7 +18,7 @@
 #include "SSFluidRenderer.h"
 #include "SSReflectionRenderer.h"
 
-#include "CSMenu.h"
+#include "CSSampleRenderer.h"
 
 #include <cassert>
 
@@ -64,6 +64,11 @@ int main(int, char**)
 	renderers->addRenderer(std::move(pdRenderer));
 	renderers->addRenderer(std::move(ssfr));
 
+	std::unique_ptr<CSSampleRenderer> csSampleRenderer = std::make_unique<CSSampleRenderer>();
+	const auto status11 = csSampleRenderer->build(*glFactory);
+	assert(status11.isOk);
+	renderers->addRenderer(std::move(csSampleRenderer));
+
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);
 
@@ -72,7 +77,7 @@ int main(int, char**)
 	window.add(new CtrlMenu("Ctrl", &world, &canvas));
 	window.add(new ShapeMenu("Shape", &world, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &world, &canvas, control));
-	window.add(new CSMenu("ComputeShader", &world, &canvas, control));
+	//window.add(new CSMenu("ComputeShader", &world, &canvas, control));
 
 	window.add(new SceneListPanel("Scene", &world, &canvas, control));
 

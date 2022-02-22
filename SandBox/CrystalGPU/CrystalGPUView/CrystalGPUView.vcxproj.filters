@@ -11,7 +11,7 @@
     <ClCompile Include="CSMenu.cpp">
       <Filter>ComputeShader</Filter>
     </ClCompile>
-    <ClCompile Include="CSSampleView.cpp">
+    <ClCompile Include="CSSampleRenderer.cpp">
       <Filter>ComputeShader</Filter>
     </ClCompile>
   </ItemGroup>
@@ -25,7 +25,7 @@
     <ClInclude Include="CSMenu.h">
       <Filter>ComputeShader</Filter>
     </ClInclude>
-    <ClInclude Include="CSSampleView.h">
+    <ClInclude Include="CSSampleRenderer.h">
       <Filter>ComputeShader</Filter>
     </ClInclude>
   </ItemGroup>

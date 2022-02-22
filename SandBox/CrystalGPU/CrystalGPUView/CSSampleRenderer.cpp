@@ -1,4 +1,4 @@
-#include "CSSampleView.h"
+#include "CSSampleRenderer.h"
 
 #include "../../../Crystal/Graphics/ColorRGBA.h"
 //#include "../Scene/ParticleSystemScene.h"
@@ -39,18 +39,27 @@ void main() {
 )";
 }
 
-CSSampleView::CSSampleView(const std::string& name, World* world, Canvas* canvas) :
-	IOkCancelView(name, world, canvas)
+CSSampleRenderer::CSSampleRenderer()
 {
 };
 
-void CSSampleView::onOk()
+ShaderBuildStatus CSSampleRenderer::build(GLObjectFactory& factory)
 {
-	ShaderUnit computeShader;
-	const auto isOk = computeShader.compile(compute_shader_source, ShaderUnit::Stage::COMPUTE);
+    ShaderBuildStatus status;
+    status.isOk = true;
+
+    ShaderUnit computeShader;
+    const auto isOk = computeShader.compile(compute_shader_source, ShaderUnit::Stage::COMPUTE);
     assert(isOk == true);
-    ShaderObject shader;
-    shader.link({ computeShader });
+
+    shader = factory.createShaderObject();
+    shader->link({ computeShader });
+
+    status.log = shader->getLog();
+    if (!isOk) {
+        status.isOk = false;
+        return status;
+    }
 
     {
         const auto error = glGetError();
@@ -58,11 +67,9 @@ void CSSampleView::onOk()
     }
 
 
-    int num = 100;
 
     // create buffer
-    shader.findUniformLocation("element_size");
-    GLuint ssbo;
+    shader->findUniformLocation("element_size");
     glGenBuffers(1, &ssbo);
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo);
     glBufferData(GL_SHADER_STORAGE_BUFFER, num * sizeof(float), nullptr, GL_DYNAMIC_COPY);
@@ -72,17 +79,35 @@ void CSSampleView::onOk()
         const auto error = glGetError();
         assert(GL_NO_ERROR == error);
     }
+    return status;
+}
+
+void CSSampleRenderer::release(GLObjectFactory& factory)
+{
+    /*
+    glDeleteBuffers(1, &ssbo);
+    shader.clear();
+
+    {
+        const auto error = glGetError();
+        assert(GL_NO_ERROR == error);
+    }
+    */
+}
+
+void CSSampleRenderer::render()
+{
 
 
  //   glUseProgram(shader.getID());
-    shader.bind();
+    shader->bind();
 
     {
         const auto error = glGetError();
         assert(GL_NO_ERROR == error);
     }
 
-    shader.sendUniform("element_size", num);
+    shader->sendUniform("element_size", num);
 
     {
         const auto error = glGetError();
@@ -100,7 +125,7 @@ void CSSampleView::onOk()
 
     glDispatchCompute(num / 256 + 1, 1, 1);
 
-    shader.unbind();
+    shader->unbind();
 
     {
         const auto error = glGetError();
@@ -119,12 +144,5 @@ void CSSampleView::onOk()
         assert(GL_NO_ERROR == error);
     }
 
-    glDeleteBuffers(1, &ssbo);
-    shader.clear();
-
-    {
-        const auto error = glGetError();
-        assert(GL_NO_ERROR == error);
-    }
 
 }
