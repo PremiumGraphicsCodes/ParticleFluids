@@ -163,16 +163,10 @@
     <ClCompile Include="MVPFluidSimulationView.cpp" />
     <ClCompile Include="MVPSamplerView.cpp" />
     <ClCompile Include="MVPSurfaceBuilderView.cpp" />
-    <ClCompile Include="ParticleDepthRenderer.cpp" />
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
     <ClCompile Include="SPHFlameSimulationView.cpp" />
     <ClCompile Include="SPHSurfaceBuilderView.cpp" />
-    <ClCompile Include="SSAbsorptionRenderer.cpp" />
-    <ClCompile Include="SSFluidRenderer.cpp" />
-    <ClCompile Include="SSNormalRenderer.cpp" />
-    <ClCompile Include="SSReflectionRenderer.cpp" />
-    <ClCompile Include="SSThicknessRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj">
@@ -220,16 +214,10 @@
     <ClInclude Include="MVPFluidSimulationView.h" />
     <ClInclude Include="MVPSamplerView.h" />
     <ClInclude Include="MVPSurfaceBuilderView.h" />
-    <ClInclude Include="ParticleDepthRenderer.h" />
     <ClInclude Include="PBSPHFluidSimulationView.h" />
     <ClInclude Include="PhysicsMenu.h" />
     <ClInclude Include="SPHFlameSimulationView.h" />
     <ClInclude Include="SPHSurfaceBuilderView.h" />
-    <ClInclude Include="SSAbsorptionRenderer.h" />
-    <ClInclude Include="SSFluidRenderer.h" />
-    <ClInclude Include="SSNormalRenderer.h" />
-    <ClInclude Include="SSReflectionRenderer.h" />
-    <ClInclude Include="SSThicknessRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

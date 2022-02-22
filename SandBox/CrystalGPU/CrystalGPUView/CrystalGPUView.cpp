@@ -11,14 +11,12 @@
 #include "CrystalScene/Scene/World.h"
 
 
-/*
 #include "SSNormalRenderer.h"
 #include "SSAbsorptionRenderer.h"
 #include "SSThicknessRenderer.h"
 #include "ParticleDepthRenderer.h"
 #include "SSFluidRenderer.h"
 #include "SSReflectionRenderer.h"
-*/
 
 #include <cassert>
 
@@ -40,7 +38,6 @@ int main(int, char**)
 		return 0;
 	}
 
-	/*
 	auto glFactory = world.getRenderer()->getGLFactory();
 	auto renderers = world.getRenderer()->getRenderers();
 	std::unique_ptr<SSNormalRenderer> ssNormalRenderer = std::make_unique<SSNormalRenderer>();
@@ -64,7 +61,6 @@ int main(int, char**)
 	renderers->addRenderer(std::move(ssThicknessRenderer));
 	renderers->addRenderer(std::move(pdRenderer));
 	renderers->addRenderer(std::move(ssfr));
-	*/
 
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);

@@ -19,24 +19,6 @@
     <ClCompile Include="MVPSurfaceBuilderView.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
-    <ClCompile Include="SSNormalRenderer.cpp">
-      <Filter>Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleDepthRenderer.cpp">
-      <Filter>Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="SSAbsorptionRenderer.cpp">
-      <Filter>Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="SSFluidRenderer.cpp">
-      <Filter>Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="SSThicknessRenderer.cpp">
-      <Filter>Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="SSReflectionRenderer.cpp">
-      <Filter>Shader</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
@@ -56,31 +38,10 @@
     <ClInclude Include="MVPSurfaceBuilderView.h">
       <Filter>MVP</Filter>
     </ClInclude>
-    <ClInclude Include="SSNormalRenderer.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleDepthRenderer.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="SSAbsorptionRenderer.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="SSFluidRenderer.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="SSThicknessRenderer.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="SSReflectionRenderer.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MVP">
       <UniqueIdentifier>{0bf1766f-8214-4be3-a508-94db4a5ee80d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shader">
-      <UniqueIdentifier>{cfdd1e05-0445-4ad7-bd0f-559c7541d4b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

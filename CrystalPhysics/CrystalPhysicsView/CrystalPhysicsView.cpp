@@ -12,13 +12,6 @@
 
 #include "PhysicsMenu.h"
 
-#include "SSNormalRenderer.h"
-#include "SSAbsorptionRenderer.h"
-#include "SSThicknessRenderer.h"
-#include "ParticleDepthRenderer.h"
-#include "SSFluidRenderer.h"
-#include "SSReflectionRenderer.h"
-
 #include <cassert>
 
 using namespace Crystal::Math;
@@ -38,30 +31,6 @@ int main(int, char**)
 		assert(false);
 		return 0;
 	}
-
-	auto glFactory = world.getRenderer()->getGLFactory();
-	auto renderers = world.getRenderer()->getRenderers();
-	std::unique_ptr<SSNormalRenderer> ssNormalRenderer = std::make_unique<SSNormalRenderer>();
-	const auto status1 = ssNormalRenderer->build(*glFactory);
-	assert(status1.isOk);
-	std::unique_ptr<SSAbsorptionRenderer> ssAbsorptionRenderer = std::make_unique<SSAbsorptionRenderer>();
-	const auto status2 = ssAbsorptionRenderer->build(*glFactory);
-	assert(status2.isOk);
-	std::unique_ptr<SSThicknessRenderer> ssThicknessRenderer = std::make_unique<SSThicknessRenderer>();
-	const auto status3 = ssThicknessRenderer->build(*glFactory);
-	assert(status3.isOk);
-	std::unique_ptr<SSReflectionRenderer> ssReflectionRenderer = std::make_unique<SSReflectionRenderer>();
-	const auto status4 = ssReflectionRenderer->build(*glFactory);
-	assert(status4.isOk);
-	std::unique_ptr<ParticleDepthRenderer> pdRenderer = std::make_unique<ParticleDepthRenderer>();
-	pdRenderer->build(*glFactory);
-	std::unique_ptr<SSFluidRenderer> ssfr = std::make_unique<SSFluidRenderer>();
-	ssfr->build(*glFactory);
-	renderers->addRenderer(std::move(ssNormalRenderer));
-	renderers->addRenderer(std::move(ssAbsorptionRenderer));
-	renderers->addRenderer(std::move(ssThicknessRenderer));
-	renderers->addRenderer(std::move(pdRenderer));
-	renderers->addRenderer(std::move(ssfr));
 
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);
