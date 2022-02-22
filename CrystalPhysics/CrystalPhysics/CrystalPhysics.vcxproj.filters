@@ -123,10 +123,6 @@
     <ClInclude Include="SPHFlame\SPHFlameScenePresenter.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
-    <ClInclude Include="SPHFlame\SPHFlameBoundarySolver.h" />
-    <ClInclude Include="SPHFlame\SPHFlameParticle.h" />
-    <ClInclude Include="SPHFlame\SPHFlameScene.h" />
-    <ClInclude Include="SPHFlame\SPHFlameSolver.h" />
     <ClInclude Include="SurfaceConstruction\SPHSurfaceBuilder.h">
       <Filter>SurfaceReconstruction</Filter>
     </ClInclude>
@@ -156,6 +152,18 @@
     </ClInclude>
     <ClInclude Include="MVPSampler.h">
       <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="SPHFlame\SPHFlameBoundarySolver.h">
+      <Filter>SPHFlame</Filter>
+    </ClInclude>
+    <ClInclude Include="SPHFlame\SPHFlameParticle.h">
+      <Filter>SPHFlame</Filter>
+    </ClInclude>
+    <ClInclude Include="SPHFlame\SPHFlameScene.h">
+      <Filter>SPHFlame</Filter>
+    </ClInclude>
+    <ClInclude Include="SPHFlame\SPHFlameSolver.h">
+      <Filter>SPHFlame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -244,10 +252,6 @@
     <ClCompile Include="SPHFlame\SPHFlameScenePresenter.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
-    <ClCompile Include="SPHFlame\SPHFlameBoundarySolver.cpp" />
-    <ClCompile Include="SPHFlame\SPHFlameParticle.cpp" />
-    <ClCompile Include="SPHFlame\SPHFlameScene.cpp" />
-    <ClCompile Include="SPHFlame\SPHFlameSolver.cpp" />
     <ClCompile Include="SurfaceConstruction\SPHSurfaceBuilder.cpp">
       <Filter>SurfaceReconstruction</Filter>
     </ClCompile>
@@ -277,6 +281,18 @@
     </ClCompile>
     <ClCompile Include="MVPSampler.cpp">
       <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHFlame\SPHFlameBoundarySolver.cpp">
+      <Filter>SPHFlame</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHFlame\SPHFlameParticle.cpp">
+      <Filter>SPHFlame</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHFlame\SPHFlameScene.cpp">
+      <Filter>SPHFlame</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHFlame\SPHFlameSolver.cpp">
+      <Filter>SPHFlame</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

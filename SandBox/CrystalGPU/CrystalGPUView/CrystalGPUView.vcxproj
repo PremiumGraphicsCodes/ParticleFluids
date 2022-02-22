@@ -143,14 +143,14 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../CrystalScene/ThirdParty\glfw-3.3\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../../CrystalScene/ThirdParty\glfw-3.3\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -182,6 +182,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CrystalGPUView.cpp" />
+    <ClCompile Include="CSMenu.cpp" />
+    <ClCompile Include="CSSampleView.cpp" />
     <ClCompile Include="ParticleDepthRenderer.cpp" />
     <ClCompile Include="SSAbsorptionRenderer.cpp" />
     <ClCompile Include="SSFluidRenderer.cpp" />
@@ -190,6 +192,8 @@
     <ClCompile Include="SSThicknessRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CSMenu.h" />
+    <ClInclude Include="CSSampleView.h" />
     <ClInclude Include="ParticleDepthRenderer.h" />
     <ClInclude Include="SSAbsorptionRenderer.h" />
     <ClInclude Include="SSFluidRenderer.h" />

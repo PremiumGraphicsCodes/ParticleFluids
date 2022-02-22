@@ -18,6 +18,8 @@
 #include "SSFluidRenderer.h"
 #include "SSReflectionRenderer.h"
 
+#include "CSMenu.h"
+
 #include <cassert>
 
 using namespace Crystal::Math;
@@ -70,6 +72,7 @@ int main(int, char**)
 	window.add(new CtrlMenu("Ctrl", &world, &canvas));
 	window.add(new ShapeMenu("Shape", &world, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &world, &canvas, control));
+	window.add(new CSMenu("ComputeShader", &world, &canvas, control));
 
 	window.add(new SceneListPanel("Scene", &world, &canvas, control));
 

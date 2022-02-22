@@ -158,8 +158,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ColorMenu.cpp" />
-    <ClCompile Include="CSMenu.cpp" />
-    <ClCompile Include="CSSampleView.cpp" />
     <ClCompile Include="Viewer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -192,8 +190,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColorMenu.h" />
-    <ClInclude Include="CSMenu.h" />
-    <ClInclude Include="CSSampleView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
