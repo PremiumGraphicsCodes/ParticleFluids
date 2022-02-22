@@ -17,6 +17,7 @@
 #include "SSThicknessRenderer.h"
 #include "ParticleDepthRenderer.h"
 #include "SSFluidRenderer.h"
+#include "SSReflectionRenderer.h"
 
 #include <cassert>
 
@@ -49,6 +50,9 @@ int main(int, char**)
 	std::unique_ptr<SSThicknessRenderer> ssThicknessRenderer = std::make_unique<SSThicknessRenderer>();
 	const auto status3 = ssThicknessRenderer->build(*glFactory);
 	assert(status3.isOk);
+	std::unique_ptr<SSReflectionRenderer> ssReflectionRenderer = std::make_unique<SSReflectionRenderer>();
+	const auto status4 = ssReflectionRenderer->build(*glFactory);
+	assert(status4.isOk);
 	std::unique_ptr<ParticleDepthRenderer> pdRenderer = std::make_unique<ParticleDepthRenderer>();
 	pdRenderer->build(*glFactory);
 	std::unique_ptr<SSFluidRenderer> ssfr = std::make_unique<SSFluidRenderer>();
