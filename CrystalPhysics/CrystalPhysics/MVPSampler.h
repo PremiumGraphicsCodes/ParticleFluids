@@ -4,14 +4,14 @@
 
 namespace Crystal {
 	namespace Physics {
-		class MVPFluidScene;
+		class IMVPFluidScene;
 
 class MVPSampler
 {
 public:
-	void merge(const std::list<MVPFluidScene*>& fluids, const double searchRadius);
+	void merge(const std::list<IMVPFluidScene*>& fluids, const double searchRadius);
 
-	void split(const std::list<MVPFluidScene*>& fluids);
+	void split(const std::list<IMVPFluidScene*>& fluids);
 };
 	}
 }

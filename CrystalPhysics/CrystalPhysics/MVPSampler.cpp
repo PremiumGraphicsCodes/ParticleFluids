@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
-void MVPSampler::split(const std::list<MVPFluidScene*>& fluids)
+void MVPSampler::split(const std::list<IMVPFluidScene*>& fluids)
 {
 	for (auto f : fluids) {
 		const auto fps = f->getParticles();
@@ -37,7 +37,7 @@ void MVPSampler::split(const std::list<MVPFluidScene*>& fluids)
 	}
 }
 
-void MVPSampler::merge(const std::list<MVPFluidScene*>& fluids, const double searchRadius)
+void MVPSampler::merge(const std::list<IMVPFluidScene*>& fluids, const double searchRadius)
 {
 	std::list<MVPVolumeParticle*> tinyParticles;
 	for (auto fluid : fluids) {

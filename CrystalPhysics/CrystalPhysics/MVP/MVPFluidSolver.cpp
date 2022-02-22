@@ -70,25 +70,23 @@ void MVPFluidSolver::step()
 void MVPFluidSolver::simulate()
 {
 	std::vector<MVPVolumeParticle*> fluidParticles;
+	std::list<IMVPFluidScene*> allFluids(this->fluids.begin(), this->fluids.end());
 
 	for (auto emitter : emitters) {
 		emitter->emitParticle(currentTimeStep);
-		const auto ps = emitter->getParticles();
-		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
+		allFluids.push_back(emitter);
 	}
 
-	/*
-	if (fluids.empty()) {
+	if (allFluids.empty()) {
 		return;
 	}
-	*/
 
 	if( currentTimeStep % 5 == 0 ) {
 		MVPSampler sampler;
-		sampler.merge(fluids, effectLength);
+		sampler.merge(allFluids, effectLength);
 	}
 
-	for (auto fluid : fluids) {
+	for (auto fluid : allFluids) {
 		const auto ps = fluid->getParticles();
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
 	}
@@ -185,14 +183,7 @@ void MVPFluidSolver::simulate()
 		}
 
 		for (auto particle : fluidParticles) {
-			//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
 			particle->stepTime(dt);
-			const auto massPs = particle->getMassParticles();
-			/*
-			for (auto mp : massPs) {
-				mp->updateVector(dt);
-			}
-			*/
 		}
 
 		time += dt;
@@ -208,7 +199,7 @@ void MVPFluidSolver::simulate()
 
 	MVPSampler sampler;
 	if (currentTimeStep % 2 == 0) {
-		sampler.split(fluids);
+		sampler.split(allFluids);
 	}
 
 	currentTimeStep++;
