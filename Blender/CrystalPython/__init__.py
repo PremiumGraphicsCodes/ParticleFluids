@@ -33,7 +33,6 @@ import bpy
 from ui.vdb.mesh_to_ps_ui import PARTICLE_FLUIDS_MeshToPSUI
 from ui.vdb.ps_to_volume_ui import PARTICLE_FLUIDS_PSToVolumeUI
 from ui.fluid_ui import PARTICLE_FLUIDS_FluidUI
-from ui.emitter_ui import PARTICLE_FLUIDS_EmitterUI
 from ui.solver_ui import SolverUI
 #from ui.sandbox.particle_system_sequense_import_ui import ParticleSystemSequenceImportUI
 #from ui.sandbox.triangle_mesh_sequence_import_ui import TriangleMeshSequenceImportUI
@@ -43,7 +42,6 @@ def register():
   PARTICLE_FLUIDS_MeshToPSUI.register()
   PARTICLE_FLUIDS_PSToVolumeUI.register()
   PARTICLE_FLUIDS_FluidUI.register()
-  PARTICLE_FLUIDS_EmitterUI.register()
   SolverUI.register()
 #  ParticleSystemSequenceImportUI.register()
 #  TriangleMeshSequenceImportUI.register()
@@ -53,7 +51,6 @@ def unregister():
   PARTICLE_FLUIDS_MeshToPSUI.unregister()
   PARTICLE_FLUIDS_PSToVolumeUI.unregister()
   PARTICLE_FLUIDS_FluidUI.unregister()
-  PARTICLE_FLUIDS_EmitterUI.unregister()
   SolverUI.unregister()
 #  ThreadSampleUI.unregister()
 #  ParticleSystemSequenceImportUI.unregister()

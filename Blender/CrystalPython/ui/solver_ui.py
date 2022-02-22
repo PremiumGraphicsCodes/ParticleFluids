@@ -11,6 +11,7 @@ from bpy.props import (
 
 from physics.solver_scene import SolverScene
 from ui.bl_fluid import BLFluid
+from ui.bl_emitter import BLEmitter
 from ui.bl_boundary import BLBoundary
 from CrystalPLI import Vector3df, Vector3dd, Box3dd
 from scene.file_io import FileIO
@@ -27,7 +28,6 @@ scene = Scene(world)
 bl_solver = BLSolver()
 
 def find_all_fluids() :
-    global scene
     fluids = []
     for o in bpy.data.objects:
         if o.type == 'MESH' and o.ps_fluid.is_active_prop :
@@ -38,6 +38,17 @@ def find_all_fluids() :
             fluids.append(fluid)
     return fluids
 
+def find_all_emitters() :
+    emitters = []
+    for o in bpy.data.objects:
+        if o.type == 'MESH' and o.ps_emitter.is_active_prop :
+            fluid = BLEmitter(scene)
+            fluid.build(scene)
+            fluid.convert_from_polygon_mesh(o.to_mesh())
+            fluid.reset(o.ps_emitter)
+            emitters.append(fluid)
+    return emitters
+
 def reset() :
     bl_solver.build(scene)
     bl_solver.reset()
@@ -46,6 +57,11 @@ def reset() :
 
     for bl_fluid in bl_fluids :
         bl_solver.add_fluid(bl_fluid)
+
+    bl_emitters = find_all_emitters()
+
+    for bl_emitter in bl_emitters :
+        bl_solver.add_emitter(bl_emitter)
 
     #bl_boundary = BLBoundary(scene)
     #bl_boundary.build(scene)

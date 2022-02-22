@@ -15,6 +15,7 @@ class BLSolver :
         self.__solver = None
         self.__running = False
         self.__bl_fluids = []
+        self.__bl_emitters = []
         self.__bl_boundaries = []
         self.__external_force = Vector3df(0.0, 0.0, -9.8)
         self.__time_step = 0.01
@@ -35,6 +36,9 @@ class BLSolver :
     def add_fluid(self, bl_fluid) :
         self.__bl_fluids.append(bl_fluid)
 
+    def add_emitter(self, bl_emitter) :
+        self.__bl_emitters.append(bl_emitter)
+
     def add_boundary(self, bl_boundary) :
         self.__bl_boundaries.append(bl_boundary)
 
@@ -49,6 +53,11 @@ class BLSolver :
         for bl_fluid in self.__bl_fluids :
             fluids.append( bl_fluid.get_fluid() )
         self.__solver.fluids = fluids
+
+        emitters = []
+        for bl_emitter in self.__bl_emitters :
+            emitters.append( bl_emitter.get_emitter() )
+        self.__solver.emitters = emitters
 
         boundaries = []
         for bl_boundary in self.__bl_boundaries :
@@ -100,6 +109,9 @@ class BLSolver :
 
         for fluid in self.__bl_fluids :
             fluid.send_shader()
+
+        for emitter in self.__bl_emitters :
+            emitter.send_shader()
         
         macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".ply")
         self.__solver.export_pcd(macro_file_path, True)
@@ -111,10 +123,13 @@ class BLSolver :
 #        for bl_fluid in self.__bl_fluids :
 #            bl_fluid.reset()
         self.__bl_fluids.clear()
+        self.__bl_emitters.clear()
         self.__bl_boundaries.clear()
 
     def render(self):
         for bl_fluid in self.__bl_fluids :
             bl_fluid.render()
+        for bl_emitter in self.__bl_emitters :
+            bl_emitter.render()
         for bl_boundary in self.__bl_boundaries :
             bl_boundary.draw()

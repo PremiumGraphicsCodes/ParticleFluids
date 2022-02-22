@@ -64,7 +64,7 @@ class BLEmitter :
             p = Vector3dd(vt.co[0], vt.co[1], vt.co[2])
             positions.add(p)
         self.__source_ps.set_positions(positions)
-        self.__fluid.send()
+        self.__emitter.send()
 #        self.me = mesh
 
     def send_shader(self):
@@ -78,15 +78,17 @@ class BLEmitter :
     def render(self):
         batch = batch_for_shader(self.__shader, 'POINTS', {"pos" : self.__coords, "color" : self.__colors})
 
-        # 描画
         self.__shader.bind()
         matrix = bpy.context.region_data.perspective_matrix
         self.__shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
         batch.draw(self.__shader)
 
-    #def reset(self, prop):
-    #    self.__emitter.particle_radius = prop.particle_radius_prop
-    #   self.__emitter.stiffness = prop.stiffness_prop
-    #    self.__emitter.viscosity = prop.viscosity_prop
-    #    self.__emitter.start_step = prop.is_static_prop
+    def reset(self, prop):
+        self.__emitter.particle_radius = prop.particle_radius_prop
+        self.__emitter.stiffness = prop.stiffness_prop
+        self.__emitter.viscosity = prop.viscosity_prop
+        self.__emitter.start_step = prop.start_step_prop
+        self.__emitter.end_step = prop.end_step_prop
+        self.__emitter.interval = prop.interval_prop
+
     #    self.__fluid.send()

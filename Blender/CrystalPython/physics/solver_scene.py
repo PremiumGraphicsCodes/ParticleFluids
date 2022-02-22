@@ -68,6 +68,7 @@ class SolverScene :
             fluid_ids.append(e.id)
         create_physics_command(PhysicsSolverExportCommand.CommandNameLabel)
         set_arg_int_vector(PhysicsSolverExportCommand.FluidIdsLabel, fluid_ids)
+        #set_arg_int_vector(PhysicsSolverExportCommand.Emi)
         set_arg_string(PhysicsSolverExportCommand.FilePathLabel, file_path)
         set_arg_bool(PhysicsSolverExportCommand.DoExportMicroLabel, do_export_micro)
         is_ok = execute_command(self.scene.world)
