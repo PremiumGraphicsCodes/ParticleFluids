@@ -2,6 +2,7 @@
 
 #include "gtest/gtest.h"
 #include "../CrystalNumerics/SVD.h"
+#include "../../Crystal/Math/Tolerance.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Numerics;
