@@ -1,18 +1,10 @@
 import bpy
-import os
-import threading
-
-from bpy.props import (
-    IntProperty,
-    FloatProperty,
-    FloatVectorProperty,
-    StringProperty
-)
 
 from physics.solver_scene import SolverScene
 from ui.bl_fluid import BLFluid
 from ui.bl_emitter import BLEmitter
 from ui.bl_boundary import BLBoundary
+from ui.prop.solver_prop import PARTICLE_FLUIDS_SolverProperty
 from CrystalPLI import Vector3df, Vector3dd, Box3dd
 from scene.file_io import FileIO
 from ui.bl_solver import BLSolver
@@ -116,73 +108,6 @@ class PARTICLE_FLUIDS_OT_SolverCancelOperator(bpy.types.Operator):
         bl_solver.stop()
         return {'FINISHED'}        
 
-class SolverProperty(bpy.types.PropertyGroup) :
-    is_active_prop : bpy.props.BoolProperty(
-        name ="active",
-        description = "Active",
-        default = False,
-    )
-    start_frame_prop : IntProperty(
-        name = "start_frame",
-        description="StartFrame",
-        default=0,
-        min=0,
-    )
-    end_frame_prop : IntProperty(
-        name = "end_frame",
-        description="EndFrame",
-        default=250,
-        min=0,
-    )
-    time_step_prop : FloatProperty(
-        name="time_step",
-        description="TimeStep",
-        default=0.01,
-        min=0.0,
-        max=1.0,
-    )
-    external_force_prop : FloatVectorProperty(
-        name="external_force",
-        description="ExternalForce",
-        default=(0.0, 0.0, -9.8),
-        min=-100.0,
-        max=100.0,
-    )
-    search_radius_prop : FloatProperty(
-        name="search_radius",
-        description="SearchRadius",
-        default = 3.0,
-        min = -0.0
-    )
-#    min : bpy.props.FloatVectorProperty(
-#        name="min",
-#        description="Min",
-#        default=(-1.0, -1.0, -1.0)
-#    )
-#    max : bpy.props.FloatVectorProperty(
-#        name="max",
-#        description="Max",
-#        default=(1.0, 1.0, 1.0)
-#    )
-    export_dir_path : bpy.props.StringProperty(
-        name="export_dir",
-        description="Path to Directory",
-        default="C:/tmp",
-        maxlen=1024,
-        subtype='DIR_PATH',
-    )
-    iteration_prop : bpy.props.IntProperty(
-        name="iteration_prop",
-        description ="Iteration",
-        default =1,
-        min = 1,
-    )
-    progress_prop : bpy.props.IntProperty(
-        name="progress",
-        description="Progress",
-        default = 0,   
-    )
-
 class PARTICLE_FLUIDS_PT_SolverPanel(bpy.types.Panel):
     bl_label = "Solver"
     bl_space_type = 'VIEW_3D'
@@ -220,7 +145,7 @@ classes = [
     PARTICLE_FLUIDS_OT_SolverResumeOperator,
     PARTICLE_FLUIDS_OT_SolverCancelOperator,
     PARTICLE_FLUIDS_PT_SolverPanel,
-    SolverProperty,
+    PARTICLE_FLUIDS_SolverProperty,
 ]
 
 def on_draw_solver() :
@@ -234,7 +159,7 @@ class SolverUI :
     def register():
         for c in classes:
             bpy.utils.register_class(c)
-        bpy.types.Scene.solver_property = bpy.props.PointerProperty(type=SolverProperty)
+        bpy.types.Scene.solver_property = bpy.props.PointerProperty(type=PARTICLE_FLUIDS_SolverProperty)
         bpy.types.SpaceView3D.draw_handler_add(on_draw_solver, (), 'WINDOW', 'POST_VIEW')
 
     def unregister():
