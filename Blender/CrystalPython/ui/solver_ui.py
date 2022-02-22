@@ -225,7 +225,8 @@ classes = [
 
 def on_draw_solver() :
     global bl_solver
-    bpy.context.scene.solver_property.progress_prop = bl_solver.get_current_frame()
+    #bpy.context.scene.solver_property.progress_prop = bl_solver.get_current_frame()
+    bpy.context.scene.frame_current = bl_solver.get_current_frame()
     if bpy.context.scene.solver_property.is_active_prop :
         bl_solver.render()
 

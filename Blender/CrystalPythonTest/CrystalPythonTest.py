@@ -104,16 +104,18 @@ def calc_distance_squared(lhs, rhs) :
 class TestRunner(unittest.TestCase): 
     def test_runner(self):
         test_suite = unittest.TestSuite()
+        test_suite.addTest(unittest.makeSuite(SolverSceneTest))
+        pass
+        test_suite.addTest(unittest.makeSuite(EmitterSceneTest))
+
         test_suite.addTest(unittest.makeSuite(ParticleSystemSceneTest))
         test_suite.addTest(unittest.makeSuite(WireFrameSceneTest))
         test_suite.addTest(unittest.makeSuite(PolygonMeshSceneTest))
         test_suite.addTest(unittest.makeSuite(TriangleMeshSceneTest))
         test_suite.addTest(unittest.makeSuite(FileIOTest))
         test_suite.addTest(unittest.makeSuite(VoxelSceneTest))
-        test_suite.addTest(unittest.makeSuite(SolverSceneTest))
         test_suite.addTest(unittest.makeSuite(CSGBoundarySceneTest))
         test_suite.addTest(unittest.makeSuite(FluidSceneTest))
-        test_suite.addTest(unittest.makeSuite(EmitterSceneTest))
         test_suite.addTest(unittest.makeSuite(SurfaceBuilderTest))
 
 #        tests = unittest.defaultTestLoader.discover("CrystalPythonTest", pattern="*.py")

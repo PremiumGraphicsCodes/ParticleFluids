@@ -7,6 +7,15 @@ from physics.csg_boundary_scene import CSGBoundaryScene
 from CrystalPLI import Vector3df
 
 class SolverSceneTest(unittest.TestCase):
+    def __create_test_particle_system(self, scene) :
+        positions = Vector3ddVector()
+        positions.add(Vector3dd(1.0, 2.0, 3.0))
+        positions.add(Vector3dd(4.0, 5.0, 6.0))
+        color = ColorRGBAf()
+        particle_system = ParticleSystemScene(scene)
+        particle_system.create(positions, "", 1.0, color)
+        return particle_system
+
     def test(self):
         world = World()
         scene = Scene(world)
@@ -24,10 +33,12 @@ class SolverSceneTest(unittest.TestCase):
         fluid.send()
         fluids.append(fluid)
 
+        ps2 = self.__create_test_particle_system(scene)
+
         emitters = []
         emitter = EmitterScene(scene)
         emitter.create()
-        emitter.source_particle_system_id = ps.id
+        emitter.source_particle_system_id = ps2.id
         emitter.send()
         emitters.append(emitter)
 

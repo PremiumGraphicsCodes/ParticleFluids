@@ -30,6 +30,7 @@ class BLEmitter :
         self.__source_ps.create_empty("")
 
         self.__emitter.create()
+        self.__emitter.source_particle_system_id = self.__source_ps.id
         self.__emitter.send()
 
         vertex_shader = """
