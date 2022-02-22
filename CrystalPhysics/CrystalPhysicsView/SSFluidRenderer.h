@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Shader {
 
-class SSFluidRenderer : IRenderer
+class SSFluidRenderer : public IRenderer
 {
 public:
 	SSFluidRenderer();

@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Shader {
 
-class SSAbsorptionRenderer : IRenderer
+class SSAbsorptionRenderer : public IRenderer
 {
 public:
 	SSAbsorptionRenderer();

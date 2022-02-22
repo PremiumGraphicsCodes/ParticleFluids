@@ -31,6 +31,9 @@
     <ClCompile Include="SSFluidRenderer.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
+    <ClCompile Include="SSThicknessRenderer.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
@@ -60,6 +63,9 @@
       <Filter>Shader</Filter>
     </ClInclude>
     <ClInclude Include="SSFluidRenderer.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="SSThicknessRenderer.h">
       <Filter>Shader</Filter>
     </ClInclude>
   </ItemGroup>

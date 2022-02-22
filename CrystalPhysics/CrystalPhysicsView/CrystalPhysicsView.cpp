@@ -14,13 +14,18 @@
 
 #include "SSNormalRenderer.h"
 #include "SSAbsorptionRenderer.h"
+#include "SSThicknessRenderer.h"
 #include "ParticleDepthRenderer.h"
 #include "SSFluidRenderer.h"
+
+#include <cassert>
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
+
+using namespace Crystal::Shader;
 
 int main(int, char**)
 {
@@ -34,14 +39,25 @@ int main(int, char**)
 	}
 
 	auto glFactory = world.getRenderer()->getGLFactory();
-	Crystal::Shader::SSNormalRenderer ssNormalRenderer;
-	ssNormalRenderer.build(*glFactory);
-	Crystal::Shader::SSAbsorptionRenderer ssAbsorptionRenderer;
-	ssAbsorptionRenderer.build(*glFactory);
-	Crystal::Shader::ParticleDepthRenderer pdRenderer;
-	pdRenderer.build(*glFactory);
-	Crystal::Shader::SSFluidRenderer ssfr;
-	ssfr.build(*glFactory);
+	auto renderers = world.getRenderer()->getRenderers();
+	std::unique_ptr<SSNormalRenderer> ssNormalRenderer = std::make_unique<SSNormalRenderer>();
+	const auto status1 = ssNormalRenderer->build(*glFactory);
+	assert(status1.isOk);
+	std::unique_ptr<SSAbsorptionRenderer> ssAbsorptionRenderer = std::make_unique<SSAbsorptionRenderer>();
+	const auto status2 = ssAbsorptionRenderer->build(*glFactory);
+	assert(status2.isOk);
+	std::unique_ptr<SSThicknessRenderer> ssThicknessRenderer = std::make_unique<SSThicknessRenderer>();
+	const auto status3 = ssThicknessRenderer->build(*glFactory);
+	assert(status3.isOk);
+	std::unique_ptr<ParticleDepthRenderer> pdRenderer = std::make_unique<ParticleDepthRenderer>();
+	pdRenderer->build(*glFactory);
+	std::unique_ptr<SSFluidRenderer> ssfr = std::make_unique<SSFluidRenderer>();
+	ssfr->build(*glFactory);
+	renderers->addRenderer(std::move(ssNormalRenderer));
+	renderers->addRenderer(std::move(ssAbsorptionRenderer));
+	renderers->addRenderer(std::move(ssThicknessRenderer));
+	renderers->addRenderer(std::move(pdRenderer));
+	renderers->addRenderer(std::move(ssfr));
 
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);

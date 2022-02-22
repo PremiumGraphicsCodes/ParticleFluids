@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Shader {
 
-class ParticleDepthRenderer : IRenderer
+class ParticleDepthRenderer : public IRenderer
 {
 public:
 	ParticleDepthRenderer();
@@ -15,10 +15,6 @@ public:
 	void release(Shader::GLObjectFactory& factory) override;
 
 	void render();
-
-	//void render(const Buffer& buffer);
-
-	//void renderBlend(const Buffer& buffer);
 
 	std::string getName() const override { return "ParticleDepthRenderer"; }
 

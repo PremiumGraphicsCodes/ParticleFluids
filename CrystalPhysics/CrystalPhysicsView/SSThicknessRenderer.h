@@ -5,10 +5,10 @@
 namespace Crystal {
 	namespace Shader {
 
-class SSNormalRenderer : public IRenderer
+class SSThicknessRenderer : public IRenderer
 {
 public:
-	SSNormalRenderer();
+	SSThicknessRenderer();
 
 	ShaderBuildStatus build(Shader::GLObjectFactory& factory) override;
 
@@ -16,11 +16,12 @@ public:
 
 	void render();
 
-	std::string getName() const override { return "SSNormalRenderer"; }
+	std::string getName() const override { return "SSThicknessRenderer"; }
 
 private:
 	Shader::ShaderObject* shader;
 
 };
+
 	}
 }

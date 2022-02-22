@@ -171,6 +171,7 @@
     <ClCompile Include="SSAbsorptionRenderer.cpp" />
     <ClCompile Include="SSFluidRenderer.cpp" />
     <ClCompile Include="SSNormalRenderer.cpp" />
+    <ClCompile Include="SSThicknessRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj">
@@ -226,6 +227,7 @@
     <ClInclude Include="SSAbsorptionRenderer.h" />
     <ClInclude Include="SSFluidRenderer.h" />
     <ClInclude Include="SSNormalRenderer.h" />
+    <ClInclude Include="SSThicknessRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
