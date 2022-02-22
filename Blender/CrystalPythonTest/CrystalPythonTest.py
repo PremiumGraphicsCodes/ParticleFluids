@@ -11,6 +11,7 @@ from scene.triangle_mesh_scene_test import TriangleMeshSceneTest
 from scene.file_io_test import FileIOTest
 from voxel_scene_test import VoxelSceneTest
 from physics.fluid_scene_test import FluidSceneTest
+from physics.emitter_scene_test import *
 from physics.solver_scene_test import SolverSceneTest
 from physics.csg_boundary_scene_test import CSGBoundarySceneTest
 from physics.surface_builder_test import SurfaceBuilderTest
@@ -112,6 +113,7 @@ class TestRunner(unittest.TestCase):
         test_suite.addTest(unittest.makeSuite(SolverSceneTest))
         test_suite.addTest(unittest.makeSuite(CSGBoundarySceneTest))
         test_suite.addTest(unittest.makeSuite(FluidSceneTest))
+        test_suite.addTest(unittest.makeSuite(EmitterSceneTest))
         test_suite.addTest(unittest.makeSuite(SurfaceBuilderTest))
 
 #        tests = unittest.defaultTestLoader.discover("CrystalPythonTest", pattern="*.py")
