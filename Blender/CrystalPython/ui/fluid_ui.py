@@ -3,8 +3,8 @@ from bpy.props import FloatProperty, StringProperty, BoolProperty
 
 from physics.fluid_scene import FluidScene
 from ui.bl_fluid import BLFluid
-from prop.emitter_prop import PARTICLE_FLUID_EmitterProperty
-from prop.fluid_prop import PARTICLE_FLUID_FluidProperty
+from ui.prop.emitter_prop import PARTICLE_FLUID_EmitterProperty
+from ui.prop.fluid_prop import PARTICLE_FLUID_FluidProperty
 
 class PARTICLE_FLUID_OT_Activate(bpy.types.Operator):
     bl_idname = "object.sample27_nop"
