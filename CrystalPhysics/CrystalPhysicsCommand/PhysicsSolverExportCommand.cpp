@@ -1,6 +1,6 @@
 #include "PhysicsSolverExportCommand.h"
 
-#include "../CrystalPhysics/MVP/MVPFluidScene.h"
+#include "../CrystalPhysics/MVP/IMVPFluidScene.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 #include "Crystal/IO/PLYFileWriter.h"
@@ -75,7 +75,7 @@ bool PhysicsSolverExportCommand::execute(World* world)
 	*/
 	PLYFile file;
 	for (const auto id : args.fluidIds.getValue()) {
-		auto fluid = world->getScenes()->findSceneById<MVPFluidScene*>(id);
+		auto fluid = world->getScenes()->findSceneById<IMVPFluidScene*>(id);
 		if (fluid == nullptr) {
 			return false;
 		}

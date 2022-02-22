@@ -1,6 +1,7 @@
 import unittest
 from scene.particle_system_scene import *
 from physics.fluid_scene import *
+from physics.emitter_scene import EmitterScene
 from physics.solver_scene import *
 from physics.csg_boundary_scene import CSGBoundaryScene
 from CrystalPLI import Vector3df
@@ -23,6 +24,13 @@ class SolverSceneTest(unittest.TestCase):
         fluid.send()
         fluids.append(fluid)
 
+        emitters = []
+        emitter = EmitterScene(scene)
+        emitter.create()
+        emitter.source_particle_system_id = ps.id
+        emitter.send()
+        emitters.append(emitter)
+
         boundaries = []
         boundary = CSGBoundaryScene(scene)
         boundary.create()
@@ -30,6 +38,7 @@ class SolverSceneTest(unittest.TestCase):
         boundaries.append(boundary)
 
         solver.fluids = fluids
+        solver.emitters = emitters
         solver.boundaries = boundaries
         solver.external_force = Vector3df(0.0, 0.0, -9.8)
         solver.send()

@@ -77,9 +77,11 @@ void MVPFluidSolver::simulate()
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
 	}
 
+	/*
 	if (fluids.empty()) {
 		return;
 	}
+	*/
 
 	if( currentTimeStep % 5 == 0 ) {
 		MVPSampler sampler;

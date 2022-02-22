@@ -44,6 +44,9 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
 	world->getScenes()->addScene(staticScene);
 
+	emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "MVPEmitter");
+	world->getScenes()->addScene(emitterScene);
+
 	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
 
 
@@ -57,8 +60,10 @@ void MVPFluidSimulationView::onStart()
 	onReset();
 
 	fluidScene->getPresenter()->createView(world->getRenderer());
+	emitterScene->getPresenter()->createView(world->getRenderer());
 	staticScene->getPresenter()->createView(world->getRenderer());
 	updator.add(fluidScene);
+	updator.add(emitterScene);
 	updator.add(staticScene);
 }
 
@@ -67,10 +72,11 @@ void MVPFluidSimulationView::onReset()
 	this->solver.clear();
 
 	fluidScene->clearParticles();
+	emitterScene->clearParticles();
 	staticScene->clearParticles();
 
-	this->addFluid();
-
+	//this->addFluid();
+	this->addEmitter();
 
 	csgScene->clearBoxes();
 	csgScene->add(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 100, 100)));
