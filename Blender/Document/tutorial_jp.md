@@ -56,7 +56,7 @@ graph TB
  - [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
  - [Start]ボタンでシミュレーションが開始されます．
  - [Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
-![Start](./images/Start.PNG) 
+![Start](./images/Start.png) 
 
 ### 結果の確認
 
