@@ -11,6 +11,11 @@ Microsoft社のHPからVisualStudio2019ランタイム(x64)をインストール
 下にあるX64を選択します．
 
 ## 構成
+
+本アドオンではシミュレーションは完全にParticlesだけで行います．メッシュやグリッドは必要ありません．
+しかしBlenderとの互換性を考え、OpenVDBを用いた変換ツールを用意することにしました．
+もちろん，他ソフトを使ってParticleとの変換を行っていただいても問題ありません．
+
 本アドオンはソルバー本体と，OpenVDBツールから構成されています．
 シミュレーション自体はOpenVDBを用いることなく実行できますが，
 プリ、ポストまでBlender上で完結させることができます．
@@ -71,13 +76,15 @@ graph TB
 - [Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
 ![StaticMesh](./images/StaticMesh.png) 
 
-[Object Properties]から[Scale]を[20,20,1]とします．
+- [Object Properties]から[Scale]を[20,20,1]とします．
 流体下部に置きたいので，LocationのZ[-20]とします．
 
-同様にして[Voxelize]を実行してParticlesに変換します．
+- 同様にして[Voxelize]を実行してParticlesに変換します．
 ![StaticMesh](./images/StaticPS.png) 
 
-**ここで[Static]チェックボックスをマークしてください**
+- [Object001]を選択し，[Physics Properties]->[PFFluid]ボタンを押します．
+- パラメータ設定用タブが開きます．
+- **ここで[Static]チェックボックスをマークしてください**
 
 ### 再びシミュレーションの開始
 [PFSolver]タブを開き，[Start]ボタンでシミュレーションが開始されます．
