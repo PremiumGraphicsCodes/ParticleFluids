@@ -93,7 +93,7 @@ graph TB
 
 ### Meshing
 Blender標準の機能で連番のOpenVDBファイルを入力として扱うことができます．
-![VDBImport](./images/VDBImport.PNG) 
+![VDBImport](./images/VDBImport.png) 
 
 ### レンダリング
 
