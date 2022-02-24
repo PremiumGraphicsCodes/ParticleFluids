@@ -69,7 +69,8 @@ graph TB
 本アドオンでは，障害物の設定もFluidと同様に行うことができます．
 
 - [Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
-![StaticMesh](./images/StaticMesh.PNG) 
+![StaticMesh](./images/StaticMesh.png) 
+
 [Object Properties]から[Scale]を[20,20,1]とします．
 流体下部に置きたいので，LocationのZ[-20]とします．
 
