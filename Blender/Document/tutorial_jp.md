@@ -30,7 +30,8 @@ graph TB
 
 ### Particlesデータの作成
 
-- Blenderデフォルトで生成されている[Cube]を選択し，[Object Properties]から，[ScaleX],[ScaleY],[ScaleZ]をそれぞれ10,10,10とします．
+- Blenderデフォルトで生成されている[Cube]を選択し
+- [Object Properties]から，[ScaleX],[ScaleY],[ScaleZ]をそれぞれ10,10,10とします．
 
 
 ![Mesh](./images/Mesh.png) 
@@ -50,41 +51,43 @@ graph TB
 ![MeshToPS](./images/Fluid.PNG) 
 
 ### シミュレーションの開始
-[PFSolver]タブを開きます．
-[ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
-[Start]ボタンでシミュレーションが開始されます．
-[Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
+
+ - [PFSolver]タブを開きます．
+ - [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
+ - [Start]ボタンでシミュレーションが開始されます．
+ - [Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
 ![Start](./images/Start.PNG) 
 
 ### 結果の確認
-[ExportPath]で設定したフォルダにplyファイルが連番で出力されているので，それを確認します．
-Blenderでimportすると，落下していく様子が確認できます．
+
+ - [ExportPath]で設定したフォルダにplyファイルが連番で出力されているので，それを確認します．
+ - Blenderでimportすると，落下していく様子が確認できます．
 
 ### 障害物の作成
 この時点では障害物（床）がないため，粒子が落ちていくだけです．
 現実的には障害物を設定しておく必要があります．
 本アドオンでは，障害物の設定もFluidと同様に行うことができます．
 
-[Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
+- [Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
 ![StaticMesh](./images/StaticMesh.PNG) 
 [Object Properties]から[Scale]を[20,20,1]とします．
 流体下部に置きたいので，LocationのZ[-20]とします．
 
 同様にして[Voxelize]を実行してParticlesに変換します．
-![StaticMesh](./images/StaticPS.PNG) 
+![StaticMesh](./images/StaticPS.png) 
 
 **ここで[Static]チェックボックスをマークしてください**
 
 ### 再びシミュレーションの開始
 [PFSolver]タブを開き，[Start]ボタンでシミュレーションが開始されます．
 今度は設定した床でParticlesが跳ね返っていることが確認できます．
-![StaticMesh](./images/StaticEnd.PNG) 
+![StaticMesh](./images/StaticEnd.png) 
 
 ### VDBボリュームへの変換
 [PFSolver]->[Start]を押すとダイアログが表示されます．
 ここで先ほど出力したplyファイルを選択します．
 (BlenderではCtrl+Aで全選択できます)
-![PSToVolume](./images/PSToVolume.PNG) 
+![PSToVolume](./images/PSToVolume.png) 
 [Convert]ボタンを押すとコンバート処理が始まり，同じフォルダにVDB形式のデータが作成されます．
 
 ### Meshing
