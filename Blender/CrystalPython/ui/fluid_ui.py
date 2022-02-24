@@ -45,15 +45,15 @@ class PARTICLE_FLUID_PT_FluidPanel(bpy.types.Panel) :
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
       layout.prop(fluid_property, "is_static_prop", text="Static")
-    layout.operator(PARTICLE_FLUID_OT_Emitter_Activate.bl_idname, text="PFEmitter")    
-    if bpy.context.active_object.ps_emitter.is_active_prop == True :
-      fluid_property = bpy.context.active_object.ps_emitter
-      layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
-      layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
-      layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
-      layout.prop(fluid_property, "start_step_prop", text="StartStep")
-      layout.prop(fluid_property, "end_step_prop", text="EndStep")
-      layout.prop(fluid_property, "interval_prop", text="Interval")
+    #layout.operator(PARTICLE_FLUID_OT_Emitter_Activate.bl_idname, text="PFEmitter")    
+    #if bpy.context.active_object.ps_emitter.is_active_prop == True :
+    #  fluid_property = bpy.context.active_object.ps_emitter
+    #  layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
+    #  layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
+    #  layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
+    #  layout.prop(fluid_property, "start_step_prop", text="StartStep")
+    #  layout.prop(fluid_property, "end_step_prop", text="EndStep")
+    #  layout.prop(fluid_property, "interval_prop", text="Interval")
 
 
 classes = [
