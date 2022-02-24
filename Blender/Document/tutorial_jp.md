@@ -16,10 +16,11 @@ Microsoft社のHPからVisualStudio2019ランタイム(x64)をインストール
 プリ、ポストまでBlender上で完結させることができます．
 
 ## シミュレーションの流れ
+下図に示すように，MeshからParticleを生成し，それに物理属性を付与し，シミュレーションを行います．
 
 ```mermaid
 graph TB
-  A[Particle Generation] --> B[Simulation]
+  A[MeshToParticles] --> B[Simulation]
   B --> C[ConvertToVDB]
   C --> D[VDBToMesh]
 ```
@@ -27,42 +28,57 @@ graph TB
 
 ## チュートリアル Hello, Fluids!
 
-### Particle Systemデータの作成
+### Particlesデータの作成
 
-- Blenderデフォルトの[Cube]の[ScaleX],[ScaleY],[ScaleZ]をそれぞれ10,10,10とします．
+- Blenderデフォルトで生成されている[Cube]を選択し，[Object Properties]から，[ScaleX],[ScaleY],[ScaleZ]をそれぞれ10,10,10とします．
 
 
 ![Mesh](./images/Mesh.png) 
 
-- [Cube]を選択したまま，[Voxelizer]->[MeshToPS]を選択し，[Convert]を押します．
-- するとツリー上に[ParticleSystem01]というオブジェクトが現れます．
+- [Cube]を選択したまま，[VDBTools]->[MeshToPS]->[Voxelize]を押します．
+- するとツリー上に[Object]という頂点だけのパーティクルオブジェクトが現れます．
 
 ![MeshToPS](./images/MeshToPS.PNG) 
 
 ### Fluidデータの作成
 
-- 先ほど作成した[ParticleSystem01]を選択し，[Physics]タブを開きます．
-- [ParticleFluids]ボタンを押します．
+- 先ほど作成した[Object]を選択し，[Physics Properties]タブを開きます．
+- [PFFluid]ボタンを押します．
 - パラメータ設定用タブが開きます．
+- ここではそのままデフォルト値を用います．
 
 ![MeshToPS](./images/Fluid.PNG) 
 
 ### シミュレーションの開始
-[PFSolver]タブでSolverを追加します．
-[Start]ボタンでシミュレーションが開始されます．
+[PFSolver]タブを開きます．
 [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
-plyファイルが連番で出力されてます．
+[Start]ボタンでシミュレーションが開始されます．
+[Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
 ![Start](./images/Start.PNG) 
+
+### 結果の確認
+[ExportPath]で設定したフォルダにplyファイルが連番で出力されているので，それを確認します．
+Blenderでimportすると，落下していく様子が確認できます．
 
 ### 障害物の作成
 この時点では障害物（床）がないため，粒子が落ちていくだけです．
 現実的には障害物を設定しておく必要があります．
-
 本アドオンでは，障害物の設定もFluidと同様に行うことができます．
-[Static]チェックボックスをマークするだけです．
+
+[Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
+![StaticMesh](./images/StaticMesh.PNG) 
+[Object Properties]から[Scale]を[20,20,1]とします．
+流体下部に置きたいので，LocationのZ[-20]とします．
+
+同様にして[Voxelize]を実行してParticlesに変換します．
+![StaticMesh](./images/StaticPS.PNG) 
+
+**ここで[Static]チェックボックスをマークしてください**
 
 ### 再びシミュレーションの開始
-
+[PFSolver]タブを開き，[Start]ボタンでシミュレーションが開始されます．
+今度は設定した床でParticlesが跳ね返っていることが確認できます．
+![StaticMesh](./images/StaticEnd.PNG) 
 
 ### VDBボリュームへの変換
 [PFSolver]->[Start]を押すとダイアログが表示されます．
@@ -75,7 +91,7 @@ plyファイルが連番で出力されてます．
 Blender標準の機能で連番のOpenVDBファイルを入力として扱うことができます．
 ![VDBImport](./images/VDBImport.PNG) 
 
-
+### レンダリング
 
 
 
