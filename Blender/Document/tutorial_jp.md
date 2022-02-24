@@ -39,7 +39,7 @@ graph TB
 - [Cube]を選択したまま，[VDBTools]->[MeshToPS]->[Voxelize]を押します．
 - するとツリー上に[Object]という頂点だけのパーティクルオブジェクトが現れます．
 
-![MeshToPS](./images/MeshToPS.PNG) 
+![MeshToPS](./images/MeshToPS.png) 
 
 ### Fluidデータの作成
 
@@ -48,7 +48,7 @@ graph TB
 - パラメータ設定用タブが開きます．
 - ここではそのままデフォルト値を用います．
 
-![MeshToPS](./images/Fluid.PNG) 
+![MeshToPS](./images/Fluid.png) 
 
 ### シミュレーションの開始
 
