@@ -65,7 +65,7 @@ void MPSFluidSimulationView::onReset()
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 5; ++j) {
 			for (int k = 0; k < 10; ++k) {
-				auto p = new MPSParticle(Vector3df(i * length, j * length, k * length), radius);
+				auto p = new MPSParticle(Vector3df(i * length, j * length, k * length));
 				fluidScene->addParticle(p);
 			}
 		}

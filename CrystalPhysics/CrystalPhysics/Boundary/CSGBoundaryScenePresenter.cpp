@@ -2,7 +2,7 @@
 
 #include "CSGBoundaryScene.h"
 
-#include "../../Crystal/Shape/WireFrameBuilder.h"
+#include "Crystal/Shape/WireFrameBuilder.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
