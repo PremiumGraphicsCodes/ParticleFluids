@@ -158,6 +158,8 @@
   <ItemGroup>
     <ClInclude Include="Boundary\CSGBoundaryScene.h" />
     <ClInclude Include="Boundary\CSGBoundaryScenePresenter.h" />
+    <ClInclude Include="Boundary\MeshBoundaryScene.h" />
+    <ClInclude Include="Boundary\MeshBoundaryScenePresenter.h" />
     <ClInclude Include="CSPH\CSPHBoundarySolver.h" />
     <ClInclude Include="CSPH\CSPHFluidScene.h" />
     <ClInclude Include="CSPH\CSPHFluidSceneController.h" />
@@ -184,8 +186,6 @@
     <ClInclude Include="MVP\MVPParticleBuilder.h" />
     <ClInclude Include="MVP\MVPVolumeParticle.h" />
     <ClInclude Include="MVP\MVPMassParticle.h" />
-    <ClInclude Include="MeshBoundaryScene.h" />
-    <ClInclude Include="MeshBoundaryScenePresenter.h" />
     <ClInclude Include="PBSPH\PBFluidScene.h" />
     <ClInclude Include="PBSPH\PBFluidSceneController.h" />
     <ClInclude Include="PBSPH\PBSPHBoundaryParticle.h" />
@@ -206,6 +206,8 @@
   <ItemGroup>
     <ClCompile Include="Boundary\CSGBoundaryScene.cpp" />
     <ClCompile Include="Boundary\CSGBoundaryScenePresenter.cpp" />
+    <ClCompile Include="Boundary\MeshBoundaryScene.cpp" />
+    <ClCompile Include="Boundary\MeshBoundaryScenePresenter.cpp" />
     <ClCompile Include="CSPH\CSPHBoundarySolver.cpp" />
     <ClCompile Include="CSPH\CSPHFluidScene.cpp" />
     <ClCompile Include="CSPH\CSPHFluidSceneController.cpp" />
@@ -231,8 +233,6 @@
     <ClCompile Include="MVP\MVPParticleBuilder.cpp" />
     <ClCompile Include="MVP\MVPVolumeParticle.cpp" />
     <ClCompile Include="MVP\MVPMassParticle.cpp" />
-    <ClCompile Include="MeshBoundaryScene.cpp" />
-    <ClCompile Include="MeshBoundaryScenePresenter.cpp" />
     <ClCompile Include="PBSPH\PBFluidScene.cpp" />
     <ClCompile Include="PBSPH\PBFluidSceneController.cpp" />
     <ClCompile Include="PBSPH\PBSPHBoundaryParticle.cpp" />

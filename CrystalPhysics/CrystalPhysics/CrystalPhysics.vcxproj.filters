@@ -19,9 +19,6 @@
     <Filter Include="Boundary\Mesh">
       <UniqueIdentifier>{ff819c75-8710-4215-b391-e3ce5a50f5c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Boundary\Particle">
-      <UniqueIdentifier>{a2559790-0fc8-46e3-8c8d-26a0c9681588}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SurfaceReconstruction">
       <UniqueIdentifier>{93dd166c-0ba5-44cc-8a40-880633228676}</UniqueIdentifier>
     </Filter>
@@ -41,12 +38,6 @@
   <ItemGroup>
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
-    <ClInclude Include="MeshBoundaryScene.h">
-      <Filter>Boundary\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshBoundaryScenePresenter.h">
-      <Filter>Boundary\Mesh</Filter>
-    </ClInclude>
     <ClInclude Include="MVP\MVPMassParticle.h">
       <Filter>MVP</Filter>
     </ClInclude>
@@ -171,15 +162,15 @@
     <ClInclude Include="Boundary\CSGBoundaryScenePresenter.h">
       <Filter>Boundary\CSG</Filter>
     </ClInclude>
+    <ClInclude Include="Boundary\MeshBoundaryScene.h">
+      <Filter>Boundary\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Boundary\MeshBoundaryScenePresenter.h">
+      <Filter>Boundary\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
-    <ClCompile Include="MeshBoundaryScene.cpp">
-      <Filter>Boundary\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshBoundaryScenePresenter.cpp">
-      <Filter>Boundary\Mesh</Filter>
-    </ClCompile>
     <ClCompile Include="MVP\MVPMassParticle.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
@@ -302,6 +293,12 @@
     </ClCompile>
     <ClCompile Include="Boundary\CSGBoundaryScenePresenter.cpp">
       <Filter>Boundary\CSG</Filter>
+    </ClCompile>
+    <ClCompile Include="Boundary\MeshBoundaryScene.cpp">
+      <Filter>Boundary\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Boundary\MeshBoundaryScenePresenter.cpp">
+      <Filter>Boundary\Mesh</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,9 +1,9 @@
 #include "MeshBoundaryScene.h"
 
 #include "MeshBoundaryScenePresenter.h"
-#include "../../Crystal/Math/Triangle3d.h"
+#include "Crystal/Math/Triangle3d.h"
 //#include "../../CrystalSpace/CrystalSpace/MeshToParticleAlgo.h"
-#include "../../Crystal/Shape/Particle.h"
+#include "Crystal/Shape/Particle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

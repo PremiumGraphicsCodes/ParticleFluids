@@ -1,6 +1,6 @@
 #include "MeshBoundarySceneCreateCommand.h"
 
-#include "../CrystalPhysics/MeshBoundaryScene.h"
+#include "../CrystalPhysics/Boundary/MeshBoundaryScene.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
