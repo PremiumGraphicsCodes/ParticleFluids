@@ -1,10 +1,27 @@
 #include "MPSFluidSolver.h"
+#include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+
+#include <vector>
 
 using namespace Crystal::Math;
+using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
 namespace {
 	constexpr int DIM = 3;
+}
+
+void MPSFluidSolver::step()
+{
+	std::vector<MPSParticle*> particles;
+	CompactSpaceHash3d spaceHash(1.0, particles.size());
+
+	/*
+	for (auto fluid : fluids) {
+		const auto ps = fluid->getParticles();
+		particles.insert(particles.end(), ps.begin(), ps.end());
+	}
+	*/
 }
 
 Vector3df MPSFluidSolver::calculatePressureGradient(const MPSParticle* lhs, const MPSParticle* rhs, const float maxRadius)
