@@ -2,7 +2,7 @@
 
 #include "MVPVolumeParticle.h"
 #include "MVPFluidScene.h"
-#include "../CSGBoundaryScene.h"
+#include "../Boundary/CSGBoundaryScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

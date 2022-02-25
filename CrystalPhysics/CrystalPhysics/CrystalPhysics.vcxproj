@@ -156,8 +156,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CSGBoundaryScene.h" />
-    <ClInclude Include="CSGBoundaryScenePresenter.h" />
+    <ClInclude Include="Boundary\CSGBoundaryScene.h" />
+    <ClInclude Include="Boundary\CSGBoundaryScenePresenter.h" />
     <ClInclude Include="CSPH\CSPHBoundarySolver.h" />
     <ClInclude Include="CSPH\CSPHFluidScene.h" />
     <ClInclude Include="CSPH\CSPHFluidSceneController.h" />
@@ -204,8 +204,8 @@
     <ClInclude Include="SurfaceConstruction\WPCA.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CSGBoundaryScene.cpp" />
-    <ClCompile Include="CSGBoundaryScenePresenter.cpp" />
+    <ClCompile Include="Boundary\CSGBoundaryScene.cpp" />
+    <ClCompile Include="Boundary\CSGBoundaryScenePresenter.cpp" />
     <ClCompile Include="CSPH\CSPHBoundarySolver.cpp" />
     <ClCompile Include="CSPH\CSPHFluidScene.cpp" />
     <ClCompile Include="CSPH\CSPHFluidSceneController.cpp" />

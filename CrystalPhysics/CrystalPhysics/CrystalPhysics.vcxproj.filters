@@ -41,12 +41,6 @@
   <ItemGroup>
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
-    <ClInclude Include="CSGBoundaryScene.h">
-      <Filter>Boundary\CSG</Filter>
-    </ClInclude>
-    <ClInclude Include="CSGBoundaryScenePresenter.h">
-      <Filter>Boundary\CSG</Filter>
-    </ClInclude>
     <ClInclude Include="MeshBoundaryScene.h">
       <Filter>Boundary\Mesh</Filter>
     </ClInclude>
@@ -171,15 +165,15 @@
     <ClInclude Include="MPS\MPSFluidSolver.h">
       <Filter>MPS</Filter>
     </ClInclude>
+    <ClInclude Include="Boundary\CSGBoundaryScene.h">
+      <Filter>Boundary\CSG</Filter>
+    </ClInclude>
+    <ClInclude Include="Boundary\CSGBoundaryScenePresenter.h">
+      <Filter>Boundary\CSG</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
-    <ClCompile Include="CSGBoundaryScene.cpp">
-      <Filter>Boundary\CSG</Filter>
-    </ClCompile>
-    <ClCompile Include="CSGBoundaryScenePresenter.cpp">
-      <Filter>Boundary\CSG</Filter>
-    </ClCompile>
     <ClCompile Include="MeshBoundaryScene.cpp">
       <Filter>Boundary\Mesh</Filter>
     </ClCompile>
@@ -302,6 +296,12 @@
     </ClCompile>
     <ClCompile Include="MPS\MPSFluidSolver.cpp">
       <Filter>MPS</Filter>
+    </ClCompile>
+    <ClCompile Include="Boundary\CSGBoundaryScene.cpp">
+      <Filter>Boundary\CSG</Filter>
+    </ClCompile>
+    <ClCompile Include="Boundary\CSGBoundaryScenePresenter.cpp">
+      <Filter>Boundary\CSG</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

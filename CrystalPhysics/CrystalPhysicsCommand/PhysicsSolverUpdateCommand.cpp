@@ -3,7 +3,7 @@
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
-#include "../CrystalPhysics/CSGBoundaryScene.h"
+#include "../CrystalPhysics/Boundary/CSGBoundaryScene.h"
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 #include "CrystalScene/Scene/TriangleMeshScene.h"

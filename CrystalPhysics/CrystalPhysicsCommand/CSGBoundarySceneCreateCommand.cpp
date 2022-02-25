@@ -1,6 +1,6 @@
 #include "CSGBoundarySceneCreateCommand.h"
 
-#include "../CrystalPhysics/CSGBoundaryScene.h"
+#include "../CrystalPhysics/Boundary/CSGBoundaryScene.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 

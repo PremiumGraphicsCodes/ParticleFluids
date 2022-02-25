@@ -3,7 +3,7 @@
 #include "CrystalScene/AppBase/IView.h"
 #include "CrystalScene/AppBase/Box3dView.h"
 #include "CrystalScene/AppBase/Button.h"
-#include "../CrystalPhysics/CSGBoundaryScene.h"
+#include "../CrystalPhysics/Boundary/CSGBoundaryScene.h"
 
 namespace Crystal {
 	namespace Scene {
