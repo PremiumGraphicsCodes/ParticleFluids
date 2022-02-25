@@ -20,8 +20,8 @@ namespace {
 	//sphConstant.
 }
 
-DFSPHFluidSimulationView::DFSPHFluidSimulationView(World* model, Canvas* canvas) :
-	IOkCancelView("DFSPHFluidSimulation", model, canvas),
+DFSPHFluidSimulationView::DFSPHFluidSimulationView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
 	timeStepView("TimeStep", 0.01f),

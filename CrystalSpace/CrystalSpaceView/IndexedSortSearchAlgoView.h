@@ -9,7 +9,7 @@ namespace Crystal {
 class IndexedSortSearchAlgoView : public IOkCancelView
 {
 public:
-	IndexedSortSearchAlgoView(Scene::World* model, Canvas* canvas);
+	IndexedSortSearchAlgoView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

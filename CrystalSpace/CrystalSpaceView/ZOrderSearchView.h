@@ -9,7 +9,7 @@ namespace Crystal {
 class ZOrderSearchView : public IOkCancelView
 {
 public:
-	ZOrderSearchView(Scene::World* model, Canvas* canvas);
+	ZOrderSearchView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

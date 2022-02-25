@@ -20,8 +20,8 @@ namespace {
 	constexpr auto Fuel = "Fuel";
 }
 
-SPHFlameSimulationView::SPHFlameSimulationView(World* model, Canvas* canvas) :
-	IOkCancelView("SPHFlameSimulation", model, canvas),
+SPHFlameSimulationView::SPHFlameSimulationView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
 	//	nextButton("Next"),

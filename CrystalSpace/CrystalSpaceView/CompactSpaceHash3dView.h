@@ -9,7 +9,7 @@ namespace Crystal {
 class CompactSpaceHash3dView : public IOkCancelView
 {
 public:
-	CompactSpaceHash3dView(Scene::World* model, Canvas* canvas);
+	CompactSpaceHash3dView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

@@ -11,8 +11,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Space;
 
-ZOrderSearchView::ZOrderSearchView(World* model, Canvas* canvas) :
-	IOkCancelView("ZOrderSearch", model, canvas),
+ZOrderSearchView::ZOrderSearchView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
 	searchRadius("SearchRadius", 1.0)
 {
 	add(&searchRadius);

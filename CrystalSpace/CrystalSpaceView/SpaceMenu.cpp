@@ -40,16 +40,16 @@ void SpaceMenu::onShow()
 
 	if (ImGui::BeginMenu("Space")) {
 		if (ImGui::MenuItem("SpaceHash")) {
-			control->setWindow(new SpaceHashView(world, canvas));
+			control->setWindow(new SpaceHashView("SpaceHash", world, canvas));
 		}
 		if (ImGui::MenuItem("CompactSpaceHash")) {
-			control->setWindow(new CompactSpaceHash3dView(world, canvas));
+			control->setWindow(new CompactSpaceHash3dView("CompactSpaceHash", world, canvas));
 		}
 		if (ImGui::MenuItem("IndexedSortSearch")) {
-			control->setWindow(new IndexedSortSearchAlgoView(world, canvas));
+			control->setWindow(new IndexedSortSearchAlgoView("IndexedSort", world, canvas));
 		}
 		if (ImGui::MenuItem("ZOrderSearch")) {
-			control->setWindow(new ZOrderSearchView(world, canvas));
+			control->setWindow(new ZOrderSearchView("ZOrderSearch", world, canvas));
 		}
 		if (ImGui::MenuItem("Octree")) {
 			control->setWindow(new OctreeView(world, canvas));
@@ -61,7 +61,7 @@ void SpaceMenu::onShow()
 			control->setWindow(new DynamicOctreeView(world, canvas));
 		}
 		if (ImGui::MenuItem("Intersection")) {
-			control->setWindow(new IntersectionView("Intersection",getWorld(), getCanvas()));
+			control->setWindow(new IntersectionView("Intersection", world, canvas));
 		}
 		if (ImGui::MenuItem("Volume")) {
 			control->setWindow(new VolumeView(getWorld(), getCanvas()));
@@ -85,10 +85,10 @@ void SpaceMenu::onShow()
 			control->setWindow(new SVBoxView("SVBox", world, canvas));
 		}
 		if (ImGui::MenuItem("VoxelSphere")) {
-			control->setWindow(new VoxelSphereView("VoxelSphere", getWorld(), getCanvas()));
+			control->setWindow(new VoxelSphereView("VoxelSphere", world, canvas));
 		}
 		if (ImGui::MenuItem("Voxelizer")) {
-			control->setWindow(new VoxelizerView("Voxelizer", world, getCanvas()));
+			control->setWindow(new VoxelizerView("Voxelizer", world, canvas));
 		}
 		if (ImGui::MenuItem("ScanLineVoxelizer")) {
 			control->setWindow(new ScanLineVoxelizerView("ScanLineVoxelizer", world, canvas));

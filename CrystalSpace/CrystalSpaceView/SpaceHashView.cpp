@@ -12,8 +12,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Space;
 
-SpaceHashView::SpaceHashView(World* model, Canvas* canvas) :
-	IOkCancelView("SpaceHash", model, canvas),
+SpaceHashView::SpaceHashView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
 	searchRadius("SearchRadius", 1.0)
 {
 	add(&searchRadius);

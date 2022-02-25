@@ -17,7 +17,7 @@ namespace Crystal {
 class SPHFlameSimulationView : public IOkCancelView
 {
 public:
-	SPHFlameSimulationView(Scene::World* model, Canvas* canvas);
+	SPHFlameSimulationView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

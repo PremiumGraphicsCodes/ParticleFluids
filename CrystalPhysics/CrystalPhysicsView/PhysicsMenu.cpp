@@ -39,16 +39,16 @@ void PhysicsMenu::onShow()
 			control->setWindow(new MVPSamplerView("MVPSampler",world, canvas));
 		}
 		if (ImGui::MenuItem("PBSPHFluid")) {
-			control->setWindow(new PBSPHFluidSimulationView("PBFluidSimulation", world, canvas));
+			control->setWindow(new PBSPHFluidSimulationView("PBFluid", world, canvas));
 		}
 		if (ImGui::MenuItem("DFSPHFluid")) {
-			control->setWindow(new DFSPHFluidSimulationView(getWorld(), getCanvas()));
+			control->setWindow(new DFSPHFluidSimulationView("DFSPH", world, canvas));
 		}
 		if (ImGui::MenuItem("MPSFluid")) {
 			control->setWindow(new MPSFluidSimulationView("MPSFluid",world, canvas));
 		}
 		if (ImGui::MenuItem("SPHFlame")) {
-			control->setWindow(new SPHFlameSimulationView(world, canvas));
+			control->setWindow(new SPHFlameSimulationView("SPHFlame",world, canvas));
 		}
 		ImGui::EndMenu();
 	}

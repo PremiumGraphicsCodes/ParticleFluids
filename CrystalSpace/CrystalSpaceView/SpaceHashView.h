@@ -9,7 +9,7 @@ namespace Crystal {
 class SpaceHashView : public IOkCancelView
 {
 public:
-	SpaceHashView(Scene::World* model, Canvas* canvas);
+	SpaceHashView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;
