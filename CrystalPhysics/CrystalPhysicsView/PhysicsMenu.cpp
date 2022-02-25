@@ -4,6 +4,7 @@
 #include "MVPFluidSimulationView.h"
 #include "PBSPHFluidSimulationView.h"
 #include "DFSPHFluidSimulationView.h"
+#include "MPSFluidSimulationView.h"
 #include "SPHFlameSimulationView.h"
 
 #include "MeshBoundaryView.h"
@@ -42,6 +43,9 @@ void PhysicsMenu::onShow()
 		}
 		if (ImGui::MenuItem("DFSPHFluid")) {
 			control->setWindow(new DFSPHFluidSimulationView(getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("MPSFluid")) {
+			control->setWindow(new MPSFluidSimulationView("MPS",world, canvas));
 		}
 		if (ImGui::MenuItem("SPHFlame")) {
 			control->setWindow(new SPHFlameSimulationView(world, canvas));

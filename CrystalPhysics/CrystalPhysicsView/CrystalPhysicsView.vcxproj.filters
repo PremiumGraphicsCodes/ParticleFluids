@@ -19,6 +19,7 @@
     <ClCompile Include="MVPSurfaceBuilderView.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
+    <ClCompile Include="MPSFluidSimulationView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
@@ -38,6 +39,7 @@
     <ClInclude Include="MVPSurfaceBuilderView.h">
       <Filter>MVP</Filter>
     </ClInclude>
+    <ClInclude Include="MPSFluidSimulationView.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MVP">
