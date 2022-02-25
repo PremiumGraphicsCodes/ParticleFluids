@@ -34,6 +34,9 @@
     <Filter Include="MVP\Boundary">
       <UniqueIdentifier>{d17b61cc-41f8-454c-a5a7-e7e916c4078b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MPS">
+      <UniqueIdentifier>{37a477fb-a4fb-4e49-b089-907f70eb65b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SPHConstant.h" />
@@ -165,6 +168,9 @@
     <ClInclude Include="SPHFlame\SPHFlameSolver.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
+    <ClInclude Include="MPS\MPSFluidSolver.h">
+      <Filter>MPS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
@@ -293,6 +299,9 @@
     </ClCompile>
     <ClCompile Include="SPHFlame\SPHFlameSolver.cpp">
       <Filter>SPHFlame</Filter>
+    </ClCompile>
+    <ClCompile Include="MPS\MPSFluidSolver.cpp">
+      <Filter>MPS</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
