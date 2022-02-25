@@ -11,8 +11,8 @@ using namespace Crystal::Shape;
 using namespace Crystal::UI;
 using namespace Crystal::Space;
 
-MarchingCubesView::MarchingCubesView(World* model, Canvas* canvas) :
-	IOkCancelView("MarchingCubes", model, canvas)
+MarchingCubesView::MarchingCubesView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas)
 {
 }
 

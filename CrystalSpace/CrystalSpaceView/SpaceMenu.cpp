@@ -52,31 +52,31 @@ void SpaceMenu::onShow()
 			control->setWindow(new ZOrderSearchView("ZOrderSearch", world, canvas));
 		}
 		if (ImGui::MenuItem("Octree")) {
-			control->setWindow(new OctreeView(world, canvas));
+			control->setWindow(new OctreeView("Octree", world, canvas));
 		}
 		if (ImGui::MenuItem("LinearOctree")) {
-			control->setWindow(new LinearOctreeView(world, canvas));
+			control->setWindow(new LinearOctreeView("LinearOctree", world, canvas));
 		}
 		if (ImGui::MenuItem("DynamicOctree")) {
-			control->setWindow(new DynamicOctreeView(world, canvas));
+			control->setWindow(new DynamicOctreeView("DynamicOctree",world, canvas));
 		}
 		if (ImGui::MenuItem("Intersection")) {
 			control->setWindow(new IntersectionView("Intersection", world, canvas));
 		}
 		if (ImGui::MenuItem("Volume")) {
-			control->setWindow(new VolumeView(getWorld(), getCanvas()));
+			control->setWindow(new VolumeView("Volume", world, canvas));
 		}
 		if (ImGui::MenuItem("VolumeConvert")) {
-			control->setWindow(new VolumeConvertView(getWorld(), getCanvas()));
+			control->setWindow(new VolumeConvertView("VolumeConvert", world, canvas));
 		}
 		if (ImGui::MenuItem("MarchingCubes")) {
-			control->setWindow(new MarchingCubesView(getWorld(), getCanvas()));
+			control->setWindow(new MarchingCubesView("MarchingCubes", world, canvas));
 		}
 		if (ImGui::MenuItem("UniformGrid")) {
-			control->setWindow(new UniformGrid3dView(getWorld(), getCanvas()));
+			control->setWindow(new UniformGrid3dView("UniformGrid", world, canvas));
 		}
 		if (ImGui::MenuItem("MeshToParticle")) {
-			control->setWindow(new MeshToParticleView("MeshToParticle",getWorld(), getCanvas()));
+			control->setWindow(new MeshToParticleView("MeshToParticle", world, canvas));
 		}
 		if (ImGui::MenuItem("SVSphere")) {
 			control->setWindow(new SVSphereView("SVSphere", world, canvas));

@@ -8,8 +8,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Space;
 
-VolumeConvertView::VolumeConvertView(World* model, Canvas* canvas) :
-	IOkCancelView("VolumeConvert", model, canvas),
+VolumeConvertView::VolumeConvertView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
 	particleSystemSelectView("ParticleSystem", model, canvas, ParticleSystemScene::getTypeName()),
 	searchRadiusView("SearchRadius", 1.0)
 {

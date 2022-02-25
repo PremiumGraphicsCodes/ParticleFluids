@@ -12,8 +12,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
-VolumeView::VolumeView(World* model, Canvas* canvas) :
-	IOkCancelView("Volume", model, canvas),
+VolumeView::VolumeView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
 	box("Box")
 {
 }
