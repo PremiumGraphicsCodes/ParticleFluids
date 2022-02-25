@@ -12,23 +12,33 @@ class MPSParticle : public Shape::IParticle
 public:
 	Math::Vector3dd getPosition() const override { return position; }
 
+	Math::Vector3df getPositionf() const { return position; }
+
+	Math::Vector3df getVelocity() const { return velocity; }
+
 	float getPressure() const { return pressure; }
 
 	float getRestDensity() const { return n0; }
 
+	float getLamda0() const { return lamda0; }
+
 private:
 	float pressure;
 	float n0;
+	float lamda0;
 	Math::Vector3df position;
+	Math::Vector3df velocity;
 };
 
 class MPSFluidSolver
 {
 public:
 
-	double calculatePressureGradient(const MPSParticle* lhs, const MPSParticle* rhs);
+	Math::Vector3df calculatePressureGradient(const MPSParticle* lhs, const MPSParticle* rhs, const float maxRadius);
 
-	double calculateWeight(const double r, const double maxRadius);
+	Math::Vector3df calculateViscosity(const MPSParticle* lhs, const MPSParticle* rhs, const float maxRadius);
+
+	float calculateWeight(const float r, const float maxRadius);
 
 private:
 };
