@@ -7,6 +7,13 @@ namespace {
 	constexpr int DIM = 3;
 }
 
+MPSParticle::MPSParticle(const Vector3df& position) :
+	position(position),
+	//radius(radius),
+	acc(0.0),
+	numberDensity(0.0f)
+{}
+
 void MPSParticle::forwardTime(const float timeStep)
 {
 	//const auto& acc = getAccelaration() / getDensity();
@@ -14,11 +21,25 @@ void MPSParticle::forwardTime(const float timeStep)
 	this->position += (velocity * timeStep);
 }
 
+void MPSParticle::calculateNumberDensity(const float maxRadius)
+{
+	for (auto n : neighbors) {
+		this->numberDensity += this->calculateNumberDensity(n, maxRadius);
+	}
+}
+
 void MPSParticle::calculateViscosity(const float maxRadius)
 {
 	for (auto n : neighbors) {
 		this->acc += this->calculateViscosity(n, maxRadius);
 	}
+}
+
+float MPSParticle::calculateNumberDensity(const MPSParticle* rhs, const float maxRadius)
+{
+	const float distance = getDistance(this->getPositionf(), rhs->getPositionf());
+	const float weight = calculateWeight(distance, maxRadius);
+	return weight;
 }
 
 Vector3df MPSParticle::calculatePressureGradient(const MPSParticle* rhs, const float maxRadius)
@@ -45,5 +66,5 @@ float MPSParticle::calculateWeight(const float r, const float maxRadius)
 	if (r > maxRadius) {
 		return 0.0f;
 	}
-	return (r / maxRadius) - 1.0f;
+	return (maxRadius / r) - 1.0f;
 }

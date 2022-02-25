@@ -10,11 +10,7 @@ namespace Crystal {
 class MPSParticle : public Shape::IParticle
 {
 public:
-	MPSParticle(const Math::Vector3df& position, const float radius) :
-		position(position),
-		radius(radius),
-		acc(0.0)
-	{}
+	explicit MPSParticle(const Math::Vector3df& position);
 
 	Math::Vector3dd getPosition() const override { return position; }
 
@@ -34,9 +30,15 @@ public:
 
 	void addExternalForce(const Math::Vector3df& externalForce) { this->force += externalForce; }
 
+	void calculateNumberDensity(const float maxRadius);
+
 	void calculateViscosity(const float maxRadius);
 
+	float getNumberDensity() { return numberDensity; }
+
 private:
+	float calculateNumberDensity(const MPSParticle* rhs, const float maxRadius);
+
 	Math::Vector3df calculatePressureGradient(const MPSParticle* rhs, const float maxRadius);
 
 	Math::Vector3df calculateViscosity(const MPSParticle* rhs, const float maxRadius);
@@ -47,7 +49,8 @@ private:
 	float pressure;
 	float n0;
 	float lamda0;
-	const float radius;
+	//const float radius;
+	float numberDensity;
 	Math::Vector3df force;
 	Math::Vector3df acc;
 	Math::Vector3df position;

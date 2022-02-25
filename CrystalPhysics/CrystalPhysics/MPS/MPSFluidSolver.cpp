@@ -33,6 +33,11 @@ void MPSFluidSolver::step()
 		}
 	}
 
+	// calculate number density.
+	for (auto p : particles) {
+		p->calculateNumberDensity(effectRadius);
+	}
+
 	for (auto p : particles) {
 		p->addExternalForce(this->externalForce);
 		p->calculateViscosity(effectRadius);
