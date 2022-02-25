@@ -229,6 +229,7 @@
     <ClCompile Include="MPS\MPSFluidScene.cpp" />
     <ClCompile Include="MPS\MPSFluidSceneController.cpp" />
     <ClCompile Include="MPS\MPSFluidSolver.cpp" />
+    <ClCompile Include="MPS\MPSParticle.cpp" />
     <ClCompile Include="MVPSampler.cpp" />
     <ClCompile Include="MVPSurfaceBuilder.cpp" />
     <ClCompile Include="MVP\IMVPFluidScene.cpp" />

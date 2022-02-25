@@ -333,5 +333,8 @@
     <ClCompile Include="MPS\MPSFluidSceneController.cpp">
       <Filter>MPS</Filter>
     </ClCompile>
+    <ClCompile Include="MPS\MPSParticle.cpp">
+      <Filter>MPS</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

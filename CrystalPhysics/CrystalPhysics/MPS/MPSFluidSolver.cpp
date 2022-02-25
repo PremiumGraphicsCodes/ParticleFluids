@@ -1,5 +1,6 @@
 #include "MPSFluidSolver.h"
 #include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+#include "MPSFluidScene.h"
 
 #include <vector>
 
@@ -14,39 +15,32 @@ namespace {
 void MPSFluidSolver::step()
 {
 	std::vector<MPSParticle*> particles;
-	CompactSpaceHash3d spaceHash(1.0, particles.size());
-
-	/*
-	for (auto fluid : fluids) {
+	
+	for (auto fluid : this->fluids) {
 		const auto ps = fluid->getParticles();
 		particles.insert(particles.end(), ps.begin(), ps.end());
 	}
-	*/
-}
 
-Vector3df MPSFluidSolver::calculatePressureGradient(const MPSParticle* lhs, const MPSParticle* rhs, const float maxRadius)
-{
-	const float coe = DIM / lhs->getRestDensity();
-	const float distanceSquared = Math::getDistanceSquared(lhs->getPositionf(), rhs->getPositionf());
-	const auto vector = lhs->getPositionf() - rhs->getPositionf();
-	const float pressureDiff = lhs->getPressure() - rhs->getPressure();
-	const float weight = calculateWeight(std::sqrt(distanceSquared), maxRadius);
-	return coe * pressureDiff / distanceSquared * vector * weight;
-}
-
-Vector3df MPSFluidSolver::calculateViscosity(const MPSParticle* lhs, const MPSParticle* rhs, const float maxRadius)
-{
-	const float coe = 2.0f * DIM / (lhs->getRestDensity() * lhs->getLamda0());
-	const float distance = Math::getDistance(lhs->getPositionf(), rhs->getPositionf());
-	const auto velocityDiff = rhs->getVelocity() - lhs->getVelocity();
-	const float weight = calculateWeight(distance, maxRadius);
-	return coe * velocityDiff * weight;
-}
-
-float MPSFluidSolver::calculateWeight(const float r, const float maxRadius)
-{
-	if (r > maxRadius) {
-		return 0.0f;
+	CompactSpaceHash3d spaceHash(effectRadius, particles.size());
+	for (auto p : particles) {
+		spaceHash.add(p);
 	}
-	return (r / maxRadius) - 1.0f;
+
+	for (auto p : particles) {
+		const auto neighbors = spaceHash.findNeighbors(p);
+		for (auto n : neighbors) {
+			p->addNeighbor(static_cast<MPSParticle*>(n));
+		}
+	}
+
+	for (auto p : particles) {
+		p->addExternalForce(this->externalForce);
+		p->calculateViscosity(effectRadius);
+	}
+
+	// add viscosity force.
+
+	for (auto p : particles) {
+		p->forwardTime(timeStep);
+	}
 }

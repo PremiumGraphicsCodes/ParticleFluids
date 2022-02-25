@@ -36,12 +36,12 @@ void MPSFluidSimulationView::onOk()
 
 	//this->newId = fluidScene->getId();
 
-	fluidScene->getPresenter()->createView(getWorld()->getRenderer());
-
 	simulator = new MPSFluidSolver();
 	//simulator->add(fluidScene);
 
 	this->onReset();
+
+	fluidScene->getPresenter()->createView(getWorld()->getRenderer());
 
 	//command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	//command.execute(getWorld());
@@ -65,8 +65,8 @@ void MPSFluidSimulationView::onReset()
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 5; ++j) {
 			for (int k = 0; k < 10; ++k) {
-				//auto mp = new MPSParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
-				//fluidScene->addParticle(mp);
+				auto p = new MPSParticle(Vector3df(i * length, j * length, k * length), radius);
+				fluidScene->addParticle(p);
 			}
 		}
 	}
