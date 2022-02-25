@@ -19,7 +19,7 @@ namespace Crystal {
 class MVPFluidSimulationView : public IView
 {
 public:
-	MVPFluidSimulationView(Scene::World* model, Canvas* canvas);
+	MVPFluidSimulationView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	//void onAddFluid();

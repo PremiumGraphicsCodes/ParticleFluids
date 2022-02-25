@@ -30,22 +30,22 @@ void PhysicsMenu::onShow()
 
 	if (ImGui::BeginMenu("Physics")) {
 		if (ImGui::MenuItem("CSPH")) {
-			control->setWindow(new CSPHFluidSimulationView(getWorld(), getCanvas()));
+			control->setWindow(new CSPHFluidSimulationView("CSPHFluid", world, canvas));
 		}
 		if (ImGui::MenuItem("MVPFluid")) {
-			control->setWindow(new MVPFluidSimulationView(getWorld(), getCanvas()));
+			control->setWindow(new MVPFluidSimulationView("MVPFluid", world, canvas));
 		}
 		if (ImGui::MenuItem("MVPSampler")) {
 			control->setWindow(new MVPSamplerView("MVPSampler",world, canvas));
 		}
 		if (ImGui::MenuItem("PBSPHFluid")) {
-			control->setWindow(new PBSPHFluidSimulationView(getWorld(), getCanvas()));
+			control->setWindow(new PBSPHFluidSimulationView("PBFluidSimulation", world, canvas));
 		}
 		if (ImGui::MenuItem("DFSPHFluid")) {
 			control->setWindow(new DFSPHFluidSimulationView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("MPSFluid")) {
-			control->setWindow(new MPSFluidSimulationView("MPS",world, canvas));
+			control->setWindow(new MPSFluidSimulationView("MPSFluid",world, canvas));
 		}
 		if (ImGui::MenuItem("SPHFlame")) {
 			control->setWindow(new SPHFlameSimulationView(world, canvas));
@@ -54,16 +54,16 @@ void PhysicsMenu::onShow()
 	}
 	if (ImGui::BeginMenu("Boundary")) {
 		if (ImGui::MenuItem("MeshBoundary")) {
-			control->setWindow(new MeshBoundaryView("Mesh", getWorld(), getCanvas()));
+			control->setWindow(new MeshBoundaryView("Mesh", world, canvas));
 		}
 		ImGui::EndMenu();
 	}
 	if (ImGui::BeginMenu("SPHSurface")) {
 		if(ImGui::MenuItem("SPHSurface")) {
-			control->setWindow(new SPHSurfaceBuilderView("SPHSurface", getWorld(), getCanvas()));
+			control->setWindow(new SPHSurfaceBuilderView("SPHSurface", world, canvas));
 		}
 		if (ImGui::MenuItem("MVPSurface")) {
-			control->setWindow(new MVPSurfaceBuilderView("MVPSurface", getWorld(), getCanvas()));
+			control->setWindow(new MVPSurfaceBuilderView("MVPSurface", world, canvas));
 		}
 		ImGui::EndMenu();
 	}

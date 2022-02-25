@@ -14,8 +14,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Physics;
 
-MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
-	IView("MVPFluid"),
+MVPFluidSimulationView::MVPFluidSimulationView(const std::string& name, World* model, Canvas* canvas) :
+	IView(name),
 	world(model),
 	canvas(canvas),
 	startButton("Start"),
