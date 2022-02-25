@@ -51,6 +51,31 @@ namespace {
 		return particles;
 	}
 
+	/*
+	std::vector<MPSParticle*> createTestParticlesForViscosity()
+	{
+		std::vector<MPSParticle*> particles;
+		const auto length = 1.0;
+		for (int i = 0; i < 5; ++i) {
+			const float pressure = i * 10.0;
+			for (int j = 0; j < 5; ++j) {
+				const auto x = j * length;
+				const auto y = i * length;
+				const auto pos = Vector3df(x, y, 0.0f);
+				auto p = new MPSParticle(pos);
+				p->setPressure(pressure);
+				particles.emplace_back(p);
+			}
+		}
+		for (auto p : particles) {
+			if (p != particles[12]) {
+				particles[12]->addNeighbor(p);
+			}
+		}
+		//particles[24]->addNeighbor(particles);
+		return particles;
+	}
+	*/
 }
 
 TEST(MPSParticleTest, TestCalculateNumberDensity)
@@ -81,4 +106,14 @@ TEST(MPSParticleTest, TestCalculatePressureGradient)
 	for (auto p : ps) {
 		delete p;
 	}
+}
+
+TEST(MPSParticleTest, TestCalculateViscosity)
+{
+	const auto ps = ::createTestParticlesForPressure();
+	// This expected data is from the book "—±Žq–@“ü–å"(in Japanese).
+	const auto p = ps[12];
+	p->calculateN0(1.5f);
+	p->calculateLamda0(1.5f);
+	p->calculateViscosity(1.5f);
 }

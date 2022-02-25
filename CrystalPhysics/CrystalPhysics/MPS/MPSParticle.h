@@ -20,7 +20,7 @@ public:
 
 	float getPressure() const { return pressure; }
 
-	float getRestDensity() const { return n0; }
+	float getN0() const { return n0; }
 
 	float getLamda0() const { return lamda0; }
 
@@ -35,6 +35,10 @@ public:
 	void calculatePressureGradient(const float maxRadius);
 
 	void calculateViscosity(const float maxRadius);
+
+	void calculateN0(const float maxRadius);
+
+	void calculateLamda0(const float maxRadius);
 
 	float getNumberDensity() { return numberDensity; }
 

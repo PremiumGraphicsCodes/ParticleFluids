@@ -40,8 +40,24 @@ void MPSParticle::calculatePressureGradient(const float maxRadius)
 void MPSParticle::calculateViscosity(const float maxRadius)
 {
 	for (auto n : neighbors) {
-		this->acc += this->calculateViscosity(n, maxRadius);
+		this->force += this->calculateViscosity(n, maxRadius);
 	}
+}
+
+void MPSParticle::calculateN0(const float maxRadius)
+{
+	calculateNumberDensity(maxRadius);
+	this->n0 = this->getNumberDensity();
+}
+
+void MPSParticle::calculateLamda0(const float maxRadius)
+{
+	float v = 0.0f;
+	for (auto n : neighbors) {
+		const auto d2 = getDistanceSquared(this->getPositionf(), n->getPositionf());
+		v += d2 * this->calculateWeight(std::sqrt(d2), maxRadius);
+	}
+	this->lamda0 = v / this->n0;
 }
 
 float MPSParticle::calculateNumberDensity(const MPSParticle* rhs, const float maxRadius)
@@ -53,7 +69,7 @@ float MPSParticle::calculateNumberDensity(const MPSParticle* rhs, const float ma
 
 Vector3df MPSParticle::calculatePressureGradient(const MPSParticle* rhs, const float maxRadius)
 {
-	const float coe = DIM / this->getRestDensity();
+	const float coe = DIM / this->getN0();
 	const float distanceSquared = getDistanceSquared(this->getPositionf(), rhs->getPositionf());
 	const auto vector = rhs->getPositionf() - this->getPositionf();
 	const float pressureDiff = rhs->getPressure() - this->getPressure();
@@ -63,7 +79,7 @@ Vector3df MPSParticle::calculatePressureGradient(const MPSParticle* rhs, const f
 
 Vector3df MPSParticle::calculateViscosity(const MPSParticle* rhs, const float maxRadius)
 {
-	const float coe = 2.0f * DIM / (this->getRestDensity() * this->getLamda0());
+	const float coe = 2.0f * DIM / (this->getN0() * this->getLamda0());
 	const float distance = getDistance(this->getPositionf(), rhs->getPositionf());
 	const auto velocityDiff = rhs->getVelocity() - this->getVelocity();
 	const float weight = calculateWeight(distance, maxRadius);
