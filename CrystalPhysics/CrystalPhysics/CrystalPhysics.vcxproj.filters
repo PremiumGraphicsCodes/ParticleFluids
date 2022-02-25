@@ -34,6 +34,9 @@
     <Filter Include="MPS">
       <UniqueIdentifier>{37a477fb-a4fb-4e49-b089-907f70eb65b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IISPH">
+      <UniqueIdentifier>{969b6c58-c6da-47ab-b43e-826ab7d134cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SPHConstant.h" />
@@ -168,6 +171,15 @@
     <ClInclude Include="Boundary\MeshBoundaryScenePresenter.h">
       <Filter>Boundary\Mesh</Filter>
     </ClInclude>
+    <ClInclude Include="IISPH\IISPHFluidScene.h">
+      <Filter>IISPH</Filter>
+    </ClInclude>
+    <ClInclude Include="IISPH\IISPHParticle.h">
+      <Filter>IISPH</Filter>
+    </ClInclude>
+    <ClInclude Include="IISPH\IISPHFluidSceneController.h">
+      <Filter>IISPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
@@ -299,6 +311,12 @@
     </ClCompile>
     <ClCompile Include="Boundary\MeshBoundaryScenePresenter.cpp">
       <Filter>Boundary\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="IISPH\IISPHFluidScene.cpp">
+      <Filter>IISPH</Filter>
+    </ClCompile>
+    <ClCompile Include="IISPH\IISPHFluidSceneController.cpp">
+      <Filter>IISPH</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

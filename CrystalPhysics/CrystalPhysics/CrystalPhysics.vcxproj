@@ -170,6 +170,9 @@
     <ClInclude Include="DFSPH\DFFluidSolver.h" />
     <ClInclude Include="DFSPH\DFSPHBoundarySolver.h" />
     <ClInclude Include="DFSPH\DFSPHParticle.h" />
+    <ClInclude Include="IISPH\IISPHFluidScene.h" />
+    <ClInclude Include="IISPH\IISPHFluidSceneController.h" />
+    <ClInclude Include="IISPH\IISPHParticle.h" />
     <ClInclude Include="IPhysicsParticle.h" />
     <ClInclude Include="MPS\MPSFluidSolver.h" />
     <ClInclude Include="MVPSampler.h" />
@@ -218,6 +221,8 @@
     <ClCompile Include="DFSPH\DFFluidSolver.cpp" />
     <ClCompile Include="DFSPH\DFSPHBoundarySolver.cpp" />
     <ClCompile Include="DFSPH\DFSPHParticle.cpp" />
+    <ClCompile Include="IISPH\IISPHFluidScene.cpp" />
+    <ClCompile Include="IISPH\IISPHFluidSceneController.cpp" />
     <ClCompile Include="MPS\MPSFluidSolver.cpp" />
     <ClCompile Include="MVPSampler.cpp" />
     <ClCompile Include="MVPSurfaceBuilder.cpp" />
