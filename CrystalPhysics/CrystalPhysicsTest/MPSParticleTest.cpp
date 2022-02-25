@@ -26,6 +26,31 @@ namespace {
 		//particles[24]->addNeighbor(particles);
 		return particles;
 	}
+
+	std::vector<MPSParticle*> createTestParticlesForPressure()
+	{
+		std::vector<MPSParticle*> particles;
+		const auto length = 1.0;
+		for (int i = 0; i < 5; ++i) {
+			const float pressure = i * 10.0;
+			for (int j = 0; j < 5; ++j) {
+				const auto x = j * length;
+				const auto y = i * length;
+				const auto pos = Vector3df(x, y, 0.0f);
+				auto p = new MPSParticle(pos);
+				p->setPressure(pressure);
+				particles.emplace_back(p);
+			}
+		}
+		for (auto p : particles) {
+			if (p != particles[12]) {
+				particles[12]->addNeighbor(p);
+			}
+		}
+		//particles[24]->addNeighbor(particles);
+		return particles;
+	}
+
 }
 
 TEST(MPSParticleTest, TestCalculateNumberDensity)
@@ -37,6 +62,22 @@ TEST(MPSParticleTest, TestCalculateNumberDensity)
 	const float expected = 6.539696;
 	EXPECT_NEAR(expected, actual, 1.0e-5);
 
+	for (auto p : ps) {
+		delete p;
+	}
+}
+
+TEST(MPSParticleTest, TestCalculatePressureGradient)
+{
+	const auto ps = ::createTestParticlesForPressure();
+	// This expected data is from the book "—±Žq–@“ü–å"(in Japanese).
+	ps[12]->calculateNumberDensity(1.5f);
+	const auto n0 = ps[12]->getNumberDensity();
+	ps[12]->setN0(n0);
+	ps[12]->calculatePressureGradient(1.5f);
+	const auto force = ps[12]->getForce();
+	Vector3df expected(0.0, 10.0f, 0.0f);
+	EXPECT_TRUE(::areSame(expected, force, 1.0e-5f));
 	for (auto p : ps) {
 		delete p;
 	}

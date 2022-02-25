@@ -4,11 +4,13 @@ using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
 namespace {
-	constexpr int DIM = 3;
+	constexpr int DIM = 2;
 }
 
 MPSParticle::MPSParticle(const Vector3df& position) :
 	position(position),
+	pressure(0.0f),
+	force(Vector3df(0,0,0)),
 	//radius(radius),
 	acc(0.0),
 	numberDensity(0.0f)
@@ -25,6 +27,13 @@ void MPSParticle::calculateNumberDensity(const float maxRadius)
 {
 	for (auto n : neighbors) {
 		this->numberDensity += this->calculateNumberDensity(n, maxRadius);
+	}
+}
+
+void MPSParticle::calculatePressureGradient(const float maxRadius)
+{
+	for (auto n : neighbors) {
+		this->force += this->calculatePressureGradient(n, maxRadius);
 	}
 }
 

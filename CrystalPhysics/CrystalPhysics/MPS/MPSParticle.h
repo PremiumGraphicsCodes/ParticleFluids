@@ -32,9 +32,17 @@ public:
 
 	void calculateNumberDensity(const float maxRadius);
 
+	void calculatePressureGradient(const float maxRadius);
+
 	void calculateViscosity(const float maxRadius);
 
 	float getNumberDensity() { return numberDensity; }
+
+	void setPressure(const float p) { this->pressure = p; }
+
+	void setN0(const float n0) { this->n0 = n0; }
+
+	Math::Vector3df getForce() const { return force; }
 
 private:
 	float calculateNumberDensity(const MPSParticle* rhs, const float maxRadius);
