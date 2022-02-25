@@ -186,6 +186,9 @@
     <ClInclude Include="MPS\MPSFluidScene.h">
       <Filter>MPS</Filter>
     </ClInclude>
+    <ClInclude Include="MPS\MPSFluidSceneController.h">
+      <Filter>MPS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
@@ -325,6 +328,9 @@
       <Filter>IISPH</Filter>
     </ClCompile>
     <ClCompile Include="MPS\MPSFluidScene.cpp">
+      <Filter>MPS</Filter>
+    </ClCompile>
+    <ClCompile Include="MPS\MPSFluidSceneController.cpp">
       <Filter>MPS</Filter>
     </ClCompile>
   </ItemGroup>

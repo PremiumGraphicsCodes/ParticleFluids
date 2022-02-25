@@ -3,7 +3,7 @@
 #include "CrystalScene/Scene/IScene.h"
 
 #include "MPSParticle.h"
-//#include "IISPHFluidSceneController.h"
+#include "MPSFluidSceneController.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -19,14 +19,9 @@ public:
 
 	Scene::SceneType getType() const { return Type; }
 
-	Scene::IPresenter* getPresenter() {
-		return nullptr;
-	}//return controller.get(); }//controller.get(); }
+	Scene::IPresenter* getPresenter() { return controller.get(); }
 
-	void addParticle(MPSParticle* mp) {
-		//mp->setScene(this);
-		particles.push_back(mp);
-	}
+	void addParticle(MPSParticle* mp) { particles.push_back(mp); }
 
 	std::list<MPSParticle*> getParticles() const { return particles; }
 
@@ -37,7 +32,7 @@ public:
 
 private:
 	std::list<MPSParticle*> particles;
-	//std::unique_ptr<IISPHFluidSceneController> controller;
+	std::unique_ptr<MPSFluidSceneController> controller;
 };
 
 	}

@@ -174,6 +174,7 @@
     <ClInclude Include="IISPH\IISPHFluidSceneController.h" />
     <ClInclude Include="IISPH\IISPHParticle.h" />
     <ClInclude Include="IPhysicsParticle.h" />
+    <ClInclude Include="MPS\MPSFluidSceneController.h" />
     <ClInclude Include="MPS\MPSFluidScene.h" />
     <ClInclude Include="MPS\MPSFluidSolver.h" />
     <ClInclude Include="MPS\MPSParticle.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="IISPH\IISPHFluidScene.cpp" />
     <ClCompile Include="IISPH\IISPHFluidSceneController.cpp" />
     <ClCompile Include="MPS\MPSFluidScene.cpp" />
+    <ClCompile Include="MPS\MPSFluidSceneController.cpp" />
     <ClCompile Include="MPS\MPSFluidSolver.cpp" />
     <ClCompile Include="MVPSampler.cpp" />
     <ClCompile Include="MVPSurfaceBuilder.cpp" />
