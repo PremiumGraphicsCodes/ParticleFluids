@@ -35,15 +35,13 @@ class PARTICLE_FLUIDS_SolverProperty(bpy.types.PropertyGroup) :
     external_force_prop : FloatVectorProperty(
         name="external_force",
         description="ExternalForce",
-        default=(0.0, 0.0, -9.8),
-        min=-100.0,
-        max=100.0,
+        default=(0.0, 0.0, -9.8)
     )
     search_radius_prop : FloatProperty(
         name="search_radius",
         description="SearchRadius",
         default = 3.0,
-        min = -0.0
+        min = 0.0
     )
 #    min : bpy.props.FloatVectorProperty(
 #        name="min",

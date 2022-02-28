@@ -54,6 +54,7 @@ class PARTICLE_FLUID_PT_FluidPanel(bpy.types.Panel) :
       layout.prop(fluid_property, "start_step_prop", text="StartStep")
       layout.prop(fluid_property, "end_step_prop", text="EndStep")
       layout.prop(fluid_property, "interval_prop", text="Interval")
+      layout.prop(fluid_property, "initial_velocity_prop", text="Velocity")
 
 
 classes = [

@@ -91,4 +91,5 @@ class BLEmitter :
         self.__emitter.start_step = prop.start_step_prop
         self.__emitter.end_step = prop.end_step_prop
         self.__emitter.interval = prop.interval_prop
+        self.__emitter.set_initial_velocity( prop.initial_velocity_prop[0],prop.initial_velocity_prop[1],prop.initial_velocity_prop[2])
         self.__emitter.send()

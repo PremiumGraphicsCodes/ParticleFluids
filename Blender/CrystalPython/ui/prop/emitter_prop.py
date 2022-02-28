@@ -1,5 +1,5 @@
 import bpy
-from bpy.props import IntProperty, FloatProperty, BoolProperty
+from bpy.props import IntProperty, FloatProperty, FloatVectorProperty, BoolProperty
 
 class PARTICLE_FLUID_EmitterProperty(bpy.types.PropertyGroup) :
   is_active_prop : BoolProperty(
@@ -43,3 +43,9 @@ class PARTICLE_FLUID_EmitterProperty(bpy.types.PropertyGroup) :
     default=5,
     min=1
   )
+  initial_velocity_prop : FloatVectorProperty(
+    name="initial_velocity",
+    description="InitialVelocity",
+    default=(0.0, 0.0, 0.0)
+    )
+

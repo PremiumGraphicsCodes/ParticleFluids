@@ -15,6 +15,10 @@ class EmitterScene :
         self.start_step = 0
         self.end_step = 100
         self.interval = 5
+        self.__initial_velocity = Vector3df(0,0,0)
+
+    def set_initial_velocity(self, x, y, z) :
+        self.__initial_velocity = Vector3df(x,y,z)
 
     def create(self) :
         create_physics_command(EmitterSceneCreateCommand.CommandNameLabel)
@@ -32,7 +36,7 @@ class EmitterScene :
         set_arg_int(EmitterSceneUpdateCommand.StartStepLabel, self.start_step)
         set_arg_int(EmitterSceneUpdateCommand.EndStepLabel, self.end_step)
         set_arg_int(EmitterSceneUpdateCommand.IntervalLabel, self.interval)
-        #set_arg_string(FluidSceneUpdateCommand.NameLabel, self.name)
+        set_arg_vector3df(EmitterSceneUpdateCommand.InitialVelocityLabel, self.__initial_velocity)
         is_ok = execute_command(self.scene.world)
         return is_ok
 
