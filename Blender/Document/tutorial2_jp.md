@@ -23,25 +23,8 @@
 
 ### シミュレーションの開始
 
- - [PFSolver]タブを開きます．
- - [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
- - [Start]ボタンでシミュレーションが開始されます．
- - [Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
-![StaticMesh](./images/StaticEnd.png) 
-
 ### VDBボリュームへの変換
 
- - [PFSolver]->[Start]を押すとダイアログが表示されます．
- - 先ほど出力したplyファイルを選択します．(BlenderではCtrl+Aで全選択できます)
- - [Convert]ボタンを押すとコンバート処理が始まり，同じフォルダにVDB形式のデータが作成されます．
-![PSToVolume](./images/PSToVolume.png) 
-
 ### Meshing
-Blender標準の機能で連番のOpenVDBファイルを入力として扱うことができます．
-![VDBImport](./images/VDBImport.png) 
-![VolumeToMesh](./images/VolumeToMesh.png) 
-
 
 ### レンダリング
-あとは通常のMeshと同じです．
-Blenderのマテリアル設定を行えばレンダリングできます．
