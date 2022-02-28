@@ -29,7 +29,7 @@ class SolverScene :
             fluid_ids.append(f.id)
         emitter_ids = []
         for e in self.emitters :
-            emitter_ids.append(e.id)
+            emitter_ids.append(e.get_id())
         boundary_ids = []
         for b in self.boundaries :
             boundary_ids.append(b.id)
@@ -65,7 +65,7 @@ class SolverScene :
                 continue
             fluid_ids.append(f.id)
         for e in self.emitters :
-            fluid_ids.append(e.id)
+            fluid_ids.append(e.get_id())
         create_physics_command(PhysicsSolverExportCommand.CommandNameLabel)
         set_arg_int_vector(PhysicsSolverExportCommand.FluidIdsLabel, fluid_ids)
         #set_arg_int_vector(PhysicsSolverExportCommand.Emi)

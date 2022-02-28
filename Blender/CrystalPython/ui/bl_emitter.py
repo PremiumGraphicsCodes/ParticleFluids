@@ -88,8 +88,8 @@ class BLEmitter :
         self.__emitter.particle_radius = prop.particle_radius_prop
         self.__emitter.stiffness = prop.stiffness_prop
         self.__emitter.viscosity = prop.viscosity_prop
-        self.__emitter.start_step = prop.start_step_prop
-        self.__emitter.end_step = prop.end_step_prop
-        self.__emitter.interval = prop.interval_prop
-        self.__emitter.set_initial_velocity( prop.initial_velocity_prop[0],prop.initial_velocity_prop[1],prop.initial_velocity_prop[2])
+        self.__emitter.set_start_step( prop.start_step_prop )
+        self.__emitter.set_end_step( prop.end_step_prop )
+        self.__emitter.set_interval( prop.interval_prop )
+        self.__emitter.set_initial_velocity( prop.initial_velocity_prop )
         self.__emitter.send()
