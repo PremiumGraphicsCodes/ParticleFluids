@@ -53,8 +53,6 @@ graph TB
 
 ### Boundaryの設定
 
-この時点では障害物（床）がないため，粒子が落ちていくだけです．
-現実的には障害物を設定しておく必要があります．
 本アドオンでは，障害物の設定もFluidと同様に行うことができます．
 
 - [Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
@@ -86,15 +84,17 @@ Locationを[0,0,-20]とします．
  - Blenderでimportすると，落下していく様子が確認できます．
 
 ### VDBボリュームへの変換
-[PFSolver]->[Start]を押すとダイアログが表示されます．
-ここで先ほど出力したplyファイルを選択します．
-(BlenderではCtrl+Aで全選択できます)
+
+ - [PFSolver]->[Start]を押すとダイアログが表示されます．
+ - 先ほど出力したplyファイルを選択します．(BlenderではCtrl+Aで全選択できます)
+ - [Convert]ボタンを押すとコンバート処理が始まり，同じフォルダにVDB形式のデータが作成されます．
 ![PSToVolume](./images/PSToVolume.png) 
-[Convert]ボタンを押すとコンバート処理が始まり，同じフォルダにVDB形式のデータが作成されます．
 
 ### Meshing
 Blender標準の機能で連番のOpenVDBファイルを入力として扱うことができます．
 ![VDBImport](./images/VDBImport.png) 
+![VolumeToMesh](./images/VolumeToMesh.png) 
+
 
 ### レンダリング
 あとは通常のMeshと同じです．
