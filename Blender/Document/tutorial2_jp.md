@@ -1,36 +1,6 @@
-# ParticleFluids Tutorial
+# ParticleFluids Tutorial2 Hello Emitter!
 
 2022/03/31 
-
-Premiumgraphics Inc.
-
-## インストール
-Microsoft社のWebサイトからVisualStudio2019ランタイム(x64)をインストールします．
-
-[VisualC++runtime](https://docs.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170
- "VisualC++runtime")
-
-下にあるX64を選択します．
-![Runtime](./images/InstallRuntime.png) 
-
-
-## 構成
-
-本アドオンはソルバー本体と，OpenVDBツールから構成されています．
-シミュレーション自体はOpenVDBを用いることなく実行できますが，
-プリ、ポストまでBlender上で完結させることができます．
-
-## シミュレーションの流れ
-下図に示すように，MeshからParticleを生成し，それに物理属性を付与し，シミュレーションを行います．シミュレーションを行ったあとはOpenVDBボリューム経由でメッシュを生成することができます．
-
-```mermaid
-graph TB
-  A[MeshToParticles] --> B[Simulation]
-  B --> C[ConvertToVDB]
-  C --> D[VDBToMesh]
-```
-
-## チュートリアル Hello, Fluids!
 
 ## Fluidの作成
 
@@ -45,7 +15,7 @@ graph TB
 ![MeshToPS](./images/MeshToPS.png) 
 
 - 作成した[Object]を選択し，[Physics Properties]タブを開きます．
-- [PFFluid]ボタンを押します．
+- [PFEmitter]ボタンを押します．
 - パラメータ設定用タブが開きます．
 - ここではそのままデフォルト値を用います．
 
@@ -53,10 +23,8 @@ graph TB
 
 ### Boundaryの設定
 
-本アドオンでは，障害物の設定もFluidと同様に行うことができます．
-
 - [Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
-![StaticMesh](./images/StaticMesh.png) 
+![StaticMesh](./images/XXX.png) 
 
 - [Object Properties]から[Scale]を[20,20,1]とします．
 Locationを[0,0,-20]とします．
@@ -76,12 +44,6 @@ Locationを[0,0,-20]とします．
  - [Start]ボタンでシミュレーションが開始されます．
  - [Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
 ![StaticMesh](./images/StaticEnd.png) 
-
-
-### 結果の確認
-
- - [ExportPath]で設定したフォルダにplyファイルが連番で出力されているので，それを確認します．
- - Blenderでimportすると，落下していく様子が確認できます．
 
 ### VDBボリュームへの変換
 
