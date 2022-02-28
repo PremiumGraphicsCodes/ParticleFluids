@@ -17,25 +17,9 @@
 - 作成した[Object]を選択し，[Physics Properties]タブを開きます．
 - [PFEmitter]ボタンを押します．
 - パラメータ設定用タブが開きます．
-- ここではそのままデフォルト値を用います．
+- [Velocity]を[20,0,0]に設定します．
 
 ![MeshToPS](./images/Fluid.png) 
-
-### Boundaryの設定
-
-- [Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
-![StaticMesh](./images/XXX.png) 
-
-- [Object Properties]から[Scale]を[20,20,1]とします．
-Locationを[0,0,-20]とします．
-
-- 同様にして[Voxelize]を実行してParticlesに変換します．
-![StaticMesh](./images/StaticPS.png) 
-
-- [Object001]を選択し，[Physics Properties]->[PFFluid]ボタンを押します．
-- パラメータ設定用タブが開きます．
-- **ここで[Static]チェックボックスをマークしてください**
-
 
 ### シミュレーションの開始
 

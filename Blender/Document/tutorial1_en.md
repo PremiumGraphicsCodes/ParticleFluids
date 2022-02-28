@@ -1,35 +1,6 @@
-# ParticleFluids Tutorial
+# Tutorial1 Hello Fluids!
 
 2022/03/31 
-
-# Install
-First of all, please visit the URL and download Visual Studio2019 runtime(x64).
-
-[VisualC++runtime](https://docs.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170
- "VisualC++runtime")
-
-![Runtime](./images/InstallRuntime.png) 
-
-
-# Configuration
-
-This add-on consists of solver and OpenVDB tools.
-
-Simulation itself can be done without OpenVDB.
-
-However, using our OpenVDB tool, you can do whole process including pre, post processing.
-
-
-## Flow of Simulation
-
-```mermaid
-graph TB
-  A[MeshToParticles] --> B[Simulation]
-  B --> C[ConvertToVDB]
-  C --> D[VDBToMesh]
-```
-
-## Tutorial1 Hello Fluids!
 
 ## Creating Fluid
 
@@ -51,19 +22,6 @@ To simulate fluids, you have to add parameters to the particles.
 - In this case, use default value.
 ![PSToFluid](./images/Fluid.png) 
 
-## Adding Obstacle
-On this add-on, you can set obstacles same as fluids.
-
-- Make a plane with [Add]->[Mesh]->[Plane]．
-![StaticMesh](./images/StaticMesh.png) 
-
-- Select[Object Properties] tab, and change [Scale] to [20,20,1], and [Location]  to [0, 0,-20].
-
-- This plane must convert to points with same as above.[VDBTools]->[MeshToPS]->[Voxelize].
-![StaticMesh](./images/StaticPS.png) 
-
-- **Please check [Static] chekck box**
-
 ### Start Simulation
 
  - Open [PFSolver] tab．
@@ -71,7 +29,7 @@ On this add-on, you can set obstacles same as fluids.
  - Press [Start] button, then simulation starts!
  - If you check [Render] checkbox, you can check particle's movements.
 
-![StaticMesh](./images/StaticEnd.png) 
+![StaticMesh](./images/Start.png) 
 
 ### Convert to VDB volume
 

@@ -21,31 +21,13 @@
 
 ![MeshToPS](./images/Fluid.png) 
 
-### Boundaryの設定
-
-本アドオンでは，障害物の設定もFluidと同様に行うことができます．
-
-- [Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
-![StaticMesh](./images/StaticMesh.png) 
-
-- [Object Properties]から[Scale]を[20,20,1]とします．
-Locationを[0,0,-20]とします．
-
-- 同様にして[Voxelize]を実行してParticlesに変換します．
-![StaticMesh](./images/StaticPS.png) 
-
-- [Object001]を選択し，[Physics Properties]->[PFFluid]ボタンを押します．
-- パラメータ設定用タブが開きます．
-- **ここで[Static]チェックボックスをマークしてください**
-
-
 ### シミュレーションの開始
 
  - [PFSolver]タブを開きます．
  - [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
  - [Start]ボタンでシミュレーションが開始されます．
  - [Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
-![StaticMesh](./images/StaticEnd.png) 
+![StaticMesh](./images/Start.png) 
 
 ### VDBボリュームへの変換
 
