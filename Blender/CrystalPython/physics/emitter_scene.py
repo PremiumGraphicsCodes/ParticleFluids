@@ -7,11 +7,11 @@ class EmitterScene :
     def __init__(self, scene) :
         self.__scene = scene
         self.__id = 0
-        self.source_particle_system_id = 0
-        self.particle_radius = 1.0
-        self.density = 1.0
-        self.stiffness = 0.25
-        self.viscosity = 10.0
+        self.__source_particle_system_id = 0
+        self.__particle_radius = 1.0
+        self.__density = 1.0
+        self.__stiffness = 0.25
+        self.__viscosity = 10.0
         self.__start_step = 0
         self.__end_step = 100
         self.__interval = 5
@@ -19,6 +19,18 @@ class EmitterScene :
 
     def get_id(self) :
         return self.__id
+
+    def set_source_ps_id(self, ps_id) :
+        self.__source_particle_system_id = ps_id
+
+    def set_particle_radius(self, particle_radius) :
+        self.__particle_radius = particle_radius
+
+    def set_stiffness(self, stiffness) :
+        self.__stiffness = stiffness
+
+    def set_viscosity(self, viscosity):
+        self.__viscosity = viscosity
 
     def set_start_step(self, start) :
         self.__start_step = start
@@ -40,11 +52,11 @@ class EmitterScene :
     def send(self) :
         create_physics_command(EmitterSceneUpdateCommand.CommandNameLabel)
         set_arg_int(EmitterSceneUpdateCommand.IdLabel, self.__id)
-        set_arg_int(EmitterSceneUpdateCommand.ParticleSystemIdLabel, self.source_particle_system_id)
-        set_arg_float(EmitterSceneUpdateCommand.ParticleRadiusLabel, self.particle_radius)
-        set_arg_float(EmitterSceneUpdateCommand.DensityLabel, self.density)
-        set_arg_float(EmitterSceneUpdateCommand.StiffnessLabel, self.stiffness)
-        set_arg_float(EmitterSceneUpdateCommand.ViscosityLabel, self.viscosity)
+        set_arg_int(EmitterSceneUpdateCommand.ParticleSystemIdLabel, self.__source_particle_system_id)
+        set_arg_float(EmitterSceneUpdateCommand.ParticleRadiusLabel, self.__particle_radius)
+        set_arg_float(EmitterSceneUpdateCommand.DensityLabel, self.__density)
+        set_arg_float(EmitterSceneUpdateCommand.StiffnessLabel, self.__stiffness)
+        set_arg_float(EmitterSceneUpdateCommand.ViscosityLabel, self.__viscosity)
         set_arg_int(EmitterSceneUpdateCommand.StartStepLabel, self.__start_step)
         set_arg_int(EmitterSceneUpdateCommand.EndStepLabel, self.__end_step)
         set_arg_int(EmitterSceneUpdateCommand.IntervalLabel, self.__interval)

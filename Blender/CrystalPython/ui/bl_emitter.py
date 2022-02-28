@@ -30,7 +30,7 @@ class BLEmitter :
         self.__source_ps.create_empty("")
 
         self.__emitter.create()
-        self.__emitter.source_particle_system_id = self.__source_ps.id
+        self.__emitter.set_source_ps_id( self.__source_ps.id )
         self.__emitter.send()
 
         vertex_shader = """
@@ -85,9 +85,9 @@ class BLEmitter :
         batch.draw(self.__shader)
 
     def reset(self, prop):
-        self.__emitter.particle_radius = prop.particle_radius_prop
-        self.__emitter.stiffness = prop.stiffness_prop
-        self.__emitter.viscosity = prop.viscosity_prop
+        self.__emitter.set_particle_radius( prop.particle_radius_prop )
+        self.__emitter.set_stiffness( prop.stiffness_prop )
+        self.__emitter.set_viscosity( prop.viscosity_prop )
         self.__emitter.set_start_step( prop.start_step_prop )
         self.__emitter.set_end_step( prop.end_step_prop )
         self.__emitter.set_interval( prop.interval_prop )
