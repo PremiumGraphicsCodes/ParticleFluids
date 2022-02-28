@@ -91,5 +91,4 @@ class BLEmitter :
         self.__emitter.start_step = prop.start_step_prop
         self.__emitter.end_step = prop.end_step_prop
         self.__emitter.interval = prop.interval_prop
-
-    #    self.__fluid.send()
+        self.__emitter.send()
