@@ -7,8 +7,8 @@ from ui.model.bl_boundary import BLBoundary
 from ui.prop.solver_prop import PARTICLE_FLUIDS_SolverProperty
 from CrystalPLI import Vector3df, Vector3dd, Box3dd
 from scene.file_io import FileIO
-from ui.bl_solver import BLSolver
-from bpy.app.handlers import persistent
+from ui.model.bl_solver import BLSolver
+#from bpy.app.handlers import persistent
 
 from CrystalPLI import World
 from scene.scene import Scene

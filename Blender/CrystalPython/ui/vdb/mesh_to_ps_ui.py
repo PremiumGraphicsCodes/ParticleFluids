@@ -1,7 +1,7 @@
 import bpy
 
-from ui.bl_particle_system import BLParticleSystem
-from ui.bl_triangle_mesh import BLTriangleMesh
+from ui.model.bl_particle_system import BLParticleSystem
+from ui.model.bl_triangle_mesh import BLTriangleMesh
 from space.voxel_scene import Voxelizer
 from scene.file_io import FileIO
 

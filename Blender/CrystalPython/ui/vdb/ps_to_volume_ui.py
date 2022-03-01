@@ -1,6 +1,6 @@
 import bpy
-from ui.bl_particle_system import BLParticleSystem
-from ui.bl_triangle_mesh import BLTriangleMesh
+from ui.model.bl_particle_system import BLParticleSystem
+from ui.model.bl_triangle_mesh import BLTriangleMesh
 from physics.surface_builder import SurfaceBuilder
 from CrystalPLI import Vector3dd, Vector3ddVector
 from scene.particle_system_scene import ParticleSystemScene
