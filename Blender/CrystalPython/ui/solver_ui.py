@@ -1,9 +1,9 @@
 import bpy
 
 from physics.solver_scene import SolverScene
-from ui.bl_fluid import BLFluid
-from ui.bl_emitter import BLEmitter
-from ui.bl_boundary import BLBoundary
+from ui.model.bl_fluid import BLFluid
+from ui.model.bl_emitter import BLEmitter
+from ui.model.bl_boundary import BLBoundary
 from ui.prop.solver_prop import PARTICLE_FLUIDS_SolverProperty
 from CrystalPLI import Vector3df, Vector3dd, Box3dd
 from scene.file_io import FileIO

@@ -2,8 +2,8 @@ import bpy
 import os
 
 from physics.solver_scene import SolverScene
-from ui.bl_fluid import BLFluid
-from ui.bl_boundary import BLBoundary
+from ui.model.bl_fluid import BLFluid
+from ui.model.bl_boundary import BLBoundary
 from ui.bl_triangle_mesh import BLTriangleMesh
 from scene.triangle_mesh_scene import TriangleMeshScene
 from CrystalPLI import Vector3df

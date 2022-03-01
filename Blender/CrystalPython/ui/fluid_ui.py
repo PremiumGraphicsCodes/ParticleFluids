@@ -2,7 +2,7 @@ import bpy
 from bpy.props import FloatProperty, StringProperty, BoolProperty
 
 from physics.fluid_scene import FluidScene
-from ui.bl_fluid import BLFluid
+from ui.model.bl_fluid import BLFluid
 from ui.prop.emitter_prop import PARTICLE_FLUID_EmitterProperty
 from ui.prop.fluid_prop import PARTICLE_FLUID_FluidProperty
 
