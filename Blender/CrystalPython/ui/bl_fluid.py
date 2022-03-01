@@ -35,30 +35,6 @@ class BLFluid :
         self.__fluid.viscosity = 10.0
         self.__fluid.send()
 
-        vertex_shader = """
-                    uniform mat4 MVPMatrix;
-                    in vec3 pos;
-                    in vec4 color;
-
-                    out vec4 vColor;
-
-                    void main()
-                    {
-                        gl_Position = MVPMatrix * vec4(pos, 1.0);
-                        vColor = color;
-                    }
-        """
-
-        fragment_shader = """
-                    in vec4 vColor;
-
-                    void main()
-                    {
-                        gl_FragColor = vColor;
-                    }
-        """
-        self.__shader = gpu.types.GPUShader(vertex_shader, fragment_shader)
-
     def convert_from_polygon_mesh(self, mesh) :
         positions = Vector3ddVector()
         print("num of vertices:", len(mesh.vertices))
@@ -78,16 +54,15 @@ class BLFluid :
             self.__coords.append( (p.x, p.y, p.z))
             self.__colors.append( (1.0, 1.0, 1.0, 1.0))
         
-    def render(self):
+    def render(self, shader):
         if self.__fluid.is_boundary :
             return
-        batch = batch_for_shader(self.__shader, 'POINTS', {"pos" : self.__coords, "color" : self.__colors})
+        batch = batch_for_shader(shader, 'POINTS', {"pos" : self.__coords, "color" : self.__colors})
 
-        # 描画
-        self.__shader.bind()
+        shader.bind()
         matrix = bpy.context.region_data.perspective_matrix
-        self.__shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
-        batch.draw(self.__shader)
+        shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
+        batch.draw(shader)
 
     def reset(self, prop):
         self.__fluid.particle_radius = prop.particle_radius_prop
