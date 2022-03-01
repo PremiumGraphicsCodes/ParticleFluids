@@ -125,10 +125,10 @@ class BLSolver :
         self.__bl_emitters.clear()
         self.__bl_boundaries.clear()
 
-    def render(self):
+    def render(self, point_shader):
         for bl_fluid in self.__bl_fluids :
             bl_fluid.render()
         for bl_emitter in self.__bl_emitters :
-            bl_emitter.render()
+            bl_emitter.render(point_shader)
         for bl_boundary in self.__bl_boundaries :
             bl_boundary.render()

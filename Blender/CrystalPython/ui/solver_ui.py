@@ -12,10 +12,12 @@ from bpy.app.handlers import persistent
 
 from CrystalPLI import World
 from scene.scene import Scene
+from ui.shader.point_shader import PointShader
 
 world = World()
 scene = Scene(world)
 
+shader = PointShader()
 bl_solver = BLSolver()
 
 def find_all_fluids() :
@@ -41,6 +43,9 @@ def find_all_emitters() :
     return emitters
 
 def reset() :
+    if not shader.exists() :
+        shader.build(scene)
+
     bl_solver.build(scene)
     bl_solver.reset()
 
@@ -148,13 +153,13 @@ classes = [
 ]
 
 def on_draw_solver() :
-    global bl_solver
+    #global bl_solver
     if bl_solver.is_running() :
         bpy.context.scene.frame_current = bl_solver.get_current_frame()
 
     #bpy.context.scene.solver_property.progress_prop = bl_solver.get_current_frame()
     if bpy.context.scene.solver_property.is_active_prop :
-        bl_solver.render()
+        bl_solver.render(shader.get_shader())
 
 class SolverUI :
     def register():

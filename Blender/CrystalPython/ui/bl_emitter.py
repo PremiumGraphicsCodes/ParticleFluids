@@ -14,7 +14,6 @@ class BLEmitter :
     def __init__(self, scene):
         self.__source_ps = None
         self.__emitter = None
-        self.__shader = None
         self.__coords = []
         self.__colors = []
 
@@ -32,30 +31,6 @@ class BLEmitter :
         self.__emitter.create()
         self.__emitter.set_source_ps_id( self.__source_ps.id )
         self.__emitter.send()
-
-        vertex_shader = """
-                    uniform mat4 MVPMatrix;
-                    in vec3 pos;
-                    in vec4 color;
-
-                    out vec4 vColor;
-
-                    void main()
-                    {
-                        gl_Position = MVPMatrix * vec4(pos, 1.0);
-                        vColor = color;
-                    }
-        """
-
-        fragment_shader = """
-                    in vec4 vColor;
-
-                    void main()
-                    {
-                        gl_FragColor = vColor;
-                    }
-        """
-        self.__shader = gpu.types.GPUShader(vertex_shader, fragment_shader)
 
     def convert_from_polygon_mesh(self, mesh) :
         positions = Vector3ddVector()
@@ -76,13 +51,13 @@ class BLEmitter :
             self.__coords.append( (p.x, p.y, p.z))
             self.__colors.append( (1.0, 1.0, 1.0, 1.0))
         
-    def render(self):
-        batch = batch_for_shader(self.__shader, 'POINTS', {"pos" : self.__coords, "color" : self.__colors})
+    def render(self, shader):
+        batch = batch_for_shader(shader, 'POINTS', {"pos" : self.__coords, "color" : self.__colors})
 
-        self.__shader.bind()
+        shader.bind()
         matrix = bpy.context.region_data.perspective_matrix
-        self.__shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
-        batch.draw(self.__shader)
+        shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
+        batch.draw(shader)
 
     def reset(self, prop):
         self.__emitter.set_particle_radius( prop.particle_radius_prop )
