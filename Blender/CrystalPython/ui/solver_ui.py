@@ -59,8 +59,8 @@ def reset() :
 
     min = bpy.context.scene.solver_property.min
     max = bpy.context.scene.solver_property.max
-    bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
-    bl_boundary.boundary.send()
+    bl_boundary.set_box( Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2])) )
+    bl_boundary.send()
     bl_solver.add_boundary(bl_boundary)
     bl_solver.set_effect_length(bpy.context.scene.solver_property.search_radius_prop)
     

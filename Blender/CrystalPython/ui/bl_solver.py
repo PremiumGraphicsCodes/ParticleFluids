@@ -61,7 +61,7 @@ class BLSolver :
 
         boundaries = []
         for bl_boundary in self.__bl_boundaries :
-            boundaries.append( bl_boundary.boundary )
+            boundaries.append( bl_boundary.get_boundary() )
         self.__solver.boundaries = boundaries
 
         self.__solver.external_force = self.__external_force
@@ -131,4 +131,4 @@ class BLSolver :
         for bl_emitter in self.__bl_emitters :
             bl_emitter.render()
         for bl_boundary in self.__bl_boundaries :
-            bl_boundary.draw()
+            bl_boundary.render()

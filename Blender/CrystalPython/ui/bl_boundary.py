@@ -19,20 +19,29 @@ def get_position(box, u, v, w) :
 
 class BLBoundary :
     def __init__(self, scene) :
-        self.boundary = None
+        self.__boundary = None
 
     def build(self, scene) :
-        self.boundary = CSGBoundaryScene(scene)
-        self.boundary.create()
-        self.boundary.bounding_box = Box3dd(Vector3dd(0,0,0), Vector3dd(10,10,10))
-        self.boundary.send()
+        self.__boundary = CSGBoundaryScene(scene)
+        self.__boundary.create()
+        self.__boundary.bounding_box = Box3dd(Vector3dd(0,0,0), Vector3dd(10,10,10))
+        self.__boundary.send()
 
-    def draw(self):
+    def set_box(self, box) :
+        self.__boundary.bounding_box = box
+
+    def get_boundary(self) :
+        return self.__boundary
+
+    def send(self) :
+        self.__boundary.send()
+
+    def render(self):
         shader = gpu.shader.from_builtin('3D_UNIFORM_COLOR')
         shader.bind()
         shader.uniform_float("color", (1, 1, 0, 1))
 
-        box = self.boundary.bounding_box
+        box = self.__boundary.bounding_box
 
         positions = Vector3ddVector()
         positions.add(get_position(box, 0.0, 0.0, 0.0))
