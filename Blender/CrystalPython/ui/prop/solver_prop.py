@@ -43,16 +43,16 @@ class PARTICLE_FLUIDS_SolverProperty(bpy.types.PropertyGroup) :
         default = 3.0,
         min = 0.0
     )
-#    min : bpy.props.FloatVectorProperty(
-#        name="min",
-#        description="Min",
-#        default=(-1.0, -1.0, -1.0)
-#    )
-#    max : bpy.props.FloatVectorProperty(
-#        name="max",
-#        description="Max",
-#        default=(1.0, 1.0, 1.0)
-#    )
+    min : bpy.props.FloatVectorProperty(
+        name="min",
+        description="Min",
+        default=(-100.0, -100.0, 0.0)
+    )
+    max : bpy.props.FloatVectorProperty(
+        name="max",
+        description="Max",
+        default=(100.0, 100.0, 100.0)
+    )
     export_dir_path : bpy.props.StringProperty(
         name="export_dir",
         description="Path to Directory",

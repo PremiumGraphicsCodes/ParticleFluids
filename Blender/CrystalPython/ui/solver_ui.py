@@ -12,7 +12,6 @@ from bpy.app.handlers import persistent
 
 from CrystalPLI import World
 from scene.scene import Scene
-import threading
 
 world = World()
 scene = Scene(world)
@@ -55,14 +54,14 @@ def reset() :
     for bl_emitter in bl_emitters :
         bl_solver.add_emitter(bl_emitter)
 
-    #bl_boundary = BLBoundary(scene)
-    #bl_boundary.build(scene)
+    bl_boundary = BLBoundary(scene)
+    bl_boundary.build(scene)
 
-    #min = bpy.context.scene.solver_property.min
-    #max = bpy.context.scene.solver_property.max
-    #bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
-    #bl_boundary.boundary.send()
-    #bl_solver.add_boundary(bl_boundary)
+    min = bpy.context.scene.solver_property.min
+    max = bpy.context.scene.solver_property.max
+    bl_boundary.boundary.bounding_box = Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2]))
+    bl_boundary.boundary.send()
+    bl_solver.add_boundary(bl_boundary)
     bl_solver.set_effect_length(bpy.context.scene.solver_property.search_radius_prop)
     
     bl_solver.send()
@@ -124,8 +123,8 @@ class PARTICLE_FLUIDS_PT_SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
         self.layout.prop(solver_property, "search_radius_prop", text="SearchRadius")
-#        self.layout.prop(solver_property, "min", text="Min")
-#        self.layout.prop(solver_property, "max", text="Max")
+        self.layout.prop(solver_property, "min", text="Min")
+        self.layout.prop(solver_property, "max", text="Max")
         self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
         self.layout.prop(solver_property, "iteration_prop", text="Iteration")
 
