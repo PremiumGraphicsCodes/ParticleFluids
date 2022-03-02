@@ -20,11 +20,12 @@
 
 ![MeshToPS](./images/Fluid.png) 
 
+## Start Simulation
+
+- [PFSolver]タブを開きます．
+- [Min]を[-100,-100,-25]とします．
+
 Following steps are same as Tutorial1.
-
-## Start Simulation
-
-## Start Simulation
 
 ## Convert to VDB volume
 

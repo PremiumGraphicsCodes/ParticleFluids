@@ -24,7 +24,7 @@
 ## シミュレーションの開始
 
  - [PFSolver]タブを開きます．
- - [Min]を[0,0,-3]とします．
+ - [Min]を[-100,100,-3]とします．
  - [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
  - [Start]ボタンでシミュレーションが開始されます．
  - [Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
@@ -40,12 +40,11 @@
 ## Meshing
 Blender標準の機能で連番のOpenVDBファイルを入力として扱うことができます．
 ![VDBImport](./images/VDBImport.png) 
-![VolumeToMesh](./images/VolumeToMesh.png) 
 
 ボリュームデータからメッシュへの変換は，[Cube]を選択し，
 [Modifier Properties]->[AddModifier]->[VolumeToMesh]
-
-
+[Object]を先ほどインポートしたvolumeとします．
+![VolumeToMesh](./images/VolumeToMesh.png) 
 
 ## レンダリング
 あとは通常のMeshと同じです．

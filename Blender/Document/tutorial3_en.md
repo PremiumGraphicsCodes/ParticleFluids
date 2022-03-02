@@ -20,9 +20,11 @@ Create fluids same as Tutorial1.
 - Select[Object001]，push [Physics Properties]->[PFFluid] button．
 - **Mark [Static]Check box**
 
-Following steps are same as Tutorial1.
+## シミュレーションの開始
+ - Open [PFSolver] tab．
+ - Change [Min] to [-100,100,-100]．
 
-## Start Simulation
+Following steps are same as Tutorial1.
 
 ## Start Simulation
 

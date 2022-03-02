@@ -25,7 +25,7 @@ To simulate fluids, you have to add parameters to the particles.
 ## Start Simulation
 
  - Open [PFSolver] tab．
- - Set [Min] to [0,0,-3]．
+ - Set [Min] to [-100,-100,-3]．
  - Set export directory on [ExportPath].
  - Press [Start] button, then simulation starts.
  - If you check [Render] checkbox, you can check particle's movements.
