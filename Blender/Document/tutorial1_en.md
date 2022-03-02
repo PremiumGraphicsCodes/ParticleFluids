@@ -25,8 +25,9 @@ To simulate fluids, you have to add parameters to the particles.
 ## Start Simulation
 
  - Open [PFSolver] tab．
+ - Set [Min] to [0,0,-3]．
  - Set export directory on [ExportPath].
- - Press [Start] button, then simulation starts!
+ - Press [Start] button, then simulation starts.
  - If you check [Render] checkbox, you can check particle's movements.
 
 ![StaticMesh](./images/Start.png) 
@@ -41,5 +42,9 @@ To simulate fluids, you have to add parameters to the particles.
 ## Meshing
 Blender supports OpenVDB requential file import.
 ![VDBImport](./images/VDBImport.png) 
-![VolumeToMesh](./images/VolumeToMesh.png) 
 
+To convert volume to mesh, 
+- Select [Cube]，
+- [Modifier Properties]->[AddModifier]->[VolumeToMesh]
+- [Object]->[Volume01]．
+![VolumeToMesh](./images/VolumeToMesh.png) 
