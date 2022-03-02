@@ -20,13 +20,11 @@ Create fluids same as Tutorial1.
 - Select[Object001]，push [Physics Properties]->[PFFluid] button．
 - **Mark [Static]Check box**
 
-## シミュレーションの開始
+## Start Simulation
  - Open [PFSolver] tab．
  - Change [Min] to [-100,100,-100]．
 
 Following steps are same as Tutorial1.
-
-## Start Simulation
 
 ## Convert to VDB volume
 
