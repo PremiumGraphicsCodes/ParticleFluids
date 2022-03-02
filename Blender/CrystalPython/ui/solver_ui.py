@@ -26,7 +26,7 @@ def find_all_fluids() :
         if o.type == 'MESH' and o.ps_fluid.is_active_prop :
             fluid = BLFluid(scene)
             fluid.build(scene)
-            fluid.convert_from_polygon_mesh(o.to_mesh())
+            fluid.convert_from_polygon_mesh(o)
             fluid.reset(o.ps_fluid)
             fluids.append(fluid)
     return fluids

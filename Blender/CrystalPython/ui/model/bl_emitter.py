@@ -32,12 +32,18 @@ class BLEmitter :
         self.__emitter.set_source_ps_id( self.__source_ps.id )
         self.__emitter.send()
 
-    def convert_from_polygon_mesh(self, mesh) :
+    def convert_from_polygon_mesh(self, obj) :
+        mesh = obj.to_mesh()
+        matrix_world = obj.matrix_world
+        print('---matrix_world---')
+        print(matrix_world)
+
         positions = Vector3ddVector()
         print("num of vertices:", len(mesh.vertices))
         for vt in mesh.vertices:
 #            print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
-            p = Vector3dd(vt.co[0], vt.co[1], vt.co[2])
+            vvv = matrix_world @ vt.co
+            p = Vector3dd(vvv[0], vvv[1], vvv[2])
             positions.add(p)
         self.__source_ps.set_positions(positions)
         self.__emitter.send()

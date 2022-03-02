@@ -14,7 +14,6 @@ class BLFluid :
     def __init__(self, scene):
         self.__source_ps = None
         self.__fluid = None
-        self.__shader = None
         self.__coords = []
         self.__colors = []
 
@@ -35,12 +34,19 @@ class BLFluid :
         self.__fluid.viscosity = 10.0
         self.__fluid.send()
 
-    def convert_from_polygon_mesh(self, mesh) :
+    def convert_from_polygon_mesh(self, obj) :
+        mesh = obj.to_mesh()
+        matrix_world = obj.matrix_world
+        print('---matrix_world---')
+        print(matrix_world)
+
         positions = Vector3ddVector()
+        
         print("num of vertices:", len(mesh.vertices))
         for vt in mesh.vertices:
 #            print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
-            p = Vector3dd(vt.co[0], vt.co[1], vt.co[2])
+            vvv = matrix_world @ vt.co
+            p = Vector3dd(vvv[0], vvv[1], vvv[2])
             positions.add(p)
         self.__source_ps.set_positions(positions)
         self.__fluid.send()
