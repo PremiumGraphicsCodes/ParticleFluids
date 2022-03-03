@@ -161,6 +161,7 @@
     <ClInclude Include="Matrix2dView.h" />
     <ClInclude Include="Matrix4dView.h" />
     <ClInclude Include="IMenuItem.h" />
+    <ClInclude Include="MenuItem.h" />
     <ClInclude Include="PickUICtrl.h" />
     <ClInclude Include="PMConeView.h" />
     <ClInclude Include="PMPresenterView.h" />

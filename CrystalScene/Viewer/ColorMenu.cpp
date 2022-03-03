@@ -2,7 +2,7 @@
 #include "CrystalScene/AppBase/IMenuItem.h"
 #include "CrystalScene/AppBase/ControlPanel.h"
 #include "CrystalScene/AppBase/ColorMapView.h"
-#include "CrystalScene/AppBase/IMenuItem.h"
+#include "CrystalScene/AppBase/MenuItem.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

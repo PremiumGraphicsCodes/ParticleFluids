@@ -1,6 +1,6 @@
 #include "CameraMenu.h"
 #include "Canvas.h"
-#include "IMenuItem.h"
+#include "MenuItem.h"
 
 #include "../Scene/World.h"
 #include "../Command/Command.h"

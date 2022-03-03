@@ -37,7 +37,7 @@
 #include "RotateView.h"
 
 #include "DeleteView.h"
-#include "IMenuItem.h"
+#include "MenuItem.h"
 
 #include "../Scene/World.h"
 
