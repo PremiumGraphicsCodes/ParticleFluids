@@ -6,14 +6,14 @@
 namespace Crystal {
 	namespace UI {
 
-class MenuItem : public IWindow
+class IMenuItem : public IWindow
 {
 public:
-	explicit MenuItem(const std::string& name) :
+	explicit IMenuItem(const std::string& name) :
 		IWindow(name)
 	{}
 
-	~MenuItem()
+	~IMenuItem()
 	{}
 
 	void onShow() override;

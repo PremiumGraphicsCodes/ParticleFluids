@@ -1,9 +1,9 @@
-#include "MenuItem.h"
+#include "IMenuItem.h"
 #include "imgui.h"
 
 using namespace Crystal::UI;
 
-void MenuItem::onShow()
+void IMenuItem::onShow()
 {
 	auto str = name.c_str();
 	if (ImGui::MenuItem(str)) {
