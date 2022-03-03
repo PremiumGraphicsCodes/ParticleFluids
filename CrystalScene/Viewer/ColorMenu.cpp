@@ -1,25 +1,23 @@
 #include "ColorMenu.h"
-#include "../../CrystalScene/AppBase/imgui.h"
-#include "../../CrystalScene/AppBase/ControlPanel.h"
-#include "../../CrystalScene/AppBase/ColorMapView.h"
+#include "CrystalScene/AppBase/ControlPanel.h"
+#include "CrystalScene/AppBase/ColorMapView.h"
+#include "CrystalScene/AppBase/MenuItem.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-class ColorMapMenuItem : public IWindow
+class ColorMapMenuItem : public MenuItem
 {
 public:
 	ColorMapMenuItem(const std::string& name, World* model, Canvas* canvas, ControlPanel* control) :
-		IWindow(name),
+		MenuItem(name),
 		control(control)
 	{
 	}
 
-	void onShow() override
+	void onPushed() override
 	{
-		if (ImGui::MenuItem("ColorMap")) {
-			control->setWindow(new ColorMapView("CMap"));
-		}
+		control->setWindow(new ColorMapView("ColorMap"));
 	}
 
 private:

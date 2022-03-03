@@ -324,6 +324,9 @@
     <ClCompile Include="IMenu.cpp">
       <Filter>Window</Filter>
     </ClCompile>
+    <ClCompile Include="MenuItem.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -687,6 +690,9 @@
     </ClInclude>
     <ClInclude Include="TMBoxView.h">
       <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuItem.h">
+      <Filter>Window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

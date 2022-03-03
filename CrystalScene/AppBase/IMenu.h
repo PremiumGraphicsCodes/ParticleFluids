@@ -9,14 +9,6 @@ namespace Crystal {
 	namespace UI {
 		class Canvas;
 
-		/*
-		class MenuItem : public IWindow
-		{
-		public:
-		};
-};
-*/
-
 class IMenu : public IWindow
 {
 public:

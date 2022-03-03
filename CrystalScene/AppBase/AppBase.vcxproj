@@ -60,6 +60,7 @@
     <ClCompile Include="Matrix2dView.cpp" />
     <ClCompile Include="Matrix3dView.cpp" />
     <ClCompile Include="Matrix4dView.cpp" />
+    <ClCompile Include="MenuItem.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="Plane3dView.cpp" />
     <ClCompile Include="PMConeView.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="MaterialSelectView.h" />
     <ClInclude Include="Matrix2dView.h" />
     <ClInclude Include="Matrix4dView.h" />
+    <ClInclude Include="MenuItem.h" />
     <ClInclude Include="PickUICtrl.h" />
     <ClInclude Include="PMConeView.h" />
     <ClInclude Include="PMPresenterView.h" />
