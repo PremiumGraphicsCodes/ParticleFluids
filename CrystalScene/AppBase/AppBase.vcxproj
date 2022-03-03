@@ -138,7 +138,6 @@
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Circle3dView.h" />
     <ClInclude Include="ComboBox.h" />
-    <ClInclude Include="ControlChangeMenuItem.h" />
     <ClInclude Include="DeleteView.h" />
     <ClInclude Include="DirectoryView.h" />
     <ClInclude Include="Double4View.h" />

@@ -37,9 +37,9 @@
 #include "RotateView.h"
 
 #include "DeleteView.h"
+#include "IMenuItem.h"
 
 #include "../Scene/World.h"
-#include "ControlChangeMenuItem.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

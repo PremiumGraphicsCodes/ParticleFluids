@@ -1,5 +1,6 @@
 #include "ColorMenu.h"
-#include "CrystalScene/AppBase/ControlChangeMenuItem.h"
+#include "CrystalScene/AppBase/IMenuItem.h"
+#include "CrystalScene/AppBase/ControlPanel.h"
 #include "CrystalScene/AppBase/ColorMapView.h"
 #include "CrystalScene/AppBase/IMenuItem.h"
 
@@ -11,5 +12,7 @@ ColorMenu::ColorMenu(const std::string& name, World* model, Canvas* canvas, Cont
 	IMenu(name, model, canvas),
 	control(control)
 {	 
-	add(new ControlChangeMenuItem(name, control, new ColorMapView("ColorMap")));
+	add(new MenuItem(name, [model, canvas, control] {
+		control->setWindow(new ColorMapView("ColorMap"));
+	}));
 }
