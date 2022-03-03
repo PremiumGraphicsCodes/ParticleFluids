@@ -10,54 +10,30 @@ class PSGenerationMenu : public IMenu
 {
 public:
 	PSGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
-
-private:
-	ControlPanel* control;
 };
 
 class WFGenerationMenu : public IMenu
 {
 public:
 	WFGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
-
-	void onShow() override;
-
-private:
-	ControlPanel* control;
 };
 
 class PMGenerationMenu : public IMenu
 {
 public:
 	PMGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
-
-	void onShow() override;
-
-private:
-	ControlPanel* control;
 };
 
 class TMGenerationMenu : public IMenu
 {
 public:
 	TMGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
-
-	void onShow() override;
-
-private:
-	ControlPanel* control;
 };
-
 
 class VolGenerationMenu : public IMenu
 {
 public:
 	VolGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
-
-	void onShow() override;
-
-private:
-	ControlPanel* control;
 };
 
 class VoxelGenerationMenu : public IMenu

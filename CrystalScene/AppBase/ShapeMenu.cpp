@@ -45,8 +45,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSGenerationMenu::PSGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, world, canvas),
-	control(control)
+	IMenu(name, world, canvas)
 {
 	add(new ControlChangeMenuItem("PSSphere", control, new PSSphereView("PSSphere", world, canvas)));
 	add(new ControlChangeMenuItem("PSBox", control, new PSBoxView("PSBox", world, canvas)));
@@ -56,124 +55,39 @@ PSGenerationMenu::PSGenerationMenu(const std::string& name, World* world, Canvas
 }
 
 WFGenerationMenu::WFGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, world, canvas),
-	control(control)
-{}
-
-void WFGenerationMenu::onShow()
+	IMenu(name, world, canvas)
 {
-	auto world = getWorld();
-	auto canvas = getCanvas();
-
-	const auto& c = name.c_str();
-
-	if (ImGui::BeginMenu(c)) {
-		if (ImGui::MenuItem("WFCircle")) {
-			control->setWindow(new WFCircleView("WFCircle", world, canvas));
-		}
-		if (ImGui::MenuItem("WFBox")) {
-			control->setWindow(new WFBoxView("WFBox", world, canvas));
-		}
-		if (ImGui::MenuItem("WFCone")) {
-			control->setWindow(new WFConeView("WFCone", world, canvas));
-		}
-		if (ImGui::MenuItem("WFCylinder")) {
-			control->setWindow(new WFCylinderView("WFCylinder", world, canvas));
-		}
-		if (ImGui::MenuItem("WFSphere")) {
-			control->setWindow(new WFSphereView("WFSphere", world, canvas));
-		}
-		if (ImGui::MenuItem("WFEllipsoid")) {
-			control->setWindow(new WFEllipsoidView("WFEllipsoid", world, canvas));
-		}
-		if (ImGui::MenuItem("WFTorus")) {
-			control->setWindow(new WFTorusView("WFTorus", world, canvas));
-		}
-		ImGui::EndMenu();
-	}
+	add(new ControlChangeMenuItem("WFCircle", control, new WFCircleView("WFCircle", world, canvas)));
+	add(new ControlChangeMenuItem("WFBox", control, new WFBoxView("WFBox", world, canvas)));
+	add(new ControlChangeMenuItem("WFCone", control, new WFConeView("WFCone", world, canvas)));
+	add(new ControlChangeMenuItem("WFCylinder", control, new WFCylinderView("WFCylinder", world, canvas)));
+	add(new ControlChangeMenuItem("WFSphere", control, new WFSphereView("WFSphere", world, canvas)));
+	add(new ControlChangeMenuItem("WFEllipsoid", control, new WFEllipsoidView("WFEllipsoid", world, canvas)));
+	add(new ControlChangeMenuItem("WFTorus",control, new WFTorusView("WFTorus", world, canvas)));
 }
 
 PMGenerationMenu::PMGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, world, canvas),
-	control(control)
-{}
-
-void PMGenerationMenu::onShow()
+	IMenu(name, world, canvas)
 {
-	auto world = getWorld();
-	auto canvas = getCanvas();
-
-	const auto& c = name.c_str();
-
-	if (ImGui::BeginMenu(c)) {
-		if (ImGui::MenuItem("PMBox")) {
-			control->setWindow(new PMBoxView("PMBox", world, canvas));
-		}
-		if (ImGui::MenuItem("PMQuad")) {
-			control->setWindow(new PMQuadView("PMQuad", world, canvas));
-		}
-		if (ImGui::MenuItem("PMSphere")) {
-			control->setWindow(new PMSphereView("PMSphere", world, canvas));
-		}
-		if (ImGui::MenuItem("PMCone")) {
-			control->setWindow(new PMConeView("PMCone", world, canvas));
-		}
-		ImGui::EndMenu();
-	}
+	add(new ControlChangeMenuItem("PMBox", control, new PMBoxView("PMBox", world, canvas)));
+	add(new ControlChangeMenuItem("PMQuad", control, new PMQuadView("PMQuad", world, canvas)));
+	add(new ControlChangeMenuItem("PMSphere", control, new PMSphereView("PMSphere", world, canvas)));
+	add(new ControlChangeMenuItem("PMCone", control, new PMConeView("PMCone", world, canvas)));
 }
 
 TMGenerationMenu::TMGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, world, canvas),
-	control(control)
-{}
-
-void TMGenerationMenu::onShow()
+	IMenu(name, world, canvas)
 {
-	auto world = getWorld();
-	auto canvas = getCanvas();
-
-	const auto& c = name.c_str();
-
-	if (ImGui::BeginMenu(c)) {
-		if (ImGui::MenuItem("TMBox")) {
-			control->setWindow(new TMBoxView("TMBox", world, canvas));
-		}
-		/*
-		if (ImGui::MenuItem("PMQuad")) {
-			control->setWindow(new PMQuadView("PMQuad", world, canvas));
-		}
-		*/
-		if (ImGui::MenuItem("TMSphere")) {
-			control->setWindow(new TMSphereView("TMSphere", world, canvas));
-		}
-		/*
-		if (ImGui::MenuItem("PMCone")) {
-			control->setWindow(new PMConeView("PMCone", world, canvas));
-		}
-		*/
-		ImGui::EndMenu();
-	}
+	add(new ControlChangeMenuItem("TMBox", control, new TMBoxView("TMBox", world, canvas)));
+	//control->setWindow(new PMQuadView("PMQuad", world, canvas));
+	add(new ControlChangeMenuItem("TMSphere", control, new TMSphereView("TMSphere", world, canvas)));
+	//control->setWindow(new PMConeView("PMCone", world, canvas));
 }
 
-
 VolGenerationMenu::VolGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, world, canvas),
-	control(control)
-{}
-
-void VolGenerationMenu::onShow()
+	IMenu(name, world, canvas)
 {
-	auto world = getWorld();
-	auto canvas = getCanvas();
-
-	const auto& c = name.c_str();
-
-	if (ImGui::BeginMenu(c)) {
-		if (ImGui::MenuItem("VolSphere")) {
-			control->setWindow(new VolSphereView("VolSphere", world, canvas));
-		}
-		ImGui::EndMenu();
-	}
+	add(new ControlChangeMenuItem("VolSphere", control, new VolSphereView("VolSphere", world, canvas)));
 }
 
 VoxelGenerationMenu::VoxelGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
