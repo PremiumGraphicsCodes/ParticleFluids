@@ -47,11 +47,30 @@ using namespace Crystal::UI;
 PSGenerationMenu::PSGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, world, canvas)
 {
-	add(new ControlChangeMenuItem("PSSphere", control, new PSSphereView("PSSphere", world, canvas)));
-	add(new ControlChangeMenuItem("PSBox", control, new PSBoxView("PSBox", world, canvas)));
-	add(new ControlChangeMenuItem("PSCone", control, new PSConeView("PSCone", world, canvas)));
-	add(new ControlChangeMenuItem("PSCylinder", control, new PSCylinderView("PSCylinder", world, canvas)));
-	add(new ControlChangeMenuItem("PSTorus", control, new PSTorusView("PSTorus", world, canvas)));
+	auto sphere = new MenuItem("PSSphere", [world, canvas, control] {
+		control->setWindow(new PSSphereView("PSSphere", world, canvas));
+	});
+	add(sphere);
+
+	auto box = new MenuItem( "PSBox", [world, canvas, control] {
+		control->setWindow(new PSBoxView("PSBox", world, canvas));
+	});
+	add(box);
+
+	auto cone = new MenuItem("PSCone", [world, canvas, control] {
+		control->setWindow(new PSConeView("PSCone", world, canvas));
+	});
+	add(cone);
+
+	auto cylinder = new MenuItem("PSCylinder", [world, canvas, control] {
+		control->setWindow(new PSCylinderView("PSCylinder", world, canvas));
+	});
+	add(cylinder);
+
+	auto torus = new MenuItem("PSTorus", [world, canvas, control] {
+		control->setWindow(new PSTorusView("PSTorus", world, canvas));
+	});
+	add(torus);
 }
 
 WFGenerationMenu::WFGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
