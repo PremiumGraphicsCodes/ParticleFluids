@@ -76,13 +76,40 @@ PSGenerationMenu::PSGenerationMenu(const std::string& name, World* world, Canvas
 WFGenerationMenu::WFGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, world, canvas)
 {
-	add(new ControlChangeMenuItem("WFCircle", control, new WFCircleView("WFCircle", world, canvas)));
-	add(new ControlChangeMenuItem("WFBox", control, new WFBoxView("WFBox", world, canvas)));
-	add(new ControlChangeMenuItem("WFCone", control, new WFConeView("WFCone", world, canvas)));
-	add(new ControlChangeMenuItem("WFCylinder", control, new WFCylinderView("WFCylinder", world, canvas)));
-	add(new ControlChangeMenuItem("WFSphere", control, new WFSphereView("WFSphere", world, canvas)));
-	add(new ControlChangeMenuItem("WFEllipsoid", control, new WFEllipsoidView("WFEllipsoid", world, canvas)));
-	add(new ControlChangeMenuItem("WFTorus",control, new WFTorusView("WFTorus", world, canvas)));
+	auto circle = new MenuItem("WFCircle", [world, canvas, control] {
+		control->setWindow(new WFCircleView("WFCircle", world, canvas));
+		});
+	add(circle);
+
+	auto box = new MenuItem("WFBox", [world, canvas, control] {
+		control->setWindow(new WFBoxView("WFBox", world, canvas));
+		});
+	add(box);
+
+	auto cone = new MenuItem("WFCone", [world, canvas, control] {
+		control->setWindow(new WFBoxView("WFCone", world, canvas));
+		});
+	add(cone);
+
+	auto cylinder = new MenuItem("WFCylinder", [world, canvas, control] {
+		control->setWindow(new WFCylinderView("WFCylinder", world, canvas));
+		});
+	add(cylinder);
+
+	auto sphere = new MenuItem("WFSphere", [world, canvas, control] {
+		control->setWindow( new WFSphereView("WFSphere", world, canvas));
+	});
+	add(sphere);
+
+	auto ellipsoid = new MenuItem("WFEllipsoid", [world, canvas, control] {
+		control->setWindow( new WFEllipsoidView("WFEllipsoid", world, canvas));
+	});
+	add(ellipsoid);
+
+	auto torus = new MenuItem("WFTorus", [world, canvas, control] {
+		control->setWindow( new WFTorusView("WFTorus", world, canvas));
+	});
+	add(torus);
 }
 
 PMGenerationMenu::PMGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
