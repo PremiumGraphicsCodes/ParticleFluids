@@ -39,6 +39,7 @@
 #include "DeleteView.h"
 
 #include "../Scene/World.h"
+#include "ControlChangeMenuItem.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -46,32 +47,12 @@ using namespace Crystal::UI;
 PSGenerationMenu::PSGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, world, canvas),
 	control(control)
-{}
-
-void PSGenerationMenu::onShow()
 {
-	auto world = getWorld();
-	auto canvas = getCanvas();
-
-	const auto& c = name.c_str();
-	if (ImGui::BeginMenu(c)) {
-		if (ImGui::MenuItem("PSSphere")) {
-			control->setWindow(new PSSphereView("PSSphere", world, canvas));
-		}
-		if (ImGui::MenuItem("PSBox")) {
-			control->setWindow(new PSBoxView("PSBox", world, canvas));
-		}
-		if (ImGui::MenuItem("PSCone")) {
-			control->setWindow(new PSConeView("PSCone", world, canvas));
-		}
-		if (ImGui::MenuItem("PSCylinder")) {
-			control->setWindow(new PSCylinderView("PSCylinder", world, canvas));
-		}
-		if (ImGui::MenuItem("PSTorus")) {
-			control->setWindow(new PSTorusView("PSTorus", world, canvas));
-		}
-		ImGui::EndMenu();
-	}
+	add(new ControlChangeMenuItem("PSSphere", control, new PSSphereView("PSSphere", world, canvas)));
+	add(new ControlChangeMenuItem("PSBox", control, new PSBoxView("PSBox", world, canvas)));
+	add(new ControlChangeMenuItem("PSCone", control, new PSConeView("PSCone", world, canvas)));
+	add(new ControlChangeMenuItem("PSCylinder", control, new PSCylinderView("PSCylinder", world, canvas)));
+	add(new ControlChangeMenuItem("PSTorus", control, new PSTorusView("PSTorus", world, canvas)));
 }
 
 WFGenerationMenu::WFGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :

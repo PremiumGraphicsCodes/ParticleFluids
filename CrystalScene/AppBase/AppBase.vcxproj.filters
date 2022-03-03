@@ -694,6 +694,9 @@
     <ClInclude Include="IMenuItem.h">
       <Filter>Window</Filter>
     </ClInclude>
+    <ClInclude Include="ControlChangeMenuItem.h">
+      <Filter>Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Window">

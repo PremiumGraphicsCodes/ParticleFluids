@@ -11,8 +11,6 @@ class PSGenerationMenu : public IMenu
 public:
 	PSGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
 
-	void onShow() override;
-
 private:
 	ControlPanel* control;
 };
