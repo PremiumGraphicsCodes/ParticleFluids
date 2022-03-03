@@ -6,18 +6,29 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-void ColorMenu::onShow()
+class ColorMapMenuItem : public IWindow
 {
-	auto model = getWorld();
-	auto canvas = getCanvas();
+public:
+	ColorMapMenuItem(const std::string& name, World* model, Canvas* canvas, ControlPanel* control) :
+		IWindow(name),
+		control(control)
+	{
+	}
 
-	const auto& c = name.c_str();
-	if (ImGui::BeginMenu(c)) {
-
+	void onShow() override
+	{
 		if (ImGui::MenuItem("ColorMap")) {
 			control->setWindow(new ColorMapView("CMap"));
 		}
-
-		ImGui::EndMenu();
 	}
+
+private:
+	ControlPanel* control;
+};
+
+ColorMenu::ColorMenu(const std::string& name, World* model, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, model, canvas),
+	control(control)
+{
+	add(new ColorMapMenuItem(name, model, canvas, control));
 }

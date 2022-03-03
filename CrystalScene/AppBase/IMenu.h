@@ -9,6 +9,14 @@ namespace Crystal {
 	namespace UI {
 		class Canvas;
 
+		/*
+		class MenuItem : public IWindow
+		{
+		public:
+		};
+};
+*/
+
 class IMenu : public IWindow
 {
 public:
@@ -18,12 +26,16 @@ public:
 		canvas(canvas)
 	{}
 
+	//void addMenuItem(I)
+
 	virtual ~IMenu() {};
 
 protected:
 	Scene::World* getWorld() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
+
+	void onShow() override;
 
 private:
 	Scene::World* model;
