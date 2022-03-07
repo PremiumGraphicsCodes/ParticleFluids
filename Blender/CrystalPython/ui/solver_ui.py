@@ -50,7 +50,7 @@ def find_all_emitters() :
         if o.type == 'MESH' and o.ps_emitter.is_active_prop :
             fluid = BLEmitter(scene)
             fluid.build(scene)
-            fluid.convert_from_polygon_mesh(o.to_mesh())
+            fluid.convert_from_polygon_mesh(o)
             fluid.reset(o.ps_emitter)
             emitters.append(fluid)
     return emitters
