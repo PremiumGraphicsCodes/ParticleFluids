@@ -32,7 +32,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalNumerics", "..\Cryst
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPLI", "CrystalPLI\CrystalPLI.vcxproj", "{09688343-9C7D-4B37-825A-3A4AD8201EAE}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CrystalPythonTest", "CrystalPythonTest\CrystalPythonTest.pyproj", "{6156F5C3-538A-424B-B9B9-2764446F5E67}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CrystalPythonTest", "particle_fluids_test\CrystalPythonTest.pyproj", "{6156F5C3-538A-424B-B9B9-2764446F5E67}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonLabelFileGenerator", "PythonLabelFileGenerator\PythonLabelFileGenerator.pyproj", "{D7827347-B8E9-4D35-B306-B778474DE904}"
 EndProject
@@ -40,7 +40,7 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonLabelFileGeneratorTes
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpaceCommand", "..\CrystalSpace\CrystalSpaceCommand\CrystalSpaceCommand.vcxproj", "{33E8C184-64B2-410D-9AAB-C47917688DBB}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CrystalPython", "CrystalPython\CrystalPython.pyproj", "{75A5DAC9-0299-44E1-B8D0-C745B458D040}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CrystalPython", "particle_fluids\CrystalPython.pyproj", "{75A5DAC9-0299-44E1-B8D0-C745B458D040}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -157,10 +157,10 @@ copy ..\x64\Debug\*.pyd ..\CrystalPython\</Command>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\x64\Release\*.pyd ..\CrystalPythonTest\
-copy ..\x64\Release\*.pyd ..\CrystalPython\
-copy ..\..\CrystalVDB\x64\Release\VDBTool.exe ..\CrystalPython\vdb
-copy ..\..\CrystalVDB\x64\Release\MeshToPSTool.exe ..\CrystalPython\vdb</Command>
+      <Command>copy ..\x64\Release\*.pyd ..\particle_fluids_test\
+copy ..\x64\Release\*.pyd ..\particle_fluids\
+copy ..\..\CrystalVDB\x64\Release\VDBTool.exe ..\particle_fluids\vdb
+copy ..\..\CrystalVDB\x64\Release\MeshToPSTool.exe ..\particle_fluids\vdb</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
