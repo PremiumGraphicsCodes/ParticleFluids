@@ -55,8 +55,8 @@ class PARTICLE_FLUIDS_SolverProperty(bpy.types.PropertyGroup) :
     )
     export_dir_path : bpy.props.StringProperty(
         name="export_dir",
-        description="Path to Directory",
-        default="C:/tmp",
+        description="ExportDirectory",
+        default="//",
         maxlen=1024,
         subtype='DIR_PATH',
     )

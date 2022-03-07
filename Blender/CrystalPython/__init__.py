@@ -12,14 +12,14 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 bl_info = {
-    "name" : "FastFluids",
+    "name" : "ParticleFluids",
     "author" : "PremiumGraphics",
     "description" : "",
     "blender" : (2, 80, 0),
-    "version" : (0, 0, 1),
+    "version" : (0, 1, 0),
     "location" : "",
     "warning" : "",
-    "category" : "Generic"
+    "category" : "Animation"
 }
 
 import os
