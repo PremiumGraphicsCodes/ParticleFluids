@@ -22,11 +22,11 @@ class PARTICLE_FLUIDS_OT_VoxelizerOperator(bpy.types.Operator) :
   def execute(self, context) :
       global scene
       divide_length = context.scene.voxelizer_property.divide_length
-      export_dir_path = context.scene.voxelizer_property.export_dir_path
+      export_dir_path = bpy.path.abspath(context.scene.voxelizer_property.export_dir_path)
 
       selected_mesh = self.get_selected_mesh(context)
       if selected_mesh == None :
-        return
+        return {'CANCELLED'}
       mesh = BLTriangleMesh(scene)
 
       mesh_file_path = os.path.join(export_dir_path, "tmp_fs_mesh.stl")
@@ -74,7 +74,7 @@ class VoxelizerPropertyGroup(bpy.types.PropertyGroup):
   export_dir_path : bpy.props.StringProperty(
     name="export_dir",
     description="Path to Directory",
-    default="C:/tmp",
+    default="//",
     maxlen=1024,
     subtype='DIR_PATH',
   )
