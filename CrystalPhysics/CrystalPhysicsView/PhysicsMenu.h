@@ -11,7 +11,7 @@ class PhysicsMenu : public IMenu
 public:
 	PhysicsMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
 
-	void onShow() override;
+	//void onShow() override;
 
 private:
 	ControlPanel* control;

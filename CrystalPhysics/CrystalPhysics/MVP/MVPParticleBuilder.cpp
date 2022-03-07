@@ -13,7 +13,7 @@ MVPVolumeParticle* Crystal::Physics::MVPParticleBuilder::create(const Math::Vect
 {
 	auto vp = new MVPVolumeParticle(radius, position);
 	auto mp = new MVPMassParticle(vp, Vector3dd(0,0,0), weight);
-	vp->setRestMass(weight * 1.25);
+	vp->setRestMass(weight * 1.25f);
 	vp->addMassParticle(mp);
 	mp->setParent(vp);
 	//vp->addMassParticle(mp);

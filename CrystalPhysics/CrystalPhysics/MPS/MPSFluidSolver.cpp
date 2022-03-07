@@ -21,7 +21,7 @@ void MPSFluidSolver::step()
 		particles.insert(particles.end(), ps.begin(), ps.end());
 	}
 
-	CompactSpaceHash3d spaceHash(effectRadius, particles.size());
+	CompactSpaceHash3d spaceHash(effectRadius, static_cast<int>(particles.size()));
 	for (auto p : particles) {
 		spaceHash.add(p);
 	}

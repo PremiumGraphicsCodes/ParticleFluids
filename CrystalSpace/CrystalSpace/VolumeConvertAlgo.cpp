@@ -23,7 +23,7 @@ void VolumeConvertAlgo::build(const double searchRadius)
 {
 	Gaussian1d kernel;
 
-	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
+	CompactSpaceHash3d spaceHash(searchRadius, static_cast<int>(particles.size()));
 
 	const auto resolutions = volume.getResolutions();
 
