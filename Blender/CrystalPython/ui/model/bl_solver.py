@@ -111,9 +111,17 @@ class BLSolver :
 
         for emitter in self.__bl_emitters :
             emitter.send_shader()
+
+        dir_path = self.__get_dir__()
         
-        macro_file_path = os.path.join(self.__export_dir_path, "macro" + str(frame) + ".ply")
+        macro_file_path = os.path.join(dir_path, "macro" + str(frame) + ".ply")
         self.__solver.export_pcd(macro_file_path, True)
+
+    def __get_dir__(self) :
+        if self.__export_dir_path.startswith("//") :
+            return bpy.path.abspath(self.__export_dir_path)
+        else :
+            return self.__export_dir_path
 
     def is_running(self):
         return self.__running
