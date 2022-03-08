@@ -154,45 +154,55 @@ namespace {
 		{
 			add(new MenuItem("VolSphere", [world, canvas, control] {
 				control->setWindow(new VolSphereView("VolSphere", world, canvas));
-			}));
+				}));
 		}
 	};
-}
 
-VoxelGenerationMenu::VoxelGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, world, canvas)
-{
-	add(new MenuItem("VoxelSphere", [world, canvas, control] {
-		control->setWindow(new VoxelSphereView("VoxelSphere", world, canvas));
-	}));
-}
+	class VoxelGenerationMenu : public IMenu
+	{
+	public:
+		VoxelGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+			IMenu(name, world, canvas)
+		{
+			add(new MenuItem("VoxelSphere", [world, canvas, control] {
+				control->setWindow(new VoxelSphereView("VoxelSphere", world, canvas));
+				}));
+		}
+	};
 
-SolidGenerationMenu::SolidGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, world, canvas)
-{
-	add(new MenuItem("SolidBox", [world, canvas, control] {
-		control->setWindow(new SolidBoxView("SolidBox", world, canvas));
-	}));
-}
+	class SolidGenerationMenu : public IMenu
+	{
+	public:
+		SolidGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+			IMenu(name, world, canvas)
+		{
+			add(new MenuItem("SolidBox", [world, canvas, control] {
+				control->setWindow(new SolidBoxView("SolidBox", world, canvas));
+				}));
+		}
+	};
 
-TransformMenu::TransformMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, world, canvas)
-{
-	add(new MenuItem("Scale", [world, canvas, control] {
-		control->setWindow(new ScaleView("Scale", world, canvas));
-	}));
-	add(new MenuItem("Translate", [world, canvas, control] {
-		control->setWindow(new TranslateView("Translate", world, canvas));
-	}));
-	add(new MenuItem("Rotate", [world, canvas, control] {
-		control->setWindow(new RotateView("Rotate", world, canvas));
-	}));
-	add(new MenuItem("Transform", [world, canvas, control] {
-		control->setWindow(new TransformView("Transform", world, canvas));
-	}));
-}
+	class TransformMenu : public IMenu
+	{
+	public:
+		TransformMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+			IMenu(name, world, canvas)
+		{
+			add(new MenuItem("Scale", [world, canvas, control] {
+				control->setWindow(new ScaleView("Scale", world, canvas));
+				}));
+			add(new MenuItem("Translate", [world, canvas, control] {
+				control->setWindow(new TranslateView("Translate", world, canvas));
+				}));
+			add(new MenuItem("Rotate", [world, canvas, control] {
+				control->setWindow(new RotateView("Rotate", world, canvas));
+				}));
+			add(new MenuItem("Transform", [world, canvas, control] {
+				control->setWindow(new TransformView("Transform", world, canvas));
+				}));
+		}
+	};
 
-namespace {
 	class GlobalMenu : public IMenu
 	{
 	public:
@@ -205,7 +215,6 @@ namespace {
 		}
 	};
 }
-
 
 ShapeMenu::ShapeMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, world, canvas)
