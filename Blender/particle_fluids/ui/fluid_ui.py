@@ -53,6 +53,8 @@ class PARTICLE_FLUID_PT_FluidPanel(bpy.types.Panel) :
     layout.operator(PARTICLE_FLUID_OT_Activate.bl_idname, text="PFFluid")    
     if bpy.context.active_object.ps_fluid.is_active_prop == True :
       fluid_property = bpy.context.active_object.ps_fluid
+      layout.prop(fluid_property, "type_prop", text="FluidType")
+
 #      layout.prop(fluid_property, "is_active_prop", text="Active")
       layout.prop(fluid_property, "particle_radius_prop", text="ParticleRadius")
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")

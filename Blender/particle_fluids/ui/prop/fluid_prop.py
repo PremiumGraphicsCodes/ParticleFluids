@@ -11,14 +11,25 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+from enum import Enum
 import bpy
-from bpy.props import FloatProperty, BoolProperty
+from bpy.props import FloatProperty, BoolProperty, EnumProperty
 
 class PARTICLE_FLUID_FluidProperty(bpy.types.PropertyGroup) :
   is_active_prop : BoolProperty(
     name="is_active",
     description="Active",
     default = False,
+  )
+  type_prop: EnumProperty(
+    name="Type",
+    description="FluidType",
+    default='Fluid',
+    items=[
+        ('Fluid', "Fluid", ""),
+        ('Emitter', "Emitter", ""),
+        ('Obstacle', "Obstacle", ""),
+    ]
   )
   stiffness_prop : FloatProperty(
     name="stiffness",
