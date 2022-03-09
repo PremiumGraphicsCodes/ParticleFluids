@@ -39,7 +39,7 @@ class VDBConverter :
     def __init__(self) :
         self.__running = False
         self.__import_directory = ""
-        self.__export_directory = ""
+        #self.__export_directory = ""
         self.__current_index = 0
         self.__particle_radius = 1.0
         self.__cell_length = 0.5
@@ -51,8 +51,8 @@ class VDBConverter :
     def set_import_directory(self, dir) :
         self.__import_directory = dir
 
-    def set_export_directory(self, dir) :
-        self.__export_directory = dir
+    #def set_export_directory(self, dir) :
+    #    self.__export_directory = dir
 
     def set_particle_radius(self, rad) :
         self.__particle_radius = rad
@@ -61,8 +61,6 @@ class VDBConverter :
         self.__cell_length = length
 
     def run(self):
-        path = os.path.join(self.__import_directory, "*.ply")
-        self.__files = glob.glob(path)
         count = len(self.__files)
         start = self.__current_index
         for i in range(start, count) :
@@ -77,6 +75,9 @@ class VDBConverter :
     def start(self):
         self.__current_index = 0
         self.__running = True
+        path = os.path.join(self.__import_directory, "*.ply")
+        self.__files = glob.glob(path)
+
         thread = threading.Thread(target=self.run)
         thread.start()
 
@@ -86,18 +87,19 @@ class VDBConverter :
     def stop(self):
         self.__running = False
         self.__current_index = 0
+        self.__files = []
 
     def resume(self):
+        self.__running = True
         thread = threading.Thread(target=self.run)
         thread.start()
-        self.__running = True
 
     def convert(self, file_name) :
         print("converting " + file_name)
 
         #ps_file_path = os.path.join(self.__import_directory, file_name)
         basename_without_ext = os.path.splitext(os.path.basename(file_name))[0]
-        export_file_path = os.path.join(self.__export_directory, basename_without_ext + ".vdb") #basename_without_ext + ".stl")
+        export_file_path = os.path.join(self.__import_directory, basename_without_ext + ".vdb") #basename_without_ext + ".stl")
         
         addon_dirpath = os.path.dirname(__file__)
         tool_path = os.path.join(addon_dirpath, '../../vdb/VDBTool')
@@ -138,12 +140,7 @@ class PARTICLE_FLUIDS_OT_PSToVolumeStartOperator(bpy.types.Operator) :
         runner.set_particle_radius(prop.particle_radius_prop)
         runner.set_cell_length(prop.cell_length_prop)
         runner.set_import_directory(prop.import_directory_prop)
-        runner.set_export_directory(prop.export_directory_prop)
-        #filenames = []
-        #for f in self.files :
-        #    filenames.append(f.name)
-        #runner.set_dir(self.directory)
-        #runner.set_files(filenames)
+        #runner.set_export_directory(prop.export_directory_prop)
         runner.start()
         return {'FINISHED'}
 
@@ -197,13 +194,13 @@ class PARTICLE_FLUIDS_PSToVolumeProperty(bpy.types.PropertyGroup) :
         default="//",
         subtype='DIR_PATH')
 
-    export_directory_prop : bpy.props.StringProperty(
-        name="export_directory",
-        description="ExportDirectory",
-        default="//",
+    #export_directory_prop : bpy.props.StringProperty(
+    #    name="export_directory",
+    #    description="ExportDirectory",
+    #    default="//",
     #    maxlen=1024,
-        subtype='DIR_PATH',
-    )
+    #    subtype='DIR_PATH',
+    #)
 
         
 class PARTICLE_FLUIDS_PT_PSToVolumePanel(bpy.types.Panel):
@@ -218,7 +215,7 @@ class PARTICLE_FLUIDS_PT_PSToVolumePanel(bpy.types.Panel):
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
         self.layout.prop(prop, "import_directory_prop", text="ImportDir")
-        self.layout.prop(prop, "export_directory_prop", text="ExportDir")
+        #self.layout.prop(prop, "export_directory_prop", text="ExportDir")
 
         self.layout.separator()
         row = self.layout.row(align=False)
@@ -233,7 +230,7 @@ class PARTICLE_FLUIDS_PT_PSToVolumePanel(bpy.types.Panel):
         row = self.layout.row()
         global progress
         row.label(text="Progress")
-        row.label(text=str(progress))
+        row.label(text=str(progress * 100.0))
 
 classes = [
     PARTICLE_FLUIDS_OT_PSToVolumeStartOperator,
