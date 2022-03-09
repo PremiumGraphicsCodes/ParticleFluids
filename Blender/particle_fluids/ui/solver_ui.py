@@ -36,23 +36,25 @@ bl_solver = BLSolver()
 def find_all_fluids() :
     fluids = []
     for o in bpy.data.objects:
-        if o.type == 'MESH' and o.ps_fluid.is_active_prop :
-            fluid = BLFluid(scene)
-            fluid.build(scene)
-            fluid.convert_from_polygon_mesh(o)
-            fluid.reset(o.ps_fluid)
-            fluids.append(fluid)
+        if o.type == 'MESH' and o.ps_fluid.is_active_prop:
+            if (o.ps_fluid.type_prop == "Fluid" or o.ps_fluid.type_prop == "Obstacle") :
+                fluid = BLFluid(scene)
+                fluid.build(scene)
+                fluid.convert_from_polygon_mesh(o)
+                fluid.reset(o.ps_fluid)
+                fluids.append(fluid)
     return fluids
 
 def find_all_emitters() :
     emitters = []
     for o in bpy.data.objects:
-        if o.type == 'MESH' and o.ps_emitter.is_active_prop :
-            fluid = BLEmitter(scene)
-            fluid.build(scene)
-            fluid.convert_from_polygon_mesh(o)
-            fluid.reset(o.ps_emitter)
-            emitters.append(fluid)
+        if o.type == 'MESH' and o.ps_fluid.is_active_prop :
+            if o.ps_fluid.type_prop == "Emitter" :
+                fluid = BLEmitter(scene)
+                fluid.build(scene)
+                fluid.convert_from_polygon_mesh(o)
+                fluid.reset(o.ps_fluid)
+                emitters.append(fluid)
     return emitters
 
 def reset() :

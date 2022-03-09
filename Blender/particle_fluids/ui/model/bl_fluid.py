@@ -87,5 +87,5 @@ class BLFluid :
         self.__fluid.particle_radius = prop.particle_radius_prop
         self.__fluid.stiffness = prop.stiffness_prop
         self.__fluid.viscosity = prop.viscosity_prop
-        self.__fluid.is_boundary = prop.is_static_prop
+        self.__fluid.is_boundary = (prop.type_prop == "Obstacle")
         self.__fluid.send()

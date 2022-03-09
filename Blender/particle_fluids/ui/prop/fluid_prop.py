@@ -13,7 +13,7 @@
 
 from enum import Enum
 import bpy
-from bpy.props import FloatProperty, BoolProperty, EnumProperty
+from bpy.props import IntProperty, FloatProperty, FloatVectorProperty, BoolProperty, EnumProperty
 
 class PARTICLE_FLUID_FluidProperty(bpy.types.PropertyGroup) :
   is_active_prop : BoolProperty(
@@ -54,3 +54,28 @@ class PARTICLE_FLUID_FluidProperty(bpy.types.PropertyGroup) :
     description="Boundary",
     default = False,
   )
+  start_step_prop : IntProperty(
+    name="start_step",
+    description="StartStep",
+    default=1,
+    min=0
+  )
+  end_step_prop : IntProperty(
+    name="end_step",
+    description="EndStep",
+    default=100,
+    min=0
+  )
+  interval_prop : IntProperty(
+    name="interval",
+    description="Interval",
+    default=5,
+    min=1
+  )
+  initial_velocity_prop : FloatVectorProperty(
+    name="initial_velocity",
+    description="InitialVelocity",
+    default=(0.0, 0.0, 0.0)
+    )
+
+
