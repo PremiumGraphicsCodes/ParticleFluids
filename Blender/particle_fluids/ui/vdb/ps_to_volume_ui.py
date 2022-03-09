@@ -35,26 +35,36 @@ scene = Scene(world)
 
 class VDBConverter :
     def __init__(self) :
-        self.__files = []
         self.__running = False
-        self.__directory = ""
+        self.__import_directory = ""
+        self.__export_directory = ""
         self.__current_index = 0
+        self.__particle_radius = 1.0
+        self.__cell_length = 0.5
 
     def is_running(self) :
         return self.__running
 
-    def set_dir(self, dir) :
-        self.__directory = dir
+    def set_import_directory(self, dir) :
+        self.__import_directory = dir
 
-    def set_files(self, files) :
-        self.__files = files
+    def set_export_directory(self, dir) :
+        self.__export_directory = dir
+
+    def set_particle_radius(self, rad) :
+        self.__particle_radius = rad
+
+    def set_cell_length(self, length) :
+        self.__cell_length = length
 
     def run(self):
-        count = len(self.__files)
+        path = os.path.join(self.__import_directory, "*.ply")
+        files = glob.glob(path)
+        count = len(files)
         start = self.__current_index
         for i in range(start, count) :
             if self.__running :
-                file = self.__files[i]
+                file = files[i]
                 self.convert(file)
                 self.__current_index = i
 
@@ -77,12 +87,11 @@ class VDBConverter :
         self.__running = True
 
     def convert(self, file_name) :
-        prop = bpy.context.scene.ps_to_volumeproperty
         print("converting " + file_name)
 
-        ps_file_path = os.path.join(self.__directory, file_name)
+        #ps_file_path = os.path.join(self.__import_directory, file_name)
         basename_without_ext = os.path.splitext(os.path.basename(file_name))[0]
-        export_file_path = os.path.join(self.__directory, basename_without_ext + ".vdb") #basename_without_ext + ".stl")
+        export_file_path = os.path.join(self.__export_directory, basename_without_ext + ".vdb") #basename_without_ext + ".stl")
         
         addon_dirpath = os.path.dirname(__file__)
         tool_path = os.path.join(addon_dirpath, '../../vdb/VDBTool')
@@ -90,13 +99,13 @@ class VDBConverter :
         params = []
         params.append(tool_path)
         params.append("-i")
-        params.append(str(ps_file_path))
+        params.append(str(file_name))
         params.append("-o")
         params.append(str(export_file_path))
         params.append("-r")
-        params.append(str(prop.particle_radius_prop))
+        params.append(str(self.__particle_radius))
         params.append("-v")
-        params.append(str(prop.cell_length_prop))
+        params.append(str(self.__cell_length))
             
         result = subprocess.run(params, shell=True)
         #if result != -1 :
@@ -109,37 +118,23 @@ class VDBConverter :
 
 runner = VDBConverter()
 
-class PARTICLE_FLUIDS_OT_PSToVolumeStartOperator(bpy.types.Operator, ImportHelper) :
+class PARTICLE_FLUIDS_OT_PSToVolumeStartOperator(bpy.types.Operator) :
     bl_idname = "pg.particlesystemsequencemeshingoperator"
     bl_label = "ParticleSystem"
 #    bl_description = "Hello"
-    filter_glob : bpy.props.StringProperty(
-            default="*.ply",
-            options={'HIDDEN'}
-            )
-
-    files : bpy.props.CollectionProperty(
-        name="PLY files",
-        type=bpy.types.OperatorFileListElement,
-        )
-
-    directory : bpy.props.StringProperty(subtype='DIR_PATH')
-
-    #export_dir_path : bpy.props.StringProperty(
-    #    name="export_dir",
-    #    description="ExportDirectory",
-    #    default="//",
-    #    maxlen=1024,
-    #    subtype='DIR_PATH',
-    #)
  
     def execute(self, context) :
+        prop = context.scene.ps_to_volumeproperty
         global runner
-        filenames = []
-        for f in self.files :
-            filenames.append(f.name)
-        runner.set_dir(self.directory)
-        runner.set_files(filenames)
+        runner.set_particle_radius(prop.particle_radius_prop)
+        runner.set_cell_length(prop.cell_length_prop)
+        runner.set_import_directory(prop.import_directory_prop)
+        runner.set_export_directory(prop.export_directory_prop)
+        #filenames = []
+        #for f in self.files :
+        #    filenames.append(f.name)
+        #runner.set_dir(self.directory)
+        #runner.set_files(filenames)
         runner.start()
         return {'FINISHED'}
 
@@ -186,6 +181,21 @@ class PARTICLE_FLUIDS_PSToVolumeProperty(bpy.types.PropertyGroup) :
         min = 0.0,
         max = 100.0,
     )
+
+    import_directory_prop : bpy.props.StringProperty(
+        name="import_directory",
+        description="",
+        default="//",
+        subtype='DIR_PATH')
+
+    export_directory_prop : bpy.props.StringProperty(
+        name="export_directory",
+        description="ExportDirectory",
+        default="//",
+    #    maxlen=1024,
+        subtype='DIR_PATH',
+    )
+
         
 class PARTICLE_FLUIDS_PT_PSToVolumePanel(bpy.types.Panel):
     bl_label = "PSToVolume"
@@ -198,6 +208,8 @@ class PARTICLE_FLUIDS_PT_PSToVolumePanel(bpy.types.Panel):
         prop = context.scene.ps_to_volumeproperty
         self.layout.prop(prop, "particle_radius_prop", text="ParticleRadius")
         self.layout.prop(prop, "cell_length_prop", text="CellLength")
+        self.layout.prop(prop, "import_directory_prop", text="ImportDir")
+        self.layout.prop(prop, "export_directory_prop", text="ExportDir")
 
         self.layout.separator()
         row = self.layout.row(align=False)
