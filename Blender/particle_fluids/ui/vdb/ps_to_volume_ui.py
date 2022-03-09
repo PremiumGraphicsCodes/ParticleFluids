@@ -33,6 +33,8 @@ from bpy_extras.io_utils import ImportHelper
 world = World()
 scene = Scene(world)
 
+progress = 0.0
+
 class VDBConverter :
     def __init__(self) :
         self.__running = False
@@ -41,6 +43,7 @@ class VDBConverter :
         self.__current_index = 0
         self.__particle_radius = 1.0
         self.__cell_length = 0.5
+        self.__files = []
 
     def is_running(self) :
         return self.__running
@@ -59,14 +62,17 @@ class VDBConverter :
 
     def run(self):
         path = os.path.join(self.__import_directory, "*.ply")
-        files = glob.glob(path)
-        count = len(files)
+        self.__files = glob.glob(path)
+        count = len(self.__files)
         start = self.__current_index
         for i in range(start, count) :
             if self.__running :
-                file = files[i]
+                file = self.__files[i]
                 self.convert(file)
                 self.__current_index = i
+
+    def get_progress(self) :
+        return self.__current_index / float(len(self.__files))
 
     def start(self):
         self.__current_index = 0
@@ -108,6 +114,9 @@ class VDBConverter :
         params.append(str(self.__cell_length))
             
         result = subprocess.run(params, shell=True)
+
+        global progress
+        progress = self.get_progress()
         #if result != -1 :
             #for o in self.tmp_volumes :
             #    bpy.data.objects.remove(o)                
@@ -220,6 +229,11 @@ class PARTICLE_FLUIDS_PT_PSToVolumePanel(bpy.types.Panel):
             row.operator(PARTICLE_FLUIDS_OT_PSToVolumeResumeOperator.bl_idname, text="Resume", icon="PLAY")
         row.operator(PARTICLE_FLUIDS_OT_PSToVolumeCancelOperator.bl_idname, text="Cancel", icon="CANCEL")
         self.layout.separator()
+
+        row = self.layout.row()
+        global progress
+        row.label(text="Progress")
+        row.label(text=str(progress))
 
 classes = [
     PARTICLE_FLUIDS_OT_PSToVolumeStartOperator,
