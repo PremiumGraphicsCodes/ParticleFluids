@@ -77,8 +77,8 @@ def reset() :
     bl_boundary = BLBoundary(scene)
     bl_boundary.build(scene)
 
-    min = bpy.context.scene.solver_property.min
-    max = bpy.context.scene.solver_property.max
+    min = bpy.context.scene.solver_property.min_prop
+    max = bpy.context.scene.solver_property.max_prop
     bl_boundary.set_box( Box3dd(Vector3dd(min[0],min[1],min[2]), Vector3dd(max[0],max[1],max[2])) )
     bl_boundary.send()
     bl_solver.add_boundary(bl_boundary)
@@ -88,7 +88,7 @@ def reset() :
     bl_solver.set_start_frame(bpy.context.scene.solver_property.start_frame_prop)
     bl_solver.set_end_frame(bpy.context.scene.solver_property.end_frame_prop)
     bl_solver.set_iteration( bpy.context.scene.solver_property.iteration_prop )
-    bl_solver.set_export_path( bpy.context.scene.solver_property.export_dir_path )
+    bl_solver.set_export_path( bpy.context.scene.solver_property.export_directory_prop )
 
 class PARTICLE_FLUIDS_OT_SolverStartOperator(bpy.types.Operator):
     bl_idname = "pf.solverstartoperator"
@@ -137,15 +137,15 @@ class PARTICLE_FLUIDS_PT_SolverPanel(bpy.types.Panel):
     def draw(self, context):
         global bl_solver
         solver_property = context.scene.solver_property
-        self.layout.prop(solver_property, "is_active_prop", text="Render")
+        self.layout.prop(solver_property, "do_render_prop", text="Render")
         self.layout.prop(solver_property, "start_frame_prop", text="StartFrame")
         self.layout.prop(solver_property, "end_frame_prop", text="EndFrame")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
         self.layout.prop(solver_property, "search_radius_prop", text="SearchRadius")
-        self.layout.prop(solver_property, "min", text="Min")
-        self.layout.prop(solver_property, "max", text="Max")
-        self.layout.prop(solver_property, "export_dir_path", text="ExportPath")
+        self.layout.prop(solver_property, "min_prop", text="Min")
+        self.layout.prop(solver_property, "max_prop", text="Max")
+        self.layout.prop(solver_property, "export_directory_prop", text="ExportPath")
         self.layout.prop(solver_property, "iteration_prop", text="Iteration")
 
         self.layout.separator()
@@ -168,12 +168,10 @@ classes = [
 ]
 
 def on_draw_solver() :
-    #global bl_solver
     if bl_solver.is_running() :
         bpy.context.scene.frame_current = bl_solver.get_current_frame()
 
-    #bpy.context.scene.solver_property.progress_prop = bl_solver.get_current_frame()
-    if bpy.context.scene.solver_property.is_active_prop :
+    if bpy.context.scene.solver_property.do_render_prop :
         bl_solver.render(shader.get_shader())
 
 class SolverUI :

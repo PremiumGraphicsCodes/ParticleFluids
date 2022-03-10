@@ -21,7 +21,7 @@ from bpy.props import (
 )
 
 class PARTICLE_FLUIDS_SolverProperty(bpy.types.PropertyGroup) :
-    is_active_prop : BoolProperty(
+    do_render_prop : BoolProperty(
         name ="active",
         description = "Active",
         default = False,
@@ -56,17 +56,17 @@ class PARTICLE_FLUIDS_SolverProperty(bpy.types.PropertyGroup) :
         default = 3.0,
         min = 0.0
     )
-    min : bpy.props.FloatVectorProperty(
+    min_prop : bpy.props.FloatVectorProperty(
         name="min",
         description="Min",
         default=(-100.0, -100.0, 0.0)
     )
-    max : bpy.props.FloatVectorProperty(
+    max_prop : bpy.props.FloatVectorProperty(
         name="max",
         description="Max",
         default=(100.0, 100.0, 100.0)
     )
-    export_dir_path : bpy.props.StringProperty(
+    export_directory_prop : bpy.props.StringProperty(
         name="export_dir",
         description="ExportDirectory",
         default="//",
@@ -78,9 +78,4 @@ class PARTICLE_FLUIDS_SolverProperty(bpy.types.PropertyGroup) :
         description ="Iteration",
         default =1,
         min = 1,
-    )
-    progress_prop : bpy.props.IntProperty(
-        name="progress",
-        description="Progress",
-        default = 0,   
     )
