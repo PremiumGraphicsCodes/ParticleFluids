@@ -83,9 +83,17 @@ class BLFluid :
         shader.uniform_float("MVPMatrix", matrix)#        shader.uniform_float("color", color)
         batch.draw(shader)
 
-    def reset(self, prop):
-        self.__fluid.particle_radius = prop.particle_radius_prop
-        self.__fluid.stiffness = prop.stiffness_prop
-        self.__fluid.viscosity = prop.viscosity_prop
-        self.__fluid.is_boundary = (prop.type_prop == "Obstacle")
+    def set_particle_radius(self, radius) :
+        self.__fluid.particle_radius = radius
+
+    def set_stiffness(self, stiffness) :
+        self.__fluid.stiffness = stiffness
+
+    def set_viscosity(self, visc) :
+        self.__fluid.viscosity = visc
+
+    def set_is_boundary(self, is_boundary) :
+        self.__fluid.is_boundary = is_boundary
+
+    def send(self) :
         self.__fluid.send()

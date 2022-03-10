@@ -41,7 +41,12 @@ def find_all_fluids() :
                 fluid = BLFluid(scene)
                 fluid.build(scene)
                 fluid.convert_from_polygon_mesh(o)
-                fluid.reset(o.ps_fluid)
+                prop = o.ps_fluid
+                fluid.set_particle_radius(prop.particle_radius_prop)
+                fluid.set_stiffness( prop.stiffness_prop )
+                fluid.set_viscosity( prop.viscosity_prop )
+                fluid.set_is_boundary( prop.type_prop == "Obstacle" )
+                fluid.send()
                 fluids.append(fluid)
     return fluids
 
