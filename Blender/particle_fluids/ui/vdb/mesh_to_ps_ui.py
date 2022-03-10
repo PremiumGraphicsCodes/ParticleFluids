@@ -34,8 +34,8 @@ class PARTICLE_FLUIDS_OT_VoxelizerOperator(bpy.types.Operator) :
 
   def execute(self, context) :
       global scene
-      divide_length = context.scene.voxelizer_property.divide_length
-      export_dir_path = bpy.path.abspath(context.scene.voxelizer_property.export_dir_path)
+      divide_length = context.scene.voxelizer_property.divide_length_prop
+      export_dir_path = bpy.path.abspath(context.scene.voxelizer_property.export_directory_prop)
 
       selected_mesh = self.get_selected_mesh(context)
       if selected_mesh == None :
@@ -78,13 +78,13 @@ class PARTICLE_FLUIDS_OT_VoxelizerOperator(bpy.types.Operator) :
     return None
 
 class VoxelizerPropertyGroup(bpy.types.PropertyGroup):
-  divide_length : bpy.props.FloatProperty(
+  divide_length_prop : bpy.props.FloatProperty(
     name="divide_length",
     description="",
     default=1.0,
     min = 0.0
   )
-  export_dir_path : bpy.props.StringProperty(
+  export_directory_prop : bpy.props.StringProperty(
     name="export_dir",
     description="Path to Directory",
     default="//",
@@ -100,8 +100,8 @@ class PARTICLE_FLUIDS_PT_Voxelizer_Panel(bpy.types.Panel) :
   
   def draw(self, context):
     layout = self.layout
-    layout.prop(context.scene.voxelizer_property, "divide_length", text="DivideLength")
-    layout.prop(context.scene.voxelizer_property, "export_dir_path", text="ExportDir")
+    layout.prop(context.scene.voxelizer_property, "divide_length_prop", text="DivideLength")
+    layout.prop(context.scene.voxelizer_property, "export_directory_prop", text="ExportDir")
     layout.operator(PARTICLE_FLUIDS_OT_VoxelizerOperator.bl_idname, text="Voxelize")
 
 classes = [
