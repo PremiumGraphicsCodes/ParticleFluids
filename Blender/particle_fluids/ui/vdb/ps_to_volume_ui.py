@@ -75,7 +75,8 @@ class VDBConverter :
     def start(self):
         self.__current_index = 0
         self.__running = True
-        path = os.path.join(self.__import_directory, "*.ply")
+        dir_path = bpy.path.abspath(self.__import_directory)
+        path = os.path.join(dir_path, "*.ply")
         self.__files = glob.glob(path)
 
         thread = threading.Thread(target=self.run)
