@@ -100,7 +100,8 @@ class VDBConverter :
 
         #ps_file_path = os.path.join(self.__import_directory, file_name)
         basename_without_ext = os.path.splitext(os.path.basename(file_name))[0]
-        export_file_path = os.path.join(self.__import_directory, basename_without_ext + ".vdb") #basename_without_ext + ".stl")
+        dir_path = bpy.path.abspath(self.__import_directory)
+        export_file_path = os.path.join(dir_path, basename_without_ext + ".vdb") #basename_without_ext + ".stl")
         
         addon_dirpath = os.path.dirname(__file__)
         tool_path = os.path.join(addon_dirpath, '../../vdb/VDBTool')
