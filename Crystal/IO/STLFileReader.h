@@ -1,6 +1,7 @@
 #pragma once
 
 #include <filesystem>
+#include "STLFile.h"
 
 namespace Crystal {
 	namespace IO {
@@ -12,7 +13,14 @@ public:
 
 	static bool isBinary(std::istream& in);
 
-	//bool isBinaryFile(const std::filesystem::path& path);
+	bool readBinary(const std::filesystem::path& filePath);
+
+	bool readBinary(std::istream& stream);
+
+	STLFile getSTL() const { return stl; }
+
+private:
+	STLFile stl;
 };
 
 	}

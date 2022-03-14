@@ -5,9 +5,6 @@
     <ClInclude Include="STLASCIIFileReader.h">
       <Filter>STL</Filter>
     </ClInclude>
-    <ClInclude Include="STLBinaryFileReader.h">
-      <Filter>STL</Filter>
-    </ClInclude>
     <ClInclude Include="STLFileWriter.h">
       <Filter>STL</Filter>
     </ClInclude>
@@ -69,9 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLASCIIFileReader.cpp">
-      <Filter>STL</Filter>
-    </ClCompile>
-    <ClCompile Include="STLBinaryFileReader.cpp">
       <Filter>STL</Filter>
     </ClCompile>
     <ClCompile Include="STLFileWriter.cpp">
