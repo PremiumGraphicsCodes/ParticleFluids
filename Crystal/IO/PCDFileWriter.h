@@ -14,6 +14,7 @@ public:
 
 	bool write(const std::filesystem::path& filename, const PCDFile& pcd);
 
+
 private:
 	bool write(std::ostream& stream, const PCDFile::Header& header);
 
@@ -21,6 +22,22 @@ private:
 
 private:
 };
+
+class PCDBinaryFileWriter
+{
+public:
+	bool write(std::ostream& stream, const PCDFile& pcd);
+
+	bool write(const std::filesystem::path& filename, const PCDFile& pcd);
+
+private:
+	bool write(std::ostream& stream, const PCDFile::Header& header);
+
+	bool write(std::ostream& stream, const PCDFile::Data& data);
+
+private:
+};
+
 
 	}
 }

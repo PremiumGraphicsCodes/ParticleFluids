@@ -50,7 +50,6 @@
     <ClCompile Include="OBJFileReaderTest.cpp" />
     <ClCompile Include="OBJFileWriterTest.cpp" />
     <ClCompile Include="PCDBinaryFileReaderTest.cpp" />
-    <ClCompile Include="PCDBinaryFileWriterTest.cpp" />
     <ClCompile Include="PCDFileReaderTest.cpp" />
     <ClCompile Include="PCDFileWriterTest.cpp" />
     <ClCompile Include="PLYFileReaderTest.cpp" />
