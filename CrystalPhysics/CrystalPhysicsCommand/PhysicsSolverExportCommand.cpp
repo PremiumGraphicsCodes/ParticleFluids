@@ -4,7 +4,6 @@
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 #include "Crystal/IO/PLYFileWriter.h"
-#include "Crystal/IO/PCDBinaryFileWriter.h"
 
 namespace {
 	PublicLabel CommandNameLabel = "PhysicsSolverExportCommand";
