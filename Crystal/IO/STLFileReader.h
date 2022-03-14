@@ -13,6 +13,10 @@ public:
 
 	static bool isBinary(std::istream& in);
 
+	bool readAscii(const std::filesystem::path& filePath);
+
+	bool readAscii(std::istream& stream);
+
 	bool readBinary(const std::filesystem::path& filePath);
 
 	bool readBinary(std::istream& stream);

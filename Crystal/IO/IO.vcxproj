@@ -35,7 +35,6 @@
     <ClInclude Include="PCDFileWriter.h" />
     <ClInclude Include="PLYFileReader.h" />
     <ClInclude Include="PLYFileWriter.h" />
-    <ClInclude Include="STLASCIIFileReader.h" />
     <ClInclude Include="STLFileWriter.h" />
     <ClInclude Include="STLFile.h" />
     <ClInclude Include="STLFileReader.h" />
@@ -54,7 +53,6 @@
     <ClCompile Include="PCDFileWriter.cpp" />
     <ClCompile Include="PLYFileReader.cpp" />
     <ClCompile Include="PLYFileWriter.cpp" />
-    <ClCompile Include="STLASCIIFileReader.cpp" />
     <ClCompile Include="STLFileWriter.cpp" />
     <ClCompile Include="STLFileReader.cpp" />
     <ClCompile Include="TXTFileReader.cpp" />

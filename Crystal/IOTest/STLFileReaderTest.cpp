@@ -2,7 +2,7 @@
 
 #include "../Math/Vector3d.h"
 #include "../IO/STLFileReader.h"
-#include "../IO/STLAsciiFileReader.h"
+#include "../IO/STLFileReader.h"
 
 namespace {
 	std::stringstream getSampleAscii() {

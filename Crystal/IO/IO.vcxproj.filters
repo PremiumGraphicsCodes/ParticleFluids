@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Helper.h" />
-    <ClInclude Include="STLASCIIFileReader.h">
-      <Filter>STL</Filter>
-    </ClInclude>
     <ClInclude Include="STLFileWriter.h">
       <Filter>STL</Filter>
     </ClInclude>
@@ -65,9 +62,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="STLASCIIFileReader.cpp">
-      <Filter>STL</Filter>
-    </ClCompile>
     <ClCompile Include="STLFileWriter.cpp">
       <Filter>STL</Filter>
     </ClCompile>
