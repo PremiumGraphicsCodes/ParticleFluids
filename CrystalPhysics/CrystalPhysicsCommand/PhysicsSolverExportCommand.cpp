@@ -42,36 +42,6 @@ PhysicsSolverExportCommand::PhysicsSolverExportCommand() :
 
 bool PhysicsSolverExportCommand::execute(World* world)
 {
-	/*
-	PCDFile pcd;
-	for (const auto id : args.fluidIds.getValue()) {
-		auto fluid = world->getScenes()->findSceneById<MVPFluidScene*>(id);
-		if (fluid == nullptr) {
-			return false;
-		}
-		const auto macroParticles = fluid->getParticles();
-		if (args.doExportMicro.getValue()) {
-			for (const auto mp : macroParticles) {
-				const auto micros = mp->getMassParticles();
-				for (const auto micro : micros) {
-					pcd.data.positions.push_back(micro->getPosition());
-				}
-			}
-		}
-		else {
-			for (const auto mp : macroParticles) {
-				pcd.data.positions.push_back(mp->getPosition());
-			}
-		}
-	}
-	pcd.header.width = pcd.data.positions.size();
-	pcd.header.points = pcd.data.positions.size();
-
-	PCDBinaryFileWriter writer;
-	const auto isOk = writer.write(args.filePath.getValue(), pcd);
-
-	return isOk;
-	*/
 	PLYFile file;
 	for (const auto id : args.fluidIds.getValue()) {
 		auto fluid = world->getScenes()->findSceneById<IMVPFluidScene*>(id);
@@ -83,16 +53,23 @@ bool PhysicsSolverExportCommand::execute(World* world)
 			for (const auto mp : macroParticles) {
 				const auto micros = mp->getMassParticles();
 				for (const auto micro : micros) {
+					const auto pp = micro->getPosition();
 					PLYPoint p;
-					p.position = micro->getPosition();
+					p.values.push_back(pp.x);
+					p.values.push_back(pp.y);
+					p.values.push_back(pp.z);
 					file.vertices.push_back(p);
 				}
 			}
 		}
 		else {
 			for (const auto mp : macroParticles) {
+				const auto pp = mp->getPosition();
 				PLYPoint p;
-				p.position = mp->getPosition();
+				p.values.push_back(pp.x);
+				p.values.push_back(pp.y);
+				p.values.push_back(pp.z);
+
 				file.vertices.push_back(p);
 			}
 		}
