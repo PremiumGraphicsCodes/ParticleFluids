@@ -29,19 +29,19 @@ namespace {
 	}
 }
 
-bool PCDFileReader::read(const std::filesystem::path& filename)
+bool PCDFileReader::readAscii(const std::filesystem::path& filename)
 {
 	std::ifstream stream(filename, std::ios::in | std::ios::binary);
 	if (!stream.is_open()) {
 		return false;
 	}
-	return read(stream);
+	return readAscii(stream);
 }
 
-bool PCDFileReader::read(std::istream& stream)
+bool PCDFileReader::readAscii(std::istream& stream)
 {
 	this->pcd.header = readHeader(stream);
-	this->pcd.data = readData(stream);
+	this->pcd.data = readDataAscii(stream);
 	return true;
 }
 
@@ -77,7 +77,7 @@ PCDFile::Header PCDFileReader::readHeader(std::istream& stream)
 	return header;
 }
 
-PCDFile::Data PCDFileReader::readData(std::istream& stream)
+PCDFile::Data PCDFileReader::readDataAscii(std::istream& stream)
 {
 	PCDFile::Data data;
 
@@ -94,54 +94,23 @@ PCDFile::Data PCDFileReader::readData(std::istream& stream)
 	return data;
 }
 
-bool PCDBinaryFileReader::read(const std::filesystem::path& filename)
+bool PCDFileReader::readBinary(const std::filesystem::path& filename)
 {
 	std::ifstream stream(filename, std::ios_base::in | std::ios_base::binary);
 	if (!stream.is_open()) {
 		return false;
 	}
-	return read(stream);
+	return readBinary(stream);
 }
 
-bool PCDBinaryFileReader::read(std::istream& stream)
+bool PCDFileReader::readBinary(std::istream& stream)
 {
 	this->pcd.header = readHeader(stream);
-	this->pcd.data = readData(stream, this->pcd.header.points);
+	this->pcd.data = readDataBinary(stream, this->pcd.header.points);
 	return true;
 }
 
-PCDFile::Header PCDBinaryFileReader::readHeader(std::istream& stream)
-{
-	PCDFile::Header header;
-	std::string str;
-	while (std::getline(stream, str)) {
-		if (str.empty()) {
-			continue;
-		}
-		if (str[0] == '#') {
-			continue;
-		}
-		const auto& splitted = ::split(str, ' ');
-		assert(splitted.size() >= 2);
-		if (splitted[0] == "VERSION") {
-			//this->version = splitted[1];
-			continue;
-		}
-		else if (splitted[0] == "FIELDS") {
-			continue;
-		}
-		else if (splitted[0] == "POINTS") {
-			header.points = std::stoi(splitted[1]);
-		}
-		else if (splitted[0] == "DATA") {
-			return header;
-		}
-	}
-
-	return header;
-}
-
-PCDFile::Data PCDBinaryFileReader::readData(std::istream& stream, const int howMany)
+PCDFile::Data PCDFileReader::readDataBinary(std::istream& stream, const int howMany)
 {
 	PCDFile::Data data;
 
@@ -155,4 +124,3 @@ PCDFile::Data PCDBinaryFileReader::readData(std::istream& stream, const int howM
 
 	return data;
 }
-

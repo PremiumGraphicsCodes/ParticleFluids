@@ -25,17 +25,17 @@ TEST(PCDFileReaderTest, TestReadASCII)
 		<< "0.97192 0.278 0 4.2108e+06" << std::endl
 		<< "0.944 0.29474 0 4.2108e+06" << std::endl;
 	PCDFileReader reader;
-	EXPECT_TRUE( reader.read(stream) );
+	EXPECT_TRUE( reader.readAscii(stream) );
 
 	const auto& pcd = reader.getPCD();
 	EXPECT_EQ(5, pcd.data.positions.size()) << std::endl;
 }
 
 // from http://pointclouds.org/documentation/tutorials/pcd_file_format.php
-TEST(PCDBinaryFileReaderTest, TestRead)
+TEST(PCDFileReaderTest, TestReadBinary)
 {
-	PCDBinaryFileReader reader;
-	EXPECT_TRUE(reader.read("./PCDBinaryFileWriterTest.pcd"));
+	PCDFileReader reader;
+	EXPECT_TRUE(reader.readBinary("./PCDBinaryFileWriterTest.pcd"));
 
 	const auto& pcd = reader.getPCD();
 	EXPECT_EQ(3, pcd.data.positions.size()) << std::endl;
