@@ -12,17 +12,17 @@ namespace Crystal {
 class PLYFileReader
 {
 public:
-	bool readASCII(const std::filesystem::path& filename);
+	bool read(const std::filesystem::path& filename);
 
-	bool readASCII(std::istream& stream);
-
-	bool readBinary(const std::filesystem::path& filename);
-
-	bool readBinary(std::istream& stream);
+	bool read(std::istream& stream);
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
 private:
+	bool readAsciiData(std::istream& stream, int count);
+
+	bool readBinaryData(std::istream& stream, int count);
+
 	//PCDFile::Header readHeader(std::istream& stream);
 
 	//PCDFile::Data readData(std::istream& stream);
