@@ -4,7 +4,7 @@
 #include <filesystem>
 
 #include "../Math/Vector3d.h"
-//#include "PCDFile.h"
+#include "PLYFile.h"
 
 namespace Crystal {
 	namespace IO {
@@ -16,20 +16,15 @@ public:
 
 	bool read(std::istream& stream);
 
-	std::vector<Math::Vector3dd> getPositions() const { return positions; }
+	PLYFile getPLY() const { return ply; }
 
 private:
-	bool readAsciiData(std::istream& stream, int count);
+	bool readAsciiData(std::istream& stream, const unsigned int count);
 
-	bool readBinaryData(std::istream& stream, int count);
-
-	//PCDFile::Header readHeader(std::istream& stream);
-
-	//PCDFile::Data readData(std::istream& stream);
+	bool readBinaryData(std::istream& stream, const unsigned int count);
 
 private:
-	std::vector<Math::Vector3dd> positions;
-	//PCDFile pcd;
+	PLYFile ply;
 };
 	}
 }

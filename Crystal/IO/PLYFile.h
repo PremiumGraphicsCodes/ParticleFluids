@@ -43,6 +43,12 @@ struct PLYProperty
 		return "float";
 	}
 
+	static PLYType toType(const std::string& typeName)
+	{
+		return PLYType::FLOAT;
+	}
+	
+
 	std::string name;
 	PLYType type;
 };
@@ -54,9 +60,9 @@ struct PLYFile
 
 	PLYFile()
 	{
-		properties.push_back(PLYProperty("x", PLYType::FLOAT));
-		properties.push_back(PLYProperty("y", PLYType::FLOAT));
-		properties.push_back(PLYProperty("z", PLYType::FLOAT));
+		//properties.push_back(PLYProperty("x", PLYType::FLOAT));
+		//properties.push_back(PLYProperty("y", PLYType::FLOAT));
+		//properties.push_back(PLYProperty("z", PLYType::FLOAT));
 	}
 
 	explicit PLYFile(const std::vector<PLYProperty>& properties) : properties(properties)
