@@ -12,9 +12,21 @@ TEST(PLYFileWriterTest, TestWriteASCII)
 	ply.properties.push_back(PLYProperty("y", PLYType::FLOAT));
 	ply.properties.push_back(PLYProperty("z", PLYType::FLOAT));
 
-	ply.addPoint(Vector3df(1, 2, 3));
-	ply.addPoint(Vector3dd(2, 3, 4));
-	ply.addPoint(Vector3dd(3, 4, 5));
+	PLYPoint p1;
+	p1.values.push_back(1.0f);
+	p1.values.push_back(2.0f);
+	p1.values.push_back(3.0f);
+	ply.vertices.push_back(p1);
+	PLYPoint p2;
+	p2.values.push_back(2.0f);
+	p2.values.push_back(3.0f);
+	p2.values.push_back(4.0f);
+	ply.vertices.push_back(p2);
+	PLYPoint p3;
+	p3.values.push_back(3.0f);
+	p3.values.push_back(4.0f);
+	p3.values.push_back(5.0f);
+	ply.vertices.push_back(p3);
 
 	PLYFileWriter writer;
 	EXPECT_TRUE(writer.writeASCII("PLYWriteTestASCII.ply", ply));
@@ -27,9 +39,21 @@ TEST(PLYFileWriterTest, TestWriteBinary)
 	ply.properties.push_back(PLYProperty("y", PLYType::FLOAT));
 	ply.properties.push_back(PLYProperty("z", PLYType::FLOAT));
 
-	ply.addPoint(Vector3df(1, 2, 3));
-	ply.addPoint(Vector3dd(2, 3, 4));
-	ply.addPoint(Vector3dd(3, 4, 5));
+	PLYPoint p1;
+	p1.values.push_back(1.0f);
+	p1.values.push_back(2.0f);
+	p1.values.push_back(3.0f);
+	ply.vertices.push_back(p1);
+	PLYPoint p2;
+	p2.values.push_back(2.0f);
+	p2.values.push_back(3.0f);
+	p2.values.push_back(4.0f);
+	ply.vertices.push_back(p2);
+	PLYPoint p3;
+	p3.values.push_back(3.0f);
+	p3.values.push_back(4.0f);
+	p3.values.push_back(5.0f);
+	ply.vertices.push_back(p3);
 
 	PLYFileWriter writer;
 	EXPECT_TRUE(writer.writeBinary("PLYWriteTestBinary.ply", ply));

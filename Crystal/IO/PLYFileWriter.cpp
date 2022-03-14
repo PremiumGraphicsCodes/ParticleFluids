@@ -30,7 +30,7 @@ bool PLYFileWriter::writeASCII(std::ostream& stream, const PLYFile& pcd)
 	const auto& positions = pcd.vertices;
 	for (const auto& p : positions) {
 		for (size_t i = 0; i < pcd.properties.size(); ++i) {
-			stream << p.getFloatValue(i) << " ";
+			stream << p.getValueAs<float>(i) << " ";
 		}
 		stream << std::endl;
 	}
@@ -88,7 +88,7 @@ bool PLYFileWriter::writeBinary(std::ostream& stream, const PLYFile& pcd)
 	const auto& positions = pcd.vertices;
 	for (const auto& p : positions) {
 		for (size_t i = 0; i < pcd.properties.size(); ++i) {
-			float f = p.getFloatValue(i);
+			float f = p.getValueAs<float>(i);
 			stream.write((char*)&f, sizeof(float));
 		}
 	}

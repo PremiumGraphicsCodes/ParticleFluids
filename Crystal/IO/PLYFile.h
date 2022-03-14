@@ -24,9 +24,10 @@ struct PLYPoint
 
 	std::vector<std::any> values;
 
-	float getFloatValue(const size_t index) const
+	template<typename T>
+	T getValueAs(const size_t index) const
 	{
-		return std::any_cast<float>(values[index]);
+		return std::any_cast<T>(values[index]);
 	}
 };
 
@@ -57,26 +58,6 @@ struct PLYFile
 {
 	std::vector<PLYProperty> properties;
 	std::vector<PLYPoint> vertices;
-
-	PLYFile()
-	{
-		//properties.push_back(PLYProperty("x", PLYType::FLOAT));
-		//properties.push_back(PLYProperty("y", PLYType::FLOAT));
-		//properties.push_back(PLYProperty("z", PLYType::FLOAT));
-	}
-
-	explicit PLYFile(const std::vector<PLYProperty>& properties) : properties(properties)
-	{
-	}
-
-	void addPoint(const Math::Vector3df& position)
-	{
-		PLYPoint p;
-		p.values.push_back(position.x);
-		p.values.push_back(position.y);
-		p.values.push_back(position.z);
-		vertices.push_back(p);
-	}
 };
 
 	}
