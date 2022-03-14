@@ -33,6 +33,7 @@
     <ClInclude Include="PCDFile.h" />
     <ClInclude Include="PCDFileReader.h" />
     <ClInclude Include="PCDFileWriter.h" />
+    <ClInclude Include="PLYFile.h" />
     <ClInclude Include="PLYFileReader.h" />
     <ClInclude Include="PLYFileWriter.h" />
     <ClInclude Include="STLFileWriter.h" />

@@ -8,10 +8,9 @@ using namespace Crystal::IO;
 TEST(PLYFileWriterTest, TestWriteASCII)
 {
 	PLYFile ply;
-
-	ply.vertices.push_back(PLYPoint(Vector3df(1, 2, 3)));
-	ply.vertices.push_back(PLYPoint(Vector3dd(2, 3, 4)));
-	ply.vertices.push_back(PLYPoint(Vector3dd(3, 4, 5)));
+	ply.addPoint(Vector3df(1, 2, 3));
+	ply.addPoint(Vector3dd(2, 3, 4));
+	ply.addPoint(Vector3dd(3, 4, 5));
 
 	PLYFileWriter writer;
 	EXPECT_TRUE(writer.writeASCII("PLYWriteTestASCII.ply", ply));
@@ -21,9 +20,9 @@ TEST(PLYFileWriterTest, TestWriteBinary)
 {
 	PLYFile ply;
 
-	ply.vertices.push_back(PLYPoint(Vector3df(1, 2, 3)));
-	ply.vertices.push_back(PLYPoint(Vector3dd(2, 3, 4)));
-	ply.vertices.push_back(PLYPoint(Vector3dd(3, 4, 5)));
+	ply.addPoint(Vector3df(1, 2, 3));
+	ply.addPoint(Vector3dd(2, 3, 4));
+	ply.addPoint(Vector3dd(3, 4, 5));
 
 	PLYFileWriter writer;
 	EXPECT_TRUE(writer.writeBinary("PLYWriteTestBinary.ply", ply));

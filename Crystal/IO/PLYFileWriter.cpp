@@ -22,20 +22,17 @@ bool PLYFileWriter::writeASCII(std::ostream& stream, const PLYFile& pcd)
 	stream << "comment " << std::endl;
 	stream << "obj_info " << std::endl;
 	stream << "element vertex " << pcd.vertices.size() << std::endl;
-	stream << "property float x " << std::endl;
-	stream << "property float y " << std::endl;
-	stream << "property float z " << std::endl;
-	//stream << "property uchar red " << std::endl;
-	//stream << "property uchar green " << std::endl;
-	//stream << "property uchar blue " << std::endl;
+	for (const auto& prop : pcd.properties) {
+		stream << "property " << prop.getTypeName() << " " << prop.name << " " << std::endl;
+	}
 	stream << "end_header " << std::endl;
 
 	const auto& positions = pcd.vertices;
 	for (const auto& p : positions) {
-		stream
-			<< p.position.x << " "
-			<< p.position.y << " "
-			<< p.position.z << " " << std::endl;
+		for (size_t i = 0; i < pcd.properties.size(); ++i) {
+			stream << p.getFloatValue(i) << " ";
+		}
+		stream << std::endl;
 	}
 	return true;
 }
@@ -82,19 +79,18 @@ bool PLYFileWriter::writeBinary(std::ostream& stream, const PLYFile& pcd)
 	stream << "comment " << std::endl;
 	stream << "obj_info " << std::endl;
 	stream << "element vertex " << pcd.vertices.size() << std::endl;
-	stream << "property float x " << std::endl;
-	stream << "property float y " << std::endl;
-	stream << "property float z " << std::endl;
-	//stream << "property uchar red " << std::endl;
-	//stream << "property uchar green " << std::endl;
-	//stream << "property uchar blue " << std::endl;
+	for (const auto& prop : pcd.properties) {
+		stream << "property " << prop.getTypeName() << " " << prop.name << " " << std::endl;
+	}
+
 	stream << "end_header " << std::endl;
 
 	const auto& positions = pcd.vertices;
 	for (const auto& p : positions) {
-		stream.write((char*)&p.position.x, sizeof(p.position.x));
-		stream.write((char*)&p.position.y, sizeof(p.position.y));
-		stream.write((char*)&p.position.z, sizeof(p.position.z));
+		for (size_t i = 0; i < pcd.properties.size(); ++i) {
+			float f = p.getFloatValue(i);
+			stream.write((char*)&f, sizeof(float));
+		}
 	}
 	return true;
 

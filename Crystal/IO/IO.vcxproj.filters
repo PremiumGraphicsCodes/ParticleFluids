@@ -60,6 +60,9 @@
     <ClInclude Include="PLYFileReader.h">
       <Filter>PLY</Filter>
     </ClInclude>
+    <ClInclude Include="PLYFile.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLFileWriter.cpp">
