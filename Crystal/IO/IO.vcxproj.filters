@@ -8,10 +8,7 @@
     <ClInclude Include="STLBinaryFileReader.h">
       <Filter>STL</Filter>
     </ClInclude>
-    <ClInclude Include="STLBinaryFileWriter.h">
-      <Filter>STL</Filter>
-    </ClInclude>
-    <ClInclude Include="STLASCIIFileWriter.h">
+    <ClInclude Include="STLFileWriter.h">
       <Filter>STL</Filter>
     </ClInclude>
     <ClInclude Include="ImageFileReader.h">
@@ -77,10 +74,7 @@
     <ClCompile Include="STLBinaryFileReader.cpp">
       <Filter>STL</Filter>
     </ClCompile>
-    <ClCompile Include="STLBinaryFileWriter.cpp">
-      <Filter>STL</Filter>
-    </ClCompile>
-    <ClCompile Include="STLASCIIFileWriter.cpp">
+    <ClCompile Include="STLFileWriter.cpp">
       <Filter>STL</Filter>
     </ClCompile>
     <ClCompile Include="ImageFileReader.cpp">
