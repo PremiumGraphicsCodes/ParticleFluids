@@ -133,8 +133,8 @@
       <AdditionalLibraryDirectories>../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\x64\Debug\*.pyd ..\CrystalPythonTest\
-copy ..\x64\Debug\*.pyd ..\CrystalPython\</Command>
+      <Command>copy ..\x64\Debug\*.pyd ..\particle_fluids_test\
+copy ..\x64\Debug\*.pyd ..\particle_fluids\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

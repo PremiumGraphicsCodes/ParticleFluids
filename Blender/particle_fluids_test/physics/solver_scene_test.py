@@ -23,8 +23,10 @@ class SolverSceneTest(unittest.TestCase):
         solver.create()
         self.assertEqual(1, solver.id)
 
-        ps = ParticleSystemScene(scene)
-        ps.create_empty("")
+        #ps = ParticleSystemScene(scene)
+        ps = self.__create_test_particle_system(scene)
+
+        #ps.create_empty("")
 
         fluids = []
         fluid = FluidScene(scene)

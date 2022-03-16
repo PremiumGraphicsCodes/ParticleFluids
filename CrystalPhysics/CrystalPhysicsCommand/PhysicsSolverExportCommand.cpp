@@ -43,6 +43,9 @@ PhysicsSolverExportCommand::PhysicsSolverExportCommand() :
 bool PhysicsSolverExportCommand::execute(World* world)
 {
 	PLYFile file;
+	file.properties.push_back(PLYProperty("x", PLYType::FLOAT));
+	file.properties.push_back(PLYProperty("y", PLYType::FLOAT));
+	file.properties.push_back(PLYProperty("z", PLYType::FLOAT));
 	for (const auto id : args.fluidIds.getValue()) {
 		auto fluid = world->getScenes()->findSceneById<IMVPFluidScene*>(id);
 		if (fluid == nullptr) {
@@ -53,7 +56,7 @@ bool PhysicsSolverExportCommand::execute(World* world)
 			for (const auto mp : macroParticles) {
 				const auto micros = mp->getMassParticles();
 				for (const auto micro : micros) {
-					const auto pp = micro->getPosition();
+					const auto pp = micro->position;
 					PLYPoint p;
 					p.values.push_back(pp.x);
 					p.values.push_back(pp.y);
@@ -64,7 +67,7 @@ bool PhysicsSolverExportCommand::execute(World* world)
 		}
 		else {
 			for (const auto mp : macroParticles) {
-				const auto pp = mp->getPosition();
+				const auto pp = mp->getPositionf();
 				PLYPoint p;
 				p.values.push_back(pp.x);
 				p.values.push_back(pp.y);
