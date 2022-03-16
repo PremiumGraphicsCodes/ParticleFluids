@@ -16,7 +16,7 @@ namespace Crystal {
 class DFSPHFluidSimulationView : public IOkCancelView
 {
 public:
-	DFSPHFluidSimulationView(Scene::World* model, Canvas* canvas);
+	DFSPHFluidSimulationView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

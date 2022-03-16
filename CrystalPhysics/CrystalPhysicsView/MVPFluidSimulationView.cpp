@@ -14,8 +14,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Physics;
 
-MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
-	IView("MVPFluid"),
+MVPFluidSimulationView::MVPFluidSimulationView(const std::string& name, World* model, Canvas* canvas) :
+	IView(name),
 	world(model),
 	canvas(canvas),
 	startButton("Start"),
@@ -93,7 +93,7 @@ void MVPFluidSimulationView::addFluid()
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
 	
 	this->staticScene->setPressureCoe(pressureCoeView.getValue());
-	this->staticScene->setViscosityCoe(viscosityCoeView.getValue()*5.0);
+	this->staticScene->setViscosityCoe(viscosityCoeView.getValue()*5.0f);
 
 	//this->boundaryScene->setPressureCoe(pressureCoeView.getValue());
 	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());

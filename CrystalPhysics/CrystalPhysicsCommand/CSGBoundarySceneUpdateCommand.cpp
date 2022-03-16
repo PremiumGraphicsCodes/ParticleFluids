@@ -2,7 +2,7 @@
 
 #include "CrystalScene/Scene/SolidScene.h"
 
-#include "../CrystalPhysics/CSGBoundaryScene.h"
+#include "../CrystalPhysics/Boundary/CSGBoundaryScene.h"
 //#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"

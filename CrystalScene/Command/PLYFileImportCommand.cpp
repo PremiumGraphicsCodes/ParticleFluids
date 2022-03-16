@@ -12,6 +12,7 @@ namespace PLYFileImportLabels
 	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
 }
 
+using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
@@ -44,11 +45,18 @@ bool PLYFileImportCommand::execute(Crystal::Scene::World* scene)
 	}
 
 	PLYFileReader reader;
-	const auto isOk = reader.readBinary(args.filePath.getValue());
+	const auto isOk = reader.read(args.filePath.getValue());
 	if (!isOk) {
 		return false;
 	}
-	const auto& positions = reader.getPositions();
+	const auto ply = reader.getPLY();
+	std::vector<Vector3dd> positions;
+	for (auto v : ply.vertices) {
+		const auto x = v.getValueAs<float>(0);
+		const auto y = v.getValueAs<float>(1);
+		const auto z = v.getValueAs<float>(2);
+		positions.emplace_back(x, y, z);
+	}
 	ParticleAttribute attr;
 	attr.color = glm::vec4(0, 0, 0, 0);
 	attr.size = 1.0;

@@ -7,42 +7,36 @@
 #include "VolumeToPSView.h"
 #include "ToVDBVolumeView.h"
 
-#include "CrystalScene/AppBase/imgui.h"
+#include "CrystalScene/AppBase/MenuItem.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-VDBVolumeMenu::VDBVolumeMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, model, canvas),
-	control(control)
+VDBVolumeMenu::VDBVolumeMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, world, canvas)
 {
-}
-
-
-void VDBVolumeMenu::onShow()
-{
-	const auto world = getWorld();
-	const auto canvas = getCanvas();
-
-	if (ImGui::BeginMenu("VDBVolume")) {
-		if (ImGui::MenuItem("Box")) {
-			control->setWindow(new VDBVolumeView("Box", world, canvas));
+	add(new MenuItem("Box", [world, canvas, control]() {
+		control->setWindow(new VDBVolumeView("Box", world, canvas));
 		}
-		if (ImGui::MenuItem("Sphere")) {
-			control->setWindow(new VDBSphereView("Sphere", world, canvas));
+	));
+	add(new MenuItem("Sphere", [world, canvas, control]() {
+		control->setWindow(new VDBSphereView("Sphere", world, canvas));
 		}
-		if (ImGui::MenuItem("Filter")) {
-			control->setWindow(new VDBFilterView("Filter", world, canvas));
+	));
+	add(new MenuItem("Filter", [world, canvas, control]() {
+		control->setWindow(new VDBFilterView("Filter", world, canvas));
 		}
-		if (ImGui::MenuItem("VolumeToMesh")) {
-			control->setWindow(new VolumeToMeshView("VolumeToMesh", world, canvas));
+	));
+	add(new MenuItem("VolumeToMesh", [world, canvas, control]() {
+		control->setWindow(new VolumeToMeshView("VolumeToMesh", world, canvas));
 		}
-		if (ImGui::MenuItem("VolumeToPS")) {
-			control->setWindow(new VolumeToPSView("VolumeToPS", world, canvas));
+	));
+	add(new MenuItem("VolumeToPS", [world, canvas, control]() {
+		control->setWindow(new VolumeToPSView("VolumeToPS", world, canvas));
 		}
-		if (ImGui::MenuItem("ToVDBVolume")) {
-			control->setWindow(new ToVDBVolumeView("ToVDBVolume", world, canvas));
+	));
+	add(new MenuItem("ToVDBVolume", [world, canvas, control]() {
+		control->setWindow(new ToVDBVolumeView("ToVDBVolume", world, canvas));
 		}
-		ImGui::EndMenu();
-	}
+	));
 }

@@ -8,11 +8,16 @@ namespace Crystal {
 class CameraMenu : public IMenu
 {
 public:
-	CameraMenu(const std::string& name, Scene::World* model, Canvas* canvas) :
-		IMenu(name, model, canvas)
-	{}
+	CameraMenu(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	virtual void onShow() override;
+private:
+	void onFit();
+
+	void onXY();
+
+	void onYZ();
+
+	void onZX();
 };
 
 	}

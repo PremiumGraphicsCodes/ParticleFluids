@@ -26,12 +26,12 @@ float CSPHParticle::getDensityRatio() const
 
 float CSPHParticle::getPressure() const
 {
-	return constant->getPressureCoe() * (std::pow(getDensityRatio(), 1) - 1.0f);
+	return constant->getPressureCoe() * (std::pow(getDensityRatio(), 1.0f) - 1.0f);
 }
 
 float CSPHParticle::getMass() const
 {
-	return constant->getDensity() * std::pow(getDiameter(), 3);
+	return constant->getDensity() * std::pow(getDiameter(), 3.0f);
 }
 
 float CSPHParticle::getVolume() const
@@ -68,7 +68,7 @@ void CSPHParticle::solveSurfaceTension(const CSPHParticle& rhs)
 	if (getLengthSquared(this->normal) < 0.1f) {
 		return;
 	}
-	const auto distance = Math::getDistance(this->getPosition(), rhs.getPosition());
+	const auto distance = Math::getDistance(this->position, rhs.position);
 	const auto n = glm::normalize(this->normal);
 	const float tensionCoe = (this->constant->getTensionCoe() + rhs.constant->getTensionCoe()) * 0.5f;;
 	this->force -= tensionCoe * kernel->getPoly6KernelLaplacian(distance) * n;
@@ -86,7 +86,7 @@ void CSPHParticle::solveViscosityForce(const CSPHParticle& rhs)
 {
 	const auto viscosityCoe = (this->constant->getViscosityCoe() + rhs.constant->getViscosityCoe()) * 0.5f;
 	const auto& velocityDiff = (rhs.velocity - this->velocity);
-	const auto distance = Math::getDistance(getPosition(), rhs.getPosition());
+	const auto distance = Math::getDistance(this->position, rhs.position);
 	this->addForce(viscosityCoe * velocityDiff * kernel->getViscosityKernelLaplacian(distance) * rhs.getVolume());
 }
 
@@ -97,7 +97,7 @@ void CSPHParticle::addSelfDensity()
 
 void CSPHParticle::addDensity(const CSPHParticle& rhs)
 {
-	const float distance = Math::getDistance(this->getPosition(), rhs.getPosition());
+	const float distance = Math::getDistance(this->position, rhs.position);
 	this->addDensity(kernel->getPoly6Kernel(distance) * rhs.getMass());
 }
 

@@ -52,7 +52,7 @@ bool PCDFileExportCommand::execute(World* world)
 	file.header.points = static_cast<int>( file.data.positions.size() );
 	PCDFileWriter writer;
 	std::filesystem::path filePath(args.filePath.getValue());
-	const auto isOk = writer.write(filePath, file);
+	const auto isOk = writer.writeAscii(filePath, file);
 	//this->results.isOk.setValue( isOk );
 	return isOk;
 }

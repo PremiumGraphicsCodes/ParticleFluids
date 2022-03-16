@@ -3,28 +3,10 @@
 #include <string>
 #include <filesystem>
 
-#include "../Math/Vector3d.h"
-#include "../Graphics/ColorRGBA.h"
+#include "PLYFile.h"
 
 namespace Crystal {
 	namespace IO {
-
-struct PLYPoint
-{
-	PLYPoint() = default;
-
-	explicit PLYPoint(const Math::Vector3df& position) :
-		position(position)
-	{}
-
-	Math::Vector3df position;
-	//Graphics::ColorRGBAuc color;
-};
-
-struct PLYFile
-{
-	std::vector<PLYPoint> vertices;
-};
 
 class PLYFileWriter
 {

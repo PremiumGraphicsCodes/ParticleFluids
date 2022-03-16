@@ -4,7 +4,7 @@
 #include <filesystem>
 
 #include "../Math/Vector3d.h"
-//#include "PCDFile.h"
+#include "PLYFile.h"
 
 namespace Crystal {
 	namespace IO {
@@ -12,24 +12,19 @@ namespace Crystal {
 class PLYFileReader
 {
 public:
-	bool readASCII(const std::filesystem::path& filename);
+	bool read(const std::filesystem::path& filename);
 
-	bool readASCII(std::istream& stream);
+	bool read(std::istream& stream);
 
-	bool readBinary(const std::filesystem::path& filename);
-
-	bool readBinary(std::istream& stream);
-
-	std::vector<Math::Vector3dd> getPositions() const { return positions; }
+	PLYFile getPLY() const { return ply; }
 
 private:
-	//PCDFile::Header readHeader(std::istream& stream);
+	bool readAsciiData(std::istream& stream, const unsigned int count);
 
-	//PCDFile::Data readData(std::istream& stream);
+	bool readBinaryData(std::istream& stream, const unsigned int count);
 
 private:
-	std::vector<Math::Vector3dd> positions;
-	//PCDFile pcd;
+	PLYFile ply;
 };
 	}
 }

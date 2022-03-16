@@ -2,16 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Helper.h" />
-    <ClInclude Include="STLASCIIFileReader.h">
-      <Filter>STL</Filter>
-    </ClInclude>
-    <ClInclude Include="STLBinaryFileReader.h">
-      <Filter>STL</Filter>
-    </ClInclude>
-    <ClInclude Include="STLBinaryFileWriter.h">
-      <Filter>STL</Filter>
-    </ClInclude>
-    <ClInclude Include="STLASCIIFileWriter.h">
+    <ClInclude Include="STLFileWriter.h">
       <Filter>STL</Filter>
     </ClInclude>
     <ClInclude Include="ImageFileReader.h">
@@ -63,30 +54,18 @@
     <ClInclude Include="TXTFileWriter.h">
       <Filter>TXT</Filter>
     </ClInclude>
-    <ClInclude Include="PCDBinaryFileWriter.h">
-      <Filter>PCD</Filter>
-    </ClInclude>
-    <ClInclude Include="PCDBinaryFileReader.h">
-      <Filter>PCD</Filter>
-    </ClInclude>
     <ClInclude Include="PLYFileWriter.h">
       <Filter>PLY</Filter>
     </ClInclude>
     <ClInclude Include="PLYFileReader.h">
       <Filter>PLY</Filter>
     </ClInclude>
+    <ClInclude Include="PLYFile.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="STLASCIIFileReader.cpp">
-      <Filter>STL</Filter>
-    </ClCompile>
-    <ClCompile Include="STLBinaryFileReader.cpp">
-      <Filter>STL</Filter>
-    </ClCompile>
-    <ClCompile Include="STLBinaryFileWriter.cpp">
-      <Filter>STL</Filter>
-    </ClCompile>
-    <ClCompile Include="STLASCIIFileWriter.cpp">
+    <ClCompile Include="STLFileWriter.cpp">
       <Filter>STL</Filter>
     </ClCompile>
     <ClCompile Include="ImageFileReader.cpp">
@@ -124,12 +103,6 @@
     </ClCompile>
     <ClCompile Include="TXTFileWriter.cpp">
       <Filter>TXT</Filter>
-    </ClCompile>
-    <ClCompile Include="PCDBinaryFileWriter.cpp">
-      <Filter>PCD</Filter>
-    </ClCompile>
-    <ClCompile Include="PCDBinaryFileReader.cpp">
-      <Filter>PCD</Filter>
     </ClCompile>
     <ClCompile Include="PLYFileWriter.cpp">
       <Filter>PLY</Filter>

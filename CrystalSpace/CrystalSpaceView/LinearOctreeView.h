@@ -8,7 +8,7 @@ namespace Crystal {
 class LinearOctreeView : public IOkCancelView
 {
 public:
-	LinearOctreeView(Scene::World* model, Canvas* canvas);
+	LinearOctreeView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

@@ -12,8 +12,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Physics;
 
-PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas) :
-	IOkCancelView("PBFluidSimulation", model, canvas),
+PBSPHFluidSimulationView::PBSPHFluidSimulationView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
 	timeStepView("TimeStep", 0.01f),

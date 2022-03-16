@@ -27,7 +27,7 @@ int main(int, char**)
 	World model;
 	Canvas canvas;
 
-	Window window("FluidStudio", &model, &canvas);
+	Window window("VDBView", &model, &canvas);
 	if (!window.init()) {
 		assert(false);
 		return 0;

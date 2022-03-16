@@ -1,7 +1,7 @@
 #include "VDBPSMenu.h"
 
 #include "CrystalScene/Scene/World.h"
-#include "CrystalScene/AppBase/imgui.h"
+#include "CrystalScene/AppBase/MenuItem.h"
 
 #include "VDBPSBoxView.h"
 #include "PSToVolumeView.h"
@@ -12,22 +12,15 @@ using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
 VDBPSMenu::VDBPSMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, model, canvas),
-	control(control)
+	IMenu(name, model, canvas)
 {
-}
-
-void VDBPSMenu::onShow()
-{
-	auto world = getWorld();
-
-	if (ImGui::BeginMenu("VDBPS")) {
-		if (ImGui::MenuItem("PSBox")) {
-			control->setWindow(new VDBPSBox("PSBox", world, getCanvas()));
+	add(new MenuItem("PSBox", [model, canvas, control]() {
+		control->setWindow(new VDBPSBox("PSBox", model, canvas));
 		}
-		if (ImGui::MenuItem("PSToMesh")) {
-			control->setWindow(new PSToVolumeView("PSToVolume", world, getCanvas()));
+	));
+
+	add(new MenuItem("PSToMesh", [model, canvas, control]() {
+		control->setWindow(new PSToVolumeView("PSToVolume", model, canvas));
 		}
-		ImGui::EndMenu();
-	}
+	));
 }

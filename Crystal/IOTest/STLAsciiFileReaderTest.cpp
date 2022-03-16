@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "../Math/Vector3d.h"
-#include "../IO/STLASCIIFileReader.h"
+#include "../IO/STLFileReader.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::IO;
@@ -50,8 +50,8 @@ TEST(STLASCIIFileReaderTest, TestRead)
 {
 	auto stream = getSampleAscii();
 
-	STLASCIIFileReader reader;
-	EXPECT_TRUE(reader.read(stream));
+	STLFileReader reader;
+	EXPECT_TRUE(reader.readAscii(stream));
 	const auto& faces = reader.getSTL().faces;
 
 	EXPECT_EQ(2, faces.size());
@@ -73,7 +73,7 @@ TEST(STLASCIIFileReaderTest, TestReadNan)
 {
 	auto stream = getNanSample();
 
-	STLASCIIFileReader reader;
-	const auto isOk = reader.read(stream);
+	STLFileReader reader;
+	const auto isOk = reader.readAscii(stream);
 	EXPECT_FALSE(isOk);
 }

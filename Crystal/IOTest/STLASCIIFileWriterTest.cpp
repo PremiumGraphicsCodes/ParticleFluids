@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../IO/STLASCIIFileWriter.h"
+#include "../IO/STLFileWriter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::IO;
@@ -34,6 +34,6 @@ TEST(STLASCIILFileWriterTest, TestWrite)
 	stl.faces.push_back(STLFace(t2, Vector3dd(0,0,1)));
 	stl.faces.push_back(STLFace(t3, Vector3dd(0,0,1)));
 
-	STLASCIIFileWriter writer;
-	writer.write("STLASCIIFileWriterTest.stl", stl);
+	STLFileWriter writer;
+	writer.writeAscii("STLASCIIFileWriterTest.stl", stl);
 }

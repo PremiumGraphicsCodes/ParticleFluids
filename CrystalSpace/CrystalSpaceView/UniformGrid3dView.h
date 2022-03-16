@@ -9,7 +9,7 @@ namespace Crystal {
 class UniformGrid3dView : public IOkCancelView
 {
 public:
-	UniformGrid3dView(Scene::World* model, Canvas* canvas);
+	UniformGrid3dView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

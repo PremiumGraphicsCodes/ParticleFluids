@@ -1,7 +1,6 @@
 #include "STLFileExportCommand.h"
 
-#include "../../Crystal/IO/STLASCIIFileWriter.h"
-#include "../../Crystal/IO/STLBinaryFileWriter.h"
+#include "../../Crystal/IO/STLFileWriter.h"
 
 #include "../Scene/PolygonMeshScene.h"
 #include "../Scene/TriangleMeshScene.h"
@@ -59,12 +58,12 @@ bool STLFileExportCommand::execute(World* world)
 	stl.faceCount = fs.size();
 
 	if (args.isBinary.getValue()) {
-		STLBinaryFileWriter writer;
-		return writer.write(args.filePath.getValue(), stl);
+		STLFileWriter writer;
+		return writer.writeBinary(args.filePath.getValue(), stl);
 	}
 	else {
-		STLASCIIFileWriter writer;
-		return writer.write(args.filePath.getValue(), stl);
+		STLFileWriter writer;
+		return writer.writeAscii(args.filePath.getValue(), stl);
 	}
 	return false;
 }

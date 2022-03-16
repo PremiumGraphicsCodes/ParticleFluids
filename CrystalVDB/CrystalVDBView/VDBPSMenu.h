@@ -10,11 +10,6 @@ class VDBPSMenu : public IMenu
 {
 public:
 	VDBPSMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
-
-	void onShow() override;
-
-private:
-	ControlPanel* control;
 };
 
 	}

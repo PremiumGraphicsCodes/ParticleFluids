@@ -35,12 +35,6 @@
     <ClCompile Include="TXTFileReaderTest.cpp">
       <Filter>TXT</Filter>
     </ClCompile>
-    <ClCompile Include="PCDBinaryFileWriterTest.cpp">
-      <Filter>PCD</Filter>
-    </ClCompile>
-    <ClCompile Include="PCDBinaryFileReaderTest.cpp">
-      <Filter>PCD</Filter>
-    </ClCompile>
     <ClCompile Include="PLYFileWriterTest.cpp">
       <Filter>PLY</Filter>
     </ClCompile>

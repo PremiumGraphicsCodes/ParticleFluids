@@ -21,11 +21,11 @@ void MVPSampler::split(const std::list<IMVPFluidScene*>& fluids)
 		for (auto p : ps) {
 			const auto masses = p->getMassParticles();
 			for (auto m : masses) {
-				MVPVolumeParticle* vp = new MVPVolumeParticle(p->getRadius() * 0.50, m->getPosition());
+				MVPVolumeParticle* vp = new MVPVolumeParticle(p->getRadius() * 0.50f, m->getPosition());
 				vp->setVelocity(m->getVelocity());
 				vp->addMassParticle(m);
 				m->setParent(vp);
-				vp->setRestMass(m->getMass() * 1.25);
+				vp->setRestMass(m->getMass() * 1.25f);
 				f->add(vp);
 			}
 			p->clearMasses();
@@ -47,7 +47,7 @@ void MVPSampler::merge(const std::list<IMVPFluidScene*>& fluids, const double se
 				tinyParticles.push_back(p);
 			}
 		}
-		CompactSpaceHash3d spaceHash(searchRadius * 0.5, tinyParticles.size());
+		CompactSpaceHash3d spaceHash(searchRadius * 0.5, static_cast<int>(tinyParticles.size()));
 		for (auto p : tinyParticles) {
 			spaceHash.add(p);
 		}
@@ -59,7 +59,7 @@ void MVPSampler::merge(const std::list<IMVPFluidScene*>& fluids, const double se
 				Vector3df newPosition(0, 0, 0);
 				Vector3df newVelocity(0, 0, 0);
 				std::vector<MVPMassParticle*> masses;
-				double r = 0.0;
+				float r = 0.0;
 				for (int i = 0; i < 8; ++i) {
 					auto n = static_cast<MVPVolumeParticle*>(neighbors[i]);
 					//fluid = n->
@@ -75,13 +75,13 @@ void MVPSampler::merge(const std::list<IMVPFluidScene*>& fluids, const double se
 				}
 				newPosition /= 8.0f;
 				newVelocity /= 8.0f;
-				MVPVolumeParticle* target = new MVPVolumeParticle(r * 2.0, newPosition);
+				MVPVolumeParticle* target = new MVPVolumeParticle(r * 2.0f, newPosition);
 				target->setVelocity(newVelocity);
 				for (auto m : masses) {
 					target->addMassParticle(m);
 					m->setParent(target);
 				}
-				target->setRestMass(masses[0]->getMass() * 8.0 * 1.25);
+				target->setRestMass(masses[0]->getMass() * 8.0f * 1.25f);
 				fluid->addParticle(target);
 			}
 		}

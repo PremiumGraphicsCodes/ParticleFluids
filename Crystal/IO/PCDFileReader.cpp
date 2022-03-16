@@ -19,21 +19,29 @@ namespace {
 		}
 		return result;
 	}
+
+	template<typename T>
+	T read_binary_as(std::istream& is)
+	{
+		T val;
+		is.read(reinterpret_cast<char*>(std::addressof(val)), sizeof(T));
+		return val;
+	}
 }
 
-bool PCDFileReader::read(const std::filesystem::path& filename)
+bool PCDFileReader::readAscii(const std::filesystem::path& filename)
 {
 	std::ifstream stream(filename, std::ios::in | std::ios::binary);
 	if (!stream.is_open()) {
 		return false;
 	}
-	return read(stream);
+	return readAscii(stream);
 }
 
-bool PCDFileReader::read(std::istream& stream)
+bool PCDFileReader::readAscii(std::istream& stream)
 {
 	this->pcd.header = readHeader(stream);
-	this->pcd.data = readData(stream);
+	this->pcd.data = readDataAscii(stream);
 	return true;
 }
 
@@ -69,7 +77,7 @@ PCDFile::Header PCDFileReader::readHeader(std::istream& stream)
 	return header;
 }
 
-PCDFile::Data PCDFileReader::readData(std::istream& stream)
+PCDFile::Data PCDFileReader::readDataAscii(std::istream& stream)
 {
 	PCDFile::Data data;
 
@@ -80,6 +88,37 @@ PCDFile::Data PCDFileReader::readData(std::istream& stream)
 		const auto x = std::stod(splitted[0]);
 		const auto y = std::stod(splitted[1]);
 		const auto z = std::stod(splitted[2]);
+		data.positions.push_back(Vector3dd(x, y, z));
+	}
+
+	return data;
+}
+
+bool PCDFileReader::readBinary(const std::filesystem::path& filename)
+{
+	std::ifstream stream(filename, std::ios_base::in | std::ios_base::binary);
+	if (!stream.is_open()) {
+		return false;
+	}
+	return readBinary(stream);
+}
+
+bool PCDFileReader::readBinary(std::istream& stream)
+{
+	this->pcd.header = readHeader(stream);
+	this->pcd.data = readDataBinary(stream, this->pcd.header.points);
+	return true;
+}
+
+PCDFile::Data PCDFileReader::readDataBinary(std::istream& stream, const int howMany)
+{
+	PCDFile::Data data;
+
+	for (int i = 0; i < howMany; ++i) {
+		const auto x = ::read_binary_as<float>(stream);
+		const auto y = ::read_binary_as<float>(stream);
+		const auto z = ::read_binary_as<float>(stream);
+		const auto c = ::read_binary_as<float>(stream);
 		data.positions.push_back(Vector3dd(x, y, z));
 	}
 

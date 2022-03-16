@@ -14,8 +14,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Space;
 
-OctreeView::OctreeView(World* model, Canvas* canvas) :
-	IOkCancelView("Octree", model, canvas)
+OctreeView::OctreeView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas)
 {
 }
 

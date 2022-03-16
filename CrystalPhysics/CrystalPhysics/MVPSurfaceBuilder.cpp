@@ -30,7 +30,7 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 	buildCells(threshold);
 }
 
-void MVPSurfaceBuilder::buildVolumes(const std::vector<Vector3dd>& positions, const double radius, const int res)
+void MVPSurfaceBuilder::buildVolumes(const std::vector<Vector3dd>& positions, const float radius, const int res)
 {
 	if (positions.empty()) {
 		return;

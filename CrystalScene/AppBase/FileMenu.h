@@ -8,11 +8,16 @@ namespace Crystal {
 class FileMenu : public IMenu
 {
 public:
-	FileMenu(const std::string& name, Scene::World* model, Canvas* canvas) :
-		IMenu(name,model, canvas)
-	{}
+	FileMenu(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	virtual void onShow() override;
+private:
+	void onNew();
+
+	void onImport();
+
+	void onExport();
+
+	void onSS();
 };
 	}
 }

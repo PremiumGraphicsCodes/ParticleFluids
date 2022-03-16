@@ -47,9 +47,12 @@ bool PLYFileExportCommand::execute(World* world)
 		auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(id);
 		const auto& ps = scene->getShape()->getParticles();
 		for (auto p : ps) {
-			PLYPoint pp;
-			pp.position = p->getPosition();
-			file.vertices.push_back(pp);
+			auto pp = p->getPosition();
+			PLYPoint ppp;
+			ppp.values.push_back(pp[0]);
+			ppp.values.push_back(pp[1]);
+			ppp.values.push_back(pp[2]);
+			file.vertices.push_back(ppp);
 		}
 	}
 	PLYFileWriter writer;

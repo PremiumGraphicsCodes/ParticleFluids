@@ -10,16 +10,24 @@ namespace Crystal {
 class PCDFileWriter
 {
 public:
-	bool write(std::ostream& stream, const PCDFile& pcd);
+	bool writeAscii(std::ostream& stream, const PCDFile& pcd);
 
-	bool write(const std::filesystem::path& filename, const PCDFile& pcd);
-
-private:
-	bool write(std::ostream& stream, const PCDFile::Header& header);
-
-	bool write(std::ostream& stream, const PCDFile::Data& data);
+	bool writeAscii(const std::filesystem::path& filename, const PCDFile& pcd);
 
 private:
+	bool writeAscii(std::ostream& stream, const PCDFile::Header& header);
+
+	bool writeAscii(std::ostream& stream, const PCDFile::Data& data);
+
+public:
+	bool writeBinary(std::ostream& stream, const PCDFile& pcd);
+
+	bool writeBinary(const std::filesystem::path& filename, const PCDFile& pcd);
+
+private:
+	bool writeBinary(std::ostream& stream, const PCDFile::Header& header);
+
+	bool writeBinary(std::ostream& stream, const PCDFile::Data& data);
 };
 
 	}

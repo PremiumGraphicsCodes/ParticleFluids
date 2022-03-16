@@ -12,8 +12,8 @@ namespace {
 	SPHConstant sphConstant;
 }
 
-CSPHFluidSimulationView::CSPHFluidSimulationView(World* model, Canvas* canvas) :
-	IOkCancelView("CSPHFluidSimulation", model, canvas),
+CSPHFluidSimulationView::CSPHFluidSimulationView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
 //	nextButton("Next"),

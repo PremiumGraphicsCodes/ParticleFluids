@@ -16,8 +16,6 @@
 #include "CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
 //#include "Crystal/Shape/PolygonMeshBuilder.h"
 
-#include "Crystal/IO/PCDBinaryFileReader.h"
-
 #include <iostream>
 
 using namespace Crystal::Math;

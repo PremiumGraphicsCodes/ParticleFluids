@@ -9,35 +9,28 @@
 #include "VolumeToMeshView.h"
 #include "VolumeToPSView.h"
 
-#include "CrystalScene/AppBase/imgui.h"
+#include "CrystalScene/AppBase/MenuItem.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
 VDBMeshMenu::VDBMeshMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
-	IMenu(name, model, canvas),
-	control(control)
+	IMenu(name, model, canvas)
 {
-}
-
-
-void VDBMeshMenu::onShow()
-{
-	auto world = getWorld();
-
-	if (ImGui::BeginMenu("VDBMesh")) {
-		if (ImGui::MenuItem("PMBox")) {
-			control->setWindow(new VDBPMBoxView("PMBox", world, getCanvas()));
+	add(new MenuItem("PMBox", [model, canvas, control]() {
+		control->setWindow(new VDBPMBoxView("PMBox", model, canvas));
 		}
-		if (ImGui::MenuItem("MeshToVolume")) {
-			control->setWindow(new MeshToVolumeView("MeshToVolume", world, getCanvas()));
+	));
+	add(new MenuItem("MeshToVolume", [model, canvas, control]() {
+		control->setWindow(new MeshToVolumeView("MeshToVolume", model, canvas));
 		}
-		if (ImGui::MenuItem("OBJImport")) {
-			control->setWindow(new OBJFileImportView("OBJImport", world, getCanvas()));
-		}
-		if (ImGui::MenuItem("OBJExport")) {
-			control->setWindow(new OBJFileExportView("OBJExport", world, getCanvas()));
-		}
-		ImGui::EndMenu();
+	));
+	add(new MenuItem("OBJImport", [model, canvas, control]() {
+		control->setWindow(new OBJFileImportView("OBJImport", model, canvas));
 	}
+	));
+	add(new MenuItem("OBJExport", [model, canvas, control]() {
+		control->setWindow(new OBJFileExportView("OBJExport", model, canvas));
+	}
+	));
 }

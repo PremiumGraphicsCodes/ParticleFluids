@@ -2,7 +2,7 @@
 
 #include "CrystalScene/Scene/PolygonMeshScene.h"
 
-#include "../CrystalPhysics/MeshBoundaryScene.h"
+#include "../CrystalPhysics/Boundary/MeshBoundaryScene.h"
 //#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 

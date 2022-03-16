@@ -1,7 +1,8 @@
 #include "CameraMenu.h"
-#include "imgui.h"
-#include "../Scene/World.h"
 #include "Canvas.h"
+#include "MenuItem.h"
+
+#include "../Scene/World.h"
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"
 #include "../Command/CameraFitCommand.h"
@@ -10,31 +11,35 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Command;
 
-void CameraMenu::onShow()
+CameraMenu::CameraMenu(const std::string& name, World* model, Canvas* canvas) :
+	IMenu(name, model, canvas)
 {
-	auto canvas = getCanvas();
-	auto model = getWorld();
+	add(new MenuItem("Fit", [&] { onFit(); }));
+	add(new MenuItem("XY", [&] { onXY(); }));
+	add(new MenuItem("YZ", [&] { onYZ(); }));
+	add(new MenuItem("ZX", [&] { onZX(); }));
+}
 
-	const auto c = name.c_str();
-	if (ImGui::BeginMenu(c)) {
-		if (ImGui::MenuItem("Fit")) {
-			CameraFitCommand command;
-			command.execute(model);
-		}
-		if (ImGui::MenuItem("XY")) {
-			CameraXYCommand command;
-			command.execute(model);
-		}
-		if (ImGui::MenuItem("YZ")) {
-			CameraYZCommand command;
-			command.execute(getWorld());
-		}
-		if (ImGui::MenuItem("ZX")) {
-			CameraZXCommand command;
-			command.execute(getWorld());
-		}
-		ImGui::EndMenu();
-	}
-	//ImGui::EndMenuBar();
+void CameraMenu::onFit()
+{
+	CameraFitCommand command;
+	command.execute(getWorld());
+}
 
+void CameraMenu::onXY()
+{
+	CameraXYCommand command;
+	command.execute(getWorld());
+}
+
+void CameraMenu::onYZ()
+{
+	CameraYZCommand command;
+	command.execute(getWorld());
+}
+
+void CameraMenu::onZX()
+{
+	CameraZXCommand command;
+	command.execute(getWorld());
 }

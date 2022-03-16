@@ -10,11 +10,6 @@ class VDBMeshMenu : public IMenu
 {
 public:
 	VDBMeshMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
-
-	void onShow() override;
-
-private:
-	ControlPanel* control;
 };
 
 	}

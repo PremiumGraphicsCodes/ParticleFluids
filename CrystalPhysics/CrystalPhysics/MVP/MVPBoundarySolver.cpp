@@ -2,7 +2,7 @@
 
 #include "MVPVolumeParticle.h"
 #include "MVPFluidScene.h"
-#include "../CSGBoundaryScene.h"
+#include "../Boundary/CSGBoundaryScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -23,7 +23,7 @@ void MVPBoundarySolver::setup(const float effectLength)
 
 	const auto hashSize = boundaryParticles.front()->getPoints().size() * boundaryParticles.size();
 	const auto searchRadius = effectLength;
-	spaceHash = std::make_unique<CompactSpaceHash3d>(searchRadius, boundaryParticles.size());
+	spaceHash = std::make_unique<CompactSpaceHash3d>(searchRadius, static_cast<int>(boundaryParticles.size()));
 	//spaceHash.setup(searchRadius, boundaryParticles.size());
 
 	for (auto bp : boundaryParticles) {
@@ -59,10 +59,10 @@ MVPVolumeParticle* MVPBoundarySolver::createGphost(const Vector3df& p, MVPVolume
 	}
 	else {
 		const auto e = 1.0e-12;
-		for (float x = -radius; x < radius + e; x += radius * 2.0) {
-			for (float y = -radius; y < radius + e; y += radius * 2.0) {
-				for (float z = -radius; z < radius + e; z += radius * 2.0) {
-					MVPMassParticle* mp = new MVPMassParticle(vp, Vector3df(x, y, z), mass * 8.0);
+		for (float x = -radius; x < radius + e; x += radius * 2.0f) {
+			for (float y = -radius; y < radius + e; y += radius * 2.0f) {
+				for (float z = -radius; z < radius + e; z += radius * 2.0f) {
+					MVPMassParticle* mp = new MVPMassParticle(vp, Vector3df(x, y, z), mass * 8.0f);
 					mp->setParent(vp);
 					vp->addMassParticle(mp);
 				}

@@ -1,6 +1,6 @@
 #include "CSGBoundaryView.h"
 
-#include "../CrystalPhysics/CSGBoundaryScene.h"
+#include "../CrystalPhysics/Boundary/CSGBoundaryScene.h"
 #include "CrystalScene/Scene/World.h"
 
 using namespace Crystal::Math;

@@ -15,7 +15,7 @@ void DFSPHParticle::calculateDensity()
 	this->density = 0.0f;
 	this->density += (kernel->getCubicSpline(0.0f) * this->getMass());
 	for (auto n : neighbors) {
-		const float distance = Math::getDistance(this->getPosition(), n->getPosition());
+		const float distance = Math::getDistance(this->position, n->position);
 		this->density += (kernel->getCubicSpline(distance) * n->getMass());
 	}
 }
@@ -24,7 +24,7 @@ void DFSPHParticle::calculateAlpha()
 {
 	this->alpha = 0.0;
 
-	Vector3dd a(0,0,0);
+	Vector3df a(0,0,0);
 	float b = 0.0f;
 	for (auto n : neighbors) {
 		const auto v = this->position - n->position;
@@ -86,7 +86,7 @@ void DFSPHParticle::calculateViscosity()
 	for (auto n : neighbors) {
 		const auto viscosityCoe = (this->constant->getViscosityCoe() + n->constant->getViscosityCoe()) * 0.5f;
 		const auto velocityDiff = (n->velocity - this->velocity);
-		const auto distance = Math::getDistance(getPosition(), n->getPosition());
+		const auto distance = Math::getDistance(position, n->position);
 		this->force += viscosityCoe * velocityDiff * kernel->getCubicSpline(distance);
 
 		/*

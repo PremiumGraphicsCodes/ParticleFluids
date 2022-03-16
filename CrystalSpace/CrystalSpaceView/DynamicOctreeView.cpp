@@ -15,8 +15,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Space;
 
-DynamicOctreeView::DynamicOctreeView(World* model, Canvas* canvas) :
-	IOkCancelView("DynamicOctree", model, canvas)
+DynamicOctreeView::DynamicOctreeView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas)
 {
 }
 
@@ -28,7 +28,7 @@ void DynamicOctreeView::onOk()
 	DynamicOctree octree(Box3dd(Vector3dd(0,0,0), Vector3dd(16,16,16)));
 	octree.divide(1.0, { &p1, &p2 });
 
-	const auto volumes = octree.toVolumes();
+	const auto volumes = octree.toVolumes(1.0f);
 
 	WireFrameBuilder wfBuilder;
 	/*

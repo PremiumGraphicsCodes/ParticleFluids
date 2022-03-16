@@ -1,6 +1,6 @@
 #include "MeshBoundaryView.h"
 
-#include "../CrystalPhysics/MeshBoundaryScene.h"
+#include "../CrystalPhysics/Boundary/MeshBoundaryScene.h"
 #include "CrystalScene/Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Math;

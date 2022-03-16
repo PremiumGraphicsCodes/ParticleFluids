@@ -9,12 +9,9 @@ namespace Crystal {
 class ColorMenu : public IMenu
 {
 public:
-	ColorMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
-		IMenu(name, model, canvas),
-		control(control)
-	{}
+	ColorMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
 
-	virtual void onShow() override;
+	//virtual void onShow() override;
 
 private:
 	ControlPanel* control;

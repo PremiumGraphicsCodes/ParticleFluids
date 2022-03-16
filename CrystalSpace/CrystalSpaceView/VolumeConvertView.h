@@ -10,7 +10,7 @@ namespace Crystal {
 class VolumeConvertView : public IOkCancelView
 {
 public:
-	VolumeConvertView(Scene::World* model, Canvas* canvas);
+	VolumeConvertView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

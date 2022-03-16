@@ -11,8 +11,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Space;
 
-UniformGrid3dView::UniformGrid3dView(World* model, Canvas* canvas) :
-	IOkCancelView("UniformGrid", model, canvas),
+UniformGrid3dView::UniformGrid3dView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
 	searchRadius("SearchRadius", 1.0)
 {
 	add(&searchRadius);

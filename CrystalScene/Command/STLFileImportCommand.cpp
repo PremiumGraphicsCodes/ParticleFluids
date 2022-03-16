@@ -4,8 +4,6 @@
 #include "../Scene/TriangleMeshScene.h"
 
 #include "../../Crystal/IO/STLFileReader.h"
-#include "../../Crystal/IO/STLAsciiFileReader.h"
-#include "../../Crystal/IO/STLBinaryFileReader.h"
 
 #include "PublicLabel.h"
 
@@ -47,8 +45,8 @@ bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 
 	const auto isBinary = STLFileReader::isBinary(args.filePath.getValue());
 	if (!isBinary) {
-		STLASCIIFileReader reader;
-		const auto isOk = reader.read(args.filePath.getValue());
+		STLFileReader reader;
+		const auto isOk = reader.readAscii(args.filePath.getValue());
 		/*
 		if (!isOk) {
 			return false;
@@ -66,8 +64,8 @@ bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 		return true;
 	}
 	else {
-		STLBinaryFileReader reader;
-		if (reader.read(args.filePath.getValue())) {
+		STLFileReader reader;
+		if (reader.readBinary(args.filePath.getValue())) {
 			PolygonMeshBuilder builder;
 			const auto& stl = reader.getSTL();
 			auto mesh = std::make_unique<TriangleMesh>();
