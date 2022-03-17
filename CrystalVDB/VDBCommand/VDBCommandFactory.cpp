@@ -15,7 +15,7 @@
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
 
-std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& name)
+std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& name) const
 {
 	if (name == VDBInitCommand::getName()) {
 		return std::make_unique<VDBInitCommand>();

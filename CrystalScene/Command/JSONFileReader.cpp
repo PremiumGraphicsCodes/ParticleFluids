@@ -4,7 +4,7 @@
 
 using namespace Crystal::Command;
 
-bool JSONFileReader::read(const std::filesystem::path& path, const CommandFactory& factory)
+bool JSONFileReader::read(const std::filesystem::path& path, const ICommandFactory& factory)
 {
 	std::ifstream stream(path);
 	if (!stream.is_open()) {
@@ -15,7 +15,7 @@ bool JSONFileReader::read(const std::filesystem::path& path, const CommandFactor
 	stream >> root;
 	for (const auto& j : root) {
 		const auto name = j[0].get<std::string>();
-		auto c = factory.create(name);
+		auto c = factory.createCommand(name);
 		JSONConverter::fromJSON(j[1], *c);
 		commands.push_back(std::move(c));
 	}

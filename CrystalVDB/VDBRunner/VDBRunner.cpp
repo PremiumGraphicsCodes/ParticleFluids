@@ -5,29 +5,20 @@
 
 #include "CrystalVDB/VDBCommand/VDBCommandFactory.h"
 #include "CrystalVDB/VDBCommand/VDBInitCommand.h"
-#include "CrystalScene/Command/JSONConverter.h"
+#include "CrystalScene/Command/JSONFileReader.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
 
 int main()
 {
-	VDBInitCommand command;
-	JSONConverter converter;
-	auto json = converter.toJSON(command);
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	//reader.read("./TestFiles/test01.json", factory);
+	//auto json = converter.toJSON(command);
 
 	//std::ofstream o("pretty.json");
 	//o << std::setw(4) << j << std::endl;
 	//factory.createCommand()
 }
 
-// プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
-// プログラムのデバッグ: F5 または [デバッグ] > [デバッグの開始] メニュー
-
-// 作業を開始するためのヒント: 
-//    1. ソリューション エクスプローラー ウィンドウを使用してファイルを追加/管理します 
-//   2. チーム エクスプローラー ウィンドウを使用してソース管理に接続します
-//   3. 出力ウィンドウを使用して、ビルド出力とその他のメッセージを表示します
-//   4. エラー一覧ウィンドウを使用してエラーを表示します
-//   5. [プロジェクト] > [新しい項目の追加] と移動して新しいコード ファイルを作成するか、[プロジェクト] > [既存の項目の追加] と移動して既存のコード ファイルをプロジェクトに追加します
-//   6. 後ほどこのプロジェクトを再び開く場合、[ファイル] > [開く] > [プロジェクト] と移動して .sln ファイルを選択します

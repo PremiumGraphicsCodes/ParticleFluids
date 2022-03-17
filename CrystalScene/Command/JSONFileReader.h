@@ -10,7 +10,7 @@ namespace Crystal {
 class JSONFileReader
 {
 public:
-	bool read(const std::filesystem::path& path, const CommandFactory& factory);
+	bool read(const std::filesystem::path& path, const ICommandFactory& factory);
 
 	std::vector<std::unique_ptr<ICommand>> getCommands() { return std::move(commands); }
 
