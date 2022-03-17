@@ -35,12 +35,17 @@
     <ClCompile Include="OBJFileImportCommandTest.cpp">
       <Filter>File\OBJ</Filter>
     </ClCompile>
-    <ClCompile Include="JSONFileConverterTest.cpp" />
     <ClCompile Include="TXTFileImportCommandTest.cpp">
       <Filter>File\TXT</Filter>
     </ClCompile>
     <ClCompile Include="TXTFileExportCommandTest.cpp">
       <Filter>File\TXT</Filter>
+    </ClCompile>
+    <ClCompile Include="JSONFileConverterTest.cpp">
+      <Filter>JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="JSONFileWriterTest.cpp">
+      <Filter>JSON</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +90,9 @@
     </Filter>
     <Filter Include="File\TXT">
       <UniqueIdentifier>{4fd9e299-c510-4088-a6eb-01519cd16bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JSON">
+      <UniqueIdentifier>{7b2ab6ba-7f47-4aec-bdad-6f1848032d8f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

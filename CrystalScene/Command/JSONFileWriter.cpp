@@ -16,9 +16,11 @@ bool JSONFileWriter::write(const std::filesystem::path& path)
 		return false;
 	}
 	JSONConverter converter;
+	nlohmann::json root;
 	for (auto c : commands) {
 		const auto j = converter.toJSON(*c);
-		stream << std::setw(4) << std::endl;
+		root.push_back(j);
 	}
+	stream << std::setw(4) << root << std::endl;
 	return true;
 }
