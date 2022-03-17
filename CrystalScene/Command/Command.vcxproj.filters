@@ -143,7 +143,6 @@
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClInclude>
     <ClInclude Include="PublicLabel.h" />
-    <ClInclude Include="JSONConverter.h" />
     <ClInclude Include="TXTFileImportCommand.h">
       <Filter>File\TXT</Filter>
     </ClInclude>
@@ -155,6 +154,12 @@
     </ClInclude>
     <ClInclude Include="PLYFileImportCommand.h">
       <Filter>File\PLY</Filter>
+    </ClInclude>
+    <ClInclude Include="JSONFileWriter.h">
+      <Filter>JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="JSONConverter.h">
+      <Filter>JSON</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -297,7 +302,6 @@
     <ClCompile Include="TriangleMeshSetCommand.cpp">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClCompile>
-    <ClCompile Include="JSONConverter.cpp" />
     <ClCompile Include="TXTFileImportCommand.cpp">
       <Filter>File\TXT</Filter>
     </ClCompile>
@@ -309,6 +313,12 @@
     </ClCompile>
     <ClCompile Include="PLYFileImportCommand.cpp">
       <Filter>File\PLY</Filter>
+    </ClCompile>
+    <ClCompile Include="JSONConverter.cpp">
+      <Filter>JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="JSONFileWriter.cpp">
+      <Filter>JSON</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -377,6 +387,9 @@
     </Filter>
     <Filter Include="File\PLY">
       <UniqueIdentifier>{fec2cc50-ffa8-49f5-90a0-d802f3a569ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JSON">
+      <UniqueIdentifier>{a91131b3-0112-455f-aac8-de4409b2581b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
