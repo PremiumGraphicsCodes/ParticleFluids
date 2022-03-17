@@ -1,6 +1,6 @@
 #include "VDBSTLFileReadCommand.h"
 
-#include "Crystal/IO/STLBinaryFileReader.h"
+#include "Crystal/IO/STLFileReader.h"
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
@@ -43,8 +43,8 @@ bool VDBSTLFileReadCommand::execute(World* world)
 		return false;
 	}
 
-	Crystal::IO::STLBinaryFileReader reader;
-	const auto isOk = reader.read(args.filePath.getValue());
+	Crystal::IO::STLFileReader reader;
+	const auto isOk = reader.readBinary(args.filePath.getValue());
 	if (!isOk) {
 		return false;
 	}

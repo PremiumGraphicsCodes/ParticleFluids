@@ -1,6 +1,6 @@
 #include "VDBSTLFileWriteCommand.h"
 
-#include "Crystal/IO/STLBinaryFileWriter.h"
+#include "Crystal/IO/STLFileWriter.h"
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
@@ -75,7 +75,7 @@ bool VDBSTLFileWriteCommand::execute(World* world)
 	}
 	stl.faceCount = stl.faces.size();
 
-	Crystal::IO::STLBinaryFileWriter writer;
-	const auto isOk = writer.write(args.filePath.getValue(), stl);
+	Crystal::IO::STLFileWriter writer;
+	const auto isOk = writer.writeBinary(args.filePath.getValue(), stl);
 	return isOk;
 }

@@ -40,6 +40,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MeshToPSTool", "MeshToPSToo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysics", "..\CrystalPhysics\CrystalPhysics\CrystalPhysics.vcxproj", "{4C0EFD78-680E-45C9-9828-9B674EE70DF0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBRunner", "VDBRunner\VDBRunner.vcxproj", "{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -402,6 +404,28 @@ Global
 		{4C0EFD78-680E-45C9-9828-9B674EE70DF0}.RelWithDebInfo|x64.Build.0 = Release|x64
 		{4C0EFD78-680E-45C9-9828-9B674EE70DF0}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
 		{4C0EFD78-680E-45C9-9828-9B674EE70DF0}.RelWithDebInfo|x86.Build.0 = Release|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.Debug|x64.ActiveCfg = Debug|x64
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.Debug|x64.Build.0 = Debug|x64
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.Debug|x86.ActiveCfg = Debug|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.Debug|x86.Build.0 = Debug|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.MinSizeRel|Any CPU.ActiveCfg = Debug|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.MinSizeRel|Any CPU.Build.0 = Debug|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.MinSizeRel|x64.ActiveCfg = Debug|x64
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.MinSizeRel|x64.Build.0 = Debug|x64
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.MinSizeRel|x86.ActiveCfg = Debug|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.MinSizeRel|x86.Build.0 = Debug|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.Release|Any CPU.ActiveCfg = Release|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.Release|x64.ActiveCfg = Release|x64
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.Release|x64.Build.0 = Release|x64
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.Release|x86.ActiveCfg = Release|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.Release|x86.Build.0 = Release|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.RelWithDebInfo|Any CPU.ActiveCfg = Debug|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.RelWithDebInfo|Any CPU.Build.0 = Debug|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.RelWithDebInfo|x64.ActiveCfg = Release|x64
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.RelWithDebInfo|x64.Build.0 = Release|x64
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
+		{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}.RelWithDebInfo|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

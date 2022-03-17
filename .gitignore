@@ -335,3 +335,5 @@ Blender/CrystalPythonTest/test_export.stl
 /SandBox/CrystalPhoton/CrystalPhotonViewer/imgui.ini
 /SandBox/CrystalGPU/CrystalGPUView/imgui.ini
 /CrystalScene/Viewer/imgui.ini
+/Blender/particle_fluids/CrystalPLI.pyd
+/Blender/particle_fluids_test/CrystalPLI.pyd

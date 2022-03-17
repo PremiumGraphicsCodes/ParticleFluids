@@ -1,6 +1,6 @@
 #include "VDBPCDFileReadCommand.h"
 
-#include "../../Crystal/IO/PCDBinaryFileReader.h"
+#include "../../Crystal/IO/PCDFileReader.h"
 
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
@@ -45,8 +45,8 @@ std::string VDBPCDFileReadCommand::getName()
 bool VDBPCDFileReadCommand::execute(World* world)
 {
 	const auto filePath = args.filePath.getValue();
-	Crystal::IO::PCDBinaryFileReader reader;
-	const auto isOk = reader.read(filePath);
+	Crystal::IO::PCDFileReader reader;
+	const auto isOk = reader.readBinary(filePath);
 	if (!isOk) {
 		return false;
 	}

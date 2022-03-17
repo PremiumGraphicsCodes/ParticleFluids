@@ -1,6 +1,6 @@
 #include "VDBPCDFileWriteCommand.h"
 
-#include "../../Crystal/IO/PCDBinaryFileWriter.h"
+#include "../../Crystal/IO/PCDFileWriter.h"
 
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
@@ -57,8 +57,8 @@ bool VDBPCDFileWriteCommand::execute(World* world)
 	pcd.header.width = points.size();
 	pcd.data.positions = points;
 
-	Crystal::IO::PCDBinaryFileWriter writer;
-	const auto isOk = writer.write(filePath, pcd);
+	Crystal::IO::PCDFileWriter writer;
+	const auto isOk = writer.writeBinary(filePath, pcd);
 	if (!isOk) {
 		return false;
 	}
