@@ -1,0 +1,17 @@
+[
+    [
+        "VDBFileRead",
+        {
+            "FilePath": "",
+            "Radius": 0.5
+        }
+    ],
+    [
+        "OpenVDBFileWrite",
+        {
+            "FilePath": "",
+            "ParticleSystemIds": [],
+            "VDBVolumeIds": []
+        }
+    ]
+]
