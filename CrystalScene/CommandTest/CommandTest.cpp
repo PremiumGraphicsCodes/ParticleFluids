@@ -19,12 +19,3 @@ TEST(CommandTest, TestExecute)
 	const auto actual = std::any_cast<int>( command->getResult("value") );
 	EXPECT_EQ( 3, actual );
 }
-
-TEST(CommandTest, TestWriteJSON)
-{
-	auto command = CommandFactory::create("Mock");
-	command->setArg("lhs", 1);
-	command->setArg("rhs", 2);
-
-	command->writeJSON("CommandWriteTest.json");
-}

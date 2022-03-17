@@ -1,15 +1,15 @@
 [
-    {
-        "args": {
+    [
+        "Mock",
+        {
             "lhs": 0,
             "rhs": 0
-        },
-        "name": "Mock"
-    },
-    {
-        "args": {
+        }
+    ],
+    [
+        "FileImport",
+        {
             "FilePath": ""
-        },
-        "name": "FileImport"
-    }
+        }
+    ]
 ]

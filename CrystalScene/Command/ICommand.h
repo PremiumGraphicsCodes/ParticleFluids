@@ -39,9 +39,9 @@ public:
 
 	std::any getResult(const std::string& name) { return results->getValue(name); }
 
-	void writeJSON(const std::string& filePath);
+	//void writeJSON(const std::string& filePath);
 
-	void readJSON(const std::string& filePath);
+	//void readJSON(const std::string& filePath);
 
 	const IArgs* getArgs() const { return args; }
 

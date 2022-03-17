@@ -5,6 +5,7 @@
 
 using namespace Crystal::Command;
 
+/*
 void ICommand::writeJSON(const std::string& filePath)
 {
 	auto j = JSONConverter::toJSON(*this);
@@ -19,3 +20,4 @@ void ICommand::readJSON(const std::string& filePath)
 	stream >> j;
 	JSONConverter::fromJSON(j, *this);
 }
+*/

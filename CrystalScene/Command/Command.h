@@ -33,7 +33,7 @@ public:
 
 	std::any getResult(const std::string& name);
 
-	void saveJSON(const std::string& filePath);
+	//void saveJSON(const std::string& filePath);
 
 private:
 	std::unique_ptr<ICommand> command;

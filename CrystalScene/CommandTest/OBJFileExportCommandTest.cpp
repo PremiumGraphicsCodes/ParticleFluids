@@ -12,18 +12,6 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-TEST(OBJFileExportCommand, TestWriteJSON)
-{
-	OBJFileExportCommand command;
-	command.writeJSON("OBJFileExportCommandWrite.json");
-}
-
-TEST(OBJFileExportCommand, TestReadJSON)
-{
-	OBJFileExportCommand command;
-	command.readJSON("OBJFileExportCommandWrite.json");
-}
-
 /*
 TEST(OBJFileExportCommand, TestExecute)
 {

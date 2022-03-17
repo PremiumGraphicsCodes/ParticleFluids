@@ -47,6 +47,9 @@
     <ClCompile Include="JSONFileWriterTest.cpp">
       <Filter>JSON</Filter>
     </ClCompile>
+    <ClCompile Include="JSONFileReaderTest.cpp">
+      <Filter>JSON</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

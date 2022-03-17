@@ -43,7 +43,9 @@ std::any Command::getResult(const std::string& name)
 	return command->getResult(name);
 }
 
+/*
 void Command::saveJSON(const std::string& filePath)
 {
 	command->writeJSON(filePath);
 }
+*/

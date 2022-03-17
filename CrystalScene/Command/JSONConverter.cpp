@@ -195,9 +195,9 @@ void JSONConverter::fromJSON(const nlohmann::json& json, Arg<int>& dest)
 void JSONConverter::fromJSON(const nlohmann::json& json, ICommand& command)
 {
     auto args = command.getArgs();
-    const auto jj = json["args"];
+    // const auto jj = json["args"];
     for (auto a : args->args) {
-        auto j = jj[a->name];
+        auto j = json[a->name];
         /*
         auto& type = a->value.type();
         if (type == typeid(int)) {

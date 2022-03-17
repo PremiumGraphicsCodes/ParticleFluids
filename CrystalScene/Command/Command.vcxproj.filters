@@ -161,6 +161,9 @@
     <ClInclude Include="JSONConverter.h">
       <Filter>JSON</Filter>
     </ClInclude>
+    <ClInclude Include="JSONFileReader.h">
+      <Filter>JSON</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -318,6 +321,9 @@
       <Filter>JSON</Filter>
     </ClCompile>
     <ClCompile Include="JSONFileWriter.cpp">
+      <Filter>JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="JSONFileReader.cpp">
       <Filter>JSON</Filter>
     </ClCompile>
   </ItemGroup>
