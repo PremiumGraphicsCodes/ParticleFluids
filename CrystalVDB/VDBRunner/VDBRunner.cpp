@@ -3,9 +3,22 @@
 
 #include <iostream>
 
+#include "CrystalVDB/VDBCommand/VDBCommandFactory.h"
+#include "CrystalVDB/VDBCommand/VDBInitCommand.h"
+#include "CrystalScene/Command/JSONConverter.h"
+
+using namespace Crystal::Command;
+using namespace Crystal::VDB;
+
 int main()
 {
-    std::cout << "Hello World!\n";
+	VDBInitCommand command;
+	JSONConverter converter;
+	auto json = converter.toJSON(command);
+
+	//std::ofstream o("pretty.json");
+	//o << std::setw(4) << j << std::endl;
+	//factory.createCommand()
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー

@@ -20,7 +20,8 @@ VDBInitCommand::Results::Results()
 {
 }
 
-VDBInitCommand::VDBInitCommand()
+VDBInitCommand::VDBInitCommand() :
+	ICommand(&args, &results)
 {
 }
 
