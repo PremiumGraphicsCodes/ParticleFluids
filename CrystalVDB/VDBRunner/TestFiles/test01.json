@@ -1,0 +1,17 @@
+[
+    [
+        "VDBFileRead",
+        {
+            "FilePath": "C:/Users/mabuc/Desktop/vdb/torus.vdb",
+            "Radius": 0.5
+        }
+    ],
+	[
+        "OpenVDBFileWrite",
+        {
+            "FilePath": "C:/Users/mabuc/Desktop/vdb/test.vdb",
+            "ParticleSystemIds": [],
+            "VDBVolumeIds": [1]
+        }
+    ]
+]
