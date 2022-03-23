@@ -4,6 +4,7 @@
 
 # Install
 First of all, please visit this Microsoft's web page and download Visual Studio2019 runtime(x64).
+And run it.
 
 [VisualC++runtime](https://docs.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170
  "VisualC++runtime")
