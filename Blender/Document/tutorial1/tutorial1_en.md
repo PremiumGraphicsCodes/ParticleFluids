@@ -26,17 +26,12 @@
 
 ## Convert to VDB volume
 
-- [PFTools]->[ToVDB], a dialog will be appeared.
-- Select .ply files generated above.(On Blender, you can select all files with Ctrl+A)
-![PSToVolume](./images/PSToVolume.png) 
-- Then push [Convert] button, starts converts, and .vdb files are generated in the same directory.
+- (On Blender, you can select all files with Ctrl+A)
 
 ## Meshing
 Blender supports OpenVDB requential file import.
-![VDBImport](./images/VDBImport.png) 
 
 To convert volume to mesh, 
 - Select [Cube]，
 - [Modifier Properties]->[AddModifier]->[VolumeToMesh]
 - [Object]->[Volume01]．
-![VolumeToMesh](./images/VolumeToMesh.png) 

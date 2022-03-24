@@ -2,12 +2,10 @@
 
 2022/03/31 
 
-# シミュレーション
-
 [![](https://img.youtube.com/vi/bpvUeji3b_A/0.jpg)](https://www.youtube.com/watch?v=bpvUeji3b_A)
 
 
-### Fluidの作成
+## Fluidの作成
 
 - Blenderデフォルトで生成されている[Cube]を選択します．
 - [Object Properties]から，[Scale]を[10,10,10], [Location]を[0,0,10]とします．
@@ -26,8 +24,6 @@
  - [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
  - [Start]ボタンでシミュレーションが開始されます．
  - [Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
-
-# ポストプロセス
 
  [![](https://img.youtube.com/vi/vOi4NsNg4R8/0.jpg)](https://www.youtube.com/watch?v=vOi4NsNg4R8)
 

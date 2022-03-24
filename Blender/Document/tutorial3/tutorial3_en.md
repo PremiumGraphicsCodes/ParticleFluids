@@ -12,19 +12,17 @@ Create fluids same as Tutorial1.
 ## Creating Obstacle
 
 - Create a mesh by [Add]->[Mesh]->[Plane]．
-![StaticMesh](./images/StaticMesh.png) 
-
 - Open [Object Properties] tab, and change [Scale] to [20,20,1], and Location to [0,0,-20]．
-
 - [VDBTools]->[MeshToPS]->[Voxelize]
-![StaticMesh](./images/StaticPS.png) 
-
 - Select[Object001]，push [Physics Properties]->[PFFluid] button．
-- **Mark [Static]Check box**
 
 ## Start Simulation
  - Open [PFSolver] tab．
  - Change [Min] to [-100,100,-100]．
+ - Press [Start] button, then simulation starts.
+
+ 
+[![](https://img.youtube.com/vi/FxPfhIqnM1U/0.jpg)](https://www.youtube.com/watch?v=FxPfhIqnM1U)
 
 Following steps are same as Tutorial1.
 

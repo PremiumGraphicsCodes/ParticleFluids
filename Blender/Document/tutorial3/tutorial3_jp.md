@@ -12,21 +12,19 @@
 ## Obstacleの設定
 
 - [Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
-![StaticMesh](./images/StaticMesh.png) 
-
 - [Object Properties]から[Scale]を[20,20,1]とします．
 Locationを[0,0,-20]とします．
-
 - 同様にして[Voxelize]を実行してParticlesに変換します．
-![StaticMesh](./images/StaticPS.png) 
-
 - [Object001]を選択し，[Physics Properties]->[PFFluid]ボタンを押します．
 - パラメータ設定用タブが開きます．
-- **ここで[Static]チェックボックスをマークしてください**
 
 ## シミュレーションの開始
  - [PFSolver]タブを開きます．
  - [Min]を[-100,100,-100]とします．
+ - [Start]ボタンでシミュレーションが開始されます．
+ 
+[![](https://img.youtube.com/vi/FxPfhIqnM1U/0.jpg)](https://www.youtube.com/watch?v=FxPfhIqnM1U)
+
 
 ## VDBボリュームへの変換
 
