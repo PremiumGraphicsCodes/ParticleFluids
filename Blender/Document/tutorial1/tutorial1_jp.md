@@ -2,33 +2,27 @@
 
 2022/03/31 
 
+[![](https://img.youtube.com/vi/bpvUeji3b_A/0.jpg)](https://www.youtube.com/watch?v=bpvUeji3b_A)
+
 ## Fluidの作成
 
-- Blenderデフォルトで生成されている[Cube]を選択し
-- [Object Properties]から，[Scale]をそれぞれ[10,10,10]とします．
-
-![Mesh](./images/Mesh.png) 
-
+- Blenderデフォルトで生成されている[Cube]を選択します．
+- [Object Properties]から，[Scale]を[10,10,10], [Location]を[0,0,10]とします．
 - [Cube]を選択したまま，[VDBTools]->[MeshToPS]->[Voxelize]を押します．
 - するとツリー上に[Object]という頂点だけのパーティクルオブジェクトが現れます．
-
-![MeshToPS](./images/MeshToPS.png) 
 
 - 作成した[Object]を選択し，[Physics Properties]タブを開きます．
 - [PFFluid]ボタンを押します．
 - パラメータ設定用タブが開きます．
 - ここではそのままデフォルト値を用います．
 
-![MeshToPS](./images/Fluid.png) 
-
 ## シミュレーションの開始
 
  - [PFSolver]タブを開きます．
- - [Min]を[-100,100,-13]とします．
+ - [Min]を[-100,-100,-3]とします．
  - [ExportPath]で出力されるシミュレーションデータのディレクトリを設定します．
  - [Start]ボタンでシミュレーションが開始されます．
  - [Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
-![StaticMesh](./images/Start.png) 
 
 ## VDBボリュームへの変換
 

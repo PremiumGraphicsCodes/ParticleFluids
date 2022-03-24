@@ -2,25 +2,19 @@
 
 2022/03/31 
 
-## Creating Fluid
+[![](https://img.youtube.com/vi/bpvUeji3b_A/0.jpg)](https://www.youtube.com/watch?v=bpvUeji3b_A)
 
-- Select [Cube] in Blender's default mesh,
-- Select [Object Properties]，and set values [ScaleX],[ScaleY],[ScaleZ]to[10,10,10]．
+## Create Fluid
 
-![Mesh](./images/Mesh.png) 
-
+- Select [Cube] in Blender's default mesh.
+- Select [Object Properties]，and change [Scale] to [10,10,10], [Location] to [0,0,10]
 - Keep selecting [Cube]，push [VDBTools]->[MeshToPS]->[Voxelize]．
 - Converted points can be shown in [Object], which has no faces, can be appeared．
-
-![MeshToPS](./images/MeshToPS.png) 
-
-To simulate fluids, you have to add parameters to the particles.
 
 - Select [Object]，and open [Physics Properties] tab．
 - Push [PFFluid] button．
 - You can set parameters．
 - In this case, use default value.
-![PSToFluid](./images/Fluid.png) 
 
 ## Start Simulation
 
@@ -29,8 +23,6 @@ To simulate fluids, you have to add parameters to the particles.
  - Set export directory on [ExportPath].
  - Press [Start] button, then simulation starts.
  - If you check [Render] checkbox, you can check particle's movements.
-
-![StaticMesh](./images/Start.png) 
 
 ## Convert to VDB volume
 
