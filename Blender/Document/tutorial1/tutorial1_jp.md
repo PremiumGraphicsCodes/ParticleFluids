@@ -2,9 +2,12 @@
 
 2022/03/31 
 
+# シミュレーション
+
 [![](https://img.youtube.com/vi/bpvUeji3b_A/0.jpg)](https://www.youtube.com/watch?v=bpvUeji3b_A)
 
-## Fluidの作成
+
+### Fluidの作成
 
 - Blenderデフォルトで生成されている[Cube]を選択します．
 - [Object Properties]から，[Scale]を[10,10,10], [Location]を[0,0,10]とします．
@@ -24,21 +27,21 @@
  - [Start]ボタンでシミュレーションが開始されます．
  - [Render]チェックボックスにチェックをつけておくと，シミュレーション途中のParticleの動きを確認できます．
 
-## VDBボリュームへの変換
+# ポストプロセス
 
- - [PFSolver]->[Start]を押すとダイアログが表示されます．
- - 先ほど出力したplyファイルを選択します．(BlenderではCtrl+Aで全選択できます)
- - [Convert]ボタンを押すとコンバート処理が始まり，同じフォルダにVDB形式のデータが作成されます．
-![PSToVolume](./images/PSToVolume.png) 
+ [![](https://img.youtube.com/vi/vOi4NsNg4R8/0.jpg)](https://www.youtube.com/watch?v=vOi4NsNg4R8)
+
+
+## VDBボリュームへの変換
+ - [PFSolver]->[ImportDir]で先ほど出力した[ExportDir]を指定します．
+ - [Start]]ボタンを押すとコンバート処理が始まり，同じフォルダにVDB形式のデータが作成されます．
 
 ## Meshing
 Blender標準の機能で連番のOpenVDBファイルを入力として扱うことができます．
-![VDBImport](./images/VDBImport.png) 
 
-ボリュームデータからメッシュへの変換は，[Cube]を選択し，
-[Modifier Properties]->[AddModifier]->[VolumeToMesh]
-[Object]を先ほどインポートしたvolumeとします．
-![VolumeToMesh](./images/VolumeToMesh.png) 
+- [Add]->[Volume]->[ImportOpenVDB]で先ほど出力したvdbファイルを選択します(BlenderではCtrl+Aで全選択できます)，．
+
+- [Cube]を選択し，[Modifier Properties]->[AddModifier]->[VolumeToMesh][Object]を先ほどインポートしたvolumeとします．
 
 ## レンダリング
 あとは通常のMeshと同じです．

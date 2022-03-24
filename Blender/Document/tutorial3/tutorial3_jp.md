@@ -4,6 +4,8 @@
 
 本アドオンでは，障害物の設定もFluidと同様に行うことができます．
 
+[![](https://img.youtube.com/vi/ZdV1nFPjT_k/0.jpg)](https://www.youtube.com/watch?v=ZdV1nFPjT_k)
+
 ## Fluidの作成
 チュートリアル1と同じ手順でFluidを作成します．
 

@@ -4,6 +4,8 @@
 
 On this add-on, obstacles can be created as same as fluids.
 
+[![](https://img.youtube.com/vi/ZdV1nFPjT_k/0.jpg)](https://www.youtube.com/watch?v=ZdV1nFPjT_k)
+
 ## Creating Fluid
 Create fluids same as Tutorial1.
 
