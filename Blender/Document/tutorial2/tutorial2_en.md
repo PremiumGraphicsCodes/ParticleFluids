@@ -4,7 +4,7 @@
 
 [![](https://img.youtube.com/vi/h-SRY6_-rgA/0.jpg)](https://www.youtube.com/watch?v=h-SRY6_-rgA)
 
-## Creating Emitter
+## Create Emitter
 
 - Select[Cube].
 - Push [VDBTools]->[MeshToPS]->[Voxelize]．

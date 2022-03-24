@@ -12,11 +12,10 @@
 ## Obstacleの設定
 
 - [Add]->[Mesh]->[Plane]で床にする平面を新たに作成します．
-- [Object Properties]から[Scale]を[20,20,1]とします．
-Locationを[0,0,-20]とします．
-- 同様にして[Voxelize]を実行してParticlesに変換します．
-- [Object001]を選択し，[Physics Properties]->[PFFluid]ボタンを押します．
-- パラメータ設定用タブが開きます．
+- [Object Properties]から[Scale]を[20,20,1], Locationを[0,0,-20]とします．
+- [Voxelize]を実行してParticlesに変換します．
+- [Object.001]を選択し，[Physics Properties]->[PFFluid]ボタンを押します．
+- [FluidType]を[Obstacle]に設定します．
 
 ## シミュレーションの開始
  - [PFSolver]タブを開きます．
@@ -24,7 +23,6 @@ Locationを[0,0,-20]とします．
  - [Start]ボタンでシミュレーションが開始されます．
  
 [![](https://img.youtube.com/vi/FxPfhIqnM1U/0.jpg)](https://www.youtube.com/watch?v=FxPfhIqnM1U)
-
 
 ## VDBボリュームへの変換
 

@@ -4,7 +4,7 @@
 
 [![](https://img.youtube.com/vi/h-SRY6_-rgA/0.jpg)](https://www.youtube.com/watch?v=h-SRY6_-rgA)
 
-## Fluidの作成
+## エミッタの作成
 
 - Blenderデフォルトで生成されている[Cube]を選択します．
 - [Cube]を選択したまま，[VDBTools]->[MeshToPS]->[Voxelize]を押します．
@@ -18,6 +18,7 @@
 - [Min]を[-100,-100,-25]とします．
 - [Start]ボタンでシミュレーションが開始されます．
 
+[![](https://img.youtube.com/vi/ys8AKVoJh2Q/0.jpg)](https://www.youtube.com/watch?v=ys8AKVoJh2Q)
 
 ## VDBボリュームへの変換
 このステップはチュートリアル1と同じです．
