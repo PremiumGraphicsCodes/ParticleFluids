@@ -2,6 +2,8 @@
 
 2022/03/31 
 
+[![](https://img.youtube.com/vi/RZizUppkhcM/0.jpg)](https://www.youtube.com/watch?v=RZizUppkhcM)
+
 ## Install Runtime(Must, but only one time)
 First of all, please download Visual Studio2019 runtime(x64) from Microsoft's web page and run it.
 

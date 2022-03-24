@@ -2,6 +2,8 @@
 
 2022/03/31 
 
+[![](https://img.youtube.com/vi/RZizUppkhcM/0.jpg)](https://www.youtube.com/watch?v=RZizUppkhcM)
+
 ## ランタイムのインストール（初回のみ必須）
 Microsoft社のWebサイトからVisualStudio2019ランタイム(x64)をダウンロードします．
 
