@@ -36,9 +36,8 @@
 Blender標準の機能で連番のOpenVDBファイルを入力として扱うことができます．
 
 - [Add]->[Volume]->[ImportOpenVDB]で先ほど出力したvdbファイルを選択します(BlenderではCtrl+Aで全選択できます)，．
-
 - [Cube]を選択し，[Modifier Properties]->[AddModifier]->[VolumeToMesh][Object]を先ほどインポートしたvolumeとします．
 
 ## レンダリング
 あとは通常のMeshと同じです．
-Blenderのマテリアル設定を行えばレンダリングできます．
+詳細はBlenderのマニュアルを参考にしてください．

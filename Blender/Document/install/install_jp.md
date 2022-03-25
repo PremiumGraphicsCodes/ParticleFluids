@@ -20,5 +20,5 @@ Microsoft社のWebサイトからVisualStudio2019ランタイム(x64)をダウ�
 - [Edit]->[Preferences]->[Install]でPFXXX.zipを選択して[Install Add-on]を押します．
 ![Install](./images/Select.png) 
 
--[Community]->[Animation: ParticleFluids]のチェックを入れます．
+- [Community]->[Animation: ParticleFluids]のチェックを入れます．
 ![Install](./images/Install.png) 

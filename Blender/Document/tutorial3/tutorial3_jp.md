@@ -25,7 +25,10 @@
 [![](https://img.youtube.com/vi/FxPfhIqnM1U/0.jpg)](https://www.youtube.com/watch?v=FxPfhIqnM1U)
 
 ## VDBボリュームへの変換
+このステップはチュートリアル1と同じです．
 
 ## Meshing
+このステップはチュートリアル1と同じです．
 
 ## レンダリング
+このステップはチュートリアル1と同じです．

@@ -9,11 +9,11 @@
 - Select [Cube] in Blender's default mesh.
 - Select [Object Properties]，and change [Scale] to [10,10,10], [Location] to [0,0,10]
 - Keep selecting [Cube]，push [VDBTools]->[MeshToPS]->[Voxelize]．
-- Converted points can be shown in [Object], which has no faces, can be appeared．
+- New object [Object], which has no faces, will be appeared．
 
 - Select [Object]，and open [Physics Properties] tab．
 - Push [PFFluid] button．
-- You can set parameters．
+- Change [FluidType] to [Fluid].
 - In this case, use default value.
 
 ## Start Simulation
@@ -24,14 +24,22 @@
  - Press [Start] button, then simulation starts.
  - If you check [Render] checkbox, you can check particle's movements.
 
-## Convert to VDB volume
+ [![](https://img.youtube.com/vi/vOi4NsNg4R8/0.jpg)](https://www.youtube.com/watch?v=vOi4NsNg4R8)
 
-- (On Blender, you can select all files with Ctrl+A)
+
+## Convert to VDB volume
+ - Set [PFSolver]->[ImportDir] which specified the above．
+ - Press [Start], and convert to vdb files starts．
 
 ## Meshing
-Blender supports OpenVDB requential file import.
+Using blender's default function, you can import vbd files.
 
-To convert volume to mesh, 
-- Select [Cube]，
-- [Modifier Properties]->[AddModifier]->[VolumeToMesh]
-- [Object]->[Volume01]．
+- [Add]->[Volume]->[ImportOpenVDB](On Blender, you can select all files with Ctrl+A)．
+- Select [Cube].
+- Open tab [Modifier Properties]
+- [AddModifier]->[VolumeToMesh]
+- Change [Object] to volume name which you imported.
+
+## Rendering
+Rendering step is same as stadard Blender's operation.
+Please refer blender's manual.
