@@ -27,19 +27,6 @@ int main()
 	initCommand.execute(&world);
 
 	VDBCommandFactory factory;
-	/*
-
-	VDBInitCommand command;
-	VDBFileReadCommand fileReadCommand;
-	VDBPSToVolumeCommand psToVolumecommand;
-	VDBFileWriteCommand fileWriteCommand;
-	JSONFileWriter writer;
-	writer.add(&fileReadCommand);
-	writer.add(&psToVolumecommand);
-	writer.add(&fileWriteCommand);
-
-	writer.write("./TestFiles/test02.json");
-	*/
 	JSONFileReader reader;
 	reader.read("./TestFiles/test01.json", factory);
 	auto commands = reader.getCommands();
