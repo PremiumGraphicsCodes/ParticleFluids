@@ -7,11 +7,17 @@
 #include "CrystalVDB/VDBCommand/VDBInitCommand.h"
 #include "CrystalVDB/VDBCommand/VDBFileReadCommand.h"
 #include "CrystalVDB/VDBCommand/VDBFileWriteCommand.h"
+#include "CrystalVDB/VDBCommand/VDBPSToVolumeCommand.h"
 #include "CrystalScene/Command/JSONFileWriter.h"
 #include "CrystalScene/Command/JSONFileReader.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
+
+void testDump()
+{
+	JSONFileWriter writer;
+}
 
 int main()
 {
@@ -22,12 +28,16 @@ int main()
 
 	VDBCommandFactory factory;
 	/*
+
 	VDBInitCommand command;
 	VDBFileReadCommand fileReadCommand;
+	VDBPSToVolumeCommand psToVolumecommand;
 	VDBFileWriteCommand fileWriteCommand;
 	JSONFileWriter writer;
 	writer.add(&fileReadCommand);
+	writer.add(&psToVolumecommand);
 	writer.add(&fileWriteCommand);
+
 	writer.write("./TestFiles/test02.json");
 	*/
 	JSONFileReader reader;

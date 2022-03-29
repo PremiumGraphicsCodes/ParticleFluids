@@ -12,7 +12,7 @@
 
 namespace
 {
-	PublicLabel CommandNameLabel = "VDBParticleSystemToMesh";
+	PublicLabel CommandNameLabel = "VDBParticleSystemToVolume";
 	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
 	PublicLabel VolumeIdLabel = "VolumeId";
 	PublicLabel RadiusLabel = "Radius";

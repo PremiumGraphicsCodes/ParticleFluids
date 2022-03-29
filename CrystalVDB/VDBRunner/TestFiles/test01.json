@@ -2,14 +2,14 @@
     [
         "VDBFileRead",
         {
-            "FilePath": "C:/Users/mabuc/Desktop/vdb/torus.vdb",
+            "FilePath": "../VDBDataSet/torus.vdb",
             "Radius": 0.5
         }
     ],
 	[
         "OpenVDBFileWrite",
         {
-            "FilePath": "C:/Users/mabuc/Desktop/vdb/test.vdb",
+            "FilePath": "../VDBDataSet/test.vdb",
             "ParticleSystemIds": [],
             "VDBVolumeIds": [1]
         }
