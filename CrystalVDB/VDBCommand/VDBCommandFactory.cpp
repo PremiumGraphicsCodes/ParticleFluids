@@ -37,6 +37,9 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	else if (name == VDBSTLFileReadCommand::getName()) {
 		return std::make_unique<VDBSTLFileReadCommand>();
 	}
+	else if (name == VDBSTLFileWriteCommand::getName()) {
+		return std::make_unique<VDBSTLFileWriteCommand>();
+	}
 	else if (name == VDBSceneCreateCommand::getName()) {
 		return std::make_unique<VDBSceneCreateCommand>();
 	}
