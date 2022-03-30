@@ -1,0 +1,41 @@
+[
+    [
+        "VDBSceneCreate",
+        {
+            "Name": "",
+            "Positions": [],
+            "SceneType": "VDBMesh"
+        }
+    ],
+	[
+        "VDBSceneCreate",
+        {
+            "Name": "",
+            "Positions": [],
+            "SceneType": "VDBVolume"
+        }
+    ],
+    [
+        "VDBSTLFileRead",
+        {
+            "FilePath": "../VDBDataSet/torus_mesh.stl",
+            "VDBMeshId": 1
+        }
+    ],
+    [
+        "VDBMeshToVolume",
+        {
+            "DivideLength": 1.0,
+            "VDBMeshId": 1,
+            "VDBVolumeId": 2
+        }
+    ],
+	[
+        "OpenVDBFileWrite",
+        {
+            "FilePath": "../VDBDataSet/from_mesh.vdb",
+            "ParticleSystemIds": [],
+            "VDBVolumeIds": [2]
+        }
+    ]
+]

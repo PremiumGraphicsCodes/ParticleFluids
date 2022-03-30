@@ -9,6 +9,7 @@
 #include "../VDBCommand/VDBSTLFileReadCommand.h"
 #include "../VDBCommand/VDBSTLFileWriteCommand.h"
 #include "../VDBCommand/VDBVolumeToMeshCommand.h"
+#include "../VDBCommand/VDBMeshToVolumeCommand.h"
 
 #include "CrystalScene/Command/JSONFileWriter.h"
 #include "CrystalScene/Command/JSONFileReader.h"
@@ -124,4 +125,22 @@ TEST(VDBRunnerTest, TestVolumeToMeshCommand)
 	JSONFileWriter writer;
 	writer.add(&command);
 	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
+}
+
+TEST(VDBRunnerTest, TestMeshToVolumeCommand)
+{
+	const std::string filepath("./TestFiles/mesh_to_volume.json");
+
+	VDBMeshToVolumeCommand command;
+	JSONFileWriter writer;
+	writer.add(&command);
+	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
 }
