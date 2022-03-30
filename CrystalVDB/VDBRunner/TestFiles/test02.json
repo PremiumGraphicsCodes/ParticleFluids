@@ -2,25 +2,33 @@
     [
         "VDBFileRead",
         {
-            "FilePath": "",
+            "FilePath": "../VDBDataSet/sphere_points.vdb",
             "Radius": 0.5
+        }
+    ],
+    [
+        "VDBSceneCreate",
+        {
+            "Name": "",
+            "Positions": [],
+            "SceneType": "VDBVolume"
         }
     ],
     [
         "VDBParticleSystemToVolume",
         {
-            "ParticleSystemId": -1,
+            "ParticleSystemId": 1,
             "Radius": 5.0,
-            "VolumeId": -1,
+            "VolumeId": 2,
             "VoxelSize": 1.0
         }
     ],
     [
         "OpenVDBFileWrite",
         {
-            "FilePath": "",
+            "FilePath": "../VDBDataSet/sphere_points_volume.vdb",
             "ParticleSystemIds": [],
-            "VDBVolumeIds": []
+            "VDBVolumeIds": [2]
         }
     ]
 ]

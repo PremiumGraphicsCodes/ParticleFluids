@@ -4,6 +4,8 @@
 #include "../VDBCommand/VDBInitCommand.h"
 #include "../VDBCommand/VDBFileReadCommand.h"
 #include "../VDBCommand/VDBFileWriteCommand.h"
+#include "../VDBCommand/VDBPSToVolumeCommand.h"
+#include "../VDBCommand/VDBSceneCreateCommand.h"
 
 #include "CrystalScene/Command/JSONFileWriter.h"
 #include "CrystalScene/Command/JSONFileReader.h"
@@ -52,15 +54,33 @@ TEST(VDBRunnerTest, TestFileWriteCommand)
 	JSONFileReader reader;
 	EXPECT_TRUE( reader.read(filepath, factory) );
 }
-/*
 
-VDBFileReadCommand fileReadCommand;
-VDBPSToVolumeCommand psToVolumecommand;
-VDBFileWriteCommand fileWriteCommand;
-JSONFileWriter writer;
-writer.add(&fileReadCommand);
-writer.add(&psToVolumecommand);
-writer.add(&fileWriteCommand);
+TEST(VDBRunnerTest, TestPSToVolumeCommand)
+{
+	const std::string filepath("./TestFiles/ps_to_volume.json");
 
-writer.write("./TestFiles/test02.json");
-*/
+	VDBPSToVolumeCommand command;
+	JSONFileWriter writer;
+	writer.add(&command);
+	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
+}
+
+TEST(VDBRunnerTest, TestPointsSceneCreateCommand)
+{
+	const std::string filepath("./TestFiles/vdb_scene_create_points.json");
+
+	VDBSceneCreateCommand command;
+	VDBSceneCreateCommand::Args args;
+	args.sceneType.setValue(std::string("VDBPoints"));
+	JSONFileWriter writer;
+	writer.add(&command);
+	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
+}

@@ -1,0 +1,11 @@
+[
+    [
+        "VDBParticleSystemToVolume",
+        {
+            "ParticleSystemId": -1,
+            "Radius": 5.0,
+            "VolumeId": -1,
+            "VoxelSize": 1.0
+        }
+    ]
+]

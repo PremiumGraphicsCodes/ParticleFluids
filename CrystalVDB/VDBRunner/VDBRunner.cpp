@@ -28,17 +28,15 @@ int main()
 
 	VDBCommandFactory factory;
 	JSONFileReader reader;
-	reader.read("./TestFiles/test01.json", factory);
+	reader.read("./TestFiles/test02.json", factory);
 	auto commands = reader.getCommands();
 	for (auto& c : commands) {
 		std::cout << "Start " << c->getCommandName() << std::endl;
-		c->execute(&world);
+		const auto isOk = c->execute(&world);
+		if (!isOk) {
+			std::cout << "Failed" << std::endl;
+		}
 		std::cout << "End " << c->getCommandName() << std::endl;
 	}
-	//auto json = converter.toJSON(command);
-
-	//std::ofstream o("pretty.json");
-	//o << std::setw(4) << j << std::endl;
-	//factory.createCommand()
 }
 
