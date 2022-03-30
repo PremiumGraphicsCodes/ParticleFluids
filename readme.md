@@ -2,10 +2,10 @@
 
 ## Features
 - Grid Free.
-    - You can make fluid simulation anywhere you want WITHOUT grid restrictions.
+    - You can make fluid simulations anywhere you want WITHOUT grid restrictions.
 - Core libraries are compact
-    - platform independent
-    - completelly free.
+    - platform-independent
+    - completely free.
 - Full implementation on CPU,
     - but runs very fast.
 
