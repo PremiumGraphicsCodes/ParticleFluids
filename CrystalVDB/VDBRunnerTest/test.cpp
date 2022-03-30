@@ -3,6 +3,7 @@
 #include "../VDBCommand/VDBCommandFactory.h"
 #include "../VDBCommand/VDBInitCommand.h"
 #include "../VDBCommand/VDBFileReadCommand.h"
+#include "../VDBCommand/VDBFileWriteCommand.h"
 
 #include "CrystalScene/Command/JSONFileWriter.h"
 #include "CrystalScene/Command/JSONFileReader.h"
@@ -12,22 +13,44 @@ using namespace Crystal::Command;
 
 TEST(VDBRunnerTest, TestInitCommand)
 {
+	const std::string filepath("./TestFiles/init.json");
+
 	VDBInitCommand command;
 	JSONFileWriter writer;
 	writer.add(&command);
-	writer.write("./TestFiles/init.json");
+	EXPECT_TRUE( writer.write(filepath) );
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE( reader.read(filepath, factory) );
 }
 
 TEST(VDBRunnerTest, TestFileReadCommand)
 {
+	const std::string filepath("./TestFiles/read.json");
+
 	VDBFileReadCommand command;
 	JSONFileWriter writer;
 	writer.add(&command);
-	writer.write("./TestFiles/read.json");
+	EXPECT_TRUE( writer.write(filepath) );
 
 	VDBCommandFactory factory;
 	JSONFileReader reader;
-	reader.read("./TestFiles/read.json", factory);
+	EXPECT_TRUE( reader.read(filepath, factory) );
+}
+
+TEST(VDBRunnerTest, TestFileWriteCommand)
+{
+	const std::string filepath("./TestFiles/write.json");
+
+	VDBFileWriteCommand command;
+	JSONFileWriter writer;
+	writer.add(&command);
+	EXPECT_TRUE( writer.write(filepath) );
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE( reader.read(filepath, factory) );
 }
 /*
 

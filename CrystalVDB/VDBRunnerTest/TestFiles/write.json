@@ -1,0 +1,10 @@
+[
+    [
+        "OpenVDBFileWrite",
+        {
+            "FilePath": "",
+            "ParticleSystemIds": [],
+            "VDBVolumeIds": []
+        }
+    ]
+]
