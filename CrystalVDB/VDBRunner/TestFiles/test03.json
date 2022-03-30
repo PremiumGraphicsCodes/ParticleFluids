@@ -1,0 +1,18 @@
+[
+    [
+        "VDBFileRead",
+        {
+            "FilePath": "../VDBDataSet/torus.vdb",
+            "Radius": 0.5
+        }
+    ],
+    [
+        "VDBVolumeToMesh",
+        {
+            "Adaptivity": 0.0,
+            "Threshold": 0.0,
+            "VDBMeshId": -1,
+            "VolumeId": -1
+        }
+    ]
+]
