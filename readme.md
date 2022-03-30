@@ -3,11 +3,11 @@
 ## Features
 - Grid Free.
     - You can make fluid simulations anywhere you want WITHOUT grid restrictions.
-- Core libraries are compact
-    - platform-independent
-    - completely free.
-- Full implementation on CPU,
-    - but runs very fast.
+- Core libraries are compact.
+    - Platform-independent
+    - Completely free.
+- Full implementation on CPU.
+    - But runs very fast.
 
 ## Plans
 - Plugins(Add-on) for famous applications(Blender, Houdini, etc) are now under development.
