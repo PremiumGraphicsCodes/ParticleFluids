@@ -1,0 +1,10 @@
+[
+    [
+        "VDBSmoothing",
+        {
+            "Iteration": 1,
+            "VDBVolumeId": -1,
+            "Width": 1
+        }
+    ]
+]
