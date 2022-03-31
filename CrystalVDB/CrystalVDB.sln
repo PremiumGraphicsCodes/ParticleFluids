@@ -24,6 +24,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalVDB", "CrystalVDB\Cr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalVDBCommand", "VDBCommand\CrystalVDBCommand.vcxproj", "{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBCommandTest", "VDBCommandTest\VDBCommandTest.vcxproj", "{9CE01928-674C-4E9B-BC80-04C956A89EC3}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AppBase", "..\CrystalScene\AppBase\AppBase.vcxproj", "{8BCD40A1-4223-4E7A-A84A-93FBF1B6FFD8}"
@@ -41,8 +43,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysics", "..\CrystalPhysics\CrystalPhysics\CrystalPhysics.vcxproj", "{4C0EFD78-680E-45C9-9828-9B674EE70DF0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBRunner", "VDBRunner\VDBRunner.vcxproj", "{BE2A86E7-AEF5-4B18-9FF3-F8BC68DF5BCD}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBRunnerTest", "VDBRunnerTest\VDBRunnerTest.vcxproj", "{9CE01928-674C-4E9B-BC80-04C956A89EC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
