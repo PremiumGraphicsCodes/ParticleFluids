@@ -7,9 +7,18 @@
         }
     ],
 	[
+        "VDBSmoothing",
+        {
+			"FilterType": "Median",
+            "Iteration": 1,
+            "VDBVolumeId": 1,
+            "Width": 1
+        }
+    ],
+	[
         "OpenVDBFileWrite",
         {
-            "FilePath": "../VDBDataSet/test.vdb",
+            "FilePath": "../VDBDataSet/torus_smooth.vdb",
             "ParticleSystemIds": [],
             "VDBVolumeIds": [1]
         }

@@ -28,6 +28,7 @@ VDBFilterCommand::Args::Args() :
 	add(&vdbVolumeId);
 	add(&width);
 	add(&iteration);
+	add(&filterType);
 }
 
 VDBFilterCommand::Results::Results()
