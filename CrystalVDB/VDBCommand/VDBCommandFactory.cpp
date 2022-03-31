@@ -12,6 +12,7 @@
 #include "VDBMeshToVolumeCommand.h"
 #include "VDBVolumeToMeshCommand.h"
 #include "VDBVolumeToPSCommand.h"
+#include "VDBSmoothingCommand.h"
 #include "ToVDBVolumeCommand.h"
 
 using namespace Crystal::Command;
@@ -60,6 +61,9 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == ToVDBVolumeCommand::getName()) {
 		return std::make_unique<ToVDBVolumeCommand>();
+	}
+	else if (name == VDBSmoothingCommand::getName()) {
+		return std::make_unique<VDBSmoothingCommand>();
 	}
 	else {
 		assert(false);

@@ -154,4 +154,8 @@ TEST(VDBRunnerTest, TestSmoothingCommand)
 	JSONFileWriter writer;
 	writer.add(&command);
 	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
 }

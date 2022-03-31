@@ -192,6 +192,7 @@
     <ClInclude Include="VDBSmoothingCommand.h" />
     <ClInclude Include="VDBSTLFileReadCommand.h" />
     <ClInclude Include="VDBSTLFileWriteCommand.h" />
+    <ClInclude Include="VDBTransformCommand.h" />
     <ClInclude Include="VDBVolumeToPSCommand.h" />
     <ClInclude Include="VDBMeshToVolumeCommand.h" />
     <ClInclude Include="VDBOBJFileReadCommand.h" />
@@ -212,6 +213,7 @@
     <ClCompile Include="VDBSmoothingCommand.cpp" />
     <ClCompile Include="VDBSTLFileReadCommand.cpp" />
     <ClCompile Include="VDBSTLFileWriteCommand.cpp" />
+    <ClCompile Include="VDBTransformCommand.cpp" />
     <ClCompile Include="VDBVolumeToPSCommand.cpp" />
     <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
