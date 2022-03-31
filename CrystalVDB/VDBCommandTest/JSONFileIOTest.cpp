@@ -146,9 +146,9 @@ TEST(VDBRunnerTest, TestMeshToVolumeCommand)
 	EXPECT_TRUE(reader.read(filepath, factory));
 }
 
-TEST(VDBRunnerTest, TestSmoothingCommand)
+TEST(VDBRunnerTest, TestFilterCommand)
 {
-	const std::string filepath("./TestFiles/smoothing.json");
+	const std::string filepath("./TestFiles/filter.json");
 
 	VDBFilterCommand command;
 	JSONFileWriter writer;

@@ -337,6 +337,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Converter.cpp" />
+    <ClCompile Include="VDBComposite.cpp" />
     <ClCompile Include="VDBFilter.cpp" />
     <ClCompile Include="VDBPolygonMeshImpl.cpp" />
     <ClCompile Include="VDBPolygonMeshConverter.cpp" />
@@ -349,6 +350,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="VDBParticleSystemPresenter.cpp" />
     <ClCompile Include="VDBPolygonMeshScene.cpp" />
     <ClCompile Include="VDBPolygonMeshPresenter.cpp" />
+    <ClCompile Include="VDBTransform.cpp" />
     <ClCompile Include="VDBVolumeScene.cpp" />
     <ClCompile Include="VDBVolumePresenter.cpp" />
     <ClCompile Include="VDBVolumeImpl.cpp" />
@@ -356,6 +358,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h" />
+    <ClInclude Include="VDBComposite.h" />
     <ClInclude Include="VDBFilter.h" />
     <ClInclude Include="VDBPolygonMeshConverter.h" />
     <ClInclude Include="VDBAdapter.h" />
@@ -368,6 +371,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="VDBPolygonMeshScene.h" />
     <ClInclude Include="VDBPolygonMeshImpl.h" />
     <ClInclude Include="VDBPolygonMeshPresenter.h" />
+    <ClInclude Include="VDBTransform.h" />
     <ClInclude Include="VDBVolumeScene.h" />
     <ClInclude Include="VDBVolumePresenter.h" />
     <ClInclude Include="VDBVolumeImpl.h" />

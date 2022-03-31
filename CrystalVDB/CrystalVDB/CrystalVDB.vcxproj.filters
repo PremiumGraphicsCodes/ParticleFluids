@@ -48,7 +48,13 @@
       <Filter>Volume\Private</Filter>
     </ClCompile>
     <ClCompile Include="VDBFilter.cpp">
-      <Filter>Filter</Filter>
+      <Filter>Tools\Filter</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBTransform.cpp">
+      <Filter>Tools\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBComposite.cpp">
+      <Filter>Tools\Composite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +105,13 @@
       <Filter>Volume\Private</Filter>
     </ClInclude>
     <ClInclude Include="VDBFilter.h">
-      <Filter>Filter</Filter>
+      <Filter>Tools\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBTransform.h">
+      <Filter>Tools\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBComposite.h">
+      <Filter>Tools\Composite</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -130,8 +142,17 @@
     <Filter Include="Converter\Private">
       <UniqueIdentifier>{0f07a8f8-2e2f-46b1-84e9-eb32e7f913f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Filter">
+    <Filter Include="Tools">
+      <UniqueIdentifier>{a0f3b029-8fb9-4be2-979f-4fd21b258d6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Composite">
+      <UniqueIdentifier>{e7f0dbe8-6aa2-41f4-8a16-e75ed603715c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Filter">
       <UniqueIdentifier>{62d5c720-21b3-4457-951b-6e44979ddd15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Transform">
+      <UniqueIdentifier>{e4b6d57f-f910-4a99-b207-fea9ca91baf1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
