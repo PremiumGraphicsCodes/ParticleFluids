@@ -10,7 +10,7 @@
 #include "../VDBCommand/VDBSTLFileWriteCommand.h"
 #include "../VDBCommand/VDBVolumeToMeshCommand.h"
 #include "../VDBCommand/VDBMeshToVolumeCommand.h"
-#include "../VDBCommand/VDBSmoothingCommand.h"
+#include "../VDBCommand/VDBFilterCommand.h"
 
 #include "CrystalScene/Command/JSONFileWriter.h"
 #include "CrystalScene/Command/JSONFileReader.h"
@@ -150,7 +150,7 @@ TEST(VDBRunnerTest, TestSmoothingCommand)
 {
 	const std::string filepath("./TestFiles/smoothing.json");
 
-	VDBSmoothingCommand command;
+	VDBFilterCommand command;
 	JSONFileWriter writer;
 	writer.add(&command);
 	EXPECT_TRUE(writer.write(filepath));

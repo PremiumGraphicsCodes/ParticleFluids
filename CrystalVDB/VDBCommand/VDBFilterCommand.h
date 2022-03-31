@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace VDB {
 
-class VDBSmoothingCommand : public Command::ICommand
+class VDBFilterCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
@@ -23,9 +23,9 @@ public:
 		Results();
 	};
 
-	VDBSmoothingCommand();
+	VDBFilterCommand();
 
-	explicit VDBSmoothingCommand(const Args& args);
+	explicit VDBFilterCommand(const Args& args);
 
 	static std::string getName();
 

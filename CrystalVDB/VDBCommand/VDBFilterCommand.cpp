@@ -1,4 +1,4 @@
-#include "VDBSmoothingCommand.h"
+#include "VDBFilterCommand.h"
 
 #include "../CrystalVDB/VDBFilter.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
@@ -19,7 +19,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBSmoothingCommand::Args::Args() :
+VDBFilterCommand::Args::Args() :
 	vdbVolumeId(::VDBVolumeIdLabel, -1),
 	width(::WidthLabel, 1),
 	iteration(::IterationLabel, 1),
@@ -30,25 +30,25 @@ VDBSmoothingCommand::Args::Args() :
 	add(&iteration);
 }
 
-VDBSmoothingCommand::Results::Results()
+VDBFilterCommand::Results::Results()
 {
 }
 
-VDBSmoothingCommand::VDBSmoothingCommand() :
+VDBFilterCommand::VDBFilterCommand() :
 	ICommand(&args, &results)
 {}
 
-VDBSmoothingCommand::VDBSmoothingCommand(const Args& args) :
+VDBFilterCommand::VDBFilterCommand(const Args& args) :
 	args(args),
 	ICommand(&this->args, &results)
 {}
 
-std::string VDBSmoothingCommand::getName()
+std::string VDBFilterCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-bool VDBSmoothingCommand::execute(World* world)
+bool VDBFilterCommand::execute(World* world)
 {
 	auto volume = world->getScenes()->findSceneById<VDBVolumeScene*>(args.vdbVolumeId.getValue());
 	if (volume == nullptr) {

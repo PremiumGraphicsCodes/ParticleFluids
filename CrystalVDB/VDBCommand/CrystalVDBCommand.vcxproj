@@ -189,7 +189,7 @@
     <ClInclude Include="VDBPCDFileReadCommand.h" />
     <ClInclude Include="VDBPCDFileWriteCommand.h" />
     <ClInclude Include="VDBPLYFileReadCommand.h" />
-    <ClInclude Include="VDBSmoothingCommand.h" />
+    <ClInclude Include="VDBFilterCommand.h" />
     <ClInclude Include="VDBSTLFileReadCommand.h" />
     <ClInclude Include="VDBSTLFileWriteCommand.h" />
     <ClInclude Include="VDBTransformCommand.h" />
@@ -210,7 +210,7 @@
     <ClCompile Include="VDBPCDFileReadCommand.cpp" />
     <ClCompile Include="VDBPCDFileWriteCommand.cpp" />
     <ClCompile Include="VDBPLYFileReadCommand.cpp" />
-    <ClCompile Include="VDBSmoothingCommand.cpp" />
+    <ClCompile Include="VDBFilterCommand.cpp" />
     <ClCompile Include="VDBSTLFileReadCommand.cpp" />
     <ClCompile Include="VDBSTLFileWriteCommand.cpp" />
     <ClCompile Include="VDBTransformCommand.cpp" />

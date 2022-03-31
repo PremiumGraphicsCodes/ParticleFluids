@@ -9,7 +9,7 @@
     <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
     <ClCompile Include="VDBVolumeToPSCommand.cpp" />
     <ClCompile Include="ToVDBVolumeCommand.cpp" />
-    <ClCompile Include="VDBSmoothingCommand.cpp" />
+    <ClCompile Include="VDBFilterCommand.cpp" />
     <ClCompile Include="VDBOBJFileWriteCommand.cpp">
       <Filter>IO</Filter>
     </ClCompile>
@@ -48,7 +48,7 @@
     <ClInclude Include="VDBVolumeToMeshCommand.h" />
     <ClInclude Include="VDBVolumeToPSCommand.h" />
     <ClInclude Include="ToVDBVolumeCommand.h" />
-    <ClInclude Include="VDBSmoothingCommand.h" />
+    <ClInclude Include="VDBFilterCommand.h" />
     <ClInclude Include="VDBOBJFileWriteCommand.h">
       <Filter>IO</Filter>
     </ClInclude>
