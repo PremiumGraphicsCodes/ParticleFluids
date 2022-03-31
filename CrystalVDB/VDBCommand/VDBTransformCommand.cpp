@@ -2,7 +2,7 @@
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 #include "CrystalVDB/CrystalVDB/VDBVolumeScene.h"
-#include "CrystalVDB/CrystalVDB/VDBVolumeImpl.h"
+//#include "CrystalVDB/CrystalVDB/VDBVolumeImpl.h"
 
 //#include "openvdb/tools/GridTransformer.h"
 
@@ -86,7 +86,6 @@ bool VDBTransformCommand::execute(World* world)
 		*/
 	// Prune the target tree for optimal sparsity.
 	//targetGrid->tree().prune();
-	*/
 
 	return true;
 }

@@ -15,6 +15,7 @@ public:
 		Command::Arg<int> vdbVolumeId;
 		Command::Arg<int> width;
 		Command::Arg<int> iteration;
+		Command::Arg<std::string> filterType;
 	};
 
 	struct Results : Command::IResults
