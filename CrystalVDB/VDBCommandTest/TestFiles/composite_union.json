@@ -1,0 +1,10 @@
+[
+    [
+        "VDBComposite",
+        {
+            "CompositeType": "Union",
+            "VolumeId1": -1,
+            "VolumeId2": 1
+        }
+    ]
+]
