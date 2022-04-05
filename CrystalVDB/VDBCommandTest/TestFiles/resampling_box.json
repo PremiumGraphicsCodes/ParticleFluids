@@ -1,0 +1,9 @@
+[
+    [
+        "VDBResampling",
+        {
+            "SamplingType": "Point",
+            "VolumeId": -1
+        }
+    ]
+]
