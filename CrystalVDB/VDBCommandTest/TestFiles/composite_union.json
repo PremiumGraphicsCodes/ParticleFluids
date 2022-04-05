@@ -3,8 +3,9 @@
         "VDBComposite",
         {
             "CompositeType": "Union",
+            "DestVolumeId": -1,
             "VolumeId1": -1,
-            "VolumeId2": 1
+            "VolumeId2": -1
         }
     ]
 ]

@@ -11,6 +11,7 @@ namespace
 	PublicLabel CommandNameLabel = "VDBComposite";
 	PublicLabel VolumeId1Label = "VolumeId1";
 	PublicLabel VolumeId2Label = "VolumeId2";
+	PublicLabel DestVolumeIdLabel = "DestVolumeId";
 	PublicLabel CompositeTypeLabel = "CompositeType";
 	PublicLabel CompositeType_Union = "Union";
 	PublicLabel CompositeType_Difference = "Difference";
@@ -23,11 +24,13 @@ using namespace Crystal::VDB;
 
 VDBCompositeCommand::Args::Args() :
 	volumeId1(::VolumeId1Label, -1),
-	volumeId2(::VolumeId2Label, 1),
+	volumeId2(::VolumeId2Label, -1),
+	destVolumeId(::DestVolumeIdLabel, -1),
 	compositeType(::CompositeTypeLabel, ::CompositeType_Union)
 {
 	add(&volumeId1);
 	add(&volumeId2);
+	add(&destVolumeId);
 	add(&compositeType);
 }
 
@@ -61,16 +64,21 @@ bool VDBCompositeCommand::execute(World* world)
 		return false;
 	}
 
+	auto dest = world->getScenes()->findSceneById<VDBVolumeScene*>(args.destVolumeId.getValue());
+	if (dest == nullptr) {
+		return false;
+	}
+
 	VDBComposite composite;
 	const auto type = args.compositeType.getValue();
 	if (type == ::CompositeType_Union) {
-		composite.csgUnion(volume1, volume2);
+		composite.csgUnion(volume1, volume2, dest);
 	}
 	else if (type == ::CompositeType_Difference) {
-		composite.csgDifference(volume1, volume2);
+		composite.csgDifference(volume1, volume2, dest);
 	}
 	else if (type == ::CompositeType_Intersection) {
-		composite.csgIntersection(volume1, volume2);
+		composite.csgIntersection(volume1, volume2, dest);
 	}
 	else {
 		assert(false);

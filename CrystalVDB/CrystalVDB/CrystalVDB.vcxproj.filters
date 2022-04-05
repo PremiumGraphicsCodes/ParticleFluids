@@ -59,6 +59,9 @@
     <ClCompile Include="VDBResampler.cpp">
       <Filter>Tools\Resampler</Filter>
     </ClCompile>
+    <ClCompile Include="VDBToSpheres.cpp">
+      <Filter>Tools\ToSpheres</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -119,6 +122,9 @@
     <ClInclude Include="VDBResampler.h">
       <Filter>Tools\Resampler</Filter>
     </ClInclude>
+    <ClInclude Include="VDBToSpheres.h">
+      <Filter>Tools\ToSpheres</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">
@@ -162,6 +168,9 @@
     </Filter>
     <Filter Include="Tools\Resampler">
       <UniqueIdentifier>{249bec63-4bdf-4260-9fa3-ce8ce27983c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\ToSpheres">
+      <UniqueIdentifier>{e7dcb0c6-08dc-4678-a70b-820b7e4eeee6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

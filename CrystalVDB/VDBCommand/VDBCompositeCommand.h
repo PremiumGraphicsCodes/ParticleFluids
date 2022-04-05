@@ -14,6 +14,7 @@ public:
 
 		Command::Arg<int> volumeId1;
 		Command::Arg<int> volumeId2;
+		Command::Arg<int> destVolumeId;
 		Command::Arg<std::string> compositeType;
 	};
 

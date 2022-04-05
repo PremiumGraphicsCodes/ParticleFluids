@@ -15,11 +15,11 @@ public:
 	};
 	*/
 
-	void csgUnion(const VDBVolumeScene* lhs, const VDBVolumeScene* rhs);
+	void csgUnion(const VDBVolumeScene* lhs, const VDBVolumeScene* rhs, VDBVolumeScene* dest);
 
-	void csgIntersection(const VDBVolumeScene* lhs, const VDBVolumeScene* rhs);
+	void csgIntersection(const VDBVolumeScene* lhs, const VDBVolumeScene* rhs, VDBVolumeScene* dest);
 
-	void csgDifference(const VDBVolumeScene* lhs, const VDBVolumeScene* rhs);
+	void csgDifference(const VDBVolumeScene* lhs, const VDBVolumeScene* rhs, VDBVolumeScene* dest);
 };
 
 	}
