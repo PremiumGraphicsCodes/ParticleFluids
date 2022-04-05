@@ -7,18 +7,24 @@
         }
     ],
 	[
-        "VDBSmoothing",
+        "VDBFileRead",
         {
-			"FilterType": "Median",
-            "Iteration": 1,
-            "VDBVolumeId": 1,
-            "Width": 1
+            "FilePath": "../VDBDataSet/cube.vdb",
+            "Radius": 0.5
+        }
+    ],
+    [
+        "VDBComposite",
+        {
+            "CompositeType": "Union",
+            "VolumeId1": 1,
+            "VolumeId2": 2
         }
     ],
 	[
         "OpenVDBFileWrite",
         {
-            "FilePath": "../VDBDataSet/torus_smooth.vdb",
+            "FilePath": "../VDBDataSet/test_composite_union_result.vdb",
             "ParticleSystemIds": [],
             "VDBVolumeIds": [1]
         }

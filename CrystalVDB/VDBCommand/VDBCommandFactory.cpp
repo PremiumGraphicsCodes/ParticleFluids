@@ -17,6 +17,8 @@
 #include "VDBVolumeToMeshCommand.h"
 #include "VDBVolumeToPSCommand.h"
 #include "VDBFilterCommand.h"
+#include "VDBCompositeCommand.h"
+#include "VDBResamplingCommand.h"
 #include "ToVDBVolumeCommand.h"
 
 using namespace Crystal::Command;
@@ -80,6 +82,12 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBFilterCommand::getName()) {
 		return std::make_unique<VDBFilterCommand>();
+	}
+	else if (name == VDBCompositeCommand::getName()) {
+		return std::make_unique<VDBCompositeCommand>();
+	}
+	else if (name == VDBResamplingCommand::getName()) {
+		return std::make_unique<VDBResamplingCommand>();
 	}
 	else {
 		assert(false);

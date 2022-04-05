@@ -42,6 +42,7 @@
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="VDBCompositeCommand.cpp" />
+    <ClCompile Include="VDBResamplingCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -85,6 +86,7 @@
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="VDBCompositeCommand.h" />
+    <ClInclude Include="VDBResamplingCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="IO">
