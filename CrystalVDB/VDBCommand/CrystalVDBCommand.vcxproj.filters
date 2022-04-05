@@ -41,6 +41,7 @@
     <ClCompile Include="VDBPLYFileWriteCommand.cpp">
       <Filter>IO</Filter>
     </ClCompile>
+    <ClCompile Include="VDBCompositeCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -83,6 +84,7 @@
     <ClInclude Include="VDBPLYFileWriteCommand.h">
       <Filter>IO</Filter>
     </ClInclude>
+    <ClInclude Include="VDBCompositeCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="IO">

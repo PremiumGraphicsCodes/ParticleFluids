@@ -183,6 +183,7 @@
   <ItemGroup>
     <ClInclude Include="ToVDBVolumeCommand.h" />
     <ClInclude Include="VDBCommandFactory.h" />
+    <ClInclude Include="VDBCompositeCommand.h" />
     <ClInclude Include="VDBFileReadCommand.h" />
     <ClInclude Include="VDBFileWriteCommand.h" />
     <ClInclude Include="VDBInitCommand.h" />
@@ -205,6 +206,7 @@
   <ItemGroup>
     <ClCompile Include="ToVDBVolumeCommand.cpp" />
     <ClCompile Include="VDBCommandFactory.cpp" />
+    <ClCompile Include="VDBCompositeCommand.cpp" />
     <ClCompile Include="VDBFileReadCommand.cpp" />
     <ClCompile Include="VDBFileWriteCommand.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
