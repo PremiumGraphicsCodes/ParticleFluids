@@ -28,7 +28,7 @@ int main()
 
 	VDBCommandFactory factory;
 	JSONFileReader reader;
-	reader.read("./TestFiles/test_composite.json", factory);
+	reader.read("./TestFiles/test_resampling.json", factory);
 	auto commands = reader.getCommands();
 	for (auto& c : commands) {
 		std::cout << "Start " << c->getCommandName() << std::endl;

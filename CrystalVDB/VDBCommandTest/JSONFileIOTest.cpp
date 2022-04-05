@@ -12,6 +12,7 @@
 #include "../VDBCommand/VDBMeshToVolumeCommand.h"
 #include "../VDBCommand/VDBFilterCommand.h"
 #include "../VDBCommand/VDBCompositeCommand.h"
+#include "../VDBCommand/VDBResamplingCommand.h"
 
 #include "CrystalScene/Command/JSONFileWriter.h"
 #include "CrystalScene/Command/JSONFileReader.h"
@@ -165,6 +166,19 @@ TEST(VDBRunnerTest, TestCompositeCommand)
 {
 	const std::string filepath("./TestFiles/composite_union.json");
 	VDBCompositeCommand command;
+	JSONFileWriter writer;
+	writer.add(&command);
+	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
+}
+
+TEST(VDBRunnerTest, TestResamplingCommand)
+{
+	const std::string filepath = "./TestFiles/resampling_box.json";
+	VDBResamplingCommand command;
 	JSONFileWriter writer;
 	writer.add(&command);
 	EXPECT_TRUE(writer.write(filepath));

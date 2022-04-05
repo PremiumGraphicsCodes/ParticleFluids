@@ -1,0 +1,24 @@
+[
+    [
+        "VDBFileRead",
+        {
+            "FilePath": "../VDBDataSet/torus.vdb",
+            "Radius": 0.5
+        }
+    ],
+    [
+        "VDBResampling",
+        {
+            "SamplingType": "Box",
+            "VolumeId": 1
+        }
+    ],
+	[
+        "OpenVDBFileWrite",
+        {
+            "FilePath": "../VDBDataSet/test_resampling_box.vdb",
+            "ParticleSystemIds": [],
+            "VDBVolumeIds": [1]
+        }
+    ]
+]
