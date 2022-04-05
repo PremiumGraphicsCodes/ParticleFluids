@@ -7,6 +7,10 @@
 #include "VDBOBJFileWriteCommand.h"
 #include "VDBSTLFileReadCommand.h"
 #include "VDBSTLFileWriteCommand.h"
+#include "VDBPLYFileReadCommand.h"
+#include "VDBPLYFileWriteCommand.h"
+#include "VDBPCDFileReadCommand.h"
+#include "VDBPCDFileWriteCommand.h"
 #include "VDBSceneCreateCommand.h"
 #include "VDBPSToVolumeCommand.h"
 #include "VDBMeshToVolumeCommand.h"
@@ -40,6 +44,18 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBSTLFileWriteCommand::getName()) {
 		return std::make_unique<VDBSTLFileWriteCommand>();
+	}
+	else if (name == VDBPLYFileReadCommand::getName()) {
+		return std::make_unique<VDBPLYFileReadCommand>();
+	}
+	else if (name == VDBPLYFileWriteCommand::getName()) {
+		return std::make_unique<VDBPLYFileWriteCommand>();
+	}
+	else if (name == VDBPCDFileReadCommand::getName()) {
+		return std::make_unique<VDBPCDFileReadCommand>();
+	}
+	else if (name == VDBPCDFileWriteCommand::getName()) {
+		return std::make_unique<VDBPCDFileWriteCommand>();
 	}
 	else if (name == VDBSceneCreateCommand::getName()) {
 		return std::make_unique<VDBSceneCreateCommand>();

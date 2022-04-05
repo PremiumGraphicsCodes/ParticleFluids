@@ -38,6 +38,9 @@
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="VDBTransformCommand.cpp" />
+    <ClCompile Include="VDBPLYFileWriteCommand.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -77,6 +80,9 @@
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="VDBTransformCommand.h" />
+    <ClInclude Include="VDBPLYFileWriteCommand.h">
+      <Filter>IO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="IO">
