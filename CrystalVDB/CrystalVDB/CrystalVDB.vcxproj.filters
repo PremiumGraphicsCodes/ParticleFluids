@@ -56,6 +56,9 @@
     <ClCompile Include="VDBComposite.cpp">
       <Filter>Tools\Composite</Filter>
     </ClCompile>
+    <ClCompile Include="VDBResampler.cpp">
+      <Filter>Tools\Resampler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -113,6 +116,9 @@
     <ClInclude Include="VDBComposite.h">
       <Filter>Tools\Composite</Filter>
     </ClInclude>
+    <ClInclude Include="VDBResampler.h">
+      <Filter>Tools\Resampler</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">
@@ -153,6 +159,9 @@
     </Filter>
     <Filter Include="Tools\Transform">
       <UniqueIdentifier>{e4b6d57f-f910-4a99-b207-fea9ca91baf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Resampler">
+      <UniqueIdentifier>{249bec63-4bdf-4260-9fa3-ce8ce27983c0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

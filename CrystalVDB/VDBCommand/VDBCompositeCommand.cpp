@@ -64,12 +64,12 @@ bool VDBCompositeCommand::execute(World* world)
 	VDBComposite composite;
 	const auto type = args.compositeType.getValue();
 	if (type == ::CompositeType_Union) {
-
+		composite.csgUnion(volume1, volume2);
 	}
 	else if (type == ::CompositeType_Difference) {
 		composite.csgDifference(volume1, volume2);
 	}
-	else if (type == "") {
+	else if (type == ::CompositeType_Intersection) {
 		composite.csgIntersection(volume1, volume2);
 	}
 	else {
