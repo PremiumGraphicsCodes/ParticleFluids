@@ -24,7 +24,8 @@ MVPFluidSimulationView::MVPFluidSimulationView(const std::string& name, World* m
 	pressureCoeView("PressureCoe", 500.f),
 	viscosityCoeView("ViscosityCoe", 50.0f),
 	timeStepView("TimeStep", 0.01f),
-	radiusView("SearchRadius", 2.00f)
+	radiusView("SearchRadius", 2.00f),
+	externalForceView("ExternalForce", Vector3dd(0.0, -9.8, 0.0))
 {
 	startButton.setFunction([=]() { onStart(); });
 	add(&startButton);
@@ -37,6 +38,7 @@ MVPFluidSimulationView::MVPFluidSimulationView(const std::string& name, World* m
 	add(&viscosityCoeView);
 	add(&timeStepView);
 	add(&radiusView);
+	add(&externalForceView);
 
 	fluidScene = new MVPFluidScene(world->getNextSceneId(), "KFFluid");
 	world->getScenes()->addScene(fluidScene);
@@ -71,12 +73,14 @@ void MVPFluidSimulationView::onReset()
 {
 	this->solver.clear();
 
+	this->solver.setExternalForce(this->externalForceView.getValue());
+
 	fluidScene->clearParticles();
 	emitterScene->clearParticles();
 	staticScene->clearParticles();
 
-	//this->addFluid();
-	this->addEmitter();
+	this->addFluid();
+	//this->addEmitter();
 
 	csgScene->clearBoxes();
 	csgScene->add(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 100, 100)));
@@ -102,9 +106,9 @@ void MVPFluidSimulationView::addFluid()
 		MVPParticleBuilder builder;
 		const auto radius = 1.0;
 		const auto length = radius * 0.5;
-		for (int i = 0; i < 20; ++i) {
-			for (int j = 0; j < 20; ++j) {
-				for (int k = 0; k < 20; ++k) {
+		for (int i = 0; i < 40; ++i) {
+			for (int j = 0; j < 40; ++j) {
+				for (int k = 0; k < 40; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
 					auto mp = builder.create(p, length, 3, 3, 3, 0.25f);
@@ -147,14 +151,19 @@ void MVPFluidSimulationView::addFluid()
 void MVPFluidSimulationView::addEmitter()
 {
 	this->emitterScene->clearParticles();
+	this->emitterScene->clearSources();
 	//this->boundaryScene->clearParticles();
 
 	this->emitterScene->setPressureCoe(pressureCoeView.getValue());
 	this->emitterScene->setViscosityCoe(viscosityCoeView.getValue());
 
 
-	emitterScene->addSource(Sphere3d(Vector3dd(0, 10, 0), 1.0));
+	for (int i = 0; i < 10; ++i) {
+		emitterScene->addSource(Sphere3d(Vector3dd(0, i * 1.0, 0), 1.0));
+	}
+	emitterScene->setInitialVelocity(Vector3dd(10.0, 0.0, 0.0));
 	emitterScene->setStartEnd(0, 100);
+
 	
 	solver.clear();
 	solver.addEmitterScene(emitterScene);

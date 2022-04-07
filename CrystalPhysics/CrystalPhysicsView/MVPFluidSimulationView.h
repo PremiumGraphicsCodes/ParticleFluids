@@ -4,6 +4,7 @@
 #include "CrystalScene/AppBase/ObjectSelectView.h"
 #include "CrystalScene/AppBase/Box3dView.h"
 #include "CrystalScene/AppBase/FloatView.h"
+#include "CrystalScene/AppBase/Vector3dView.h"
 
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 #include "CSGBoundaryView.h"
@@ -46,6 +47,7 @@ private:
 	FloatView viscosityCoeView;
 	FloatView timeStepView;
 	FloatView radiusView;
+	Vector3dView externalForceView;
 	Button startButton;
 	Button resetButton;
 	int newId;
