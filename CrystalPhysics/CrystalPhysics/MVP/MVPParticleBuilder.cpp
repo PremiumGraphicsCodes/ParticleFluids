@@ -9,7 +9,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Physics;
 
-MVPVolumeParticle* Crystal::Physics::MVPParticleBuilder::create(const Math::Vector3df& position, const float radius, const int unum, const int vnum, const int wnum, const float weight)
+MVPVolumeParticle* Crystal::Physics::MVPParticleBuilder::create(const Math::Vector3df& position, const float radius, const float weight)
 {
 	auto vp = new MVPVolumeParticle(radius, position);
 	auto mp = new MVPMassParticle(vp, Vector3dd(0,0,0), weight);

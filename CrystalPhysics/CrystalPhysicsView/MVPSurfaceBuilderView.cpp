@@ -51,7 +51,7 @@ void MVPSurfaceBuilderView::onOk()
 			for (int k = 0; k < 20; ++k) {
 				//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 				const auto p = Vector3dd(i * length, j * length, k * length);
-				auto mp = pbuilder.create(p, length, 3, 3, 3, 1.0f);
+				auto mp = pbuilder.create(p, length, 1.0f);
 				mvps.push_back(mp);
 				//				mp->distributePoints(3, 3, 3, 1.00f);
 //				fluidScene->addParticle(mp);

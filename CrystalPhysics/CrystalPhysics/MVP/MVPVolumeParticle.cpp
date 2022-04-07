@@ -14,7 +14,8 @@ using namespace Crystal::Physics;
 MVPVolumeParticle::MVPVolumeParticle(const float radius, const Vector3dd& position) :
 	radius(radius),
 	position(position),
-	restMass(0.0f)
+	restMass(0.0f),
+	temperature(300.0f)
 {}
 
 MVPVolumeParticle::~MVPVolumeParticle()
@@ -85,6 +86,14 @@ void MVPVolumeParticle::calculateViscosityForce()
 	this->force += f;
 }
 
+void MVPVolumeParticle::calculateHeatDiffuse()
+{
+	float t = 0.0;
+	for (auto mp : innerPoints) {
+		t -= (this->temperature - mp->getTemperature()) * mp->getMass() * 1.0f;
+	}
+}
+
 /*
 void MVPVolumeParticle::calculateVorticity()
 {
@@ -124,6 +133,13 @@ void MVPVolumeParticle::updateMassVelocities()
 {
 	for (auto mp : this->massParticles) {
 		mp->updateVelocity(this->velocity);
+	}
+}
+
+void MVPVolumeParticle::updateMassTemperatures()
+{
+	for (auto mp : this->massParticles) {
+		mp->updateTemperature(this->temperature);
 	}
 }
 

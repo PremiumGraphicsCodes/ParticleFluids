@@ -9,7 +9,8 @@ using namespace Crystal::Physics;
 MVPMassParticle::MVPMassParticle(MVPVolumeParticle* parent, const Math::Vector3df& point, const float mass) :
 	parent(parent),
 	vector(point),
-	mass(mass)
+	mass(mass),
+	temperature(300.0)
 //	pressureCoe(parent->getScene()->getPressureCoe()),
 //	viscosityCoe(parent->getScene()->getViscosityCoe())
 {

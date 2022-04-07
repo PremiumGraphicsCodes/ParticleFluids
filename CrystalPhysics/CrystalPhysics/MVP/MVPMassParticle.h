@@ -24,7 +24,7 @@ public:
 
 	void updateVelocity(const Math::Vector3df& centerVelocity);
 
-	//void updateVector(const float dt);
+	void updateTemperature(const float t) { this->temperature = t; }
 
 	float getMass() const { return mass; }
 
@@ -38,6 +38,8 @@ public:
 
 	Math::Vector3df position;
 
+	float getTemperature() const { return temperature; }
+
 private:
 	MVPVolumeParticle* parent;
 	Math::Vector3df vector;
@@ -45,6 +47,7 @@ private:
 	float mass;
 	float pressureCoe;
 	float viscosityCoe;
+	float temperature;
 };
 
 	}
