@@ -15,7 +15,8 @@ MVPVolumeParticle::MVPVolumeParticle(const float radius, const Vector3dd& positi
 	radius(radius),
 	position(position),
 	restMass(0.0f),
-	temperature(300.0f)
+	temperature(300.0f),
+	enthaply(0.0)
 {}
 
 MVPVolumeParticle::~MVPVolumeParticle()
@@ -45,6 +46,7 @@ void MVPVolumeParticle::setViscosityCoe(const float c)
 void MVPVolumeParticle::reset(bool resetMicro)
 {
 	this->force = Math::Vector3df(0, 0, 0);
+	this->enthaply = 0.0;
 	this->averagedCenter = this->position;
 	//this->dv = Math::Vector3df(0, 0, 0);
 	if (resetMicro) {
@@ -86,12 +88,21 @@ void MVPVolumeParticle::calculateViscosityForce()
 	this->force += f;
 }
 
+#include <iostream>
+
 void MVPVolumeParticle::calculateHeatDiffuse()
 {
 	float t = 0.0;
 	for (auto mp : innerPoints) {
-		t -= (this->temperature - mp->getTemperature()) * mp->getMass() * 1.0f;
+		/*
+		if (mp->getTemperature() > 800.0) {
+			std::cout << "temperature is over" << std::endl;
+			//assert(false);
+		}
+		*/
+		t -= (this->temperature - mp->getTemperature()) * mp->getMass() * 100.0f;
 	}
+	this->enthaply += t / (float)innerPoints.size();
 }
 
 /*
@@ -115,6 +126,8 @@ void MVPVolumeParticle::stepTime(const float dt)
 	const auto acc = (force) / getDensity();
 	this->velocity += acc * dt;
 	this->position += this->velocity * dt;
+
+	this->temperature += this->enthaply * dt;
 }
 
 float MVPVolumeParticle::getDensity() const

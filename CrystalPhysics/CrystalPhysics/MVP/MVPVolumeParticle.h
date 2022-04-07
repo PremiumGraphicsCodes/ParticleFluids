@@ -102,6 +102,7 @@ private:
 	Math::Vector3df velocity;
 	Math::Vector3df averagedCenter;
 	float temperature;
+	float enthaply;
 	float restMass;
 	float density;
 	float pressure;

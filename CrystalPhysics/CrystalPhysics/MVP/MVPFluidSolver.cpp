@@ -155,7 +155,7 @@ void MVPFluidSolver::simulate()
 		}
 
 		for (auto particle : fluidParticles) {
-			const auto buo = -externalForce * (particle->getTemperature() - 300.0f) *  particle->getDensity();
+			const auto buo = -externalForce * (particle->getTemperature() - 300.0f) *  particle->getDensity() * 0.01f;
 			particle->addForce(buo);
 			particle->addForce(externalForce * particle->getDensity());
 			//particle->stepTime(dt);

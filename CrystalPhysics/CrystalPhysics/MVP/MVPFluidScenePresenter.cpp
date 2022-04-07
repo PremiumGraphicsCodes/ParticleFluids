@@ -12,7 +12,8 @@ MVPFluidScenePresenter::MVPFluidScenePresenter(IMVPFluidScene* model) :
 	view(nullptr),
 	mode(Mode::Density)
 {
-	colorMap = ColorMap(2.0f, 3.0f, ColorTable::createDefaultTable(270));
+	//colorMap = ColorMap(2.0f, 3.0f, ColorTable::createDefaultTable(270));
+	colorMap = ColorMap(300.0f, 400.0f, ColorTable::createDefaultTable(270));
 }
 
 void MVPFluidScenePresenter::createView(SceneShader* sceneShader)
@@ -36,7 +37,8 @@ void MVPFluidScenePresenter::updateView()
 			c = glm::vec4(1, 1, 1, 0.25);
 		}
 		else if (mode == Mode::Density) {
-			c = colorMap.getInterpolatedColor(p->getDensity());
+			c = colorMap.getInterpolatedColor(p->getTemperature());
+			//c = colorMap.getInterpolatedColor(p->getDensity());
 		}
 		else {
 			assert(false);

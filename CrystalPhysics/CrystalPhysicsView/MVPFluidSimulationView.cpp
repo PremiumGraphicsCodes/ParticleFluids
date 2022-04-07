@@ -118,25 +118,24 @@ void MVPFluidSimulationView::addFluid()
 			}
 		}
 	}
-	/*
 	{
 		MVPParticleBuilder builder;
-		const auto radius = 0.10;
+		const auto radius = 1.0;
 		const auto length = radius * 0.5;
-		for (int i = 40; i < 60; ++i) {
-			for (int j = 0; j < 20; ++j) {
+		for (int i = 0; i < 20; ++i) {
+			for (int j = -2; j < -1; ++j) {
 				for (int k = 0; k < 20; ++k) {
-					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = builder.create(p, length, 3, 3, 3, 0.25f);
-					//				mp->distributePoints(3, 3, 3, 1.00f);
+					auto mp = builder.create(p, length, 0.25f);
+					mp->setTemperature(1000.0f);
+					mp->getMassParticles().front()->updateTemperature(1000.0f);
 					staticScene->addParticle(mp);
+					staticScene->setBoundary(true);
 				}
 			}
 		}
 
 	}
-	*/
 
 	solver.clear();
 	solver.addFluidScene(fluidScene);
