@@ -54,7 +54,7 @@ bool SparseVolumeSceneCreateCommand::execute(World* world)
 
 	const auto bb = args.boundingBox.getValue();
 	const std::array<size_t, 3> res{ resx, resy, resz };
-	auto shape = std::make_unique<SparseVolumed>();
+	auto shape = std::make_unique<SparseVolumef>();
 	auto scene = new SparseVolumeScene(world->getNextSceneId(), name, std::move(shape));
 	world->addScene(scene);
 	results.newId.setValue(scene->getId());

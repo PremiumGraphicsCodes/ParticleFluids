@@ -21,7 +21,7 @@ ISVAddView::ISVAddView(const std::string& name, World* model, Canvas* canvas) :
 	add(&colorMapView);
 }
 
-void ISVAddView::addVolume(std::unique_ptr<SparseVolumed> volume)
+void ISVAddView::addVolume(std::unique_ptr<SparseVolumef> volume)
 {
 	auto scene = new SparseVolumeScene(getWorld()->getNextSceneId(), nameView.getValue(), std::move(volume));
 	getWorld()->getScenes()->addScene(scene);

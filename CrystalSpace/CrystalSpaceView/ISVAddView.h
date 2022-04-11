@@ -15,7 +15,7 @@ public:
 	ISVAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 protected:
-	void addVolume(std::unique_ptr<Space::SparseVolumed> volume);
+	void addVolume(std::unique_ptr<Space::SparseVolumef> volume);
 
 private:
 	StringView nameView;
