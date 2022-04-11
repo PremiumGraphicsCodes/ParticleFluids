@@ -30,9 +30,6 @@
     <ClCompile Include="MeshBoundarySceneUpdateCommand.cpp">
       <Filter>MeshBoundaryScene</Filter>
     </ClCompile>
-    <ClCompile Include="SPHSurfaceConstructionCommand.cpp">
-      <Filter>SurfaceConstruction</Filter>
-    </ClCompile>
     <ClCompile Include="EmitterSceneCreateCommand.cpp">
       <Filter>EmitterScene</Filter>
     </ClCompile>
@@ -42,11 +39,14 @@
     <ClCompile Include="PhysicsSolverExportCommand.cpp">
       <Filter>FluidSolver</Filter>
     </ClCompile>
-    <ClCompile Include="MVPSurfaceConstructionCommand.cpp">
-      <Filter>SurfaceConstruction</Filter>
-    </ClCompile>
     <ClCompile Include="FluidVolumeExportCommand.cpp">
       <Filter>FluidVolume</Filter>
+    </ClCompile>
+    <ClCompile Include="MVPSurfaceConstructionCommand.cpp">
+      <Filter>FluidVolume\Converter</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHVolumeConvertCommand.cpp">
+      <Filter>FluidVolume\Converter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,9 +79,6 @@
     <ClInclude Include="MeshBoundarySceneUpdateCommand.h">
       <Filter>MeshBoundaryScene</Filter>
     </ClInclude>
-    <ClInclude Include="SPHSurfaceConstructionCommand.h">
-      <Filter>SurfaceConstruction</Filter>
-    </ClInclude>
     <ClInclude Include="EmitterSceneCreateCommand.h">
       <Filter>EmitterScene</Filter>
     </ClInclude>
@@ -91,11 +88,14 @@
     <ClInclude Include="PhysicsSolverExportCommand.h">
       <Filter>FluidSolver</Filter>
     </ClInclude>
-    <ClInclude Include="MVPSurfaceConstructionCommand.h">
-      <Filter>SurfaceConstruction</Filter>
-    </ClInclude>
     <ClInclude Include="FluidVolumeExportCommand.h">
       <Filter>FluidVolume</Filter>
+    </ClInclude>
+    <ClInclude Include="MVPSurfaceConstructionCommand.h">
+      <Filter>FluidVolume\Converter</Filter>
+    </ClInclude>
+    <ClInclude Include="SPHVolumeConvertCommand.h">
+      <Filter>FluidVolume\Converter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -111,14 +111,14 @@
     <Filter Include="MeshBoundaryScene">
       <UniqueIdentifier>{21e4c9d6-5737-4a6e-80eb-0e36d12b5b29}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SurfaceConstruction">
-      <UniqueIdentifier>{0e5b995a-a21a-4fa1-a68a-79215cf229ef}</UniqueIdentifier>
-    </Filter>
     <Filter Include="EmitterScene">
       <UniqueIdentifier>{e2569788-f3f2-4e61-bc12-e4992cec8ddc}</UniqueIdentifier>
     </Filter>
     <Filter Include="FluidVolume">
       <UniqueIdentifier>{56bdd695-b2eb-4bd8-a55c-f3e8533bf8e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FluidVolume\Converter">
+      <UniqueIdentifier>{d88668b6-2193-4c5f-9292-8672ceec640b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

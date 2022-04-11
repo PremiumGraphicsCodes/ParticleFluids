@@ -5,18 +5,16 @@
 namespace Crystal {
 	namespace Physics {
 
-class SPHSurfaceConstructionCommand : public Command::ICommand
+class SPHVolumeConvertCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
 	{
 		Command::Arg<int> particleSystemId;
-		//Command::Arg<int> sparseVolumeId;
-		Command::Arg<int> triangleMeshId;
+		Command::Arg<int> volumeId;
 
 		Command::Arg<float> particleRadius;
 		Command::Arg<float> cellLength;
-		Command::Arg<float> threshold;
 		Command::Arg<bool> isIsotorpic;
 
 		Args();
@@ -33,7 +31,7 @@ public:
 
 	std::string getCommandName() const { return getName(); }
 
-	SPHSurfaceConstructionCommand();
+	SPHVolumeConvertCommand();
 
 	bool execute(Scene::World* world) override;
 

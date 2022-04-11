@@ -39,47 +39,27 @@ FluidVolumeExportCommand::FluidVolumeExportCommand() :
 
 bool FluidVolumeExportCommand::execute(World* world)
 {
-	/*
 	PLYFile file;
-	file.properties.push_back(PLYProperty("ix", PLYType::INT));
-	file.properties.push_back(PLYProperty("iy", PLYType::INT));
-	file.properties.push_back(PLYProperty("iz", PLYType::INT));
-	file.properties.push_back(PLYProperty("density", PLYType::FLOAT))
-	for (const auto id : args.fluidIds.getValue()) {
-		auto fluid = world->getScenes()->findSceneById<IMVPFluidScene*>(id);
-		if (fluid == nullptr) {
-			return false;
-		}
-		const auto macroParticles = fluid->getParticles();
-		if (args.doExportMicro.getValue()) {
-			for (const auto mp : macroParticles) {
-				const auto micros = mp->getMassParticles();
-				for (const auto micro : micros) {
-					const auto pp = micro->position;
-					PLYPoint p;
-					p.values.push_back(pp.x);
-					p.values.push_back(pp.y);
-					p.values.push_back(pp.z);
-					file.vertices.push_back(p);
-				}
-			}
-		}
-		else {
-			for (const auto mp : macroParticles) {
-				const auto pp = mp->getPositionf();
-				PLYPoint p;
-				p.values.push_back(pp.x);
-				p.values.push_back(pp.y);
-				p.values.push_back(pp.z);
-
-				file.vertices.push_back(p);
-			}
-		}
+	file.properties.push_back(PLYProperty("x", PLYType::INT));
+	file.properties.push_back(PLYProperty("y", PLYType::INT));
+	file.properties.push_back(PLYProperty("z", PLYType::INT));
+	file.properties.push_back(PLYProperty("density", PLYType::FLOAT));
+	auto volume = world->getScenes()->findSceneById<FluidVolumeScene*>(args.volumeId.getValue());
+	if (volume == nullptr) {
+		return false;
+	}
+	const auto nodes = volume->getShape()->getNodes();
+	for (const auto n : nodes) {
+		const auto i = n->getIndex();
+		PLYPoint p;
+		p.values.push_back(i[0]);
+		p.values.push_back(i[1]);
+		p.values.push_back(i[2]);
+		p.values.push_back(n->getValue());
+		file.vertices.push_back(p);
 	}
 
 	PLYFileWriter writer;
 	const auto isOk = writer.writeBinary(args.filePath.getValue(), file);
 	return isOk;
-	*/
-	return false;
 }
