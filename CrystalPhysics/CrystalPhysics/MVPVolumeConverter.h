@@ -12,7 +12,7 @@
 namespace Crystal {
 	namespace Physics {
 
-class MVPSurfaceBuilder
+class MVPVolumeConverter
 {
 public:
 	void build(const std::vector<MVPVolumeParticle*>& particles, const int res, const double threshold);

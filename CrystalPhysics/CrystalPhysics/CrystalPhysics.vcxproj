@@ -179,7 +179,7 @@
     <ClInclude Include="MPS\MPSFluidSolver.h" />
     <ClInclude Include="MPS\MPSParticle.h" />
     <ClInclude Include="MVPSampler.h" />
-    <ClInclude Include="MVPSurfaceBuilder.h" />
+    <ClInclude Include="MVPVolumeConverter.h" />
     <ClInclude Include="MVP\IMVPFluidScene.h" />
     <ClInclude Include="MVP\MVPBoundaryParticle.h" />
     <ClInclude Include="MVP\MVPBoundaryScene.h" />
@@ -231,7 +231,7 @@
     <ClCompile Include="MPS\MPSFluidSolver.cpp" />
     <ClCompile Include="MPS\MPSParticle.cpp" />
     <ClCompile Include="MVPSampler.cpp" />
-    <ClCompile Include="MVPSurfaceBuilder.cpp" />
+    <ClCompile Include="MVPVolumeConverter.cpp" />
     <ClCompile Include="MVP\IMVPFluidScene.cpp" />
     <ClCompile Include="MVP\MVPBoundaryParticle.cpp" />
     <ClCompile Include="MVP\MVPBoundaryScene.cpp" />

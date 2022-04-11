@@ -1,4 +1,4 @@
-#include "MVPSurfaceBuilder.h"
+#include "MVPVolumeConverter.h"
 
 #include "Crystal/Shape/ParticleSystem.h"
 #include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
@@ -10,7 +10,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
-void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const int res, const double threshold)
+void MVPVolumeConverter::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const int res, const double threshold)
 {
 	if (volumeParticles.empty()) {
 		return;
@@ -30,7 +30,7 @@ void MVPSurfaceBuilder::build(const std::vector<MVPVolumeParticle*>& volumeParti
 	buildCells(threshold);
 }
 
-void MVPSurfaceBuilder::buildVolumes(const std::vector<Vector3dd>& positions, const float radius, const int res)
+void MVPVolumeConverter::buildVolumes(const std::vector<Vector3dd>& positions, const float radius, const int res)
 {
 	if (positions.empty()) {
 		return;
@@ -59,7 +59,7 @@ void MVPSurfaceBuilder::buildVolumes(const std::vector<Vector3dd>& positions, co
 	}
 }
 
-void MVPSurfaceBuilder::buildMasses(const std::vector<Vector3dd>& massParticles, const double radius)
+void MVPVolumeConverter::buildMasses(const std::vector<Vector3dd>& massParticles, const double radius)
 {
 	if (massParticles.empty()) {
 		return;
@@ -123,7 +123,7 @@ void MVPSurfaceBuilder::buildMasses(const std::vector<Vector3dd>& massParticles,
 	}
 }
 
-void MVPSurfaceBuilder::buildCells(const double threshold)
+void MVPVolumeConverter::buildCells(const double threshold)
 {
 	for (const auto& cell : mcCells) {
 		mc.march(cell, threshold);

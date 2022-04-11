@@ -1,6 +1,6 @@
 #include "MVPSurfaceBuilderView.h"
 
-#include "../CrystalPhysics/MVPSurfaceBuilder.h"
+#include "../CrystalPhysics/MVPVolumeConverter.h"
 
 #include "Crystal/Shape/Particle.h"
 #include "Crystal/Shape/WireFrameBuilder.h"
@@ -61,7 +61,7 @@ void MVPSurfaceBuilderView::onOk()
 
 	auto world = getWorld();
 
-	MVPSurfaceBuilder builder;
+	MVPVolumeConverter builder;
 	builder.build(mvps, 3, thresholdView.getValue());
 
 	/*

@@ -6,7 +6,7 @@
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
-#include "CrystalPhysics/CrystalPhysics/MVPSurfaceBuilder.h"
+#include "CrystalPhysics/CrystalPhysics/MVPVolumeConverter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -67,7 +67,7 @@ bool MVPSurfaceConstructionCommand::execute(World* world)
 		return false;
 	}
 
-	MVPSurfaceBuilder builder;
+	MVPVolumeConverter builder;
 	builder.buildVolumes(volumeParticles->getPositions(), args.particleRadius.getValue(), 1);
 	builder.buildMasses(massParticles->getPositions(), args.particleRadius.getValue());
 	builder.buildCells(args.threshold.getValue());

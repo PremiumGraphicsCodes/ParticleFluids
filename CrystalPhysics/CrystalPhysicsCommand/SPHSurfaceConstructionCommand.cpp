@@ -6,7 +6,7 @@
 #include "CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 #include "CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPParticleBuilder.h"
-#include "CrystalPhysics/CrystalPhysics/MVPSurfaceBuilder.h"
+#include "CrystalPhysics/CrystalPhysics/MVPVolumeConverter.h"
 
 #include "../../CrystalPhysics/CrystalPhysics/SurfaceConstruction/SPHSurfaceBuilder.h"
 
