@@ -8,7 +8,7 @@
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPParticleBuilder.h"
 #include "CrystalPhysics/CrystalPhysics/MVPVolumeConverter.h"
 
-#include "../../CrystalPhysics/CrystalPhysics/SurfaceConstruction/SPHSurfaceBuilder.h"
+#include "../../CrystalPhysics/CrystalPhysics/SurfaceConstruction/SPHVolumeConverter.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
@@ -76,7 +76,7 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 	const auto particleRadius = args.particleRadius.getValue();
 	const auto cellLength = args.cellLength.getValue();
 
-	SPHSurfaceBuilder builder;
+	SPHVolumeConverter builder;
 	std::unique_ptr<SparseVolumed> volume;
 	if (args.isIsotorpic.getValue()) {
 		builder.buildIsotoropic(positions, particleRadius, cellLength);

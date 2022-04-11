@@ -1,5 +1,5 @@
 
-#include "SPHSurfaceBuilder.h"
+#include "SPHVolumeConverter.h"
 
 #include "Crystal/Shape/IParticle.h"
 #include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
@@ -37,7 +37,7 @@ namespace {
 	}
 }
 
-std::unique_ptr<SparseVolumef> SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius, const float cellLength)
+std::unique_ptr<SparseVolumef> SPHVolumeConverter::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius, const float cellLength)
 {
 	const auto searchRadius = particleRadius;
 	if (positions.empty()) {
@@ -82,7 +82,7 @@ std::unique_ptr<SparseVolumef> SPHSurfaceBuilder::buildIsotoropic(const std::vec
 	return std::move(volume);
 }
 
-std::unique_ptr<SparseVolumef> SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float particleRadius, const float cellLength)
+std::unique_ptr<SparseVolumef> SPHVolumeConverter::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float particleRadius, const float cellLength)
 {
 	if (positions.empty()) {
 		return nullptr;
@@ -132,14 +132,14 @@ std::unique_ptr<SparseVolumef> SPHSurfaceBuilder::buildAnisotoropic(const std::v
 	return std::move(volume);
 }
 
-std::unique_ptr<SparseVolumef> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float cellLength)
+std::unique_ptr<SparseVolumef> SPHVolumeConverter::createSparseVolume(const std::vector<Vector3dd>& particles, const float cellLength)
 {
 	Vector3dd resolution{ cellLength, cellLength, cellLength };
 	auto sv = std::make_unique<SparseVolumef>(resolution, particles.size());
 	return sv;
 }
 
-void SPHSurfaceBuilder::calculateDensity(const float searchRadius)
+void SPHVolumeConverter::calculateDensity(const float searchRadius)
 {
 	const SPHKernel kernel(searchRadius);
 
@@ -157,7 +157,7 @@ void SPHSurfaceBuilder::calculateDensity(const float searchRadius)
 	}
 }
 
-void SPHSurfaceBuilder::calculateAnisotropy(const float searchRadius)
+void SPHVolumeConverter::calculateAnisotropy(const float searchRadius)
 {
 	const SPHKernel kernel(searchRadius);
 

@@ -12,7 +12,7 @@ namespace Crystal {
 	namespace Physics {
 
 
-class SPHSurfaceBuilder
+class SPHVolumeConverter
 {
 public:
 	//void add(Shape::IParticle* particle);

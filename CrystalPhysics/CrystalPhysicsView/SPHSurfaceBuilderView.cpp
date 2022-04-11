@@ -1,6 +1,6 @@
 #include "SPHSurfaceBuilderView.h"
 
-#include "../CrystalPhysics/SurfaceConstruction/SPHSurfaceBuilder.h"
+#include "../CrystalPhysics/SurfaceConstruction/SPHVolumeConverter.h"
 
 #include "Crystal/Shape/Particle.h"
 #include "Crystal/Shape/WireFrameBuilder.h"
@@ -113,7 +113,7 @@ void SPHSurfaceBuilderView::onOk()
 
 	auto world = getWorld();
 
-	SPHSurfaceBuilder builder;
+	SPHVolumeConverter builder;
 	auto sp = builder.buildIsotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
 	//auto sp = builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
 
