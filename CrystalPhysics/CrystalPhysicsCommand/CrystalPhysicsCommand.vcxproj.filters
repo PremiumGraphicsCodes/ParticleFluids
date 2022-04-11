@@ -42,7 +42,7 @@
     <ClCompile Include="FluidVolumeExportCommand.cpp">
       <Filter>FluidVolume</Filter>
     </ClCompile>
-    <ClCompile Include="MVPSurfaceConstructionCommand.cpp">
+    <ClCompile Include="MVPVolumeConvertCommand.cpp">
       <Filter>FluidVolume\Converter</Filter>
     </ClCompile>
     <ClCompile Include="SPHVolumeConvertCommand.cpp">
@@ -91,7 +91,7 @@
     <ClInclude Include="FluidVolumeExportCommand.h">
       <Filter>FluidVolume</Filter>
     </ClInclude>
-    <ClInclude Include="MVPSurfaceConstructionCommand.h">
+    <ClInclude Include="MVPVolumeConvertCommand.h">
       <Filter>FluidVolume\Converter</Filter>
     </ClInclude>
     <ClInclude Include="SPHVolumeConvertCommand.h">

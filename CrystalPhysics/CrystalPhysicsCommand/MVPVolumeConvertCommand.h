@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Physics {
 
-class MVPSurfaceConstructionCommand : public Command::ICommand
+class MVPVolumeConvertCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
@@ -31,7 +31,7 @@ public:
 
 	std::string getCommandName() const { return getName(); }
 
-	MVPSurfaceConstructionCommand();
+	MVPVolumeConvertCommand();
 
 	bool execute(Scene::World* world) override;
 

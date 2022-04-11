@@ -1,4 +1,4 @@
-#include "MVPSurfaceConstructionCommand.h"
+#include "MVPVolumeConvertCommand.h"
 
 #include "Crystal/Shape/IParticleSystem.h"
 #include "CrystalScene/Scene/ParticleSystemScene.h"
@@ -15,7 +15,7 @@ using namespace Crystal::Physics;
 using namespace Crystal::Scene;
 
 namespace {
-	PublicLabel CommandNameLabel = "MPVSurfaceConstructionCommand";
+	PublicLabel CommandNameLabel = "MVPVolumeConvertCommand";
 	PublicLabel VolumeParticleSystemIdLabel = "VolumeParticleSystemId";
 	PublicLabel MassParticleSystemIdLabel = "MassParticleSystemId";
 	PublicLabel TriangleMeshIdLabel = "TriangleMeshId";
@@ -23,12 +23,12 @@ namespace {
 	PublicLabel ThresholdLabel = "Threshold";
 }
 
-std::string MVPSurfaceConstructionCommand::getName()
+std::string MVPVolumeConvertCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-MVPSurfaceConstructionCommand::Args::Args() :
+MVPVolumeConvertCommand::Args::Args() :
 	volumeParticleSystemId(::VolumeParticleSystemIdLabel, -1),
 	massParticleSystemId(::MassParticleSystemIdLabel, -1),
 	triangleMeshId(::TriangleMeshIdLabel, -1),
@@ -42,17 +42,17 @@ MVPSurfaceConstructionCommand::Args::Args() :
 	add(&threshold);
 }
 
-MVPSurfaceConstructionCommand::Results::Results()// :
+MVPVolumeConvertCommand::Results::Results()// :
 //	newId(::NewIdLabel, 0)
 {
 	//	add(&newId);
 }
 
-MVPSurfaceConstructionCommand::MVPSurfaceConstructionCommand() :
+MVPVolumeConvertCommand::MVPVolumeConvertCommand() :
 	ICommand(&args, &results)
 {}
 
-bool MVPSurfaceConstructionCommand::execute(World* world)
+bool MVPVolumeConvertCommand::execute(World* world)
 {
 	auto volumeParticles = world->getScenes()->findSceneById<IParticleSystemScene*>(args.volumeParticleSystemId.getValue());
 	if (volumeParticles == nullptr) {
