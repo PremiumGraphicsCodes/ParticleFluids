@@ -339,3 +339,4 @@ Blender/CrystalPythonTest/test_export.stl
 /Blender/particle_fluids_test/CrystalPLI.pyd
 /CrystalVDB/VDBDataSet/*.vdb
 *.stl
+/FluidStudio/FluidStudio/imgui.ini
