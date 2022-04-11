@@ -12,3 +12,4 @@ class VolumeScene :
         create_physics_command(FluidVolumeSceneCreateCommand.CommandNameLabel)
         execute_command(self.scene.world)
         self.id = get_result_int(FluidVolumeSceneCreateCommand.NewIdLabel)
+

@@ -73,11 +73,15 @@ bool SPHVolumeConvertCommand::execute(World* world)
 	std::unique_ptr<SparseVolumed> volume;
 	if (args.isIsotorpic.getValue()) {
 		auto shape = builder.buildIsotoropic(positions, particleRadius, cellLength);
-		sp->resetShape(std::move(shape));
+		if (shape != nullptr) {
+			sp->resetShape(std::move(shape));
+		}
 	}
 	else {
 		auto shape = builder.buildAnisotoropic(positions, args.particleRadius.getValue(), cellLength);
-		sp->resetShape(std::move(shape));
+		if (shape != nullptr) {
+			sp->resetShape(std::move(shape));
+		}
 	}
 
 	return true;

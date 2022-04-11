@@ -42,6 +42,9 @@
     <Compile Include="physics\surface_builder_test.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="physics\volume_scene_test.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="scene\file_io_test.py">
       <SubType>Code</SubType>
     </Compile>
