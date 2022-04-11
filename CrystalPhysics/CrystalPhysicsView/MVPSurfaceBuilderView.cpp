@@ -29,11 +29,11 @@ using namespace Crystal::Physics;
 
 MVPSurfaceBuilderView::MVPSurfaceBuilderView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
-	particleRadiusView("ParticleRadius", 1.0f),
+	searchRadiusView("SearchRadius", 1.0f),
 	cellLengthView("CellLength", 1.0),
 	colorMapView("ColorMap")
 {
-	add(&particleRadiusView);
+	add(&searchRadiusView);
 	add(&cellLengthView);
 	add(&colorMapView);
 }
@@ -60,7 +60,7 @@ void MVPSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	MVPVolumeConverter builder;
-	builder.build(mvps, cellLengthView.getValue());
+	builder.build(mvps, cellLengthView.getValue(), searchRadiusView.getValue());
 
 	/*
 	MarchingCubesAlgo mcAlgo;

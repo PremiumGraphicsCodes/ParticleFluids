@@ -16,7 +16,7 @@ private:
 	void onOk() override;
 
 private:
-	FloatView particleRadiusView;
+	FloatView searchRadiusView;
 	FloatView cellLengthView;
 	ColorMapView colorMapView;
 };

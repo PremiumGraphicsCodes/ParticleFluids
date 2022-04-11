@@ -15,7 +15,7 @@ namespace Crystal {
 class MVPVolumeConverter
 {
 public:
-	void build(const std::vector<MVPVolumeParticle*>& particles, const double cellLength);
+	void build(const std::vector<MVPVolumeParticle*>& particles, const double cellLength, const double searchRadius);
 
 	std::unique_ptr<Space::SparseVolumef> getVolume() { return std::move(sparseVolume); }
 

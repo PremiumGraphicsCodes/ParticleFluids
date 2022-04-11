@@ -13,7 +13,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
-void MVPVolumeConverter::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const double cellLength)
+void MVPVolumeConverter::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const double cellLength, const double searchRadius)
 {
 	if (volumeParticles.empty()) {
 		return;
@@ -29,7 +29,7 @@ void MVPVolumeConverter::build(const std::vector<MVPVolumeParticle*>& volumePart
 
 	this->sparseVolume = std::move( builder.get() );
 
-	CompactSpaceHash3d spaceHash(cellLength, volumeParticles.size());
+	CompactSpaceHash3d spaceHash(searchRadius, volumeParticles.size());
 	for (auto vp : volumeParticles) {
 		spaceHash.add(vp);
 	}
@@ -45,7 +45,7 @@ void MVPVolumeConverter::build(const std::vector<MVPVolumeParticle*>& volumePart
 			const auto masses = vp->getMassParticles();
 			for (auto m : masses) {
 				const auto d = Math::getDistanceSquared(m->getPosition(), center);
-				if (d < cellLength * cellLength) {
+				if (d < searchRadius * searchRadius) {
 					node->setValue(node->getValue() + m->getMass());
 				}
 				n->getPosition();
