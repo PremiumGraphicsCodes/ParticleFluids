@@ -7,18 +7,18 @@ namespace Crystal {
 	namespace Physics {
 		//		class KFFluidScenePresenter;
 
-class MVPVolumeScene : public Scene::IScene
+class FluidVolumeScene : public Scene::IScene
 {
 public:
-	MVPVolumeScene(const int id, const std::string& name, std::unique_ptr<Space::SparseVolumef> shape);
+	FluidVolumeScene(const int id, const std::string& name, std::unique_ptr<Space::SparseVolumef> shape);
 
-	virtual ~MVPVolumeScene();
+	virtual ~FluidVolumeScene();
 
 	Space::SparseVolumef* getShape() const { return shape.get(); }
 
-	void resetShape(std::unique_ptr<SparseVolumef> shape) { this->shape = std::move(shape); }
+	void resetShape(std::unique_ptr<Space::SparseVolumef> shape) { this->shape = std::move(shape); }
 
-	Scene::SceneType getType() const { return Scene::SceneType("MVPVolumeScene"); }
+	Scene::SceneType getType() const { return Scene::SceneType("FluidVolumeScene"); }
 
 	/*
 	Scene::IPresenter* getPresenter() { return presenter.get(); }

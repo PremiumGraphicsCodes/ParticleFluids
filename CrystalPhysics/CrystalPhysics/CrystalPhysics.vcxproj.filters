@@ -34,8 +34,11 @@
     <Filter Include="IISPH">
       <UniqueIdentifier>{969b6c58-c6da-47ab-b43e-826ab7d134cb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="VolumeConverter">
+    <Filter Include="Volume">
       <UniqueIdentifier>{93dd166c-0ba5-44cc-8a40-880633228676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Volume\Converter">
+      <UniqueIdentifier>{af39bd43-2807-472e-92ba-98afa163cc44}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -114,15 +117,6 @@
     <ClInclude Include="SPHFlame\SPHFlameScenePresenter.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
-    <ClInclude Include="SurfaceConstruction\SPHSurfaceBuilder.h">
-      <Filter>VolumeConverter</Filter>
-    </ClInclude>
-    <ClInclude Include="SurfaceConstruction\SPHSurfaceParticle.h">
-      <Filter>VolumeConverter</Filter>
-    </ClInclude>
-    <ClInclude Include="SurfaceConstruction\WPCA.h">
-      <Filter>VolumeConverter</Filter>
-    </ClInclude>
     <ClInclude Include="MVP\MVPParticleBuilder.h">
       <Filter>MVP</Filter>
     </ClInclude>
@@ -137,9 +131,6 @@
     </ClInclude>
     <ClInclude Include="MVP\MVPBoundarySolver.h">
       <Filter>MVP\Boundary</Filter>
-    </ClInclude>
-    <ClInclude Include="MVPVolumeConverter.h">
-      <Filter>VolumeConverter</Filter>
     </ClInclude>
     <ClInclude Include="MVPSampler.h">
       <Filter>MVP</Filter>
@@ -189,8 +180,23 @@
     <ClInclude Include="MPS\MPSFluidSceneController.h">
       <Filter>MPS</Filter>
     </ClInclude>
-    <ClInclude Include="MVPVolumeScene.h">
-      <Filter>VolumeConverter</Filter>
+    <ClInclude Include="FluidVolumeScene.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
+    <ClInclude Include="MVPVolumeConverter.h">
+      <Filter>Volume\Converter</Filter>
+    </ClInclude>
+    <ClInclude Include="SurfaceConstruction\SPHSurfaceBuilder.h">
+      <Filter>Volume\Converter</Filter>
+    </ClInclude>
+    <ClInclude Include="SurfaceConstruction\SPHSurfaceParticle.h">
+      <Filter>Volume\Converter</Filter>
+    </ClInclude>
+    <ClInclude Include="SurfaceConstruction\WPCA.h">
+      <Filter>Volume\Converter</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidVolumePresenter.h">
+      <Filter>Volume</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -267,15 +273,6 @@
     <ClCompile Include="SPHFlame\SPHFlameScenePresenter.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
-    <ClCompile Include="SurfaceConstruction\SPHSurfaceBuilder.cpp">
-      <Filter>VolumeConverter</Filter>
-    </ClCompile>
-    <ClCompile Include="SurfaceConstruction\SPHSurfaceParticle.cpp">
-      <Filter>VolumeConverter</Filter>
-    </ClCompile>
-    <ClCompile Include="SurfaceConstruction\WPCA.cpp">
-      <Filter>VolumeConverter</Filter>
-    </ClCompile>
     <ClCompile Include="MVP\MVPParticleBuilder.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
@@ -290,9 +287,6 @@
     </ClCompile>
     <ClCompile Include="MVP\MVPBoundarySolver.cpp">
       <Filter>MVP\Boundary</Filter>
-    </ClCompile>
-    <ClCompile Include="MVPVolumeConverter.cpp">
-      <Filter>VolumeConverter</Filter>
     </ClCompile>
     <ClCompile Include="MVPSampler.cpp">
       <Filter>MVP</Filter>
@@ -339,8 +333,23 @@
     <ClCompile Include="MPS\MPSParticle.cpp">
       <Filter>MPS</Filter>
     </ClCompile>
-    <ClCompile Include="MVPVolumeScene.cpp">
-      <Filter>VolumeConverter</Filter>
+    <ClCompile Include="FluidVolumeScene.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="MVPVolumeConverter.cpp">
+      <Filter>Volume\Converter</Filter>
+    </ClCompile>
+    <ClCompile Include="SurfaceConstruction\SPHSurfaceBuilder.cpp">
+      <Filter>Volume\Converter</Filter>
+    </ClCompile>
+    <ClCompile Include="SurfaceConstruction\SPHSurfaceParticle.cpp">
+      <Filter>Volume\Converter</Filter>
+    </ClCompile>
+    <ClCompile Include="SurfaceConstruction\WPCA.cpp">
+      <Filter>Volume\Converter</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidVolumePresenter.cpp">
+      <Filter>Volume</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

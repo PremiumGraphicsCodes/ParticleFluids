@@ -170,6 +170,7 @@
     <ClInclude Include="DFSPH\DFFluidSolver.h" />
     <ClInclude Include="DFSPH\DFSPHBoundarySolver.h" />
     <ClInclude Include="DFSPH\DFSPHParticle.h" />
+    <ClInclude Include="FluidVolumePresenter.h" />
     <ClInclude Include="IISPH\IISPHFluidScene.h" />
     <ClInclude Include="IISPH\IISPHFluidSceneController.h" />
     <ClInclude Include="IISPH\IISPHParticle.h" />
@@ -180,7 +181,7 @@
     <ClInclude Include="MPS\MPSParticle.h" />
     <ClInclude Include="MVPSampler.h" />
     <ClInclude Include="MVPVolumeConverter.h" />
-    <ClInclude Include="MVPVolumeScene.h" />
+    <ClInclude Include="FluidVolumeScene.h" />
     <ClInclude Include="MVP\IMVPFluidScene.h" />
     <ClInclude Include="MVP\MVPBoundaryParticle.h" />
     <ClInclude Include="MVP\MVPBoundaryScene.h" />
@@ -225,6 +226,7 @@
     <ClCompile Include="DFSPH\DFFluidSolver.cpp" />
     <ClCompile Include="DFSPH\DFSPHBoundarySolver.cpp" />
     <ClCompile Include="DFSPH\DFSPHParticle.cpp" />
+    <ClCompile Include="FluidVolumePresenter.cpp" />
     <ClCompile Include="IISPH\IISPHFluidScene.cpp" />
     <ClCompile Include="IISPH\IISPHFluidSceneController.cpp" />
     <ClCompile Include="MPS\MPSFluidScene.cpp" />
@@ -233,7 +235,7 @@
     <ClCompile Include="MPS\MPSParticle.cpp" />
     <ClCompile Include="MVPSampler.cpp" />
     <ClCompile Include="MVPVolumeConverter.cpp" />
-    <ClCompile Include="MVPVolumeScene.cpp" />
+    <ClCompile Include="FluidVolumeScene.cpp" />
     <ClCompile Include="MVP\IMVPFluidScene.cpp" />
     <ClCompile Include="MVP\MVPBoundaryParticle.cpp" />
     <ClCompile Include="MVP\MVPBoundaryScene.cpp" />
