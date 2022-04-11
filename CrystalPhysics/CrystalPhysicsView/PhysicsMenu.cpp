@@ -8,7 +8,7 @@
 #include "SPHFlameSimulationView.h"
 
 #include "MeshBoundaryView.h"
-#include "SPHSurfaceBuilderView.h"
+#include "SPHVolumeConverterView.h"
 #include "MVPSurfaceBuilderView.h"
 #include "MVPSamplerView.h"
 
@@ -54,7 +54,7 @@ PhysicsMenu::PhysicsMenu(const std::string& name, World* world, Canvas* canvas, 
 		}));
 
 	add(new MenuItem("SPHSurface", [world, canvas, control] {
-		control->setWindow(new SPHSurfaceBuilderView("SPHSurface", world, canvas));
+		control->setWindow(new SPHVolumeConverterView("SPHSurface", world, canvas));
 		}));
 	
 	add(new MenuItem("MVPSurface", [world, canvas, control] {

@@ -167,7 +167,7 @@
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
     <ClCompile Include="SPHFlameSimulationView.cpp" />
-    <ClCompile Include="SPHSurfaceBuilderView.cpp" />
+    <ClCompile Include="SPHVolumeConverterView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj">
@@ -219,7 +219,7 @@
     <ClInclude Include="PBSPHFluidSimulationView.h" />
     <ClInclude Include="PhysicsMenu.h" />
     <ClInclude Include="SPHFlameSimulationView.h" />
-    <ClInclude Include="SPHSurfaceBuilderView.h" />
+    <ClInclude Include="SPHVolumeConverterView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,10 +10,10 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class SPHSurfaceBuilderView : public IOkCancelView
+class SPHVolumeConverterView : public IOkCancelView
 {
 public:
-	SPHSurfaceBuilderView(const std::string& name, Scene::World* model, Canvas* canvas);
+	SPHVolumeConverterView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

@@ -73,8 +73,8 @@ std::unique_ptr<SparseVolumef> SPHVolumeConverter::buildIsotoropic(const std::ve
 		for (auto n : neighbors) {
 			auto sp = static_cast<SPHSurfaceParticle*>(n);
 			const auto v = n->getPosition() - nodePos;
-			const auto coe = 1400.0f / searchRadius / searchRadius / searchRadius;
-			const auto w = coe * kernel.getCubicSpline(v) * sp->getMass() / sp->getDensity();
+			//const auto coe = 1400.0f / searchRadius / searchRadius / searchRadius;
+			const auto w = /* coe * */ kernel.getCubicSpline(v) * sp->getMass() / sp->getDensity();
 			const auto value = node->getValue();
 			node->setValue(w + value);
 		}

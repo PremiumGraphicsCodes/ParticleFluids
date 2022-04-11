@@ -1,4 +1,4 @@
-#include "SPHSurfaceBuilderView.h"
+#include "SPHVolumeConverterView.h"
 
 #include "../CrystalPhysics/SurfaceConstruction/SPHVolumeConverter.h"
 
@@ -60,7 +60,7 @@ namespace {
 	}
 }
 
-SPHSurfaceBuilderView::SPHSurfaceBuilderView(const std::string& name, World* model, Canvas* canvas) :
+SPHVolumeConverterView::SPHVolumeConverterView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	particleRadiusView("ParticleRadius", 1.0f),
 	cellLengthView("CellLength", 1.0),
@@ -73,7 +73,7 @@ SPHSurfaceBuilderView::SPHSurfaceBuilderView(const std::string& name, World* mod
 	add(&colorMapView);
 }
 
-void SPHSurfaceBuilderView::onOk()
+void SPHVolumeConverterView::onOk()
 {
 	std::vector<Vector3dd> positions;
 
@@ -118,33 +118,17 @@ void SPHSurfaceBuilderView::onOk()
 	//auto sp = builder.buildAnisotoropic(positions, particleRadiusView.getValue(), cellLengthView.getValue());
 
 	//auto volumes = builder.getVolumes();
-	/*
-	const auto nodes = volume->getNodes();
-	double maxValue = std::numeric_limits<double>::lowest();
-	double minValue = std::numeric_limits<double>::max();
+	const auto nodes = sp->getNodes();
+	float maxValue = std::numeric_limits<float>::lowest();
+	float minValue = std::numeric_limits<float>::max();
 	for (auto n : nodes) {
 		maxValue = std::max(maxValue, n->getValue());
 		minValue = std::min(minValue, n->getValue());
 	}
 	std::cout << minValue << std::endl;
 	std::cout << maxValue << std::endl;
-	*/
-	MarchingCubesAlgo mcAlgo;
-	mcAlgo.build(*sp, thresholdView.getValue());
 
-	//PolygonMeshBuilder pmBuilder;
-	auto mesh = std::make_unique<TriangleMesh>();
-	const auto triangles = mcAlgo.getTriangles();
-	for (const auto& t : triangles) {
-		mesh->addFace(TriangleFace(t));
-	}
-	auto scene = new TriangleMeshScene(getWorld()->getNextSceneId(), "", std::move(mesh));
-
-	scene->getPresenter()->createView(getWorld()->getRenderer());
-	getWorld()->getScenes()->addScene(scene);
-
-	/*
-	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(volume));
+	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(sp));
 	auto presenter = svScene->getPresenter();
 
 	auto colorMap = this->colorMapView.getValue();
@@ -153,5 +137,4 @@ void SPHSurfaceBuilderView::onOk()
 	presenter->createView(world->getRenderer());
 
 	getWorld()->getScenes()->addScene(svScene);
-	*/
 }

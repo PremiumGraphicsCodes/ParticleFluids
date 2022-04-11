@@ -45,6 +45,9 @@
     <ClCompile Include="MVPSurfaceConstructionCommand.cpp">
       <Filter>SurfaceConstruction</Filter>
     </ClCompile>
+    <ClCompile Include="FluidVolumeExportCommand.cpp">
+      <Filter>FluidVolume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -91,6 +94,9 @@
     <ClInclude Include="MVPSurfaceConstructionCommand.h">
       <Filter>SurfaceConstruction</Filter>
     </ClInclude>
+    <ClInclude Include="FluidVolumeExportCommand.h">
+      <Filter>FluidVolume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FluidScene">
@@ -110,6 +116,9 @@
     </Filter>
     <Filter Include="EmitterScene">
       <UniqueIdentifier>{e2569788-f3f2-4e61-bc12-e4992cec8ddc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FluidVolume">
+      <UniqueIdentifier>{56bdd695-b2eb-4bd8-a55c-f3e8533bf8e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
