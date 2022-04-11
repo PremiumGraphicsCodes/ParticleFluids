@@ -30,7 +30,12 @@ bool PLYFileWriter::writeASCII(std::ostream& stream, const PLYFile& pcd)
 	const auto& positions = pcd.vertices;
 	for (const auto& p : positions) {
 		for (size_t i = 0; i < pcd.properties.size(); ++i) {
-			stream << p.getValueAs<float>(i) << " ";
+			if (pcd.properties[i].type == PLYType::FLOAT) {
+				stream << p.getValueAs<float>(i) << " ";
+			}
+			else if (pcd.properties[i].type == PLYType::INT) {
+				stream << p.getValueAs<int>(i) << " ";
+			}
 		}
 		stream << std::endl;
 	}

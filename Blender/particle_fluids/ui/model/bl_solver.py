@@ -18,6 +18,8 @@ from physics.solver_scene import SolverScene
 from ui.model.bl_fluid import BLFluid
 from ui.model.bl_boundary import BLBoundary
 from ui.model.bl_triangle_mesh import BLTriangleMesh
+from physics.volume_scene import VolumeScene
+from physics.surface_builder import SurfaceBuilder
 from scene.triangle_mesh_scene import TriangleMeshScene
 from CrystalPLI import Vector3df
 from scene.file_io import FileIO
@@ -35,6 +37,7 @@ class BLSolver :
         self.__export_dir_path = "tmp_txt"
         self.__iteration = 1
         self.__current_frame = 0
+        self.__volume = 0
 
     def get_current_frame(self) :
         return self.__current_frame
@@ -45,6 +48,9 @@ class BLSolver :
 
         self.__solver = SolverScene(scene)
         self.__solver.create()
+        self.__volume = VolumeScene(scene)
+        self.__volume.create()
+        self.volBuilder = SurfaceBuilder(scene)
         
     def add_fluid(self, bl_fluid) :
         self.__bl_fluids.append(bl_fluid)
@@ -129,6 +135,11 @@ class BLSolver :
         
         macro_file_path = os.path.join(dir_path, "macro" + str(frame) + ".ply")
         self.__solver.export_pcd(macro_file_path, True)
+
+        for fluid in self.__bl_fluids :
+            self.volBuilder.build_isotorpic(fluid.get_fluid().id, self.__volume.id, 1.0, 0.5)
+        volume_file_path = os.path.join(dir_path, "volume" + str(frame) + ".ply")
+        self.__volume.export(volume_file_path)
 
     def is_running(self):
         return self.__running

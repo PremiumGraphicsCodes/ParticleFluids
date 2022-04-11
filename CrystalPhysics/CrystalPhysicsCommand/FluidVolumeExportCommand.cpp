@@ -22,8 +22,8 @@ std::string FluidVolumeExportCommand::getName()
 }
 
 FluidVolumeExportCommand::Args::Args() :
-	volumeId(::VolumeIdLabel, {}),
-	filePath(::FilePathLabel, "")
+	volumeId(::VolumeIdLabel, -1),
+	filePath(::FilePathLabel, std::string(""))
 {
 	add(&volumeId);
 	add(&filePath);
@@ -39,12 +39,17 @@ FluidVolumeExportCommand::FluidVolumeExportCommand() :
 
 bool FluidVolumeExportCommand::execute(World* world)
 {
+	const std::string path = args.filePath.getValue();
+
 	PLYFile file;
 	file.properties.push_back(PLYProperty("x", PLYType::INT));
 	file.properties.push_back(PLYProperty("y", PLYType::INT));
 	file.properties.push_back(PLYProperty("z", PLYType::INT));
 	file.properties.push_back(PLYProperty("density", PLYType::FLOAT));
-	auto volume = world->getScenes()->findSceneById<FluidVolumeScene*>(args.volumeId.getValue());
+
+	const int id = args.volumeId.getValue();
+
+	auto volume = world->getScenes()->findSceneById<FluidVolumeScene*>(id);
 	if (volume == nullptr) {
 		return false;
 	}
@@ -59,7 +64,8 @@ bool FluidVolumeExportCommand::execute(World* world)
 		file.vertices.push_back(p);
 	}
 
+
 	PLYFileWriter writer;
-	const auto isOk = writer.writeASCII(args.filePath.getValue(), file);
+	const auto isOk = writer.writeASCII(path, file);
 	return isOk;
 }
