@@ -9,3 +9,5 @@ class VolumeSceneTest(unittest.TestCase):
 
         volume = VolumeScene(scene)
         volume.create()
+
+        volume.export("FluidVolumeTest.ply")
