@@ -1,6 +1,6 @@
 #include "FluidVolumeScene.h"
 
-#include "CrystalSpace/CrystalSpace/SparseVolumePresenter.h"
+#include "FluidVolumePresenter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;
@@ -10,10 +10,13 @@ FluidVolumeScene::FluidVolumeScene(const int id, const std::string& name, std::u
 	IScene(id, name),
 	shape(std::move(shape))
 {
-	//presenter = std::make_unique<SparseVolumePresenter>(this);
+	presenter = std::make_unique<FluidVolumePresenter>(this);
 }
 
-Box3dd SparseVolumeScene::getBoundingBox() const
+FluidVolumeScene::~FluidVolumeScene()
+{}
+
+Box3dd FluidVolumeScene::getBoundingBox() const
 {
 	return shape->getBoundingBox();
 }
