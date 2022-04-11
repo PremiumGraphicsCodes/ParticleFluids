@@ -13,6 +13,13 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
+namespace {
+
+	struct MVPVolumeCellAttr : public INodeAttribute {
+		double temperature;
+	};
+}
+
 void MVPVolumeConverter::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const double cellLength, const double searchRadius)
 {
 	if (volumeParticles.empty()) {
@@ -38,6 +45,9 @@ void MVPVolumeConverter::build(const std::vector<MVPVolumeParticle*>& volumePart
 
 	const auto nodes = this->sparseVolume->getNodes();
 	for (auto node : nodes) {
+		auto attr = new MVPVolumeCellAttr();
+		attr->temperature = 300.0;
+		node->setAttribute(attr);
 		const auto neighbors = spaceHash.findNeighbors(node->getPosition());
 		const auto center = node->getPosition();
 		for (auto n : neighbors) {

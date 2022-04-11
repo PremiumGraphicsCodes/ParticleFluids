@@ -180,6 +180,7 @@
     <ClInclude Include="MPS\MPSParticle.h" />
     <ClInclude Include="MVPSampler.h" />
     <ClInclude Include="MVPVolumeConverter.h" />
+    <ClInclude Include="MVPVolumeScene.h" />
     <ClInclude Include="MVP\IMVPFluidScene.h" />
     <ClInclude Include="MVP\MVPBoundaryParticle.h" />
     <ClInclude Include="MVP\MVPBoundaryScene.h" />
@@ -232,6 +233,7 @@
     <ClCompile Include="MPS\MPSParticle.cpp" />
     <ClCompile Include="MVPSampler.cpp" />
     <ClCompile Include="MVPVolumeConverter.cpp" />
+    <ClCompile Include="MVPVolumeScene.cpp" />
     <ClCompile Include="MVP\IMVPFluidScene.cpp" />
     <ClCompile Include="MVP\MVPBoundaryParticle.cpp" />
     <ClCompile Include="MVP\MVPBoundaryScene.cpp" />

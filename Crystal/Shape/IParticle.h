@@ -34,7 +34,7 @@ public:
 
 	virtual Math::Vector3dd getPosition() const = 0;
 
-	virtual IParticleAttribute* getIAttribute() const { return nullptr; }
+	//virtual IParticleAttribute* getIAttribute() const { return nullptr; }
 };
 
 	}

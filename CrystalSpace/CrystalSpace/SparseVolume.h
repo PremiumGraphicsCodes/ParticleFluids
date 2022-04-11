@@ -13,11 +13,21 @@ namespace Crystal {
 	namespace Space {
 
 		/*
-class SparseVolumeAttr : public Shape::IParticleAttribute
+template<typename T>
+class NodeAttributeBase
 {
+	virtual ~NodeAttributeBase()
+	{}
 
+	T value;
 };
 */
+
+class INodeAttribute
+{
+public:
+	virtual ~INodeAttribute() {};
+};
 
 template<typename T>
 class SparseVolumeNode : public Shape::IParticle
@@ -26,7 +36,8 @@ public:
 	SparseVolumeNode(const Math::Vector3dd& position, const std::array<int,3>& index) :
 		position(position),
 		value(0.0),
-		index(index)
+		index(index),
+		attr(nullptr)
 	{}
 
 	Math::Vector3dd getPosition() const override { return position; }
@@ -37,10 +48,15 @@ public:
 
 	std::array<int, 3> getIndex() const { return index; }
 
+	void setAttribute(INodeAttribute* attr) { this->attr = attr; }
+
+	INodeAttribute* getAttribute() { return attr; }
+
 private:
 	Math::Vector3dd position;
 	T value;
 	const std::array<int, 3> index;
+	INodeAttribute* attr;
 };
 
 template<typename T>

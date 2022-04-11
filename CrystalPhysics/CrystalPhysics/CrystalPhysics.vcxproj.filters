@@ -19,9 +19,6 @@
     <Filter Include="Boundary\Mesh">
       <UniqueIdentifier>{ff819c75-8710-4215-b391-e3ce5a50f5c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SurfaceReconstruction">
-      <UniqueIdentifier>{93dd166c-0ba5-44cc-8a40-880633228676}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SPHFlame">
       <UniqueIdentifier>{843b95aa-82b5-4fc1-92ce-63a98953ad6c}</UniqueIdentifier>
     </Filter>
@@ -36,6 +33,9 @@
     </Filter>
     <Filter Include="IISPH">
       <UniqueIdentifier>{969b6c58-c6da-47ab-b43e-826ab7d134cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VolumeConverter">
+      <UniqueIdentifier>{93dd166c-0ba5-44cc-8a40-880633228676}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -115,13 +115,13 @@
       <Filter>SPHFlame</Filter>
     </ClInclude>
     <ClInclude Include="SurfaceConstruction\SPHSurfaceBuilder.h">
-      <Filter>SurfaceReconstruction</Filter>
+      <Filter>VolumeConverter</Filter>
     </ClInclude>
     <ClInclude Include="SurfaceConstruction\SPHSurfaceParticle.h">
-      <Filter>SurfaceReconstruction</Filter>
+      <Filter>VolumeConverter</Filter>
     </ClInclude>
     <ClInclude Include="SurfaceConstruction\WPCA.h">
-      <Filter>SurfaceReconstruction</Filter>
+      <Filter>VolumeConverter</Filter>
     </ClInclude>
     <ClInclude Include="MVP\MVPParticleBuilder.h">
       <Filter>MVP</Filter>
@@ -139,7 +139,7 @@
       <Filter>MVP\Boundary</Filter>
     </ClInclude>
     <ClInclude Include="MVPVolumeConverter.h">
-      <Filter>SurfaceReconstruction</Filter>
+      <Filter>VolumeConverter</Filter>
     </ClInclude>
     <ClInclude Include="MVPSampler.h">
       <Filter>MVP</Filter>
@@ -188,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="MPS\MPSFluidSceneController.h">
       <Filter>MPS</Filter>
+    </ClInclude>
+    <ClInclude Include="MVPVolumeScene.h">
+      <Filter>VolumeConverter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -265,13 +268,13 @@
       <Filter>SPHFlame</Filter>
     </ClCompile>
     <ClCompile Include="SurfaceConstruction\SPHSurfaceBuilder.cpp">
-      <Filter>SurfaceReconstruction</Filter>
+      <Filter>VolumeConverter</Filter>
     </ClCompile>
     <ClCompile Include="SurfaceConstruction\SPHSurfaceParticle.cpp">
-      <Filter>SurfaceReconstruction</Filter>
+      <Filter>VolumeConverter</Filter>
     </ClCompile>
     <ClCompile Include="SurfaceConstruction\WPCA.cpp">
-      <Filter>SurfaceReconstruction</Filter>
+      <Filter>VolumeConverter</Filter>
     </ClCompile>
     <ClCompile Include="MVP\MVPParticleBuilder.cpp">
       <Filter>MVP</Filter>
@@ -289,7 +292,7 @@
       <Filter>MVP\Boundary</Filter>
     </ClCompile>
     <ClCompile Include="MVPVolumeConverter.cpp">
-      <Filter>SurfaceReconstruction</Filter>
+      <Filter>VolumeConverter</Filter>
     </ClCompile>
     <ClCompile Include="MVPSampler.cpp">
       <Filter>MVP</Filter>
@@ -335,6 +338,9 @@
     </ClCompile>
     <ClCompile Include="MPS\MPSParticle.cpp">
       <Filter>MPS</Filter>
+    </ClCompile>
+    <ClCompile Include="MVPVolumeScene.cpp">
+      <Filter>VolumeConverter</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
