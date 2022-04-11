@@ -69,6 +69,7 @@ void MVPSurfaceBuilderView::onOk()
 	mcAlgo.march(* volume, thresholdView.getValue());
 	*/
 
+	/*
 	auto mesh = std::make_unique<TriangleMesh>();
 	const auto triangles = builder.getTriangles();
 	for (const auto& t : triangles) {
@@ -78,6 +79,7 @@ void MVPSurfaceBuilderView::onOk()
 
 	scene->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(scene);
+	*/
 
 	/*
 	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(volume));

@@ -21,17 +21,10 @@ public:
 
 	void buildMasses(const std::vector<Math::Vector3dd>& massParticles, const double radius);
 
-	void buildCells(const double threshold);
-
-	//float getVolumeAt(const Math::Vector3df& pos);
-
-	std::vector<Math::Triangle3d> getTriangles() const { return mc.getTriangles(); }
+	std::unique_ptr<Space::SparseVolumef> getVolume() { return std::move(sparseVolume); }
 
 private:
 	std::unique_ptr<Space::SparseVolumef> sparseVolume;
-	Space::MarchingCubesAlgo mc;
-	std::vector<Space::MCCell> mcCells;
-
 };
 	}
 }

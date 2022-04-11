@@ -27,7 +27,6 @@ void MVPVolumeConverter::build(const std::vector<MVPVolumeParticle*>& volumePart
 	const auto radius = volumeParticles.front()->getRadius();
 	buildVolumes(vps, radius, res);
 	buildMasses(massParticles, radius);
-	buildCells(threshold);
 }
 
 void MVPVolumeConverter::buildVolumes(const std::vector<Vector3dd>& positions, const float radius, const int res)
@@ -83,49 +82,5 @@ void MVPVolumeConverter::buildMasses(const std::vector<Vector3dd>& massParticles
 				}
 			}
 		}
-	}
-
-	const auto nodes = this->sparseVolume->getNodes();
-
-	for (auto node : nodes) {
-		const auto ii = node->getIndex();
-
-		const auto i = ii[0];
-		const auto j = ii[1];
-		const auto k = ii[2];
-
-		std::array<std::array<int, 3>, 8> indices;
-		indices[0] = { i,j,k };
-		indices[1] = { i + 1,j,k };
-		indices[2] = { i + 1, j + 1,k };
-		indices[3] = { i,j + 1,k };
-		indices[4] = { i,j,k + 1 };
-		indices[5] = { i + 1,j,k + 1 };
-		indices[6] = { i + 1, j + 1,k + 1 };
-		indices[7] = { i,j + 1,k + 1 };
-
-		MCCell cell;
-		for (int i = 0; i < 8; ++i) {
-			const auto c = this->sparseVolume->findNode(indices[i]);
-			if (c == nullptr) {
-				cell.vertices[i].position = this->sparseVolume->getPositionAt(indices[i]);
-				cell.vertices[i].value = 0.0f;
-			}
-			else {
-				//const auto px = indices[i][0] * radius;
-				//const auto py = indices[i][1] * radius;
-				//const auto pz = indices[i][2] * radius;
-				cell.vertices[i].position = Vector3dd(c->getPosition());
-				cell.vertices[i].value = c->getValue();
-			}
-		}
-		mcCells.push_back(cell);
-	}
-}
-
-void MVPVolumeConverter::buildCells(const double threshold)
-{
-	for (const auto& cell : mcCells) {
-		mc.march(cell, threshold);
 	}
 }
