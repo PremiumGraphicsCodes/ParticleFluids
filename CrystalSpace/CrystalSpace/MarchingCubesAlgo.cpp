@@ -11,7 +11,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Space::MarchingCubesTable;
 
-size_t MarchingCubesAlgo::build(const Volume<double>& volume, const double isoLevel)
+size_t MarchingCubesAlgo::build(const Volume<float>& volume, const double isoLevel)
 {
 	const auto unum = volume.getResolutions()[0];
 	const auto vnum = volume.getResolutions()[1];
@@ -53,7 +53,7 @@ size_t MarchingCubesAlgo::build(const Volume<double>& volume, const double isoLe
 	return triangles.size();
 }
 
-void MarchingCubesAlgo::build(const SparseVolume<double>& volume, const float isoLevel)
+void MarchingCubesAlgo::build(const SparseVolume<float>& volume, const float isoLevel)
 {
 	const auto nodes = volume.getNodes();
 

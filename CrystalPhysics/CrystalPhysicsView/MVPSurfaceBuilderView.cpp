@@ -31,12 +31,10 @@ MVPSurfaceBuilderView::MVPSurfaceBuilderView(const std::string& name, World* mod
 	IOkCancelView(name, model, canvas),
 	particleRadiusView("ParticleRadius", 1.0f),
 	cellLengthView("CellLength", 1.0),
-	thresholdView("Threshold", 1.0f),
 	colorMapView("ColorMap")
 {
 	add(&particleRadiusView);
 	add(&cellLengthView);
-	add(&thresholdView);
 	add(&colorMapView);
 }
 
@@ -62,7 +60,7 @@ void MVPSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	MVPVolumeConverter builder;
-	builder.build(mvps, 3, thresholdView.getValue());
+	builder.build(mvps, cellLengthView.getValue());
 
 	/*
 	MarchingCubesAlgo mcAlgo;
@@ -80,16 +78,14 @@ void MVPSurfaceBuilderView::onOk()
 	scene->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(scene);
 	*/
-
-	/*
+	auto volume = builder.getVolume();
 	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(volume));
 	auto presenter = svScene->getPresenter();
 
 	auto colorMap = this->colorMapView.getValue();
-	colorMap.setMinMax(minValue, maxValue);
+	colorMap.setMinMax(0.0, 100.0);
 	static_cast<SparseVolumePresenter*>(presenter)->setColorMap(colorMap);
 	presenter->createView(world->getRenderer());
 
 	getWorld()->getScenes()->addScene(svScene);
-	*/
 }

@@ -1,6 +1,9 @@
 #include "MVPVolumeConverter.h"
 
+#include "Crystal/Math/Sphere3d.h"
+
 #include "Crystal/Shape/ParticleSystem.h"
+#include "CrystalSpace/CrystalSpace/SparseVolumeBuilder.h"
 #include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 #include "Crystal/Util/Array3d.h"
 #include <algorithm>
@@ -10,76 +13,42 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
-void MVPVolumeConverter::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const int res, const double threshold)
+void MVPVolumeConverter::build(const std::vector<MVPVolumeParticle*>& volumeParticles, const double cellLength)
 {
 	if (volumeParticles.empty()) {
 		return;
 	}
-	std::vector<Vector3dd> vps;
-	std::vector<Vector3dd> massParticles;
+
+	const auto tableSize = static_cast<int>(volumeParticles.size());
+
+	SparseVolumeBuilder builder;
+	builder.build(Vector3df(cellLength), tableSize);
 	for (auto vp : volumeParticles) {
-		vps.push_back(vp->getPosition());
-		const auto mps = vp->getMassParticles();
-		for (auto mp : mps) {
-			massParticles.push_back(mp->getPosition());
-		}
+		builder.add(Sphere3dd(vp->getPosition(), vp->getRadius()));
 	}
-	const auto radius = volumeParticles.front()->getRadius();
-	buildVolumes(vps, radius, res);
-	buildMasses(massParticles, radius);
-}
 
-void MVPVolumeConverter::buildVolumes(const std::vector<Vector3dd>& positions, const float radius, const int res)
-{
-	if (positions.empty()) {
-		return;
+	this->sparseVolume = std::move( builder.get() );
+
+	CompactSpaceHash3d spaceHash(cellLength, volumeParticles.size());
+	for (auto vp : volumeParticles) {
+		spaceHash.add(vp);
 	}
-	const auto r = radius;
-	//const auto l = r * 2.0f;
 
-	const auto tableSize = static_cast<int>(positions.size());
-	this->sparseVolume = std::make_unique<SparseVolumef>(Vector3df(radius), tableSize);
+	//const auto cellRadius = cellLength * 0.5;
 
-	for (int i = 0; i < positions.size(); ++i) {
-		auto vp = positions[i];
-		const auto index = this->sparseVolume->toIndex(vp);
-		for (int i = -res; i <= res; ++i) {
-			for (int j = -res; j <= res; ++j) {
-				for (int k = -res; k <= res; ++k) {
-					std::array<int, 3> ix = { index[0] + i, index[1] + j, index[2] + k };
-					if (!this->sparseVolume->exists(ix)) {
-						this->sparseVolume->createNode(ix);
-					}
+	const auto nodes = this->sparseVolume->getNodes();
+	for (auto node : nodes) {
+		const auto neighbors = spaceHash.findNeighbors(node->getPosition());
+		const auto center = node->getPosition();
+		for (auto n : neighbors) {
+			auto vp = static_cast<MVPVolumeParticle*>(n);
+			const auto masses = vp->getMassParticles();
+			for (auto m : masses) {
+				const auto d = Math::getDistanceSquared(m->getPosition(), center);
+				if (d < cellLength * cellLength) {
+					node->setValue(node->getValue() + m->getMass());
 				}
-			}
-		}
-		auto n = this->sparseVolume->findNode(index);
-		n->setValue(1);
-	}
-}
-
-void MVPVolumeConverter::buildMasses(const std::vector<Vector3dd>& massParticles, const double radius)
-{
-	if (massParticles.empty()) {
-		return;
-	}
-
-	ParticleSystem<float> ps(massParticles, 0.0f);
-	auto pts = ps.getIParticles();
-
-
-	auto res = 1;
-	for (auto mp : massParticles) {
-		const auto index = this->sparseVolume->toIndex(mp);
-		for (int i = -res; i <= res; ++i) {
-			for (int j = -res; j <= res; ++j) {
-				for (int k = -res; k <= res; ++k) {
-					std::array<int, 3> ix = { index[0] + i, index[1] + j, index[2] + k };
-					auto n = this->sparseVolume->findNode(index);
-					if (n != nullptr) {
-						n->setValue(n->getValue() + 1);
-					}
-				}
+				n->getPosition();
 			}
 		}
 	}

@@ -37,7 +37,7 @@ namespace {
 	}
 }
 
-std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius, const float cellLength)
+std::unique_ptr<SparseVolumef> SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius, const float cellLength)
 {
 	const auto searchRadius = particleRadius;
 	if (positions.empty()) {
@@ -64,7 +64,7 @@ std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::buildIsotoropic(const std::vec
 		spaceHash.add(p.get());
 	}
 
-	std::vector<SparseVolumeNode<double>*> ns(nodes.begin(), nodes.end());
+	std::vector<SparseVolumeNode<float>*> ns(nodes.begin(), nodes.end());
 #pragma omp parallel for
 	for (int i = 0; i < ns.size(); ++i) {
 		auto node = ns[i];
@@ -82,7 +82,7 @@ std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::buildIsotoropic(const std::vec
 	return std::move(volume);
 }
 
-std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float particleRadius, const float cellLength)
+std::unique_ptr<SparseVolumef> SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float particleRadius, const float cellLength)
 {
 	if (positions.empty()) {
 		return nullptr;
@@ -111,7 +111,7 @@ std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::buildAnisotoropic(const std::v
 		spaceHash.add(p.get());
 	}
 
-	std::vector<SparseVolumeNode<double>*> ns(nodes.begin(), nodes.end());
+	std::vector<SparseVolumeNode<float>*> ns(nodes.begin(), nodes.end());
 #pragma omp parallel for
 	for (int i = 0; i < ns.size(); ++i) {
 		auto node = ns[i];
@@ -132,10 +132,10 @@ std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::buildAnisotoropic(const std::v
 	return std::move(volume);
 }
 
-std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float cellLength)
+std::unique_ptr<SparseVolumef> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float cellLength)
 {
 	Vector3dd resolution{ cellLength, cellLength, cellLength };
-	auto sv = std::make_unique<SparseVolumed>(resolution, particles.size());
+	auto sv = std::make_unique<SparseVolumef>(resolution, particles.size());
 	return sv;
 }
 

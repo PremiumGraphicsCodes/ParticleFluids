@@ -67,9 +67,11 @@ bool MVPSurfaceConstructionCommand::execute(World* world)
 		return false;
 	}
 
+	/*
 	MVPVolumeConverter builder;
 	builder.buildVolumes(volumeParticles->getPositions(), args.particleRadius.getValue(), 1);
 	builder.buildMasses(massParticles->getPositions(), args.particleRadius.getValue());
+	*/
 
 	/*
 	auto mesh = std::make_unique<TriangleMesh>();

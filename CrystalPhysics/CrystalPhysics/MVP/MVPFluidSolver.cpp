@@ -8,7 +8,6 @@
 
 #include "../../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 #include "CrystalScene/Scene/TriangleMeshScene.h"
-#include "../MVPSurfaceBuilder.h"
 #include "../MVPSampler.h"
 
 #include <iostream>

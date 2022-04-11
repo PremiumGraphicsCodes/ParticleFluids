@@ -17,7 +17,6 @@ private:
 
 private:
 	FloatView particleRadiusView;
-	FloatView thresholdView;
 	FloatView cellLengthView;
 	ColorMapView colorMapView;
 };

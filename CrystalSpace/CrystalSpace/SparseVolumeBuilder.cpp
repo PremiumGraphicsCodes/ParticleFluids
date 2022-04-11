@@ -8,7 +8,7 @@ using namespace Crystal::Space;
 
 void SparseVolumeBuilder::build(const Vector3df& cellLength, const size_t tableSize)
 {
-	this->volume = std::make_unique<SparseVolumed>(cellLength, tableSize);
+	this->volume = std::make_unique<SparseVolumef>(cellLength, tableSize);
 }
 
 void SparseVolumeBuilder::add(const Box3d<double>& box)

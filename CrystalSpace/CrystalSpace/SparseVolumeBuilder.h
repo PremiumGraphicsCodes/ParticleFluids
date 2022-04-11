@@ -21,10 +21,10 @@ public:
 
 	void add(const Math::Sphere3d<double>& sphere);
 
-	std::unique_ptr<SparseVolumed> get() { return std::move(volume); }
+	std::unique_ptr<SparseVolumef> get() { return std::move(volume); }
 
 private:
-	std::unique_ptr<SparseVolumed> volume;
+	std::unique_ptr<SparseVolumef> volume;
 };
 	}
 }
