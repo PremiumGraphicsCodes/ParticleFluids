@@ -193,6 +193,7 @@
     <ClCompile Include="FluidSceneUpdateCommand.cpp" />
     <ClCompile Include="FluidSimulationCommand.cpp" />
     <ClCompile Include="FluidVolumeExportCommand.cpp" />
+    <ClCompile Include="FluidVolumeSceneCreateCommand.cpp" />
     <ClCompile Include="MeshBoundarySceneCreateCommand.cpp" />
     <ClCompile Include="MeshBoundarySceneUpdateCommand.cpp" />
     <ClCompile Include="MVPVolumeConvertCommand.cpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="FluidSceneUpdateCommand.h" />
     <ClInclude Include="FluidSimulationCommand.h" />
     <ClInclude Include="FluidVolumeExportCommand.h" />
+    <ClInclude Include="FluidVolumeSceneCreateCommand.h" />
     <ClInclude Include="MeshBoundarySceneCreateCommand.h" />
     <ClInclude Include="MeshBoundarySceneUpdateCommand.h" />
     <ClInclude Include="MVPVolumeConvertCommand.h" />

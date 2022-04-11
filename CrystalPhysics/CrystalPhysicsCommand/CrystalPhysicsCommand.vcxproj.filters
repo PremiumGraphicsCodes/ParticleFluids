@@ -48,6 +48,9 @@
     <ClCompile Include="SPHVolumeConvertCommand.cpp">
       <Filter>FluidVolume\Converter</Filter>
     </ClCompile>
+    <ClCompile Include="FluidVolumeSceneCreateCommand.cpp">
+      <Filter>FluidVolume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -96,6 +99,9 @@
     </ClInclude>
     <ClInclude Include="SPHVolumeConvertCommand.h">
       <Filter>FluidVolume\Converter</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidVolumeSceneCreateCommand.h">
+      <Filter>FluidVolume</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

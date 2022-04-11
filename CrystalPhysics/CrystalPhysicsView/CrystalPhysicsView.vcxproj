@@ -163,7 +163,7 @@
     <ClCompile Include="MPSFluidSimulationView.cpp" />
     <ClCompile Include="MVPFluidSimulationView.cpp" />
     <ClCompile Include="MVPSamplerView.cpp" />
-    <ClCompile Include="MVPSurfaceBuilderView.cpp" />
+    <ClCompile Include="MVPVolumeConverterView.cpp" />
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
     <ClCompile Include="SPHFlameSimulationView.cpp" />
@@ -215,7 +215,7 @@
     <ClInclude Include="MPSFluidSimulationView.h" />
     <ClInclude Include="MVPFluidSimulationView.h" />
     <ClInclude Include="MVPSamplerView.h" />
-    <ClInclude Include="MVPSurfaceBuilderView.h" />
+    <ClInclude Include="MVPVolumeConverterView.h" />
     <ClInclude Include="PBSPHFluidSimulationView.h" />
     <ClInclude Include="PhysicsMenu.h" />
     <ClInclude Include="SPHFlameSimulationView.h" />

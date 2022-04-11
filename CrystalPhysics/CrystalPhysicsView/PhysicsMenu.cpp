@@ -9,7 +9,7 @@
 
 #include "MeshBoundaryView.h"
 #include "SPHVolumeConverterView.h"
-#include "MVPSurfaceBuilderView.h"
+#include "MVPVolumeConverterView.h"
 #include "MVPSamplerView.h"
 
 #include "CrystalScene/AppBase/MenuItem.h"
@@ -53,11 +53,11 @@ PhysicsMenu::PhysicsMenu(const std::string& name, World* world, Canvas* canvas, 
 		control->setWindow(new MeshBoundaryView("Mesh", world, canvas));
 		}));
 
-	add(new MenuItem("SPHSurface", [world, canvas, control] {
-		control->setWindow(new SPHVolumeConverterView("SPHSurface", world, canvas));
+	add(new MenuItem("SPHVolume", [world, canvas, control] {
+		control->setWindow(new SPHVolumeConverterView("SPHVolume", world, canvas));
 		}));
 	
-	add(new MenuItem("MVPSurface", [world, canvas, control] {
-		control->setWindow(new MVPSurfaceBuilderView("MVPSurface", world, canvas));
+	add(new MenuItem("MVPVolume", [world, canvas, control] {
+		control->setWindow(new MVPVolumeConverterView("MVPVolume", world, canvas));
 		}));
 }

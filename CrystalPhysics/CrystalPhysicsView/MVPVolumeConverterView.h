@@ -7,10 +7,10 @@
 namespace Crystal {
 	namespace UI {
 
-class MVPSurfaceBuilderView : public IOkCancelView
+class MVPVolumeConverterView : public IOkCancelView
 {
 public:
-	MVPSurfaceBuilderView(const std::string& name, Scene::World* model, Canvas* canvas);
+	MVPVolumeConverterView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

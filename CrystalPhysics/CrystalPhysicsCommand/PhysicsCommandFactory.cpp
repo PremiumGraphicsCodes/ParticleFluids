@@ -15,6 +15,7 @@
 #include "PhysicsSolverExportCommand.h"
 #include "SPHVolumeConvertCommand.h"
 #include "MVPVolumeConvertCommand.h"
+#include "FluidVolumeSceneCreateCommand.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::Physics;
@@ -65,6 +66,9 @@ std::unique_ptr<ICommand> PhysicsCommandFactory::create(const std::string& name)
 	}
 	else if (name == MVPVolumeConvertCommand::getName()) {
 		return std::make_unique<MVPVolumeConvertCommand>();
+	}
+	else if (name == FluidVolumeSceneCreateCommand::getName()) {
+		return std::make_unique<FluidVolumeSceneCreateCommand>();
 	}
 	assert(false);
 	return nullptr;

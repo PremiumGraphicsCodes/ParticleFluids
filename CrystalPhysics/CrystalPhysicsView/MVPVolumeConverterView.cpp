@@ -1,4 +1,4 @@
-#include "MVPSurfaceBuilderView.h"
+#include "MVPVolumeConverterView.h"
 
 #include "../CrystalPhysics/MVPVolumeConverter.h"
 
@@ -27,7 +27,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
-MVPSurfaceBuilderView::MVPSurfaceBuilderView(const std::string& name, World* model, Canvas* canvas) :
+MVPVolumeConverterView::MVPVolumeConverterView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	searchRadiusView("SearchRadius", 1.0f),
 	cellLengthView("CellLength", 1.0),
@@ -38,7 +38,7 @@ MVPSurfaceBuilderView::MVPSurfaceBuilderView(const std::string& name, World* mod
 	add(&colorMapView);
 }
 
-void MVPSurfaceBuilderView::onOk()
+void MVPVolumeConverterView::onOk()
 {
 	MVPParticleBuilder pbuilder;
 	const auto radius = 0.20;

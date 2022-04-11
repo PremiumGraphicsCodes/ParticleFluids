@@ -19,7 +19,7 @@
     <ClCompile Include="SPHVolumeConverterView.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
-    <ClCompile Include="MVPSurfaceBuilderView.cpp">
+    <ClCompile Include="MVPVolumeConverterView.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="SPHVolumeConverterView.h">
       <Filter>Volume</Filter>
     </ClInclude>
-    <ClInclude Include="MVPSurfaceBuilderView.h">
+    <ClInclude Include="MVPVolumeConverterView.h">
       <Filter>Volume</Filter>
     </ClInclude>
   </ItemGroup>
