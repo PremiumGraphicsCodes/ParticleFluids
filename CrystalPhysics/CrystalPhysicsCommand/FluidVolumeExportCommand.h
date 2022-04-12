@@ -28,6 +28,8 @@ public:
 
 	FluidVolumeExportCommand();
 
+	explicit FluidVolumeExportCommand(const Args& args);
+
 	bool execute(Scene::World* world) override;
 
 private:

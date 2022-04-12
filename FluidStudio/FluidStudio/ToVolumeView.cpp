@@ -42,25 +42,36 @@ void ToVolumeView::onOk()
 
 	auto fluidVolumeScene = new FluidVolumeScene(w.getNextSceneId(), "", std::make_unique<SparseVolumef>());
 	w.addScene(fluidVolumeScene);
-	const auto fluidVolumeId = fluidVolumeScene->getId();
+	const auto volumeId = fluidVolumeScene->getId();
 
 	const auto path = inputDirectoryView.getPath();
+	const auto outdir = outputDirectoryView.getPath();
 	for (const auto& file : std::filesystem::directory_iterator(path)) {
 		std::cout << file.path() << std::endl;
-		PLYFileImportCommand importCommand;
 		PLYFileImportCommand::Args iArgs;
 		iArgs.filePath.setValue(file.path().string());
 		iArgs.particleSystemId.setValue(psId);
+		PLYFileImportCommand importCommand(iArgs);
+		importCommand.execute(&w);
 
-			/*
 		SPHVolumeConvertCommand::Args args;
 		args.isIsotorpic.setValue(true);
 		args.particleRadius.setValue(particleRadiusView.getValue());
 		args.cellLength.setValue(gridCellWidthView.getValue());
-		args.volumeId.setValue(fluidVolumeId);
+		args.volumeId.setValue(volumeId);
+		args.particleSystemId.setValue(psId);
 		SPHVolumeConvertCommand command(args);
-		command.execute(getWorld());
-		*/
+		command.execute(&w);
+
+		FluidVolumeExportCommand::Args eArgs;
+		std::filesystem::path eFilePath(outdir);
+		eFilePath.append(file.path().filename().string());
+		std::cout << eFilePath << std::endl;
+		eArgs.filePath.setValue(eFilePath.string());
+		eArgs.volumeId.setValue(volumeId);
+		FluidVolumeExportCommand exportCommand(eArgs);
+
+		exportCommand.execute(&w);
 	}
 
 	/*

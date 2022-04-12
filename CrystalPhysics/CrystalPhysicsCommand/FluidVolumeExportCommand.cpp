@@ -37,6 +37,12 @@ FluidVolumeExportCommand::FluidVolumeExportCommand() :
 	ICommand(&args, &results)
 {}
 
+FluidVolumeExportCommand::FluidVolumeExportCommand(const Args& args) :
+	args(args),
+	ICommand(&this->args, &results)
+{
+}
+
 bool FluidVolumeExportCommand::execute(World* world)
 {
 	const std::string path = args.filePath.getValue();
