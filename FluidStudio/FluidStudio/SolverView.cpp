@@ -17,25 +17,6 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Physics;
 
-class ParticleSystemExporter : public IAnimator
-{
-public:
-	ParticleSystemExporter() {}
-
-	void add(Scene::IScene* f) { fluids.push_back(f); }
-
-	void step() override {
-		PhysicsSolverExportCommand::Args args;
-//		args.fluidIds =
-		PhysicsSolverExportCommand command;
-
-	}
-
-private:
-	std::list<Scene::IScene*> fluids;
-};
-
-
 SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	IView(name),
 	world(model),

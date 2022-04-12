@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="FluidMenu.cpp" />
     <ClCompile Include="FluidStudio.cpp" />
+    <ClCompile Include="SolverExporter.cpp" />
     <ClCompile Include="SolverView.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidMenu.h" />
+    <ClInclude Include="SolverExporter.h" />
     <ClInclude Include="SolverView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
