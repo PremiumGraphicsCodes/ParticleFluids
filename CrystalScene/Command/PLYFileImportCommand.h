@@ -26,6 +26,8 @@ public:
 		ICommand(&args, &results)
 	{}
 
+	explicit PLYFileImportCommand(const Args& args);
+
 	static std::string getName();
 
 	std::string getCommandName() const { return getName(); }

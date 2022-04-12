@@ -15,7 +15,10 @@
       <Filter>VDB</Filter>
     </ClCompile>
     <ClCompile Include="ToVolumeView.cpp">
-      <Filter>Fluid</Filter>
+      <Filter>VDB</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBMenu.cpp">
+      <Filter>VDB</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -32,7 +35,10 @@
       <Filter>VDB</Filter>
     </ClInclude>
     <ClInclude Include="ToVolumeView.h">
-      <Filter>Fluid</Filter>
+      <Filter>VDB</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBMenu.h">
+      <Filter>VDB</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

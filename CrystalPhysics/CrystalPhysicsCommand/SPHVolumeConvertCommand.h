@@ -33,6 +33,8 @@ public:
 
 	SPHVolumeConvertCommand();
 
+	const SPHVolumeConvertCommand(const Args& args);
+
 	bool execute(Scene::World* world) override;
 
 private:

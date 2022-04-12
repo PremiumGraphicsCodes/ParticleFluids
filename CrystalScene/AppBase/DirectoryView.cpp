@@ -8,8 +8,8 @@ using namespace Crystal::UI;
 
 DirectoryView::DirectoryView(const std::string& name) :
 	IView(name),
-	selectButton("Select"),
-	pathView("Path")
+	selectButton("Select" + name),
+	pathView("Path" + name)
 {
 	selectButton.setFunction([=]() { onSelect(); });
 	add(&selectButton);
@@ -18,8 +18,8 @@ DirectoryView::DirectoryView(const std::string& name) :
 
 DirectoryView::DirectoryView(const std::string& name, const std::string& path) :
 	IView(name),
-	selectButton("Select"),
-	pathView("Path", path)
+	selectButton("Select" + name),
+	pathView("Path" + name, path)
 {
 	selectButton.setFunction([=]() { onSelect(); });
 	add(&selectButton);

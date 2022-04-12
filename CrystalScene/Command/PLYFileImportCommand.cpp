@@ -30,6 +30,11 @@ PLYFileImportCommand::Results::Results()
 {
 }
 
+PLYFileImportCommand::PLYFileImportCommand(const Args& args) :
+	args(args),
+	ICommand(&this->args, &results)
+{}
+
 std::string PLYFileImportCommand::getName()
 {
 	return PLYFileImportLabels::CommandNameLabel;

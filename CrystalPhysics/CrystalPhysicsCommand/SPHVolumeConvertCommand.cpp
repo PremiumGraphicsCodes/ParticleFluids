@@ -53,6 +53,11 @@ SPHVolumeConvertCommand::SPHVolumeConvertCommand() :
 	ICommand(&args, &results)
 {}
 
+SPHVolumeConvertCommand::SPHVolumeConvertCommand(const Args& args) :
+	args(args),
+	ICommand(&this->args, &results)
+{}
+
 bool SPHVolumeConvertCommand::execute(World* world)
 {
 	auto ps = world->getScenes()->findSceneById<IParticleSystemScene*>(args.particleSystemId.getValue());
