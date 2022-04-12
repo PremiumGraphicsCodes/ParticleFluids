@@ -17,6 +17,7 @@ namespace Crystal {
 		class MVPFluidEmitterScene;
 	}
 	namespace UI {
+		class SolverExporter;
 
 class SolverView : public IView
 {
@@ -57,6 +58,7 @@ private:
 	Canvas* canvas;
 
 	DirectoryView exportDirecotryView;
+	SolverExporter* exporter;
 };
 
 	}

@@ -5,6 +5,7 @@
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidSolver.h"
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPParticleBuilder.h"
 #include "CrystalPhysics/CrystalPhysics/Boundary/CSGBoundaryScene.h"
+#include "SolverExporter.h"
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 
@@ -29,7 +30,7 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	timeStepView("TimeStep", 0.01f),
 	radiusView("SearchRadius", 2.00f),
 	externalForceView("ExternalForce", Vector3dd(0.0, -9.8, 0.0)),
-	exportDirecotryView("ExportDir")
+	exportDirecotryView("ExportDir", "./")
 {
 	startButton.setFunction([=]() { onStart(); });
 	add(&startButton);
@@ -56,10 +57,12 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 
 	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
 
+	exporter = new SolverExporter(world);
+
 
 	world->addAnimation(&solver);
 	world->addAnimation(&updator);
-
+	world->addAnimation(exporter);
 }
 
 void SolverView::onStart()
@@ -90,6 +93,8 @@ void SolverView::onReset()
 	csgScene->clearBoxes();
 	csgScene->add(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 100, 100)));
 
+	exporter->setSolver(&this->solver);
+	exporter->setDirectory(this->exportDirecotryView.getPath());
 	//this->addEmitter();
 }
 

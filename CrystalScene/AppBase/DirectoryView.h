@@ -12,6 +12,8 @@ class DirectoryView : public IView
 public:
 	explicit DirectoryView(const std::string& name);
 
+	DirectoryView(const std::string& name, const std::string& path);
+
 	std::string getPath() const { return pathView.getValue(); }
 
 private:

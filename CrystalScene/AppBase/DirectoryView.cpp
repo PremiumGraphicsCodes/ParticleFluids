@@ -16,6 +16,17 @@ DirectoryView::DirectoryView(const std::string& name) :
 	add(&pathView);
 }
 
+DirectoryView::DirectoryView(const std::string& name, const std::string& path) :
+	IView(name),
+	selectButton("Select"),
+	pathView("Path", path)
+{
+	selectButton.setFunction([=]() { onSelect(); });
+	add(&selectButton);
+	add(&pathView);
+}
+
+
 void DirectoryView::onSelect()
 {
 	auto fileName = tinyfd_selectFolderDialog("Open", "");

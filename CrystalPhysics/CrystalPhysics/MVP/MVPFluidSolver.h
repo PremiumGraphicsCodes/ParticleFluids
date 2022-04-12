@@ -49,6 +49,12 @@ public:
 
 	void step() override;
 
+	int getTimeStep() const { return currentTimeStep;}
+
+	std::list<MVPFluidScene*> getFluids() const { return fluids; }
+
+	std::list<MVPFluidEmitterScene*> getEmitters() const { return emitters; }
+
 	//std::vector<Math::Triangle3d> getTriangles() const { return triangles; }
 
 private:
