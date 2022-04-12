@@ -2,5 +2,24 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="FluidStudio.cpp" />
+    <ClCompile Include="FluidMenu.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverView.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FluidMenu.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverView.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="UI">
+      <UniqueIdentifier>{ae99daef-114e-485f-a3f4-eadb063ed4d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

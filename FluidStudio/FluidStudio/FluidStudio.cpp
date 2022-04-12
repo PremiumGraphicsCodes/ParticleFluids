@@ -10,6 +10,8 @@
 
 #include "CrystalScene/Scene/World.h"
 
+#include "FluidMenu.h"
+
 #include <iostream>
 #include <cassert>
 
@@ -41,7 +43,7 @@ int main()
 	window.add(new CtrlMenu("Ctrl", &world, &canvas));
 	window.add(new ShapeMenu("Shape", &world, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &world, &canvas, control));
-	//window.add(new PhysicsMenu("Physics", &world, &canvas, control));
+	window.add(new FluidMenu("Fluid", &world, &canvas, control));
 
 	window.add(new SceneListPanel("Scene", &world, &canvas, control));
 
