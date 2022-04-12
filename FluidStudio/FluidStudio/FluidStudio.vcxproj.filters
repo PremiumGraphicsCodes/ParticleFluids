@@ -3,28 +3,43 @@
   <ItemGroup>
     <ClCompile Include="FluidStudio.cpp" />
     <ClCompile Include="FluidMenu.cpp">
-      <Filter>UI</Filter>
+      <Filter>Fluid</Filter>
     </ClCompile>
     <ClCompile Include="SolverView.cpp">
-      <Filter>UI</Filter>
+      <Filter>Fluid</Filter>
     </ClCompile>
     <ClCompile Include="SolverExporter.cpp">
-      <Filter>UI</Filter>
+      <Filter>Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="ToVDBVolumeView.cpp">
+      <Filter>VDB</Filter>
+    </ClCompile>
+    <ClCompile Include="ToVolumeView.cpp">
+      <Filter>Fluid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidMenu.h">
-      <Filter>UI</Filter>
+      <Filter>Fluid</Filter>
     </ClInclude>
     <ClInclude Include="SolverView.h">
-      <Filter>UI</Filter>
+      <Filter>Fluid</Filter>
     </ClInclude>
     <ClInclude Include="SolverExporter.h">
-      <Filter>UI</Filter>
+      <Filter>Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="ToVDBVolumeView.h">
+      <Filter>VDB</Filter>
+    </ClInclude>
+    <ClInclude Include="ToVolumeView.h">
+      <Filter>Fluid</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="UI">
+    <Filter Include="VDB">
+      <UniqueIdentifier>{2ded9ef5-bdf9-49a6-a9eb-865cbe97d9d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fluid">
       <UniqueIdentifier>{ae99daef-114e-485f-a3f4-eadb063ed4d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

@@ -151,6 +151,8 @@
     <ClCompile Include="FluidStudio.cpp" />
     <ClCompile Include="SolverExporter.cpp" />
     <ClCompile Include="SolverView.cpp" />
+    <ClCompile Include="ToVDBVolumeView.cpp" />
+    <ClCompile Include="ToVolumeView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj">
@@ -197,6 +199,8 @@
     <ClInclude Include="FluidMenu.h" />
     <ClInclude Include="SolverExporter.h" />
     <ClInclude Include="SolverView.h" />
+    <ClInclude Include="ToVDBVolumeView.h" />
+    <ClInclude Include="ToVolumeView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
