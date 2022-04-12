@@ -40,6 +40,12 @@ PhysicsSolverExportCommand::PhysicsSolverExportCommand() :
 	ICommand(&args, &results)
 {}
 
+PhysicsSolverExportCommand::PhysicsSolverExportCommand(const Args& args) :
+	args(args),
+	ICommand(&this->args, &results)
+{
+}
+
 bool PhysicsSolverExportCommand::execute(World* world)
 {
 	PLYFile file;

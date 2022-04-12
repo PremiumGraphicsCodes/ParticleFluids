@@ -29,6 +29,8 @@ public:
 
 	PhysicsSolverExportCommand();
 
+	explicit PhysicsSolverExportCommand(const Args& args);
+
 	bool execute(Scene::World* world) override;
 
 private:

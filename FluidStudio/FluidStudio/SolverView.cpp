@@ -8,11 +8,33 @@
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 
+#include "CrystalScene/Scene/IAnimator.h"
+#include "CrystalPhysics/CrystalPhysicsCommand/PhysicsSolverExportCommand.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Physics;
+
+class ParticleSystemExporter : public IAnimator
+{
+public:
+	ParticleSystemExporter() {}
+
+	void add(Scene::IScene* f) { fluids.push_back(f); }
+
+	void step() override {
+		PhysicsSolverExportCommand::Args args;
+//		args.fluidIds =
+		PhysicsSolverExportCommand command;
+
+	}
+
+private:
+	std::list<Scene::IScene*> fluids;
+};
+
 
 SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	IView(name),
@@ -25,7 +47,8 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	viscosityCoeView("ViscosityCoe", 50.0f),
 	timeStepView("TimeStep", 0.01f),
 	radiusView("SearchRadius", 2.00f),
-	externalForceView("ExternalForce", Vector3dd(0.0, -9.8, 0.0))
+	externalForceView("ExternalForce", Vector3dd(0.0, -9.8, 0.0)),
+	exportDirecotryView("ExportDir")
 {
 	startButton.setFunction([=]() { onStart(); });
 	add(&startButton);
@@ -39,6 +62,7 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	add(&timeStepView);
 	add(&radiusView);
 	add(&externalForceView);
+	add(&exportDirecotryView);
 
 	fluidScene = new MVPFluidScene(world->getNextSceneId(), "KFFluid");
 	world->getScenes()->addScene(fluidScene);

@@ -5,6 +5,7 @@
 #include "CrystalScene/AppBase/Box3dView.h"
 #include "CrystalScene/AppBase/FloatView.h"
 #include "CrystalScene/AppBase/Vector3dView.h"
+#include "CrystalScene/AppBase/DirectoryView.h"
 
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidSolver.h"
 //#include "CSGBoundaryView.h"
@@ -54,6 +55,8 @@ private:
 
 	Scene::World* world;
 	Canvas* canvas;
+
+	DirectoryView exportDirecotryView;
 };
 
 	}

@@ -148,6 +148,9 @@
     <ClCompile Include="SolverView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj">
+      <Project>{09ee8b6a-2d6f-4b9e-83ff-6a40d03bc465}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysics\CrystalPhysics.vcxproj">
       <Project>{4c0efd78-680e-45c9-9828-9b674ee70df0}</Project>
     </ProjectReference>
