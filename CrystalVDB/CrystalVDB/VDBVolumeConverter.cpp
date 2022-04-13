@@ -54,7 +54,7 @@ void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParti
     }
 }
 
-void VDBVolumeConverter::fromSparseVolume(const SparseVolume<double>& sp, VDBVolumeScene* volume) const
+void VDBVolumeConverter::fromSparseVolume(const SparseVolume<float>& sp, VDBVolumeScene* volume) const
 {
     const auto length = sp.getCellLength();
     Crystal::Math::Matrix4dd matrix

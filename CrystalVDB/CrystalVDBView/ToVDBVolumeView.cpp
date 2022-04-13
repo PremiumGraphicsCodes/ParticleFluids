@@ -33,7 +33,7 @@ void ToVDBVolumeView::onOk()
 
 	const auto sphere = sphereView.getValue();
 	const auto bb = sphere.getBoundingBox();
-	auto sv = std::make_unique<SparseVolumed>(Crystal::Math::Vector3df(1,1,1), resolution[0] * resolution[1] * resolution[2]);
+	auto sv = std::make_unique<SparseVolumef>(Crystal::Math::Vector3df(1,1,1), resolution[0] * resolution[1] * resolution[2]);
 	const auto center = sphere.getCenter();
 	for (int i = 0; i < resolution[0]; ++i) {
 		for (int j = 0; j < resolution[1]; ++j) {

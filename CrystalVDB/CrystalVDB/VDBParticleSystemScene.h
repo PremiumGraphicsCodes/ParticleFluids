@@ -53,6 +53,8 @@ public:
 
     std::vector<Math::Vector3dd> getPositions() const override;
 
+    void resetImpl();
+
 private:
     std::unique_ptr<VDBParticleSystemImpl> impl;
     std::unique_ptr<VDBParticleSystemPresenter> presenter;

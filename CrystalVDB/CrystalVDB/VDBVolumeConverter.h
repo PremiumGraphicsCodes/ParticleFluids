@@ -17,7 +17,7 @@ public:
 
 	void toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystemScene* ps) const;
 
-	void fromSparseVolume(const Crystal::Space::SparseVolume<double>& sp, VDBVolumeScene* volume) const;
+	void fromSparseVolume(const Crystal::Space::SparseVolume<float>& sp, VDBVolumeScene* volume) const;
 private:
 };
 

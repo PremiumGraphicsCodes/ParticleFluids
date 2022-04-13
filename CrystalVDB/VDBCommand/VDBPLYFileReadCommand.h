@@ -13,13 +13,14 @@ public:
 		Args();
 
 		Command::Arg<std::string> filePath;
+		Command::Arg<bool> isVolume;
+		Command::Arg<int> vdbSceneId;
 	};
 
 	struct Results : Command::IResults
 	{
 		Results();
 
-		Command::Result<int> vdbPsId;
 		//Command::Result<std::vector<int>> newIds;
 	};
 

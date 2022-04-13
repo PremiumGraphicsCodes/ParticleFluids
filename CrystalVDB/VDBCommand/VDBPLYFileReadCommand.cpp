@@ -9,6 +9,7 @@ namespace
 {
 	PublicLabel CommandNameLabel = "VDBPLYFileRead";
 	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel IsVolumeLabel = "IsVolume";
 	PublicLabel VDBPSIdLabel = "VDBPSId";
 }
 
@@ -18,15 +19,17 @@ using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
 VDBPLYFileReadCommand::Args::Args() :
-	filePath(::FilePathLabel, "")
+	filePath(::FilePathLabel, ""),
+	isVolume(::IsVolumeLabel, false),
+	vdbSceneId(::VDBPSIdLabel, -1)
 {
 	add(&filePath);
+	add(&isVolume);
+	add(&vdbSceneId);
 }
 
-VDBPLYFileReadCommand::Results::Results() :
-	vdbPsId(::VDBPSIdLabel, {})
+VDBPLYFileReadCommand::Results::Results()
 {
-	add(&vdbPsId);
 }
 
 VDBPLYFileReadCommand::VDBPLYFileReadCommand() :
@@ -45,6 +48,12 @@ std::string VDBPLYFileReadCommand::getName()
 
 bool VDBPLYFileReadCommand::execute(World* world)
 {
+	auto scene = world->getScenes()->findSceneById<VDBParticleSystemScene*>(args.vdbSceneId.getValue());
+	if (scene == nullptr) {
+		return false;
+	}
+	scene->resetImpl();
+
 	const auto filePath = args.filePath.getValue();
 	Crystal::IO::PLYFileReader reader;
 	const auto isOk = reader.read(filePath);
@@ -52,19 +61,12 @@ bool VDBPLYFileReadCommand::execute(World* world)
 		return false;
 	}
 	const auto ply = reader.getPLY();
-	std::vector<Vector3dd> positions;
 	for (const auto& v : ply.vertices) {
 		const auto x = v.getValueAs<float>(0);
 		const auto y = v.getValueAs<float>(1);
 		const auto z = v.getValueAs<float>(2);
-		positions.emplace_back(x, y, z);
+		scene->add(Vector3dd(x, y, z), 1.0);
 	}
-	auto scene = new VDBParticleSystemScene(world->getNextSceneId(), "PCDImport");
-	for (const auto& p : positions) {
-		scene->add(p, 1.0);
-	}
-	world->getScenes()->addScene(scene);
 
-	results.vdbPsId.setValue(scene->getId());
 	return true;
 }

@@ -75,3 +75,8 @@ std::vector<Vector3dd> VDBParticleSystemScene::getPositions() const
     }
     return positions;
 }
+
+void VDBParticleSystemScene::resetImpl()
+{
+    this->impl = std::make_unique<VDBParticleSystemImpl>();
+}
