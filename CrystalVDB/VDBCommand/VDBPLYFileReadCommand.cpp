@@ -63,7 +63,6 @@ bool VDBPLYFileReadCommand::readPoints(World* world)
 	if (scene == nullptr) {
 		return false;
 	}
-	scene->resetImpl();
 
 	const auto filePath = args.filePath.getValue();
 	Crystal::IO::PLYFileReader reader;
@@ -71,6 +70,7 @@ bool VDBPLYFileReadCommand::readPoints(World* world)
 	if (!isOk) {
 		return false;
 	}
+	scene->resetImpl();
 	const auto ply = reader.getPLY();
 	for (const auto& v : ply.vertices) {
 		const auto x = v.getValueAs<float>(0);
@@ -88,6 +88,23 @@ bool VDBPLYFileReadCommand::readVolume(World* world)
 	if (scene == nullptr) {
 		return false;
 	}
+
+	const auto filePath = args.filePath.getValue();
+	Crystal::IO::PLYFileReader reader;
+	const auto isOk = reader.read(filePath);
+	if (!isOk) {
+		return false;
+	}
+	scene->resetImpl();
+	const auto ply = reader.getPLY();
+	for (const auto& v : ply.vertices) {
+		const auto x = v.getValueAs<int>(0);
+		const auto y = v.getValueAs<int>(1);
+		const auto z = v.getValueAs<int>(2);
+		const auto value = v.getValueAs<float>(3);
+		scene->setValue({ x,y,z }, value);
+	}
+
 	//scene->reset
 	return true;
 }

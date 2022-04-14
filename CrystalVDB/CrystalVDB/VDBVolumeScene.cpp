@@ -117,3 +117,8 @@ void VDBVolumeScene::setScale(const double scale)
 {
 	impl->setScale(scale);
 }
+
+void VDBVolumeScene::resetImpl()
+{
+	impl = std::make_unique<VDBVolumeImpl>();
+}

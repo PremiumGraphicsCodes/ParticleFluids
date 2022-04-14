@@ -55,6 +55,8 @@ public:
 
 	void setScale(const double scale);
 
+	void resetImpl();
+
 private:
 	std::unique_ptr<VDBVolumeImpl> impl;
 	std::unique_ptr<VDBVolumePresenter> presenter;
