@@ -95,8 +95,8 @@ VDBParticleSystemScene* VDBFileReader::readPositions(const std::string& pointNam
 VDBVolumeScene* VDBFileReader::readVolume(const std::string& volumeName)
 {
     auto grid = openvdb::gridPtrCast<openvdb::FloatGrid>( file.readGrid(volumeName) );
-    auto impl = new VDBVolumeImpl( grid );
+    //auto impl = new VDBVolumeImpl( grid );
     auto scene = new VDBVolumeScene();
-    scene->setImpl(impl);
+    scene->getImpl()->setPtr(grid);
     return scene;
 }

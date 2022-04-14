@@ -37,6 +37,10 @@ public:
 private:
 	Args args;
 	Results results;
+
+	bool readPoints(Scene::World* world);
+
+	bool readVolume(Scene::World* world);
 };
 
 	}

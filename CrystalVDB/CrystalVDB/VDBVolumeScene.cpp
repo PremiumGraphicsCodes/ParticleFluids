@@ -13,16 +13,20 @@ VDBVolumeScene::VDBVolumeScene() :
 	//IShapeScene(-1, ""),
 	//impl(new VDBVolumeImpl())
 {
+	impl = std::make_unique<VDBVolumeImpl>();
+
 	//impl->setPtr(FloatGrid::create());
 	//presenter = std::make_unique<VDBVolumePresenter>(this);
 }
 
+/*
 VDBVolumeScene::VDBVolumeScene(VDBVolumeImpl* impl) :
 	IShapeScene(-1, "")
 {
 	this->impl = impl;
 	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
+*/
 
 VDBVolumeScene::VDBVolumeScene(const float value) :
 	IShapeScene(-1, "")
@@ -30,7 +34,7 @@ VDBVolumeScene::VDBVolumeScene(const float value) :
 	using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
 	using FloatGridType = openvdb::Grid<FloatTreeType>;
 	auto grid = openvdb::createGrid<FloatGridType>(value);
-	impl = new VDBVolumeImpl(grid);
+	impl = std::make_unique<VDBVolumeImpl>(grid);
 	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
 
@@ -40,7 +44,7 @@ VDBVolumeScene::VDBVolumeScene(const int id, const std::string& name) :
 	using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
 	using FloatGridType = openvdb::Grid<FloatTreeType>;
 	auto grid = openvdb::createGrid<FloatGridType>();
-	impl = new VDBVolumeImpl(grid);
+	impl = std::make_unique<VDBVolumeImpl>(grid);
 	//grid->setName(std::string("density"));
 	impl->setPtr(FloatGrid::create());
 	presenter = std::make_unique<VDBVolumePresenter>(this);
@@ -107,7 +111,6 @@ Box3dd VDBVolumeScene::getBoundingBox() const
 
 VDBVolumeScene::~VDBVolumeScene()
 {
-	delete impl;
 }
 
 void VDBVolumeScene::setScale(const double scale)

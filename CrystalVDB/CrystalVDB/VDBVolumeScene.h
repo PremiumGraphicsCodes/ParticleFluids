@@ -17,13 +17,13 @@ class VDBVolumeScene : public Scene::IShapeScene
 public:
 	VDBVolumeScene();
 
-	explicit VDBVolumeScene(VDBVolumeImpl* impl);
+	//explicit VDBVolumeScene(VDBVolumeImpl* impl);
 
 	explicit VDBVolumeScene(const float value);
 
 	VDBVolumeScene(const int id, const std::string& name);
 
-	void setImpl(VDBVolumeImpl* impl) { this->impl = impl; }
+	//void setImpl(VDBVolumeImpl* impl) { this->impl = impl; }
 
 	//explicit Volume(std::unique_ptr<VolumeImpl> impl);
 
@@ -51,12 +51,12 @@ public:
 
 	Math::Box3dd getBoundingBox() const override;
 
-	VDBVolumeImpl* getImpl() const { return impl; }
+	VDBVolumeImpl* getImpl() const { return impl.get(); }
 
 	void setScale(const double scale);
 
 private:
-	VDBVolumeImpl* impl;
+	std::unique_ptr<VDBVolumeImpl> impl;
 	std::unique_ptr<VDBVolumePresenter> presenter;
 };
 	}

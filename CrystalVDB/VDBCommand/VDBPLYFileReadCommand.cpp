@@ -3,6 +3,7 @@
 #include "../../Crystal/IO/PLYFileReader.h"
 
 #include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBVolumeScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
 namespace
@@ -48,6 +49,16 @@ std::string VDBPLYFileReadCommand::getName()
 
 bool VDBPLYFileReadCommand::execute(World* world)
 {
+	if (args.isVolume.getValue()) {
+		return readVolume(world);
+	}
+	else {
+		return readPoints(world);
+	}
+}
+
+bool VDBPLYFileReadCommand::readPoints(World* world)
+{
 	auto scene = world->getScenes()->findSceneById<VDBParticleSystemScene*>(args.vdbSceneId.getValue());
 	if (scene == nullptr) {
 		return false;
@@ -68,5 +79,15 @@ bool VDBPLYFileReadCommand::execute(World* world)
 		scene->add(Vector3dd(x, y, z), 1.0);
 	}
 
+	return true;
+}
+
+bool VDBPLYFileReadCommand::readVolume(World* world)
+{
+	auto scene = world->getScenes()->findSceneById<VDBVolumeScene*>(args.vdbSceneId.getValue());
+	if (scene == nullptr) {
+		return false;
+	}
+	//scene->reset
 	return true;
 }

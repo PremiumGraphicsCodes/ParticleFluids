@@ -25,10 +25,13 @@ void VDBPolygonMeshConverter::toVolume(const VDBPolygonMeshScene& mesh, VDBVolum
 	openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec3I> m1(points, triangles);
 	//openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec4I> m2(points, quads);
 	auto result = openvdb::tools::meshToVolume<openvdb::FloatGrid>(m1, *xform);
+	volume->getImpl()->setPtr(result);
+	/*
 	auto impl = new VDBVolumeImpl(result);
 	//impl->setScale(1.0 / divideLength);
 	delete volume->getImpl();
 	volume->setImpl(impl);
+	*/
 }
 
 void VDBPolygonMeshConverter::fromVDB(const VDBPolygonMeshScene& src, Crystal::Shape::PolygonMesh* mesh)
