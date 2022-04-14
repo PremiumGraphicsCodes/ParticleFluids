@@ -337,6 +337,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Converter.cpp" />
+    <ClCompile Include="SmoothVolumeConverter.cpp" />
     <ClCompile Include="VDBComposite.cpp" />
     <ClCompile Include="VDBFilter.cpp" />
     <ClCompile Include="VDBPolygonMeshImpl.cpp" />
@@ -360,6 +361,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h" />
+    <ClInclude Include="SmoothVolumeConverter.h" />
     <ClInclude Include="VDBComposite.h" />
     <ClInclude Include="VDBFilter.h" />
     <ClInclude Include="VDBPolygonMeshConverter.h" />

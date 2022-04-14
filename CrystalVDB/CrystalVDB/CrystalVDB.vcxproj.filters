@@ -62,6 +62,9 @@
     <ClCompile Include="VDBToSpheres.cpp">
       <Filter>Tools\ToSpheres</Filter>
     </ClCompile>
+    <ClCompile Include="SmoothVolumeConverter.cpp">
+      <Filter>Converter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -124,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="VDBToSpheres.h">
       <Filter>Tools\ToSpheres</Filter>
+    </ClInclude>
+    <ClInclude Include="SmoothVolumeConverter.h">
+      <Filter>Converter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
