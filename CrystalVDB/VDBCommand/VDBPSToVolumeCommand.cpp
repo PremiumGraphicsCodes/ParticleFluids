@@ -9,6 +9,7 @@
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
 #include "../CrystalVDB/VDBVolumeConverter.h"
+#include "../CrystalVDB/SmoothVolumeConverter.h"
 
 namespace
 {
@@ -17,6 +18,7 @@ namespace
 	PublicLabel VolumeIdLabel = "VolumeId";
 	PublicLabel RadiusLabel = "Radius";
 	PublicLabel VoxelSizeLabel = "VoxelSize";
+	PublicLabel DoUseSPHLabel = "DoUseSPH";
 }
 
 using namespace Crystal::Shape;
@@ -27,12 +29,14 @@ VDBPSToVolumeCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	vdbVolumeId(::VolumeIdLabel, -1),
 	radius(::RadiusLabel, 5.0),
-	voxelSize(::VoxelSizeLabel, 1.0)
+	voxelSize(::VoxelSizeLabel, 1.0),
+	doUseSph(::DoUseSPHLabel, false)
 {
 	add(&particleSystemId);
 	add(&vdbVolumeId);
 	add(&radius);
 	add(&voxelSize);
+	add(&doUseSph);
 }
 
 VDBPSToVolumeCommand::Results::Results()
@@ -64,8 +68,13 @@ bool VDBPSToVolumeCommand::execute(World* world)
 		return false;
 	}
 
-	VDBParticleSystemConverter psConverter;
-	psConverter.toVolume(*scene, args.radius.getValue(), args.voxelSize.getValue(), volume);
-	
+	if (!args.doUseSph.getValue()) {
+		VDBParticleSystemConverter psConverter;
+		psConverter.toVolume(*scene, args.radius.getValue(), args.voxelSize.getValue(), volume);
+	}
+	else {
+		SmoothVolumeConverter converter;
+		converter.buildIsotoropic(scene, args.radius.getValue(), args.voxelSize.getValue(), volume);
+	}
 	return true;
 }

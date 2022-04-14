@@ -16,6 +16,7 @@ public:
 		Command::Arg<int> vdbVolumeId;
 		Command::Arg<double> radius;
 		Command::Arg<double> voxelSize;
+		Command::Arg<bool> doUseSph;
 	};
 
 	struct Results : Command::IResults
