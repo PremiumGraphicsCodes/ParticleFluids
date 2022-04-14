@@ -7,6 +7,9 @@
 #include "CrystalPhysics/CrystalPhysicsCommand/SPHVolumeConvertCommand.h"
 #include "CrystalPhysics/CrystalPhysicsCommand/FluidVolumeExportCommand.h"
 
+#include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
+#include "CrystalVDB/VDBCommand/VDBPLYFileReadCommand.h"
+
 #include "CrystalScene/Command/ParticleSystemCreateCommand.h"
 #include "CrystalScene/Command/PLYFileImportCommand.h"
 #include <iostream>
@@ -17,6 +20,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 using namespace Crystal::Command;
+using namespace Crystal::VDB;
 
 ToVolumeView::ToVolumeView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
@@ -70,8 +74,20 @@ void ToVolumeView::onOk()
 		eArgs.filePath.setValue(eFilePath.string());
 		eArgs.volumeId.setValue(volumeId);
 		FluidVolumeExportCommand exportCommand(eArgs);
-
 		exportCommand.execute(&w);
+
+		VDBSceneCreateCommand::Args scArgs;
+		scArgs.sceneType.setValue("VDBVolume");
+		VDBSceneCreateCommand scCommand(scArgs);
+		scCommand.execute(&w);
+		const auto vdbVolumeId = std::any_cast<int>( scCommand.getResult("NewId") );
+		/*
+		VDBPLYFileReadCommand::Args vArgs;
+		vArgs.isVolume.setValue(true);
+		vArgs.vdbSceneId
+		VDBPLYFileReadCommand vdbReadCommand;
+		*/
+
 	}
 
 	/*
