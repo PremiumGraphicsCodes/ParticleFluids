@@ -98,7 +98,7 @@ bool PLYFileReader::readAsciiData(std::istream & stream, const unsigned int coun
 		for (int j = 0; j < ply.properties.size(); ++j) {
 			auto type = (ply.properties[j].type);
 			if (type == PLYType::FLOAT) {
-				point.values.push_back(std::stod(splitted[j]));
+				point.values.push_back(std::stof(splitted[j]));
 			}
 		}
 		ply.vertices.push_back(point);

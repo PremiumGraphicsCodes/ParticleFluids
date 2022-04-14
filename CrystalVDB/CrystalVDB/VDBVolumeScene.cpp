@@ -13,7 +13,11 @@ VDBVolumeScene::VDBVolumeScene() :
 	//IShapeScene(-1, ""),
 	//impl(new VDBVolumeImpl())
 {
-	impl = std::make_unique<VDBVolumeImpl>();
+	using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
+	using FloatGridType = openvdb::Grid<FloatTreeType>;
+	auto grid = openvdb::createGrid<FloatGridType>();
+
+	impl = std::make_unique<VDBVolumeImpl>(grid);
 
 	//impl->setPtr(FloatGrid::create());
 	//presenter = std::make_unique<VDBVolumePresenter>(this);
@@ -120,5 +124,9 @@ void VDBVolumeScene::setScale(const double scale)
 
 void VDBVolumeScene::resetImpl()
 {
-	impl = std::make_unique<VDBVolumeImpl>();
+	using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
+	using FloatGridType = openvdb::Grid<FloatTreeType>;
+	auto grid = openvdb::createGrid<FloatGridType>();
+
+	impl = std::make_unique<VDBVolumeImpl>(grid);
 }

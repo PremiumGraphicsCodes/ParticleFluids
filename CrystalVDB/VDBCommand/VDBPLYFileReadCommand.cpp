@@ -98,9 +98,9 @@ bool VDBPLYFileReadCommand::readVolume(World* world)
 	scene->resetImpl();
 	const auto ply = reader.getPLY();
 	for (const auto& v : ply.vertices) {
-		const auto x = v.getValueAs<int>(0);
-		const auto y = v.getValueAs<int>(1);
-		const auto z = v.getValueAs<int>(2);
+		const auto x = static_cast<int>( v.getValueAs<float>(0));
+		const auto y = static_cast<int>( v.getValueAs<float>(1));
+		const auto z = static_cast<int>( v.getValueAs<float>(2));
 		const auto value = v.getValueAs<float>(3);
 		scene->setValue({ x,y,z }, value);
 	}

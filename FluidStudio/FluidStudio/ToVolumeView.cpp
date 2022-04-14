@@ -9,6 +9,7 @@
 
 #include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
 #include "CrystalVDB/VDBCommand/VDBPLYFileReadCommand.h"
+#include "CrystalVDB/VDBCommand/VDBFileWriteCommand.h"
 
 #include "CrystalScene/Command/ParticleSystemCreateCommand.h"
 #include "CrystalScene/Command/PLYFileImportCommand.h"
@@ -38,19 +39,21 @@ ToVolumeView::ToVolumeView(const std::string& name, World* model, Canvas* canvas
 
 void ToVolumeView::onOk()
 {
-	World w;
-
-	ParticleSystemCreateCommand psCreateCommand;
-	psCreateCommand.execute(&w);
-	const auto psId = std::any_cast<int>( psCreateCommand.getResult("NewId") );
-
-	auto fluidVolumeScene = new FluidVolumeScene(w.getNextSceneId(), "", std::make_unique<SparseVolumef>());
-	w.addScene(fluidVolumeScene);
-	const auto volumeId = fluidVolumeScene->getId();
 
 	const auto path = inputDirectoryView.getPath();
 	const auto outdir = outputDirectoryView.getPath();
 	for (const auto& file : std::filesystem::directory_iterator(path)) {
+		World w;
+
+		ParticleSystemCreateCommand psCreateCommand;
+		psCreateCommand.execute(&w);
+		const auto psId = std::any_cast<int>(psCreateCommand.getResult("NewId"));
+
+		auto fluidVolumeScene = new FluidVolumeScene(w.getNextSceneId(), "", std::make_unique<SparseVolumef>());
+		w.addScene(fluidVolumeScene);
+		const auto volumeId = fluidVolumeScene->getId();
+
+
 		std::cout << file.path() << std::endl;
 		PLYFileImportCommand::Args iArgs;
 		iArgs.filePath.setValue(file.path().string());
@@ -80,14 +83,22 @@ void ToVolumeView::onOk()
 		scArgs.sceneType.setValue("VDBVolume");
 		VDBSceneCreateCommand scCommand(scArgs);
 		scCommand.execute(&w);
-		const auto vdbVolumeId = std::any_cast<int>( scCommand.getResult("NewId") );
-		/*
-		VDBPLYFileReadCommand::Args vArgs;
-		vArgs.isVolume.setValue(true);
-		vArgs.vdbSceneId
-		VDBPLYFileReadCommand vdbReadCommand;
-		*/
+		const auto vdbVolumeId = std::any_cast<int>(scCommand.getResult("NewId"));
 
+		VDBPLYFileReadCommand::Args vArgs;
+		vArgs.filePath.setValue(eFilePath.string());
+		vArgs.isVolume.setValue(true);
+		vArgs.vdbSceneId.setValue(vdbVolumeId);
+		VDBPLYFileReadCommand vdbReadCommand(vArgs);
+		vdbReadCommand.execute(&w);
+
+		VDBFileWriteCommand::Args wArgs;
+		std::filesystem::path wFilePath(outdir);
+		wFilePath.append(file.path().stem().string() + ".vdb");
+		wArgs.vdbVolumeIds.setValue(std::vector<int>{ vdbVolumeId });
+		wArgs.filePath.setValue(wFilePath.string());
+		VDBFileWriteCommand wCommand(wArgs);
+		wCommand.execute(&w);
 	}
 
 	/*
