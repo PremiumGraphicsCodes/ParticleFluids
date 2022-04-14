@@ -8,11 +8,12 @@
 #include "CrystalSpace/CrystalSpace/DynamicOctree.h"
 
 #include "Crystal/Math/Sphere3d.h"
+#include "VDBVolumeConverter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
-using namespace Crystal::Physics;
+using namespace Crystal::VDB;
 
 namespace {
 	float getCubicSpline(const float distance, const float effectLength)
@@ -56,6 +57,8 @@ namespace {
 			return diameter * diameter * diameter;
 		}
 
+		float getRadius() const { return radius; }
+
 	private:
 		Vector3df position;
 		float density;
@@ -64,28 +67,30 @@ namespace {
 
 }
 
-std::unique_ptr<SparseVolumef> SmoothVolumeConverter::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float particleRadius, const float cellLength)
+void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume)
 {
+	const auto positions = vdbParticles->getPositions();
+
 	const auto searchRadius = particleRadius;
 	if (positions.empty()) {
-		return nullptr;
+		return;
 	}
 
-	/*
+	std::vector<std::unique_ptr<SmoothParticle>> particles;
 	for (const auto& p : positions) {
-		particles.push_back(std::make_unique<SPHSurfaceParticle>(p, particleRadius));
+		particles.push_back(std::make_unique<SmoothParticle>(p, particleRadius));
 	}
 
-	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
+	CompactSpaceHash3d spaceHash1(searchRadius, particles.size());
 
 	for (const auto& p : particles) {
-		spaceHash.add(p.get());
+		spaceHash1.add(p.get());
 	}
 
 #pragma omp parallel for
 	for (int i = 0; i < particles.size(); ++i) {
 		auto& p = particles[i];
-		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
+		const auto neighbors = spaceHash1.findNeighbors(p->getPosition());
 		p->calculateDensity(neighbors, searchRadius);
 	}
 	//calculateDensity(particleRadius);
@@ -110,15 +115,15 @@ std::unique_ptr<SparseVolumef> SmoothVolumeConverter::buildIsotoropic(const std:
 		const auto nodePos = node->getPosition();
 		const auto neighbors = spaceHash.findNeighbors(node->getPosition());
 		for (auto n : neighbors) {
-			auto sp = static_cast<SPHSurfaceParticle*>(n);
+			auto sp = static_cast<SmoothParticle*>(n);
 			const auto v = n->getPosition() - nodePos;
+			const auto d = glm::distance(n->getPosition(), nodePos);
 			//const auto coe = 1400.0f / searchRadius / searchRadius / searchRadius;
-			const auto w = kernel.getCubicSpline(v) * sp->getMass() / sp->getDensity();
+			const auto w = ::getCubicSpline(d, sp->getRadius()) * sp->getMass() / sp->getDensity();
 			const auto value = node->getValue();
 			node->setValue(w + value);
 		}
 	}
-	return std::move(volume);
-	*/
-	return nullptr;
+	VDBVolumeConverter converter;
+	converter.fromSparseVolume(*volume, vdbVolume);
 }
