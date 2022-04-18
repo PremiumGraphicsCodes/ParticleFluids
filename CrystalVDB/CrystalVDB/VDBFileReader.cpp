@@ -63,7 +63,20 @@ VDBParticleSystemScene* VDBFileReader::readPositions(const std::string& pointNam
     std::vector<openvdb::Index32> v_indices;
 
     VDBParticleSystemScene* psScene = new VDBParticleSystemScene();
-//    psScene->resize(count);
+
+    //using Codec = openvdb::points::FixedPointCodec</*1-byte=*/false,
+    //    openvdb::points::UnitRange>;
+    //openvdb::points::TypedAttributeArray<float, Codec>::registerType();
+    //openvdb::NamePair radiusAttribute =
+    //    openvdb::points::TypedAttributeArray<float, Codec>::attributeType();
+    //openvdb::points::appendAttribute(grid->tree(), "pscale", radiusAttribute);
+
+    //const auto desc = grid->tree().cbeginLeaf()->attributeSet().descriptor();
+    //const auto attrs = grid->tree().cbeginLeaf()->attributeSet();
+    //const auto map = desc.map();
+    //for (int i = 0; i < desc.size(); ++i) {
+    //    const auto type = attrs.get(i)->type();
+    //}
 
     for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
         //std::cout << "Leaf" << leafIter->origin() << std::endl;
