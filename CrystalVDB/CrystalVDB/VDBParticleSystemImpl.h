@@ -73,6 +73,10 @@ public:
 
     void addFloatAttribute(const std::string& name);
 
+    std::vector<openvdb::Vec3f> getPositions() const;
+
+    std::vector<float> getFloatAttributes(const std::string& name) const;
+
     void setPtr(openvdb::points::PointDataGrid::Ptr grid) { this->grid = grid; }
 
     openvdb::points::PointDataGrid::Ptr getPtr() { return grid; }
