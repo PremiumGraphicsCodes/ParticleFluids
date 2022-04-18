@@ -33,6 +33,7 @@ void PSToVolumeView::onOk()
 		return;
 	}
 
+	/*
 	VDBParticleSystemScene ps;
 	auto particles = scene->getShape()->getParticles();
 	for (auto p : scene->getShape()->getParticles()) {
@@ -43,4 +44,5 @@ void PSToVolumeView::onOk()
 	VDBVolumeScene* volume = new VDBVolumeScene();
 	converter.toVolume(ps, radiusView.getValue(), voxelSizeView.getValue(), volume);
 	std::cout << "voxels = " << volume->getActiveVoxelCount() << std::endl;;
+	*/
 }

@@ -4,6 +4,8 @@
 
 #include "Converter.h"
 
+#include <openvdb/points/PointConversion.h>
+
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
@@ -24,11 +26,21 @@ void VDBParticleSystemScene::resize(const size_t count)
     this->impl->resize(count);
 }
 
-void VDBParticleSystemScene::add(const Vector3dd& position, const double radius)
+void VDBParticleSystemScene::create(const std::vector<Vector3dd>& positions)
 {
-    const auto pp = Converter::toVDB(position);
-    impl->add(pp, radius);
+    std::vector<openvdb::Vec3f> coords;
+    for (const auto& p : positions) {
+        coords.push_back(Converter::toVDB(p));
+    }
+
+    const auto transform = openvdb::math::Transform::createLinearTransform();
+    //auto ptr = openvdb::points::createPointDataGrid<openvdb::points::NullCodec, openvdb::points::PointDataGrid>(coords, transform);
+    auto ptr = openvdb::points::createPointDataGrid<openvdb::points::NullCodec, openvdb::points::PointDataGrid>(coords, *transform);
+
+    impl->setPtr(ptr);
+    //this->impl->setPtr()
 }
+
 
 Crystal::Math::Vector3dd VDBParticleSystemScene::getPosition(const int index) const
 {

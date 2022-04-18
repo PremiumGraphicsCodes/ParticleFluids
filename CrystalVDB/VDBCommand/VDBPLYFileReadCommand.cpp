@@ -72,12 +72,14 @@ bool VDBPLYFileReadCommand::readPoints(World* world)
 	}
 	scene->resetImpl();
 	const auto ply = reader.getPLY();
+	std::vector<Vector3dd> positions;
 	for (const auto& v : ply.vertices) {
 		const auto x = v.getValueAs<float>(0);
 		const auto y = v.getValueAs<float>(1);
 		const auto z = v.getValueAs<float>(2);
-		scene->add(Vector3dd(x, y, z), 1.0);
+		positions.emplace_back(x, y, z);
 	}
+	scene->create(positions);
 
 	return true;
 }

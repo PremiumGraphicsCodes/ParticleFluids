@@ -52,7 +52,5 @@ void VDBParticleSystemConverter::toVDB(const IParticleSystemScene& src, VDBParti
 {
     dest->clear();
     const auto positions = src.getPositions();
-    for (const auto& p : positions) {
-        dest->add(p, 1.0);
-    }
+    dest->create(positions);
 }

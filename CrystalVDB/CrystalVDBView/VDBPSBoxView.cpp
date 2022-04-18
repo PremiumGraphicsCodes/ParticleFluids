@@ -40,9 +40,7 @@ void VDBPSBox::onOk()
 		}
 	}
 	auto scene = new VDBParticleSystemScene(getWorld()->getNextSceneId(), "VDBPS");
-	for (const auto& p : positions) {
-		scene->add(p, 1.0f);
-	}
+	scene->create(positions);
 	scene->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(scene);
 }

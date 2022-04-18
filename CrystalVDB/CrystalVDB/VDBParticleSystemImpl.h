@@ -26,7 +26,7 @@ public:
     ~VDBParticleSystemImpl()
     {}
 
-    void add(const openvdb::Vec3R& position, const openvdb::Real& radius);
+    //void add(const openvdb::Vec3R& position, const openvdb::Real& radius);
 
     void resize(const size_t count);
 

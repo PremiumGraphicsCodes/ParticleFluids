@@ -48,10 +48,13 @@ void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParti
     auto impl = volume.getImpl();
     auto grid = impl->getPtr();
     auto transform = grid->transform();
+    std::vector<openvdb::Vec3f> coords;
     for (auto iter = grid->cbeginValueOn(); iter; ++iter) {
         auto coord = transform.indexToWorld(iter.getCoord());
-        ps->getImpl()->add(coord, 1.0);
+        coords.push_back(coord);
     }
+    auto ptr = openvdb::points::createPointDataGrid<openvdb::points::NullCodec, openvdb::points::PointDataGrid>(coords, transform);
+    ps->getImpl()->setPtr(ptr);
 }
 
 void VDBVolumeConverter::fromSparseVolume(const SparseVolume<float>& sp, VDBVolumeScene* volume) const

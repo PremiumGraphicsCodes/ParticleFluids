@@ -2,6 +2,7 @@
 
 using namespace Crystal::VDB;
 
+/*
 void VDBParticleSystemImpl::add(const openvdb::Vec3R& position, const openvdb::Real& radius)
 {
     Particle pa;
@@ -9,6 +10,7 @@ void VDBParticleSystemImpl::add(const openvdb::Vec3R& position, const openvdb::R
     pa.radius = radius;
     particles.push_back(pa);
 }
+*/
 
 void VDBParticleSystemImpl::resize(const size_t count)
 {

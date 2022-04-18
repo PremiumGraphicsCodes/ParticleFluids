@@ -50,10 +50,6 @@ bool VDBSceneCreateCommand::execute(World* world)
 	const auto name = args.name.getValue();
 	if (typeName == ::SceneType_VDBPointsLabel) {
 		auto mesh = new VDBParticleSystemScene(world->getNextSceneId(), name);
-		const auto& positions = args.positions.getValue();
-		for (const auto& p : positions) {
-			mesh->add(p, 1.0);
-		}
 		world->addScene(mesh);
 		results.newId.setValue(mesh->getId());
 	}
