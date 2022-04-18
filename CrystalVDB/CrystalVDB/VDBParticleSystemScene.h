@@ -23,13 +23,7 @@ public:
 
     ~VDBParticleSystemScene();
 
-    void resize(const size_t count);
-
     void create(const std::vector<Math::Vector3dd>& positions);
-
-    Math::Vector3dd getPosition(const int index) const;
-
-    float getSize(const int index) const;
 
  //   Crystal::Scene::ParticleSystemScene* toCrystal() const;
 

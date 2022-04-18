@@ -78,10 +78,9 @@ void VDBParticleSystemPresenter::updateScreenView()
 	auto impl = model->getImpl();
 	const auto size = impl->size();// getShape()->getParticles();
 	PointBuffer pb;
+	const auto positions = model->getPositions();
 	for (int i = 0; i < size; ++i) {
-		openvdb::Vec3R v;
-		impl->getPos(i, v);
-		pb.add(Converter::fromVDB(v), ColorRGBAf(1,1,1,1), 1.0f);
+		pb.add(positions[i], ColorRGBAf(1,1,1,1), 1.0f);
 	}
 
 	this->view->send(pb);

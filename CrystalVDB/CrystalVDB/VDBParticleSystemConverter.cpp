@@ -18,6 +18,7 @@ using namespace Crystal::Scene;
 
 void VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particles, const float radius, const float voxelSize, VDBVolumeScene* volume)
 {
+    /*
     // Rasterize into an SDF.
     auto sdf = createLevelSet<FloatGrid>(voxelSize);
     sdf->setName("density");
@@ -28,6 +29,7 @@ void VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particle
     tools::particlesToSdf(*p, *sdf, radius);
     std::unique_ptr<VDBVolumeScene> v = std::make_unique<VDBVolumeScene>();
     volume->getImpl()->setPtr(sdf);
+    */
 }
 
 void VDBParticleSystemConverter::fromVDB(const VDBParticleSystemScene& src, ParticleSystemScene* ps)
@@ -36,11 +38,10 @@ void VDBParticleSystemConverter::fromVDB(const VDBParticleSystemScene& src, Part
 
     auto impl = src.getImpl();
     const auto count = impl->size();
+    const auto positions = impl->getPositions();
     for (int i = 0; i < count; ++i) {
         openvdb::Real radius;
-        openvdb::Vec3R v;
-        impl->getPosRad(i, v, radius);
-        const auto p = Converter::fromVDB(v);
+        const auto p = Converter::fromVDB(positions[i]);
         ParticleAttribute attr;
         attr.color = Crystal::Graphics::ColorRGBAf(0, 0, 0, 0);
         attr.size = radius;

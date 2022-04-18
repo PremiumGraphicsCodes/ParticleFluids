@@ -14,46 +14,18 @@ struct Particle
 
 class VDBParticleSystemImpl
 {
-protected:
-    openvdb::Real           mRadiusScale;
-    std::vector<Particle> particles;
 public:
     typedef openvdb::Vec3R  PosType;
 
-    VDBParticleSystemImpl(openvdb::Real rScale = 1)
-        : mRadiusScale(rScale) {}
+    VDBParticleSystemImpl()
+    {}
 
     ~VDBParticleSystemImpl()
     {}
 
-    //void add(const openvdb::Vec3R& position, const openvdb::Real& radius);
-
-    void resize(const size_t count);
-
-    //typedef int AttributeType;
-    // The methods below are only required for the unit-tests
-    openvdb::Vec3R pos(int n) const { return particles[n].position; }
-
-    openvdb::Real radius(int n) const { return mRadiusScale * particles[n].radius; }
-
-    //////////////////////////////////////////////////////////////////////////////
-    /// The methods below are the only ones required by tools::ParticleToLevelSet
-    /// @note We return by value since the radius and velocities are modified
-    /// by the scaling factors! Also these methods are all assumed to
-    /// be thread-safe.
-
     /// Return the total number of particles in list.
     ///  Always required!
-    size_t size() const { return particles.size(); }
-
-    /// Get the world space position of n'th particle.
-    /// Required by ParticledToLevelSet::rasterizeSphere(*this,radius).
-    void getPos(size_t n, openvdb::Vec3R& pos) const { pos = particles[n].position; }
-
-    void getPosRad(size_t n, openvdb::Vec3R& pos, openvdb::Real& rad) const {
-        pos = particles[n].position;
-        rad = mRadiusScale * particles[n].radius;
-    }
+    size_t size() const { return openvdb::points::pointCount(grid->tree()); }
 
     // The method below is only required for attribute transfer
     void getAtt(size_t n, openvdb::Index32& att) const { att = openvdb::Index32(n); }

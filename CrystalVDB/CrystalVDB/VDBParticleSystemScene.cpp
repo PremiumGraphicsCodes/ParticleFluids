@@ -21,11 +21,6 @@ VDBParticleSystemScene::~VDBParticleSystemScene()
 {
 }
 
-void VDBParticleSystemScene::resize(const size_t count)
-{
-    this->impl->resize(count);
-}
-
 void VDBParticleSystemScene::create(const std::vector<Vector3dd>& positions)
 {
     std::vector<openvdb::Vec3f> coords;
@@ -39,22 +34,6 @@ void VDBParticleSystemScene::create(const std::vector<Vector3dd>& positions)
 
     impl->setPtr(ptr);
     //this->impl->setPtr()
-}
-
-
-Crystal::Math::Vector3dd VDBParticleSystemScene::getPosition(const int index) const
-{
-    openvdb::Vec3R v;
-    impl->getPos(index, v);
-    return Converter::fromVDB(v);
-}
-
-float VDBParticleSystemScene::getSize(const int index) const
-{
-    openvdb::Real radius;
-    openvdb::Vec3R v;
-    impl->getPosRad(index, v, radius);
-    return radius;
 }
 
 /*
@@ -72,9 +51,10 @@ Box3dd VDBParticleSystemScene::getBoundingBox() const
     if (size == 0) {
         return Box3dd::createDegeneratedBox();
     }
-    Box3dd box(getPosition(0));
+    const auto positions = getPositions();
+    Box3dd box(positions.front());
     for (int i = 0; i < size; ++i) {
-        box.add(getPosition(i));
+        box.add(positions[i]);
     }
     return box;
 }
@@ -82,8 +62,9 @@ Box3dd VDBParticleSystemScene::getBoundingBox() const
 std::vector<Vector3dd> VDBParticleSystemScene::getPositions() const
 {
     std::vector<Vector3dd> positions;
+    const auto ps = impl->getPositions();
     for (int i = 0; i < impl->size(); ++i) {
-        positions.emplace_back( getPosition(i) );
+        positions.emplace_back( Converter::fromVDB(ps[i]) );
     }
     return positions;
 }

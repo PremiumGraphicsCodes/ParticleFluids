@@ -2,21 +2,6 @@
 
 using namespace Crystal::VDB;
 
-/*
-void VDBParticleSystemImpl::add(const openvdb::Vec3R& position, const openvdb::Real& radius)
-{
-    Particle pa;
-    pa.position = position;
-    pa.radius = radius;
-    particles.push_back(pa);
-}
-*/
-
-void VDBParticleSystemImpl::resize(const size_t count)
-{
-    this->particles.resize(count);
-}
-
 void VDBParticleSystemImpl::addFloatAttribute(const std::string& name)
 {
     using Codec = openvdb::points::FixedPointCodec</*1-byte=*/false,openvdb::points::UnitRange>;
