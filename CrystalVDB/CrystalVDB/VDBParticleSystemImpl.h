@@ -30,9 +30,6 @@ public:
 
     void resize(const size_t count);
 
-    /// @return coordinate bbox in the space of the specified transfrom
-    openvdb::CoordBBox getBBox();
-
     //typedef int AttributeType;
     // The methods below are only required for the unit-tests
     openvdb::Vec3R pos(int n) const { return particles[n].position; }
