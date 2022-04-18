@@ -67,13 +67,6 @@ VDBParticleSystemScene* VDBFileReader::readPositions(const std::string& pointNam
     psScene->getImpl()->setPtr(grid);
 
 
-    //const auto desc = grid->tree().cbeginLeaf()->attributeSet().descriptor();
-    //const auto attrs = grid->tree().cbeginLeaf()->attributeSet();
-    //const auto map = desc.map();
-    //for (int i = 0; i < desc.size(); ++i) {
-    //    const auto type = attrs.get(i)->type();
-    //}
-
     for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
         //std::cout << "Leaf" << leafIter->origin() << std::endl;
         // Extract the position attribute from the leaf by name (P is position).

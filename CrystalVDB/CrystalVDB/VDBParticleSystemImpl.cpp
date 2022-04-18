@@ -2,12 +2,11 @@
 
 using namespace Crystal::VDB;
 
-void VDBParticleSystemImpl::add(const openvdb::Vec3R& position, const openvdb::Real& radius, const openvdb::Vec3R& v)
+void VDBParticleSystemImpl::add(const openvdb::Vec3R& position, const openvdb::Real& radius)
 {
     Particle pa;
     pa.position = position;
     pa.radius = radius;
-    pa.velocity = v;
     particles.push_back(pa);
 }
 
@@ -91,4 +90,28 @@ std::vector<float> VDBParticleSystemImpl::getFloatAttributes(const std::string& 
         }
     }
     return values;
+}
+
+std::vector<std::string> VDBParticleSystemImpl::getAttributeNames() const
+{
+    const auto desc = grid->tree().cbeginLeaf()->attributeSet().descriptor();
+    const auto attrs = grid->tree().cbeginLeaf()->attributeSet();
+    const auto map = desc.map();
+    std::vector<std::string> names;
+    for (auto m : map) {
+        names.push_back(m.first);
+    }
+    /*
+    for (int i = 0; i < desc.size(); ++i) {
+        const auto type = attrs.get(i)->type();
+    }
+    */
+    return names;
+}
+
+bool VDBParticleSystemImpl::hasAttribute(const std::string& name) const
+{
+    const auto desc = grid->tree().cbeginLeaf()->attributeSet().descriptor();
+    const auto map = desc.map();
+    return map.find(name) != map.end();
 }

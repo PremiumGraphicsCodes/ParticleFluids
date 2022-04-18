@@ -9,7 +9,6 @@ namespace Crystal {
 struct Particle
 {
     openvdb::Vec3R position;
-    openvdb::Vec3R velocity;
     openvdb::Real  radius;
 };
 
@@ -17,18 +16,17 @@ class VDBParticleSystemImpl
 {
 protected:
     openvdb::Real           mRadiusScale;
-    openvdb::Real           mVelocityScale;
     std::vector<Particle> particles;
 public:
     typedef openvdb::Vec3R  PosType;
 
-    VDBParticleSystemImpl(openvdb::Real rScale = 1, openvdb::Real vScale = 1)
-        : mRadiusScale(rScale), mVelocityScale(vScale) {}
+    VDBParticleSystemImpl(openvdb::Real rScale = 1)
+        : mRadiusScale(rScale) {}
 
     ~VDBParticleSystemImpl()
     {}
 
-    void add(const openvdb::Vec3R& position, const openvdb::Real& radius, const openvdb::Vec3R& v = openvdb::Vec3R(0, 0, 0));
+    void add(const openvdb::Vec3R& position, const openvdb::Real& radius);
 
     void resize(const size_t count);
 
@@ -38,8 +36,6 @@ public:
     //typedef int AttributeType;
     // The methods below are only required for the unit-tests
     openvdb::Vec3R pos(int n) const { return particles[n].position; }
-
-    openvdb::Vec3R vel(int n)   const { return mVelocityScale * particles[n].velocity; }
 
     openvdb::Real radius(int n) const { return mRadiusScale * particles[n].radius; }
 
@@ -62,12 +58,6 @@ public:
         rad = mRadiusScale * particles[n].radius;
     }
 
-    void getPosRadVel(size_t n, openvdb::Vec3R& pos, openvdb::Real& rad, openvdb::Vec3R& vel) const {
-        pos = particles[n].position;
-        rad = mRadiusScale * particles[n].radius;
-        vel = mVelocityScale * particles[n].velocity;
-    }
-
     // The method below is only required for attribute transfer
     void getAtt(size_t n, openvdb::Index32& att) const { att = openvdb::Index32(n); }
 
@@ -76,6 +66,10 @@ public:
     std::vector<openvdb::Vec3f> getPositions() const;
 
     std::vector<float> getFloatAttributes(const std::string& name) const;
+
+    std::vector<std::string> getAttributeNames() const;
+
+    bool hasAttribute(const std::string& name) const;
 
     void setPtr(openvdb::points::PointDataGrid::Ptr grid) { this->grid = grid; }
 
