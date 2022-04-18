@@ -1,6 +1,7 @@
 #pragma once
 
 #include "openvdb/openvdb.h"
+#include "openvdb/points/PointConversion.h"
 
 namespace Crystal {
     namespace VDB {
@@ -32,7 +33,7 @@ public:
     void resize(const size_t count);
 
     /// @return coordinate bbox in the space of the specified transfrom
-    openvdb::CoordBBox getBBox(const openvdb::GridBase& grid);
+    openvdb::CoordBBox getBBox();
 
     //typedef int AttributeType;
     // The methods below are only required for the unit-tests
@@ -69,6 +70,15 @@ public:
 
     // The method below is only required for attribute transfer
     void getAtt(size_t n, openvdb::Index32& att) const { att = openvdb::Index32(n); }
+
+    void addFloatAttribute(const std::string& name);
+
+    void setPtr(openvdb::points::PointDataGrid::Ptr grid) { this->grid = grid; }
+
+    openvdb::points::PointDataGrid::Ptr getPtr() { return grid; }
+
+private:
+    openvdb::points::PointDataGrid::Ptr grid;
 };
     }
 }

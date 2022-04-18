@@ -7,6 +7,7 @@
 #include "VDBVolumeImpl.h"
 #include "VDBParticleSystemScene.h"
 #include "VDBVolumeScene.h"
+#include "VDBParticleSystemImpl.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
@@ -63,13 +64,8 @@ VDBParticleSystemScene* VDBFileReader::readPositions(const std::string& pointNam
     std::vector<openvdb::Index32> v_indices;
 
     VDBParticleSystemScene* psScene = new VDBParticleSystemScene();
+    psScene->getImpl()->setPtr(grid);
 
-    //using Codec = openvdb::points::FixedPointCodec</*1-byte=*/false,
-    //    openvdb::points::UnitRange>;
-    //openvdb::points::TypedAttributeArray<float, Codec>::registerType();
-    //openvdb::NamePair radiusAttribute =
-    //    openvdb::points::TypedAttributeArray<float, Codec>::attributeType();
-    //openvdb::points::appendAttribute(grid->tree(), "pscale", radiusAttribute);
 
     //const auto desc = grid->tree().cbeginLeaf()->attributeSet().descriptor();
     //const auto attrs = grid->tree().cbeginLeaf()->attributeSet();
