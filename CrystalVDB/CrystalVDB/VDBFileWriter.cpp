@@ -68,8 +68,11 @@ void VDBFileWriter::writePoints(const std::string& name, const std::vector<Vecto
     file.write({ grid });
 }
 
-void VDBFileWriter::writeVolume(const VDBVolumeScene& volume) const
+void VDBFileWriter::writeVolumes(const std::vector<VDBVolumeScene*>& volumes) const
 {
-    auto grid = volume.getImpl();
-    file.write({ grid->getPtr() });
+    openvdb::GridCPtrVec ptrs;
+    for (auto v : volumes) {
+        ptrs.push_back(v->getImpl()->getPtr());
+    }
+    file.write(ptrs);
 }

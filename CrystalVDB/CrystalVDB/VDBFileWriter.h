@@ -20,7 +20,7 @@ public:
 
     void writePoints(const std::string& name, const std::vector<Math::Vector3dd>& positions) const;
 
-    void writeVolume(const VDBVolumeScene& volume) const;
+    void writeVolumes(const std::vector<VDBVolumeScene*>& volumes) const;
 
 private:
 };

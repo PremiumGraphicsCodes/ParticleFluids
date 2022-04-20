@@ -69,6 +69,13 @@ void ToVolumeView::onOk()
 		scCommand2.execute(&w);
 		const auto vdbVolumeId = std::any_cast<int>(scCommand2.getResult("NewId"));
 
+		VDBSceneCreateCommand::Args scArgs3;
+		scArgs3.sceneType.setValue("VDBVolume");
+		scArgs3.name.setValue("temperature");
+		VDBSceneCreateCommand scCommand3(scArgs3);
+		scCommand3.execute(&w);
+		const auto vdbTemperatureVolumeId = std::any_cast<int>(scCommand3.getResult("NewId"));
+
 		VDBPSToVolumeCommand::Args cArgs;
 		cArgs.doUseSph.setValue(true);
 		cArgs.radius.setValue(1.0);
@@ -81,7 +88,7 @@ void ToVolumeView::onOk()
 		VDBFileWriteCommand::Args wArgs;
 		std::filesystem::path wFilePath(outdir);
 		wFilePath.append(file.path().stem().string() + ".vdb");
-		wArgs.vdbVolumeIds.setValue(std::vector<int>{ vdbVolumeId });
+		wArgs.vdbVolumeIds.setValue(std::vector<int>{ vdbVolumeId, vdbTemperatureVolumeId });
 		wArgs.filePath.setValue(wFilePath.string());
 		VDBFileWriteCommand wCommand(wArgs);
 		wCommand.execute(&w);

@@ -65,12 +65,16 @@ bool VDBFileWriteCommand::execute(World* world)
 		writer.writePoints(scene->getName(), positions);
 	}
 	const auto volumeIds = args.vdbVolumeIds.getValue();
+	std::vector<VDBVolumeScene*> volumes;
 	for (auto id : volumeIds) {
 		auto scene = world->getScenes()->findSceneById<VDBVolumeScene*>(id);
 		if (scene == nullptr) {
-			return false;
+			continue;
 		}
-		writer.writeVolume(*scene);
+		volumes.push_back(scene);
+	}
+	if (!volumes.empty()) {
+		writer.writeVolumes(volumes);
 	}
 
 	return true;
