@@ -82,3 +82,18 @@ void VDBParticleSystemScene::addFloatAttribute(const std::string& name)
 {
     this->impl->addFloatAttribute(name);
 }
+
+void VDBParticleSystemScene::setFloatAttribute(const std::string& name, const std::vector<float>& values)
+{
+    this->impl->setFloatAttributes(name, values);
+}
+
+std::vector<float> VDBParticleSystemScene::getFloatAttribute(const std::string& name)
+{
+    return this->impl->getFloatAttributes(name);
+}
+
+bool VDBParticleSystemScene::hasAttribute(const std::string& name)
+{
+    return this->impl->hasAttribute(name);
+}

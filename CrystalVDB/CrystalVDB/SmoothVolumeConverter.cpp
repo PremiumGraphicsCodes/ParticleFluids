@@ -34,10 +34,11 @@ namespace {
 	class SmoothParticle : public IParticle
 	{
 	public:
-		SmoothParticle(const Vector3dd& p, const float radius) :
+		SmoothParticle(const Vector3dd& p, const float radius, const float temperature) :
 			position(p),
 			density(0.0f),
-			radius(radius)
+			radius(radius),
+			temperature(temperature)
 		{}
 
 		Vector3dd getPosition() const override { return position; }
@@ -59,10 +60,15 @@ namespace {
 
 		float getRadius() const { return radius; }
 
+		float getTemperature() const { return temperature; }
+
+		void setTemperature(const float t) { this->temperature = t; }
+
 	private:
 		Vector3df position;
 		float density;
 		float radius;
+		float temperature;
 	};
 
 }
@@ -70,6 +76,7 @@ namespace {
 void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume)
 {
 	const auto positions = vdbParticles->getPositions();
+	//vdbParticles->get
 
 	const auto searchRadius = particleRadius;
 	if (positions.empty()) {
@@ -78,7 +85,14 @@ void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles
 
 	std::vector<std::unique_ptr<SmoothParticle>> particles;
 	for (const auto& p : positions) {
-		particles.push_back(std::make_unique<SmoothParticle>(p, particleRadius));
+		particles.push_back(std::make_unique<SmoothParticle>(p, particleRadius, 300.0f));
+	}
+
+	if (vdbParticles->hasAttribute("temperature")) {
+		const auto temperatures = vdbParticles->getFloatAttribute("temperature");
+		for (int i = 0; i < temperatures.size(); ++i) {
+			particles[i]->setTemperature(temperatures[i]);
+		}
 	}
 
 	CompactSpaceHash3d spaceHash1(searchRadius, particles.size());

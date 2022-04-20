@@ -80,6 +80,18 @@ bool VDBPLYFileReadCommand::readPoints(World* world)
 		positions.emplace_back(x, y, z);
 	}
 	scene->create(positions);
+	for (int i = 3; i < ply.properties.size(); ++i) {
+		if (ply.properties[i].type == Crystal::IO::PLYType::FLOAT) {
+			scene->addFloatAttribute(ply.properties[i].name);
+			std::vector<float> values;
+			for (const auto& v : ply.vertices) {
+				const auto t = v.getValueAs<float>(i);
+				values.push_back(t);
+			}
+			scene->setFloatAttribute(ply.properties[i].name, values);
+		}
+
+	}
 
 	return true;
 }

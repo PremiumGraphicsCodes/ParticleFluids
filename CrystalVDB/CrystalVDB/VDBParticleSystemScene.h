@@ -49,6 +49,12 @@ public:
 
     void addFloatAttribute(const std::string& name);
 
+    void setFloatAttribute(const std::string& name, const std::vector<float>& values);
+
+    std::vector<float> getFloatAttribute(const std::string& name);
+
+    bool hasAttribute(const std::string& name);
+
 private:
     std::unique_ptr<VDBParticleSystemImpl> impl;
     std::unique_ptr<VDBParticleSystemPresenter> presenter;
