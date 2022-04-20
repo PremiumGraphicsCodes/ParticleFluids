@@ -52,6 +52,7 @@ bool PhysicsSolverExportCommand::execute(World* world)
 	file.properties.push_back(PLYProperty("x", PLYType::FLOAT));
 	file.properties.push_back(PLYProperty("y", PLYType::FLOAT));
 	file.properties.push_back(PLYProperty("z", PLYType::FLOAT));
+	file.properties.push_back(PLYProperty("temperature", PLYType::FLOAT));
 	for (const auto id : args.fluidIds.getValue()) {
 		auto fluid = world->getScenes()->findSceneById<IMVPFluidScene*>(id);
 		if (fluid == nullptr) {
@@ -67,6 +68,7 @@ bool PhysicsSolverExportCommand::execute(World* world)
 					p.values.push_back(pp.x);
 					p.values.push_back(pp.y);
 					p.values.push_back(pp.z);
+					p.values.push_back(micro->getTemperature());
 					file.vertices.push_back(p);
 				}
 			}
@@ -78,6 +80,7 @@ bool PhysicsSolverExportCommand::execute(World* world)
 				p.values.push_back(pp.x);
 				p.values.push_back(pp.y);
 				p.values.push_back(pp.z);
+				p.values.push_back(mp->getTemperature());
 
 				file.vertices.push_back(p);
 			}

@@ -36,6 +36,8 @@ public:
 
     std::vector<float> getFloatAttributes(const std::string& name) const;
 
+    void setFloatAttributes(const std::string& name, const std::vector<float>& values) const;
+
     std::vector<std::string> getAttributeNames() const;
 
     bool hasAttribute(const std::string& name) const;

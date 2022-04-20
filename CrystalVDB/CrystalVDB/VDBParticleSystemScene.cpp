@@ -77,3 +77,8 @@ void VDBParticleSystemScene::resetImpl()
 {
     this->impl = std::make_unique<VDBParticleSystemImpl>();
 }
+
+void VDBParticleSystemScene::addFloatAttribute(const std::string& name)
+{
+    this->impl->addFloatAttribute(name);
+}

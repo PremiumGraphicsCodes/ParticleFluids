@@ -61,6 +61,22 @@ std::vector<float> VDBParticleSystemImpl::getFloatAttributes(const std::string& 
     return values;
 }
 
+void VDBParticleSystemImpl::setFloatAttributes(const std::string& name, const std::vector<float>& values) const
+{
+    std::vector<openvdb::Index32> v_indices;
+    int index = 0;
+    for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
+        //std::cout << "Leaf" << leafIter->origin() << std::endl;
+        // Extract the position attribute from the leaf by name (P is position).
+        auto array = leafIter->attributeArray(name);
+        openvdb::points::AttributeWriteHandle<float> floatHandle(array);
+        for (auto indexIter = leafIter->beginIndexOn(); indexIter; ++indexIter) {
+            floatHandle.set(*indexIter, values[index]);
+            index++;
+        }
+    }
+}
+
 std::vector<std::string> VDBParticleSystemImpl::getAttributeNames() const
 {
     const auto desc = grid->tree().cbeginLeaf()->attributeSet().descriptor();

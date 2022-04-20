@@ -47,6 +47,8 @@ public:
 
     void resetImpl();
 
+    void addFloatAttribute(const std::string& name);
+
 private:
     std::unique_ptr<VDBParticleSystemImpl> impl;
     std::unique_ptr<VDBParticleSystemPresenter> presenter;
