@@ -11,9 +11,6 @@
     <ClCompile Include="SolverExporter.cpp">
       <Filter>Fluid</Filter>
     </ClCompile>
-    <ClCompile Include="ToVDBVolumeView.cpp">
-      <Filter>VDB</Filter>
-    </ClCompile>
     <ClCompile Include="ToVolumeView.cpp">
       <Filter>VDB</Filter>
     </ClCompile>
@@ -30,9 +27,6 @@
     </ClInclude>
     <ClInclude Include="SolverExporter.h">
       <Filter>Fluid</Filter>
-    </ClInclude>
-    <ClInclude Include="ToVDBVolumeView.h">
-      <Filter>VDB</Filter>
     </ClInclude>
     <ClInclude Include="ToVolumeView.h">
       <Filter>VDB</Filter>

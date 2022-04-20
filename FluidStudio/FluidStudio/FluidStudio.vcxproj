@@ -151,7 +151,6 @@
     <ClCompile Include="FluidStudio.cpp" />
     <ClCompile Include="SolverExporter.cpp" />
     <ClCompile Include="SolverView.cpp" />
-    <ClCompile Include="ToVDBVolumeView.cpp" />
     <ClCompile Include="ToVolumeView.cpp" />
     <ClCompile Include="VDBMenu.cpp" />
   </ItemGroup>
@@ -203,7 +202,6 @@
     <ClInclude Include="FluidMenu.h" />
     <ClInclude Include="SolverExporter.h" />
     <ClInclude Include="SolverView.h" />
-    <ClInclude Include="ToVDBVolumeView.h" />
     <ClInclude Include="ToVolumeView.h" />
     <ClInclude Include="VDBMenu.h" />
   </ItemGroup>
