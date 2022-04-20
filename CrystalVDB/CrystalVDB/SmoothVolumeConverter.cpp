@@ -73,7 +73,7 @@ namespace {
 
 }
 
-void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume)
+void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume)
 {
 	const auto positions = vdbParticles->getPositions();
 	//vdbParticles->get
@@ -109,35 +109,72 @@ void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles
 	}
 	//calculateDensity(particleRadius);
 
-	SparseVolumeBuilder builder;
-	builder.build(Vector3df(cellLength), positions.size());
-	for (auto& p : particles) {
-		builder.add(Sphere3dd(p->getPosition(), particleRadius));
-	}
-	auto volume = builder.get();
-	const auto nodes = volume->getNodes();
-
-	CompactSpaceHash3d spaceHash(particleRadius, (int)particles.size());
-	for (const auto& p : particles) {
-		spaceHash.add(p.get());
-	}
-
-	std::vector<SparseVolumeNode<float>*> ns(nodes.begin(), nodes.end());
-#pragma omp parallel for
-	for (int i = 0; i < ns.size(); ++i) {
-		auto node = ns[i];
-		const auto nodePos = node->getPosition();
-		const auto neighbors = spaceHash.findNeighbors(node->getPosition());
-		for (auto n : neighbors) {
-			auto sp = static_cast<SmoothParticle*>(n);
-			const auto v = n->getPosition() - nodePos;
-			const auto d = glm::distance(n->getPosition(), nodePos);
-			//const auto coe = 1400.0f / searchRadius / searchRadius / searchRadius;
-			const auto w = ::getCubicSpline(d, sp->getRadius()) * sp->getMass() / sp->getDensity();
-			const auto value = node->getValue();
-			node->setValue(w + value);
+	{
+		SparseVolumeBuilder builder;
+		builder.build(Vector3df(cellLength), positions.size());
+		for (auto& p : particles) {
+			builder.add(Sphere3dd(p->getPosition(), particleRadius));
 		}
+		auto volume = builder.get();
+		const auto nodes = volume->getNodes();
+
+		CompactSpaceHash3d spaceHash(particleRadius, (int)particles.size());
+		for (const auto& p : particles) {
+			spaceHash.add(p.get());
+		}
+
+		std::vector<SparseVolumeNode<float>*> ns(nodes.begin(), nodes.end());
+#pragma omp parallel for
+		for (int i = 0; i < ns.size(); ++i) {
+			auto node = ns[i];
+			const auto nodePos = node->getPosition();
+			const auto neighbors = spaceHash.findNeighbors(node->getPosition());
+			for (auto n : neighbors) {
+				auto sp = static_cast<SmoothParticle*>(n);
+				const auto v = n->getPosition() - nodePos;
+				const auto d = glm::distance(n->getPosition(), nodePos);
+				//const auto coe = 1400.0f / searchRadius / searchRadius / searchRadius;
+				const auto w = ::getCubicSpline(d, sp->getRadius()) * sp->getMass() / sp->getDensity();
+				const auto value = node->getValue();
+				node->setValue(w + value);
+			}
+		}
+		VDBVolumeConverter converter;
+		converter.fromSparseVolume(*volume, vdbVolume);
 	}
-	VDBVolumeConverter converter;
-	converter.fromSparseVolume(*volume, vdbVolume);
+
+	/*
+	{
+		SparseVolumeBuilder builder;
+		builder.build(Vector3df(cellLength), positions.size());
+		for (auto& p : particles) {
+			builder.add(Sphere3dd(p->getPosition(), particleRadius));
+		}
+		auto volume = builder.get();
+		const auto nodes = volume->getNodes();
+
+		CompactSpaceHash3d spaceHash(particleRadius, (int)particles.size());
+		for (const auto& p : particles) {
+			spaceHash.add(p.get());
+		}
+
+		std::vector<SparseVolumeNode<float>*> ns(nodes.begin(), nodes.end());
+#pragma omp parallel for
+		for (int i = 0; i < ns.size(); ++i) {
+			auto node = ns[i];
+			const auto nodePos = node->getPosition();
+			const auto neighbors = spaceHash.findNeighbors(node->getPosition());
+			for (auto n : neighbors) {
+				auto sp = static_cast<SmoothParticle*>(n);
+				const auto v = n->getPosition() - nodePos;
+				const auto d = glm::distance(n->getPosition(), nodePos);
+				const auto w = ::getCubicSpline(d, sp->getRadius()) * sp->getTemperature() / sp->getDensity();
+				const auto value = node->getValue();
+				node->setValue(w + value);
+			}
+		}
+		VDBVolumeConverter converter;
+		converter.fromSparseVolume(*volume, temperatureVolume);
+	}
+	*/
 }

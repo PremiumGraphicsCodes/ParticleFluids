@@ -16,6 +16,7 @@ namespace
 	PublicLabel CommandNameLabel = "VDBParticleSystemToVolume";
 	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
 	PublicLabel VolumeIdLabel = "VolumeId";
+	PublicLabel TemperatureVolumeIdLabel = "TemperatureVolumeId";
 	PublicLabel RadiusLabel = "Radius";
 	PublicLabel VoxelSizeLabel = "VoxelSize";
 	PublicLabel DoUseSPHLabel = "DoUseSPH";
@@ -28,6 +29,7 @@ using namespace Crystal::VDB;
 VDBPSToVolumeCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	vdbVolumeId(::VolumeIdLabel, -1),
+	temperatureVolumeId(::TemperatureVolumeIdLabel, -1),
 	radius(::RadiusLabel, 5.0),
 	voxelSize(::VoxelSizeLabel, 1.0),
 	doUseSph(::DoUseSPHLabel, false)
@@ -67,6 +69,12 @@ bool VDBPSToVolumeCommand::execute(World* world)
 	if (volume == nullptr) {
 		return false;
 	}
+	/*
+	auto temperatureVolume = world->getScenes()->findSceneById<VDBVolumeScene*>(args.temperatureVolumeId.getValue());
+	if (temperatureVolume == nullptr) {
+		return false;
+	}
+	*/
 
 	if (!args.doUseSph.getValue()) {
 		VDBParticleSystemConverter psConverter;
@@ -74,7 +82,7 @@ bool VDBPSToVolumeCommand::execute(World* world)
 	}
 	else {
 		SmoothVolumeConverter converter;
-		converter.buildIsotoropic(scene, args.radius.getValue(), args.voxelSize.getValue(), volume);
+		converter.buildIsotoropic(scene, args.radius.getValue(), args.voxelSize.getValue(), volume, nullptr);//temperatureVolume);
 	}
 	return true;
 }

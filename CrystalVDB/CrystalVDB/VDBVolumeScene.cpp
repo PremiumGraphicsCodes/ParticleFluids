@@ -49,8 +49,9 @@ VDBVolumeScene::VDBVolumeScene(const int id, const std::string& name) :
 	using FloatGridType = openvdb::Grid<FloatTreeType>;
 	auto grid = openvdb::createGrid<FloatGridType>();
 	impl = std::make_unique<VDBVolumeImpl>(grid);
-	//grid->setName(std::string("density"));
+	//grid->setName(name);
 	impl->setPtr(FloatGrid::create());
+	impl->getPtr()->setName(name);
 	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
 

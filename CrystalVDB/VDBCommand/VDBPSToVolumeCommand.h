@@ -14,6 +14,7 @@ public:
 
 		Command::Arg<int> particleSystemId;
 		Command::Arg<int> vdbVolumeId;
+		Command::Arg<int> temperatureVolumeId;
 		Command::Arg<double> radius;
 		Command::Arg<double> voxelSize;
 		Command::Arg<bool> doUseSph;

@@ -46,6 +46,7 @@ void ToVolumeView::onOk()
 	const auto path = inputDirectoryView.getPath();
 	const auto outdir = outputDirectoryView.getPath();
 	for (const auto& file : std::filesystem::directory_iterator(path)) {
+		std::cout << file << std::endl;
 		World w;
 
 		VDBSceneCreateCommand::Args scArgs;
@@ -63,6 +64,7 @@ void ToVolumeView::onOk()
 
 		VDBSceneCreateCommand::Args scArgs2;
 		scArgs2.sceneType.setValue("VDBVolume");
+		scArgs2.name.setValue("density");
 		VDBSceneCreateCommand scCommand2(scArgs2);
 		scCommand2.execute(&w);
 		const auto vdbVolumeId = std::any_cast<int>(scCommand2.getResult("NewId"));

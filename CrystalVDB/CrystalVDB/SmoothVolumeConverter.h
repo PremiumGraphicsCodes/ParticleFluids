@@ -16,7 +16,7 @@ class SmoothVolumeConverter
 public:
 	//void add(Shape::IParticle* particle);
 
-	void buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume);
+	void buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume);
 
 private:
 };
