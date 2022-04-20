@@ -59,6 +59,7 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 
 	exporter = new SolverExporter(world);
 
+	boundaryView.setValue(Box3dd(Vector3dd(0, 0, 0), Vector3dd(20, 20, 20)));
 
 	world->addAnimation(&solver);
 	world->addAnimation(&updator);
@@ -91,7 +92,7 @@ void SolverView::onReset()
 	//this->addEmitter();
 
 	csgScene->clearBoxes();
-	csgScene->add(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 100, 100)));
+	csgScene->add(boundaryView.getValue());
 
 	exporter->setSolver(&this->solver);
 	exporter->setDirectory(this->exportDirecotryView.getPath());
