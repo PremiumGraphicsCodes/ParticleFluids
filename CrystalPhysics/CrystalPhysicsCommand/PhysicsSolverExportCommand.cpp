@@ -85,6 +85,6 @@ bool PhysicsSolverExportCommand::execute(World* world)
 	}
 
 	PLYFileWriter writer;
-	const auto isOk = writer.writeBinary(args.filePath.getValue(), file);
+	const auto isOk = writer.writeASCII(args.filePath.getValue(), file);
 	return isOk;
 }

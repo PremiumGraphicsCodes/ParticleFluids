@@ -10,6 +10,10 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
+VDBParticleSystemScene::VDBParticleSystemScene() :
+    VDBParticleSystemScene(-1, "")
+{}
+
 VDBParticleSystemScene::VDBParticleSystemScene(const int id, const std::string name) :
     IParticleSystemScene(id, name)
 {

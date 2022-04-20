@@ -15,9 +15,7 @@ namespace Crystal {
 class VDBParticleSystemScene : public Scene::IParticleSystemScene
 {
 public:
-    VDBParticleSystemScene() :
-        VDBParticleSystemScene(-1, "")
-    {}
+    VDBParticleSystemScene();
 
     VDBParticleSystemScene(const int id, const std::string name);
 

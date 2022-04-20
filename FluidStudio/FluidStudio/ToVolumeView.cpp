@@ -7,6 +7,7 @@
 #include "CrystalPhysics/CrystalPhysicsCommand/SPHVolumeConvertCommand.h"
 #include "CrystalPhysics/CrystalPhysicsCommand/FluidVolumeExportCommand.h"
 
+#include "CrystalVDB/VDBCommand/VDBInitCommand.h"
 #include "CrystalVDB/VDBCommand/VDBPLYFileReadCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
 #include "CrystalVDB/VDBCommand/VDBPLYFileReadCommand.h"
@@ -41,6 +42,7 @@ ToVolumeView::ToVolumeView(const std::string& name, World* model, Canvas* canvas
 
 void ToVolumeView::onOk()
 {
+
 	const auto path = inputDirectoryView.getPath();
 	const auto outdir = outputDirectoryView.getPath();
 	for (const auto& file : std::filesystem::directory_iterator(path)) {

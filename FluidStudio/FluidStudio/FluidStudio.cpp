@@ -10,6 +10,8 @@
 
 #include "CrystalScene/Scene/World.h"
 
+#include "CrystalVDB/VDBCommand/VDBInitCommand.h"
+
 #include "FluidMenu.h"
 #include "VDBMenu.h"
 
@@ -35,6 +37,14 @@ int main()
 		assert(false);
 		return 0;
 	}
+
+	Crystal::VDB::VDBInitCommand initCommand;
+	if (!initCommand.execute(&world)) {
+		std::cout << "VDB initialization failed!" << std::endl;
+		assert(false);
+		return 0;
+	}
+
 
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);
