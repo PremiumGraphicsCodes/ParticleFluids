@@ -73,7 +73,7 @@ namespace {
 
 }
 
-void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume)
+void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* vdbTemperatureVolume)
 {
 	const auto positions = vdbParticles->getPositions();
 	//vdbParticles->get
@@ -137,21 +137,25 @@ void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles
 			auto tnode = tns[i];
 			const auto nodePos = node->getPosition();
 			const auto neighbors = spaceHash.findNeighbors(node->getPosition());
+			float totalWeight = 0.0;
 			for (auto n : neighbors) {
 				auto sp = static_cast<SmoothParticle*>(n);
 				const auto v = n->getPosition() - nodePos;
 				const auto d = glm::distance(n->getPosition(), nodePos);
 				//const auto coe = 1400.0f / searchRadius / searchRadius / searchRadius;
-				const auto w = ::getCubicSpline(d, sp->getRadius()) * sp->getMass() / sp->getDensity();
-				const auto value = node->getValue();
-				node->setValue(w + value);
-
-				const auto t = ::getCubicSpline(d, sp->getRadius()) * sp->getTemperature() / sp->getDensity();
+				const auto w = ::getCubicSpline(d, sp->getRadius());
+				const auto value = w * sp->getMass() / sp->getDensity();
+				node->setValue(value + node->getValue());
+				const auto t = w * sp->getTemperature();
 				tnode->setValue(tnode->getValue() + t);
+				totalWeight += ::getCubicSpline(d, sp->getRadius());
 			}
+			tnode->setValue(tnode->getValue() / totalWeight);
 		}
+
 		VDBVolumeConverter converter;
 		converter.fromSparseVolume(*volume, vdbVolume);
+		converter.fromSparseVolume(temperatureVolume, vdbTemperatureVolume);
 	}
 
 	/*

@@ -9,7 +9,7 @@ void VDBParticleSystemImpl::addFloatAttribute(const std::string& name)
 
 std::vector<openvdb::Vec3f> VDBParticleSystemImpl::getPositions() const
 {
-    std::vector<openvdb::Vec3f> positions(size());
+    std::vector<openvdb::Vec3f> positions;
     for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
         const auto& array = leafIter->constAttributeArray("P");
         openvdb::points::AttributeHandle<openvdb::Vec3f> positionHandle(array);
@@ -18,7 +18,8 @@ std::vector<openvdb::Vec3f> VDBParticleSystemImpl::getPositions() const
             const auto xyz = indexIter.getCoord().asVec3d();
             openvdb::Vec3f worldPosition = grid->transform().indexToWorld(voxelPosition + xyz);
             auto index = *indexIter;
-            positions[index] = worldPosition;
+            //positions[index] = worldPosition;
+            positions.push_back(worldPosition);
         }
     }
     return positions;
@@ -27,7 +28,6 @@ std::vector<openvdb::Vec3f> VDBParticleSystemImpl::getPositions() const
 std::vector<float> VDBParticleSystemImpl::getFloatAttributes(const std::string& name) const
 {
     std::vector<float> values;
-    values.resize(size());
     for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
         //std::cout << "Leaf" << leafIter->origin() << std::endl;
         // Extract the position attribute from the leaf by name (P is position).
@@ -36,14 +36,23 @@ std::vector<float> VDBParticleSystemImpl::getFloatAttributes(const std::string& 
         for (auto indexIter = leafIter->beginIndexOn(); indexIter; ++indexIter) {
             const auto index = *indexIter;
             const auto v = floatHandle.get(*indexIter);
-            values[index] = v;
+            values.push_back(v);
         }
     }
+    /*
+    for (int i = 0; i < values.size(); ++i) {
+        if (values[i] == 0.0) {
+            std::cout << i << std::endl;
+        }
+    }
+    */
+
     return values;
 }
 
 void VDBParticleSystemImpl::setFloatAttributes(const std::string& name, const std::vector<float>& values)
 {
+    int i = 0;
     for (auto leafIter = grid->tree().beginLeaf(); leafIter; ++leafIter) {
         //std::cout << "Leaf" << leafIter->origin() << std::endl;
         // Extract the position attribute from the leaf by name (P is position).
@@ -51,7 +60,7 @@ void VDBParticleSystemImpl::setFloatAttributes(const std::string& name, const st
         openvdb::points::AttributeWriteHandle<float> floatHandle(leafIter->attributeArray(name));
         for (auto indexIter = leafIter->beginIndexOn(); indexIter; ++indexIter) {
             const auto index = *indexIter;
-            floatHandle.set(*indexIter, values[index]);
+            floatHandle.set(*indexIter, values[i++]);
         }
     }
 }

@@ -89,10 +89,10 @@ bool VDBPLYFileReadCommand::readPoints(World* world)
 			for (const auto& v : ply.vertices) {
 				const auto t = v.getValueAs<float>(i);
 				values.push_back(t);
-				std::cout << t;
+				//std::cout << t;
 			}
 			scene->setFloatAttribute(ply.properties[i].name, values);
-			const auto vs = scene->getFloatAttribute(ply.properties[i].name);
+			//const auto vs = scene->getFloatAttribute(ply.properties[i].name);
 		}
 
 	}

@@ -82,6 +82,7 @@ void ToVolumeView::onOk()
 		cArgs.voxelSize.setValue(0.5);
 		cArgs.particleSystemId.setValue(vdbPointsId);
 		cArgs.vdbVolumeId.setValue(vdbVolumeId);
+		cArgs.temperatureVolumeId.setValue(vdbTemperatureVolumeId);
 		VDBPSToVolumeCommand cCommand(cArgs);
 		cCommand.execute(&w);
 

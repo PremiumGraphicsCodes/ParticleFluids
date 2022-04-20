@@ -69,12 +69,10 @@ bool VDBPSToVolumeCommand::execute(World* world)
 	if (volume == nullptr) {
 		return false;
 	}
-	/*
 	auto temperatureVolume = world->getScenes()->findSceneById<VDBVolumeScene*>(args.temperatureVolumeId.getValue());
 	if (temperatureVolume == nullptr) {
 		return false;
 	}
-	*/
 
 	if (!args.doUseSph.getValue()) {
 		VDBParticleSystemConverter psConverter;
@@ -82,7 +80,7 @@ bool VDBPSToVolumeCommand::execute(World* world)
 	}
 	else {
 		SmoothVolumeConverter converter;
-		converter.buildIsotoropic(scene, args.radius.getValue(), args.voxelSize.getValue(), volume, nullptr);//temperatureVolume);
+		converter.buildIsotoropic(scene, args.radius.getValue(), args.voxelSize.getValue(), volume, temperatureVolume);
 	}
 	return true;
 }
