@@ -4,10 +4,7 @@ using namespace Crystal::VDB;
 
 void VDBParticleSystemImpl::addFloatAttribute(const std::string& name)
 {
-    using Codec = openvdb::points::FixedPointCodec</*1-byte=*/false,openvdb::points::UnitRange>;
-    openvdb::points::TypedAttributeArray<float, Codec>::registerType();
-    openvdb::NamePair radiusAttribute = openvdb::points::TypedAttributeArray<float, Codec>::attributeType();
-    openvdb::points::appendAttribute(grid->tree(), name, radiusAttribute);
+    openvdb::points::appendAttribute<float>(grid->tree(), name);
 }
 
 std::vector<openvdb::Vec3f> VDBParticleSystemImpl::getPositions() const

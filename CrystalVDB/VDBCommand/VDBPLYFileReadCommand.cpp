@@ -57,6 +57,8 @@ bool VDBPLYFileReadCommand::execute(World* world)
 	}
 }
 
+#include <iostream>
+
 bool VDBPLYFileReadCommand::readPoints(World* world)
 {
 	auto scene = world->getScenes()->findSceneById<VDBParticleSystemScene*>(args.vdbSceneId.getValue());
@@ -87,8 +89,10 @@ bool VDBPLYFileReadCommand::readPoints(World* world)
 			for (const auto& v : ply.vertices) {
 				const auto t = v.getValueAs<float>(i);
 				values.push_back(t);
+				std::cout << t;
 			}
 			scene->setFloatAttribute(ply.properties[i].name, values);
+			const auto vs = scene->getFloatAttribute(ply.properties[i].name);
 		}
 
 	}

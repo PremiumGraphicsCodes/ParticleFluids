@@ -118,15 +118,23 @@ void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles
 		auto volume = builder.get();
 		const auto nodes = volume->getNodes();
 
+		SparseVolume<float> temperatureVolume(Vector3df(cellLength), positions.size());
+		for (auto n : nodes) {
+			temperatureVolume.createNode(n->getIndex());
+		}
+		auto tnodes = temperatureVolume.getNodes();
+
 		CompactSpaceHash3d spaceHash(particleRadius, (int)particles.size());
 		for (const auto& p : particles) {
 			spaceHash.add(p.get());
 		}
 
+		std::vector<SparseVolumeNode<float>*> tns(tnodes.begin(), tnodes.end());
 		std::vector<SparseVolumeNode<float>*> ns(nodes.begin(), nodes.end());
 #pragma omp parallel for
 		for (int i = 0; i < ns.size(); ++i) {
 			auto node = ns[i];
+			auto tnode = tns[i];
 			const auto nodePos = node->getPosition();
 			const auto neighbors = spaceHash.findNeighbors(node->getPosition());
 			for (auto n : neighbors) {
@@ -137,6 +145,9 @@ void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles
 				const auto w = ::getCubicSpline(d, sp->getRadius()) * sp->getMass() / sp->getDensity();
 				const auto value = node->getValue();
 				node->setValue(w + value);
+
+				const auto t = ::getCubicSpline(d, sp->getRadius()) * sp->getTemperature() / sp->getDensity();
+				tnode->setValue(tnode->getValue() + t);
 			}
 		}
 		VDBVolumeConverter converter;
