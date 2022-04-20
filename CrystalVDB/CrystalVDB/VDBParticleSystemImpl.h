@@ -9,7 +9,8 @@ namespace Crystal {
 struct Particle
 {
     openvdb::Vec3R position;
-    openvdb::Real  radius;
+    openvdb::Real radius;
+    openvdb::Real temperature;
 };
 
 class VDBParticleSystemImpl
@@ -36,7 +37,9 @@ public:
 
     std::vector<float> getFloatAttributes(const std::string& name) const;
 
-    void setFloatAttributes(const std::string& name, const std::vector<float>& values) const;
+    void setFloatAttributes(const std::string& name, const std::vector<float>& values);
+
+    //void setValues(const std::vector<Particle>& particles);
 
     std::vector<std::string> getAttributeNames() const;
 

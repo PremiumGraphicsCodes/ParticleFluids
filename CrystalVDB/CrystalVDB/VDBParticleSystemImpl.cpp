@@ -12,30 +12,16 @@ void VDBParticleSystemImpl::addFloatAttribute(const std::string& name)
 
 std::vector<openvdb::Vec3f> VDBParticleSystemImpl::getPositions() const
 {
-    std::vector<openvdb::Index32> v_indices;
-    std::vector<openvdb::Vec3f> positions;
+    std::vector<openvdb::Vec3f> positions(size());
     for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
-        //std::cout << "Leaf" << leafIter->origin() << std::endl;
-        // Extract the position attribute from the leaf by name (P is position).
         const auto& array = leafIter->constAttributeArray("P");
-        //        leafIter->hasAttribute("pscale");
-        //        const auto& radiusArray = leafIter->constAttributeArray("pscale");
-
-                // Create a read-only AttributeHandle. Position always uses Vec3f.
         openvdb::points::AttributeHandle<openvdb::Vec3f> positionHandle(array);
-        //      openvdb::points::AttributeHandle<float> radiusHandle(radiusArray);
-
-              // Iterate over the point indices in the leaf.
         for (auto indexIter = leafIter->beginIndexOn(); indexIter; ++indexIter) {
             openvdb::Vec3f voxelPosition = positionHandle.get(*indexIter);
-            //            const auto radius = radiusHandle.get(*indexIter);
             const auto xyz = indexIter.getCoord().asVec3d();
             openvdb::Vec3f worldPosition = grid->transform().indexToWorld(voxelPosition + xyz);
-            //            v_positions.push_back(worldPosition);
             auto index = *indexIter;
-            v_indices.push_back(index);
-            positions.push_back(worldPosition);
-            //psScene->add(Converter::fromVDB(worldPosition), radius);
+            positions[index] = worldPosition;
         }
     }
     return positions;
@@ -43,39 +29,42 @@ std::vector<openvdb::Vec3f> VDBParticleSystemImpl::getPositions() const
 
 std::vector<float> VDBParticleSystemImpl::getFloatAttributes(const std::string& name) const
 {
-    std::vector<openvdb::Index32> v_indices;
     std::vector<float> values;
+    values.resize(size());
     for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
         //std::cout << "Leaf" << leafIter->origin() << std::endl;
         // Extract the position attribute from the leaf by name (P is position).
         const auto& array = leafIter->constAttributeArray(name);
         openvdb::points::AttributeHandle<float> floatHandle(array);
         for (auto indexIter = leafIter->beginIndexOn(); indexIter; ++indexIter) {
-            float v = floatHandle.get(*indexIter);
-            values.push_back(v);
-            auto index = *indexIter;
-            v_indices.push_back(index);
-            //psScene->add(Converter::fromVDB(worldPosition), radius);
+            const auto index = *indexIter;
+            const auto v = floatHandle.get(*indexIter);
+            values[index] = v;
         }
     }
     return values;
 }
 
-void VDBParticleSystemImpl::setFloatAttributes(const std::string& name, const std::vector<float>& values) const
+void VDBParticleSystemImpl::setFloatAttributes(const std::string& name, const std::vector<float>& values)
 {
-    std::vector<openvdb::Index32> v_indices;
-    int index = 0;
-    for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
+    for (auto leafIter = grid->tree().beginLeaf(); leafIter; ++leafIter) {
         //std::cout << "Leaf" << leafIter->origin() << std::endl;
         // Extract the position attribute from the leaf by name (P is position).
-        auto array = leafIter->attributeArray(name);
-        openvdb::points::AttributeWriteHandle<float> floatHandle(array);
+        //const auto array = leafIter->attributeArray(name);
+        openvdb::points::AttributeWriteHandle<float> floatHandle(leafIter->attributeArray(name));
         for (auto indexIter = leafIter->beginIndexOn(); indexIter; ++indexIter) {
+            const auto index = *indexIter;
             floatHandle.set(*indexIter, values[index]);
-            index++;
         }
     }
 }
+
+/*
+void VDBParticleSystemImpl::setValues(const std::vector<Particle>& particles)
+{
+
+}
+*/
 
 std::vector<std::string> VDBParticleSystemImpl::getAttributeNames() const
 {
