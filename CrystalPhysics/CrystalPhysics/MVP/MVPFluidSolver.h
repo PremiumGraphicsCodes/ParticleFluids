@@ -45,6 +45,8 @@ public:
 
 	void setExternalForce(const Math::Vector3df& externalForce) { this->externalForce = externalForce; }
 
+	void setBuoyancy(const Math::Vector3df& buoyancy) { this->buoyancy = buoyancy; }
+
 	void simulate();
 
 	void step() override;
@@ -69,6 +71,7 @@ private:
 	float maxTimeStep = 0.03f;
 	int currentTimeStep = 0;
 	Math::Vector3df externalForce;
+	Math::Vector3df buoyancy;
 };
 
 class MVPUpdater : public Scene::IAnimator

@@ -19,12 +19,14 @@ using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
 MVPFluidSolver::MVPFluidSolver() :
-	externalForce(0.0, -9.8f, 0.0)
+	externalForce(0.0, -9.8f, 0.0),
+	buoyancy(0.0f, 0.0f, 0.0f)
 {}
 
 MVPFluidSolver::MVPFluidSolver(const int id) :
 	IAnimator(id),
-	externalForce(0.0, -9.8f, 0.0)
+	externalForce(0.0, -9.8f, 0.0),
+	buoyancy(0.0f, 0.0f, 0.0f)
 {}
 
 void MVPFluidSolver::setupBoundaries()
@@ -154,7 +156,7 @@ void MVPFluidSolver::simulate()
 		}
 
 		for (auto particle : fluidParticles) {
-			const auto buo = -externalForce * (particle->getTemperature() - 300.0f) *  particle->getDensity() * 0.01f;
+			const auto buo = buoyancy * (particle->getTemperature() - 300.0f) *  particle->getDensity();
 			particle->addForce(buo);
 			particle->addForce(externalForce * particle->getDensity());
 			//particle->stepTime(dt);

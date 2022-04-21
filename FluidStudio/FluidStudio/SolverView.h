@@ -51,6 +51,7 @@ private:
 	FloatView timeStepView;
 	FloatView radiusView;
 	Vector3dView externalForceView;
+	Vector3dView buoyancyView;
 	Button startButton;
 	Button resetButton;
 	int newId;
