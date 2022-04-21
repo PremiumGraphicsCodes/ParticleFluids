@@ -13,7 +13,7 @@ MVPFluidScenePresenter::MVPFluidScenePresenter(IMVPFluidScene* model) :
 	mode(Mode::Density)
 {
 	//colorMap = ColorMap(2.0f, 3.0f, ColorTable::createDefaultTable(270));
-	colorMap = ColorMap(300.0f, 400.0f, ColorTable::createDefaultTable(270));
+	colorMap = ColorMap(300.0f, 800.0f, ColorTable::createDefaultTable(270));
 }
 
 void MVPFluidScenePresenter::createView(SceneShader* sceneShader)

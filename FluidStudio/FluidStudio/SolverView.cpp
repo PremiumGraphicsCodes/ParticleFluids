@@ -155,12 +155,12 @@ void SolverView::addFluid()
 		const auto radius = 1.0;
 		const auto length = radius * 0.5;
 		for (int i = -10; i < 10; ++i) {
-			for (int j = -2; j < -1; ++j) {
+			for (int j = -1; j < 0; ++j) {
 				for (int k = -10; k < 10; ++k) {
 					const auto p = Vector3dd(i * length, j * length, k * length);
 					auto mp = builder.create(p, length, 0.25f);
-					mp->setTemperature(1000.0f);
-					mp->getMassParticles().front()->updateTemperature(1000.0f);
+					mp->setTemperature(2000.0f);
+					mp->getMassParticles().front()->updateTemperature(2000.0f);
 					staticScene->addParticle(mp);
 					staticScene->setBoundary(true);
 				}
