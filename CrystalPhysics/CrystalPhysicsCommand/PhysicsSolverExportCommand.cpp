@@ -10,6 +10,7 @@ namespace {
 	PublicLabel FluidIdsLabel = "FluidIds";
 	PublicLabel FilePathLabel = "FilePath";
 	PublicLabel DoExportMicroLabel = "DoExportMicro";
+	PublicLabel AsBinaryLabel = "AsBinary";
 }
 
 using namespace Crystal::Math;
@@ -25,11 +26,13 @@ std::string PhysicsSolverExportCommand::getName()
 PhysicsSolverExportCommand::Args::Args() :
 	fluidIds(::FluidIdsLabel, {}),
 	filePath(::FilePathLabel, ""),
-	doExportMicro(::DoExportMicroLabel, false)
+	doExportMicro(::DoExportMicroLabel, false),
+	asBinary(::AsBinaryLabel, true)
 {
 	add(&fluidIds);
 	add(&filePath);
 	add(&doExportMicro);
+	add(&asBinary);
 }
 
 PhysicsSolverExportCommand::Results::Results()
@@ -88,6 +91,12 @@ bool PhysicsSolverExportCommand::execute(World* world)
 	}
 
 	PLYFileWriter writer;
-	const auto isOk = writer.writeBinary(args.filePath.getValue(), file);
-	return isOk;
+	if (args.asBinary.getValue()) {
+		const auto isOk = writer.writeBinary(args.filePath.getValue(), file);
+		return isOk;
+	}
+	else {
+		const auto isOk = writer.writeASCII(args.filePath.getValue(), file);
+		return isOk;
+	}
 }

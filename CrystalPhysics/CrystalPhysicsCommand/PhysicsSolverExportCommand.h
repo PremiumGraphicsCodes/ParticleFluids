@@ -14,6 +14,7 @@ public:
 		Command::Arg<std::vector<int>> fluidIds;
 		Command::Arg<std::string> filePath;
 		Command::Arg<bool> doExportMicro;
+		Command::Arg<bool> asBinary;
 
 		Args();
 	};
