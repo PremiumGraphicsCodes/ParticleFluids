@@ -148,8 +148,9 @@ void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles
 				node->setValue(value + node->getValue());
 				const auto t = w * sp->getTemperature();
 				tnode->setValue(tnode->getValue() + t);
-				totalWeight += ::getCubicSpline(d, sp->getRadius());
+				totalWeight += w;
 			}
+			node->setValue(node->getValue() / totalWeight);
 			tnode->setValue(tnode->getValue() / totalWeight);
 		}
 
