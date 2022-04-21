@@ -17,6 +17,10 @@ SolverExporter::SolverExporter(World* model) :
 
 void SolverExporter::step()
 {
+	if (!isActive) {
+		return;
+	}
+
 	if (solver == nullptr) {
 		return;
 	}

@@ -327,6 +327,7 @@
     <ClCompile Include="IMenuItem.cpp">
       <Filter>Window</Filter>
     </ClCompile>
+    <ClCompile Include="CheckBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -697,6 +698,7 @@
     <ClInclude Include="MenuItem.h">
       <Filter>Window</Filter>
     </ClInclude>
+    <ClInclude Include="CheckBox.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Window">

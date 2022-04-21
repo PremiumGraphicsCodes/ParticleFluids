@@ -32,6 +32,7 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	radiusView("SearchRadius", 2.00f),
 	externalForceView("ExternalForce", Vector3dd(0.0, -9.8, 0.0)),
 	buoyancyView("Buoyancy", Vector3df(0.0, 0.098, 0.0)),
+	doExportView("Export", false),
 	exportDirecotryView("ExportDir", "./")
 {
 	startButton.setFunction([=]() { onStart(); });
@@ -48,6 +49,7 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	add(&radiusView);
 	add(&externalForceView);
 	add(&buoyancyView);
+	add(&doExportView);
 	add(&exportDirecotryView);
 
 	fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
@@ -67,7 +69,7 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 
 	world->addAnimation(&solver);
 	world->addAnimation(&updator);
-	//world->addAnimation(exporter);
+	world->addAnimation(exporter);
 }
 
 void SolverView::onStart()
@@ -101,6 +103,7 @@ void SolverView::onReset()
 
 	exporter->setSolver(&this->solver);
 	exporter->setDirectory(this->exportDirecotryView.getPath());
+	exporter->setActive(doExportView.getValue());
 	//this->addEmitter();
 }
 

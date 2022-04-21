@@ -26,6 +26,7 @@
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="CheckBox.cpp" />
     <ClCompile Include="Circle3dView.cpp" />
     <ClCompile Include="ColorMapView.cpp" />
     <ClCompile Include="ColorRGBAView.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="AppearanceMenu.h" />
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="Canvas.h" />
+    <ClInclude Include="CheckBox.h" />
     <ClInclude Include="Circle3dView.h" />
     <ClInclude Include="ComboBox.h" />
     <ClInclude Include="DeleteView.h" />

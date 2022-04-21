@@ -24,11 +24,14 @@ public:
 
 	void step() override;
 
+	void setActive(const bool b) { this->isActive = b; }
+
 private:
 	MVPFluidSolver* solver;
 	//std::list<Scene::IScene*> fluids;
 	std::filesystem::path path;
 	World* world;
+	bool isActive;
 };
 
 	}
