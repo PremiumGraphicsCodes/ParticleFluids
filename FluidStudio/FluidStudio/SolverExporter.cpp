@@ -12,7 +12,8 @@ using namespace Crystal::UI;
 
 SolverExporter::SolverExporter(World* model) :
 	world(model),
-	solver(nullptr)
+	solver(nullptr),
+	frame(0)
 {}
 
 void SolverExporter::step()
@@ -25,9 +26,15 @@ void SolverExporter::step()
 		return;
 	}
 
+
 	const auto timeStep = solver->getTimeStep();
+
+	if (timeStep % interval != 0) {
+		return;
+	}
+
 	auto fileName = path;
-	fileName.append("particle" + std::to_string(timeStep) + ".ply");
+	fileName.append("particle" + std::to_string(frame) + ".ply");
 
 	const auto fluids = solver->getFluids();
 	const auto emitters = solver->getEmitters();
@@ -45,4 +52,6 @@ void SolverExporter::step()
 	args.filePath.setValue(fileName.string());
 	PhysicsSolverExportCommand command(args);
 	command.execute(world);
+
+	frame++;
 }

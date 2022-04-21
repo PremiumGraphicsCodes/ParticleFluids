@@ -62,6 +62,7 @@ private:
 
 	BoolView doExportView;
 	DirectoryView exportDirecotryView;
+	IntView exportIntervalView;
 	SolverExporter* exporter;
 };
 

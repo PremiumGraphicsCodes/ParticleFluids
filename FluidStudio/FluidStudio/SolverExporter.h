@@ -26,12 +26,18 @@ public:
 
 	void setActive(const bool b) { this->isActive = b; }
 
+	void setExportInterval(const int i) { this->interval = i; }
+
+	void reset() { this->frame = 0; }
+
 private:
 	MVPFluidSolver* solver;
 	//std::list<Scene::IScene*> fluids;
 	std::filesystem::path path;
 	World* world;
 	bool isActive;
+	int interval = 1;
+	int frame;
 };
 
 	}

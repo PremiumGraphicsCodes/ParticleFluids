@@ -33,6 +33,7 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	externalForceView("ExternalForce", Vector3dd(0.0, -9.8, 0.0)),
 	buoyancyView("Buoyancy", Vector3df(0.0, 0.098, 0.0)),
 	doExportView("Export", false),
+	exportIntervalView("Interval", 5),
 	exportDirecotryView("ExportDir", "./")
 {
 	startButton.setFunction([=]() { onStart(); });
@@ -50,6 +51,7 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	add(&externalForceView);
 	add(&buoyancyView);
 	add(&doExportView);
+	add(&exportIntervalView);
 	add(&exportDirecotryView);
 
 	fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
@@ -101,9 +103,11 @@ void SolverView::onReset()
 	csgScene->clearBoxes();
 	csgScene->add(boundaryView.getValue());
 
+	exporter->reset();
 	exporter->setSolver(&this->solver);
 	exporter->setDirectory(this->exportDirecotryView.getPath());
 	exporter->setActive(doExportView.getValue());
+	exporter->setExportInterval(this->exportIntervalView.getValue());
 	//this->addEmitter();
 }
 
