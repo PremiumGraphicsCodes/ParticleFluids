@@ -102,8 +102,8 @@ void SolverView::onReset()
 	staticScene->clearParticles();
 
 
-	this->addFluid();
-	//this->addEmitter();
+	//this->addFluid();
+	this->addEmitter();
 
 	csgScene->clearBoxes();
 	csgScene->add(boundaryView.getValue());
@@ -189,12 +189,15 @@ void SolverView::addEmitter()
 	this->emitterScene->setPressureCoe(pressureCoeView.getValue());
 	this->emitterScene->setViscosityCoe(viscosityCoeView.getValue());
 	this->emitterScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
+	this->emitterScene->setDragForceCoe(dragForceCoeView.getValue());
+	this->emitterScene->setDragHeatCoe(dragHeatCoeView.getValue());
 
 	for (int i = 0; i < 10; ++i) {
-		emitterScene->addSource(Sphere3d(Vector3dd(0, i * 1.0, 0), 1.0));
+		emitterScene->addSource(Sphere3d(Vector3dd(0, i * 1.0, 0), 0.5));
 	}
+	emitterScene->setInterval(10);
 	emitterScene->setInitialVelocity(Vector3dd(10.0, 0.0, 0.0));
-	emitterScene->setStartEnd(0, 100);
+	emitterScene->setStartEnd(0, 10000);
 
 
 	solver.clear();

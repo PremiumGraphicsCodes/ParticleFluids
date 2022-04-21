@@ -175,8 +175,8 @@ void MVPVolumeParticle::updateInnerPoints()
 
 void MVPVolumeParticle::calculateDragForce()
 {
-	const auto drag = -dragForceCoe * velocity * (1.0f - density / 1.0f);
-	addForce(drag);
+	const auto drag = -dragForceCoe * velocity;// *(1.0f - density / 1.0f);
+	addForce(drag * this->density);
 }
 
 void MVPVolumeParticle::calculateDragHeat()
