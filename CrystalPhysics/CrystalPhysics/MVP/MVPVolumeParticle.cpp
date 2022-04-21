@@ -181,5 +181,5 @@ void MVPVolumeParticle::calculateDragForce()
 
 void MVPVolumeParticle::calculateDragHeat()
 {
-	this->enthaply += -dragHeatCoe * (temperature - 300.0f) * (1.0f - density / 1.0f);
+	this->enthaply += -dragHeatCoe * (temperature - 300.0f); //(1.0f - density / 1.0f);
 }

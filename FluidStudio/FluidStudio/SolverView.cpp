@@ -138,9 +138,9 @@ void SolverView::addFluid()
 		MVPParticleBuilder builder;
 		const auto radius = 1.0;
 		const auto length = radius * 0.5;
-		for (int i = 0; i < 20; ++i) {
+		for (int i =-20; i < 20; ++i) {
 			for (int j = 0; j < 20; ++j) {
-				for (int k = 0; k < 20; ++k) {
+				for (int k = -20; k < 20; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
 					auto mp = builder.create(p, length, 0.25f);
@@ -154,9 +154,9 @@ void SolverView::addFluid()
 		MVPParticleBuilder builder;
 		const auto radius = 1.0;
 		const auto length = radius * 0.5;
-		for (int i = 0; i < 20; ++i) {
+		for (int i = -10; i < 10; ++i) {
 			for (int j = -2; j < -1; ++j) {
-				for (int k = 0; k < 20; ++k) {
+				for (int k = -10; k < 10; ++k) {
 					const auto p = Vector3dd(i * length, j * length, k * length);
 					auto mp = builder.create(p, length, 0.25f);
 					mp->setTemperature(1000.0f);
