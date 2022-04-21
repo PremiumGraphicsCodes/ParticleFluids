@@ -36,6 +36,10 @@ public:
 
 	float getViscosityCoe() const { return viscosityCoe; }
 
+	void setHeatDiffuseCoe(const float c) { this->heatDiffuseCoe = c; }
+
+	float getHeatDiffuseCoe() const { return heatDiffuseCoe; }
+
 	Math::Vector3df position;
 
 	float getTemperature() const { return temperature; }
@@ -47,6 +51,7 @@ private:
 	float mass;
 	float pressureCoe;
 	float viscosityCoe;
+	float heatDiffuseCoe;
 	float temperature;
 };
 

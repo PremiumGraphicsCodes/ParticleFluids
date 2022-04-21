@@ -28,6 +28,8 @@ public:
 
 	void setVorticityCoe(const float c);
 
+	void setHeatDiffuseCue(const float c);
+
 	//KFFluidScene* getScene() { return scene; }
 
 	void reset(bool resetMicro);

@@ -19,6 +19,7 @@ public:
 	void addParticle(MVPVolumeParticle* mp) {
 		mp->setPressureCoe(this->pressureCoe);
 		mp->setViscosityCoe(this->viscosityCoe);
+		mp->setHeatDiffuseCue(this->heatDiffuseCoe);
 		particles.push_back(mp);
 	}
 
@@ -42,6 +43,10 @@ public:
 
 	float getViscosityCoe() const { return this->viscosityCoe; }
 
+	void setHeatDiffuseCoe(const float coe) { this->heatDiffuseCoe = coe; }
+
+	float getHeatDiffuseCoe() const { return this->heatDiffuseCoe; }
+
 	void translate(const Math::Vector3dd& v) override { ; }
 
 	void transform(const Math::Matrix3dd& m) override { ; }
@@ -57,6 +62,7 @@ private:
 	std::list<MVPVolumeParticle*> particles;
 	float pressureCoe;
 	float viscosityCoe;
+	float heatDiffuseCoe;
 };
 
 	}

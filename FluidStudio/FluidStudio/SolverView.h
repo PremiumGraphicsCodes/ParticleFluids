@@ -47,6 +47,7 @@ private:
 	Box3dView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;
+	FloatView heatDiffuseCoeView;
 	FloatView timeStepView;
 	FloatView radiusView;
 	Vector3dView externalForceView;

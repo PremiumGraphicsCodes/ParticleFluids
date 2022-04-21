@@ -27,6 +27,7 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	boundaryView("Boundary"),
 	pressureCoeView("PressureCoe", 500.f),
 	viscosityCoeView("ViscosityCoe", 50.0f),
+	heatDiffuseCoeView("HeatDiffuseCoe", 100.0f),
 	timeStepView("TimeStep", 0.01f),
 	radiusView("SearchRadius", 2.00f),
 	externalForceView("ExternalForce", Vector3dd(0.0, -9.8, 0.0)),
@@ -41,12 +42,13 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	add(&boundaryView);
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
+	add(&heatDiffuseCoeView);
 	add(&timeStepView);
 	add(&radiusView);
 	add(&externalForceView);
 	add(&exportDirecotryView);
 
-	fluidScene = new MVPFluidScene(world->getNextSceneId(), "KFFluid");
+	fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
 	world->getScenes()->addScene(fluidScene);
 
 	staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
@@ -106,9 +108,11 @@ void SolverView::addFluid()
 
 	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
+	this->fluidScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
 
 	this->staticScene->setPressureCoe(pressureCoeView.getValue());
 	this->staticScene->setViscosityCoe(viscosityCoeView.getValue() * 5.0f);
+	this->staticScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
 
 	//this->boundaryScene->setPressureCoe(pressureCoeView.getValue());
 	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());
@@ -167,7 +171,7 @@ void SolverView::addEmitter()
 
 	this->emitterScene->setPressureCoe(pressureCoeView.getValue());
 	this->emitterScene->setViscosityCoe(viscosityCoeView.getValue());
-
+	this->emitterScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
 
 	for (int i = 0; i < 10; ++i) {
 		emitterScene->addSource(Sphere3d(Vector3dd(0, i * 1.0, 0), 1.0));

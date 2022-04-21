@@ -43,6 +43,13 @@ void MVPVolumeParticle::setViscosityCoe(const float c)
 	}
 }
 
+void MVPVolumeParticle::setHeatDiffuseCue(const float c)
+{
+	for (auto p : massParticles) {
+		p->setHeatDiffuseCoe(c);
+	}
+}
+
 void MVPVolumeParticle::reset(bool resetMicro)
 {
 	this->force = Math::Vector3df(0, 0, 0);
@@ -94,13 +101,7 @@ void MVPVolumeParticle::calculateHeatDiffuse()
 {
 	float t = 0.0;
 	for (auto mp : innerPoints) {
-		/*
-		if (mp->getTemperature() > 800.0) {
-			std::cout << "temperature is over" << std::endl;
-			//assert(false);
-		}
-		*/
-		t -= (this->temperature - mp->getTemperature()) * mp->getMass() * 100.0f;
+		t -= (this->temperature - mp->getTemperature()) * mp->getMass() * mp->getHeatDiffuseCoe();
 	}
 	this->enthaply += t / (float)innerPoints.size();
 }

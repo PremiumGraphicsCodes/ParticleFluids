@@ -10,7 +10,8 @@ MVPMassParticle::MVPMassParticle(MVPVolumeParticle* parent, const Math::Vector3d
 	parent(parent),
 	vector(point),
 	mass(mass),
-	temperature(300.0)
+	temperature(300.0),
+	heatDiffuseCoe(0.0f)
 //	pressureCoe(parent->getScene()->getPressureCoe()),
 //	viscosityCoe(parent->getScene()->getViscosityCoe())
 {
