@@ -71,7 +71,7 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 
 	exporter = new SolverExporter(world);
 
-	boundaryView.setValue(Box3dd(Vector3dd(0, 0, 0), Vector3dd(20, 20, 20)));
+	boundaryView.setValue(Box3dd(Vector3dd(-20, 0, -20), Vector3dd(20, 20, 20)));
 
 	world->addAnimation(&solver);
 	world->addAnimation(&updator);
