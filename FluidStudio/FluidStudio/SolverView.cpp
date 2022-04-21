@@ -28,6 +28,8 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	pressureCoeView("PressureCoe", 500.f),
 	viscosityCoeView("ViscosityCoe", 50.0f),
 	heatDiffuseCoeView("HeatDiffuseCoe", 100.0f),
+	dragHeatCoeView("DragHeatCoe", 0.0),
+	dragForceCoeView("DragForceCoe", 0.0),
 	timeStepView("TimeStep", 0.01f),
 	radiusView("SearchRadius", 2.00f),
 	externalForceView("ExternalForce", Vector3dd(0.0, -9.8, 0.0)),
@@ -46,6 +48,8 @@ SolverView::SolverView(const std::string& name, World* model, Canvas* canvas) :
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
 	add(&heatDiffuseCoeView);
+	add(&dragHeatCoeView);
+	add(&dragForceCoeView);
 	add(&timeStepView);
 	add(&radiusView);
 	add(&externalForceView);
@@ -97,6 +101,7 @@ void SolverView::onReset()
 	emitterScene->clearParticles();
 	staticScene->clearParticles();
 
+
 	this->addFluid();
 	//this->addEmitter();
 
@@ -119,6 +124,8 @@ void SolverView::addFluid()
 	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
 	this->fluidScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
+	this->fluidScene->setDragForceCoe(dragForceCoeView.getValue());
+	this->fluidScene->setDragHeatCoe(dragHeatCoeView.getValue());
 
 	this->staticScene->setPressureCoe(pressureCoeView.getValue());
 	this->staticScene->setViscosityCoe(viscosityCoeView.getValue() * 5.0f);

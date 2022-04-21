@@ -159,6 +159,8 @@ void MVPFluidSolver::simulate()
 			const auto buo = buoyancy * (particle->getTemperature() - 300.0f) *  particle->getDensity();
 			particle->addForce(buo);
 			particle->addForce(externalForce * particle->getDensity());
+			particle->calculateDragForce();
+			particle->calculateDragHeat();
 			//particle->stepTime(dt);
 		}
 

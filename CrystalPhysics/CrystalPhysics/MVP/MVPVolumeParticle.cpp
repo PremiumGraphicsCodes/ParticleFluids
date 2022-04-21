@@ -172,3 +172,14 @@ void MVPVolumeParticle::updateInnerPoints()
 		}
 	}
 }
+
+void MVPVolumeParticle::calculateDragForce()
+{
+	const auto drag = -dragForceCoe * velocity * (1.0f - density / 1.0f);
+	addForce(drag);
+}
+
+void MVPVolumeParticle::calculateDragHeat()
+{
+	this->enthaply += -dragHeatCoe * (temperature - 300.0f) * (1.0f - density / 1.0f);
+}

@@ -20,6 +20,8 @@ public:
 		mp->setPressureCoe(this->pressureCoe);
 		mp->setViscosityCoe(this->viscosityCoe);
 		mp->setHeatDiffuseCue(this->heatDiffuseCoe);
+		mp->setDragHeatCoe(this->dragHeatCoe);
+		mp->setDragForceCoe(this->dragForceCoe);
 		particles.push_back(mp);
 	}
 
@@ -47,6 +49,10 @@ public:
 
 	float getHeatDiffuseCoe() const { return this->heatDiffuseCoe; }
 
+	void setDragHeatCoe(const float c) { this->dragHeatCoe = c; }
+
+	void setDragForceCoe(const float c) { this->dragForceCoe = c; }
+
 	void translate(const Math::Vector3dd& v) override { ; }
 
 	void transform(const Math::Matrix3dd& m) override { ; }
@@ -63,6 +69,8 @@ private:
 	float pressureCoe;
 	float viscosityCoe;
 	float heatDiffuseCoe;
+	float dragHeatCoe;
+	float dragForceCoe;
 };
 
 	}

@@ -49,6 +49,8 @@ private:
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;
 	FloatView heatDiffuseCoeView;
+	FloatView dragHeatCoeView;
+	FloatView dragForceCoeView;
 	FloatView timeStepView;
 	FloatView radiusView;
 	Vector3dView externalForceView;
