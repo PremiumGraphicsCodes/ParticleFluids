@@ -44,7 +44,7 @@ void SolverExporter::step()
 	for (auto f : fluids) {
 		ids.push_back(f->getId());
 	}
-	for (auto e : fluids) {
+	for (auto e : emitters) {
 		ids.push_back(e->getId());
 	}
 	args.fluidIds.setValue(ids);
