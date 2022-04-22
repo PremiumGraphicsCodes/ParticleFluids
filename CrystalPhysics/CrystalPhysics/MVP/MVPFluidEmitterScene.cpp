@@ -29,7 +29,7 @@ void MVPFluidEmitterScene::emitParticle(const int timeStep)
 		if (elapsed % interval == 0) {
 			for (const auto& s : sourcePositions) {
 				//auto mp = new MVPVolumeParticle(s.getRadius(), s.getCenter());
-				auto mp = builder.create(s.getCenter(), s.getRadius(), 1.0f);
+				auto mp = builder.create(s.getCenter(), s.getRadius(), 0.25f);
 				mp->setTemperature(1000.0f);
 				mp->getMassParticles().front()->updateTemperature(1000.0f);
 				mp->setVelocity(this->initialVelocity);

@@ -44,6 +44,8 @@ public:
 
 	float getTemperature() const { return temperature; }
 
+	int lifeTime = 0;
+
 private:
 	MVPVolumeParticle* parent;
 	Math::Vector3df vector;

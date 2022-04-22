@@ -129,6 +129,10 @@ void MVPVolumeParticle::stepTime(const float dt)
 	this->position += this->velocity * dt;
 
 	this->temperature += this->enthaply * dt;
+
+	for (auto c : this->massParticles) {
+		c->lifeTime++;
+	}
 }
 
 float MVPVolumeParticle::getDensity() const
@@ -175,11 +179,12 @@ void MVPVolumeParticle::updateInnerPoints()
 
 void MVPVolumeParticle::calculateDragForce()
 {
-	const auto drag = -dragForceCoe * velocity;// *(1.0f - density / 1.0f);
+	//const auto t = (temperature - 300.0f);
+	const auto drag = -dragForceCoe * velocity; //* (1.0f - density / 1.0f);
 	addForce(drag * this->density);
 }
 
 void MVPVolumeParticle::calculateDragHeat()
 {
-	this->enthaply += -dragHeatCoe * (temperature - 300.0f); //(1.0f - density / 1.0f);
+	this->enthaply += -dragHeatCoe * (temperature - 300.0f); //* (1.0f - density / 1.0f);
 }

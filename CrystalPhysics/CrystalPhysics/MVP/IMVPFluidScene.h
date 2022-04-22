@@ -31,6 +31,8 @@ public:
 
 	void removeDegeneratedVolumes();
 
+	void removeExpired();
+
 	void add(MVPVolumeParticle* p) { particles.push_back(p); }
 
 	void clearParticles();
@@ -63,6 +65,8 @@ public:
 
 	Scene::IPresenter* getPresenter() { return controller.get(); }
 
+	void setLifeLimit(const int limit) { this->lifeLimit = limit; }
+
 private:
 	std::unique_ptr<MVPFluidScenePresenter> controller;
 	std::list<MVPVolumeParticle*> particles;
@@ -71,6 +75,7 @@ private:
 	float heatDiffuseCoe;
 	float dragHeatCoe;
 	float dragForceCoe;
+	int lifeLimit = -1;
 };
 
 	}
