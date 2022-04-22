@@ -192,14 +192,16 @@ void SolverView::addEmitter()
 	this->emitterScene->setDragForceCoe(dragForceCoeView.getValue());
 	this->emitterScene->setDragHeatCoe(dragHeatCoeView.getValue());
 
-	for (int i = 0; i < 10; ++i) {
-		for (int j = 0; j < 10; ++j) {
-			emitterScene->addSource(Sphere3d(Vector3dd(0, i * 0.5, j*0.5), 0.5));
+	for (int i = 0; i < 100; ++i) {
+		for (int j = 0; j < 1; ++j) {
+			for (int k = 0; k < 10; ++k) {
+				emitterScene->addSource(Sphere3d(Vector3dd(i * 0.5, j * 0.5, k * 0.5), 0.5));
+			}
 		}
 	}
-	emitterScene->setLifeLimit(250);
-	emitterScene->setInterval(1);
-	emitterScene->setInitialVelocity(Vector3dd(30.0, 0.0, 0.0));
+	emitterScene->setLifeLimit(100);
+	emitterScene->setInterval(2);
+	emitterScene->setInitialVelocity(Vector3dd(0.0, 0.0, 0.0));
 	emitterScene->setStartEnd(0, 10000);
 
 
