@@ -18,6 +18,8 @@ public:
 
 	void buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume);
 
+	void build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume);
+
 private:
 };
 

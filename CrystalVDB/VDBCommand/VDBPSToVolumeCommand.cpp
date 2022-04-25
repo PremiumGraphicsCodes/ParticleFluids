@@ -80,7 +80,7 @@ bool VDBPSToVolumeCommand::execute(World* world)
 	}
 	else {
 		SmoothVolumeConverter converter;
-		converter.buildIsotoropic(scene, args.radius.getValue(), args.voxelSize.getValue(), volume, temperatureVolume);
+		converter.build(scene, args.radius.getValue(), args.voxelSize.getValue(), volume, temperatureVolume);
 	}
 	return true;
 }

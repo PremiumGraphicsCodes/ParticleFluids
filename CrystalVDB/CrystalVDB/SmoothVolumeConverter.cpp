@@ -158,39 +158,36 @@ void SmoothVolumeConverter::buildIsotoropic(VDBParticleSystemScene* vdbParticles
 		converter.fromSparseVolume(*volume, vdbVolume);
 		converter.fromSparseVolume(temperatureVolume, vdbTemperatureVolume);
 	}
+}
 
-	/*
-	{
-		SparseVolumeBuilder builder;
-		builder.build(Vector3df(cellLength), positions.size());
-		for (auto& p : particles) {
-			builder.add(Sphere3dd(p->getPosition(), particleRadius));
-		}
-		auto volume = builder.get();
-		const auto nodes = volume->getNodes();
+#include "VDBVolumeImpl.h"
+#include "VDBParticleSystemImpl.h"
 
-		CompactSpaceHash3d spaceHash(particleRadius, (int)particles.size());
-		for (const auto& p : particles) {
-			spaceHash.add(p.get());
-		}
-
-		std::vector<SparseVolumeNode<float>*> ns(nodes.begin(), nodes.end());
-#pragma omp parallel for
-		for (int i = 0; i < ns.size(); ++i) {
-			auto node = ns[i];
-			const auto nodePos = node->getPosition();
-			const auto neighbors = spaceHash.findNeighbors(node->getPosition());
-			for (auto n : neighbors) {
-				auto sp = static_cast<SmoothParticle*>(n);
-				const auto v = n->getPosition() - nodePos;
-				const auto d = glm::distance(n->getPosition(), nodePos);
-				const auto w = ::getCubicSpline(d, sp->getRadius()) * sp->getTemperature() / sp->getDensity();
-				const auto value = node->getValue();
-				node->setValue(w + value);
+void SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume)
+{
+	//VDBVolumeImpl volume;
+	vdbVolume->setScale(cellLength);
+	auto grid = vdbVolume->getImpl()->getPtr();
+	auto accessor = grid->getAccessor();
+	//const auto cellLength = grid->voxelSize();
+	
+	const auto positions = vdbParticles->getImpl()->getPositions();
+	for (auto p : positions) {
+		const auto index = grid->worldToIndex(p);
+		for (int i = -1; i <= 1; ++i) {
+			for (int j = -1; j <= 1; ++j) {
+				for (int k = -1; k <= 1; ++k) {
+					const auto ix = index[0] + i;
+					const auto iy = index[1] + j;
+					const auto iz = index[2] + k;
+					const auto c = openvdb::math::Coord(ix, iy, iz);
+					const auto pos = grid->indexToWorld(c);
+					const auto dist = std::pow(pos[0] - p[0], 2) + std::pow(pos[1] - p[1], 2) + std::pow(pos[2] - p[2], 2);
+					const auto v = ::getCubicSpline(std::sqrt(dist), particleRadius);
+					const auto vv = accessor.getValue(c) + v;
+					accessor.setValue(c, vv);
+				}
 			}
 		}
-		VDBVolumeConverter converter;
-		converter.fromSparseVolume(*volume, temperatureVolume);
 	}
-	*/
 }
