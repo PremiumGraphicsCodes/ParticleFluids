@@ -170,24 +170,55 @@ void SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticles, const fl
 	auto grid = vdbVolume->getImpl()->getPtr();
 	auto accessor = grid->getAccessor();
 	//const auto cellLength = grid->voxelSize();
+
+	temperatureVolume->setScale(cellLength);
+	auto accessor2 = temperatureVolume->getImpl()->getPtr()->getAccessor();
+
+	const auto r = static_cast<int>( particleRadius / cellLength ) / 2;
 	
-	const auto positions = vdbParticles->getImpl()->getPositions();
-	for (auto p : positions) {
-		const auto index = grid->worldToIndex(p);
-		for (int i = -1; i <= 1; ++i) {
-			for (int j = -1; j <= 1; ++j) {
-				for (int k = -1; k <= 1; ++k) {
-					const auto ix = index[0] + i;
-					const auto iy = index[1] + j;
-					const auto iz = index[2] + k;
-					const auto c = openvdb::math::Coord(ix, iy, iz);
-					const auto pos = grid->indexToWorld(c);
-					const auto dist = std::pow(pos[0] - p[0], 2) + std::pow(pos[1] - p[1], 2) + std::pow(pos[2] - p[2], 2);
-					const auto v = ::getCubicSpline(std::sqrt(dist), particleRadius);
-					const auto vv = accessor.getValue(c) + v;
-					accessor.setValue(c, vv);
+
+
+	auto psGrid = vdbParticles->getImpl()->getPtr();
+	for (auto leafIter = psGrid->tree().cbeginLeaf(); leafIter; ++leafIter) {
+		const auto& array = leafIter->constAttributeArray("P");
+		const auto& array2 = leafIter->constAttributeArray("temperature");
+
+		openvdb::points::AttributeHandle<openvdb::Vec3f> positionHandle(array);
+		openvdb::points::AttributeHandle<float> floatHandle(array2);
+		for (auto indexIter = leafIter->beginIndexOn(); indexIter; ++indexIter) {
+			openvdb::Vec3f voxelPosition = positionHandle.get(*indexIter);
+			const auto xyz = indexIter.getCoord().asVec3d();
+			openvdb::Vec3f worldPosition = psGrid->transform().indexToWorld(voxelPosition + xyz);
+			auto ix = *indexIter;
+			const auto t = floatHandle.get(ix);
+
+			const auto index = grid->worldToIndex(worldPosition);
+			const auto p = worldPosition;
+
+			for (int i = -r; i <= r; ++i) {
+				for (int j = -r; j <= r; ++j) {
+					for (int k = -r; k <= r; ++k) {
+						const auto ix = index[0] + i;
+						const auto iy = index[1] + j;
+						const auto iz = index[2] + k;
+						const auto c = openvdb::math::Coord(ix, iy, iz);
+						const auto pos = grid->indexToWorld(c);
+						const auto dist = std::pow(pos[0] - p[0], 2) + std::pow(pos[1] - p[1], 2) + std::pow(pos[2] - p[2], 2);
+						const auto v = ::getCubicSpline(std::sqrt(dist), particleRadius);
+						const auto vv = accessor.getValue(c) + v;
+						accessor.setValue(c, vv);
+						const auto tt = t * ::getCubicSpline(std::sqrt(dist), particleRadius);
+						accessor2.setValue(c, tt + accessor2.getValue(c));
+					}
 				}
 			}
 		}
+	}
+
+	for (auto iter = grid->cbeginValueOn(); iter.test(); ++iter) {
+		const auto value = *iter;
+		const auto c = iter.getCoord();
+		const auto t = accessor2.getValue(c);
+		accessor2.setValue(c, t / value);
 	}
 }
