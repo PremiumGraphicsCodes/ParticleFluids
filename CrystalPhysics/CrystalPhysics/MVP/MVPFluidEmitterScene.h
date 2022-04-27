@@ -33,11 +33,14 @@ public:
 
 	void setInitialVelocity(const Math::Vector3df& velocity) { this->initialVelocity = velocity; }
 
+	void setInitialTemperature(const float temperature) { this->initialTemperature = temperature; }
+
 	void clearSources() { this->sourcePositions.clear(); }
 
 private:
 	std::vector<Math::Sphere3dd> sourcePositions;
 	Math::Vector3df initialVelocity;
+	float initialTemperature;
 	std::pair<int,int> startEndStep;
 	int interval;
 };

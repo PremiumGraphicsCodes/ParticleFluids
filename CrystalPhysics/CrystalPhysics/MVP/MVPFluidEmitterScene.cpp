@@ -10,7 +10,8 @@ using namespace Crystal::Physics;
 
 MVPFluidEmitterScene::MVPFluidEmitterScene(const int id, const std::string& name) :
 	IMVPFluidScene(id, name),
-	interval(10)
+	interval(10),
+	initialTemperature(300.0f)
 {
 }
 
@@ -28,8 +29,7 @@ void MVPFluidEmitterScene::emitParticle(const int timeStep)
 		const auto elapsed = timeStep - start;
 		if (elapsed % interval == 0) {
 			for (const auto& s : sourcePositions) {
-				//auto mp = new MVPVolumeParticle(s.getRadius(), s.getCenter());
-				auto mp = builder.create(s.getCenter(), s.getRadius(), 0.25f);
+				auto mp = builder.create(s.getCenter(), s.getRadius(), 0.25f, initialTemperature);
 				mp->setTemperature(1000.0f);
 				mp->getMassParticles().front()->updateTemperature(1000.0f);
 				mp->setVelocity(this->initialVelocity);
