@@ -91,6 +91,7 @@ class PhysicsSolverUpdateCommand:
    CSGBoundarySceneIdsLabel="CSGBoundarySceneIds"
    EffectLengthLabel="EffectLength"
    ExternalForceLabel="ExternalForce"
+   BuoyancyForceLabel="BuoyancyForce"
    TimeStepLabel="TimeStep"
    NameLabel="Name"
 class SPHVolumeConvertCommand:

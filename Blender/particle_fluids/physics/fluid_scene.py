@@ -17,6 +17,7 @@ class FluidScene :
         self.heat_diffuse = 1.0
         self.drag_force = 0.0
         self.drag_heat = 0.0
+        self.lifetime = -1
         self.name = ""
 
     def create(self) :
@@ -38,6 +39,7 @@ class FluidScene :
         set_arg_float(FluidSceneUpdateCommand.HeatDiffuseCoeLabel, self.heat_diffuse)
         set_arg_float(FluidSceneUpdateCommand.DragForceCoeLabel, self.drag_force)
         set_arg_float(FluidSceneUpdateCommand.DragHeatCoeLabel, self.drag_heat)
+        set_arg_int(FluidSceneUpdateCommand.LifeLimitLabel, self.lifetime)
         is_ok = execute_command(self.scene.world)
         return is_ok
 

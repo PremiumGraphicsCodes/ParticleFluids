@@ -14,6 +14,7 @@ class SolverScene :
         self.emitters = []
         self.boundaries = []
         self.external_force = Vector3df(0.0, 0.0, -9.8)
+        self.buoyancy = Vector3df(0.0, 0.0, 0.1)
 
     def create(self) :
         create_physics_command(PhysicsSolverCreateCommand.CommandNameLabel)
@@ -39,6 +40,7 @@ class SolverScene :
         set_arg_vector3df(PhysicsSolverUpdateCommand.ExternalForceLabel, self.external_force)
         set_arg_float(PhysicsSolverUpdateCommand.TimeStepLabel, self.time_step)
         set_arg_float(PhysicsSolverUpdateCommand.EffectLengthLabel, self.effect_length)
+        set_arg_vector3df(PhysicsSolverUpdateCommand.BuoyancyForceLabel, self.buoyancy)
         is_ok = execute_command(self.scene.world)
         return is_ok
 
