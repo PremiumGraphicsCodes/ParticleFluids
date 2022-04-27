@@ -1,6 +1,5 @@
 #include "MVPSamplerView.h"
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
-#include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
 #include "../CrystalPhysics/MVPSampler.h"
 
 using namespace Crystal::Math;
@@ -20,27 +19,6 @@ MVPSamplerView::MVPSamplerView(const std::string& name, World* model, Canvas* ca
 
 	mergeButton.setFunction([=]() { onMerge(); });
 	add(&mergeButton);
-
-	/*
-	add(&boundaryView);
-	add(&pressureCoeView);
-	add(&viscosityCoeView);
-	add(&vorticityCoeView);
-	add(&timeStepView);
-	add(&radiusView);
-
-	fluidScene = new MVPFluidScene(world->getNextSceneId(), "KFFluid");
-	world->getScenes()->addScene(fluidScene);
-
-	staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
-	world->getScenes()->addScene(staticScene);
-
-	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
-
-
-	world->addAnimation(&solver);
-	world->addAnimation(&updator);
-	*/
 }
 
 void MVPSamplerView::onSplit()
@@ -52,7 +30,6 @@ void MVPSamplerView::onMerge()
 {
 	MVPFluidScene fluidScene(world->getNextSceneId(), "");
 	{
-		MVPParticleBuilder builder;
 		const auto radius = 0.20;
 		const auto length = radius * 1.00;
 		for (int i = 0; i < 10; ++i) {

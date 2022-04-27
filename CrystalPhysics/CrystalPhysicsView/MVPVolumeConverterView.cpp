@@ -15,8 +15,6 @@
 
 #include "CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
 
-#include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
-//#include "Crystal/Shape/PolygonMeshBuilder.h"
 
 #include <iostream>
 
@@ -40,6 +38,7 @@ MVPVolumeConverterView::MVPVolumeConverterView(const std::string& name, World* m
 
 void MVPVolumeConverterView::onOk()
 {
+	/*
 	MVPParticleBuilder pbuilder;
 	const auto radius = 0.20;
 	const auto length = radius * 1.00;
@@ -62,22 +61,6 @@ void MVPVolumeConverterView::onOk()
 	MVPVolumeConverter builder;
 	builder.build(mvps, cellLengthView.getValue(), searchRadiusView.getValue());
 
-	/*
-	MarchingCubesAlgo mcAlgo;
-	mcAlgo.march(* volume, thresholdView.getValue());
-	*/
-
-	/*
-	auto mesh = std::make_unique<TriangleMesh>();
-	const auto triangles = builder.getTriangles();
-	for (const auto& t : triangles) {
-		mesh->addFace(TriangleFace(t));
-	}
-	auto scene = new TriangleMeshScene(getWorld()->getNextSceneId(), "", std::move(mesh));
-
-	scene->getPresenter()->createView(getWorld()->getRenderer());
-	getWorld()->getScenes()->addScene(scene);
-	*/
 	auto volume = builder.getVolume();
 	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(volume));
 	auto presenter = svScene->getPresenter();
@@ -88,4 +71,5 @@ void MVPVolumeConverterView::onOk()
 	presenter->createView(world->getRenderer());
 
 	getWorld()->getScenes()->addScene(svScene);
+	*/
 }

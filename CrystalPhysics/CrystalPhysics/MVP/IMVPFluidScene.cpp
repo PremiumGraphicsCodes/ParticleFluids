@@ -97,10 +97,12 @@ MVPVolumeParticle* IMVPFluidScene::create(const Vector3df& position, const float
 {
 	auto vp = new MVPVolumeParticle(radius, position);
 	auto mp = new MVPMassParticle(vp, Vector3dd(0, 0, 0), weight);
+	mp->updateTemperature(1000.0f);
 	vp->setRestMass(weight * 1.25f);
 	vp->addMassParticle(mp);
 	vp->setTemperature(temperature);
 	mp->setParent(vp);
+
 	//vp->addMassParticle(mp);
 	return vp;
 	//	restMass *= 1.5;

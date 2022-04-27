@@ -12,8 +12,8 @@ namespace {
 SPHKernel::SPHKernel(const float effectLength) :
 	effectLength(effectLength)
 {
-	this->poly6KernelConstant = 315.0f / (64.0f * PIf * pow(effectLength, 9));
-	this->spikyKernelGradConstant = 45.0f / (::PIf * pow(effectLength, 6));
+	this->poly6KernelConstant = 315.0f / (64.0f * PIf * pow(effectLength, 9.0f));
+	this->spikyKernelGradConstant = 45.0f / (::PIf * pow(effectLength, 6.0f));
 	this->effectLengthSquared = effectLength * effectLength;
 }
 
@@ -22,7 +22,7 @@ float SPHKernel::getPoly6Kernel(const float distance)
 	if (distance > effectLength) {
 		return 0.0f;
 	}
-	return this->poly6KernelConstant * pow(effectLength * effectLength - distance * distance, 3);
+	return this->poly6KernelConstant * pow(effectLength * effectLength - distance * distance, 3.0f);
 }
 
 float SPHKernel::getPoly6Kernel2(const float distanceSquared)
@@ -58,8 +58,8 @@ Vector3df SPHKernel::getPoly6KernelGradient(const Vector3df& distanceVector)
 
 float SPHKernel::getPoly6KernelGradientCoe(const float distance)
 {
-	const auto poly6ConstantGradient = 945.0f / (32.0f * PIf * pow(effectLength, 9));
-	return poly6ConstantGradient * pow(effectLength * effectLength - distance * distance, 2);
+	const auto poly6ConstantGradient = 945.0f / (32.0f * PIf * pow(effectLength, 9.0f));
+	return poly6ConstantGradient * pow(effectLength * effectLength - distance * distance, 2.0f);
 }
 
 float SPHKernel::getPoly6KernelLaplacian(const float distance)
@@ -67,7 +67,7 @@ float SPHKernel::getPoly6KernelLaplacian(const float distance)
 	if (distance > effectLength) {
 		return 0.0f;
 	}
-	const auto poly6ConstantLaplacian = 945.0f / (32.0f * PIf * pow(effectLength, 9));
+	const auto poly6ConstantLaplacian = 945.0f / (32.0f * PIf * pow(effectLength, 9.0f));
 	return poly6ConstantLaplacian * (effectLength * effectLength - distance * distance)
 		* (42.0f * distance * distance - 18.0f * effectLength * effectLength);
 }
@@ -86,8 +86,8 @@ float SPHKernel::getSpikyKernelGradientWeight(const float distance)
 	if (distance > effectLength) {
 		return 0.0;
 	}
-	const auto constant = 45.0f / (PIf * pow(effectLength, 6));
-	return constant * pow(effectLength - distance, 2) / distance;
+	const auto constant = 45.0f / (PIf * pow(effectLength, 6.0f));
+	return constant * pow(effectLength - distance, 2.0f) / distance;
 }
 
 /*
@@ -107,7 +107,7 @@ float SPHKernel::getViscosityKernelLaplacian(const float distance)
 	if (distance > effectLength) {
 		return 0.0f;
 	}
-	const auto constant = 45.0f / (PIf * pow(effectLength, 6));
+	const auto constant = 45.0f / (PIf * pow(effectLength, 6.0f));
 	return (effectLength - distance) * constant;
 }
 

@@ -3,7 +3,6 @@
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
-#include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 #include "CrystalScene/Scene/TriangleMeshScene.h"
@@ -103,7 +102,6 @@ void MVPFluidSimulationView::addFluid()
 	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());
 
 	{
-		MVPParticleBuilder builder;
 		const auto radius = 1.0;
 		const auto length = radius * 0.5;
 		for (int i = 0; i < 20; ++i) {
@@ -111,24 +109,20 @@ void MVPFluidSimulationView::addFluid()
 				for (int k = 0; k < 20; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = builder.create(p, length, 0.25f);
-					//				mp->distributePoints(3, 3, 3, 1.00f);
+					auto mp = fluidScene->create(p, length, 0.25f, 300.0f);
 					fluidScene->addParticle(mp);
 				}
 			}
 		}
 	}
 	{
-		MVPParticleBuilder builder;
 		const auto radius = 1.0;
 		const auto length = radius * 0.5;
 		for (int i = 0; i < 20; ++i) {
 			for (int j = -2; j < -1; ++j) {
 				for (int k = 0; k < 20; ++k) {
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = builder.create(p, length, 0.25f);
-					mp->setTemperature(1000.0f);
-					mp->getMassParticles().front()->updateTemperature(1000.0f);
+					auto mp = staticScene->create(p, length, 0.25f, 1000.0f);
 					staticScene->addParticle(mp);
 					staticScene->setBoundary(true);
 				}
