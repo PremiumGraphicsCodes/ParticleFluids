@@ -95,5 +95,17 @@ class BLFluid :
     def set_is_boundary(self, is_boundary) :
         self.__fluid.is_boundary = is_boundary
 
+    def set_temperature(self, t) :
+        self.__fluid.temperature = t
+
+    def set_heat_diffuse(self, v) :
+        self.__fluid.heat_diffuse = v
+
+    def set_drag_force(self, v) :
+        self.__fluid.drag_force = v
+
+    def set_drag_heat(self, v) :
+        self.__fluid.drag_heat = v
+
     def send(self) :
         self.__fluid.send()

@@ -46,6 +46,8 @@ def find_all_fluids() :
                 fluid.set_stiffness( prop.stiffness_prop )
                 fluid.set_viscosity( prop.viscosity_prop )
                 fluid.set_is_boundary( prop.type_prop == "Obstacle" )
+                fluid.set_temperature( prop.temperature_prop )
+                fluid.set_heat_diffuse( prop.heat_diffuse_prop )
                 fluid.send()
                 fluids.append(fluid)
     return fluids

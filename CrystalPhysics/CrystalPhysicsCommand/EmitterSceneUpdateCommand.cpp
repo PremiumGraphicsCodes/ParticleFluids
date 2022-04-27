@@ -101,6 +101,7 @@ bool EmitterSceneUpdateCommand::execute(World* world)
 	emitterScene->setHeatDiffuseCoe(args.heatDiffuseCoe.getValue());
 	emitterScene->setDragForceCoe(args.dragForceCoe.getValue());
 	emitterScene->setDragHeatCoe(args.dragHeatCoe.getValue());
+	emitterScene->setLifeLimit(args.lifeLimit.getValue());
 
 	const auto psId = args.particleSystemId.getValue();
 	if (psId > 0) {
