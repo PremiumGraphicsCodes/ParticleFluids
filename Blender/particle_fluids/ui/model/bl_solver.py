@@ -33,6 +33,7 @@ class BLSolver :
         self.__bl_emitters = []
         self.__bl_boundaries = []
         self.__external_force = Vector3df(0.0, 0.0, -9.8)
+        self.__buoyancy = Vector3df(0.0, 0.0, 0.1)
         self.__time_step = 0.01
         self.__export_dir_path = "tmp_txt"
         self.__iteration = 1
@@ -67,6 +68,12 @@ class BLSolver :
     def set_effect_length(self, effect_radius) :
         self.__solver.effect_length = effect_radius
 
+    def set_external_force(self, f) :
+        self.__external_force = Vector3df( f[0], f[1], f[2] )
+
+    def set_buoyancy(self, b) :
+        self.__buoyancy = Vector3df( b[0], b[1], b[2] )
+
     def send(self) :
         fluids = []
         for bl_fluid in self.__bl_fluids :
@@ -84,6 +91,7 @@ class BLSolver :
         self.__solver.boundaries = boundaries
 
         self.__solver.external_force = self.__external_force
+        self.__solver.buoyancy = self.__buoyancy
         self.__solver.time_step = self.__time_step
         self.__solver.send()
 

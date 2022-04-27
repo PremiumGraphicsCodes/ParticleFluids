@@ -50,6 +50,11 @@ class PARTICLE_FLUIDS_SolverProperty(bpy.types.PropertyGroup) :
         description="ExternalForce",
         default=(0.0, 0.0, -9.8)
     )
+    buoyancy_prop : FloatVectorProperty(
+        name="buoyancy",
+        description="Buoyancy",
+        default=(0.0, 0.0, 0.1)
+    )
     search_radius_prop : FloatProperty(
         name="search_radius",
         description="SearchRadius",
