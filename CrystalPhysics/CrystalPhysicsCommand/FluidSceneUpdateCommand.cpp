@@ -3,7 +3,6 @@
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
-#include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
@@ -78,11 +77,10 @@ bool FluidSceneUpdateCommand::execute(World* world)
 		const auto& positions = particles->getPositions();
 		const auto radius = args.particleRadius.getValue();
 		const auto density = args.density.getValue();
-		MVPParticleBuilder builder;
 		for (const auto& p : positions) {
 			//auto mp = new MVPVolumeParticle(radius, p);
 			//mp->addMassParticle();// distributePoints(3, 3, 3, density);
-			auto mp = builder.create(p, radius, 0.25f, 300.0f);
+			auto mp = fluidScene->create(p, radius, 0.25f, 300.0f);
 			fluidScene->addParticle(mp);
 		}
 	}

@@ -67,6 +67,8 @@ public:
 
 	void setLifeLimit(const int limit) { this->lifeLimit = limit; }
 
+	MVPVolumeParticle* create(const Math::Vector3df& position, const float radius, const float weight, const float temperature);
+
 private:
 	std::unique_ptr<MVPFluidScenePresenter> controller;
 	std::list<MVPVolumeParticle*> particles;

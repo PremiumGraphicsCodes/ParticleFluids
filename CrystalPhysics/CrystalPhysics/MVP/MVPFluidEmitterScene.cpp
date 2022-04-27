@@ -2,8 +2,6 @@
 
 #include "MVPVolumeParticle.h"
 
-#include "MVPParticleBuilder.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
@@ -22,14 +20,13 @@ MVPFluidEmitterScene::~MVPFluidEmitterScene()
 
 void MVPFluidEmitterScene::emitParticle(const int timeStep)
 {
-	MVPParticleBuilder builder;
 	const auto start = getStartStep();
 	const auto end = getEndStep();
 	if (start <= timeStep && timeStep <= end) {
 		const auto elapsed = timeStep - start;
 		if (elapsed % interval == 0) {
 			for (const auto& s : sourcePositions) {
-				auto mp = builder.create(s.getCenter(), s.getRadius(), 0.25f, initialTemperature);
+				auto mp = create(s.getCenter(), s.getRadius(), 0.25f, initialTemperature);
 				mp->setTemperature(1000.0f);
 				mp->getMassParticles().front()->updateTemperature(1000.0f);
 				mp->setVelocity(this->initialVelocity);

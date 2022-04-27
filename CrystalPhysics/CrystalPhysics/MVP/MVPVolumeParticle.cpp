@@ -6,8 +6,6 @@
 
 #include "Crystal/Math/Gaussian1d.h"
 
-#include "MVPParticleBuilder.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 

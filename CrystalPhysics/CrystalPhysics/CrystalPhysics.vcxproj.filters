@@ -117,9 +117,6 @@
     <ClInclude Include="SPHFlame\SPHFlameScenePresenter.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
-    <ClInclude Include="MVP\MVPParticleBuilder.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
     <ClInclude Include="MVP\MVPBoundaryParticle.h">
       <Filter>MVP\Boundary</Filter>
     </ClInclude>
@@ -272,9 +269,6 @@
     </ClCompile>
     <ClCompile Include="SPHFlame\SPHFlameScenePresenter.cpp">
       <Filter>SPHFlame</Filter>
-    </ClCompile>
-    <ClCompile Include="MVP\MVPParticleBuilder.cpp">
-      <Filter>MVP</Filter>
     </ClCompile>
     <ClCompile Include="MVP\MVPBoundaryParticle.cpp">
       <Filter>MVP\Boundary</Filter>
