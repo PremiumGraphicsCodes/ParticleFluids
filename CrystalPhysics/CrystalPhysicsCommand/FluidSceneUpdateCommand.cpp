@@ -14,6 +14,11 @@ namespace {
 	PublicLabel StiffnessLabel = "Stiffness";
 	PublicLabel ViscosityLabel = "Viscosity";
 	PublicLabel DensityLabel = "Density";
+	PublicLabel TemperatureLabel = "Temperature";
+	PublicLabel HeatDiffuseCoeLabel = "HeatDiffuseCoe";
+	PublicLabel DragForceCoeLabel = "DragForceCoe";
+	PublicLabel DragHeatCoeLabel = "DragHeatCoe";
+	PublicLabel LifeLimitLabel = "LifeLimit";
 	PublicLabel IsBoundary = "IsBoundary";
 	PublicLabel NameLabel = "Name";
 }
@@ -35,6 +40,11 @@ FluidSceneUpdateCommand::Args::Args() :
 	stiffness(::StiffnessLabel, 1.0f),
 	density(::DensityLabel, 1.0f),
 	viscosity(::ViscosityLabel, 1.0f),
+	temperature(::TemperatureLabel, 300.0f),
+	heatDiffuseCoe(::HeatDiffuseCoeLabel, 1.0f),
+	dragForceCoe(::DragForceCoeLabel, 0.0f),
+	dragHeatCoe(::DragHeatCoeLabel, 0.0f),
+	lifeLimit(::LifeLimitLabel, -1),
 	isBoundary(::IsBoundary, false),
 	name(::NameLabel, std::string("FluidScene"))
 {
@@ -44,8 +54,13 @@ FluidSceneUpdateCommand::Args::Args() :
 	add(&stiffness);
 	add(&density);
 	add(&viscosity);
+	add(&temperature);
+	add(&heatDiffuseCoe);
 	add(&isBoundary);
 	add(&name);
+	add(&dragForceCoe);
+	add(&dragHeatCoe);
+	add(&lifeLimit);
 }
 
 FluidSceneUpdateCommand::Results::Results()
@@ -67,6 +82,10 @@ bool FluidSceneUpdateCommand::execute(World* world)
 	fluidScene->setPressureCoe(args.stiffness.getValue());
 	fluidScene->setViscosityCoe(args.viscosity.getValue());
 	fluidScene->setBoundary(args.isBoundary.getValue());
+	fluidScene->setHeatDiffuseCoe(args.heatDiffuseCoe.getValue());
+	fluidScene->setDragForceCoe(args.dragForceCoe.getValue());
+	fluidScene->setDragHeatCoe(args.dragHeatCoe.getValue());
+	fluidScene->setLifeLimit(args.lifeLimit.getValue());
 
 	const auto psId = args.particleSystemId.getValue();
 	if (psId > 0) {
@@ -77,10 +96,9 @@ bool FluidSceneUpdateCommand::execute(World* world)
 		const auto& positions = particles->getPositions();
 		const auto radius = args.particleRadius.getValue();
 		const auto density = args.density.getValue();
+		const auto temperature = args.temperature.getValue();
 		for (const auto& p : positions) {
-			//auto mp = new MVPVolumeParticle(radius, p);
-			//mp->addMassParticle();// distributePoints(3, 3, 3, density);
-			auto mp = fluidScene->create(p, radius, 0.25f, 300.0f);
+			auto mp = fluidScene->create(p, radius, 0.25f, temperature);
 			fluidScene->addParticle(mp);
 		}
 	}

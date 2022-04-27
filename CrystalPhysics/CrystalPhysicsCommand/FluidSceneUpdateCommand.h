@@ -16,6 +16,12 @@ public:
 		Command::Arg<float> density;
 		Command::Arg<float> stiffness;
 		Command::Arg<float> viscosity;
+		Command::Arg<float> temperature;
+		Command::Arg<float> heatDiffuseCoe;
+		Command::Arg<float> dragForceCoe;
+		Command::Arg<float> dragHeatCoe;
+		Command::Arg<int> lifeLimit;
+
 		Command::Arg<bool> isBoundary;
 		Command::Arg<std::string> name;
 
