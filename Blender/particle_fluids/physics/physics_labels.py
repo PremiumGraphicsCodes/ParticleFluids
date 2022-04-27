@@ -72,6 +72,7 @@ class PhysicsSolverExportCommand:
    FluidIdsLabel="FluidIds"
    FilePathLabel="FilePath"
    DoExportMicroLabel="DoExportMicro"
+   AsBinaryLabel="AsBinary"
 class PhysicsSolverUpdateCommand:
    CommandNameLabel="PhysicsSolverUpdateCommand"
    IdLabel="Id"
