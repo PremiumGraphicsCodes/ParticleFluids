@@ -23,6 +23,12 @@ public:
 		Command::Arg<int> endStep;
 		Command::Arg<int> interval;
 
+		Command::Arg<float> temperature;
+		Command::Arg<float> heatDiffuseCoe;
+		Command::Arg<float> dragForceCoe;
+		Command::Arg<float> dragHeatCoe;
+		Command::Arg<int> lifeLimit;
+
 		Args();
 	};
 

@@ -18,6 +18,12 @@ namespace {
 	PublicLabel StartStepLabel = "StartStep";
 	PublicLabel EndStepLabel = "EndStep";
 	PublicLabel IntervalLabel = "Interval";
+
+	PublicLabel TemperatureLabel = "Temperature";
+	PublicLabel HeatDiffuseCoeLabel = "HeatDiffuseCoe";
+	PublicLabel DragForceCoeLabel = "DragForceCoe";
+	PublicLabel DragHeatCoeLabel = "DragHeatCoe";
+	PublicLabel LifeLimitLabel = "LifeLimit";
 }
 
 
@@ -41,7 +47,12 @@ EmitterSceneUpdateCommand::Args::Args() :
 	startStep(::StartStepLabel, 0),
 	endStep(::EndStepLabel, 100),
 	interval(::IntervalLabel, 10),
-	name(::NameLabel, std::string("FluidScene"))
+	name(::NameLabel, std::string("FluidScene")),
+	temperature(::TemperatureLabel, 300.0f),
+	heatDiffuseCoe(::HeatDiffuseCoeLabel, 1.0f),
+	dragForceCoe(::DragForceCoeLabel, 0.0f),
+	dragHeatCoe(::DragHeatCoeLabel, 0.0f),
+	lifeLimit(::LifeLimitLabel, -1)
 {
 	add(&id);
 	add(&particleSystemId);
@@ -54,6 +65,12 @@ EmitterSceneUpdateCommand::Args::Args() :
 	add(&endStep);
 	add(&interval);
 	add(&name);
+
+	add(&temperature);
+	add(&heatDiffuseCoe);
+	add(&dragForceCoe);
+	add(&dragHeatCoe);
+	add(&lifeLimit);
 }
 
 EmitterSceneUpdateCommand::Results::Results()
@@ -79,6 +96,11 @@ bool EmitterSceneUpdateCommand::execute(World* world)
 
 	emitterScene->setStartEnd(args.startStep.getValue(), args.endStep.getValue());
 	emitterScene->setInterval(args.interval.getValue());
+
+	emitterScene->setInitialTemperature(args.temperature.getValue());
+	emitterScene->setHeatDiffuseCoe(args.heatDiffuseCoe.getValue());
+	emitterScene->setDragForceCoe(args.dragForceCoe.getValue());
+	emitterScene->setDragHeatCoe(args.dragHeatCoe.getValue());
 
 	const auto psId = args.particleSystemId.getValue();
 	if (psId > 0) {

@@ -18,6 +18,7 @@ namespace {
 	PublicLabel CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
 	PublicLabel EffectLengthLabel = "EffectLength";
 	PublicLabel ExternalForceLabel = "ExternalForce";
+	PublicLabel BuoyancyForceLabel = "BuoyancyForce";
 	PublicLabel TimeStepLabel = "TimeStep";
 	PublicLabel NameLabel = "Name";
 }
@@ -39,6 +40,7 @@ PhysicsSolverUpdateCommand::Args::Args() :
 	csgBoundarySceneIds(::CSGBoundarySceneIdsLabel, {}),
 	effectLength(::EffectLengthLabel, 2.0f),
 	externalForce(::ExternalForceLabel, Vector3df(0,-9.8f, 0.0)),
+	buoyancyForce(::BuoyancyForceLabel, Vector3df(0,0,0)),
 	timeStep(::TimeStepLabel, 0.03f),
 	name(::NameLabel, std::string("FluidScene"))
 {
@@ -48,6 +50,7 @@ PhysicsSolverUpdateCommand::Args::Args() :
 	add(&csgBoundarySceneIds);
 	add(&effectLength);
 	add(&externalForce);
+	add(&buoyancyForce);
 	add(&timeStep);
 	add(&name);
 }
@@ -99,6 +102,7 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 	}
 
 	solver->setExternalForce(args.externalForce.getValue());
+	solver->setBuoyancy(args.buoyancyForce.getValue());
 
 	solver->setupBoundaries();
 

@@ -18,6 +18,7 @@ public:
 		Command::Arg<float> effectLength;
 		Command::Arg<float> timeStep;
 		Command::Arg<Math::Vector3df> externalForce;
+		Command::Arg<Math::Vector3df> buoyancyForce;
 		Command::Arg<std::string> name;
 
 		Args();

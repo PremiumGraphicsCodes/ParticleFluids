@@ -22,6 +22,11 @@ class EmitterSceneUpdateCommand:
    StartStepLabel="StartStep"
    EndStepLabel="EndStep"
    IntervalLabel="Interval"
+   TemperatureLabel="Temperature"
+   HeatDiffuseCoeLabel="HeatDiffuseCoe"
+   DragForceCoeLabel="DragForceCoe"
+   DragHeatCoeLabel="DragHeatCoe"
+   LifeLimitLabel="LifeLimit"
 class FluidSceneCreateCommand:
    CommandNameLabel="FluidSceneCreateCommand"
    NewIdLabel="NewId"
@@ -37,6 +42,11 @@ class FluidSceneUpdateCommand:
    StiffnessLabel="Stiffness"
    ViscosityLabel="Viscosity"
    DensityLabel="Density"
+   TemperatureLabel="Temperature"
+   HeatDiffuseCoeLabel="HeatDiffuseCoe"
+   DragForceCoeLabel="DragForceCoe"
+   DragHeatCoeLabel="DragHeatCoe"
+   LifeLimitLabel="LifeLimit"
    IsBoundary="IsBoundary"
    NameLabel="Name"
 class FluidSimulationCommand:
