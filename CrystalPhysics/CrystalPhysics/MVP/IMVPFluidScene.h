@@ -53,7 +53,11 @@ public:
 
 	void setDragHeatCoe(const float c) { this->dragHeatCoe = c; }
 
+	float getDragHeatCoe() const { return this->dragHeatCoe; }
+
 	void setDragForceCoe(const float c) { this->dragForceCoe = c; }
+
+	float getDragForceCoe() const { return this->dragForceCoe; }
 
 	void translate(const Math::Vector3dd& v) override { ; }
 

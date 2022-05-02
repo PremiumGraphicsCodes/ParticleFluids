@@ -15,12 +15,14 @@ namespace Crystal {
 class FluidView : public IOkCancelView
 {
 public:
-	FluidView(const std::string& name, Scene::World* world, Canvas* canvas, MainModel* mainModel);
+	FluidView(const std::string& name, Scene::World* world, Canvas* canvas);
+
+	void setValue(MVPFluidScene* fluid);
 
 private:
 	void onOk() override;
 
-	MainModel* model;
+	MVPFluidScene* fluidScene;
 	Box3dView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;

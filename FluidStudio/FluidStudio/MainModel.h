@@ -15,6 +15,8 @@ public:
 	MainModel(Scene::World* world) : world(world)
 	{}
 
+	void init();
+
 	void addFluidScene(Physics::MVPFluidScene* scene) { this->fluidScenes.push_back(scene); }
 	
 	void addStaticScene(Physics::MVPFluidScene* scene) { this->staticScenes.push_back(scene); }

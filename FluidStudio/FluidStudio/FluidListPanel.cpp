@@ -45,15 +45,11 @@ void FluidListPanel::show(IScene* scene)
 		auto obj = scene->findSceneById(id);
 		if (ImGui::Button(str)) {
 			if (type == Crystal::Physics::MVPFluidScene::Type) {
-//				auto fluidView = new FluidView()
-				assert(false);
-				/*
-				auto editView = new ParticleSystemEditView("ParticleSystemEdit", getWorld(), getCanvas());
-				auto s = scene->findSceneById<ParticleSystemScene*>(id);
-				editView->setValue(s);
+				auto f = scene->findSceneById<MVPFluidScene*>(id);
+				auto fluidView = new FluidView("Fluid", getWorld(), getCanvas());
+				fluidView->setValue(f);
 				control->clear();
-				control->add(editView);
-				*/
+				control->add(fluidView);
 			}
 			/*
 			else if (type == SceneTypeLabels::WireFrameScene) {
