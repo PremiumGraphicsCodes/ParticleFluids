@@ -40,12 +40,6 @@ private:
 
 	void addEmitter();
 
-	Physics::MVPFluidScene* fluidScene;
-	Physics::MVPFluidScene* staticScene;
-	Physics::MVPFluidEmitterScene* emitterScene;
-	Physics::CSGBoundaryScene* csgScene;
-	Physics::MVPFluidSolver solver;
-	Physics::MVPUpdater updator;
 	Box3dView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;
@@ -67,7 +61,7 @@ private:
 	DirectoryView exportDirecotryView;
 	IntView exportIntervalView;
 	SolverExporter* exporter;
-	const MainModel* model;
+	MainModel* model;
 };
 
 	}

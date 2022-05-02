@@ -58,23 +58,23 @@ SolverView::SolverView(const std::string& name, World* world, Canvas* canvas, Ma
 	add(&exportIntervalView);
 	add(&exportDirecotryView);
 
-	fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
-	world->getScenes()->addScene(fluidScene);
+	mainModel->fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
+	world->getScenes()->addScene(mainModel->fluidScene);
 
-	staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
-	world->getScenes()->addScene(staticScene);
+	mainModel->staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
+	world->getScenes()->addScene(mainModel->staticScene);
 
-	emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "MVPEmitter");
-	world->getScenes()->addScene(emitterScene);
+	mainModel->emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "MVPEmitter");
+	world->getScenes()->addScene(mainModel->emitterScene);
 
-	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
+	mainModel->csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
 
 	exporter = new SolverExporter(world);
 
 	boundaryView.setValue(Box3dd(Vector3dd(-20, 0, -20), Vector3dd(20, 20, 20)));
 
-	world->addAnimation(&solver);
-	world->addAnimation(&updator);
+	world->addAnimation(&mainModel->solver);
+	world->addAnimation(&mainModel->updator);
 	world->addAnimation(exporter);
 }
 
@@ -82,34 +82,34 @@ void SolverView::onStart()
 {
 	onReset();
 
-	fluidScene->getPresenter()->createView(world->getRenderer());
-	emitterScene->getPresenter()->createView(world->getRenderer());
-	staticScene->getPresenter()->createView(world->getRenderer());
-	updator.add(fluidScene);
-	updator.add(emitterScene);
-	updator.add(staticScene);
+	model->fluidScene->getPresenter()->createView(world->getRenderer());
+	model->emitterScene->getPresenter()->createView(world->getRenderer());
+	model->staticScene->getPresenter()->createView(world->getRenderer());
+	model->updator.add(model->fluidScene);
+	model->updator.add(model->emitterScene);
+	model->updator.add(model->staticScene);
 }
 
 void SolverView::onReset()
 {
-	this->solver.clear();
+	model->solver.clear();
 
-	this->solver.setExternalForce(this->externalForceView.getValue());
-	this->solver.setBuoyancy(this->buoyancyView.getValue());
+	model->solver.setExternalForce(this->externalForceView.getValue());
+	model->solver.setBuoyancy(this->buoyancyView.getValue());
 
-	fluidScene->clearParticles();
-	emitterScene->clearParticles();
-	staticScene->clearParticles();
+	model->fluidScene->clearParticles();
+	model->emitterScene->clearParticles();
+	model->staticScene->clearParticles();
 
 
 	//this->addFluid();
 	this->addEmitter();
 
-	csgScene->clearBoxes();
-	csgScene->add(boundaryView.getValue());
+	model->csgScene->clearBoxes();
+	model->csgScene->add(boundaryView.getValue());
 
 	exporter->reset();
-	exporter->setSolver(&this->solver);
+	exporter->setSolver(&model->solver);
 	exporter->setDirectory(this->exportDirecotryView.getPath());
 	exporter->setActive(doExportView.getValue());
 	exporter->setExportInterval(this->exportIntervalView.getValue());
@@ -118,18 +118,18 @@ void SolverView::onReset()
 
 void SolverView::addFluid()
 {
-	this->fluidScene->clearParticles();
+	model->fluidScene->clearParticles();
 	//this->boundaryScene->clearParticles();
 
-	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
-	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
-	this->fluidScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
-	this->fluidScene->setDragForceCoe(dragForceCoeView.getValue());
-	this->fluidScene->setDragHeatCoe(dragHeatCoeView.getValue());
+	model->fluidScene->setPressureCoe(pressureCoeView.getValue());
+	model->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
+	model->fluidScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
+	model->fluidScene->setDragForceCoe(dragForceCoeView.getValue());
+	model->fluidScene->setDragHeatCoe(dragHeatCoeView.getValue());
 
-	this->staticScene->setPressureCoe(pressureCoeView.getValue());
-	this->staticScene->setViscosityCoe(viscosityCoeView.getValue() * 5.0f);
-	this->staticScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
+	model->staticScene->setPressureCoe(pressureCoeView.getValue());
+	model->staticScene->setViscosityCoe(viscosityCoeView.getValue() * 5.0f);
+	model->staticScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
 
 	//this->boundaryScene->setPressureCoe(pressureCoeView.getValue());
 	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());
@@ -142,9 +142,9 @@ void SolverView::addFluid()
 				for (int k = -20; k < 20; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = fluidScene->create(p, length, 0.25f, 300.0f);
+					auto mp = model->fluidScene->create(p, length, 0.25f, 300.0f);
 					//				mp->distributePoints(3, 3, 3, 1.00f);
-					fluidScene->addParticle(mp);
+					model->fluidScene->addParticle(mp);
 				}
 			}
 		}
@@ -156,57 +156,57 @@ void SolverView::addFluid()
 			for (int j = -1; j < 0; ++j) {
 				for (int k = -10; k < 10; ++k) {
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = staticScene->create(p, length, 0.25f, 2000.0f);
-					staticScene->addParticle(mp);
-					staticScene->setBoundary(true);
+					auto mp = model->staticScene->create(p, length, 0.25f, 2000.0f);
+					model->staticScene->addParticle(mp);
+					model->staticScene->setBoundary(true);
 				}
 			}
 		}
 
 	}
 
-	solver.clear();
-	solver.addFluidScene(fluidScene);
-	solver.addBoundaryScene(staticScene);
-	csgScene->add(boundaryView.getValue());
-	solver.addBoundary(csgScene);
-	solver.setEffectLength(radiusView.getValue());
+	model->solver.clear();
+	model->solver.addFluidScene(model->fluidScene);
+	model->solver.addBoundaryScene(model->staticScene);
+	model->csgScene->add(boundaryView.getValue());
+	model->solver.addBoundary(model->csgScene);
+	model->solver.setEffectLength(radiusView.getValue());
 
-	solver.setMaxTimeStep(this->timeStepView.getValue());
-	solver.setupBoundaries();
+	model->solver.setMaxTimeStep(this->timeStepView.getValue());
+	model->solver.setupBoundaries();
 }
 
 void SolverView::addEmitter()
 {
-	this->emitterScene->clearParticles();
-	this->emitterScene->clearSources();
+	model->emitterScene->clearParticles();
+	model->emitterScene->clearSources();
 	//this->boundaryScene->clearParticles();
 
-	this->emitterScene->setPressureCoe(pressureCoeView.getValue());
-	this->emitterScene->setViscosityCoe(viscosityCoeView.getValue());
-	this->emitterScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
-	this->emitterScene->setDragForceCoe(dragForceCoeView.getValue());
-	this->emitterScene->setDragHeatCoe(dragHeatCoeView.getValue());
+	model->emitterScene->setPressureCoe(pressureCoeView.getValue());
+	model->emitterScene->setViscosityCoe(viscosityCoeView.getValue());
+	model->emitterScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
+	model->emitterScene->setDragForceCoe(dragForceCoeView.getValue());
+	model->emitterScene->setDragHeatCoe(dragHeatCoeView.getValue());
 
 	for (int i = 0; i < 100; ++i) {
 		for (int j = 0; j < 1; ++j) {
 			for (int k = 0; k < 10; ++k) {
-				emitterScene->addSource(Sphere3d(Vector3dd(i * 0.5, j * 0.5, k * 0.5), 0.5));
+				model->emitterScene->addSource(Sphere3d(Vector3dd(i * 0.5, j * 0.5, k * 0.5), 0.5));
 			}
 		}
 	}
-	emitterScene->setInitialTemperature(1000.0f);
-	emitterScene->setLifeLimit(100);
-	emitterScene->setInterval(2);
-	emitterScene->setInitialVelocity(Vector3dd(0.0, 0.0, 0.0));
-	emitterScene->setStartEnd(0, 10000);
+	model->emitterScene->setInitialTemperature(1000.0f);
+	model->emitterScene->setLifeLimit(100);
+	model->emitterScene->setInterval(2);
+	model->emitterScene->setInitialVelocity(Vector3dd(0.0, 0.0, 0.0));
+	model->emitterScene->setStartEnd(0, 10000);
 
 
-	solver.clear();
-	solver.addEmitterScene(emitterScene);
+	model->solver.clear();
+	model->solver.addEmitterScene(model->emitterScene);
 
-	solver.addBoundary(csgScene);
+	model->solver.addBoundary(model->csgScene);
 
-	solver.setMaxTimeStep(this->timeStepView.getValue());
-	solver.setupBoundaries();
+	model->solver.setMaxTimeStep(this->timeStepView.getValue());
+	model->solver.setupBoundaries();
 }
