@@ -7,24 +7,20 @@
 
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidScene.h"
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidEmitterScene.h"
+#include "MainModel.h"
 
 namespace Crystal {
 	namespace UI {
 
-class FluidView : public IView
+class FluidView : public IOkCancelView
 {
 public:
-	FluidView(const std::string& name, Scene::World* model, Canvas* canvas);
+	FluidView(const std::string& name, Scene::World* world, Canvas* canvas, MainModel* mainModel);
 
 private:
-	void addFluid();
+	void onOk() override;
 
-	void addEmitter();
-
-	Physics::MVPFluidScene* fluidScene;
-	Physics::MVPFluidScene* staticScene;
-	Physics::MVPFluidEmitterScene* emitterScene;
-
+	MainModel* model;
 	Box3dView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;

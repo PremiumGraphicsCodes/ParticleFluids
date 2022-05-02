@@ -15,16 +15,16 @@ public:
 	MainModel(Scene::World* world) : world(world)
 	{}
 
-
-	void createEmitterScene();
-
 	void addFluidScene(Physics::MVPFluidScene* scene) { this->fluidScenes.push_back(scene); }
 	
 	void addStaticScene(Physics::MVPFluidScene* scene) { this->staticScenes.push_back(scene); }
 
+	void addEmitterScene(Physics::MVPFluidEmitterScene* scene) { this->emitterScenes.push_back(scene); }
+
 	void clear();
 
-	Physics::MVPFluidEmitterScene* emitterScene;
+	void resetSolver();
+
 	Physics::CSGBoundaryScene* csgScene;
 	Physics::MVPFluidSolver solver;
 	Physics::MVPUpdater updator;
@@ -34,6 +34,7 @@ private:
 	Scene::World* world;
 	std::vector<Physics::MVPFluidScene*> fluidScenes;
 	std::vector<Physics::MVPFluidScene*> staticScenes;
+	std::vector<Physics::MVPFluidEmitterScene*> emitterScenes;
 
 };
 	}

@@ -27,8 +27,6 @@ public:
 	SolverView(const std::string& name, Scene::World* world, Canvas* canvas, MainModel* model);
 
 private:
-	//void onAddFluid();
-
 	//void onAddEmitter();
 
 	void onStart();
@@ -36,7 +34,6 @@ private:
 	void onReset();
 
 private:
-	void addFluid();
 
 	void addEmitter();
 

@@ -1,6 +1,7 @@
 #include "FluidMenu.h"
 
 #include "SolverView.h"
+#include "FluidView.h"
 
 #include "CrystalScene/AppBase/MenuItem.h"
 
@@ -13,5 +14,8 @@ FluidMenu::FluidMenu(const std::string& name, World* world, Canvas* canvas, Cont
 {
 	add(new MenuItem("Solver", [world, canvas, control, model] {
 		control->setWindow(new SolverView("Solver", world, canvas, model));
+		}));
+	add(new MenuItem("Fluid", [world, canvas, control, model] {
+		control->setWindow(new FluidView("Fluid", world, canvas, model));
 		}));
 }

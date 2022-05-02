@@ -2,8 +2,15 @@
 
 using namespace Crystal::UI;
 
-void MainModel::createEmitterScene()
+void MainModel::resetSolver()
 {
-	this->emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "MVPEmitter");
-	world->getScenes()->addScene(emitterScene);
+	for (auto f : fluidScenes) {
+		solver.addFluidScene(f);
+		updator.add(f);
+	}
+	
+	for (auto s : staticScenes) {
+		solver.addBoundaryScene(s);
+		updator.add(s);
+	}
 }
