@@ -15,13 +15,15 @@ public:
 	MainModel(Scene::World* world) : world(world)
 	{}
 
-	void createFluidScene();
 
 	void createStaticScene();
 
 	void createEmitterScene();
 
-	Physics::MVPFluidScene* fluidScene;
+	void addFluidScene(Physics::MVPFluidScene* scene) { this->fluidScenes.push_back(scene); }
+
+	void clear();
+
 	Physics::MVPFluidScene* staticScene;
 	Physics::MVPFluidEmitterScene* emitterScene;
 	Physics::CSGBoundaryScene* csgScene;
@@ -31,6 +33,7 @@ public:
 
 private:
 	Scene::World* world;
+	std::vector<Physics::MVPFluidScene*> fluidScenes;
 
 };
 	}

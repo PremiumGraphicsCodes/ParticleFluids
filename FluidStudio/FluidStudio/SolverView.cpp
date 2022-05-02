@@ -58,7 +58,6 @@ SolverView::SolverView(const std::string& name, World* world, Canvas* canvas, Ma
 	add(&exportIntervalView);
 	add(&exportDirecotryView);
 
-	model->createFluidScene();
 	model->createStaticScene();
 	model->createEmitterScene();
 
@@ -78,10 +77,8 @@ void SolverView::onStart()
 {
 	onReset();
 
-	model->fluidScene->getPresenter()->createView(world->getRenderer());
 	model->emitterScene->getPresenter()->createView(world->getRenderer());
 	model->staticScene->getPresenter()->createView(world->getRenderer());
-	model->updator.add(model->fluidScene);
 	model->updator.add(model->emitterScene);
 	model->updator.add(model->staticScene);
 }
@@ -93,7 +90,6 @@ void SolverView::onReset()
 	model->solver.setExternalForce(this->externalForceView.getValue());
 	model->solver.setBuoyancy(this->buoyancyView.getValue());
 
-	model->fluidScene->clearParticles();
 	model->emitterScene->clearParticles();
 	model->staticScene->clearParticles();
 
@@ -114,14 +110,13 @@ void SolverView::onReset()
 
 void SolverView::addFluid()
 {
-	model->fluidScene->clearParticles();
-	//this->boundaryScene->clearParticles();
+	auto fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
 
-	model->fluidScene->setPressureCoe(pressureCoeView.getValue());
-	model->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
-	model->fluidScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
-	model->fluidScene->setDragForceCoe(dragForceCoeView.getValue());
-	model->fluidScene->setDragHeatCoe(dragHeatCoeView.getValue());
+	fluidScene->setPressureCoe(pressureCoeView.getValue());
+	fluidScene->setViscosityCoe(viscosityCoeView.getValue());
+	fluidScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
+	fluidScene->setDragForceCoe(dragForceCoeView.getValue());
+	fluidScene->setDragHeatCoe(dragHeatCoeView.getValue());
 
 	model->staticScene->setPressureCoe(pressureCoeView.getValue());
 	model->staticScene->setViscosityCoe(viscosityCoeView.getValue() * 5.0f);
@@ -138,9 +133,9 @@ void SolverView::addFluid()
 				for (int k = 0; k < 20; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = model->fluidScene->create(p, length, 0.25f, 300.0f);
+					auto mp = fluidScene->create(p, length, 0.25f, 300.0f);
 					//				mp->distributePoints(3, 3, 3, 1.00f);
-					model->fluidScene->addParticle(mp);
+					fluidScene->addParticle(mp);
 				}
 			}
 		}
@@ -161,8 +156,12 @@ void SolverView::addFluid()
 
 	}
 
+	fluidScene->getPresenter()->createView(world->getRenderer());
+	world->getScenes()->addScene(fluidScene);
+
+
 	model->solver.clear();
-	model->solver.addFluidScene(model->fluidScene);
+	model->solver.addFluidScene(fluidScene);
 	model->solver.addBoundaryScene(model->staticScene);
 	model->csgScene->add(boundaryView.getValue());
 	model->solver.addBoundary(model->csgScene);
@@ -170,6 +169,8 @@ void SolverView::addFluid()
 
 	model->solver.setMaxTimeStep(this->timeStepView.getValue());
 	model->solver.setupBoundaries();
+
+	model->updator.add(fluidScene);
 }
 
 void SolverView::addEmitter()

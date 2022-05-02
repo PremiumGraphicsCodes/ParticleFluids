@@ -2,12 +2,6 @@
 
 using namespace Crystal::UI;
 
-void MainModel::createFluidScene()
-{
-	this->fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
-	world->getScenes()->addScene(fluidScene);
-}
-
 void MainModel::createStaticScene()
 {
 	this->staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
