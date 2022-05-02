@@ -5,11 +5,12 @@
 
 namespace Crystal {
 	namespace UI {
+		class MainModel;
 
 class FluidMenu : public IMenu
 {
 public:
-	FluidMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
+	FluidMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control, MainModel* model);
 
 private:
 	ControlPanel* control;

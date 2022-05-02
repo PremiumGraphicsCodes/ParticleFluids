@@ -149,6 +149,8 @@
   <ItemGroup>
     <ClCompile Include="FluidMenu.cpp" />
     <ClCompile Include="FluidStudio.cpp" />
+    <ClCompile Include="FluidView.cpp" />
+    <ClCompile Include="MainModel.cpp" />
     <ClCompile Include="SolverExporter.cpp" />
     <ClCompile Include="SolverView.cpp" />
     <ClCompile Include="ToVolumeView.cpp" />
@@ -200,6 +202,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidMenu.h" />
+    <ClInclude Include="FluidView.h" />
+    <ClInclude Include="MainModel.h" />
     <ClInclude Include="SolverExporter.h" />
     <ClInclude Include="SolverView.h" />
     <ClInclude Include="ToVolumeView.h" />

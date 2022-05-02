@@ -11,6 +11,7 @@
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidSolver.h"
 //#include "CSGBoundaryView.h"
 //#include "../CrystalPhysics/TimeSeriesParticleSystemWriter.h"
+#include "MainModel.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -23,7 +24,7 @@ namespace Crystal {
 class SolverView : public IView
 {
 public:
-	SolverView(const std::string& name, Scene::World* model, Canvas* canvas);
+	SolverView(const std::string& name, Scene::World* world, Canvas* canvas, MainModel* model);
 
 private:
 	//void onAddFluid();
@@ -66,6 +67,7 @@ private:
 	DirectoryView exportDirecotryView;
 	IntView exportIntervalView;
 	SolverExporter* exporter;
+	const MainModel* model;
 };
 
 	}

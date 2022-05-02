@@ -15,6 +15,8 @@
 #include "FluidMenu.h"
 #include "VDBMenu.h"
 
+#include "MainModel.h"
+
 #include <iostream>
 #include <cassert>
 
@@ -45,6 +47,7 @@ int main()
 		return 0;
 	}
 
+	MainModel model;
 
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);
@@ -54,7 +57,7 @@ int main()
 	window.add(new CtrlMenu("Ctrl", &world, &canvas));
 	window.add(new ShapeMenu("Shape", &world, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &world, &canvas, control));
-	window.add(new FluidMenu("Fluid", &world, &canvas, control));
+	window.add(new FluidMenu("Fluid", &world, &canvas, control, &model));
 	window.add(new VDBMenu("VDB", &world, &canvas, control));
 
 	window.add(new SceneListPanel("Scene", &world, &canvas, control));

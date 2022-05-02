@@ -1,62 +1,26 @@
-#include "SolverView.h"
-
-#include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidScene.h"
-#include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidEmitterScene.h"
-#include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidSolver.h"
-#include "CrystalPhysics/CrystalPhysics/Boundary/CSGBoundaryScene.h"
-#include "SolverExporter.h"
-
-#include "CrystalScene/Scene/ParticleSystemScene.h"
-
-#include "CrystalScene/Scene/IAnimator.h"
-#include "CrystalPhysics/CrystalPhysicsCommand/PhysicsSolverExportCommand.h"
+#include "FluidView.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
 using namespace Crystal::Scene;
-using namespace Crystal::UI;
 using namespace Crystal::Physics;
+using namespace Crystal::UI;
 
-SolverView::SolverView(const std::string& name, World* world, Canvas* canvas, MainModel* mainModel) :
+FluidView::FluidView(const std::string& name, World* model, Canvas* canvas) :
 	IView(name),
-	model(mainModel),
-	world(world),
-	canvas(canvas),
-	startButton("Start"),
-	resetButton("Reset"),
 	boundaryView("Boundary"),
 	pressureCoeView("PressureCoe", 500.f),
 	viscosityCoeView("ViscosityCoe", 50.0f),
 	heatDiffuseCoeView("HeatDiffuseCoe", 100.0f),
 	dragHeatCoeView("DragHeatCoe", 0.0),
-	dragForceCoeView("DragForceCoe", 0.0),
-	timeStepView("TimeStep", 0.01f),
-	radiusView("SearchRadius", 2.00f),
-	externalForceView("ExternalForce", Vector3dd(0.0, -9.8, 0.0)),
-	buoyancyView("Buoyancy", Vector3df(0.0, 0.098, 0.0)),
-	doExportView("Export", false),
-	exportIntervalView("Interval", 5),
-	exportDirecotryView("ExportDir", "./")
+	dragForceCoeView("DragForceCoe", 0.0)
 {
-	startButton.setFunction([=]() { onStart(); });
-	add(&startButton);
-
-	resetButton.setFunction([=]() { onReset(); });
-	add(&resetButton);
-
+	/*
 	add(&boundaryView);
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
 	add(&heatDiffuseCoeView);
 	add(&dragHeatCoeView);
 	add(&dragForceCoeView);
-	add(&timeStepView);
-	add(&radiusView);
-	add(&externalForceView);
-	add(&buoyancyView);
-	add(&doExportView);
-	add(&exportIntervalView);
-	add(&exportDirecotryView);
 
 	fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
 	world->getScenes()->addScene(fluidScene);
@@ -76,48 +40,12 @@ SolverView::SolverView(const std::string& name, World* world, Canvas* canvas, Ma
 	world->addAnimation(&solver);
 	world->addAnimation(&updator);
 	world->addAnimation(exporter);
+	*/
 }
 
-void SolverView::onStart()
+void FluidView::addFluid()
 {
-	onReset();
-
-	fluidScene->getPresenter()->createView(world->getRenderer());
-	emitterScene->getPresenter()->createView(world->getRenderer());
-	staticScene->getPresenter()->createView(world->getRenderer());
-	updator.add(fluidScene);
-	updator.add(emitterScene);
-	updator.add(staticScene);
-}
-
-void SolverView::onReset()
-{
-	this->solver.clear();
-
-	this->solver.setExternalForce(this->externalForceView.getValue());
-	this->solver.setBuoyancy(this->buoyancyView.getValue());
-
-	fluidScene->clearParticles();
-	emitterScene->clearParticles();
-	staticScene->clearParticles();
-
-
-	//this->addFluid();
-	this->addEmitter();
-
-	csgScene->clearBoxes();
-	csgScene->add(boundaryView.getValue());
-
-	exporter->reset();
-	exporter->setSolver(&this->solver);
-	exporter->setDirectory(this->exportDirecotryView.getPath());
-	exporter->setActive(doExportView.getValue());
-	exporter->setExportInterval(this->exportIntervalView.getValue());
-	//this->addEmitter();
-}
-
-void SolverView::addFluid()
-{
+	/*
 	this->fluidScene->clearParticles();
 	//this->boundaryScene->clearParticles();
 
@@ -137,7 +65,7 @@ void SolverView::addFluid()
 	{
 		const auto radius = 1.0;
 		const auto length = radius * 0.5;
-		for (int i =-20; i < 20; ++i) {
+		for (int i = -20; i < 20; ++i) {
 			for (int j = 0; j < 20; ++j) {
 				for (int k = -20; k < 20; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
@@ -174,10 +102,12 @@ void SolverView::addFluid()
 
 	solver.setMaxTimeStep(this->timeStepView.getValue());
 	solver.setupBoundaries();
+	*/
 }
 
-void SolverView::addEmitter()
+void FluidView::addEmitter()
 {
+	/*
 	this->emitterScene->clearParticles();
 	this->emitterScene->clearSources();
 	//this->boundaryScene->clearParticles();
@@ -209,4 +139,5 @@ void SolverView::addEmitter()
 
 	solver.setMaxTimeStep(this->timeStepView.getValue());
 	solver.setupBoundaries();
+	*/
 }
