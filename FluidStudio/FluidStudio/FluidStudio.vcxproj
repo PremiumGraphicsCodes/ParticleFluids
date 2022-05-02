@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EmitterView.cpp" />
     <ClCompile Include="FluidMenu.cpp" />
     <ClCompile Include="FluidStudio.cpp" />
     <ClCompile Include="FluidView.cpp" />
@@ -201,6 +202,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EmitterView.h" />
     <ClInclude Include="FluidMenu.h" />
     <ClInclude Include="FluidView.h" />
     <ClInclude Include="MainModel.h" />

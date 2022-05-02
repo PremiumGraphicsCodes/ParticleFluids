@@ -35,14 +35,7 @@ private:
 
 private:
 
-	void addEmitter();
-
 	Box3dView boundaryView;
-	FloatView pressureCoeView;
-	FloatView viscosityCoeView;
-	FloatView heatDiffuseCoeView;
-	FloatView dragHeatCoeView;
-	FloatView dragForceCoeView;
 	FloatView timeStepView;
 	FloatView radiusView;
 	Vector3dView externalForceView;

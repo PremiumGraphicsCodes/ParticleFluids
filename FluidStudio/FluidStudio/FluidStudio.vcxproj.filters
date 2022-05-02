@@ -23,6 +23,9 @@
     <ClCompile Include="MainModel.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="EmitterView.cpp">
+      <Filter>UI\Fluid</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidMenu.h">
@@ -45,6 +48,9 @@
     </ClInclude>
     <ClInclude Include="MainModel.h">
       <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="EmitterView.h">
+      <Filter>UI\Fluid</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
