@@ -16,6 +16,7 @@
 #include "VDBMenu.h"
 
 #include "MainModel.h"
+#include "FluidListPanel.h"
 
 #include <iostream>
 #include <cassert>
@@ -61,6 +62,7 @@ int main()
 	window.add(new VDBMenu("VDB", &world, &canvas, control));
 
 	window.add(new SceneListPanel("Scene", &world, &canvas, control));
+	window.add(new FluidListPanel("Fluids", &world, &canvas, control));
 
 	window.show();
 
