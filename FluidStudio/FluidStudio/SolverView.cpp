@@ -48,15 +48,8 @@ SolverView::SolverView(const std::string& name, World* world, Canvas* canvas, Ma
 	add(&exportIntervalView);
 	add(&exportDirecotryView);
 
-	mainModel->csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
-
-	model->exporter = new SolverExporter(world);
 
 	boundaryView.setValue(Box3dd(Vector3dd(-20, 0, -20), Vector3dd(20, 20, 20)));
-
-	world->addAnimation(&model->solver);
-	world->addAnimation(&model->updator);
-	world->addAnimation(model->exporter);
 }
 
 void SolverView::onStart()
@@ -72,25 +65,21 @@ void SolverView::onReset()
 	model->solver.setExternalForce(this->externalForceView.getValue());
 	model->solver.setBuoyancy(this->buoyancyView.getValue());
 
-
-	//this->addEmitter();
-
-	//model->solver.clear();
-	model->csgScene->add(boundaryView.getValue());
-	model->solver.addBoundary(model->csgScene);
 	model->solver.setEffectLength(radiusView.getValue());
 
 	model->solver.setMaxTimeStep(this->timeStepView.getValue());
 	model->solver.setupBoundaries();
 
 
-	model->csgScene->clearBoxes();
-	model->csgScene->add(boundaryView.getValue());
+	model->getBoundary()->clearBoxes();
+	model->getBoundary()->add(boundaryView.getValue());
+	model->solver.addBoundary(model->getBoundary());
 
-	model->exporter->reset();
-	model->exporter->setSolver(&model->solver);
-	model->exporter->setDirectory(this->exportDirecotryView.getPath());
-	model->exporter->setActive(doExportView.getValue());
-	model->exporter->setExportInterval(this->exportIntervalView.getValue());
+
+	model->getExporter()->reset();
+	model->getExporter()->setSolver(&model->solver);
+	model->getExporter()->setDirectory(this->exportDirecotryView.getPath());
+	model->getExporter()->setActive(doExportView.getValue());
+	model->getExporter()->setExportInterval(this->exportIntervalView.getValue());
 	//this->addEmitter();
 }

@@ -29,17 +29,20 @@ public:
 
 	void resetSolver();
 
-	Physics::CSGBoundaryScene* csgScene;
+	SolverExporter* getExporter() { return exporter; }
+
 	Physics::MVPFluidSolver solver;
-	Physics::MVPUpdater updator;
-	SolverExporter* exporter;
+
+	Physics::CSGBoundaryScene* getBoundary() { return csgScene; }
 
 private:
 	Scene::World* world;
 	std::vector<Physics::MVPFluidScene*> fluidScenes;
 	std::vector<Physics::MVPFluidScene*> staticScenes;
 	std::vector<Physics::MVPFluidEmitterScene*> emitterScenes;
-
+	SolverExporter* exporter;
+	Physics::MVPUpdater updator;
+	Physics::CSGBoundaryScene* csgScene;
 };
 	}
 }

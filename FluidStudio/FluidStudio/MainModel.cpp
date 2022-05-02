@@ -1,5 +1,7 @@
 #include "MainModel.h"
 
+#include "CrystalPhysics/CrystalPhysics/Boundary/CSGBoundaryScene.h"
+
 using namespace Crystal::UI;
 
 void MainModel::init()
@@ -76,6 +78,17 @@ void MainModel::init()
 	staticScene->getPresenter()->createView(world->getRenderer());
 	world->getScenes()->addScene(staticScene);
 	addStaticScene(staticScene);
+
+	exporter = new SolverExporter(world);
+	world->addAnimation(exporter);
+
+	world->addAnimation(&solver);
+	world->addAnimation(&updator);
+
+	updator.add(fluidScene);
+	updator.add(staticScene);
+
+	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
 }
 
 void MainModel::resetSolver()
@@ -85,11 +98,9 @@ void MainModel::resetSolver()
 
 	for (auto f : fluidScenes) {
 		solver.addFluidScene(f);
-		updator.add(f);
 	}
 	
 	for (auto s : staticScenes) {
 		solver.addBoundaryScene(s);
-		updator.add(s);
 	}
 }
