@@ -62,22 +62,21 @@ void SolverView::onReset()
 	model->resetSolver();
 	//model->solver.clear();
 
-	model->solver.setExternalForce(this->externalForceView.getValue());
-	model->solver.setBuoyancy(this->buoyancyView.getValue());
+	model->getSolver()->setExternalForce(this->externalForceView.getValue());
+	model->getSolver()->setBuoyancy(this->buoyancyView.getValue());
 
-	model->solver.setEffectLength(radiusView.getValue());
+	model->getSolver()->setEffectLength(radiusView.getValue());
 
-	model->solver.setMaxTimeStep(this->timeStepView.getValue());
-	model->solver.setupBoundaries();
+	model->getSolver()->setMaxTimeStep(this->timeStepView.getValue());
+	model->getSolver()->setupBoundaries();
 
 
 	model->getBoundary()->clearBoxes();
 	model->getBoundary()->add(boundaryView.getValue());
-	model->solver.addBoundary(model->getBoundary());
-
+	model->getSolver()->addBoundary(model->getBoundary());
 
 	model->getExporter()->reset();
-	model->getExporter()->setSolver(&model->solver);
+	model->getExporter()->setSolver(model->getSolver());
 	model->getExporter()->setDirectory(this->exportDirecotryView.getPath());
 	model->getExporter()->setActive(doExportView.getValue());
 	model->getExporter()->setExportInterval(this->exportIntervalView.getValue());

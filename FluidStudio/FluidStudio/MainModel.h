@@ -31,9 +31,9 @@ public:
 
 	SolverExporter* getExporter() { return exporter; }
 
-	Physics::MVPFluidSolver solver;
-
 	Physics::CSGBoundaryScene* getBoundary() { return csgScene; }
+
+	Physics::MVPFluidSolver* getSolver() { return &solver; }
 
 private:
 	Scene::World* world;
@@ -43,6 +43,8 @@ private:
 	SolverExporter* exporter;
 	Physics::MVPUpdater updator;
 	Physics::CSGBoundaryScene* csgScene;
+	Physics::MVPFluidSolver solver;
+
 };
 	}
 }
