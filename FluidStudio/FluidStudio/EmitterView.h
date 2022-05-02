@@ -5,7 +5,6 @@
 #include "CrystalScene/AppBase/Box3dView.h"
 #include "CrystalScene/AppBase/FloatView.h"
 
-#include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidScene.h"
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "MainModel.h"
 
@@ -15,12 +14,14 @@ namespace Crystal {
 class EmitterView : public IOkCancelView
 {
 public:
-	EmitterView(const std::string& name, Scene::World* world, Canvas* canvas, MainModel* mainModel);
+	EmitterView(const std::string& name, Scene::World* world, Canvas* canvas);
+
+	void setValue(Physics::MVPFluidEmitterScene* emitter);
 
 private:
 	void onOk() override;
 
-	MainModel* model;
+	Physics::MVPFluidEmitterScene* emitterScene;
 	Box3dView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;

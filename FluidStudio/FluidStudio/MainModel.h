@@ -17,7 +17,9 @@ public:
 
 	void init();
 
-	void addFluidScene(Physics::MVPFluidScene* scene) { this->fluidScenes.push_back(scene); }
+	void addFluidScene(Physics::MVPFluidScene* scene) {
+		this->fluidScenes.push_back(scene);
+	}
 	
 	void addStaticScene(Physics::MVPFluidScene* scene) { this->staticScenes.push_back(scene); }
 

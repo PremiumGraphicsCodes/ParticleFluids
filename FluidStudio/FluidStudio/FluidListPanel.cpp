@@ -5,7 +5,9 @@
 #include "CrystalScene/AppBase/imgui.h"
 
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidScene.h"
+#include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "FluidView.h"
+#include "EmitterView.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
@@ -51,14 +53,14 @@ void FluidListPanel::show(IScene* scene)
 				control->clear();
 				control->add(fluidView);
 			}
-			/*
-			else if (type == SceneTypeLabels::WireFrameScene) {
-				auto editView = new WireFrameEditView("WireFrameEdit", getWorld(), getCanvas());
-				auto s = scene->findSceneById<WireFrameScene*>(id);
-				editView->setValue(s);
+			else if (type == Crystal::Physics::MVPFluidEmitterScene::Type) {
+				auto f = scene->findSceneById<MVPFluidEmitterScene*>(id);
+				auto fluidView = new EmitterView("Fluid", getWorld(), getCanvas());
+				fluidView->setValue(f);
 				control->clear();
-				control->add(editView);
+				control->add(fluidView);
 			}
+			/*
 			else if (type == SceneTypeLabels::PolygonMeshScene) {
 				auto editView = new PolygonMeshEditView("PolygonMeshEdit", getWorld(), getCanvas());
 				auto s = scene->findSceneById<PolygonMeshScene*>(id);

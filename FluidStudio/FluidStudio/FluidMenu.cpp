@@ -21,10 +21,7 @@ FluidMenu::FluidMenu(const std::string& name, World* world, Canvas* canvas, Cont
 		}));
 
 	add(new MenuItem("Emitter", [world, canvas, control, model] {
-		control->setWindow(new EmitterView("Emitter", world, canvas, model));
+		//control->setWindow(new EmitterView("Emitter", world, canvas, model));
 		}));
 
-	add(new MenuItem("Solver", [world, canvas, control, model] {
-		control->setWindow(new SolverView("Solver", world, canvas, model));
-		}));
 }

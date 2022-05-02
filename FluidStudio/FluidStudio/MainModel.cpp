@@ -50,6 +50,24 @@ void MainModel::init()
 		}
 
 	}
+	/*
+	auto emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "Emitter");
+	for (int i = 0; i < 100; ++i) {
+		for (int j = 0; j < 1; ++j) {
+			for (int k = 0; k < 10; ++k) {
+				emitterScene->addSource(Sphere3d(Vector3dd(i * 0.5, j * 0.5, k * 0.5), 0.5));
+			}
+		}
+
+	emitterScene->setInitialTemperature(1000.0f);
+	emitterScene->setLifeLimit(100);
+	emitterScene->setInterval(2);
+	emitterScene->setInitialVelocity(Vector3dd(0.0, 0.0, 0.0));
+	emitterScene->setStartEnd(0, 10000);
+
+	}
+	*/
+
 
 	fluidScene->getPresenter()->createView(world->getRenderer());
 	world->getScenes()->addScene(fluidScene);
@@ -62,6 +80,9 @@ void MainModel::init()
 
 void MainModel::resetSolver()
 {
+	solver.clear();
+	//updator.
+
 	for (auto f : fluidScenes) {
 		solver.addFluidScene(f);
 		updator.add(f);
