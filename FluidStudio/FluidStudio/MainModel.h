@@ -16,15 +16,14 @@ public:
 	{}
 
 
-	void createStaticScene();
-
 	void createEmitterScene();
 
 	void addFluidScene(Physics::MVPFluidScene* scene) { this->fluidScenes.push_back(scene); }
+	
+	void addStaticScene(Physics::MVPFluidScene* scene) { this->staticScenes.push_back(scene); }
 
 	void clear();
 
-	Physics::MVPFluidScene* staticScene;
 	Physics::MVPFluidEmitterScene* emitterScene;
 	Physics::CSGBoundaryScene* csgScene;
 	Physics::MVPFluidSolver solver;
@@ -34,6 +33,7 @@ public:
 private:
 	Scene::World* world;
 	std::vector<Physics::MVPFluidScene*> fluidScenes;
+	std::vector<Physics::MVPFluidScene*> staticScenes;
 
 };
 	}

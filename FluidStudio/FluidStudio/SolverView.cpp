@@ -58,7 +58,6 @@ SolverView::SolverView(const std::string& name, World* world, Canvas* canvas, Ma
 	add(&exportIntervalView);
 	add(&exportDirecotryView);
 
-	model->createStaticScene();
 	model->createEmitterScene();
 
 
@@ -78,9 +77,7 @@ void SolverView::onStart()
 	onReset();
 
 	model->emitterScene->getPresenter()->createView(world->getRenderer());
-	model->staticScene->getPresenter()->createView(world->getRenderer());
 	model->updator.add(model->emitterScene);
-	model->updator.add(model->staticScene);
 }
 
 void SolverView::onReset()
@@ -91,7 +88,6 @@ void SolverView::onReset()
 	model->solver.setBuoyancy(this->buoyancyView.getValue());
 
 	model->emitterScene->clearParticles();
-	model->staticScene->clearParticles();
 
 
 	this->addFluid();
@@ -118,10 +114,6 @@ void SolverView::addFluid()
 	fluidScene->setDragForceCoe(dragForceCoeView.getValue());
 	fluidScene->setDragHeatCoe(dragHeatCoeView.getValue());
 
-	model->staticScene->setPressureCoe(pressureCoeView.getValue());
-	model->staticScene->setViscosityCoe(viscosityCoeView.getValue() * 5.0f);
-	model->staticScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
-
 	//this->boundaryScene->setPressureCoe(pressureCoeView.getValue());
 	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());
 
@@ -140,6 +132,13 @@ void SolverView::addFluid()
 			}
 		}
 	}
+
+	auto staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
+
+	staticScene->setPressureCoe(pressureCoeView.getValue());
+	staticScene->setViscosityCoe(viscosityCoeView.getValue() * 5.0f);
+	staticScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
+
 	{
 		const auto radius = 1.0;
 		const auto length = radius * 0.5;
@@ -147,9 +146,9 @@ void SolverView::addFluid()
 			for (int j = -1; j < 0; ++j) {
 				for (int k = -10; k < 10; ++k) {
 					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = model->staticScene->create(p, length, 0.25f, 2000.0f);
-					model->staticScene->addParticle(mp);
-					model->staticScene->setBoundary(true);
+					auto mp = staticScene->create(p, length, 0.25f, 2000.0f);
+					staticScene->addParticle(mp);
+					staticScene->setBoundary(true);
 				}
 			}
 		}
@@ -159,10 +158,12 @@ void SolverView::addFluid()
 	fluidScene->getPresenter()->createView(world->getRenderer());
 	world->getScenes()->addScene(fluidScene);
 
+	staticScene->getPresenter()->createView(world->getRenderer());
+	world->getScenes()->addScene(staticScene);
 
 	model->solver.clear();
 	model->solver.addFluidScene(fluidScene);
-	model->solver.addBoundaryScene(model->staticScene);
+	model->solver.addBoundaryScene(staticScene);
 	model->csgScene->add(boundaryView.getValue());
 	model->solver.addBoundary(model->csgScene);
 	model->solver.setEffectLength(radiusView.getValue());
@@ -171,6 +172,7 @@ void SolverView::addFluid()
 	model->solver.setupBoundaries();
 
 	model->updator.add(fluidScene);
+	model->updator.add(staticScene);
 }
 
 void SolverView::addEmitter()
