@@ -17,6 +17,7 @@
 
 #include "MainModel.h"
 #include "FluidListPanel.h"
+#include "SolverView.h"
 
 #include <iostream>
 #include <cassert>
@@ -62,8 +63,10 @@ int main()
 	window.add(new FluidMenu("Fluid", &world, &canvas, control, &model));
 	window.add(new VDBMenu("VDB", &world, &canvas, control));
 
-	window.add(new SceneListPanel("Scene", &world, &canvas, control));
+	//window.add(new SceneListPanel("Scene", &world, &canvas, control));
 	window.add(new FluidListPanel("Fluids", &world, &canvas, control));
+
+	window.add(new SolverView("Solver", &world, &canvas, &model));
 
 	window.show();
 

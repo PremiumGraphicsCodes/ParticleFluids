@@ -6,8 +6,10 @@
 
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidScene.h"
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidEmitterScene.h"
+#include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidSolver.h"
 #include "FluidView.h"
 #include "EmitterView.h"
+#include "SolverView.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
@@ -45,51 +47,23 @@ void FluidListPanel::show(IScene* scene)
 	}
 	else {
 		auto obj = scene->findSceneById(id);
-		if (ImGui::Button(str)) {
-			if (type == Crystal::Physics::MVPFluidScene::Type) {
+		if (type == Crystal::Physics::MVPFluidScene::Type) {
+			if (ImGui::Button(str)) {
 				auto f = scene->findSceneById<MVPFluidScene*>(id);
 				auto fluidView = new FluidView("Fluid", getWorld(), getCanvas());
 				fluidView->setValue(f);
 				control->clear();
 				control->add(fluidView);
 			}
-			else if (type == Crystal::Physics::MVPFluidEmitterScene::Type) {
+		}
+		else if (type == Crystal::Physics::MVPFluidEmitterScene::Type) {
+			if (ImGui::Button(str)) {
 				auto f = scene->findSceneById<MVPFluidEmitterScene*>(id);
-				auto fluidView = new EmitterView("Fluid", getWorld(), getCanvas());
+				auto fluidView = new EmitterView("Emitter", getWorld(), getCanvas());
 				fluidView->setValue(f);
 				control->clear();
 				control->add(fluidView);
 			}
-			/*
-			else if (type == SceneTypeLabels::PolygonMeshScene) {
-				auto editView = new PolygonMeshEditView("PolygonMeshEdit", getWorld(), getCanvas());
-				auto s = scene->findSceneById<PolygonMeshScene*>(id);
-				editView->setValue(s);
-				control->clear();
-				control->add(editView);
-			}
-			else if (type == SceneTypeLabels::LightScene) {
-				auto editView = new LightEditView("LightEdit", getWorld(), getCanvas());
-				auto lightScene = scene->findSceneById<LightScene*>(id);
-				editView->setValue(lightScene);
-				control->clear();
-				control->add(editView);
-			}
-			else if (type == SceneTypeLabels::MaterialScene) {
-				auto editView = new MaterialEditView("MaterialEdit", getWorld(), getCanvas());
-				auto materialScene = scene->findSceneById<MaterialScene*>(id);
-				editView->setValue(materialScene);
-				control->clear();
-				control->add(editView);
-			}
-			else if (type == SceneTypeLabels::TextureScene) {
-				auto editView = new TextureEditView("TextureEdit", getWorld(), getCanvas());
-				auto textureScene = scene->findSceneById<TextureScene*>(id);
-				editView->setValue(textureScene);
-				control->clear();
-				control->add(editView);
-			}
-			*/
 		}
 	}
 }
