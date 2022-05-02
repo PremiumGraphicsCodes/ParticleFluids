@@ -58,24 +58,20 @@ SolverView::SolverView(const std::string& name, World* world, Canvas* canvas, Ma
 	add(&exportIntervalView);
 	add(&exportDirecotryView);
 
-	mainModel->fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
-	world->getScenes()->addScene(mainModel->fluidScene);
+	model->createFluidScene();
+	model->createStaticScene();
+	model->createEmitterScene();
 
-	mainModel->staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
-	world->getScenes()->addScene(mainModel->staticScene);
-
-	mainModel->emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "MVPEmitter");
-	world->getScenes()->addScene(mainModel->emitterScene);
 
 	mainModel->csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
 
-	exporter = new SolverExporter(world);
+	model->exporter = new SolverExporter(world);
 
 	boundaryView.setValue(Box3dd(Vector3dd(-20, 0, -20), Vector3dd(20, 20, 20)));
 
-	world->addAnimation(&mainModel->solver);
-	world->addAnimation(&mainModel->updator);
-	world->addAnimation(exporter);
+	world->addAnimation(&model->solver);
+	world->addAnimation(&model->updator);
+	world->addAnimation(model->exporter);
 }
 
 void SolverView::onStart()
@@ -102,17 +98,17 @@ void SolverView::onReset()
 	model->staticScene->clearParticles();
 
 
-	//this->addFluid();
-	this->addEmitter();
+	this->addFluid();
+	//this->addEmitter();
 
 	model->csgScene->clearBoxes();
 	model->csgScene->add(boundaryView.getValue());
 
-	exporter->reset();
-	exporter->setSolver(&model->solver);
-	exporter->setDirectory(this->exportDirecotryView.getPath());
-	exporter->setActive(doExportView.getValue());
-	exporter->setExportInterval(this->exportIntervalView.getValue());
+	model->exporter->reset();
+	model->exporter->setSolver(&model->solver);
+	model->exporter->setDirectory(this->exportDirecotryView.getPath());
+	model->exporter->setActive(doExportView.getValue());
+	model->exporter->setExportInterval(this->exportIntervalView.getValue());
 	//this->addEmitter();
 }
 
@@ -137,9 +133,9 @@ void SolverView::addFluid()
 	{
 		const auto radius = 1.0;
 		const auto length = radius * 0.5;
-		for (int i =-20; i < 20; ++i) {
+		for (int i = 0; i < 20; ++i) {
 			for (int j = 0; j < 20; ++j) {
-				for (int k = -20; k < 20; ++k) {
+				for (int k = 0; k < 20; ++k) {
 					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
 					const auto p = Vector3dd(i * length, j * length, k * length);
 					auto mp = model->fluidScene->create(p, length, 0.25f, 300.0f);

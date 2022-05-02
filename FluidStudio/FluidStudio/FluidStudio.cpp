@@ -47,7 +47,7 @@ int main()
 		return 0;
 	}
 
-	MainModel model;
+	MainModel model(&world);
 
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);

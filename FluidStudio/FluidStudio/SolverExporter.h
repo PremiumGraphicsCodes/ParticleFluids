@@ -1,3 +1,5 @@
+#pragma once
+
 #include "CrystalScene/Scene/IAnimator.h"
 #include "CrystalPhysics/CrystalPhysicsCommand/PhysicsSolverExportCommand.h"
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidSolver.h"
