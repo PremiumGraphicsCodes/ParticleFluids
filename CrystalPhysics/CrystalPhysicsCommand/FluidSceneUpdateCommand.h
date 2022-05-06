@@ -39,6 +39,8 @@ public:
 
 	FluidSceneUpdateCommand();
 
+	explicit FluidSceneUpdateCommand(const Args& args);
+
 	bool execute(Scene::World* world) override;
 
 private:

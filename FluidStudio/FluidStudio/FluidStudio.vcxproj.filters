@@ -29,6 +29,9 @@
     <ClCompile Include="FluidListPanel.cpp">
       <Filter>UI\Fluid</Filter>
     </ClCompile>
+    <ClCompile Include="FluidModel.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidMenu.h">
@@ -57,6 +60,9 @@
     </ClInclude>
     <ClInclude Include="FluidListPanel.h">
       <Filter>UI\Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidModel.h">
+      <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

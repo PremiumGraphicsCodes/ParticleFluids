@@ -71,6 +71,11 @@ FluidSceneUpdateCommand::FluidSceneUpdateCommand() :
 	ICommand(&args, &results)
 {}
 
+FluidSceneUpdateCommand::FluidSceneUpdateCommand(const Args& args) :
+	args(args),
+	ICommand(&this->args, &this->results)
+{}
+
 bool FluidSceneUpdateCommand::execute(World* world)
 {
 	auto fluidScene = world->getScenes()->findSceneById<MVPFluidScene*>(args.id.getValue());

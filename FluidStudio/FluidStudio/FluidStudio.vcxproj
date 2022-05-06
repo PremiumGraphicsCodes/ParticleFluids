@@ -150,6 +150,7 @@
     <ClCompile Include="EmitterView.cpp" />
     <ClCompile Include="FluidListPanel.cpp" />
     <ClCompile Include="FluidMenu.cpp" />
+    <ClCompile Include="FluidModel.cpp" />
     <ClCompile Include="FluidStudio.cpp" />
     <ClCompile Include="FluidView.cpp" />
     <ClCompile Include="MainModel.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="EmitterView.h" />
     <ClInclude Include="FluidListPanel.h" />
     <ClInclude Include="FluidMenu.h" />
+    <ClInclude Include="FluidModel.h" />
     <ClInclude Include="FluidView.h" />
     <ClInclude Include="MainModel.h" />
     <ClInclude Include="SolverExporter.h" />

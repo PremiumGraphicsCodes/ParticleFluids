@@ -13,6 +13,26 @@ void MainModel::init()
 	//this->boundaryScene->setPressureCoe(pressureCoeView.getValue());
 	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());
 
+	/*
+	auto ps = std::make_unique<Crystal::Shape::ParticleSystem<ParticleAttribute>>();
+	{
+		const auto radius = 1.0;
+		const auto length = radius * 0.5;
+		for (int i = 0; i < 20; ++i) {
+			for (int j = 0; j < 20; ++j) {
+				for (int k = 0; k < 20; ++k) {
+					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
+					auto p = Vector3dd(i * length, j * length, k * length);
+					ParticleAttribute attr;
+					attr.size = 0.25f;
+					ps->add(p, attr);
+				}
+			}
+		}
+	}
+	auto psScene = new ParticleSystemScene(world->getNextSceneId(), "", std::move(ps));
+	*/
+
 	{
 		const auto radius = 1.0;
 		const auto length = radius * 0.5;
