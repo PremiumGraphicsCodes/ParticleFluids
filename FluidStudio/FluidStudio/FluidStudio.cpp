@@ -64,7 +64,7 @@ int main()
 	window.add(new VDBMenu("VDB", &world, &canvas, control));
 
 	//window.add(new SceneListPanel("Scene", &world, &canvas, control));
-	window.add(new FluidListPanel("Fluids", &world, &canvas, control));
+	window.add(new FluidListPanel("Fluids", &world, &canvas, control, model.getSolver()));
 
 	window.add(new SolverView("Solver", &world, &canvas, model.getSolver()));
 

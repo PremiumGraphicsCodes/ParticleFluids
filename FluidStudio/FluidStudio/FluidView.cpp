@@ -22,22 +22,24 @@ FluidView::FluidView(const std::string& name, World* world, Canvas* canvas) :
 	add(&dragForceCoeView);
 }
 
-void FluidView::setValue(MVPFluidScene* fluid)
+void FluidView::setValue(FluidModel* fluid)
 {
-	this->fluidScene = fluid;
+	this->fluid = fluid;
 
-	this->pressureCoeView.setValue(fluid->getPressure());
-	this->viscosityCoeView.setValue(fluid->getViscosityCoe());
-	this->heatDiffuseCoeView.setValue(fluid->getHeatDiffuseCoe());
-	this->dragForceCoeView.setValue(fluid->getDragForceCoe());
-	this->dragHeatCoeView.setValue(fluid->getDragHeatCoe());
+	this->pressureCoeView.setValue(fluid->pressureCoe);
+	this->viscosityCoeView.setValue(fluid->viscosityCoe);
+	this->heatDiffuseCoeView.setValue(fluid->heatDiffuseCoe);
+	this->dragForceCoeView.setValue(fluid->dragForceCoe);
+	this->dragHeatCoeView.setValue(fluid->dragHeatCoe);
 }
 
 void FluidView::onOk()
 {
-	fluidScene->setPressureCoe(pressureCoeView.getValue());
-	fluidScene->setViscosityCoe(viscosityCoeView.getValue());
-	fluidScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
-	fluidScene->setDragForceCoe(dragForceCoeView.getValue());
-	fluidScene->setDragHeatCoe(dragHeatCoeView.getValue());
+	fluid->pressureCoe = pressureCoeView.getValue();
+	fluid->viscosityCoe = viscosityCoeView.getValue();
+	fluid->heatDiffuseCoe = heatDiffuseCoeView.getValue();
+	fluid->dragForceCoe = dragForceCoeView.getValue();
+	fluid->dragHeatCoe = dragHeatCoeView.getValue();
+
+	//this->fluid->reset(getWorld());
 }

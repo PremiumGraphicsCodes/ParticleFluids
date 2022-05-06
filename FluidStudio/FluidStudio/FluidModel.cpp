@@ -14,7 +14,10 @@ void FluidModel::create(World* world)
 	auto fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
 
 	this->pressureCoe = 500.0f;
-
+	this->viscosityCoe = 50.0f;
+	this->heatDiffuseCoe = 0.0f;
+	this->dragForceCoe = 0.0f;
+	this->dragHeatCoe = 0.0;
 
 
 	fluidScene->getPresenter()->createView(world->getRenderer());

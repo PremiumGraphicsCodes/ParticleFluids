@@ -5,24 +5,24 @@
 #include "CrystalScene/AppBase/Box3dView.h"
 #include "CrystalScene/AppBase/FloatView.h"
 
-#include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidScene.h"
-#include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "MainModel.h"
 
 namespace Crystal {
 	namespace UI {
+		class FluidModel;
 
 class FluidView : public IOkCancelView
 {
 public:
 	FluidView(const std::string& name, Scene::World* world, Canvas* canvas);
 
-	void setValue(MVPFluidScene* fluid);
+	void setValue(FluidModel* fluid);
 
 private:
 	void onOk() override;
 
-	MVPFluidScene* fluidScene;
+	FluidModel* fluid;
+	//IntView particleSystemIdView;
 	Box3dView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;

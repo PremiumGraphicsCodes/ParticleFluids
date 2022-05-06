@@ -13,6 +13,7 @@ public:
 
 	void reset(Scene::World* world);
 
+	std::string name = "Fluid01";
 	int fluidId;
 	int particleSystemId;
 	float pressureCoe;

@@ -15,55 +15,41 @@ using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 using namespace Crystal::UI;
 
-FluidListPanel::FluidListPanel(const std::string& name, World* model, Canvas* canvas, IPanel* control) :
+FluidListPanel::FluidListPanel(const std::string& name, World* model, Canvas* canvas, IPanel* control, SolverModel* solver) :
 	IPanel(name, model, canvas),
-	control(control)
+	control(control),
+	solver(solver)
 {
 }
 
 void FluidListPanel::onShow()
 {
 	ImGui::Begin("FluidList");
-	show(getWorld()->getScenes());
+	const auto& fluids = solver->getFluids();
+	for (const auto& f : fluids) {
+		const auto str = f->name.c_str();
+		if (ImGui::Button(str)) {
+			auto fluidView = new FluidView("Fluid", getWorld(), getCanvas());
+			fluidView->setValue(f.get());
+			control->clear();
+			control->add(fluidView);
+		}
+
+	}
+	const auto& emitters = solver->getEmitters();
+	for (const auto& e : emitters) {
+		const auto str = e->name.c_str();
+		if (ImGui::Button(str)) {
+			/*
+			auto f = scene->findSceneById<MVPFluidScene*>(id);
+			auto fluidView = new FluidView("Fluid", getWorld(), getCanvas());
+			fluidView->setValue(f);
+			control->clear();
+			control->add(fluidView);
+			*/
+		}
+
+	}
+	//show(getWorld()->getScenes());
 	ImGui::End();
-}
-
-void FluidListPanel::show(IScene* scene)
-{
-	const auto type = scene->getType();
-
-	const auto& name = scene->getName();
-	const auto str = name.c_str();
-	const auto id = scene->getId();
-
-	if (!scene->isLeaf()) {
-		if (ImGui::TreeNode(str)) {
-			const auto& children = scene->getChildren();
-			for (auto child : children) {
-				show(child);
-			}
-			ImGui::TreePop();
-		}
-	}
-	else {
-		auto obj = scene->findSceneById(id);
-		if (type == Crystal::Physics::MVPFluidScene::Type) {
-			if (ImGui::Button(str)) {
-				auto f = scene->findSceneById<MVPFluidScene*>(id);
-				auto fluidView = new FluidView("Fluid", getWorld(), getCanvas());
-				fluidView->setValue(f);
-				control->clear();
-				control->add(fluidView);
-			}
-		}
-		else if (type == Crystal::Physics::MVPFluidEmitterScene::Type) {
-			if (ImGui::Button(str)) {
-				auto f = scene->findSceneById<MVPFluidEmitterScene*>(id);
-				auto fluidView = new EmitterView("Emitter", getWorld(), getCanvas());
-				fluidView->setValue(f);
-				control->clear();
-				control->add(fluidView);
-			}
-		}
-	}
 }
