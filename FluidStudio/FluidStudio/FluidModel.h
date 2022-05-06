@@ -8,13 +8,15 @@ namespace Crystal {
 class FluidModel
 {
 public:
-	void send(Scene::World* world);
+	void create(Scene::World* world);
 
-	//int getFluidId() const;
+	int getFluidId() const { return fluidId; }
+
+	int getParticleSystemId() const { return particleSystemId; }
 
 private:
-	//Physics::FluidScene* scene;
-	
+	int fluidId;
+	int particleSystemId;
 };
 	}
 }

@@ -3,6 +3,7 @@
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidScene.h"
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidSolver.h"
+#include "FluidModel.h"
 
 #include "SolverExporter.h"
 
@@ -17,8 +18,8 @@ public:
 
 	void init();
 
-	void addFluidScene(Physics::MVPFluidScene* scene) {
-		this->fluidScenes.push_back(scene);
+	void addFluidScene(const FluidModel& model) {
+		this->fluids.push_back(model);
 	}
 	
 	void addStaticScene(Physics::MVPFluidScene* scene) { this->staticScenes.push_back(scene); }
@@ -37,7 +38,7 @@ public:
 
 private:
 	Scene::World* world;
-	std::vector<Physics::MVPFluidScene*> fluidScenes;
+	std::vector<FluidModel> fluids;
 	std::vector<Physics::MVPFluidScene*> staticScenes;
 	std::vector<Physics::MVPFluidEmitterScene*> emitterScenes;
 	SolverExporter* exporter;

@@ -6,9 +6,6 @@ using namespace Crystal::UI;
 
 void MainModel::init()
 {
-	auto fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
-
-	fluidScene->setPressureCoe(500.0);
 
 	//this->boundaryScene->setPressureCoe(pressureCoeView.getValue());
 	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());
@@ -33,21 +30,9 @@ void MainModel::init()
 	auto psScene = new ParticleSystemScene(world->getNextSceneId(), "", std::move(ps));
 	*/
 
-	{
-		const auto radius = 1.0;
-		const auto length = radius * 0.5;
-		for (int i = 0; i < 20; ++i) {
-			for (int j = 0; j < 20; ++j) {
-				for (int k = 0; k < 20; ++k) {
-					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
-					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = fluidScene->create(p, length, 0.25f, 300.0f);
-					//				mp->distributePoints(3, 3, 3, 1.00f);
-					fluidScene->addParticle(mp);
-				}
-			}
-		}
-	}
+	FluidModel fm;
+	fm.create(world);
+	fluids.push_back(fm);
 
 	auto staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
 
@@ -91,10 +76,6 @@ void MainModel::init()
 	*/
 
 
-	fluidScene->getPresenter()->createView(world->getRenderer());
-	world->getScenes()->addScene(fluidScene);
-	addFluidScene(fluidScene);
-
 	staticScene->getPresenter()->createView(world->getRenderer());
 	world->getScenes()->addScene(staticScene);
 	addStaticScene(staticScene);
@@ -105,6 +86,7 @@ void MainModel::init()
 	world->addAnimation(&solver);
 	world->addAnimation(&updator);
 
+	auto fluidScene = world->getScenes()->findSceneById<MVPFluidScene*>(fm.getFluidId());
 	updator.add(fluidScene);
 	updator.add(staticScene);
 
@@ -116,7 +98,8 @@ void MainModel::resetSolver()
 	solver.clear();
 	//updator.
 
-	for (auto f : fluidScenes) {
+	for (auto fm : fluids) {
+		auto f = world->getScenes()->findSceneById<MVPFluidScene*>(fm.getFluidId());
 		solver.addFluidScene(f);
 	}
 	

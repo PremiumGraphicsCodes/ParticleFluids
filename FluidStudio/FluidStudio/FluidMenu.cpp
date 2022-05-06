@@ -14,10 +14,12 @@ FluidMenu::FluidMenu(const std::string& name, World* world, Canvas* canvas, Cont
 	control(control)
 {
 	add(new MenuItem("Fluid", [world, canvas, control, model] {
+		/*
 		auto fluidScene = new MVPFluidScene(world->getNextSceneId(), "MVPFluid");
 		fluidScene->getPresenter()->createView(world->getRenderer());
 		world->getScenes()->addScene(fluidScene);
 		model->addFluidScene(fluidScene);
+		*/
 		}));
 
 	add(new MenuItem("Emitter", [world, canvas, control, model] {
