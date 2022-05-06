@@ -3,6 +3,7 @@
 #include "CrystalScene/AppBase/IView.h"
 #include "CrystalScene/AppBase/IOkCancelView.h"
 #include "CrystalScene/AppBase/Box3dView.h"
+#include "CrystalScene/AppBase/IntView.h"
 #include "CrystalScene/AppBase/FloatView.h"
 
 #include "MainModel.h"
@@ -22,7 +23,7 @@ private:
 	void onOk() override;
 
 	FluidModel* fluid;
-	//IntView particleSystemIdView;
+	IntView particleSystemIdView;
 	Box3dView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;

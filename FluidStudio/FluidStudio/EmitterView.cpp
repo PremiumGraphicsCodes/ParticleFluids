@@ -1,5 +1,7 @@
 #include "EmitterView.h"
+#include "EmitterModel.h"
 
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 EmitterView::EmitterView(const std::string& name, World* world, Canvas* canvas) :
@@ -19,21 +21,21 @@ EmitterView::EmitterView(const std::string& name, World* world, Canvas* canvas) 
 	add(&dragForceCoeView);
 }
 
-void EmitterView::setValue(MVPFluidEmitterScene* emitter)
+void EmitterView::setValue(EmitterModel* emitter)
 {
-	this->emitterScene = emitter;
-	this->pressureCoeView.setValue(emitter->getPressure());
-	this->viscosityCoeView.setValue(emitter->getViscosityCoe());
-	this->heatDiffuseCoeView.setValue(emitter->getHeatDiffuseCoe());
-	this->dragForceCoeView.setValue(emitter->getDragForceCoe());
-	this->dragHeatCoeView.setValue(emitter->getDragHeatCoe());
+	this->emitter = emitter;
+	this->pressureCoeView.setValue(emitter->pressureCoe);
+	this->viscosityCoeView.setValue(emitter->viscosityCoe);
+	this->heatDiffuseCoeView.setValue(emitter->heatDiffuseCoe);
+	this->dragForceCoeView.setValue(emitter->dragForceCoe);
+	this->dragHeatCoeView.setValue(emitter->dragHeatCoe);
 }
 
 void EmitterView::onOk()
 {
-	emitterScene->setPressureCoe(pressureCoeView.getValue());
-	emitterScene->setViscosityCoe(viscosityCoeView.getValue());
-	emitterScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
-	emitterScene->setDragForceCoe(dragForceCoeView.getValue());
-	emitterScene->setDragHeatCoe(dragHeatCoeView.getValue());
+	emitter->pressureCoe = pressureCoeView.getValue();
+	emitter->viscosityCoe = viscosityCoeView.getValue();
+	emitter->heatDiffuseCoe = heatDiffuseCoeView.getValue();
+	emitter->dragForceCoe = dragForceCoeView.getValue();
+	emitter->dragHeatCoe = dragHeatCoeView.getValue();
 }
