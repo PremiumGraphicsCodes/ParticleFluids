@@ -1,21 +1,42 @@
 #include "MainModel.h"
 
 #include "CrystalPhysics/CrystalPhysics/Boundary/CSGBoundaryScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::UI;
 
 void MainModel::init()
 {
+	auto fm = std::make_unique<FluidModel>();
+	fm->create(world);
 
-	//this->boundaryScene->setPressureCoe(pressureCoeView.getValue());
-	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());
+	auto ps = std::make_unique<Crystal::Shape::ParticleSystem<ParticleAttribute>>();
+	{
+		const auto radius = 1.0;
+		const auto length = radius * 0.5;
+		for (int i = 0; i < 20; ++i) {
+			for (int j = 0; j < 20; ++j) {
+				for (int k = 0; k < 20; ++k) {
+					//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
+					auto p = Vector3dd(i * length, j * length, k * length);
+					ParticleAttribute attr;
+					attr.size = 0.25f;
+					ps->add(p, attr);
+				}
+			}
+		}
+	}
+	auto psScene = new ParticleSystemScene(world->getNextSceneId(), "", std::move(ps));
+	psScene->getPresenter()->createView(world->getRenderer());
+	world->getScenes()->addScene(psScene);
 
-	/*
-	*/
 
-	FluidModel fm;
-	fm.create(world);
-	fluids.push_back(fm);
+	auto fluidScene = world->getScenes()->findSceneById<MVPFluidScene*>(fm->fluidId);
+	updator.add(fluidScene);
+
+	fm->particleSystemId = psScene->getId();
+	fluids.push_back(std::move(fm));
+
 
 	auto staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
 
@@ -69,8 +90,6 @@ void MainModel::init()
 	world->addAnimation(&solver);
 	world->addAnimation(&updator);
 
-	auto fluidScene = world->getScenes()->findSceneById<MVPFluidScene*>(fm.getFluidId());
-	updator.add(fluidScene);
 	updator.add(staticScene);
 
 	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
@@ -81,9 +100,9 @@ void MainModel::resetSolver()
 	solver.clear();
 	//updator.
 
-	for (auto fm : fluids) {
-		fm.reset(world);
-		auto f = world->getScenes()->findSceneById<MVPFluidScene*>(fm.getFluidId());
+	for (auto& fm : fluids) {
+		fm->reset(world);
+		auto f = world->getScenes()->findSceneById<MVPFluidScene*>(fm->fluidId);
 		solver.addFluidScene(f);
 	}
 	

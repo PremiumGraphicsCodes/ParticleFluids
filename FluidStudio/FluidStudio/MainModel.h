@@ -17,10 +17,6 @@ public:
 	{}
 
 	void init();
-
-	void addFluidScene(const FluidModel& model) {
-		this->fluids.push_back(model);
-	}
 	
 	void addStaticScene(Physics::MVPFluidScene* scene) { this->staticScenes.push_back(scene); }
 
@@ -38,7 +34,7 @@ public:
 
 private:
 	Scene::World* world;
-	std::vector<FluidModel> fluids;
+	std::vector<std::unique_ptr<FluidModel>> fluids;
 	std::vector<Physics::MVPFluidScene*> staticScenes;
 	std::vector<Physics::MVPFluidEmitterScene*> emitterScenes;
 	SolverExporter* exporter;

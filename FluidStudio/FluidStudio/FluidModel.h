@@ -13,11 +13,6 @@ public:
 
 	void reset(Scene::World* world);
 
-	int getFluidId() const { return fluidId; }
-
-	int getParticleSystemId() const { return particleSystemId; }
-
-private:
 	int fluidId;
 	int particleSystemId;
 	float pressureCoe;
