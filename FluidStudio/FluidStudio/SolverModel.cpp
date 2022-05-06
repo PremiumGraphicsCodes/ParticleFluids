@@ -42,9 +42,6 @@ void SolverModel::init(World* world)
 	fm->particleSystemId = psScene->getId();
 	fluids.push_back(std::move(fm));
 
-
-	auto staticScene = std::make_unique<FluidModel>();
-	staticScene->create(world);
 	/*
 	auto emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "Emitter");
 	for (int i = 0; i < 100; ++i) {

@@ -4,6 +4,7 @@
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidSolver.h"
 #include "FluidModel.h"
+#include "EmitterModel.h"
 
 #include "SolverExporter.h"
 
@@ -23,10 +24,13 @@ public:
 
 	Physics::MVPFluidSolver* getSolver() { return &solver; }
 
-private:
+	const std::vector<std::unique_ptr<FluidModel>>& getFluids() const { return fluids; }
+	
+	const std::vector<std::unique_ptr<EmitterModel>>& getEmitters() const { return emitters; }
 
+private:
 	std::vector<std::unique_ptr<FluidModel>> fluids;
-	std::vector<Physics::MVPFluidEmitterScene*> emitterScenes;
+	std::vector<std::unique_ptr<EmitterModel>> emitters;
 	SolverExporter* exporter;
 	Physics::MVPUpdater updator;
 	Physics::CSGBoundaryScene* csgScene;

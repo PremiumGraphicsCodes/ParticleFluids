@@ -35,6 +35,9 @@
     <ClCompile Include="SolverModel.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="EmitterModel.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidMenu.h">
@@ -68,6 +71,9 @@
       <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="SolverModel.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="EmitterModel.h">
       <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
