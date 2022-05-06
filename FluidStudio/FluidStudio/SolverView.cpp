@@ -17,7 +17,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Physics;
 
-SolverView::SolverView(const std::string& name, World* world, Canvas* canvas, MainModel* mainModel) :
+SolverView::SolverView(const std::string& name, World* world, Canvas* canvas, SolverModel* mainModel) :
 	IView(name),
 	model(mainModel),
 	world(world),
@@ -59,7 +59,7 @@ void SolverView::onStart()
 
 void SolverView::onReset()
 {
-	model->resetSolver();
+	model->reset(world);
 	//model->solver.clear();
 
 	model->getSolver()->setExternalForce(this->externalForceView.getValue());

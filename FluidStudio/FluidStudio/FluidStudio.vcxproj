@@ -155,6 +155,7 @@
     <ClCompile Include="FluidView.cpp" />
     <ClCompile Include="MainModel.cpp" />
     <ClCompile Include="SolverExporter.cpp" />
+    <ClCompile Include="SolverModel.cpp" />
     <ClCompile Include="SolverView.cpp" />
     <ClCompile Include="ToVolumeView.cpp" />
     <ClCompile Include="VDBMenu.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="FluidView.h" />
     <ClInclude Include="MainModel.h" />
     <ClInclude Include="SolverExporter.h" />
+    <ClInclude Include="SolverModel.h" />
     <ClInclude Include="SolverView.h" />
     <ClInclude Include="ToVolumeView.h" />
     <ClInclude Include="VDBMenu.h" />

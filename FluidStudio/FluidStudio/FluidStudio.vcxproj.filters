@@ -32,6 +32,9 @@
     <ClCompile Include="FluidModel.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="SolverModel.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidMenu.h">
@@ -62,6 +65,9 @@
       <Filter>UI\Fluid</Filter>
     </ClInclude>
     <ClInclude Include="FluidModel.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverModel.h">
       <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
