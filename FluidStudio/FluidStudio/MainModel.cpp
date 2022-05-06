@@ -7,9 +7,6 @@ using namespace Crystal::UI;
 
 void MainModel::init()
 {
-	auto fm = std::make_unique<FluidModel>();
-	fm->create(world);
-
 	auto ps = std::make_unique<Crystal::Shape::ParticleSystem<ParticleAttribute>>();
 	{
 		const auto radius = 1.0;
@@ -31,36 +28,19 @@ void MainModel::init()
 	world->getScenes()->addScene(psScene);
 
 
+	auto fm = std::make_unique<FluidModel>();
+	fm->create(world);
+
 	auto fluidScene = world->getScenes()->findSceneById<MVPFluidScene*>(fm->fluidId);
 	updator.add(fluidScene);
+
 
 	fm->particleSystemId = psScene->getId();
 	fluids.push_back(std::move(fm));
 
 
-	auto staticScene = new MVPFluidScene(world->getNextSceneId(), "Static");
-
-	staticScene->setPressureCoe(500.0);
-
-	//staticScene->setPressureCoe(pressureCoeView.getValue());
-	//staticScene->setViscosityCoe(viscosityCoeView.getValue() * 5.0f);
-	//staticScene->setHeatDiffuseCoe(heatDiffuseCoeView.getValue());
-
-	{
-		const auto radius = 1.0;
-		const auto length = radius * 0.5;
-		for (int i = -10; i < 10; ++i) {
-			for (int j = -1; j < 0; ++j) {
-				for (int k = -10; k < 10; ++k) {
-					const auto p = Vector3dd(i * length, j * length, k * length);
-					auto mp = staticScene->create(p, length, 0.25f, 2000.0f);
-					staticScene->addParticle(mp);
-					staticScene->setBoundary(true);
-				}
-			}
-		}
-
-	}
+	auto staticScene = std::make_unique<FluidModel>();
+	staticScene->create(world);
 	/*
 	auto emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "Emitter");
 	for (int i = 0; i < 100; ++i) {
@@ -79,10 +59,7 @@ void MainModel::init()
 	}
 	*/
 
-
-	staticScene->getPresenter()->createView(world->getRenderer());
-	world->getScenes()->addScene(staticScene);
-	addStaticScene(staticScene);
+	//addStaticScene(staticScene);
 
 	exporter = new SolverExporter(world);
 	world->addAnimation(exporter);
@@ -90,7 +67,6 @@ void MainModel::init()
 	world->addAnimation(&solver);
 	world->addAnimation(&updator);
 
-	updator.add(staticScene);
 
 	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
 }
@@ -103,10 +79,11 @@ void MainModel::resetSolver()
 	for (auto& fm : fluids) {
 		fm->reset(world);
 		auto f = world->getScenes()->findSceneById<MVPFluidScene*>(fm->fluidId);
-		solver.addFluidScene(f);
-	}
-	
-	for (auto s : staticScenes) {
-		solver.addBoundaryScene(s);
+		if (f->isBoundary()) {
+			solver.addBoundaryScene(f);
+		}
+		else {
+			solver.addFluidScene(f);
+		}
 	}
 }
