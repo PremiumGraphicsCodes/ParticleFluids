@@ -12,7 +12,19 @@ namespace CrystalCSI
         public static extern void SetArgInt(string str, int i);
 
         [DllImport("CrystalCI")]
+        public static extern void SetArgFloat(string str, float f);
+
+        [DllImport("CrystalCI")]
+        public static extern void SetArgDouble(string str, double e);
+
+        [DllImport("CrystalCI")]
+        public static extern void SetArgString(string str, string e);
+
+        [DllImport("CrystalCI")]
         public static extern void Execute();
+
+        [DllImport("CrystalCI")]
+        public static extern int GetResultInt(string str);
 
 
 

@@ -13,6 +13,8 @@ namespace CrystalCSITest
             CSI.SetArgInt("lhs", 3);
             CSI.SetArgInt("rhs", 2);
             CSI.Execute();
+            var result = CSI.GetResultInt("value");
+            Assert.AreEqual(5, result);
         }
     }
 }

@@ -6,37 +6,19 @@
 #endif
 
 extern "C" {
-	// ílìnÇµ
-	SAMPLE_API int SampleAPIInt(int i);
-	SAMPLE_API float SampleAPIFloat(float f);
-	SAMPLE_API double SampleAPIDouble(double d);
-
-	// éQè∆ìnÇµ
-	SAMPLE_API void SampleAPIInt2(int& i);
-	SAMPLE_API void SampleAPIFloat2(float& f);
-	SAMPLE_API void SampleAPIDouble2(double& d);
-
-	// îzóÒÇÃéQè∆ìnÇµ
-	SAMPLE_API void SampleAPIIntArray(int intArray[], int intArraySize);
-	SAMPLE_API void SampleAPILongArray(long longArray[], int longArraySize);
-	SAMPLE_API void SampleAPIFloatArray(float floatArray[], int floatArraySize);
-	SAMPLE_API void SampleAPIDoubleArray(double doubleArray[], int doubleArraySize);
-
-	// ï∂éöóÒ
-	SAMPLE_API const char* SampleAPIString1();
-	SAMPLE_API const char* SampleAPIString2(const char* str);
-
 	SAMPLE_API void CreateCommand(const char* str);
 
 	SAMPLE_API void CreatePhysicsCommand(const char* str);
 
 	SAMPLE_API void SetArgInt(const char* name, int i);
 
-	//SAMPLE_API void SetArgFloat(float f);
+	SAMPLE_API void SetArgFloat(const char* name, float f);
 
-	//SAMPLE_API void SetArgDouble(double d);
+	SAMPLE_API void SetArgDouble(const char* name, double d);
 
-	//SAMPLE_API void SetArgString(char* str);
+	SAMPLE_API void SetArgString(const char* name, const char* str);
 
 	SAMPLE_API int Execute();
+
+	SAMPLE_API int GetResultInt(const char* name);
 }
