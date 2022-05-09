@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalNumerics", "..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj", "{C4927D35-7611-4AFD-934A-DA114663BFB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstCSFileGenerator", "ConstCSFileGenerator\ConstCSFileGenerator.csproj", "{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -185,6 +187,18 @@ Global
 		{C4927D35-7611-4AFD-934A-DA114663BFB2}.Release|x64.Build.0 = Release|x64
 		{C4927D35-7611-4AFD-934A-DA114663BFB2}.Release|x86.ActiveCfg = Release|Win32
 		{C4927D35-7611-4AFD-934A-DA114663BFB2}.Release|x86.Build.0 = Release|Win32
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Debug|x64.Build.0 = Debug|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Debug|x86.Build.0 = Debug|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Release|x64.ActiveCfg = Release|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Release|x64.Build.0 = Release|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Release|x86.ActiveCfg = Release|Any CPU
+		{32A1BDFD-D5E0-4F92-886C-C55AB6AB9643}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
