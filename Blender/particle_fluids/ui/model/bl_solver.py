@@ -144,10 +144,10 @@ class BLSolver :
         macro_file_path = os.path.join(dir_path, "macro" + str(frame) + ".ply")
         self.__solver.export_pcd(macro_file_path, True)
 
-        for fluid in self.__bl_fluids :
-            self.volBuilder.build_isotorpic(fluid.get_fluid().id, self.__volume.id, 1.0, 0.5)
-        volume_file_path = os.path.join(dir_path, "volume" + str(frame) + ".ply")
-        self.__volume.export(volume_file_path)
+        #for fluid in self.__bl_fluids :
+        #    self.volBuilder.build_isotorpic(fluid.get_fluid().id, self.__volume.id, 1.0, 0.5)
+        #volume_file_path = os.path.join(dir_path, "volume" + str(frame) + ".ply")
+        #self.__volume.export(volume_file_path)
 
     def is_running(self):
         return self.__running
