@@ -23,6 +23,7 @@ private:
 	void onOk() override;
 
 	FluidModel* fluid;
+	IntView idView;
 	IntView particleSystemIdView;
 	Box3dView boundaryView;
 	FloatView pressureCoeView;

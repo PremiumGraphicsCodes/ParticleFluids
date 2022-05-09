@@ -7,6 +7,7 @@ using namespace Crystal::UI;
 
 FluidView::FluidView(const std::string& name, World* world, Canvas* canvas) :
 	IOkCancelView(name, world, canvas),
+	idView("Id", -1),
 	particleSystemIdView("ParticleSystem", -1),
 	boundaryView("Boundary"),
 	pressureCoeView("PressureCoe", 500.f),
@@ -15,6 +16,7 @@ FluidView::FluidView(const std::string& name, World* world, Canvas* canvas) :
 	dragHeatCoeView("DragHeatCoe", 0.0),
 	dragForceCoeView("DragForceCoe", 0.0)
 {
+	add(&idView);
 	add(&particleSystemIdView);
 	add(&boundaryView);
 	add(&pressureCoeView);
@@ -28,6 +30,7 @@ void FluidView::setValue(FluidModel* fluid)
 {
 	this->fluid = fluid;
 
+	this->idView.setValue(fluid->fluidId);
 	this->particleSystemIdView.setValue(fluid->particleSystemId);
 	this->pressureCoeView.setValue(fluid->pressureCoe);
 	this->viscosityCoeView.setValue(fluid->viscosityCoe);
