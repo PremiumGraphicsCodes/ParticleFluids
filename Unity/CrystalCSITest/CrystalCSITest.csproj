@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -23,5 +23,9 @@
     <ProjectReference Include="..\CrystalCSI\CrystalCSI.csproj" />
     <ProjectReference Include="..\Unity\Unity.vcxproj" />
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="copy ..\x64\Debug\Unity.dll $(OutDir)" />
+  </Target>
 
 </Project>
