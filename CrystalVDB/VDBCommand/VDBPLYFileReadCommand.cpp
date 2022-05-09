@@ -49,12 +49,7 @@ std::string VDBPLYFileReadCommand::getName()
 
 bool VDBPLYFileReadCommand::execute(World* world)
 {
-	if (args.isVolume.getValue()) {
-		return readVolume(world);
-	}
-	else {
-		return readPoints(world);
-	}
+	return readPoints(world);
 }
 
 #include <iostream>
