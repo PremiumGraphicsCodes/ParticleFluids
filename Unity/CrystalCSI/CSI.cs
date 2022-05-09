@@ -9,6 +9,9 @@ namespace CrystalCSI
         public static extern void CreateCommand(string str);
 
         [DllImport("CrystalCI")]
+        public static extern void CreatePhysicsCommand(string str);
+
+        [DllImport("CrystalCI")]
         public static extern void SetArgInt(string str, int i);
 
         [DllImport("CrystalCI")]

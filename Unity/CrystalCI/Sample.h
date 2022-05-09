@@ -18,6 +18,8 @@ extern "C" {
 
 	SAMPLE_API void SetArgString(const char* name, const char* str);
 
+	SAMPLE_API void SetArgVector3ds(const char* name, float* values);
+
 	SAMPLE_API int Execute();
 
 	SAMPLE_API int GetResultInt(const char* name);
