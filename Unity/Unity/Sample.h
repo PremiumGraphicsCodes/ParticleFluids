@@ -27,4 +27,7 @@ extern "C" {
 	SAMPLE_API const char* SampleAPIString2(const char* str);
 
 	SAMPLE_API void CreateCommand(const char* str);
+
+	SAMPLE_API void CreatePhysicsCommand(const char* str);
+
 }

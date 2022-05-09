@@ -170,11 +170,23 @@
     <ClCompile Include="Sample.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj">
+      <Project>{c4927d35-7611-4afd-934a-da114663bfb2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj">
+      <Project>{09ee8b6a-2d6f-4b9e-83ff-6a40d03bc465}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysics\CrystalPhysics.vcxproj">
+      <Project>{4c0efd78-680e-45c9-9828-9b674ee70df0}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrystalScene\Command\Command.vcxproj">
       <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\CrystalScene\Scene\Scene.vcxproj">
       <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
+      <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
       <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>

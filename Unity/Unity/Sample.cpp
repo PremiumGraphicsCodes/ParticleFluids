@@ -3,7 +3,8 @@
 #include "Sample.h"
 #include <cstring>
 
-#include "CrystalScene/Command/Command.h"
+#include "CrystalScene/Command/CommandFactory.h"
+#include "CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
 
 SAMPLE_API int SampleAPIInt(int i)
 {
@@ -94,10 +95,17 @@ SAMPLE_API const char* SampleAPIString2(const char* str)
 }
 
 namespace {
-	Crystal::Command::Command command;
+	std::unique_ptr<Crystal::Command::ICommand> command;
+	Crystal::Command::CommandFactory factory;
+	Crystal::Physics::PhysicsCommandFactory physicsFactory;
 }
 
 SAMPLE_API void CreateCommand(const char* str)
 {
-	command.create(str);
+	command = Crystal::Command::CommandFactory::create(str);
+}
+
+SAMPLE_API void CreatePhysicsCommand(const char* str)
+{
+	::command = Crystal::Physics::PhysicsCommandFactory::create( str );
 }
