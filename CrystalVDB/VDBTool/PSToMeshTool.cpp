@@ -80,6 +80,7 @@ void PSToMeshTool::execute(const CommandLineOptions& options)
     std::cout << "Converting PS to Volume...";
     {
         VDBPSToVolumeCommand::Args args;
+        args.doUseSph.setValue(true);
         args.particleSystemId.setValue(psId);
         args.vdbVolumeId.setValue(volumeId);
         args.temperatureVolumeId.setValue(temperatureId);
