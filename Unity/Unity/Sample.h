@@ -30,4 +30,13 @@ extern "C" {
 
 	SAMPLE_API void CreatePhysicsCommand(const char* str);
 
+	SAMPLE_API void SetArgInt(const char* name, int i);
+
+	//SAMPLE_API void SetArgFloat(float f);
+
+	//SAMPLE_API void SetArgDouble(double d);
+
+	//SAMPLE_API void SetArgString(char* str);
+
+	SAMPLE_API int Execute();
 }

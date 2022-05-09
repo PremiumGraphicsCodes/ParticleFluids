@@ -27,6 +27,13 @@ namespace CrystalCSI
         [DllImport("Unity")]
         public static extern void CreateCommand(string str);
 
+        [DllImport("Unity")]
+        public static extern void SetArgInt(string str, int i);
+
+        [DllImport("Unity")]
+        public static extern void Execute();
+
+
 
         /*
     // 配列の参照渡し

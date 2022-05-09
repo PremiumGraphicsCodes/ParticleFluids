@@ -98,14 +98,34 @@ namespace {
 	std::unique_ptr<Crystal::Command::ICommand> command;
 	Crystal::Command::CommandFactory factory;
 	Crystal::Physics::PhysicsCommandFactory physicsFactory;
+	Crystal::Scene::World world;
 }
 
 SAMPLE_API void CreateCommand(const char* str)
 {
-	command = Crystal::Command::CommandFactory::create(str);
+	::command = Crystal::Command::CommandFactory::create(str);
 }
 
 SAMPLE_API void CreatePhysicsCommand(const char* str)
 {
 	::command = Crystal::Physics::PhysicsCommandFactory::create( str );
+}
+
+SAMPLE_API void SetArgInt(const char* name, int i)
+{
+	::command->setArg(name, i);
+}
+
+/*
+SAMPLE_API void SetArgFloat(float f);
+
+SAMPLE_API void SetArgDouble(double d);
+
+SAMPLE_API void SetArgString(char* str);
+*/
+
+SAMPLE_API int Execute()
+{
+	::command->execute(&world);
+	return 1;
 }

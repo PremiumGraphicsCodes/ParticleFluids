@@ -14,6 +14,9 @@ namespace CrystalCSITest
             var d = CSI.SampleAPIDouble(2.0);
 
             CSI.CreateCommand("Mock");
+            CSI.SetArgInt("lhs", 3);
+            CSI.SetArgInt("rhs", 2);
+            CSI.Execute();
         }
     }
 }
