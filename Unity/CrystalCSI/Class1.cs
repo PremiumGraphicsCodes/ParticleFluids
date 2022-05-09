@@ -4,33 +4,14 @@ namespace CrystalCSI
 {
 
     public class CSI{
-        // 値渡し
-        [DllImport("Unity")]
-        public static extern int SampleAPIInt(int i);
-        
-        [DllImport("Unity")]
-        public static extern float SampleAPIFloat(float f);
-        
-        [DllImport("Unity")]
-        public static extern double SampleAPIDouble(double d);
 
-        // 参照渡し
-        [DllImport("Unity")]
-        public static extern void SampleAPIInt2(ref int i);
-
-        [DllImport("Unity")]
-        public static extern void SampleAPIFloat2(ref float f);
-
-        [DllImport("Unity")]
-        public static extern void SampleAPIDouble2(ref double d);
-
-        [DllImport("Unity")]
+        [DllImport("CrystalCI")]
         public static extern void CreateCommand(string str);
 
-        [DllImport("Unity")]
+        [DllImport("CrystalCI")]
         public static extern void SetArgInt(string str, int i);
 
-        [DllImport("Unity")]
+        [DllImport("CrystalCI")]
         public static extern void Execute();
 
 

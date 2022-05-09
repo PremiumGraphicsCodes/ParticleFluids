@@ -9,10 +9,6 @@ namespace CrystalCSITest
         [TestMethod]
         public void TestMethod1()
         {
-            var i = CSI.SampleAPIInt(1);
-            var f = CSI.SampleAPIFloat(1.0f);
-            var d = CSI.SampleAPIDouble(2.0);
-
             CSI.CreateCommand("Mock");
             CSI.SetArgInt("lhs", 3);
             CSI.SetArgInt("rhs", 2);
