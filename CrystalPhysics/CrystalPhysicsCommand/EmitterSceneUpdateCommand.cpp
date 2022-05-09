@@ -81,6 +81,12 @@ EmitterSceneUpdateCommand::EmitterSceneUpdateCommand() :
 	ICommand(&args, &results)
 {}
 
+EmitterSceneUpdateCommand::EmitterSceneUpdateCommand(const Args& args) :
+	ICommand(&this->args, &results),
+	args(args),
+	results(results)
+{}
+
 bool EmitterSceneUpdateCommand::execute(World* world)
 {
 	auto emitterScene = world->getScenes()->findSceneById<MVPFluidEmitterScene*>(args.id.getValue());

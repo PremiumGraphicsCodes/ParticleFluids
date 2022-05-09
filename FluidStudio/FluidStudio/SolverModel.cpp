@@ -88,3 +88,17 @@ void SolverModel::reset(World* world)
 		}
 	}
 }
+
+void SolverModel::addFluid(World* world)
+{
+	auto fm = std::make_unique<FluidModel>();
+	fm->create(world);
+	fluids.push_back(std::move(fm));
+}
+
+void SolverModel::addEmitter(World* world)
+{
+	auto fm = std::make_unique<EmitterModel>();
+	fm->create(world);
+	emitters.push_back(std::move(fm));
+}

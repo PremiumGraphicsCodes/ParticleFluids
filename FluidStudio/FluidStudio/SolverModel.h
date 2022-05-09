@@ -28,6 +28,10 @@ public:
 	
 	const std::vector<std::unique_ptr<EmitterModel>>& getEmitters() const { return emitters; }
 
+	void addFluid(Scene::World* world);
+
+	void addEmitter(Scene::World* world);
+
 private:
 	std::vector<std::unique_ptr<FluidModel>> fluids;
 	std::vector<std::unique_ptr<EmitterModel>> emitters;

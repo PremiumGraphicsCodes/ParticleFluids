@@ -4,6 +4,8 @@
 #include "CrystalScene/AppBase/IOkCancelView.h"
 #include "CrystalScene/AppBase/Box3dView.h"
 #include "CrystalScene/AppBase/FloatView.h"
+#include "CrystalScene/AppBase/IntView.h"
+#include "CrystalScene/AppBase/Vector3dView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -20,12 +22,18 @@ private:
 	void onOk() override;
 
 	EmitterModel* emitter;
+	IntView idView;
+	IntView psIdView;
 	Box3dView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;
 	FloatView heatDiffuseCoeView;
 	FloatView dragHeatCoeView;
 	FloatView dragForceCoeView;
+	FloatView temperatureView;
+	IntView lifeLimitView;
+	Vector3dView velocityView;
+
 };
 
 	}

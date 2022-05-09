@@ -8,6 +8,8 @@ namespace Crystal {
 class EmitterModel
 {
 public:
+	EmitterModel();
+
 	void create(Scene::World* world);
 
 	void reset(Scene::World* world);
@@ -20,6 +22,9 @@ public:
 	float heatDiffuseCoe;
 	float dragForceCoe;
 	float dragHeatCoe;
+	float temperature;
+	int lifeLimit;
+	Math::Vector3df initialVelocity;
 };
 
 	}

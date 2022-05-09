@@ -43,6 +43,8 @@ public:
 
 	EmitterSceneUpdateCommand();
 
+	explicit EmitterSceneUpdateCommand(const Args& args);
+
 	bool execute(Scene::World* world) override;
 
 private:

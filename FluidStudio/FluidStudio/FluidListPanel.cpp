@@ -40,13 +40,10 @@ void FluidListPanel::onShow()
 	for (const auto& e : emitters) {
 		const auto str = e->name.c_str();
 		if (ImGui::Button(str)) {
-			/*
-			auto f = scene->findSceneById<MVPFluidScene*>(id);
-			auto fluidView = new FluidView("Fluid", getWorld(), getCanvas());
-			fluidView->setValue(f);
+			auto fluidView = new EmitterView("Emitter", getWorld(), getCanvas());
+			fluidView->setValue(e.get());
 			control->clear();
 			control->add(fluidView);
-			*/
 		}
 
 	}
