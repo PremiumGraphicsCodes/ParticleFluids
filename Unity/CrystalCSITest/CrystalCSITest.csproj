@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="copy ..\x64\Debug\Unity.dll $(OutDir)" />
+    <Exec Command="copy ..\x64\$(ConfigurationName)\Unity.dll $(OutDir)" />
   </Target>
 
 </Project>
