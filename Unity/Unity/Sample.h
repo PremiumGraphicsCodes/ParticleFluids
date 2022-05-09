@@ -25,4 +25,6 @@ extern "C" {
 	// •¶Žš—ñ
 	SAMPLE_API const char* SampleAPIString1();
 	SAMPLE_API const char* SampleAPIString2(const char* str);
+
+	SAMPLE_API void CreateCommand(const char* str);
 }

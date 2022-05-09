@@ -3,6 +3,8 @@
 #include "Sample.h"
 #include <cstring>
 
+#include "CrystalScene/Command/Command.h"
+
 SAMPLE_API int SampleAPIInt(int i)
 {
 	return 123 + i;
@@ -89,4 +91,13 @@ SAMPLE_API const char* SampleAPIString2(const char* str)
 	size_t n = strnlen(buffer, bufferSize);
 	strcpy_s(buffer + n, bufferSize - 7, hello);
 	return MallocString(buffer);
+}
+
+namespace {
+	Crystal::Command::Command command;
+}
+
+SAMPLE_API void CreateCommand(const char* str)
+{
+	command.create(str);
 }

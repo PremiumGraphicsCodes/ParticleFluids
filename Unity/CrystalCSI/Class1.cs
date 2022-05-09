@@ -24,6 +24,10 @@ namespace CrystalCSI
         [DllImport("Unity")]
         public static extern void SampleAPIDouble2(ref double d);
 
+        [DllImport("Unity")]
+        public static extern void CreateCommand(string str);
+
+
         /*
     // 配列の参照渡し
     [DllImport("NativePluginSample")]
