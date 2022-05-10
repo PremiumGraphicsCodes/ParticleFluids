@@ -16,9 +16,9 @@ import bpy
 import os
 import subprocess
 
-class VDB_TOOLS_OT_SmoothingOperator(bpy.types.Operator) :
-  bl_idname = "pg.smoothingoperator"
-  bl_label = "Smoothing"
+class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
+  bl_idname = "pg.filteroperator"
+  bl_label = "Filter"
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
@@ -36,7 +36,7 @@ class VDB_TOOLS_OT_SmoothingOperator(bpy.types.Operator) :
         return o
     return None
 
-class SmoothingPropertyGroup(bpy.types.PropertyGroup):
+class FilterPropertyGroup(bpy.types.PropertyGroup):
   iteration_prop : bpy.props.IntProperty(
     name="iteration",
     description="",
@@ -59,33 +59,33 @@ class SmoothingPropertyGroup(bpy.types.PropertyGroup):
         ]
     )
 
-class VDB_TOOLS_PT_Smoothing_Panel(bpy.types.Panel) :
+class VDB_TOOLS_PT_FilterPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
   bl_category = "VDBTools"
-  bl_label = "Smoothing"
+  bl_label = "Filter"
   
   def draw(self, context):
     layout = self.layout
-    layout.prop(context.scene.smoothing_property, "iteration_prop", text="Iteration")
-    layout.prop(context.scene.smoothing_property, "width_prop", text="Width")
-    layout.prop(context.scene.smoothing_property, "type_prop", text="Type")
-    layout.operator(VDB_TOOLS_OT_SmoothingOperator.bl_idname, text="Smoothing")
+    layout.prop(context.scene.filter_property, "iteration_prop", text="Iteration")
+    layout.prop(context.scene.filter_property, "width_prop", text="Width")
+    layout.prop(context.scene.filter_property, "type_prop", text="Type")
+    layout.operator(VDB_TOOLS_OT_FilterOperator.bl_idname, text="Filter")
 
 classes = [
-  VDB_TOOLS_OT_SmoothingOperator,
-  VDB_TOOLS_PT_Smoothing_Panel,
-  SmoothingPropertyGroup
+  VDB_TOOLS_OT_FilterOperator,
+  VDB_TOOLS_PT_FilterPanel,
+  FilterPropertyGroup
 ]
 
-class VDB_TOOLS_Smoothing_UI :
+class VDB_TOOLS_Filter_UI :
   def register():
     for c in classes:
       bpy.utils.register_class(c)
-    bpy.types.Scene.smoothing_property = bpy.props.PointerProperty(type=SmoothingPropertyGroup)
+    bpy.types.Scene.filter_property = bpy.props.PointerProperty(type=FilterPropertyGroup)
 
   def unregister() :
-    del bpy.types.Scene.smoothing_property
+    del bpy.types.Scene.filter_property
     for c in classes:
       bpy.utils.unregister_class(c)
  

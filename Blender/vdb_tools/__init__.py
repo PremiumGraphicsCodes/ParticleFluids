@@ -1,6 +1,6 @@
 import bpy
 
-from .smoothing import VDB_TOOLS_Smoothing_UI
+from .filter import VDB_TOOLS_Filter_UI
 from .composite import VDB_TOOLS_Composite_UI
 
 # アドオンに関する情報を保持する、bl_info変数
@@ -19,12 +19,12 @@ bl_info = {
 }
 
 def register():
-    VDB_TOOLS_Smoothing_UI.register()
+    VDB_TOOLS_Filter_UI.register()
     VDB_TOOLS_Composite_UI.register()
 
 def unregister():
     VDB_TOOLS_Composite_UI.unregister()
-    VDB_TOOLS_Smoothing_UI.unregister()
+    VDB_TOOLS_Filter_UI.unregister()
 
 
 # メイン処理
