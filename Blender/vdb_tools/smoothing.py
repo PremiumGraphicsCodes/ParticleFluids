@@ -22,7 +22,6 @@ class VDB_TOOLS_OT_SmoothingOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      global scene
       #divide_length = context.scene.smoothing_property.divide_length_prop
       #export_dir_path = bpy.path.abspath(context.scene.smoothing_property.export_directory_prop)
 
@@ -50,6 +49,15 @@ class SmoothingPropertyGroup(bpy.types.PropertyGroup):
       default=1,
       min=1
   )
+  type_prop: bpy.props.EnumProperty(
+        name="Type",
+        description="",
+        default='Median',
+        items=[
+            ('Median', "Median", ""),
+            ('Mean', "Mean", ""),
+        ]
+    )
 
 class VDB_TOOLS_PT_Smoothing_Panel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
@@ -61,6 +69,7 @@ class VDB_TOOLS_PT_Smoothing_Panel(bpy.types.Panel) :
     layout = self.layout
     layout.prop(context.scene.smoothing_property, "iteration_prop", text="Iteration")
     layout.prop(context.scene.smoothing_property, "width_prop", text="Width")
+    layout.prop(context.scene.smoothing_property, "type_prop", text="Type")
     layout.operator(VDB_TOOLS_OT_SmoothingOperator.bl_idname, text="Smoothing")
 
 classes = [
