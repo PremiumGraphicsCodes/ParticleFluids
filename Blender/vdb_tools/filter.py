@@ -12,6 +12,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 import bpy
+import json
 
 import os
 import subprocess
@@ -28,6 +29,10 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
       selected_mesh = self.get_selected_volume(context)
       if selected_mesh == None :
         return {'CANCELLED'}
+
+      j = self.to_json()
+      print(json.dumps(j, ensure_ascii=False, indent=2))
+
       return {'FINISHED'}
 
   def get_selected_volume(self, context) :
@@ -35,6 +40,25 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
       if o.type == 'VOLUME' and o.select_get():
         return o
     return None
+
+  def to_json(self) :
+    data = dict()
+    data["VDBFileRead"] = [
+      {"FilePath": "../VDBDataSet/torus.vdb"},
+      {"Radius": 0.5}
+    ]
+    data["VDBSmoothing"] = [
+      {"FilterType": "Median"},
+      {"Iteration": 1},
+      {"VDBVolumeId": 1},
+      {"Width": 1}
+    ]
+    data["OpenVDBFileWrite"] = [
+      {"FilePath": "../VDBDataSet/torus_smooth.vdb"},
+      {"ParticleSystemIds": []},
+      {"VDBVolumeIds": [1]}
+    ]
+    return data
 
 class FilterPropertyGroup(bpy.types.PropertyGroup):
   iteration_prop : bpy.props.IntProperty(
