@@ -33,7 +33,7 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
         return {'CANCELLED'}
 
       vol = selected_mesh.data
-      filepath = vol.filepath
+      filepath = bpy.path.abspath( vol.filepath )
 
       print(filepath)
 
