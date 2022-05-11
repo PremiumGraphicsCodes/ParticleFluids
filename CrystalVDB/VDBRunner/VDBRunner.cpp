@@ -19,16 +19,23 @@ void testDump()
 	JSONFileWriter writer;
 }
 
-int main()
+int main(int argc, char** argv)
 {
 	Crystal::Scene::World world;
+
+	if (argc < 1) {
+		std::cout << "usage input.json" << std::endl;
+		return -1;
+	}
+
+	const std::string inputFile = argv[1];//"./TestFiles/command.json"
 
 	VDBInitCommand initCommand;
 	initCommand.execute(&world);
 
 	VDBCommandFactory factory;
 	JSONFileReader reader;
-	reader.read("./TestFiles/command.json", factory);
+	reader.read(inputFile, factory);
 	auto commands = reader.getCommands();
 	for (auto& c : commands) {
 		std::cout << "Start " << c->getCommandName() << std::endl;
