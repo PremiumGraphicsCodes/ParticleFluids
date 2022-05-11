@@ -26,6 +26,8 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
       #divide_length = context.scene.smoothing_property.divide_length_prop
       #export_dir_path = bpy.path.abspath(context.scene.smoothing_property.export_directory_prop)
 
+      export_dir_path = bpy.path.abspath(context.scene.filter_property.export_directory_prop)
+
       selected_mesh = self.get_selected_volume(context)
       if selected_mesh == None :
         return {'CANCELLED'}
@@ -35,8 +37,12 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
 
       print(filepath)
 
-      j = self.to_json()
+      j = self.to_json(filepath)
       print(json.dumps(j, ensure_ascii=False, indent=2))
+
+      json_file_path = os.path.join(export_dir_path, "command.json")
+      with open(json_file_path, 'w') as f:
+        json.dump(j, f, ensure_ascii=False, indent=4)
 
       return {'FINISHED'}
 
@@ -46,10 +52,10 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
         return o
     return None
 
-  def to_json(self) :
+  def to_json(self, input_vdb_file) :
     data = dict()
     data["VDBFileRead"] = [
-      {"FilePath": "../VDBDataSet/torus.vdb"},
+      {"FilePath": input_vdb_file},
       {"Radius": 0.5}
     ]
     data["VDBSmoothing"] = [
@@ -87,6 +93,14 @@ class FilterPropertyGroup(bpy.types.PropertyGroup):
             ('Mean', "Mean", ""),
         ]
     )
+  export_directory_prop : bpy.props.StringProperty(
+    name="export_dir",
+    description="Path to Directory",
+    default="//",
+    maxlen=1024,
+    subtype='DIR_PATH',
+  )
+
 
 class VDB_TOOLS_PT_FilterPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
