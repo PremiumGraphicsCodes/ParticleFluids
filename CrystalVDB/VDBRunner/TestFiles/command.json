@@ -1,0 +1,9 @@
+[
+    [
+        "VDBFileRead",
+        {
+            "FilePath": "C:\\Users\\mabuc\\Desktop\\TestVolumes\\particle0.vdb",
+            "Radius": 0.5
+        }
+    ]
+]
