@@ -14,5 +14,15 @@
             "VDBVolumeId": 1,
             "Width": 1
         }
+    ],
+    [
+        "OpenVDBFileWrite",
+        {
+            "FilePath": "C:\\Users\\mabuc\\Desktop\\particle0.vdb",
+            "ParticleSystemIds": [],
+            "VDBVolumeIds": [
+                1
+            ]
+        }
     ]
 ]
