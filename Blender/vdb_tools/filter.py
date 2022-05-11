@@ -30,6 +30,11 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
       if selected_mesh == None :
         return {'CANCELLED'}
 
+      vol = selected_mesh.data
+      filepath = vol.filepath
+
+      print(filepath)
+
       j = self.to_json()
       print(json.dumps(j, ensure_ascii=False, indent=2))
 
