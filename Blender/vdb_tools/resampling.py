@@ -93,11 +93,11 @@ class ResamplingPropertyGroup(bpy.types.PropertyGroup):
         description="",
         default='Box',
         items=[
-            ('Point', 'Point'),
+            ('Point', 'Point', ""),
             ('Box', "Box", ""),
             ('Quadric', "Quadric", ""),
         ]
-    )
+  )
   export_directory_prop : bpy.props.StringProperty(
     name="export_dir",
     description="Path to Directory",
@@ -114,8 +114,6 @@ class VDB_TOOLS_PT_ResamplingPanel(bpy.types.Panel) :
   
   def draw(self, context):
     layout = self.layout
-    #layout.prop(context.scene.resampling_property, "iteration_prop", text="Iteration")
-    #layout.prop(context.scene.filter_property, "width_prop", text="Width")
     layout.prop(context.scene.resampling_property, "type_prop", text="Type")
     layout.prop(context.scene.resampling_property, "export_directory_prop", text="ExportDir")
     layout.operator(VDB_TOOLS_OT_ResamplingOperator.bl_idname, text="Resampling")
