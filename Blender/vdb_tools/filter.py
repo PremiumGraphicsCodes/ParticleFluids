@@ -60,9 +60,7 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
       vol = bpy.data.volumes.new(name ="TestVol")
       vol.filepath = export_file_path
       ob = bpy.data.objects.new("TestObj", vol)
-      #vol.update()
       bpy.context.collection.objects.link(ob)
-
 
       return {'FINISHED'}
 
