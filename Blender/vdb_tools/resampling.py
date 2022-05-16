@@ -34,29 +34,29 @@ class VDB_TOOLS_OT_ResamplingOperator(bpy.types.Operator) :
 
       print(filepath)
 
-      #export_file_path = os.path.join(export_dir_path, os.path.basename(filepath))
+      export_file_path = os.path.join(export_dir_path, os.path.basename(filepath))
 
-      #j = self.to_json(filepath, export_file_path)
+      j = self.to_json(filepath, export_file_path, context.scene.resampling_property.type_prop)
       #print(json.dumps(j, ensure_ascii=False, indent=2))
 
-      #json_file_path = os.path.join(export_dir_path, "command.json")
-      #with open(json_file_path, 'w') as f:
-      #  json.dump(j, f, ensure_ascii=False, indent=4)
+      json_file_path = os.path.join(export_dir_path, "command.json")
+      with open(json_file_path, 'w') as f:
+        json.dump(j, f, ensure_ascii=False, indent=4)
 
-      #addon_dirpath = os.path.dirname(__file__)
-      #tool_path = os.path.join(addon_dirpath, 'VDBRunner')
-      #params = []
-      #params.append(tool_path)
-      #params.append(json_file_path)        
+      addon_dirpath = os.path.dirname(__file__)
+      tool_path = os.path.join(addon_dirpath, 'VDBRunner')
+      params = []
+      params.append(tool_path)
+      params.append(json_file_path)        
       
-      #result = subprocess.run(params, shell=True)
-      #if result == -1 : 
-      #  return {'CANCELLED'}
+      result = subprocess.run(params, shell=True)
+      if result == -1 : 
+        return {'CANCELLED'}
 
-      #vol = bpy.data.volumes.new(name ="TestVol")
-      #vol.filepath = export_file_path
-      #ob = bpy.data.objects.new("TestObj", vol)
-      #bpy.context.collection.objects.link(ob)
+      vol = bpy.data.volumes.new(name ="TestVol")
+      vol.filepath = export_file_path
+      ob = bpy.data.objects.new("TestObj", vol)
+      bpy.context.collection.objects.link(ob)
 
       return {'FINISHED'}
 
@@ -66,18 +66,16 @@ class VDB_TOOLS_OT_ResamplingOperator(bpy.types.Operator) :
         return o
     return None
 
-  def to_json(self, input_vdb_file, output_vdb_file) :
+  def to_json(self, input_vdb_file, output_vdb_file, sampling_type) :
     dict1 = dict()
     dict1["FilePath"] =  input_vdb_file
     dict1["Radius"] = 0.5
     data1 = ["VDBFileRead", dict1]
 
-    #dict2 = dict()
-    #dict2["FilterType"] = "Median"
-    #dict2["Iteration"] = 1
-    #dict2["VDBVolumeId"] = 1
-    #dict2["Width"] = 1
-    #data2 = ["VDBSmoothing", dict2]
+    dict2 = dict()
+    dict2["SamplingType"] = sampling_type
+    dict2["VolumeId"] = 1
+    data2 = ["VDBResampling", dict2]
 
     dict3 = dict()
     dict3["FilePath"] = output_vdb_file
@@ -86,7 +84,7 @@ class VDB_TOOLS_OT_ResamplingOperator(bpy.types.Operator) :
 
     data3 = ["OpenVDBFileWrite", dict3]
     data = dict()
-    #data = [data1, data2, data3]
+    data = [data1, data2, data3]
     return data
 
 class ResamplingPropertyGroup(bpy.types.PropertyGroup):
@@ -95,8 +93,9 @@ class ResamplingPropertyGroup(bpy.types.PropertyGroup):
         description="",
         default='Box',
         items=[
+            ('Point', 'Point'),
             ('Box', "Box", ""),
-            ('Trilinear', "Trilinear", ""),
+            ('Quadric', "Quadric", ""),
         ]
     )
   export_directory_prop : bpy.props.StringProperty(
