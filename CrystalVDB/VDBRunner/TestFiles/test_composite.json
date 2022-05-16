@@ -13,12 +13,21 @@
             "Radius": 0.5
         }
     ],
+	[
+        "VDBSceneCreate",
+        {
+            "Name": "",
+            "Positions": [],
+            "SceneType": "VDBVolume"
+        }
+    ],
     [
         "VDBComposite",
         {
             "CompositeType": "Union",
             "VolumeId1": 1,
-            "VolumeId2": 2
+            "VolumeId2": 2,
+			"DestVolumeId": 3
         }
     ],
 	[
