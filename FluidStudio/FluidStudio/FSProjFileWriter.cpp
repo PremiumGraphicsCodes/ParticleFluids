@@ -1,10 +1,12 @@
 #include "FSProjFileWriter.h"
 
+#include "MainModel.h"
+
 #include "tinyxml2.h"
 
 using namespace PG::FS;
 
-bool FSProjFileWriter::write(const std::string& filePath)
+bool FSProjFileWriter::write(MainModel* model, const std::string& filePath)
 {
 	const char* declaration = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 	tinyxml2::XMLDocument doc;
@@ -20,6 +22,12 @@ bool FSProjFileWriter::write(const std::string& filePath)
 	tinyxml2::XMLElement* root = doc.NewElement("Root");
 	doc.InsertEndChild(root);
 
+	auto solver = model->getSolver();
+	const auto& fluids = solver->getFluids();
+	for (const auto& f : fluids) {
+		f->toXML(&doc, root);
+	}
+	/*
 	// User
 	tinyxml2::XMLElement* user = doc.NewElement("User");
 	user->SetAttribute("Name", "fengbingchun");
@@ -64,6 +72,7 @@ bool FSProjFileWriter::write(const std::string& filePath)
 	tinyxml2::XMLText* text6 = doc.NewText("27");
 	repositories->InsertEndChild(text6);
 	code2->InsertEndChild(repositories);
+	*/
 
 	ret = doc.SaveFile(filePath.c_str());
 	if (ret != 0) {

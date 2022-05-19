@@ -217,6 +217,7 @@
     <ClInclude Include="FluidModel.h" />
     <ClInclude Include="FluidView.h" />
     <ClInclude Include="FSProjFileWriter.h" />
+    <ClInclude Include="IModel.h" />
     <ClInclude Include="MainModel.h" />
     <ClInclude Include="SolverExporter.h" />
     <ClInclude Include="SolverModel.h" />

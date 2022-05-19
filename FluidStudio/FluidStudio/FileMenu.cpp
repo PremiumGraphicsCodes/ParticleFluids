@@ -10,8 +10,9 @@ using namespace PG::FS;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-FileMenu::FileMenu(const std::string& name, World* world, Canvas* canvas) :
-	IMenu(name, world, canvas)
+FileMenu::FileMenu(const std::string& name, World* world, Canvas* canvas, MainModel* model) :
+	IMenu(name, world, canvas),
+	model(model)
 {
 	add(new MenuItem("Open", [=] { onOpen(); }));
 
@@ -52,6 +53,6 @@ void FileMenu::onSave()
 	const auto filename = view.getFileName();
 	if (!filename.empty()) {
 		FSProjFileWriter writer;
-		writer.write(filename);
+		writer.write(model, filename);
 	}
 }

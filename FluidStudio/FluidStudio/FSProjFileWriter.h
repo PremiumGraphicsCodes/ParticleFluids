@@ -4,11 +4,12 @@
 
 namespace PG {
 	namespace FS {
+		class MainModel;
 
 class FSProjFileWriter
 {
 public:
-	bool write(const std::string& filePath);
+	bool write(MainModel* model, const std::string& filePath);
 };
 
 	}

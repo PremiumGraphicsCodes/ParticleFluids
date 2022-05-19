@@ -94,6 +94,9 @@
     <ClInclude Include="tinyxml2.h">
       <Filter>FileIO</Filter>
     </ClInclude>
+    <ClInclude Include="IModel.h">
+      <Filter>Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="VDB">

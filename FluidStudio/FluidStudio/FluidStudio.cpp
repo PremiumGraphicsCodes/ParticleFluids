@@ -55,7 +55,7 @@ int main()
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);
 
-	window.add(new PG::FS::FileMenu("File", &world, &canvas));
+	window.add(new PG::FS::FileMenu("File", &world, &canvas, &model));
 	window.add(new CameraMenu("Camera", &world, &canvas));
 	//window.add(new CtrlMenu("Ctrl", &world, &canvas));
 	//window.add(new ShapeMenu("Shape", &world, &canvas, control));

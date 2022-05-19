@@ -42,3 +42,25 @@ void FluidModel::reset(World* world)
 	FluidSceneUpdateCommand command(args);
 	command.execute(world);
 }
+
+tinyxml2::XMLElement* FluidModel::toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent)
+{
+	tinyxml2::XMLElement* code2 = doc->NewElement("Fluid");
+	code2->SetAttribute("Name", this->name.c_str());
+	parent->InsertEndChild(code2);
+
+	tinyxml2::XMLElement* idElem = doc->NewElement("Id");
+	{
+		auto text = doc->NewText(std::to_string(fluidId).c_str());
+		idElem->InsertEndChild(text);
+		code2->InsertEndChild(idElem);
+	}
+
+	tinyxml2::XMLElement* psIdElem = doc->NewElement("ParticleSystemId");
+	{
+		auto text = doc->NewText(std::to_string(particleSystemId).c_str());
+		psIdElem->InsertEndChild(text);
+		code2->InsertEndChild(psIdElem);
+	}
+	return code2;
+}
