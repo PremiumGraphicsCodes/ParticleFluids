@@ -60,11 +60,11 @@ int main()
 	window.add(new CtrlMenu("Ctrl", &world, &canvas));
 	window.add(new ShapeMenu("Shape", &world, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &world, &canvas, control));
-	window.add(new FluidMenu("Fluid", &world, &canvas, control, &model));
+	window.add(new PG::FS::FluidMenu("Fluid", &world, &canvas, control, &model));
 	window.add(new VDBMenu("VDB", &world, &canvas, control));
 
 	//window.add(new SceneListPanel("Scene", &world, &canvas, control));
-	window.add(new FluidListPanel("Fluids", &world, &canvas, control, model.getSolver()));
+	window.add(new PG::FS::FluidListPanel("Fluids", &world, &canvas, control, model.getSolver()));
 
 	window.add(new SolverView("Solver", &world, &canvas, model.getSolver()));
 

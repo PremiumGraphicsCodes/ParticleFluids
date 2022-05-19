@@ -9,6 +9,7 @@
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
+using namespace PG::FS;
 
 FluidMenu::FluidMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control, PG::FS::MainModel* model) :
 	IMenu(name, world, canvas),

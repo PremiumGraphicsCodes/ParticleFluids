@@ -6,19 +6,14 @@
 namespace PG {
 	namespace FS {
 		class MainModel;
-	}
-}
 
-namespace Crystal {
-	namespace UI {
-
-class FluidMenu : public IMenu
+class FluidMenu : public Crystal::UI::IMenu
 {
 public:
-	FluidMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control, PG::FS::MainModel* model);
+	FluidMenu(const std::string& name, Crystal::Scene::World* world, Crystal::UI::Canvas* canvas, Crystal::UI::ControlPanel* control, PG::FS::MainModel* model);
 
 private:
-	ControlPanel* control;
+	Crystal::UI::ControlPanel* control;
 };
 
 	}

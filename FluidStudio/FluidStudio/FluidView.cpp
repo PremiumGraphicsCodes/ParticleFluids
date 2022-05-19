@@ -4,6 +4,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 using namespace Crystal::UI;
+using namespace PG::FS;
 
 FluidView::FluidView(const std::string& name, World* world, Canvas* canvas) :
 	IOkCancelView(name, world, canvas),

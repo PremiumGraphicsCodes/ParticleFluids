@@ -11,17 +11,11 @@
 namespace PG {
 	namespace FS {
 		class FluidModel;
-	}
-}
 
-namespace Crystal {
-	namespace UI {
-		class FluidModel;
-
-class FluidView : public IOkCancelView
+class FluidView : public Crystal::UI::IOkCancelView
 {
 public:
-	FluidView(const std::string& name, Scene::World* world, Canvas* canvas);
+	FluidView(const std::string& name, Crystal::Scene::World* world, Crystal::UI::Canvas* canvas);
 
 	void setValue(PG::FS::FluidModel* fluid);
 
@@ -29,14 +23,14 @@ private:
 	void onOk() override;
 
 	PG::FS::FluidModel* fluid;
-	IntView idView;
-	IntView particleSystemIdView;
-	Box3dView boundaryView;
-	FloatView pressureCoeView;
-	FloatView viscosityCoeView;
-	FloatView heatDiffuseCoeView;
-	FloatView dragHeatCoeView;
-	FloatView dragForceCoeView;
+	Crystal::UI::IntView idView;
+	Crystal::UI::IntView particleSystemIdView;
+	Crystal::UI::Box3dView boundaryView;
+	Crystal::UI::FloatView pressureCoeView;
+	Crystal::UI::FloatView viscosityCoeView;
+	Crystal::UI::FloatView heatDiffuseCoeView;
+	Crystal::UI::FloatView dragHeatCoeView;
+	Crystal::UI::FloatView dragForceCoeView;
 
 };
 	}

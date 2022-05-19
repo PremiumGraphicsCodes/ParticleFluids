@@ -5,9 +5,10 @@
 #include "CrystalPhysics/CrystalPhysics/Boundary/CSGBoundaryScene.h"
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 
-
+using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
+using namespace Crystal::Physics;
 
 using namespace PG::FS;
 

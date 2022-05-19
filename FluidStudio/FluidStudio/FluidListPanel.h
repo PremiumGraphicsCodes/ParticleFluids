@@ -5,12 +5,6 @@
 namespace PG {
 	namespace FS {
 		class SolverModel;
-	}
-}
-
-namespace Crystal {
-	namespace Scene {
-		class IScene;
 
 class FluidListPanel : public Crystal::UI::IPanel
 {
