@@ -26,21 +26,8 @@ void FileMenu::onOpen()
 	view.show();
 	const auto& filename = view.getFileName();
 	if (!filename.empty()) {
-		/*
-		FileImportCommand command;
-		command.setArg(Fil::FilePathLabel, std::string(filename));
-		bool isOk = command.execute(model);
-		if (!isOk) {
-			std::cout << "import failed." << std::endl;
-		}
-		else {
-			const int newId = std::any_cast<int>(command.getResult(FileImportLabels::NewIdLabel));
-			auto scene = model->getScenes()->findSceneById<Crystal::Scene::IScene*>(newId);
-			auto presenter = scene->getPresenter();
-			presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-//					scene->getParent()->se
-				}
-				*/
+		FSProjFileWriter writer;
+		const auto isOk = writer.read(model, filename);
 	}
 
 }
@@ -53,6 +40,6 @@ void FileMenu::onSave()
 	const auto filename = view.getFileName();
 	if (!filename.empty()) {
 		FSProjFileWriter writer;
-		writer.write(model, filename);
+		const auto isOk = writer.write(model, filename);
 	}
 }

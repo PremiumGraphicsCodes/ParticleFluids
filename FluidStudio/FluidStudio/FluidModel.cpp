@@ -76,5 +76,12 @@ tinyxml2::XMLElement* FluidModel::toXML(tinyxml2::XMLDocument* doc, tinyxml2::XM
 		elem->InsertEndChild(text);
 		e->InsertEndChild(elem);
 	}
+
+	{
+		auto elem = doc->NewElement("HeatDiffuse");
+		auto text = doc->NewText(std::to_string(this->heatDiffuseCoe).c_str());
+		elem->InsertEndChild(text);
+		e->InsertEndChild(elem);
+	}
 	return e;
 }

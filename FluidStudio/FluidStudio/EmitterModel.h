@@ -1,11 +1,12 @@
 #pragma once
 
 #include "CrystalScene/Scene/World.h"
+#include "IModel.h"
 
 namespace PG {
 	namespace FS {
 
-class EmitterModel
+class EmitterModel : IModel
 {
 public:
 	EmitterModel();
@@ -13,6 +14,8 @@ public:
 	void create(Crystal::Scene::World* world);
 
 	void reset(Crystal::Scene::World* world);
+
+	tinyxml2::XMLElement* toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent) override;
 
 	std::string name = "Emitter01";
 	int fluidId;

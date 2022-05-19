@@ -47,3 +47,8 @@ void EmitterModel::reset(World* world)
 	EmitterSceneUpdateCommand command(args);
 	command.execute(world);
 }
+
+tinyxml2::XMLElement* EmitterModel::toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent)
+{
+	return nullptr;
+}

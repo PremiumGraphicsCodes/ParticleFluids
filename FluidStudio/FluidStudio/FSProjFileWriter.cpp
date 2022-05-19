@@ -77,3 +77,14 @@ bool FSProjFileWriter::write(MainModel* model, const std::string& filePath)
 
 	return true;
 }
+
+bool FSProjFileWriter::read(MainModel* model, const std::string& filePath)
+{
+	tinyxml2::XMLDocument doc;
+	tinyxml2::XMLError ret = doc.LoadFile(filePath.c_str());
+	if (ret != 0) {
+		//fprintf(stderr, "fail to load xml file: %s\n", file_name);
+		return false;
+	}
+	return true;
+}
