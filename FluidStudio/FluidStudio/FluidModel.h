@@ -2,16 +2,15 @@
 
 #include "CrystalScene/Scene/World.h"
 
-namespace Crystal {
-	namespace UI {
-
+namespace PG {
+	namespace FS {
 
 class FluidModel
 {
 public:
-	void create(Scene::World* world);
+	void create(Crystal::Scene::World* world);
 
-	void reset(Scene::World* world);
+	void reset(Crystal::Scene::World* world);
 
 	std::string name = "Fluid01";
 	int fluidId;

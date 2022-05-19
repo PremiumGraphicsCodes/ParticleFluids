@@ -26,7 +26,7 @@ FluidView::FluidView(const std::string& name, World* world, Canvas* canvas) :
 	add(&dragForceCoeView);
 }
 
-void FluidView::setValue(FluidModel* fluid)
+void FluidView::setValue(PG::FS::FluidModel* fluid)
 {
 	this->fluid = fluid;
 

@@ -32,7 +32,7 @@ void SolverModel::init(World* world)
 	world->getScenes()->addScene(psScene);
 
 
-	auto fm = std::make_unique<FluidModel>();
+	auto fm = std::make_unique<PG::FS::FluidModel>();
 	fm->create(world);
 
 	auto fluidScene = world->getScenes()->findSceneById<MVPFluidScene*>(fm->fluidId);
@@ -91,7 +91,7 @@ void SolverModel::reset(World* world)
 
 void SolverModel::addFluid(World* world)
 {
-	auto fm = std::make_unique<FluidModel>();
+	auto fm = std::make_unique<PG::FS::FluidModel>();
 	fm->create(world);
 	fluids.push_back(std::move(fm));
 }

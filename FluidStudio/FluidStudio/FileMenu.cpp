@@ -4,6 +4,8 @@
 #include "CrystalScene/AppBase/FileOpenMenu.h"
 #include "CrystalScene/AppBase/FileSaveMenu.h"
 
+#include "FSProjFileWriter.h"
+
 using namespace PG::FS;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -49,6 +51,7 @@ void FileMenu::onSave()
 	view.show();
 	const auto filename = view.getFileName();
 	if (!filename.empty()) {
-
+		FSProjFileWriter writer;
+		writer.write(filename);
 	}
 }

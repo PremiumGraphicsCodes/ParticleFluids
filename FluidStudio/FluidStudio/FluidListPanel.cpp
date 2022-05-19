@@ -14,6 +14,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 using namespace Crystal::UI;
+using namespace PG::FS;
 
 FluidListPanel::FluidListPanel(const std::string& name, World* model, Canvas* canvas, IPanel* control, SolverModel* solver) :
 	IPanel(name, model, canvas),
