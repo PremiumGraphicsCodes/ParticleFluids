@@ -2,17 +2,17 @@
 
 #include "CrystalScene/Scene/World.h"
 
-namespace Crystal {
-	namespace UI {
+namespace PG {
+	namespace FS {
 
 class EmitterModel
 {
 public:
 	EmitterModel();
 
-	void create(Scene::World* world);
+	void create(Crystal::Scene::World* world);
 
-	void reset(Scene::World* world);
+	void reset(Crystal::Scene::World* world);
 
 	std::string name = "Emitter01";
 	int fluidId;
@@ -24,7 +24,7 @@ public:
 	float dragHeatCoe;
 	float temperature;
 	int lifeLimit;
-	Math::Vector3df initialVelocity;
+	Crystal::Math::Vector3df initialVelocity;
 };
 
 	}

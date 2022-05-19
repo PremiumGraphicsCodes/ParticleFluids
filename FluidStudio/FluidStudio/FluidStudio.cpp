@@ -49,7 +49,7 @@ int main()
 		return 0;
 	}
 
-	MainModel model(&world);
+	PG::FS::MainModel model(&world);
 	model.init();
 
 	auto control = new ControlPanel("Control", &world, &canvas);

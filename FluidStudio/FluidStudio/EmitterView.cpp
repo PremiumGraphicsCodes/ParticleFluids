@@ -5,6 +5,8 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
+using namespace PG::FS;
+
 EmitterView::EmitterView(const std::string& name, World* world, Canvas* canvas) :
 	IOkCancelView(name, world, canvas),
 	idView("Id", -1),

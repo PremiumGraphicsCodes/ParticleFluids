@@ -5,11 +5,12 @@
 #include "EmitterView.h"
 
 #include "CrystalScene/AppBase/MenuItem.h"
+#include "MainModel.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-FluidMenu::FluidMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control, MainModel* model) :
+FluidMenu::FluidMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control, PG::FS::MainModel* model) :
 	IMenu(name, world, canvas),
 	control(control)
 {

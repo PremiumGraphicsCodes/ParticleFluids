@@ -26,7 +26,7 @@ public:
 
 	const std::vector<std::unique_ptr<PG::FS::FluidModel>>& getFluids() const { return fluids; }
 	
-	const std::vector<std::unique_ptr<EmitterModel>>& getEmitters() const { return emitters; }
+	const std::vector<std::unique_ptr<PG::FS::EmitterModel>>& getEmitters() const { return emitters; }
 
 	void addFluid(Scene::World* world);
 
@@ -34,7 +34,7 @@ public:
 
 private:
 	std::vector<std::unique_ptr<PG::FS::FluidModel>> fluids;
-	std::vector<std::unique_ptr<EmitterModel>> emitters;
+	std::vector<std::unique_ptr<PG::FS::EmitterModel>> emitters;
 	SolverExporter* exporter;
 	Physics::MVPUpdater updator;
 	Physics::CSGBoundaryScene* csgScene;

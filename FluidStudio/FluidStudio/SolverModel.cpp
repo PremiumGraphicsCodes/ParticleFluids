@@ -98,7 +98,7 @@ void SolverModel::addFluid(World* world)
 
 void SolverModel::addEmitter(World* world)
 {
-	auto fm = std::make_unique<EmitterModel>();
+	auto fm = std::make_unique<PG::FS::EmitterModel>();
 	fm->create(world);
 	emitters.push_back(std::move(fm));
 }

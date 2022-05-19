@@ -7,21 +7,26 @@
 #include "CrystalScene/AppBase/IntView.h"
 #include "CrystalScene/AppBase/Vector3dView.h"
 
+namespace PG {
+	namespace FS {
+		class EmitterModel;
+	}
+}
+
 namespace Crystal {
 	namespace UI {
-		class EmitterModel;
 
 class EmitterView : public IOkCancelView
 {
 public:
 	EmitterView(const std::string& name, Scene::World* world, Canvas* canvas);
 
-	void setValue(EmitterModel* emitter);
+	void setValue(PG::FS::EmitterModel* emitter);
 
 private:
 	void onOk() override;
 
-	EmitterModel* emitter;
+	PG::FS::EmitterModel* emitter;
 	IntView idView;
 	IntView psIdView;
 	Box3dView boundaryView;
