@@ -41,6 +41,12 @@
     <ClCompile Include="FileMenu.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="FSProjFileWriter.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidMenu.h">
@@ -80,6 +86,12 @@
       <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="FileMenu.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="FSProjFileWriter.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
       <Filter>FileIO</Filter>
     </ClInclude>
   </ItemGroup>

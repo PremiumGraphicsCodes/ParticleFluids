@@ -155,10 +155,12 @@
     <ClCompile Include="FluidModel.cpp" />
     <ClCompile Include="FluidStudio.cpp" />
     <ClCompile Include="FluidView.cpp" />
+    <ClCompile Include="FSProjFileWriter.cpp" />
     <ClCompile Include="MainModel.cpp" />
     <ClCompile Include="SolverExporter.cpp" />
     <ClCompile Include="SolverModel.cpp" />
     <ClCompile Include="SolverView.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="ToVolumeView.cpp" />
     <ClCompile Include="VDBMenu.cpp" />
   </ItemGroup>
@@ -214,10 +216,12 @@
     <ClInclude Include="FluidMenu.h" />
     <ClInclude Include="FluidModel.h" />
     <ClInclude Include="FluidView.h" />
+    <ClInclude Include="FSProjFileWriter.h" />
     <ClInclude Include="MainModel.h" />
     <ClInclude Include="SolverExporter.h" />
     <ClInclude Include="SolverModel.h" />
     <ClInclude Include="SolverView.h" />
+    <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="ToVolumeView.h" />
     <ClInclude Include="VDBMenu.h" />
   </ItemGroup>
