@@ -4,22 +4,22 @@
 #include "CrystalScene/AppBase/DoubleView.h"
 #include "CrystalScene/AppBase/DirectoryView.h"
 
-namespace Crystal {
-	namespace UI {
+namespace PG {
+	namespace FS {
 
-class ToVolumeView : public IOkCancelView
+class ToVolumeView : public Crystal::UI::IOkCancelView
 {
 public:
-	ToVolumeView(const std::string& name, Scene::World* model, Canvas* canvas);
+	ToVolumeView(const std::string& name, Crystal::Scene::World* model, Crystal::UI::Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	DoubleView particleRadiusView;
-	DoubleView gridCellWidthView;
-	DirectoryView inputDirectoryView;
-	DirectoryView outputDirectoryView;
+	Crystal::UI::DoubleView particleRadiusView;
+	Crystal::UI::DoubleView gridCellWidthView;
+	Crystal::UI::DirectoryView inputDirectoryView;
+	Crystal::UI::DirectoryView outputDirectoryView;
 };
 
 	}

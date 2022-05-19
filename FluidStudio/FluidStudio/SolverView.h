@@ -18,38 +18,39 @@ namespace Crystal {
 		class MVPFluidScene;
 		class MVPFluidEmitterScene;
 	}
-	namespace UI {
+}
+
+namespace PG {
+	namespace FS {
 		class SolverExporter;
 
-class SolverView : public IView
+class SolverView : public Crystal::UI::IView
 {
 public:
-	SolverView(const std::string& name, Scene::World* world, Canvas* canvas, PG::FS::SolverModel* model);
+	SolverView(const std::string& name, Crystal::Scene::World* world, Crystal::UI::Canvas* canvas, SolverModel* model);
 
 private:
-	//void onAddEmitter();
 
 	void onStart();
 
 	void onReset();
 
 private:
-
-	Box3dView boundaryView;
-	FloatView timeStepView;
-	FloatView radiusView;
-	Vector3dView externalForceView;
-	Vector3dView buoyancyView;
-	Button startButton;
-	Button resetButton;
+	Crystal::UI::Box3dView boundaryView;
+	Crystal::UI::FloatView timeStepView;
+	Crystal::UI::FloatView radiusView;
+	Crystal::UI::Vector3dView externalForceView;
+	Crystal::UI::Vector3dView buoyancyView;
+	Crystal::UI::Button startButton;
+	Crystal::UI::Button resetButton;
 	int newId;
 
-	Scene::World* world;
-	Canvas* canvas;
+	Crystal::Scene::World* world;
+	Crystal::UI::Canvas* canvas;
 
-	BoolView doExportView;
-	DirectoryView exportDirecotryView;
-	IntView exportIntervalView;
+	Crystal::UI::BoolView doExportView;
+	Crystal::UI::DirectoryView exportDirecotryView;
+	Crystal::UI::IntView exportIntervalView;
 	PG::FS::SolverModel* model;
 };
 

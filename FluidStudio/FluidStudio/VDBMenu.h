@@ -3,16 +3,16 @@
 #include "CrystalScene/AppBase/IMenu.h"
 #include "CrystalScene/AppBase/ControlPanel.h"
 
-namespace Crystal {
-	namespace UI {
+namespace PG {
+	namespace FS {
 
-class VDBMenu : public IMenu
+class VDBMenu : public Crystal::UI::IMenu
 {
 public:
-	VDBMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
+	VDBMenu(const std::string& name, Crystal::Scene::World* model, Crystal::UI::Canvas* canvas, Crystal::UI::ControlPanel* control);
 
 private:
-	ControlPanel* control;
+	Crystal::UI::ControlPanel* control;
 };
 
 	}

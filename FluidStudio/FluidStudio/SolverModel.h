@@ -18,7 +18,7 @@ public:
 
 	void reset(Crystal::Scene::World* world);
 
-	Crystal::UI::SolverExporter* getExporter() { return exporter; }
+	SolverExporter* getExporter() { return exporter; }
 
 	Crystal::Physics::CSGBoundaryScene* getBoundary() { return csgScene; }
 
@@ -35,7 +35,7 @@ public:
 private:
 	std::vector<std::unique_ptr<PG::FS::FluidModel>> fluids;
 	std::vector<std::unique_ptr<PG::FS::EmitterModel>> emitters;
-	Crystal::UI::SolverExporter* exporter;
+	SolverExporter* exporter;
 	Crystal::Physics::MVPUpdater updator;
 	Crystal::Physics::CSGBoundaryScene* csgScene;
 	Crystal::Physics::MVPFluidSolver solver;

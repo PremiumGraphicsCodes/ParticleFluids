@@ -19,12 +19,14 @@
 #include <iostream>
 
 using namespace Crystal::Math;
-using namespace Crystal::UI;
 using namespace Crystal::Scene;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
+using namespace Crystal::UI;
+
+using namespace PG::FS;
 
 ToVolumeView::ToVolumeView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),

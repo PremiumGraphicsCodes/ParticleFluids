@@ -4,9 +4,8 @@
 #include "CrystalPhysics/CrystalPhysicsCommand/PhysicsSolverExportCommand.h"
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidSolver.h"
 
-
-namespace Crystal {
-	namespace UI {
+namespace PG {
+	namespace FS {
 
 class SolverExporter : public Crystal::Scene::IAnimator
 {

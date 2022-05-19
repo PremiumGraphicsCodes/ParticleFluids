@@ -6,6 +6,7 @@
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
+using namespace PG::FS;
 
 VDBMenu::VDBMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, world, canvas),
