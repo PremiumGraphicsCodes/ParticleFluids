@@ -1,5 +1,5 @@
 ﻿#include "CrystalScene/AppBase/Window.h"
-#include "CrystalScene/AppBase/FileMenu.h"
+#include "FileMenu.h"
 #include "CrystalScene/AppBase/CameraMenu.h"
 #include "CrystalScene/AppBase/CtrlMenu.h"
 #include "CrystalScene/AppBase/ShapeMenu.h"
@@ -55,7 +55,7 @@ int main()
 	auto control = new ControlPanel("Control", &world, &canvas);
 	window.add(control);
 
-	window.add(new FileMenu("File", &world, &canvas));
+	window.add(new PG::FS::FileMenu("File", &world, &canvas));
 	window.add(new CameraMenu("Camera", &world, &canvas));
 	window.add(new CtrlMenu("Ctrl", &world, &canvas));
 	window.add(new ShapeMenu("Shape", &world, &canvas, control));

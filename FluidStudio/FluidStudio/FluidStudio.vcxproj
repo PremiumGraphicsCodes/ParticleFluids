@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="EmitterModel.cpp" />
     <ClCompile Include="EmitterView.cpp" />
+    <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="FluidListPanel.cpp" />
     <ClCompile Include="FluidMenu.cpp" />
     <ClCompile Include="FluidModel.cpp" />
@@ -208,6 +209,7 @@
   <ItemGroup>
     <ClInclude Include="EmitterModel.h" />
     <ClInclude Include="EmitterView.h" />
+    <ClInclude Include="FileMenu.h" />
     <ClInclude Include="FluidListPanel.h" />
     <ClInclude Include="FluidMenu.h" />
     <ClInclude Include="FluidModel.h" />

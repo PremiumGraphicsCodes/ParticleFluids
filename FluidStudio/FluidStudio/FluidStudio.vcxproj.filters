@@ -38,6 +38,9 @@
     <ClCompile Include="EmitterModel.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="FileMenu.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidMenu.h">
@@ -76,6 +79,9 @@
     <ClInclude Include="EmitterModel.h">
       <Filter>Model</Filter>
     </ClInclude>
+    <ClInclude Include="FileMenu.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="VDB">
@@ -89,6 +95,9 @@
     </Filter>
     <Filter Include="Model">
       <UniqueIdentifier>{337932cf-d449-4af9-a210-6242725edb82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileIO">
+      <UniqueIdentifier>{f51c11d6-4619-4405-ae37-ac0b904d5b44}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
