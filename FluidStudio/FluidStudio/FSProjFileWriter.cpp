@@ -22,11 +22,7 @@ bool FSProjFileWriter::write(MainModel* model, const std::string& filePath)
 	tinyxml2::XMLElement* root = doc.NewElement("Root");
 	doc.InsertEndChild(root);
 
-	auto solver = model->getSolver();
-	const auto& fluids = solver->getFluids();
-	for (const auto& f : fluids) {
-		f->toXML(&doc, root);
-	}
+	model->toXML(&doc, root);
 	/*
 	// User
 	tinyxml2::XMLElement* user = doc.NewElement("User");

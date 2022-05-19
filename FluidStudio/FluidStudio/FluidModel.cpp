@@ -45,22 +45,36 @@ void FluidModel::reset(World* world)
 
 tinyxml2::XMLElement* FluidModel::toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent)
 {
-	tinyxml2::XMLElement* code2 = doc->NewElement("Fluid");
-	code2->SetAttribute("Name", this->name.c_str());
-	parent->InsertEndChild(code2);
+	tinyxml2::XMLElement* e = doc->NewElement("Fluid");
+	e->SetAttribute("Name", this->name.c_str());
+	parent->InsertEndChild(e);
 
-	tinyxml2::XMLElement* idElem = doc->NewElement("Id");
 	{
+		auto elem = doc->NewElement("Id");
 		auto text = doc->NewText(std::to_string(fluidId).c_str());
-		idElem->InsertEndChild(text);
-		code2->InsertEndChild(idElem);
+		elem->InsertEndChild(text);
+		e->InsertEndChild(elem);
 	}
 
-	tinyxml2::XMLElement* psIdElem = doc->NewElement("ParticleSystemId");
 	{
+		auto elem = doc->NewElement("ParticleSystemId");
 		auto text = doc->NewText(std::to_string(particleSystemId).c_str());
-		psIdElem->InsertEndChild(text);
-		code2->InsertEndChild(psIdElem);
+		elem->InsertEndChild(text);
+		e->InsertEndChild(elem);
 	}
-	return code2;
+
+	{
+		auto elem = doc->NewElement("Stiffness");
+		auto text = doc->NewText(std::to_string(this->pressureCoe).c_str());
+		elem->InsertEndChild(text);
+		e->InsertEndChild(elem);
+	}
+
+	{
+		auto elem = doc->NewElement("Viscosity");
+		auto text = doc->NewText(std::to_string(this->viscosityCoe).c_str());
+		elem->InsertEndChild(text);
+		e->InsertEndChild(elem);
+	}
+	return e;
 }

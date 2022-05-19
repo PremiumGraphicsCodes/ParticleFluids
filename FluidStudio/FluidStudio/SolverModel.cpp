@@ -104,3 +104,15 @@ void SolverModel::addEmitter(World* world)
 	fm->create(world);
 	emitters.push_back(std::move(fm));
 }
+
+tinyxml2::XMLElement* SolverModel::toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent)
+{
+	tinyxml2::XMLElement* e = doc->NewElement("Solver");
+	//e->SetAttribute("Name", this->name.c_str());
+	parent->InsertEndChild(e);
+
+	for (auto& f : fluids) {
+		f->toXML(doc, e);
+	}
+	return e;
+}

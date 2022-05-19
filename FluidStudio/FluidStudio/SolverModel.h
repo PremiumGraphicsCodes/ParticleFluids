@@ -7,11 +7,12 @@
 #include "EmitterModel.h"
 
 #include "SolverExporter.h"
+#include "IModel.h"
 
 namespace PG {
 	namespace FS {
 
-class SolverModel
+class SolverModel : public IModel
 {
 public:
 	void init(Crystal::Scene::World* world);
@@ -31,6 +32,8 @@ public:
 	void addFluid(Crystal::Scene::World* world);
 
 	void addEmitter(Crystal::Scene::World* world);
+
+	tinyxml2::XMLElement* toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent) override;
 
 private:
 	std::vector<std::unique_ptr<PG::FS::FluidModel>> fluids;
