@@ -85,3 +85,18 @@ tinyxml2::XMLElement* FluidModel::toXML(tinyxml2::XMLDocument* doc, tinyxml2::XM
 	}
 	return e;
 }
+
+bool FluidModel::fromXML(tinyxml2::XMLElement* parent)
+{
+	auto attr = parent->FirstAttribute();
+	this->name = attr->Value();
+	{
+		this->fluidId = parent->FirstChildElement("Id")->IntText();
+		this->particleSystemId = parent->FirstChildElement("ParticleSystemId")->IntText();
+		this->pressureCoe = parent->FirstChildElement("Stiffness")->FloatText();
+		this->viscosityCoe = parent->FirstChildElement("Viscosity")->FloatText();
+		//this->heatDiffuseCoe = parent->FirstChildElement("HeatDiffuse")->FloatText();
+	}
+
+	return true;
+};

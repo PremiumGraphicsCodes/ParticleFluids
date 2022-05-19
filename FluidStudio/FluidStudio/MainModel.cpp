@@ -13,3 +13,7 @@ tinyxml2::XMLElement* MainModel::toXML(tinyxml2::XMLDocument* doc, tinyxml2::XML
 	return nullptr;
 }
 
+bool MainModel::fromXML(tinyxml2::XMLElement* parent)
+{
+	return solverModel.fromXML(parent);
+};

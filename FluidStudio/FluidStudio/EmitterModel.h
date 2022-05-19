@@ -17,6 +17,8 @@ public:
 
 	tinyxml2::XMLElement* toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent) override;
 
+	bool fromXML(tinyxml2::XMLElement* parent) override { return false; };
+
 	std::string name = "Emitter01";
 	int fluidId;
 	int particleSystemId;

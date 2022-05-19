@@ -17,7 +17,9 @@ public:
 	SolverModel* getSolver() { return &solverModel; }
 
 	tinyxml2::XMLElement* toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent) override;
-	
+
+	bool fromXML(tinyxml2::XMLElement* parent) override;
+
 private:
 	Crystal::Scene::World* world;
 	SolverModel solverModel;

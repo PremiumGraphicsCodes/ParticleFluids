@@ -14,7 +14,9 @@ public:
 
 	void reset(Crystal::Scene::World* world);
 
-	virtual tinyxml2::XMLElement* toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent) override;
+	tinyxml2::XMLElement* toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent) override;
+
+	bool fromXML(tinyxml2::XMLElement* parent);
 
 	std::string name = "Fluid01";
 	int fluidId;

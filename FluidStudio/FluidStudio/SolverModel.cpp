@@ -116,3 +116,21 @@ tinyxml2::XMLElement* SolverModel::toXML(tinyxml2::XMLDocument* doc, tinyxml2::X
 	}
 	return e;
 }
+
+bool SolverModel::fromXML(tinyxml2::XMLElement* parent)
+{
+	auto e = parent->FirstChildElement("Solver");
+	if (e == nullptr) {
+		return false;
+	}
+
+	auto f = e->FirstChildElement("Fluid");
+	while (f != nullptr) {
+		auto fluid = std::make_unique<FluidModel>();
+		fluid->fromXML(f);
+		fluids.push_back(std::move(fluid));
+		f = f->NextSiblingElement("Fluid");
+	}
+	
+	return true;
+};

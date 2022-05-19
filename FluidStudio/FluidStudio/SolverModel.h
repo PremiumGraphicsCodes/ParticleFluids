@@ -35,6 +35,8 @@ public:
 
 	tinyxml2::XMLElement* toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent) override;
 
+	bool fromXML(tinyxml2::XMLElement* parent) override;
+
 private:
 	std::vector<std::unique_ptr<PG::FS::FluidModel>> fluids;
 	std::vector<std::unique_ptr<PG::FS::EmitterModel>> emitters;
