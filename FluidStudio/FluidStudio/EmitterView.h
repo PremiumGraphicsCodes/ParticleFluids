@@ -10,16 +10,11 @@
 namespace PG {
 	namespace FS {
 		class EmitterModel;
-	}
-}
 
-namespace Crystal {
-	namespace UI {
-
-class EmitterView : public IOkCancelView
+class EmitterView : public Crystal::UI::IOkCancelView
 {
 public:
-	EmitterView(const std::string& name, Scene::World* world, Canvas* canvas);
+	EmitterView(const std::string& name, Crystal::Scene::World* world, Crystal::UI::Canvas* canvas);
 
 	void setValue(PG::FS::EmitterModel* emitter);
 
@@ -27,17 +22,17 @@ private:
 	void onOk() override;
 
 	PG::FS::EmitterModel* emitter;
-	IntView idView;
-	IntView psIdView;
-	Box3dView boundaryView;
-	FloatView pressureCoeView;
-	FloatView viscosityCoeView;
-	FloatView heatDiffuseCoeView;
-	FloatView dragHeatCoeView;
-	FloatView dragForceCoeView;
-	FloatView temperatureView;
-	IntView lifeLimitView;
-	Vector3dView velocityView;
+	Crystal::UI::IntView idView;
+	Crystal::UI::IntView psIdView;
+	Crystal::UI::Box3dView boundaryView;
+	Crystal::UI::FloatView pressureCoeView;
+	Crystal::UI::FloatView viscosityCoeView;
+	Crystal::UI::FloatView heatDiffuseCoeView;
+	Crystal::UI::FloatView dragHeatCoeView;
+	Crystal::UI::FloatView dragForceCoeView;
+	Crystal::UI::FloatView temperatureView;
+	Crystal::UI::IntView lifeLimitView;
+	Crystal::UI::Vector3dView velocityView;
 
 };
 

@@ -9,6 +9,8 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
+using namespace PG::FS;
+
 void SolverModel::init(World* world)
 {
 	auto ps = std::make_unique<Crystal::Shape::ParticleSystem<ParticleAttribute>>();

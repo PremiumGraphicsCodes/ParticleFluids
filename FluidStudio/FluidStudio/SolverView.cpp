@@ -16,6 +16,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Physics;
+using namespace PG::FS;
 
 SolverView::SolverView(const std::string& name, World* world, Canvas* canvas, SolverModel* mainModel) :
 	IView(name),

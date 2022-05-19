@@ -13,11 +13,11 @@ public:
 
 	void init();
 
-	Crystal::UI::SolverModel* getSolver() { return &solverModel; }
+	SolverModel* getSolver() { return &solverModel; }
 	
 private:
 	Crystal::Scene::World* world;
-	Crystal::UI::SolverModel solverModel;
+	SolverModel solverModel;
 };
 	}
 }

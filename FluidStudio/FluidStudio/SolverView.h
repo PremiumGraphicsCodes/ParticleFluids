@@ -24,7 +24,7 @@ namespace Crystal {
 class SolverView : public IView
 {
 public:
-	SolverView(const std::string& name, Scene::World* world, Canvas* canvas, SolverModel* model);
+	SolverView(const std::string& name, Scene::World* world, Canvas* canvas, PG::FS::SolverModel* model);
 
 private:
 	//void onAddEmitter();
@@ -50,7 +50,7 @@ private:
 	BoolView doExportView;
 	DirectoryView exportDirecotryView;
 	IntView exportIntervalView;
-	SolverModel* model;
+	PG::FS::SolverModel* model;
 };
 
 	}

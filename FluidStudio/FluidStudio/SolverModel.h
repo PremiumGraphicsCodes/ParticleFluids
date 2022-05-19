@@ -8,38 +8,37 @@
 
 #include "SolverExporter.h"
 
-namespace Crystal {
-	namespace UI {
+namespace PG {
+	namespace FS {
 
 class SolverModel
 {
 public:
-	void init(Scene::World* world);
+	void init(Crystal::Scene::World* world);
 
-	void reset(Scene::World* world);
+	void reset(Crystal::Scene::World* world);
 
-	SolverExporter* getExporter() { return exporter; }
+	Crystal::UI::SolverExporter* getExporter() { return exporter; }
 
-	Physics::CSGBoundaryScene* getBoundary() { return csgScene; }
+	Crystal::Physics::CSGBoundaryScene* getBoundary() { return csgScene; }
 
-	Physics::MVPFluidSolver* getSolver() { return &solver; }
+	Crystal::Physics::MVPFluidSolver* getSolver() { return &solver; }
 
 	const std::vector<std::unique_ptr<PG::FS::FluidModel>>& getFluids() const { return fluids; }
 	
 	const std::vector<std::unique_ptr<PG::FS::EmitterModel>>& getEmitters() const { return emitters; }
 
-	void addFluid(Scene::World* world);
+	void addFluid(Crystal::Scene::World* world);
 
-	void addEmitter(Scene::World* world);
+	void addEmitter(Crystal::Scene::World* world);
 
 private:
 	std::vector<std::unique_ptr<PG::FS::FluidModel>> fluids;
 	std::vector<std::unique_ptr<PG::FS::EmitterModel>> emitters;
-	SolverExporter* exporter;
-	Physics::MVPUpdater updator;
-	Physics::CSGBoundaryScene* csgScene;
-	Physics::MVPFluidSolver solver;
-
+	Crystal::UI::SolverExporter* exporter;
+	Crystal::Physics::MVPUpdater updator;
+	Crystal::Physics::CSGBoundaryScene* csgScene;
+	Crystal::Physics::MVPFluidSolver solver;
 };
 
 	}
