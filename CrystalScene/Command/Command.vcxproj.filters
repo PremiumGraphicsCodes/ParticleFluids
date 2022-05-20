@@ -164,6 +164,15 @@
     <ClInclude Include="JSONFileReader.h">
       <Filter>JSON</Filter>
     </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>XML</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLFileWriter.h">
+      <Filter>XML</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLConverter.h">
+      <Filter>JSON</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -326,6 +335,15 @@
     <ClCompile Include="JSONFileReader.cpp">
       <Filter>JSON</Filter>
     </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLFileWriter.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLConverter.cpp">
+      <Filter>JSON</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -396,6 +414,9 @@
     </Filter>
     <Filter Include="JSON">
       <UniqueIdentifier>{a91131b3-0112-455f-aac8-de4409b2581b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XML">
+      <UniqueIdentifier>{f83baf22-63c2-4cb1-ab9f-528a3d4e0b16}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

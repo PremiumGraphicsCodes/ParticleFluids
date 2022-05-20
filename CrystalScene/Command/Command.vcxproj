@@ -210,6 +210,7 @@
     <ClInclude Include="STLFileImportCommand.h" />
     <ClInclude Include="TextureCreateCommand.h" />
     <ClInclude Include="TextureSetCommand.h" />
+    <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="TransformCommand.h" />
     <ClInclude Include="TriangleMeshCreateCommand.h" />
     <ClInclude Include="TriangleMeshGetCommand.h" />
@@ -218,6 +219,8 @@
     <ClInclude Include="TXTFileExportCommand.h" />
     <ClInclude Include="TXTFileImportCommand.h" />
     <ClInclude Include="WireFrameCreateCommand.h" />
+    <ClInclude Include="XMLConverter.h" />
+    <ClInclude Include="XMLFileWriter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraCreateCommand.cpp" />
@@ -270,6 +273,7 @@
     <ClCompile Include="STLFileImportCommand.cpp" />
     <ClCompile Include="TextureCreateCommand.cpp" />
     <ClCompile Include="TextureSetCommand.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="TransformCommand.cpp" />
     <ClCompile Include="TriangleMeshCreateCommand.cpp" />
     <ClCompile Include="TriangleMeshGetCommand.cpp" />
@@ -278,6 +282,8 @@
     <ClCompile Include="TXTFileExportCommand.cpp" />
     <ClCompile Include="TXTFileImportCommand.cpp" />
     <ClCompile Include="WireFrameCreateCommand.cpp" />
+    <ClCompile Include="XMLConverter.cpp" />
+    <ClCompile Include="XMLFileWriter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
