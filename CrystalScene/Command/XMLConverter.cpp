@@ -96,6 +96,19 @@ tinyxml2::XMLElement* XMLConverter::toXML(tinyxml2::XMLDocument* doc,  const Pro
     return elem;
 }
 
+template<>
+void XMLConverter::fromXML<int>(const tinyxml2::XMLElement& parent, const std::string& name, int& value)
+{
+    value = parent.FirstChildElement(name.c_str())->IntText();
+}
+
+template<>
+void XMLConverter::fromXML<float>(const tinyxml2::XMLElement& parent, const std::string& name, float& value)
+{
+    value = parent.FirstChildElement(name.c_str())->FloatText();
+}
+
+
 void XMLConverter::fromXML(const tinyxml2::XMLElement& text, std::any& value)
 {
     const auto& type = value.type();

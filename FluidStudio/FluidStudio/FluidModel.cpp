@@ -76,15 +76,14 @@ bool FluidModel::fromXML(tinyxml2::XMLElement* parent)
 {
 	auto attr = parent->FirstAttribute();
 	this->name = attr->Value();
-	{
-		this->fluidId = parent->FirstChildElement(::IdLabel)->IntText();
-		this->particleSystemId = parent->FirstChildElement(::ParticleSystemIdLabel)->IntText();
-		this->pressureCoe = parent->FirstChildElement(::StiffnessLabel)->FloatText();
-		this->viscosityCoe = parent->FirstChildElement(::ViscosityLabel)->FloatText();
-		this->heatDiffuseCoe = parent->FirstChildElement(::HeatDiffuseLabel)->FloatText();
-		this->dragForceCoe = parent->FirstChildElement(::DragForceLabel)->FloatText();
-		this->dragHeatCoe = parent->FirstChildElement(::DragHeatLabel)->FloatText();
-	}
+	
+	XMLConverter::fromXML(*parent, ::IdLabel, fluidId);
+	XMLConverter::fromXML(*parent, ::ParticleSystemIdLabel, particleSystemId);
+	XMLConverter::fromXML(*parent, ::StiffnessLabel, pressureCoe);
+	XMLConverter::fromXML(*parent, ::ViscosityLabel, viscosityCoe);
+	XMLConverter::fromXML(*parent, ::HeatDiffuseLabel, heatDiffuseCoe);
+	XMLConverter::fromXML(*parent, ::DragForceLabel, dragForceCoe);
+	XMLConverter::fromXML(*parent, ::DragHeatLabel, dragHeatCoe);
 
 	return true;
 };
