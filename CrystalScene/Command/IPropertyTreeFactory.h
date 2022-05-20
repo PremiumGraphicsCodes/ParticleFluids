@@ -6,10 +6,10 @@
 namespace Crystal {
 	namespace Command {
 
-class ILabeledValueFactory : UnCopyable
+class IPropertyTreeFactory : UnCopyable
 {
 public:
-	virtual std::unique_ptr<PropertyTree> create(const std::string& name) const = 0;
+	virtual PropertyTree* create(const std::string& name) const = 0;
 };
 
 	}

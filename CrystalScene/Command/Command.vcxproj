@@ -160,7 +160,7 @@
     <ClInclude Include="CameraCreateCommand.h" />
     <ClInclude Include="CameraGetCommand.h" />
     <ClInclude Include="CameraSetCommand.h" />
-    <ClInclude Include="ILabeledValueFactory.h" />
+    <ClInclude Include="IPropertyTreeFactory.h" />
     <ClInclude Include="JSONConverter.h" />
     <ClInclude Include="JSONFileReader.h" />
     <ClInclude Include="JSONFileWriter.h" />

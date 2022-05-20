@@ -175,7 +175,7 @@
     <ClInclude Include="XMLFileReader.h">
       <Filter>XML</Filter>
     </ClInclude>
-    <ClInclude Include="ILabeledValueFactory.h">
+    <ClInclude Include="IPropertyTreeFactory.h">
       <Filter>Property</Filter>
     </ClInclude>
     <ClInclude Include="ICommand.h" />

@@ -7,23 +7,27 @@ using namespace Crystal::Command;
 
 namespace {
 
-	class LBFactory : public ILabeledValueFactory
+	class LBFactory : public IPropertyTreeFactory
 	{
-		std::unique_ptr<PropertyTree> create(const std::string& name) const override
+		PropertyTree* create(const std::string& name) const override
 		{
 			if (name == "Tree")
 			{
-				auto tree = std::make_unique<PropertyTree>("Tree");
+				auto tree = new PropertyTree("Tree");
 				tree->add( new Property<int>("Int", 1));
 				tree->add( new Property<double>("Double", 3.14));
-				return std::move(tree);
+				return tree;
 			}
 			else if (name == "Tree2")
 			{
-				auto tree2 = std::make_unique<PropertyTree>("Tree2");
+				auto tree2 = new PropertyTree("Tree2");
 				tree2->add( new Property<float>("Float", 3.14f));
 				tree2->add(new Property<std::string>("Text", "Hello"));
-				return std::move(tree2);
+				return tree2;
+			}
+			else {
+				assert(false);
+				return nullptr;
 			}
 		}
 	};
@@ -36,4 +40,5 @@ TEST(XMLFileReaderTest, TestRead)
 	XMLFileReader reader;
 	const auto isOk = reader.read("./TestFiles/test.xml", factory);
 	EXPECT_TRUE(isOk);
+	EXPECT_EQ(1, reader.getTree()->getChildren().size());
 }

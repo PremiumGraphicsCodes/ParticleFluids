@@ -5,7 +5,7 @@
 
 using namespace Crystal::Command;
 
-bool XMLFileReader::read(const std::filesystem::path& path, const ILabeledValueFactory& factory)
+bool XMLFileReader::read(const std::filesystem::path& path, const IPropertyTreeFactory& factory)
 {
 	tinyxml2::XMLDocument doc;
 	tinyxml2::XMLError ret = doc.LoadFile(path.string().c_str());
@@ -22,7 +22,7 @@ bool XMLFileReader::read(const std::filesystem::path& path, const ILabeledValueF
 	return true;
 }
 
-bool XMLFileReader::read(tinyxml2::XMLElement* parent, const ILabeledValueFactory& factory, PropertyTree& tree)
+bool XMLFileReader::read(tinyxml2::XMLElement* parent, const IPropertyTreeFactory& factory, PropertyTree& tree)
 {
 	auto c = parent->FirstChildElement();
 
@@ -32,6 +32,7 @@ bool XMLFileReader::read(tinyxml2::XMLElement* parent, const ILabeledValueFactor
 		if (text == nullptr) {
 			auto t = factory.create(name);
 			read(c, factory, *t);
+			tree.add(t);
 		}
 		else {
 			auto a = tree.getValue(name);
