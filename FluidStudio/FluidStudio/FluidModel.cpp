@@ -3,9 +3,11 @@
 #include "CrystalPhysics/CrystalPhysics/MVP/MVPFluidScene.h"
 #include "CrystalPhysics/CrystalPhysicsCommand/FluidSceneUpdateCommand.h"
 
+#include "CrystalScene/Command/XMLConverter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
+using namespace Crystal::Command;
 using namespace Crystal::Physics;
 using namespace PG::FS;
 
@@ -43,46 +45,30 @@ void FluidModel::reset(World* world)
 	command.execute(world);
 }
 
+namespace {
+	constexpr auto IdLabel = "Id";
+	constexpr auto ParticleSystemIdLabel = "ParticleSystemId";
+	constexpr auto StiffnessLabel = "Stiffness";
+	constexpr auto ViscosityLabel = "Viscosity";
+	constexpr auto HeatDiffuseLabel = "HeatDiffuse";
+	constexpr auto DragForceLabel = "DragForce";
+	constexpr auto DragHeatLabel = "DragHeat";
+}
+
 tinyxml2::XMLElement* FluidModel::toXML(tinyxml2::XMLDocument* doc, tinyxml2::XMLElement* parent)
 {
 	tinyxml2::XMLElement* e = doc->NewElement("Fluid");
 	e->SetAttribute("Name", this->name.c_str());
 	parent->InsertEndChild(e);
 
-	{
-		auto elem = doc->NewElement("Id");
-		auto text = doc->NewText(std::to_string(fluidId).c_str());
-		elem->InsertEndChild(text);
-		e->InsertEndChild(elem);
-	}
+	e->InsertEndChild(XMLConverter::toXML(doc, ::IdLabel, fluidId));
+	e->InsertEndChild(XMLConverter::toXML(doc, ::ParticleSystemIdLabel, particleSystemId));
+	e->InsertEndChild(XMLConverter::toXML(doc, ::StiffnessLabel, pressureCoe));
+	e->InsertEndChild(XMLConverter::toXML(doc, ::ViscosityLabel, viscosityCoe));
+	e->InsertEndChild(XMLConverter::toXML(doc, ::HeatDiffuseLabel, heatDiffuseCoe));
+	e->InsertEndChild(XMLConverter::toXML(doc, ::DragForceLabel, dragForceCoe));
+	e->InsertEndChild(XMLConverter::toXML(doc, ::DragHeatLabel, dragHeatCoe));
 
-	{
-		auto elem = doc->NewElement("ParticleSystemId");
-		auto text = doc->NewText(std::to_string(particleSystemId).c_str());
-		elem->InsertEndChild(text);
-		e->InsertEndChild(elem);
-	}
-
-	{
-		auto elem = doc->NewElement("Stiffness");
-		auto text = doc->NewText(std::to_string(this->pressureCoe).c_str());
-		elem->InsertEndChild(text);
-		e->InsertEndChild(elem);
-	}
-
-	{
-		auto elem = doc->NewElement("Viscosity");
-		auto text = doc->NewText(std::to_string(this->viscosityCoe).c_str());
-		elem->InsertEndChild(text);
-		e->InsertEndChild(elem);
-	}
-
-	{
-		auto elem = doc->NewElement("HeatDiffuse");
-		auto text = doc->NewText(std::to_string(this->heatDiffuseCoe).c_str());
-		elem->InsertEndChild(text);
-		e->InsertEndChild(elem);
-	}
 	return e;
 }
 
@@ -91,11 +77,13 @@ bool FluidModel::fromXML(tinyxml2::XMLElement* parent)
 	auto attr = parent->FirstAttribute();
 	this->name = attr->Value();
 	{
-		this->fluidId = parent->FirstChildElement("Id")->IntText();
-		this->particleSystemId = parent->FirstChildElement("ParticleSystemId")->IntText();
-		this->pressureCoe = parent->FirstChildElement("Stiffness")->FloatText();
-		this->viscosityCoe = parent->FirstChildElement("Viscosity")->FloatText();
-		//this->heatDiffuseCoe = parent->FirstChildElement("HeatDiffuse")->FloatText();
+		this->fluidId = parent->FirstChildElement(::IdLabel)->IntText();
+		this->particleSystemId = parent->FirstChildElement(::ParticleSystemIdLabel)->IntText();
+		this->pressureCoe = parent->FirstChildElement(::StiffnessLabel)->FloatText();
+		this->viscosityCoe = parent->FirstChildElement(::ViscosityLabel)->FloatText();
+		this->heatDiffuseCoe = parent->FirstChildElement(::HeatDiffuseLabel)->FloatText();
+		this->dragForceCoe = parent->FirstChildElement(::DragForceLabel)->FloatText();
+		this->dragHeatCoe = parent->FirstChildElement(::DragHeatLabel)->FloatText();
 	}
 
 	return true;

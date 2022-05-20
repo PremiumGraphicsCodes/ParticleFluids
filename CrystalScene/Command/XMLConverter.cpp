@@ -3,6 +3,24 @@
 
 using namespace Crystal::Command;
 
+template<>
+tinyxml2::XMLElement* XMLConverter::toXML<int>(tinyxml2::XMLDocument* doc, const std::string& name, const int value)
+{
+    auto elem = doc->NewElement(name.c_str());
+    auto text = doc->NewText(std::to_string(value).c_str());
+    elem->InsertEndChild(text);
+    return elem;
+}
+
+template<>
+tinyxml2::XMLElement* XMLConverter::toXML<float>(tinyxml2::XMLDocument* doc, const std::string& name, const float value)
+{
+    auto elem = doc->NewElement(name.c_str());
+    auto text = doc->NewText(std::to_string(value).c_str());
+    elem->InsertEndChild(text);
+    return elem;
+}
+
 tinyxml2::XMLText* XMLConverter::toXML(tinyxml2::XMLDocument* doc, const std::any& value)
 {
     const auto& type = value.type();
