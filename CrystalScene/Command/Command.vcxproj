@@ -160,6 +160,7 @@
     <ClInclude Include="CameraCreateCommand.h" />
     <ClInclude Include="CameraGetCommand.h" />
     <ClInclude Include="CameraSetCommand.h" />
+    <ClInclude Include="ILabeledValueFactory.h" />
     <ClInclude Include="JSONConverter.h" />
     <ClInclude Include="JSONFileReader.h" />
     <ClInclude Include="JSONFileWriter.h" />
@@ -222,6 +223,7 @@
     <ClInclude Include="TXTFileImportCommand.h" />
     <ClInclude Include="WireFrameCreateCommand.h" />
     <ClInclude Include="XMLConverter.h" />
+    <ClInclude Include="XMLFileReader.h" />
     <ClInclude Include="XMLFileWriter.h" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +287,7 @@
     <ClCompile Include="TXTFileImportCommand.cpp" />
     <ClCompile Include="WireFrameCreateCommand.cpp" />
     <ClCompile Include="XMLConverter.cpp" />
+    <ClCompile Include="XMLFileReader.cpp" />
     <ClCompile Include="XMLFileWriter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -77,3 +77,43 @@ tinyxml2::XMLElement* XMLConverter::toXML(tinyxml2::XMLDocument* doc,  const Lab
     }
     return elem;
 }
+
+void XMLConverter::fromXML(const tinyxml2::XMLElement& text, std::any& value)
+{
+    const auto& type = value.type();
+    if (type == typeid(int)) {
+        const int v = text.IntText();
+        value = v;
+    }
+    else if (type == typeid(bool)) {
+        const bool v = text.BoolText();
+        value = v;
+    }
+    else if (type == typeid(float)) {
+        const float v = text.FloatText();
+        value = v;
+    }
+    else if (type == typeid(double)) {
+        const double v = text.DoubleText();
+        value = v;
+    }
+    else if (type == typeid(std::string)) {
+        const std::string v = text.GetText();
+        value = v;
+    }
+    else {
+        assert(false);
+    }
+}
+
+#include <iostream>
+
+bool XMLConverter::fromXML(const tinyxml2::XMLElement& parent, LabeledValueTree& tree)
+{
+    const auto values = tree.getValues();
+    for (auto v : values) {
+        auto e = parent.FirstChildElement(v->name.c_str());
+        fromXML(*e, v->value);
+    }
+    return true;
+}
