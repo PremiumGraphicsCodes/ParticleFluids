@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../Crystal/Util/UnCopyable.h"
-#include "LabeledValueTree.h"
+#include "PropertyTree.h"
 
 namespace Crystal {
 	namespace Command {
@@ -9,7 +9,7 @@ namespace Crystal {
 class ILabeledValueFactory : UnCopyable
 {
 public:
-	virtual std::unique_ptr<LabeledValueTree> create(const std::string& name) const = 0;
+	virtual std::unique_ptr<PropertyTree> create(const std::string& name) const = 0;
 };
 
 	}

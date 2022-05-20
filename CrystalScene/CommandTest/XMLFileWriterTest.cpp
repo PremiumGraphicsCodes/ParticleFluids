@@ -7,15 +7,15 @@ using namespace Crystal::Command;
 
 TEST(XMLFileWriterTest, TestWrite)
 {
-	LabeledValue<int> intValue("Int", 1);
-	LabeledValue<double> doubleValue("Double", 3.14);
-	LabeledValueTree tree1("Tree");
+	Property<int> intValue("Int", 1);
+	Property<double> doubleValue("Double", 3.14);
+	PropertyTree tree1("Tree");
 	tree1.add(&intValue);
 	tree1.add(&doubleValue);
 
-	LabeledValue<float> floatValue("Float", 3.14f);
-	LabeledValue<std::string> textValue("Text", "Hello");
-	LabeledValueTree tree2("Tree2");
+	Property<float> floatValue("Float", 3.14f);
+	Property<std::string> textValue("Text", "Hello");
+	PropertyTree tree2("Tree2");
 	tree2.add(&floatValue);
 	tree2.add(&textValue);
 	tree1.add(&tree2);

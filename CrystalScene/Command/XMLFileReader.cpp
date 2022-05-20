@@ -15,22 +15,23 @@ bool XMLFileReader::read(const std::filesystem::path& path, const ILabeledValueF
 	}
 
 	auto root = doc.RootElement();
-	auto attr = root->FirstChild();
+
+	read(root, factory);
+
+	return true;
+}
+
+bool XMLFileReader::read(tinyxml2::XMLElement* parent, const ILabeledValueFactory& factory)
+{
+	auto attr = parent->FirstChild();
 	auto txt = attr->Value();
 	auto tree = factory.create(txt);
-
-	//tree = std::make_unique<LabeledValueTree>();
-
-	//auto c = root->FirstChild();
-
-	//while (c != root->LastChild()) {
-	//	c = c->NextSibling();
-	//}
-
-	//auto e = root->FirstChildElement();
-	//XMLConverter::fromXML(*root, factory);
-
-	//model->fromXML(root);
+	const auto values = tree->getValues();
+	for (const auto v : values) {
+		auto e = attr->FirstChildElement(v->name.c_str());
+		auto a = tree->getValue(v->name);
+		XMLConverter::fromXML(*e, a);
+	}
 
 	return true;
 }

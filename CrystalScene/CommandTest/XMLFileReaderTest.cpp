@@ -9,20 +9,20 @@ namespace {
 
 	class LBFactory : public ILabeledValueFactory
 	{
-		std::unique_ptr<LabeledValueTree> create(const std::string& name) const override
+		std::unique_ptr<PropertyTree> create(const std::string& name) const override
 		{
 			if (name == "Tree")
 			{
-				auto tree = std::make_unique<LabeledValueTree>("Tree");
-				tree->add( new LabeledValue<int>("Int", 1));
-				tree->add( new LabeledValue<double>("Double", 3.14));
+				auto tree = std::make_unique<PropertyTree>("Tree");
+				tree->add( new Property<int>("Int", 1));
+				tree->add( new Property<double>("Double", 3.14));
 				return std::move(tree);
 			}
 			else if (name == "Tree2")
 			{
-				auto tree2 = std::make_unique<LabeledValueTree>("Tree2");
-				tree2->add( new LabeledValue<float>("Float", 3.14f));
-				tree2->add(new LabeledValue<std::string>("Text", "Hello"));
+				auto tree2 = std::make_unique<PropertyTree>("Tree2");
+				tree2->add( new Property<float>("Float", 3.14f));
+				tree2->add(new Property<std::string>("Text", "Hello"));
 				return std::move(tree2);
 			}
 		}

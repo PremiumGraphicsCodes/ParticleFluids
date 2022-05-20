@@ -59,7 +59,7 @@ tinyxml2::XMLText* XMLConverter::toXML(tinyxml2::XMLDocument* doc, const std::an
     return {};
 }
 
-tinyxml2::XMLElement* XMLConverter::toXML(tinyxml2::XMLDocument* doc,  const LabeledValueTree& args)
+tinyxml2::XMLElement* XMLConverter::toXML(tinyxml2::XMLDocument* doc,  const PropertyTree& args)
 {
     auto elem = doc->NewElement(args.getName().c_str());
     const auto values = args.getValues();
@@ -108,7 +108,7 @@ void XMLConverter::fromXML(const tinyxml2::XMLElement& text, std::any& value)
 
 #include <iostream>
 
-bool XMLConverter::fromXML(const tinyxml2::XMLElement& parent, LabeledValueTree& tree)
+bool XMLConverter::fromXML(const tinyxml2::XMLElement& parent, PropertyTree& tree)
 {
     const auto values = tree.getValues();
     for (auto v : values) {

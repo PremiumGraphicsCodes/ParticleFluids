@@ -5,12 +5,12 @@
 #include <vector>
 #include <algorithm>
 
-#include "LabeledValue.h"
+#include "Property.h"
 
 namespace Crystal {
 	namespace Command {
 
-using IArg = ILabeledValue;
+using IArg = IProperty;
 
 template<typename T>
 struct Arg : IArg

@@ -1,16 +1,16 @@
 #pragma once
 
-#include "LabeledValue.h"
+#include "Property.h"
 
 namespace Crystal {
 	namespace Command {
 
-struct LabeledValueTree
+struct PropertyTree
 {
-	LabeledValueTree()
+	PropertyTree()
 	{}
 
-	explicit LabeledValueTree(const std::string& name) :
+	explicit PropertyTree(const std::string& name) :
 		name(name)
 	{}
 
@@ -20,9 +20,9 @@ struct LabeledValueTree
 
 	std::string getName() const { return name; }
 
-	void add(ILabeledValue* arg) { values.push_back(arg); }
+	void add(IProperty* arg) { values.push_back(arg); }
 
-	void add(LabeledValueTree* child) { children.push_back(child); }
+	void add(PropertyTree* child) { children.push_back(child); }
 
 	std::any getValue(const std::string& name) const {
 		auto iter = std::find_if(values.begin(), values.end(), [=](auto a) { return a->name == name; });
@@ -33,9 +33,9 @@ struct LabeledValueTree
 		return getValue(name).type();
 	}
 
-	std::vector<ILabeledValue*> getValues() const { return values; }
+	std::vector<IProperty*> getValues() const { return values; }
 
-	std::vector<LabeledValueTree*> getChildren() const { return children; }
+	std::vector<PropertyTree*> getChildren() const { return children; }
 
 	/*
 
@@ -47,8 +47,8 @@ struct LabeledValueTree
 
 private:
 	std::string name;
-	std::vector<ILabeledValue*> values;
-	std::vector<LabeledValueTree*> children;
+	std::vector<IProperty*> values;
+	std::vector<PropertyTree*> children;
 };
 
 	}

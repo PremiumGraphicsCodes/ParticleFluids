@@ -5,12 +5,12 @@
 #include <any>
 #include <algorithm>
 
-#include "LabeledValue.h"
+#include "Property.h"
 
 namespace Crystal {
 	namespace Command {
 
-using IResult = ILabeledValue;
+using IResult = IProperty;
 
 template<typename T>
 struct Result : IResult

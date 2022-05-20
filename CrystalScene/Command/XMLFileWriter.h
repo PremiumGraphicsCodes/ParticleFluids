@@ -1,7 +1,7 @@
 #pragma once
 
 #include <filesystem>
-#include "LabeledValueTree.h"
+#include "PropertyTree.h"
 
 namespace Crystal {
 	namespace Command {
@@ -9,7 +9,7 @@ namespace Crystal {
 class XMLFileWriter
 {
 public:
-	bool write(const LabeledValueTree& tree, const std::filesystem::path& path);
+	bool write(const PropertyTree& tree, const std::filesystem::path& path);
 
 private:
 };

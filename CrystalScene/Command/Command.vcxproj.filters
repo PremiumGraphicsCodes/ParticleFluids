@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="ICommand.h" />
     <ClInclude Include="FileImportCommand.h">
       <Filter>File</Filter>
     </ClInclude>
@@ -173,15 +172,21 @@
     <ClInclude Include="XMLConverter.h">
       <Filter>XML</Filter>
     </ClInclude>
-    <ClInclude Include="LabeledValue.h" />
-    <ClInclude Include="LabeledValueTree.h" />
     <ClInclude Include="XMLFileReader.h">
       <Filter>XML</Filter>
     </ClInclude>
-    <ClInclude Include="ILabeledValueFactory.h" />
+    <ClInclude Include="ILabeledValueFactory.h">
+      <Filter>Property</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h" />
+    <ClInclude Include="PropertyTree.h">
+      <Filter>Property</Filter>
+    </ClInclude>
+    <ClInclude Include="Property.h">
+      <Filter>Property</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="FileImportCommand.cpp">
       <Filter>File</Filter>
     </ClCompile>
@@ -353,6 +358,7 @@
     <ClCompile Include="XMLFileReader.cpp">
       <Filter>XML</Filter>
     </ClCompile>
+    <ClCompile Include="ICommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -426,6 +432,9 @@
     </Filter>
     <Filter Include="XML">
       <UniqueIdentifier>{f83baf22-63c2-4cb1-ab9f-528a3d4e0b16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Property">
+      <UniqueIdentifier>{0fdcfb25-d6c3-422a-be21-ae7c49c3e704}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

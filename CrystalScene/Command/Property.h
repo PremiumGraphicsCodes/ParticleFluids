@@ -8,12 +8,12 @@
 namespace Crystal {
 	namespace Command {
 
-struct ILabeledValue
+struct IProperty
 {
-	ILabeledValue()
+	IProperty()
 	{}
 
-	ILabeledValue(const std::string& name, std::any value) :
+	IProperty(const std::string& name, std::any value) :
 		name(name),
 		value(value)
 	{}
@@ -23,10 +23,10 @@ struct ILabeledValue
 };
 
 template<typename T>
-struct LabeledValue : public ILabeledValue
+struct Property : public IProperty
 {
-	LabeledValue(const std::string& name, T value) :
-		ILabeledValue(name, value)
+	Property(const std::string& name, T value) :
+		IProperty(name, value)
 	{}
 
 	T getValue() { return std::any_cast<T>(value); }

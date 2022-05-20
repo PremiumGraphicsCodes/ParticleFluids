@@ -8,7 +8,7 @@
 
 using namespace Crystal::Command;
 
-bool XMLFileWriter::write(const LabeledValueTree& tree, const std::filesystem::path& path)
+bool XMLFileWriter::write(const PropertyTree& tree, const std::filesystem::path& path)
 {
 	const char* declaration = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 	tinyxml2::XMLDocument doc;
