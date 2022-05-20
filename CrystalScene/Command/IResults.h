@@ -5,20 +5,12 @@
 #include <any>
 #include <algorithm>
 
+#include "LabeledValue.h"
+
 namespace Crystal {
 	namespace Command {
 
-struct IResult
-{
-	IResult(const std::string& name, std::any value) :
-		name(name),
-		value(value)
-	{}
-
-
-	std::string name;
-	std::any value;
-};
+using IResult = ILabeledValue;
 
 template<typename T>
 struct Result : IResult

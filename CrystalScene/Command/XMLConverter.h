@@ -12,7 +12,7 @@ class XMLConverter
 public:
 	static tinyxml2::XMLText* toXML(tinyxml2::XMLDocument* doc, const std::any& value);
 
-	//static tinyxml2::XMLElement* toXML(const IArgs& args);
+	static tinyxml2::XMLElement* toXML(tinyxml2::XMLDocument* doc, const IArgs& args);
 
 	//static nlohmann::json toJSON(const ICommand& command);
 

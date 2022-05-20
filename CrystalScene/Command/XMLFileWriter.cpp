@@ -1,7 +1,7 @@
 #include "XMLFileWriter.h"
 
 #include "XMLFileWriter.h"
-//#include "JSONConverter.h"
+#include "XMLConverter.h"
 #include <fstream>
 
 #include "tinyxml2.h"
@@ -29,10 +29,8 @@ bool XMLFileWriter::write(const std::filesystem::path& path)
 	tinyxml2::XMLElement* root = doc.NewElement("Root");
 	doc.InsertEndChild(root);
 
-	for (auto a : args) {
-		for (auto aa : a->args) {
-			//aa->value.
-		}
+	for (auto& a : args) {
+		XMLConverter::toXML(&doc, *a);
 	}
 
 	//model->toXML(&doc, root);

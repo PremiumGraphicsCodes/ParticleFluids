@@ -5,18 +5,28 @@
 #include <vector>
 #include <algorithm>
 
-#include "LabeledValue.h"
-
 namespace Crystal {
 	namespace Command {
 
-using IArg = ILabeledValue;
+struct ILabeledValue
+{
+	ILabeledValue()
+	{}
+
+	ILabeledValue(const std::string& name, std::any value) :
+		name(name),
+		value(value)
+	{}
+
+	std::string name;
+	std::any value;
+};
 
 template<typename T>
-struct Arg : IArg
+struct LabeledValue : public ILabeledValue
 {
-	Arg(const std::string& name, T value) :
-		IArg(name, value)
+	LabeledValue(const std::string& name, T value) :
+		ILabeledValue(name, value)
 	{}
 
 	T getValue() { return std::any_cast<T>(value); }
@@ -24,9 +34,11 @@ struct Arg : IArg
 	void setValue(const T value) { this->value = value; }
 };
 
-struct IArgs
+struct LabledValueTree
 {
-	void add(IArg* arg) { args.push_back(arg); }
+	void add(ILabeledValue* arg) { args.push_back(arg); }
+
+	void add(LabledValueTree* child) { children.push_back(child); }
 
 	std::any getValue(const std::string& name) {
 		auto iter = std::find_if(args.begin(), args.end(), [=](auto a) { return a->name == name; });
@@ -36,13 +48,17 @@ struct IArgs
 	const std::type_info& getType(const std::string& name) {
 		return getValue(name).type();
 	}
+	/*
 
 	void setValue(const std::string& name, std::any value) {
 		auto iter = std::find_if(args.begin(), args.end(), [=](auto a) { return a->name == name; });
 		(*iter)->value = value;
 	}
+	*/
 
-	std::vector<IArg*> args;
+private:
+	std::vector<ILabeledValue*> args;
+	std::vector<LabledValueTree*> children;
 };
 
 	}

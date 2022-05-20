@@ -59,13 +59,12 @@ tinyxml2::XMLText* XMLConverter::toXML(tinyxml2::XMLDocument* doc, const std::an
     return {};
 }
 
-/*
-json JSONConverter::toJSON(const IArgs& args)
+tinyxml2::XMLElement* XMLConverter::toXML(tinyxml2::XMLDocument* doc, const IArgs& args)
 {
-    json j;
+    auto e = doc->NewElement("");
     for (auto a : args.args) {
-        j[a->name] = toJSON(a->value);
+        doc->NewElement(a->name.c_str());
+        auto x = toXML(doc, a->value);
     }
-    return j;
+    return e;
 }
-*/

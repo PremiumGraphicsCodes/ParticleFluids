@@ -171,8 +171,9 @@
       <Filter>XML</Filter>
     </ClInclude>
     <ClInclude Include="XMLConverter.h">
-      <Filter>JSON</Filter>
+      <Filter>XML</Filter>
     </ClInclude>
+    <ClInclude Include="LabeledValue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -342,7 +343,7 @@
       <Filter>XML</Filter>
     </ClCompile>
     <ClCompile Include="XMLConverter.cpp">
-      <Filter>JSON</Filter>
+      <Filter>XML</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
