@@ -20,7 +20,7 @@ private:
 	std::unique_ptr<PropertyTree> tree;
 	//std::map<std::string, typeid>
 
-	bool read(tinyxml2::XMLElement* parent, const ILabeledValueFactory& factory);
+	bool read(tinyxml2::XMLElement* parent, const ILabeledValueFactory& factory, PropertyTree& t);
 
 };
 
