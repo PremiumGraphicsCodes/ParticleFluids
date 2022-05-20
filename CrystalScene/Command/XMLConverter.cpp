@@ -15,7 +15,7 @@ tinyxml2::XMLText* XMLConverter::toXML(tinyxml2::XMLDocument* doc, const std::an
         return doc->NewText(std::to_string(v).c_str());
     }
     if (type == typeid(float)) {
-        const auto v = std::any_cast<int>(value);
+        const auto v = std::any_cast<float>(value);
         return doc->NewText(std::to_string(v).c_str());
     }
     if (type == typeid(double)) {
@@ -59,12 +59,21 @@ tinyxml2::XMLText* XMLConverter::toXML(tinyxml2::XMLDocument* doc, const std::an
     return {};
 }
 
-tinyxml2::XMLElement* XMLConverter::toXML(tinyxml2::XMLDocument* doc, const IArgs& args)
+tinyxml2::XMLElement* XMLConverter::toXML(tinyxml2::XMLDocument* doc,  const LabeledValueTree& args)
 {
-    auto e = doc->NewElement("");
-    for (auto a : args.args) {
-        doc->NewElement(a->name.c_str());
-        auto x = toXML(doc, a->value);
+    auto elem = doc->NewElement(args.getName().c_str());
+    const auto values = args.getValues();
+    for (auto v : values) {
+        auto e = doc->NewElement(v->name.c_str());
+        auto x = toXML(doc, v->value);
+        e->InsertEndChild(x);
+        elem->InsertEndChild(e);
     }
-    return e;
+
+    const auto children = args.getChildren();
+    for (auto c : children) {
+        auto e = toXML(doc, *c);
+        elem->InsertEndChild(e);
+    }
+    return elem;
 }

@@ -164,6 +164,7 @@
     <ClInclude Include="JSONFileReader.h" />
     <ClInclude Include="JSONFileWriter.h" />
     <ClInclude Include="LabeledValue.h" />
+    <ClInclude Include="LabeledValueTree.h" />
     <ClInclude Include="ParticleSystemGetCommand.h" />
     <ClInclude Include="ParticleSystemSetCommand.h" />
     <ClInclude Include="PLYFileExportCommand.h" />

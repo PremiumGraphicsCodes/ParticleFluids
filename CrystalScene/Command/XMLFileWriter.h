@@ -1,7 +1,7 @@
 #pragma once
 
 #include <filesystem>
-#include "IArgs.h"
+#include "LabeledValueTree.h"
 
 namespace Crystal {
 	namespace Command {
@@ -9,12 +9,9 @@ namespace Crystal {
 class XMLFileWriter
 {
 public:
-	void add(IArgs* arg);
-
-	bool write(const std::filesystem::path& path);
+	bool write(const LabeledValueTree& tree, const std::filesystem::path& path);
 
 private:
-	std::vector<IArgs*> args;
 };
 
 	}

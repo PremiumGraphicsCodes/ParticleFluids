@@ -8,12 +8,7 @@
 
 using namespace Crystal::Command;
 
-void XMLFileWriter::add(IArgs* command)
-{
-	args.push_back(command);
-}
-
-bool XMLFileWriter::write(const std::filesystem::path& path)
+bool XMLFileWriter::write(const LabeledValueTree& tree, const std::filesystem::path& path)
 {
 	const char* declaration = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 	tinyxml2::XMLDocument doc;
@@ -29,9 +24,9 @@ bool XMLFileWriter::write(const std::filesystem::path& path)
 	tinyxml2::XMLElement* root = doc.NewElement("Root");
 	doc.InsertEndChild(root);
 
-	for (auto& a : args) {
-		XMLConverter::toXML(&doc, *a);
-	}
+	auto e = XMLConverter::toXML(&doc, tree);
+
+	root->InsertEndChild(e);
 
 	//model->toXML(&doc, root);
 	ret = doc.SaveFile(path.string().c_str());

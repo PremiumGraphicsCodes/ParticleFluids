@@ -50,6 +50,9 @@
     <ClCompile Include="JSONFileReaderTest.cpp">
       <Filter>JSON</Filter>
     </ClCompile>
+    <ClCompile Include="XMLFileWriterTest.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -96,6 +99,9 @@
     </Filter>
     <Filter Include="JSON">
       <UniqueIdentifier>{7b2ab6ba-7f47-4aec-bdad-6f1848032d8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XML">
+      <UniqueIdentifier>{b3046775-bb8b-48ee-8042-2442b969eb57}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
