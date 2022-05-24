@@ -21,6 +21,9 @@
 #include "VDBResamplingCommand.h"
 #include "ToVDBVolumeCommand.h"
 
+#include "VDBSceneFileReadCommand.h"
+#include "VDBSceneFileWriteCommand.h"
+
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
 
@@ -88,6 +91,12 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBResamplingCommand::getName()) {
 		return std::make_unique<VDBResamplingCommand>();
+	}
+	else if (name == VDBSceneFileReadCommand::getName()) {
+		return std::make_unique<VDBSceneFileReadCommand>();
+	}
+	else if (name == VDBSceneFileWriteCommand::getName()) {
+		return std::make_unique<VDBSceneFileWriteCommand>();
 	}
 	else {
 		assert(false);

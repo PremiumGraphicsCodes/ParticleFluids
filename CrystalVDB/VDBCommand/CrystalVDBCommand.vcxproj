@@ -193,6 +193,8 @@
     <ClInclude Include="VDBFilterCommand.h" />
     <ClInclude Include="VDBPLYFileWriteCommand.h" />
     <ClInclude Include="VDBResamplingCommand.h" />
+    <ClInclude Include="VDBSceneFileReadCommand.h" />
+    <ClInclude Include="VDBSceneFileWriteCommand.h" />
     <ClInclude Include="VDBSTLFileReadCommand.h" />
     <ClInclude Include="VDBSTLFileWriteCommand.h" />
     <ClInclude Include="VDBTransformCommand.h" />
@@ -217,6 +219,8 @@
     <ClCompile Include="VDBFilterCommand.cpp" />
     <ClCompile Include="VDBPLYFileWriteCommand.cpp" />
     <ClCompile Include="VDBResamplingCommand.cpp" />
+    <ClCompile Include="VDBSceneFileReadCommand.cpp" />
+    <ClCompile Include="VDBSceneFileWriteCommand.cpp" />
     <ClCompile Include="VDBSTLFileReadCommand.cpp" />
     <ClCompile Include="VDBSTLFileWriteCommand.cpp" />
     <ClCompile Include="VDBTransformCommand.cpp" />

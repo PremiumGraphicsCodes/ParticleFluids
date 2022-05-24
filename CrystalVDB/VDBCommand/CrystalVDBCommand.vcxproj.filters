@@ -43,6 +43,12 @@
     </ClCompile>
     <ClCompile Include="VDBCompositeCommand.cpp" />
     <ClCompile Include="VDBResamplingCommand.cpp" />
+    <ClCompile Include="VDBSceneFileReadCommand.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBSceneFileWriteCommand.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -87,10 +93,19 @@
     </ClInclude>
     <ClInclude Include="VDBCompositeCommand.h" />
     <ClInclude Include="VDBResamplingCommand.h" />
+    <ClInclude Include="VDBSceneFileReadCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBSceneFileWriteCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="IO">
       <UniqueIdentifier>{3e91be6a-2223-4d75-815a-5b562735f18c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{71ca32ae-affb-4dde-8009-dbec5bc27d19}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 #include "../../CrystalVDB/CrystalVDB/VDBParticleSystemScene.h"
 #include "../../CrystalVDB/CrystalVDB/VDBPolygonMeshScene.h"
 #include "../../CrystalVDB/CrystalVDB/VDBVolumeScene.h"
+#include "../../CrystalVDB/CrystalVDB/VDBScene.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
@@ -13,6 +14,7 @@ namespace
 	PublicLabel SceneType_VDBPointsLabel = "VDBPoints";
 	PublicLabel SceneType_VDBMeshLabel = "VDBMesh";
 	PublicLabel SceneType_VDBVolumeLabel = "VDBVolume";
+	PublicLabel SceneType_VDBSceneLabel = "VDBScene";
 	PublicLabel NameLabel = "Name";
 	PublicLabel NewIdLabel = "NewId";
 	PublicLabel PositionsLabel = "Positions";
@@ -62,6 +64,11 @@ bool VDBSceneCreateCommand::execute(World* world)
 		auto mesh = new VDBVolumeScene(world->getNextSceneId(), name);
 		world->addScene(mesh);
 		results.newId.setValue(mesh->getId());
+	}
+	else if (typeName == ::SceneType_VDBSceneLabel) {
+		auto scene = new VDBScene(world->getNextSceneId(), name);
+		world->addScene(scene);
+		results.newId.setValue(scene->getId());
 	}
 	else {
 		assert(false);

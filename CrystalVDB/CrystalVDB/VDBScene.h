@@ -22,6 +22,10 @@ public:
 
 	Scene::IPresenter* getPresenter() override;
 
+	std::vector<VDBVolumeScene*> getVolumes() { return volumes; }
+
+	std::vector<VDBParticleSystemScene*> getPoints() { return points; }
+
 private:
 	std::vector<VDBVolumeScene*> volumes;
 	std::vector<VDBParticleSystemScene*> points;
