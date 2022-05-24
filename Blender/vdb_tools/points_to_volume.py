@@ -11,6 +11,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+from venv import create
 import bpy
 import json
 
@@ -23,38 +24,38 @@ class VDB_TOOLS_OT_PointsToVolumeOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      selected_mesh = self.get_selected_volume(context)
-      if selected_mesh == None :
-        return {'CANCELLED'}
-
-      vol = selected_mesh.data
-      filepath = bpy.path.abspath( vol.filepath )
+      points_file_prop = context.scene.points_to_volume_property.points_file_prop
+      name = context.scene.points_to_volume_property.name_prop
+      radius = context.scene.points_to_volume_property.radius_prop
+      voxel_size = context.scene.points_to_volume_property.voxel_size_prop
+      filepath = bpy.path.abspath( points_file_prop )
 
       print(filepath)
 
-      #export_file_path = os.path.join(export_dir_path, os.path.basename(filepath))
+      export_dir_path = os.path.dirname(filepath)
+      export_file_path = os.path.join(export_dir_path, name)
 
-      #j = self.to_json(filepath, export_file_path)
-      #print(json.dumps(j, ensure_ascii=False, indent=2))
+      j = self.to_json(filepath, radius, voxel_size, export_file_path)
+      print(json.dumps(j, ensure_ascii=False, indent=2))
 
-      #json_file_path = os.path.join(export_dir_path, "command.json")
-      #with open(json_file_path, 'w') as f:
-      #  json.dump(j, f, ensure_ascii=False, indent=4)
+      json_file_path = os.path.join(export_dir_path, "command.json")
+      with open(json_file_path, 'w') as f:
+        json.dump(j, f, ensure_ascii=False, indent=4)
 
-      #addon_dirpath = os.path.dirname(__file__)
-      #tool_path = os.path.join(addon_dirpath, 'VDBRunner')
-      #params = []
-      #params.append(tool_path)
-      #params.append(json_file_path)        
+      addon_dirpath = os.path.dirname(__file__)
+      tool_path = os.path.join(addon_dirpath, 'VDBRunner')
+      params = []
+      params.append(tool_path)
+      params.append(json_file_path)        
       
-      #result = subprocess.run(params, shell=True)
-      #if result == -1 : 
-      #  return {'CANCELLED'}
+      result = subprocess.run(params, shell=True)
+      if result == -1 : 
+        return {'CANCELLED'}
 
-      #vol = bpy.data.volumes.new(name ="TestVol")
-      #vol.filepath = export_file_path
-      #ob = bpy.data.objects.new("TestObj", vol)
-      #bpy.context.collection.objects.link(ob)
+      vol = bpy.data.volumes.new(name =name)
+      vol.filepath = export_file_path
+      ob = bpy.data.objects.new(name, vol)
+      bpy.context.collection.objects.link(ob)
 
       return {'FINISHED'}
 
@@ -64,27 +65,33 @@ class VDB_TOOLS_OT_PointsToVolumeOperator(bpy.types.Operator) :
         return o
     return None
 
-  def to_json(self, input_vdb_file, output_vdb_file) :
-    dict1 = dict()
-    dict1["FilePath"] =  input_vdb_file
-    dict1["Radius"] = 0.5
-    data1 = ["VDBFileRead", dict1]
+  def to_json(self, input_vdb_file, radius, voxel_size, output_vdb_file) :
+    read_dict = dict()
+    read_dict["FilePath"] =  input_vdb_file
+    read_dict["Radius"] = 0.5
+    read_command = ["VDBFileRead", read_dict]
 
-    dict2 = dict()
-    dict2["FilterType"] = "Median"
-    dict2["Iteration"] = 1
-    dict2["VDBVolumeId"] = 1
-    dict2["Width"] = 1
-    data2 = ["VDBSmoothing", dict2]
+    create_dict = dict()
+    create_dict["Name"] = ""
+    create_dict["Positions"] = []
+    create_dict["SceneType"] = "VDBVolume"
+    create_command = ["VDBSceneCreate", create_dict]
 
-    dict3 = dict()
-    dict3["FilePath"] = output_vdb_file
-    dict3["ParticleSystemIds"] = []
-    dict3["VDBVolumeIds"] = [1]
+    convert_dict = dict()
+    convert_dict["ParticleSystemId"] = 1
+    convert_dict["Radius"] = radius
+    convert_dict["VolumeId"] = 2
+    convert_dict["VoxelSize"] = voxel_size
+    convert_command = ["VDBParticleSystemToVolume", convert_dict]
 
-    data3 = ["OpenVDBFileWrite", dict3]
+    write_dict = dict()
+    write_dict["FilePath"] = output_vdb_file
+    write_dict["ParticleSystemIds"] = []
+    write_dict["VDBVolumeIds"] = [1]
+    write_command = ["OpenVDBFileWrite", write_dict]
+
     data = dict()
-    data = [data1, data2, data3]
+    data = [read_command, create_command, convert_command, write_command]
     return data
 
 class PointsToVolumePropertyGroup(bpy.types.PropertyGroup):
@@ -100,12 +107,17 @@ class PointsToVolumePropertyGroup(bpy.types.PropertyGroup):
       default=1,
       min=0
   )
-  export_directory_prop : bpy.props.StringProperty(
-    name="export_dir",
-    description="Path to Directory",
+  points_file_prop : bpy.props.StringProperty(
+    name="points_file",
+    description="",
     default="//",
     maxlen=1024,
-    subtype='DIR_PATH',
+    subtype='FILE_PATH',
+  )
+  name_prop : bpy.props.StringProperty(
+    name="name",
+    description="",
+    default="ToVolume",
   )
 
 class VDB_TOOLS_PT_PointsToVolumePanel(bpy.types.Panel) :
@@ -118,7 +130,8 @@ class VDB_TOOLS_PT_PointsToVolumePanel(bpy.types.Panel) :
     layout = self.layout
     layout.prop(context.scene.points_to_volume_property, "voxel_size_prop", text="VoxelSize")
     layout.prop(context.scene.points_to_volume_property, "radius_prop", text="Radius")
-    layout.prop(context.scene.points_to_volume_property, "export_directory_prop", text="ExportDir")
+    layout.prop(context.scene.points_to_volume_property, "points_file_prop", text="PointsFile")
+    layout.prop(context.scene.points_to_volume_property, "name_prop", text="Name")
     layout.operator(VDB_TOOLS_OT_PointsToVolumeOperator.bl_idname, text="ToVolume")
 
 classes = [
