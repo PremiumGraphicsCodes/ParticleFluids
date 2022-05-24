@@ -23,7 +23,8 @@ class VDB_TOOLS_OT_ResamplingOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      export_dir_path = bpy.path.abspath(context.scene.resampling_property.export_directory_prop)
+      #export_dir_path = bpy.path.abspath(context.scene.resampling_property.export_directory_prop)
+      name = context.scene.resampling_property.name_prop
 
       selected_mesh = self.get_selected_volume(context)
       if selected_mesh == None :
@@ -34,7 +35,8 @@ class VDB_TOOLS_OT_ResamplingOperator(bpy.types.Operator) :
 
       print(filepath)
 
-      export_file_path = os.path.join(export_dir_path, os.path.basename(filepath))
+      export_dir_path = os.path.dirname(filepath)
+      export_file_path = os.path.join(export_dir_path, name)
 
       j = self.to_json(filepath, export_file_path, context.scene.resampling_property.type_prop)
       #print(json.dumps(j, ensure_ascii=False, indent=2))
@@ -53,9 +55,9 @@ class VDB_TOOLS_OT_ResamplingOperator(bpy.types.Operator) :
       if result == -1 : 
         return {'CANCELLED'}
 
-      vol = bpy.data.volumes.new(name ="TestVol")
+      vol = bpy.data.volumes.new(name =name)
       vol.filepath = export_file_path
-      ob = bpy.data.objects.new("TestObj", vol)
+      ob = bpy.data.objects.new(name, vol)
       bpy.context.collection.objects.link(ob)
 
       return {'FINISHED'}
@@ -98,13 +100,19 @@ class ResamplingPropertyGroup(bpy.types.PropertyGroup):
             ('Quadric', "Quadric", ""),
         ]
   )
-  export_directory_prop : bpy.props.StringProperty(
-    name="export_dir",
-    description="Path to Directory",
-    default="//",
-    maxlen=1024,
-    subtype='DIR_PATH',
+  name_prop : bpy.props.StringProperty(
+    name="name",
+    description="Name",
+    default="resampled",
   )
+
+  #export_directory_prop : bpy.props.StringProperty(
+  #  name="export_dir",
+  #  description="Path to Directory",
+  #  default="//",
+  #  maxlen=1024,
+  #  subtype='DIR_PATH',
+  #)
 
 class VDB_TOOLS_PT_ResamplingPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
@@ -115,7 +123,8 @@ class VDB_TOOLS_PT_ResamplingPanel(bpy.types.Panel) :
   def draw(self, context):
     layout = self.layout
     layout.prop(context.scene.resampling_property, "type_prop", text="Type")
-    layout.prop(context.scene.resampling_property, "export_directory_prop", text="ExportDir")
+    layout.prop(context.scene.resampling_property, "name_prop", text="Name")
+    #layout.prop(context.scene.resampling_property, "export_directory_prop", text="ExportDir")
     layout.operator(VDB_TOOLS_OT_ResamplingOperator.bl_idname, text="Resampling")
 
 classes = [

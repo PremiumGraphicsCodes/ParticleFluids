@@ -116,7 +116,7 @@ class FilterPropertyGroup(bpy.types.PropertyGroup):
   name_prop : bpy.props.StringProperty(
     name="name",
     description="Name",
-    default="Filtered",
+    default="filtered",
   )
 
   #export_directory_prop : bpy.props.StringProperty(
