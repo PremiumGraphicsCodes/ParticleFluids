@@ -23,10 +23,8 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      #divide_length = context.scene.smoothing_property.divide_length_prop
-      #export_dir_path = bpy.path.abspath(context.scene.smoothing_property.export_directory_prop)
-
-      export_dir_path = bpy.path.abspath(context.scene.filter_property.export_directory_prop)
+      #export_dir_path = bpy.path.abspath(context.scene.filter_property.export_directory_prop)
+      name = context.scene.filter_property.name_prop
 
       selected_mesh = self.get_selected_volume(context)
       if selected_mesh == None :
@@ -37,8 +35,8 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
 
       print(filepath)
 
-      export_file_path = os.path.join(export_dir_path, os.path.basename(filepath))
-
+      export_dir_path = os.path.dirname(filepath)
+      export_file_path = os.path.join(export_dir_path, name + ".vdb")
 
       j = self.to_json(filepath, export_file_path)
       print(json.dumps(j, ensure_ascii=False, indent=2))
@@ -57,9 +55,9 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
       if result == -1 : 
         return {'CANCELLED'}
 
-      vol = bpy.data.volumes.new(name ="TestVol")
+      vol = bpy.data.volumes.new(name = name)
       vol.filepath = export_file_path
-      ob = bpy.data.objects.new("TestObj", vol)
+      ob = bpy.data.objects.new(name, vol)
       bpy.context.collection.objects.link(ob)
 
       return {'FINISHED'}
@@ -115,13 +113,19 @@ class FilterPropertyGroup(bpy.types.PropertyGroup):
             ('Mean', "Mean", ""),
         ]
     )
-  export_directory_prop : bpy.props.StringProperty(
-    name="export_dir",
-    description="Path to Directory",
-    default="//",
-    maxlen=1024,
-    subtype='DIR_PATH',
+  name_prop : bpy.props.StringProperty(
+    name="name",
+    description="Name",
+    default="Filtered",
   )
+
+  #export_directory_prop : bpy.props.StringProperty(
+  #  name="export_dir",
+  #  description="Path to Directory",
+  #  default="//",
+  #  maxlen=1024,
+  #  subtype='DIR_PATH',
+  #)
 
 
 class VDB_TOOLS_PT_FilterPanel(bpy.types.Panel) :
@@ -135,7 +139,8 @@ class VDB_TOOLS_PT_FilterPanel(bpy.types.Panel) :
     layout.prop(context.scene.filter_property, "iteration_prop", text="Iteration")
     layout.prop(context.scene.filter_property, "width_prop", text="Width")
     layout.prop(context.scene.filter_property, "type_prop", text="Type")
-    layout.prop(context.scene.filter_property, "export_directory_prop", text="ExportDir")
+    layout.prop(context.scene.filter_property, "name_prop", text="Name")
+    #layout.prop(context.scene.filter_property, "export_directory_prop", text="ExportDir")
     layout.operator(VDB_TOOLS_OT_FilterOperator.bl_idname, text="Filter")
 
 classes = [

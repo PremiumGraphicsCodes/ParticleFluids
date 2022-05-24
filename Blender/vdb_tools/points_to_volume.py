@@ -96,14 +96,16 @@ class PointsToVolumePropertyGroup(bpy.types.PropertyGroup):
   )
   radius_prop : bpy.props.FloatProperty(
       name="radius",
-      description=""
+      description="",
       default=1,
       min=0
-  ),
-  name_prop : bpy.props.StringProperty(
-    name="name",
-    description="Name",
-    default="ToVolume",
+  )
+  export_directory_prop : bpy.props.StringProperty(
+    name="export_dir",
+    description="Path to Directory",
+    default="//",
+    maxlen=1024,
+    subtype='DIR_PATH',
   )
 
 class VDB_TOOLS_PT_PointsToVolumePanel(bpy.types.Panel) :
@@ -114,8 +116,8 @@ class VDB_TOOLS_PT_PointsToVolumePanel(bpy.types.Panel) :
   
   def draw(self, context):
     layout = self.layout
-    layout.prop(context.scene.points_to_volume_property, "width_prop", text="Width")
-    layout.prop(context.scene.points_to_volume_property, "type_prop", text="Type")
+    layout.prop(context.scene.points_to_volume_property, "voxel_size_prop", text="VoxelSize")
+    layout.prop(context.scene.points_to_volume_property, "radius_prop", text="Radius")
     layout.prop(context.scene.points_to_volume_property, "export_directory_prop", text="ExportDir")
     layout.operator(VDB_TOOLS_OT_PointsToVolumeOperator.bl_idname, text="ToVolume")
 
