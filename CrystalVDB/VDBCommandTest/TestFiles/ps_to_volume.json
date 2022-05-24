@@ -2,6 +2,7 @@
     [
         "VDBParticleSystemToVolume",
         {
+            "DoUseSPH": false,
             "ParticleSystemId": -1,
             "Radius": 5.0,
             "VolumeId": -1,

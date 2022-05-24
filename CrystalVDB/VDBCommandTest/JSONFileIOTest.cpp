@@ -14,6 +14,10 @@
 #include "../VDBCommand/VDBCompositeCommand.h"
 #include "../VDBCommand/VDBResamplingCommand.h"
 
+#include "../VDBCommand/VDBSceneFileReadCommand.h"
+#include "../VDBCommand/VDBSceneFileWriteCommand.h"
+#include "../VDBCommand/VDBSceneFilterCommand.h"
+
 #include "CrystalScene/Command/JSONFileWriter.h"
 #include "CrystalScene/Command/JSONFileReader.h"
 
@@ -179,6 +183,45 @@ TEST(VDBRunnerTest, TestResamplingCommand)
 {
 	const std::string filepath = "./TestFiles/resampling_box.json";
 	VDBResamplingCommand command;
+	JSONFileWriter writer;
+	writer.add(&command);
+	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
+}
+
+TEST(VDBRunnerTest, TestSceneFileWriteCommand)
+{
+	const std::string filepath = "./TestFiles/scene_write.json";
+	VDBSceneFileWriteCommand command;
+	JSONFileWriter writer;
+	writer.add(&command);
+	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
+}
+
+TEST(VDBRunnerTest, TestSceneFileReadCommand)
+{
+	const std::string filepath = "./TestFiles/scene_read.json";
+	VDBSceneFileReadCommand command;
+	JSONFileWriter writer;
+	writer.add(&command);
+	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
+}
+
+TEST(VDBRunnerTest, TestSceneFilterCommand)
+{
+	const std::string filepath = "./TestFiles/scene_filter.json";
+	VDBSceneFilterCommand command;
 	JSONFileWriter writer;
 	writer.add(&command);
 	EXPECT_TRUE(writer.write(filepath));
