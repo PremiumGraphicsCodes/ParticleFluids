@@ -65,6 +65,7 @@
     <ClCompile Include="SmoothVolumeConverter.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
+    <ClCompile Include="VDBScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -131,6 +132,7 @@
     <ClInclude Include="SmoothVolumeConverter.h">
       <Filter>Converter</Filter>
     </ClInclude>
+    <ClInclude Include="VDBScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

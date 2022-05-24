@@ -18,6 +18,8 @@ public:
 private:
 	void show(Scene::IScene* scene);
 
+	//void show(Scene::IScene* )
+
 	IPanel* control;
 };
 

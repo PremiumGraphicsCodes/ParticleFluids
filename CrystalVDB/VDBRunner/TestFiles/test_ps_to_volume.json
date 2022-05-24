@@ -20,7 +20,8 @@
             "ParticleSystemId": 1,
             "Radius": 5.0,
             "VolumeId": 2,
-            "VoxelSize": 1.0
+            "VoxelSize": 1.0,
+			"DoUseSPH": true
         }
     ],
     [

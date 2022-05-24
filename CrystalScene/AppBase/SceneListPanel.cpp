@@ -95,5 +95,9 @@ void SceneListPanel::show(IScene* scene)
 					control->add(editView);
 			}
 		}
+		const auto children = scene->getChildren();
+		for (auto c : children) {
+			show(c);
+		}
 	}
 }

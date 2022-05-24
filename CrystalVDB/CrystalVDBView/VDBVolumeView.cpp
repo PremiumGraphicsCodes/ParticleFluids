@@ -2,6 +2,7 @@
 
 //#include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
+#include "../CrystalVDB/VDBScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
@@ -30,5 +31,9 @@ void VDBVolumeView::onOk()
 	volume->setScale(scaleView.getValue());
 
 	volume->getPresenter()->createView(getWorld()->getRenderer());
-	getWorld()->getScenes()->addScene(volume);
+	//getWorld()->getScenes()->addScene(volume);
+
+	auto scene = new VDBScene(getWorld()->getNextSceneId(), "VDBScene");
+	scene->add(volume);
+	getWorld()->getScenes()->addScene(scene);
 }
