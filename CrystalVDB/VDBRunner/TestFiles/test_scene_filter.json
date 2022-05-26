@@ -1,26 +1,25 @@
 [
     [
-        "VDBFileRead",
+        "VDBSceneFileRead",
         {
             "FilePath": "../VDBDataSet/torus.vdb",
             "Radius": 0.5
         }
     ],
 	[
-        "VDBSmoothing",
+        "VDBSceneFilter",
         {
-			"FilterType": "Median",
+            "FilterType": "Median",
             "Iteration": 1,
-            "VDBVolumeId": 1,
+            "VDBSceneId": 1,
             "Width": 1
         }
     ],
-	[
-        "OpenVDBFileWrite",
+    [
+        "VDBSceneFileWrite",
         {
-            "FilePath": "../VDBDataSet/torus_smooth.vdb",
-            "ParticleSystemIds": [],
-            "VDBVolumeIds": [1]
+            "FilePath": "../VDBDataSet/scene_filtered_torus.vdb",
+            "VDBSceneId": 1
         }
     ]
 ]

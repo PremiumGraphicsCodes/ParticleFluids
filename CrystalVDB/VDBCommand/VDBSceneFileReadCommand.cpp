@@ -75,6 +75,8 @@ bool VDBSceneFileReadCommand::execute(World* world)
 		scene->add(vol);
 	}
 
+	world->addScene(scene);
+
 	results.newId.setValue(scene->getId());
 	//reader.get
 	return true;
