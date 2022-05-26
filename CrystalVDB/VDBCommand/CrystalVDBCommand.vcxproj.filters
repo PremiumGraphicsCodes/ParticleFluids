@@ -55,6 +55,9 @@
     <ClCompile Include="VDBSceneCompositeCommand.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="VDBSceneResamplingCommand.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -109,6 +112,9 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="VDBSceneCompositeCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBSceneResamplingCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
