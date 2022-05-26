@@ -1,0 +1,26 @@
+[
+    [
+        "VDBFileRead",
+        {
+            "FilePath": "../VDBDataSet/torus.vdb",
+            "Radius": 0.5
+        }
+    ],
+	[
+        "VDBSmoothing",
+        {
+			"FilterType": "Median",
+            "Iteration": 1,
+            "VDBVolumeId": 1,
+            "Width": 1
+        }
+    ],
+	[
+        "OpenVDBFileWrite",
+        {
+            "FilePath": "../VDBDataSet/torus_smooth.vdb",
+            "ParticleSystemIds": [],
+            "VDBVolumeIds": [1]
+        }
+    ]
+]
