@@ -64,7 +64,8 @@ bool VDBScenePSToVolumeCommand::execute(World* world)
 		//const auto names = p->getAttributeNames();
 		SmoothVolumeConverter converter;
 		auto volume = converter.build(p, args.radius.getValue(), args.voxelSize.getValue());
-		newScene->addScene(volume);
+		newScene->add(volume);
 	}
+	world->addScene(newScene);
 	return true;
 }
