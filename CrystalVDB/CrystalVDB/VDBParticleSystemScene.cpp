@@ -97,3 +97,13 @@ bool VDBParticleSystemScene::hasAttribute(const std::string& name)
 {
     return this->impl->hasAttribute(name);
 }
+
+std::vector<std::string> VDBParticleSystemScene::getAttributeNames() const
+{
+    const auto names = this->impl->getAttributeNames();
+    std::vector<std::string> results;
+    for (const auto& n : names) {
+        results.push_back(n);
+    }
+    return results;
+}

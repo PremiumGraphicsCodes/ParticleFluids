@@ -23,11 +23,7 @@ public:
 
     void create(const std::vector<Math::Vector3dd>& positions);
 
- //   Crystal::Scene::ParticleSystemScene* toCrystal() const;
-
     VDBParticleSystemImpl* getImpl() const { return impl.get(); }
-
-    //void fromCrystal(const std::vector<Math::Vector3dd>& positions, const float radius);
 
     void translate(const Math::Vector3dd& v) override {};
 
@@ -54,6 +50,8 @@ public:
     std::vector<float> getFloatAttribute(const std::string& name);
 
     bool hasAttribute(const std::string& name);
+
+    std::vector<std::string> getAttributeNames() const;
 
 private:
     std::unique_ptr<VDBParticleSystemImpl> impl;

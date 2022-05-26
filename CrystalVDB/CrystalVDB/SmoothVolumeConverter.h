@@ -10,6 +10,7 @@
 
 namespace Crystal {
 	namespace VDB {
+		class VDBVolumeScene;
 
 class SmoothVolumeConverter
 {
@@ -19,6 +20,8 @@ public:
 	void buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume);
 
 	void build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume);
+
+	VDBVolumeScene* build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength);
 
 private:
 };

@@ -26,6 +26,7 @@
 #include "VDBSceneFilterCommand.h"
 #include "VDBSceneCompositeCommand.h"
 #include "VDBSceneResamplingCommand.h"
+#include "VDBScenePSToVolumeCommand.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
@@ -109,6 +110,9 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBSceneResamplingCommand::getName()) {
 		return std::make_unique<VDBSceneResamplingCommand>();
+	}
+	else if (name == VDBScenePSToVolumeCommand::getName()) {
+		return std::make_unique<VDBScenePSToVolumeCommand>();
 	}
 	else {
 		assert(false);

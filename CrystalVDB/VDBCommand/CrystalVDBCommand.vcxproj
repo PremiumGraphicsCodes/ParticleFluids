@@ -197,6 +197,7 @@
     <ClInclude Include="VDBSceneFileReadCommand.h" />
     <ClInclude Include="VDBSceneFileWriteCommand.h" />
     <ClInclude Include="VDBSceneFilterCommand.h" />
+    <ClInclude Include="VDBScenePSToVolumeCommand.h" />
     <ClInclude Include="VDBSceneResamplingCommand.h" />
     <ClInclude Include="VDBSTLFileReadCommand.h" />
     <ClInclude Include="VDBSTLFileWriteCommand.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="VDBSceneFileReadCommand.cpp" />
     <ClCompile Include="VDBSceneFileWriteCommand.cpp" />
     <ClCompile Include="VDBSceneFilterCommand.cpp" />
+    <ClCompile Include="VDBScenePSToVolumeCommand.cpp" />
     <ClCompile Include="VDBSceneResamplingCommand.cpp" />
     <ClCompile Include="VDBSTLFileReadCommand.cpp" />
     <ClCompile Include="VDBSTLFileWriteCommand.cpp" />
