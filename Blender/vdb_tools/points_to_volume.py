@@ -69,29 +69,21 @@ class VDB_TOOLS_OT_PointsToVolumeOperator(bpy.types.Operator) :
     read_dict = dict()
     read_dict["FilePath"] =  input_vdb_file
     read_dict["Radius"] = 0.5
-    read_command = ["VDBFileRead", read_dict]
-
-    create_dict = dict()
-    create_dict["Name"] = ""
-    create_dict["Positions"] = []
-    create_dict["SceneType"] = "VDBVolume"
-    create_command = ["VDBSceneCreate", create_dict]
+    read_command = ["VDBSceneFileRead", read_dict]
 
     convert_dict = dict()
-    convert_dict["ParticleSystemId"] = 1
+    convert_dict["SceneId"] = 1
     convert_dict["Radius"] = radius
-    convert_dict["VolumeId"] = 2
     convert_dict["VoxelSize"] = voxel_size
-    convert_command = ["VDBParticleSystemToVolume", convert_dict]
+    convert_command = ["VDBScenePSToVolume", convert_dict]
 
     write_dict = dict()
     write_dict["FilePath"] = output_vdb_file
-    write_dict["ParticleSystemIds"] = []
-    write_dict["VDBVolumeIds"] = [1]
-    write_command = ["OpenVDBFileWrite", write_dict]
+    write_dict["VDBSceneId"] = 2
+    write_command = ["VDBSceneFileWrite", write_dict]
 
     data = dict()
-    data = [read_command, create_command, convert_command, write_command]
+    data = [read_command, convert_command, write_command]
     return data
 
 class PointsToVolumePropertyGroup(bpy.types.PropertyGroup):

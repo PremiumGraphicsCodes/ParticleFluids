@@ -226,6 +226,7 @@ void SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticles, const fl
 VDBVolumeScene* SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength)
 {
 	auto vdbVolume = new VDBVolumeScene();
+	vdbVolume->getImpl()->getPtr()->setName("density");
 	vdbVolume->setScale(cellLength);
 	auto grid = vdbVolume->getImpl()->getPtr();
 	auto accessor = grid->getAccessor();
