@@ -17,6 +17,7 @@
 #include "../VDBCommand/VDBSceneFileReadCommand.h"
 #include "../VDBCommand/VDBSceneFileWriteCommand.h"
 #include "../VDBCommand/VDBSceneFilterCommand.h"
+#include "../VDBCommand/VDBSceneCompositeCommand.h"
 
 #include "CrystalScene/Command/JSONFileWriter.h"
 #include "CrystalScene/Command/JSONFileReader.h"
@@ -222,6 +223,19 @@ TEST(VDBRunnerTest, TestSceneFilterCommand)
 {
 	const std::string filepath = "./TestFiles/scene_filter.json";
 	VDBSceneFilterCommand command;
+	JSONFileWriter writer;
+	writer.add(&command);
+	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
+}
+
+TEST(VDBRunnerTest, TestSceneCompositeCommand)
+{
+	const std::string filepath = "./TestFiles/scene_composite.json";
+	VDBSceneCompositeCommand command;
 	JSONFileWriter writer;
 	writer.add(&command);
 	EXPECT_TRUE(writer.write(filepath));
