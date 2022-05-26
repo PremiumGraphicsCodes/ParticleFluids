@@ -35,7 +35,11 @@ int main(int argc, char** argv)
 
 	VDBCommandFactory factory;
 	JSONFileReader reader;
-	reader.read(inputFile, factory);
+	const auto isOk = reader.read(inputFile, factory);
+	if (!isOk) {
+		std::cout << "File read failed" << std::endl;
+		return -1;
+	}
 	auto commands = reader.getCommands();
 	for (auto& c : commands) {
 		std::cout << "Start " << c->getCommandName() << std::endl;

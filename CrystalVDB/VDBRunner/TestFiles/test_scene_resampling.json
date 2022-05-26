@@ -6,19 +6,17 @@
             "Radius": 0.5
         }
     ],
-	[
-        "VDBSceneFilter",
+    [
+        "VDBSceneResampling",
         {
-            "FilterType": "Median",
-            "Iteration": 1,
-            "VDBSceneId": 1,
-            "Width": 1
+            "SamplingType": "Box",
+            "SceneId": 1
         }
     ],
     [
         "VDBSceneFileWrite",
         {
-            "FilePath": "../VDBDataSet/scene_filtered_torus.vdb",
+            "FilePath": "../VDBDataSet/scene_resampled_torus.vdb",
             "VDBSceneId": 1
         }
     ]
