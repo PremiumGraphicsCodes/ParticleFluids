@@ -9,7 +9,9 @@ class VDB_TOOLS_OT_CompositeOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      export_dir_path = bpy.path.abspath(context.scene.composite_property.export_directory_prop)
+      name = context.scene.composite_property.name_prop
+
+      #export_dir_path = bpy.path.abspath(context.scene.composite_property.export_directory_prop)
       composite_type = context.scene.composite_property.type_prop
 
       selected_volumes = self.get_selected_volumes(context)
@@ -20,7 +22,8 @@ class VDB_TOOLS_OT_CompositeOperator(bpy.types.Operator) :
       filepath1 = bpy.path.abspath( selected_volumes[0].filepath )
       filepath2 = bpy.path.abspath( selected_volumes[1].filepath )
 
-      export_file_path = os.path.join(export_dir_path, os.path.basename(filepath1))
+      export_dir_path = os.path.dirname(filepath1)
+      export_file_path = os.path.join(export_dir_path, name)
 
       j = self.to_json(filepath1, filepath2, composite_type, export_file_path)
       #print(json.dumps(j, ensure_ascii=False, indent=2))
@@ -39,9 +42,9 @@ class VDB_TOOLS_OT_CompositeOperator(bpy.types.Operator) :
       if result == -1 : 
         return {'CANCELLED'}
 
-      vol = bpy.data.volumes.new(name ="TestVol")
+      vol = bpy.data.volumes.new(name =name)
       vol.filepath = export_file_path
-      ob = bpy.data.objects.new("TestObj", vol)
+      ob = bpy.data.objects.new(name, vol)
       bpy.context.collection.objects.link(ob)
 
       return {'FINISHED'}
@@ -54,37 +57,29 @@ class VDB_TOOLS_OT_CompositeOperator(bpy.types.Operator) :
     return volumes
 
   def to_json(self, input_vdb_file1, input_vdb_file2, composit_type, output_vdb_file) :
-    dict1 = dict()
-    dict1["FilePath"] =  input_vdb_file1
-    dict1["Radius"] = 0.5
-    data1 = ["VDBFileRead", dict1]
+    read_dict1 = dict()
+    read_dict1["FilePath"] =  input_vdb_file1
+    read_dict1["Radius"] = 0.5
+    read1 = ["VDBSceneFileRead", read_dict1]
 
-    dict2 = dict()
-    dict2["FilePath"] =  input_vdb_file2
-    dict2["Radius"] = 0.5
-    data2 = ["VDBFileRead", dict2]
+    read_dict2 = dict()
+    read_dict2["FilePath"] =  input_vdb_file2
+    read_dict2["Radius"] = 0.5
+    read2 = ["VDBSceneFileRead", read_dict2]
 
-    dict3 = dict()
-    dict3["Name"] = ""
-    dict3["Positions"] = []
-    dict3["SceneType"] = "VDBVolume"
-    data3 = ["VDBSceneCreate", dict3]
+    composite_dict = dict()
+    composite_dict["CompositeType"] = composit_type
+    composite_dict["SceneId1"] = 1
+    composite_dict["SceneId2"] = 2
+    composite = ["VDBSceneComposite", composite_dict]
 
-    dict4 = dict()
-    dict4["CompositeType"] = composit_type
-    dict4["VolumeId1"] = 1
-    dict4["VolumeId2"] = 2
-    dict4["DestVolumeId"] = 3
-    data4 = ["VDBComposite", dict4]
-
-    dict5 = dict()
-    dict5["FilePath"] = output_vdb_file
-    dict5["ParticleSystemIds"] = []
-    dict5["VDBVolumeIds"] = [1]
-    data5 = ["OpenVDBFileWrite", dict5]
+    write_dict = dict()
+    write_dict["FilePath"] = output_vdb_file
+    write_dict["VDBSceneId"] = 1
+    write = ["VDBSceneFileWrite", write_dict]
 
     data = dict()
-    data = [data1, data2, data3, data4, data5]
+    data = [read1, read2, composite, write]
     return data
 
 class CompositePropertyGroup(bpy.types.PropertyGroup):
@@ -98,13 +93,12 @@ class CompositePropertyGroup(bpy.types.PropertyGroup):
             ('Diff', "Diff", "")
         ]
     )
-  export_directory_prop : bpy.props.StringProperty(
-    name="export_dir",
-    description="Path to Directory",
-    default="//",
-    maxlen=1024,
-    subtype='DIR_PATH',
+  name_prop : bpy.props.StringProperty(
+    name="name",
+    description="Name",
+    default="composited",
   )
+
 
 class VDB_TOOLS_PT_Composite_Panel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
@@ -115,7 +109,7 @@ class VDB_TOOLS_PT_Composite_Panel(bpy.types.Panel) :
   def draw(self, context):
     layout = self.layout
     layout.prop(context.scene.composite_property, "type_prop", text="Type")
-    layout.prop(context.scene.composite_property, "export_directory_prop", text="ExportDir")
+    layout.prop(context.scene.composite_property, "name_prop", text="Name")
     layout.operator(VDB_TOOLS_OT_CompositeOperator.bl_idname, text="Composite")
 
 classes = [
