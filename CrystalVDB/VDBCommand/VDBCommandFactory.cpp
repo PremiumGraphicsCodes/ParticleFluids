@@ -9,7 +9,6 @@
 #include "VDBMeshToVolumeCommand.h"
 #include "VDBVolumeToMeshCommand.h"
 #include "VDBVolumeToPSCommand.h"
-#include "VDBResamplingCommand.h"
 
 #include "VDBSceneFileReadCommand.h"
 #include "VDBSceneFileWriteCommand.h"
@@ -54,9 +53,6 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBVolumeToPSCommand::getName()) {
 		return std::make_unique<VDBVolumeToPSCommand>();
-	}
-	else if (name == VDBResamplingCommand::getName()) {
-		return std::make_unique<VDBResamplingCommand>();
 	}
 	else if (name == VDBSceneFileReadCommand::getName()) {
 		return std::make_unique<VDBSceneFileReadCommand>();

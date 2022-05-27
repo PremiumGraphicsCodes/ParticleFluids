@@ -20,7 +20,6 @@
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="VDBTransformCommand.cpp" />
-    <ClCompile Include="VDBResamplingCommand.cpp" />
     <ClCompile Include="VDBSceneFileReadCommand.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -66,7 +65,6 @@
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="VDBTransformCommand.h" />
-    <ClInclude Include="VDBResamplingCommand.h" />
     <ClInclude Include="VDBSceneFileReadCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
