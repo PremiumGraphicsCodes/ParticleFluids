@@ -5,9 +5,6 @@
 
 #include "CrystalVDB/VDBCommand/VDBCommandFactory.h"
 #include "CrystalVDB/VDBCommand/VDBInitCommand.h"
-#include "CrystalVDB/VDBCommand/VDBFileReadCommand.h"
-#include "CrystalVDB/VDBCommand/VDBFileWriteCommand.h"
-#include "CrystalVDB/VDBCommand/VDBPSToVolumeCommand.h"
 #include "CrystalScene/Command/JSONFileWriter.h"
 #include "CrystalScene/Command/JSONFileReader.h"
 
