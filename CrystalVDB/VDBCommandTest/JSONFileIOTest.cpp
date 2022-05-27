@@ -4,7 +4,6 @@
 #include "../VDBCommand/VDBInitCommand.h"
 #include "../VDBCommand/VDBFileReadCommand.h"
 #include "../VDBCommand/VDBFileWriteCommand.h"
-#include "../VDBCommand/VDBPSToVolumeCommand.h"
 #include "../VDBCommand/VDBSceneCreateCommand.h"
 #include "../VDBCommand/VDBSTLFileReadCommand.h"
 #include "../VDBCommand/VDBSTLFileWriteCommand.h"
@@ -67,20 +66,6 @@ TEST(VDBRunnerTest, TestFileWriteCommand)
 	VDBCommandFactory factory;
 	JSONFileReader reader;
 	EXPECT_TRUE( reader.read(filepath, factory) );
-}
-
-TEST(VDBRunnerTest, TestPSToVolumeCommand)
-{
-	const std::string filepath("./TestFiles/ps_to_volume.json");
-
-	VDBPSToVolumeCommand command;
-	JSONFileWriter writer;
-	writer.add(&command);
-	EXPECT_TRUE(writer.write(filepath));
-
-	VDBCommandFactory factory;
-	JSONFileReader reader;
-	EXPECT_TRUE(reader.read(filepath, factory));
 }
 
 TEST(VDBRunnerTest, TestPointsSceneCreateCommand)
