@@ -207,7 +207,6 @@
     <ClInclude Include="VDBOBJFileReadCommand.h" />
     <ClInclude Include="VDBOBJFileWriteCommand.h" />
     <ClInclude Include="VDBSceneCreateCommand.h" />
-    <ClInclude Include="VDBPSToVolumeCommand.h" />
     <ClInclude Include="VDBVolumeToMeshCommand.h" />
   </ItemGroup>
   <ItemGroup>
@@ -237,7 +236,6 @@
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
     <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
-    <ClCompile Include="VDBPSToVolumeCommand.cpp" />
     <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

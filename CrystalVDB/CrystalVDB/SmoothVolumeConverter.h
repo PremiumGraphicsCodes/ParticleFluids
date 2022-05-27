@@ -15,12 +15,6 @@ namespace Crystal {
 class SmoothVolumeConverter
 {
 public:
-	//void add(Shape::IParticle* particle);
-
-	void buildIsotoropic(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume);
-
-	void build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume);
-
 	std::vector<VDBVolumeScene*> build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, const std::vector<std::string>& floatNames);
 
 private:

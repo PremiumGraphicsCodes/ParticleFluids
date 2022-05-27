@@ -53,6 +53,8 @@ public:
 
     std::vector<std::string> getAttributeNames() const;
 
+    std::vector<std::string> getFloatAttributeNames() const;
+
 private:
     std::unique_ptr<VDBParticleSystemImpl> impl;
     std::unique_ptr<VDBParticleSystemPresenter> presenter;

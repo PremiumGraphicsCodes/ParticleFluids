@@ -107,3 +107,18 @@ std::vector<std::string> VDBParticleSystemScene::getAttributeNames() const
     }
     return results;
 }
+
+std::vector<std::string> VDBParticleSystemScene::getFloatAttributeNames() const
+{
+    const auto names = this->impl->getAttributeNames();
+    std::vector<std::string> results;
+    for (const auto& n : names) {
+        if (n == "P") {
+            continue;
+        }
+        results.push_back(n);
+    }
+    return results;
+
+}
+

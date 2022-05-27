@@ -5,7 +5,6 @@
     <ClCompile Include="VDBInitCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
     <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
-    <ClCompile Include="VDBPSToVolumeCommand.cpp" />
     <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
     <ClCompile Include="VDBVolumeToPSCommand.cpp" />
     <ClCompile Include="ToVDBVolumeCommand.cpp" />
@@ -67,7 +66,6 @@
     <ClInclude Include="VDBInitCommand.h" />
     <ClInclude Include="VDBSceneCreateCommand.h" />
     <ClInclude Include="VDBMeshToVolumeCommand.h" />
-    <ClInclude Include="VDBPSToVolumeCommand.h" />
     <ClInclude Include="VDBVolumeToMeshCommand.h" />
     <ClInclude Include="VDBVolumeToPSCommand.h" />
     <ClInclude Include="ToVDBVolumeCommand.h" />

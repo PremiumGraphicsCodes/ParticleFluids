@@ -61,9 +61,9 @@ bool VDBScenePSToVolumeCommand::execute(World* world)
 	auto newScene = new VDBScene(world->getNextSceneId(), "density");
 	const auto points = scene->getPoints();
 	for (auto p : points) {
-		//const auto names = p->getAttributeNames();
 		SmoothVolumeConverter converter;
-		auto volumes = converter.build(p, args.radius.getValue(), args.voxelSize.getValue(), {});
+		const auto names = p->getFloatAttributeNames();
+		auto volumes = converter.build(p, args.radius.getValue(), args.voxelSize.getValue(), names);
 		for (auto v : volumes) {
 			newScene->add(v);
 		}

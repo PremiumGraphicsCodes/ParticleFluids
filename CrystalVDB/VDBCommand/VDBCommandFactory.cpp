@@ -12,7 +12,6 @@
 #include "VDBPCDFileReadCommand.h"
 #include "VDBPCDFileWriteCommand.h"
 #include "VDBSceneCreateCommand.h"
-#include "VDBPSToVolumeCommand.h"
 #include "VDBMeshToVolumeCommand.h"
 #include "VDBVolumeToMeshCommand.h"
 #include "VDBVolumeToPSCommand.h"
@@ -68,9 +67,6 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBSceneCreateCommand::getName()) {
 		return std::make_unique<VDBSceneCreateCommand>();
-	}
-	else if (name == VDBPSToVolumeCommand::getName()) {
-		return std::make_unique<VDBPSToVolumeCommand>();
 	}
 	else if (name == VDBVolumeToPSCommand::getName()) {
 		return std::make_unique<VDBVolumeToPSCommand>();
