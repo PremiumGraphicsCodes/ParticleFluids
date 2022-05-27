@@ -5,20 +5,17 @@
 #include "VDBFileReadCommand.h"
 #include "VDBOBJFileWriteCommand.h"
 #include "VDBSTLFileWriteCommand.h"
-#include "VDBPLYFileWriteCommand.h"
 #include "VDBPCDFileWriteCommand.h"
 #include "VDBSceneCreateCommand.h"
 #include "VDBMeshToVolumeCommand.h"
 #include "VDBVolumeToMeshCommand.h"
 #include "VDBVolumeToPSCommand.h"
-#include "VDBFilterCommand.h"
-#include "VDBCompositeCommand.h"
 #include "VDBResamplingCommand.h"
-#include "ToVDBVolumeCommand.h"
 
 #include "VDBSceneFileReadCommand.h"
 #include "VDBSceneFileWriteCommand.h"
 #include "VDBSceneFileImportCommand.h"
+#include "VDBSceneFileExportCommand.h"
 #include "VDBSceneFilterCommand.h"
 #include "VDBSceneCompositeCommand.h"
 #include "VDBSceneResamplingCommand.h"
@@ -44,9 +41,6 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	else if (name == VDBSTLFileWriteCommand::getName()) {
 		return std::make_unique<VDBSTLFileWriteCommand>();
 	}
-	else if (name == VDBPLYFileWriteCommand::getName()) {
-		return std::make_unique<VDBPLYFileWriteCommand>();
-	}
 	else if (name == VDBPCDFileWriteCommand::getName()) {
 		return std::make_unique<VDBPCDFileWriteCommand>();
 	}
@@ -65,15 +59,6 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	else if (name == VDBVolumeToPSCommand::getName()) {
 		return std::make_unique<VDBVolumeToPSCommand>();
 	}
-	else if (name == ToVDBVolumeCommand::getName()) {
-		return std::make_unique<ToVDBVolumeCommand>();
-	}
-	else if (name == VDBFilterCommand::getName()) {
-		return std::make_unique<VDBFilterCommand>();
-	}
-	else if (name == VDBCompositeCommand::getName()) {
-		return std::make_unique<VDBCompositeCommand>();
-	}
 	else if (name == VDBResamplingCommand::getName()) {
 		return std::make_unique<VDBResamplingCommand>();
 	}
@@ -85,6 +70,9 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBSceneFileImportCommand::getName()) {
 		return std::make_unique<VDBSceneFileImportCommand>();
+	}
+	else if (name == VDBSceneFileExportCommand::getName()) {
+		return std::make_unique<VDBSceneFileExportCommand>();
 	}
 	else if (name == VDBSceneFilterCommand::getName()) {
 		return std::make_unique<VDBSceneFilterCommand>();

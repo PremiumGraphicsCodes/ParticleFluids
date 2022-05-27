@@ -7,8 +7,6 @@
     <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
     <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
     <ClCompile Include="VDBVolumeToPSCommand.cpp" />
-    <ClCompile Include="ToVDBVolumeCommand.cpp" />
-    <ClCompile Include="VDBFilterCommand.cpp" />
     <ClCompile Include="VDBOBJFileWriteCommand.cpp">
       <Filter>IO</Filter>
     </ClCompile>
@@ -25,10 +23,6 @@
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="VDBTransformCommand.cpp" />
-    <ClCompile Include="VDBPLYFileWriteCommand.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
-    <ClCompile Include="VDBCompositeCommand.cpp" />
     <ClCompile Include="VDBResamplingCommand.cpp" />
     <ClCompile Include="VDBSceneFileReadCommand.cpp">
       <Filter>Scene</Filter>
@@ -51,6 +45,9 @@
     <ClCompile Include="VDBSceneFileImportCommand.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="VDBSceneFileExportCommand.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -59,8 +56,6 @@
     <ClInclude Include="VDBMeshToVolumeCommand.h" />
     <ClInclude Include="VDBVolumeToMeshCommand.h" />
     <ClInclude Include="VDBVolumeToPSCommand.h" />
-    <ClInclude Include="ToVDBVolumeCommand.h" />
-    <ClInclude Include="VDBFilterCommand.h" />
     <ClInclude Include="VDBOBJFileWriteCommand.h">
       <Filter>IO</Filter>
     </ClInclude>
@@ -77,10 +72,6 @@
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="VDBTransformCommand.h" />
-    <ClInclude Include="VDBPLYFileWriteCommand.h">
-      <Filter>IO</Filter>
-    </ClInclude>
-    <ClInclude Include="VDBCompositeCommand.h" />
     <ClInclude Include="VDBResamplingCommand.h" />
     <ClInclude Include="VDBSceneFileReadCommand.h">
       <Filter>Scene</Filter>
@@ -101,6 +92,9 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="VDBSceneFileImportCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBSceneFileExportCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>

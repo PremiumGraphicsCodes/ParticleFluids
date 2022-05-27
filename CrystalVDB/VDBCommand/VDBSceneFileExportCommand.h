@@ -4,8 +4,9 @@
 
 namespace Crystal {
 	namespace VDB {
+		class VDBParticleSystemScene;
 
-class VDBPLYFileWriteCommand : public Command::ICommand
+class VDBSceneFileExportCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
@@ -13,7 +14,8 @@ public:
 		Args();
 
 		Command::Arg<std::string> filePath;
-		Command::Arg<int> vdbPsId;
+		Command::Arg<std::string> fileFormat;
+		Command::Arg<int> vdbSceneId;
 	};
 
 	struct Results : Command::IResults
@@ -23,9 +25,9 @@ public:
 		//Command::Result<std::vector<int>> newIds;
 	};
 
-	VDBPLYFileWriteCommand();
+	VDBSceneFileExportCommand();
 
-	explicit VDBPLYFileWriteCommand(const Args& args);
+	explicit VDBSceneFileExportCommand(const Args& args);
 
 	static std::string getName();
 
@@ -36,6 +38,8 @@ public:
 private:
 	Args args;
 	Results results;
+
+	bool writePLY(VDBParticleSystemScene* vdbPoints);
 };
 
 	}
