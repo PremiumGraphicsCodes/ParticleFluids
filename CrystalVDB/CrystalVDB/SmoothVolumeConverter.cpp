@@ -223,13 +223,27 @@ void SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticles, const fl
 	}
 }
 
-VDBVolumeScene* SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength)
+std::vector<VDBVolumeScene*> SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, const std::vector<std::string>& floatNames)
 {
+	std::vector<VDBVolumeScene*> vdbVolumes;
+
 	auto vdbVolume = new VDBVolumeScene();
 	vdbVolume->getImpl()->getPtr()->setName("density");
 	vdbVolume->setScale(cellLength);
 	auto grid = vdbVolume->getImpl()->getPtr();
 	auto accessor = grid->getAccessor();
+
+	std::vector<openvdb::FloatGrid::Accessor> floatAccessors;
+	for (const auto& n : floatNames) {
+		auto vdbVolume = new VDBVolumeScene();
+		vdbVolume->getImpl()->getPtr()->setName(n);
+		vdbVolume->setScale(cellLength);
+		auto grid = vdbVolume->getImpl()->getPtr();
+		vdbVolumes.push_back(vdbVolume);
+		floatAccessors.push_back(grid->getAccessor());
+	}
+
+	vdbVolumes.push_back(vdbVolume);
 
 	const auto r = static_cast<int>(particleRadius / cellLength) / 2;
 
@@ -238,6 +252,11 @@ VDBVolumeScene* SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticle
 	auto psGrid = vdbParticles->getImpl()->getPtr();
 	for (auto leafIter = psGrid->tree().cbeginLeaf(); leafIter; ++leafIter) {
 		const auto& array = leafIter->constAttributeArray("P");
+		std::vector<openvdb::points::AttributeHandle<float>> floatHandles;
+		for (const auto& n : floatNames) {
+			const auto& fa = leafIter->constAttributeArray("n");
+			floatHandles.push_back(fa);
+		}
 
 		openvdb::points::AttributeHandle<openvdb::Vec3f> positionHandle(array);
 		for (auto indexIter = leafIter->beginIndexOn(); indexIter; ++indexIter) {
@@ -245,6 +264,10 @@ VDBVolumeScene* SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticle
 			const auto xyz = indexIter.getCoord().asVec3d();
 			openvdb::Vec3f worldPosition = psGrid->transform().indexToWorld(voxelPosition + xyz);
 			auto ix = *indexIter;
+			std::vector<float> floatValues;
+			for (const auto& fh : floatHandles) {
+				floatValues.push_back(fh.get(ix));
+			}
 
 			const auto index = grid->worldToIndex(worldPosition);
 			const auto p = worldPosition;
@@ -261,10 +284,23 @@ VDBVolumeScene* SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticle
 						const auto v = ::getCubicSpline(std::sqrt(dist), particleRadius);
 						const auto vv = accessor.getValue(c) + v;
 						accessor.setValue(c, vv);
+						for (size_t i = 0; i < floatValues.size(); ++i) {
+							const auto tt = floatValues[i] * ::getCubicSpline(std::sqrt(dist), particleRadius);
+							floatAccessors[i].setValue(c, tt + floatAccessors[i].getValue(c));
+						}
 					}
 				}
 			}
 		}
 	}
-	return vdbVolume;
+
+	for (auto iter = grid->cbeginValueOn(); iter.test(); ++iter) {
+		const auto value = *iter;
+		const auto c = iter.getCoord();
+		for (auto& fa : floatAccessors) {
+			const auto t = fa.getValue(c);
+			fa.setValue(c, t / value);
+		}
+	}
+	return vdbVolumes;
 }

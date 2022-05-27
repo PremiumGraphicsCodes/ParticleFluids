@@ -21,7 +21,7 @@ public:
 
 	void build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, VDBVolumeScene* vdbVolume, VDBVolumeScene* temperatureVolume);
 
-	VDBVolumeScene* build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength);
+	std::vector<VDBVolumeScene*> build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, const std::vector<std::string>& floatNames);
 
 private:
 };
