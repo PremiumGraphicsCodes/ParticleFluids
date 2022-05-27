@@ -15,6 +15,12 @@ void VDBScene::add(VDBParticleSystemScene* points)
 	this->children.push_back(points);
 }
 
+void VDBScene::add(VDBPolygonMeshScene* mesh)
+{
+	this->meshes.push_back(mesh);
+	this->children.push_back(mesh);
+}
+
 SceneType VDBScene::getType() const
 {
 	return SceneType("VDBScene");

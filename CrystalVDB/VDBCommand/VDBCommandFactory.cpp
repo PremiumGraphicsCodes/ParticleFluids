@@ -3,9 +3,7 @@
 #include "VDBInitCommand.h"
 #include "VDBFileWriteCommand.h"
 #include "VDBFileReadCommand.h"
-#include "VDBOBJFileReadCommand.h"
 #include "VDBOBJFileWriteCommand.h"
-#include "VDBSTLFileReadCommand.h"
 #include "VDBSTLFileWriteCommand.h"
 #include "VDBPLYFileWriteCommand.h"
 #include "VDBPCDFileWriteCommand.h"
@@ -20,6 +18,7 @@
 
 #include "VDBSceneFileReadCommand.h"
 #include "VDBSceneFileWriteCommand.h"
+#include "VDBSceneFileImportCommand.h"
 #include "VDBSceneFilterCommand.h"
 #include "VDBSceneCompositeCommand.h"
 #include "VDBSceneResamplingCommand.h"
@@ -39,14 +38,8 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	else if (name == VDBFileReadCommand::getName()) {
 		return std::make_unique<VDBFileReadCommand>();
 	}
-	else if (name == VDBOBJFileReadCommand::getName()) {
-		return std::make_unique<VDBOBJFileReadCommand>();
-	}
 	else if (name == VDBOBJFileWriteCommand::getName()) {
 		return std::make_unique<VDBOBJFileWriteCommand>();
-	}
-	else if (name == VDBSTLFileReadCommand::getName()) {
-		return std::make_unique<VDBSTLFileReadCommand>();
 	}
 	else if (name == VDBSTLFileWriteCommand::getName()) {
 		return std::make_unique<VDBSTLFileWriteCommand>();
@@ -89,6 +82,9 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBSceneFileWriteCommand::getName()) {
 		return std::make_unique<VDBSceneFileWriteCommand>();
+	}
+	else if (name == VDBSceneFileImportCommand::getName()) {
+		return std::make_unique<VDBSceneFileImportCommand>();
 	}
 	else if (name == VDBSceneFilterCommand::getName()) {
 		return std::make_unique<VDBSceneFilterCommand>();

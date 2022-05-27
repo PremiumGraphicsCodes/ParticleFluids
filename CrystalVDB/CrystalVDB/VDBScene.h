@@ -3,6 +3,7 @@
 #include "CrystalScene/Scene/IScene.h"
 #include "VDBVolumeScene.h"
 #include "VDBParticleSystemScene.h"
+#include "VDBPolygonMeshScene.h"
 
 namespace Crystal {
 	namespace VDB {
@@ -18,6 +19,8 @@ public:
 
 	void add(VDBParticleSystemScene* points);
 
+	void add(VDBPolygonMeshScene* mesh);
+
 	Scene::SceneType getType() const override;
 
 	Scene::IPresenter* getPresenter() override;
@@ -26,9 +29,12 @@ public:
 
 	std::vector<VDBParticleSystemScene*> getPoints() { return points; }
 
+	std::vector<VDBPolygonMeshScene*> getMeshes() { return meshes; }
+
 private:
 	std::vector<VDBVolumeScene*> volumes;
 	std::vector<VDBParticleSystemScene*> points;
+	std::vector<VDBPolygonMeshScene*> meshes;
 };
 	}
 }

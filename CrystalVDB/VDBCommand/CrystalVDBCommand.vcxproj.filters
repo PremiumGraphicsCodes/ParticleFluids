@@ -12,9 +12,6 @@
     <ClCompile Include="VDBOBJFileWriteCommand.cpp">
       <Filter>IO</Filter>
     </ClCompile>
-    <ClCompile Include="VDBSTLFileReadCommand.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
     <ClCompile Include="VDBSTLFileWriteCommand.cpp">
       <Filter>IO</Filter>
     </ClCompile>
@@ -25,9 +22,6 @@
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="VDBPCDFileWriteCommand.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
-    <ClCompile Include="VDBOBJFileReadCommand.cpp">
       <Filter>IO</Filter>
     </ClCompile>
     <ClCompile Include="VDBTransformCommand.cpp" />
@@ -70,9 +64,6 @@
     <ClInclude Include="VDBOBJFileWriteCommand.h">
       <Filter>IO</Filter>
     </ClInclude>
-    <ClInclude Include="VDBSTLFileReadCommand.h">
-      <Filter>IO</Filter>
-    </ClInclude>
     <ClInclude Include="VDBSTLFileWriteCommand.h">
       <Filter>IO</Filter>
     </ClInclude>
@@ -83,9 +74,6 @@
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="VDBPCDFileWriteCommand.h">
-      <Filter>IO</Filter>
-    </ClInclude>
-    <ClInclude Include="VDBOBJFileReadCommand.h">
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="VDBTransformCommand.h" />

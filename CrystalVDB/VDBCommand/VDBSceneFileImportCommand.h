@@ -5,6 +5,7 @@
 namespace Crystal {
 	namespace VDB {
 		class VDBParticleSystemScene;
+		class VDBPolygonMeshScene;
 
 class VDBSceneFileImportCommand : public Command::ICommand
 {
@@ -40,9 +41,13 @@ private:
 	Args args;
 	Results results;
 
-	VDBParticleSystemScene* readPLY(Scene::World* world);
+	VDBParticleSystemScene* readPLY();
 
-	VDBParticleSystemScene* readPCD(Scene::World* world);
+	VDBParticleSystemScene* readPCD();
+
+	VDBPolygonMeshScene* readOBJ();
+
+	VDBPolygonMeshScene* readSTL();
 };
 
 	}
