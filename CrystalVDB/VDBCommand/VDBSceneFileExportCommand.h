@@ -40,6 +40,8 @@ private:
 	Results results;
 
 	bool writePLY(VDBParticleSystemScene* vdbPoints);
+
+	bool writePCD(VDBParticleSystemScene* vdbPoints);
 };
 
 	}

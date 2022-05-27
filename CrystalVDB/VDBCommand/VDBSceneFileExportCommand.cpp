@@ -1,6 +1,7 @@
 #include "VDBSceneFileExportCommand.h"
 
-#include "../../Crystal/IO/PLYFileWriter.h"
+#include "Crystal/IO/PLYFileWriter.h"
+#include "Crystal/IO/PCDFileWriter.h"
 
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
@@ -66,6 +67,14 @@ bool VDBSceneFileExportCommand::execute(World* world)
 			}
 		}
 	}
+	else if (format == FileFormat_PCD_Label) {
+		for (auto p : points) {
+			const auto isOk = writePCD(p);
+			if (!isOk) {
+				return false;
+			}
+		}
+	}
 	else {
 		assert(false);
 		return true;
@@ -95,5 +104,25 @@ bool VDBSceneFileExportCommand::writePLY(VDBParticleSystemScene* vdbPoints)
 		return false;
 	}
 	return true;
-
 }
+
+bool VDBSceneFileExportCommand::writePCD(VDBParticleSystemScene* vdbPoints)
+{
+	assert(vdbPoints != nullptr);
+
+	const auto filePath = args.filePath.getValue();
+
+	const auto points = vdbPoints->getPositions();
+	Crystal::IO::PCDFile pcd;
+	pcd.header.points = points.size();
+	pcd.header.width = points.size();
+	pcd.data.positions = points;
+
+	Crystal::IO::PCDFileWriter writer;
+	const auto isOk = writer.writeBinary(filePath, pcd);
+	if (!isOk) {
+		return false;
+	}
+	return true;
+}
+

@@ -19,9 +19,6 @@
     <ClCompile Include="VDBFileWriteCommand.cpp">
       <Filter>IO</Filter>
     </ClCompile>
-    <ClCompile Include="VDBPCDFileWriteCommand.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
     <ClCompile Include="VDBTransformCommand.cpp" />
     <ClCompile Include="VDBResamplingCommand.cpp" />
     <ClCompile Include="VDBSceneFileReadCommand.cpp">
@@ -66,9 +63,6 @@
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="VDBFileWriteCommand.h">
-      <Filter>IO</Filter>
-    </ClInclude>
-    <ClInclude Include="VDBPCDFileWriteCommand.h">
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="VDBTransformCommand.h" />
