@@ -5,6 +5,7 @@
 namespace Crystal {
 	namespace VDB {
 		class VDBParticleSystemScene;
+		class VDBPolygonMeshScene;
 
 class VDBSceneFileExportCommand : public Command::ICommand
 {
@@ -42,6 +43,8 @@ private:
 	bool writePLY(VDBParticleSystemScene* vdbPoints);
 
 	bool writePCD(VDBParticleSystemScene* vdbPoints);
+
+	bool writeSTL(VDBPolygonMeshScene* mesh);
 };
 
 	}

@@ -5,7 +5,6 @@
 #include "../VDBCommand/VDBFileReadCommand.h"
 #include "../VDBCommand/VDBFileWriteCommand.h"
 #include "../VDBCommand/VDBSceneCreateCommand.h"
-#include "../VDBCommand/VDBSTLFileWriteCommand.h"
 #include "../VDBCommand/VDBVolumeToMeshCommand.h"
 #include "../VDBCommand/VDBMeshToVolumeCommand.h"
 
@@ -71,20 +70,6 @@ TEST(VDBRunnerTest, TestPointsSceneCreateCommand)
 	VDBSceneCreateCommand command;
 	VDBSceneCreateCommand::Args args;
 	args.sceneType.setValue(std::string("VDBPoints"));
-	JSONFileWriter writer;
-	writer.add(&command);
-	EXPECT_TRUE(writer.write(filepath));
-
-	VDBCommandFactory factory;
-	JSONFileReader reader;
-	EXPECT_TRUE(reader.read(filepath, factory));
-}
-
-TEST(VDBRunnerTest, TestWriteSTLCommand)
-{
-	const std::string filepath("./TestFiles/write_stl.json");
-
-	VDBSTLFileWriteCommand command;
 	JSONFileWriter writer;
 	writer.add(&command);
 	EXPECT_TRUE(writer.write(filepath));

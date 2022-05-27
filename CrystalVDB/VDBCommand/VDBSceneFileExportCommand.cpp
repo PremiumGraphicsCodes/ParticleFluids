@@ -2,6 +2,7 @@
 
 #include "Crystal/IO/PLYFileWriter.h"
 #include "Crystal/IO/PCDFileWriter.h"
+#include "Crystal/IO/STLFileWriter.h"
 
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
@@ -126,3 +127,43 @@ bool VDBSceneFileExportCommand::writePCD(VDBParticleSystemScene* vdbPoints)
 	return true;
 }
 
+bool VDBSceneFileExportCommand::writeSTL(VDBPolygonMeshScene* mesh)
+{
+	assert(mesh != nullptr);
+
+	Crystal::IO::STLFile stl;
+
+	const auto& triangles = mesh->getTriangleFaces();
+	const auto vs = mesh->getVerticesf();
+	for (const auto& t : triangles) {
+		const auto v0 = vs[t.indices[0]];
+		const auto v1 = vs[t.indices[1]];
+		const auto v2 = vs[t.indices[2]];
+		Crystal::IO::STLFace f;
+		f.triangle = Crystal::Math::Triangle3d(v0, v1, v2);
+		f.normal = t.normal;
+		stl.faces.push_back(f);
+	}
+
+	const auto& quads = mesh->getQuadFaces();
+	for (const auto& t : quads) {
+		const auto v0 = vs[t.indices[0]];
+		const auto v1 = vs[t.indices[1]];
+		const auto v2 = vs[t.indices[2]];
+		const auto v3 = vs[t.indices[3]];
+		Crystal::IO::STLFace f1;
+		f1.triangle = Crystal::Math::Triangle3d(v0, v1, v2);
+		f1.normal = t.normal;
+		stl.faces.push_back(f1);
+
+		Crystal::IO::STLFace f2;
+		f2.triangle = Crystal::Math::Triangle3d(v0, v2, v3);
+		f2.normal = t.normal;
+		stl.faces.push_back(f2);
+	}
+	stl.faceCount = stl.faces.size();
+
+	Crystal::IO::STLFileWriter writer;
+	const auto isOk = writer.writeBinary(args.filePath.getValue(), stl);
+	return isOk;
+}
