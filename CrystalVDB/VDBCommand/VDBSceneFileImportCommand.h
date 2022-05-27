@@ -4,8 +4,9 @@
 
 namespace Crystal {
 	namespace VDB {
+		class VDBParticleSystemScene;
 
-class VDBSceneFileReadCommand : public Command::ICommand
+class VDBSceneFileImportCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
@@ -25,9 +26,9 @@ public:
 		//Command::Result<std::vector<int>> newIds;
 	};
 
-	VDBSceneFileReadCommand();
+	VDBSceneFileImportCommand();
 
-	explicit VDBSceneFileReadCommand(const Args& args);
+	explicit VDBSceneFileImportCommand(const Args& args);
 
 	static std::string getName();
 
@@ -39,9 +40,7 @@ private:
 	Args args;
 	Results results;
 
-	bool readPoints(Scene::World* world);
-
-	bool readVolume(Scene::World* world);
+	VDBParticleSystemScene* readPLY(Scene::World* world);
 };
 
 	}

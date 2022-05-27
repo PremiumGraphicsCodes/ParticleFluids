@@ -6,7 +6,6 @@
 #include "CrystalVDB/VDBCommand/VDBMeshToVolumeCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSTLFileReadCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSTLFileWriteCommand.h"
-#include "CrystalVDB/VDBCommand/VDBPLYFileReadCommand.h"
 #include "CrystalVDB/VDBCommand/VDBPLYFileWriteCommand.h"
 #include "CrystalVDB/VDBCommand/VDBResamplingCommand.h"
 

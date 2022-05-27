@@ -7,7 +7,6 @@
 #include "VDBOBJFileWriteCommand.h"
 #include "VDBSTLFileReadCommand.h"
 #include "VDBSTLFileWriteCommand.h"
-#include "VDBPLYFileReadCommand.h"
 #include "VDBPLYFileWriteCommand.h"
 #include "VDBPCDFileReadCommand.h"
 #include "VDBPCDFileWriteCommand.h"
@@ -52,9 +51,6 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBSTLFileWriteCommand::getName()) {
 		return std::make_unique<VDBSTLFileWriteCommand>();
-	}
-	else if (name == VDBPLYFileReadCommand::getName()) {
-		return std::make_unique<VDBPLYFileReadCommand>();
 	}
 	else if (name == VDBPLYFileWriteCommand::getName()) {
 		return std::make_unique<VDBPLYFileWriteCommand>();

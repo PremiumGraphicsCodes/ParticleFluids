@@ -189,7 +189,6 @@
     <ClInclude Include="VDBInitCommand.h" />
     <ClInclude Include="VDBPCDFileReadCommand.h" />
     <ClInclude Include="VDBPCDFileWriteCommand.h" />
-    <ClInclude Include="VDBPLYFileReadCommand.h" />
     <ClInclude Include="VDBFilterCommand.h" />
     <ClInclude Include="VDBPLYFileWriteCommand.h" />
     <ClInclude Include="VDBResamplingCommand.h" />
@@ -219,7 +218,6 @@
     <ClCompile Include="VDBInitCommand.cpp" />
     <ClCompile Include="VDBPCDFileReadCommand.cpp" />
     <ClCompile Include="VDBPCDFileWriteCommand.cpp" />
-    <ClCompile Include="VDBPLYFileReadCommand.cpp" />
     <ClCompile Include="VDBFilterCommand.cpp" />
     <ClCompile Include="VDBPLYFileWriteCommand.cpp" />
     <ClCompile Include="VDBResamplingCommand.cpp" />
