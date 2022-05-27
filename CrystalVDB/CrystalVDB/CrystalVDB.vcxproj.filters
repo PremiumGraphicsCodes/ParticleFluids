@@ -69,6 +69,9 @@
     <ClCompile Include="VDBFileImporter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="VDBFileExporter.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -137,6 +140,9 @@
     </ClInclude>
     <ClInclude Include="VDBScene.h" />
     <ClInclude Include="VDBFileImporter.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBFileExporter.h">
       <Filter>FileIO</Filter>
     </ClInclude>
   </ItemGroup>

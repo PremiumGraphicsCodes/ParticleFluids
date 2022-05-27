@@ -39,14 +39,6 @@ public:
 private:
 	Args args;
 	Results results;
-
-	bool writePLY(VDBParticleSystemScene* vdbPoints);
-
-	bool writePCD(VDBParticleSystemScene* vdbPoints);
-
-	bool writeSTL(VDBPolygonMeshScene* mesh);
-
-	bool writeOBJ(VDBPolygonMeshScene* mesh);
 };
 
 	}
