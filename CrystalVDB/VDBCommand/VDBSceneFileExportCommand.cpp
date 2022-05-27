@@ -3,6 +3,7 @@
 #include "Crystal/IO/PLYFileWriter.h"
 #include "Crystal/IO/PCDFileWriter.h"
 #include "Crystal/IO/STLFileWriter.h"
+#include "Crystal/IO/OBJFileWriter.h"
 
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
@@ -58,6 +59,7 @@ bool VDBSceneFileExportCommand::execute(World* world)
 {
 	auto scene = world->getScenes()->findSceneById<VDBScene*>(args.vdbSceneId.getValue());
 	const auto points = scene->getPoints();
+	const auto meshes = scene->getMeshes();
 
 	const auto format = args.fileFormat.getValue();
 	if (format == FileFormat_PLY_Label) {
@@ -76,9 +78,25 @@ bool VDBSceneFileExportCommand::execute(World* world)
 			}
 		}
 	}
+	else if (format == FileFormat_STL_Label) {
+		for (auto m : meshes) {
+			const auto isOk = writeSTL(m);
+			if (!isOk) {
+				return false;
+			}
+		}
+	}
+	else if (format == FileFormat_OBJ_Label) {
+		for (auto m : meshes) {
+			const auto isOk = writeOBJ(m);
+			if (!isOk) {
+				return false;
+			}
+		}
+	}
 	else {
 		assert(false);
-		return true;
+		return false;
 	}
 	return true;
 }
@@ -165,5 +183,48 @@ bool VDBSceneFileExportCommand::writeSTL(VDBPolygonMeshScene* mesh)
 
 	Crystal::IO::STLFileWriter writer;
 	const auto isOk = writer.writeBinary(args.filePath.getValue(), stl);
+	return isOk;
+}
+
+bool VDBSceneFileExportCommand::writeOBJ(VDBPolygonMeshScene* mesh)
+{
+	assert(mesh != nullptr);
+
+	Crystal::IO::OBJFile obj;
+	obj.positions = mesh->getVerticesf();
+
+	const auto& triangles = mesh->getTriangleFaces();
+	for (const auto& t : triangles) {
+		obj.normals.emplace_back(t.normal);
+	}
+
+	const auto& quads = mesh->getQuadFaces();
+	for (const auto& t : quads) {
+		obj.normals.emplace_back(t.normal);
+	}
+
+	int normalIndex = 1;
+	Crystal::IO::OBJGroup group;
+	for (const auto& t : triangles) {
+		Crystal::IO::OBJFace f;
+		f.positionIndices = { t.indices[0] + 1, t.indices[1] + 1, t.indices[2] + 1 };
+		f.normalIndices = { normalIndex, normalIndex, normalIndex };
+		f.texCoordIndices = { 0,0,0 };
+		normalIndex++;
+		group.faces.push_back(f);
+	}
+
+	for (const auto& t : quads) {
+		Crystal::IO::OBJFace f;
+		f.positionIndices = { t.indices[0] + 1, t.indices[1] + 1, t.indices[2] + 1, t.indices[3] + 1 };
+		f.normalIndices = { normalIndex, normalIndex, normalIndex, normalIndex };
+		f.texCoordIndices = { 0,0,0,0 };
+		normalIndex++;
+		group.faces.push_back(f);
+	}
+	obj.groups.emplace_back(group);
+
+	Crystal::IO::OBJFileWriter writer;
+	const auto isOk = writer.write(args.filePath.getValue(), obj);
 	return isOk;
 }

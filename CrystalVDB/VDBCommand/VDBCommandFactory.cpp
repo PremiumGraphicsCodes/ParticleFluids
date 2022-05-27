@@ -3,7 +3,6 @@
 #include "VDBInitCommand.h"
 #include "VDBFileWriteCommand.h"
 #include "VDBFileReadCommand.h"
-#include "VDBOBJFileWriteCommand.h"
 #include "VDBSceneCreateCommand.h"
 #include "VDBMeshToVolumeCommand.h"
 #include "VDBVolumeToMeshCommand.h"
@@ -31,9 +30,6 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBFileReadCommand::getName()) {
 		return std::make_unique<VDBFileReadCommand>();
-	}
-	else if (name == VDBOBJFileWriteCommand::getName()) {
-		return std::make_unique<VDBOBJFileWriteCommand>();
 	}
 	else if (name == VDBSceneCreateCommand::getName()) {
 		return std::make_unique<VDBSceneCreateCommand>();

@@ -45,6 +45,8 @@ private:
 	bool writePCD(VDBParticleSystemScene* vdbPoints);
 
 	bool writeSTL(VDBPolygonMeshScene* mesh);
+
+	bool writeOBJ(VDBPolygonMeshScene* mesh);
 };
 
 	}

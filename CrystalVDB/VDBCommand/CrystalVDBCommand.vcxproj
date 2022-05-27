@@ -196,7 +196,6 @@
     <ClInclude Include="VDBTransformCommand.h" />
     <ClInclude Include="VDBVolumeToPSCommand.h" />
     <ClInclude Include="VDBMeshToVolumeCommand.h" />
-    <ClInclude Include="VDBOBJFileWriteCommand.h" />
     <ClInclude Include="VDBSceneCreateCommand.h" />
     <ClInclude Include="VDBVolumeToMeshCommand.h" />
   </ItemGroup>
@@ -216,7 +215,6 @@
     <ClCompile Include="VDBTransformCommand.cpp" />
     <ClCompile Include="VDBVolumeToPSCommand.cpp" />
     <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
-    <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
     <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
   </ItemGroup>

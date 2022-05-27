@@ -7,9 +7,6 @@
     <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
     <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
     <ClCompile Include="VDBVolumeToPSCommand.cpp" />
-    <ClCompile Include="VDBOBJFileWriteCommand.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
     <ClCompile Include="VDBFileReadCommand.cpp">
       <Filter>IO</Filter>
     </ClCompile>
@@ -49,9 +46,6 @@
     <ClInclude Include="VDBMeshToVolumeCommand.h" />
     <ClInclude Include="VDBVolumeToMeshCommand.h" />
     <ClInclude Include="VDBVolumeToPSCommand.h" />
-    <ClInclude Include="VDBOBJFileWriteCommand.h">
-      <Filter>IO</Filter>
-    </ClInclude>
     <ClInclude Include="VDBFileReadCommand.h">
       <Filter>IO</Filter>
     </ClInclude>
