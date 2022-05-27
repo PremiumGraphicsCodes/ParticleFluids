@@ -12,9 +12,6 @@
     <ClCompile Include="VDBOBJFileWriteCommand.cpp">
       <Filter>IO</Filter>
     </ClCompile>
-    <ClCompile Include="VDBPCDFileReadCommand.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
     <ClCompile Include="VDBSTLFileReadCommand.cpp">
       <Filter>IO</Filter>
     </ClCompile>
@@ -71,9 +68,6 @@
     <ClInclude Include="ToVDBVolumeCommand.h" />
     <ClInclude Include="VDBFilterCommand.h" />
     <ClInclude Include="VDBOBJFileWriteCommand.h">
-      <Filter>IO</Filter>
-    </ClInclude>
-    <ClInclude Include="VDBPCDFileReadCommand.h">
       <Filter>IO</Filter>
     </ClInclude>
     <ClInclude Include="VDBSTLFileReadCommand.h">

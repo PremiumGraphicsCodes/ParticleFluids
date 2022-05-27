@@ -41,6 +41,8 @@ private:
 	Results results;
 
 	VDBParticleSystemScene* readPLY(Scene::World* world);
+
+	VDBParticleSystemScene* readPCD(Scene::World* world);
 };
 
 	}

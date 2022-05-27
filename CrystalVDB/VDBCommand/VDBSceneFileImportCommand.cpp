@@ -1,6 +1,7 @@
 #include "VDBSceneFileImportCommand.h"
 
 #include "../../Crystal/IO/PLYFileReader.h"
+#include "../../Crystal/IO/PCDFileReader.h"
 
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
@@ -13,6 +14,7 @@ namespace
 	PublicLabel FilePathLabel = "FilePath";
 	PublicLabel FileFormatLabel = "FileFormat";
 	PublicLabel FileFormat_PLY_Label = "PLY";
+	PublicLabel FileFormat_PCD_Label = "PCD";
 	PublicLabel NewSceneIdLabel = "NewSceneId";
 }
 
@@ -51,9 +53,16 @@ std::string VDBSceneFileImportCommand::getName()
 
 bool VDBSceneFileImportCommand::execute(World* world)
 {
+	const auto format = args.fileFormat.getValue();
 	VDBScene* scene = new VDBScene(world->getNextSceneId(), "Imported");
-	if (args.fileFormat.getValue() == FileFormat_PLY_Label) {
+	if (format == FileFormat_PLY_Label) {
 		auto points = readPLY(world);
+		if (points != nullptr) {
+			scene->addScene(points);
+		}
+	}
+	else if (format == FileFormat_PCD_Label) {
+		auto points = readPCD(world);
 		if (points != nullptr) {
 			scene->addScene(points);
 		}
@@ -102,6 +111,21 @@ VDBParticleSystemScene* VDBSceneFileImportCommand::readPLY(World* world)
 		}
 
 	}
+
+	return scene;
+}
+
+VDBParticleSystemScene* VDBSceneFileImportCommand::readPCD(World* world)
+{
+	const auto filePath = args.filePath.getValue();
+	Crystal::IO::PCDFileReader reader;
+	const auto isOk = reader.readBinary(filePath);
+	if (!isOk) {
+		return nullptr;
+	}
+	const auto pcd = reader.getPCD();
+	auto scene = new VDBParticleSystemScene(world->getNextSceneId(), "PCDImport");
+	scene->create(pcd.data.positions);
 
 	return scene;
 }
