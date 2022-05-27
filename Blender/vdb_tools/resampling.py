@@ -72,19 +72,18 @@ class VDB_TOOLS_OT_ResamplingOperator(bpy.types.Operator) :
     dict1 = dict()
     dict1["FilePath"] =  input_vdb_file
     dict1["Radius"] = 0.5
-    data1 = ["VDBFileRead", dict1]
+    data1 = ["VDBSceneFileRead", dict1]
 
     dict2 = dict()
     dict2["SamplingType"] = sampling_type
-    dict2["VolumeId"] = 1
-    data2 = ["VDBResampling", dict2]
+    dict2["SceneId"] = 1
+    data2 = ["VDBSceneResampling", dict2]
 
     dict3 = dict()
     dict3["FilePath"] = output_vdb_file
-    dict3["ParticleSystemIds"] = []
-    dict3["VDBVolumeIds"] = [1]
-
-    data3 = ["OpenVDBFileWrite", dict3]
+    dict3["VDBSceneId"] = 1
+    data3 = ["VDBSceneFileWrite", dict3]
+    
     data = dict()
     data = [data1, data2, data3]
     return data

@@ -1,9 +1,9 @@
 #include "OBJFileExportView.h"
 
-#include "../VDBCommand/VDBOBJFileWriteCommand.h"
+//#include "../VDBCommand/VDBOBJFileWriteCommand.h"
 
 using namespace Crystal::UI;
-using namespace Crystal::VDB;
+//using namespace Crystal::VDB;
 
 OBJFileExportView::OBJFileExportView(const std::string& name, Scene::World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
@@ -17,9 +17,11 @@ OBJFileExportView::OBJFileExportView(const std::string& name, Scene::World* mode
 
 void OBJFileExportView::onOk()
 {
+	/*
 	VDBOBJFileWriteCommand::Args args;
 	args.vdbMeshId.setValue( vdbMeshSelectView.getId() );
 	args.filePath.setValue( fileSaveView.getFileName() );
 	VDBOBJFileWriteCommand command(args);
 	command.execute(getWorld());
+	*/
 }

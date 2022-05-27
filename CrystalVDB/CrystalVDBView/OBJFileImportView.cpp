@@ -1,6 +1,6 @@
 #include "OBJFileImportView.h"
 
-#include "../VDBCommand/VDBOBJFileReadCommand.h"
+//#include "../VDBCommand/VDBOBJFileReadCommand.h"
 
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 
