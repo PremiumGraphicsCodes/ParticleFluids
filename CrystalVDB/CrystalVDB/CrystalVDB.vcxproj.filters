@@ -66,6 +66,9 @@
       <Filter>Converter</Filter>
     </ClCompile>
     <ClCompile Include="VDBScene.cpp" />
+    <ClCompile Include="VDBFileImporter.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -133,6 +136,9 @@
       <Filter>Converter</Filter>
     </ClInclude>
     <ClInclude Include="VDBScene.h" />
+    <ClInclude Include="VDBFileImporter.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

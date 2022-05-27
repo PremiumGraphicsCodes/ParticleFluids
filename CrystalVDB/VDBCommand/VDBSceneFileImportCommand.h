@@ -41,13 +41,6 @@ private:
 	Args args;
 	Results results;
 
-	VDBParticleSystemScene* readPLY();
-
-	VDBParticleSystemScene* readPCD();
-
-	VDBPolygonMeshScene* readOBJ();
-
-	VDBPolygonMeshScene* readSTL();
 };
 
 	}
