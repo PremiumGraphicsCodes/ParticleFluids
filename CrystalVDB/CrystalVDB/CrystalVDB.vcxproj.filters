@@ -29,7 +29,7 @@
     <ClCompile Include="VDBVolumeScene.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
-    <ClCompile Include="VDBParticleSystemImpl.cpp">
+    <ClCompile Include="VDBPointsImpl.cpp">
       <Filter>ParticleSystem\Private</Filter>
     </ClCompile>
     <ClCompile Include="VDBParticleSystemScene.cpp">
@@ -111,7 +111,7 @@
     <ClInclude Include="VDBVolumeScene.h">
       <Filter>Volume</Filter>
     </ClInclude>
-    <ClInclude Include="VDBParticleSystemImpl.h">
+    <ClInclude Include="VDBPointsImpl.h">
       <Filter>ParticleSystem\Private</Filter>
     </ClInclude>
     <ClInclude Include="VDBParticleSystemScene.h">

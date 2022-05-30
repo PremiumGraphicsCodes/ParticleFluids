@@ -10,7 +10,7 @@
 #include "Crystal/Math/Sphere3d.h"
 #include "VDBVolumeConverter.h"
 #include "VDBVolumeImpl.h"
-#include "VDBParticleSystemImpl.h"
+#include "VDBPointsImpl.h"
 
 
 using namespace Crystal::Math;

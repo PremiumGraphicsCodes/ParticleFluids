@@ -1,6 +1,6 @@
 #include "VDBParticleSystemScene.h"
 
-#include "VDBParticleSystemImpl.h"
+#include "VDBPointsImpl.h"
 
 #include "Converter.h"
 

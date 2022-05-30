@@ -7,7 +7,7 @@
 #include "VDBVolumeImpl.h"
 #include "VDBParticleSystemScene.h"
 #include "VDBVolumeScene.h"
-#include "VDBParticleSystemImpl.h"
+#include "VDBPointsImpl.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::VDB;

@@ -4,7 +4,7 @@
 
 #include "../../CrystalScene/Scene/SceneShader.h"
 #include "../../CrystalScene/Scene/PointShaderScene.h"
-#include "VDBParticleSystemImpl.h"
+#include "VDBPointsImpl.h"
 #include "Converter.h"
 //#include "PointShaderScene.h"
 

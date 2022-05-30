@@ -4,7 +4,7 @@
 #include "VDBVolumeImpl.h"
 
 #include "VDBParticleSystemScene.h"
-#include "VDBParticleSystemImpl.h"
+#include "VDBPointsImpl.h"
 
 //#include <openvdb/openvdb.h>
 

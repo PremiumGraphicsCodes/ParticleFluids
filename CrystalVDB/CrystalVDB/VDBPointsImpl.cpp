@@ -1,4 +1,4 @@
-#include "VDBParticleSystemImpl.h"
+#include "VDBPointsImpl.h"
 
 using namespace Crystal::VDB;
 

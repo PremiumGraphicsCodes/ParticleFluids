@@ -12,7 +12,7 @@
 #include "VDBVolumeImpl.h"
 #include "VDBPolygonMeshScene.h"
 #include "VDBPolygonMeshImpl.h"
-#include "VDBParticleSystemImpl.h"
+#include "VDBPointsImpl.h"
 #include "VDBParticleSystemScene.h"
 #include "Converter.h"
 
