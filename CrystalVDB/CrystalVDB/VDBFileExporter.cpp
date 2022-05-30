@@ -21,11 +21,15 @@ bool VDBFileExporter::writePLY(VDBPointsScene* vdbPoints, const std::string& fil
 	Crystal::IO::PLYFile ply;
 	for (auto p : points) {
 		PLYPoint vertex;
-		vertex.values.push_back(p.x);
-		vertex.values.push_back(p.y);
-		vertex.values.push_back(p.z);
+		vertex.values.push_back((float)p.x);
+		vertex.values.push_back((float)p.y);
+		vertex.values.push_back((float)p.z);
 		ply.vertices.push_back(vertex);
 	}
+
+	ply.properties.push_back(PLYProperty("x", PLYType::FLOAT));
+	ply.properties.push_back(PLYProperty("y", PLYType::FLOAT));
+	ply.properties.push_back(PLYProperty("y", PLYType::FLOAT));
 
 	Crystal::IO::PLYFileWriter writer;
 	const auto isOk = writer.writeBinary(filePath, ply);

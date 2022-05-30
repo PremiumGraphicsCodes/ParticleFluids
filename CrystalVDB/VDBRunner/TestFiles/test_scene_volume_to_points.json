@@ -2,7 +2,7 @@
     [
         "VDBSceneFileRead",
         {
-            "FilePath": "../VDBDataSet/torus.vdb",
+            "FilePath": "../VDBDataSet/scene_to_volume.vdb",
             "Radius": 0.5
         }
     ],
@@ -14,9 +14,10 @@
         }
     ],
     [
-        "VDBSceneFileWrite",
+        "VDBSceneFileExport",
         {
-            "FilePath": "../VDBDataSet/scene_to_points_torus.vdb",
+            "FilePath": "../VDBDataSet/scene_to_points_torus.ply",
+			"FileFormat" : "PLY",
             "VDBSceneId": 2
         }
     ]
