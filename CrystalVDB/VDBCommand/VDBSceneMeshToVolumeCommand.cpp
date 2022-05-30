@@ -10,12 +10,13 @@ namespace
 	PublicLabel NewSceneIdLabel = "NewSceneId";
 }
 
-#include "CrystalScene/Scene/ParticleSystemScene.h"
-#include "CrystalScene/Scene/PolygonMeshScene.h"
+//#include "CrystalScene/Scene/ParticleSystemScene.h"
+//#include "CrystalScene/Scene/PolygonMeshScene.h"
 
 #include "../CrystalVDB/VDBVolumeConverter.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
+#include "../CrystalVDB/VDBScene.h"
 
 #include "../CrystalVDB/VDBMeshToVolumeConverter.h"
 
@@ -53,24 +54,22 @@ std::string VDBSceneMeshToVolumeCommand::getName()
 
 bool VDBSceneMeshToVolumeCommand::execute(World* world)
 {
-	/*
-	auto meshScene = world->getScenes()->findSceneById<VDBPolygonMeshScene*>(args.vdbMeshId.getValue());
-	if (meshScene == nullptr) {
-		return false;
-	}
-	auto volumeScene = world->getScenes()->findSceneById<VDBVolumeScene*>(args.vdbVolumeId.getValue());
-	if (volumeScene == nullptr) {
+	auto vdbScene = world->getScenes()->findSceneById<VDBScene*>(args.vdbSceneId.getValue());
+	if (vdbScene == nullptr) {
 		return false;
 	}
 
-	//meshScene->scale(1.0 / args.divideLength.getValue());
+	const auto meshes = vdbScene->getMeshes();
+	if (meshes.empty()) {
+		return false;
+	}
 
-	VDBPolygonMeshConverter converter;
-	converter.toVolume(*meshScene, volumeScene, args.divideLength.getValue());
-
-	//volumeScele->
+	auto newScene = new VDBScene(world->getNextSceneId(), "");
+	for (auto mesh : meshes) {
+		auto v = VDBMeshToVolumeConverter::toVolume(*mesh, args.divideLength.getValue());
+		newScene->add(v);
+	}
+	results.newSceneId.setValue(newScene->getId());
 
 	return true;
-	*/
-	return false;
 }
