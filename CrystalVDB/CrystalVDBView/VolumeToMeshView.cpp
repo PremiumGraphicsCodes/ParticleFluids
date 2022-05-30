@@ -2,7 +2,7 @@
 
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
-#include "../CrystalVDB/VDBVolumeConverter.h"
+#include "../CrystalVDB/VDBVolumeToMeshConverter.h"
 
 #include <iostream>
 
@@ -24,9 +24,7 @@ void VolumeToMeshView::onOk()
 	VDBVolumeScene grid(1.0f);
 	grid.fill(1, 6, -1.0f);
 
-	VDBVolumeConverter vToMesh;
-	auto mesh = new VDBPolygonMeshScene();
-	vToMesh.toMesh(grid, mesh, 0.0, 0.0);
+	auto mesh = VDBVolumeToMeshConverter::toMesh(grid, 0.0, 0.0);
 	mesh->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(mesh);
 
