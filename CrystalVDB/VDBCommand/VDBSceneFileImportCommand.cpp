@@ -64,19 +64,19 @@ bool VDBSceneFileImportCommand::execute(World* world)
 	if (format == FileFormat_PLY_Label) {
 		auto points = importer.readPLY(filePath);
 		if (points != nullptr) {
-			scene->addScene(points);
+			scene->add(points);
 		}
 	}
 	else if (format == FileFormat_PCD_Label) {
 		auto points = importer.readPCD(filePath);
 		if (points != nullptr) {
-			scene->addScene(points);
+			scene->add(points);
 		}
 	}
 	else if (format == FileFormat_OBJ_Label) {
 		auto mesh = importer.readOBJ(filePath);
 		if (mesh != nullptr) {
-			scene->addScene(mesh);
+			scene->add(mesh);
 		}
 	}
 	else if (format == FileFormat_STL_Label) {
@@ -89,6 +89,7 @@ bool VDBSceneFileImportCommand::execute(World* world)
 		assert(false);
 		return false;
 	}
+	world->addScene(scene);
 	results.newSceneId.setValue(scene->getId());
 	return true;
 }

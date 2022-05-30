@@ -54,6 +54,9 @@ bool VDBSceneFileWriteCommand::execute(World* world)
 		return false;
 	}
 	auto scene = world->getScenes()->findSceneById<VDBScene*>(args.vdbSceneId.getValue());
+	if (scene == nullptr) {
+		return false;
+	}
 	const auto points = scene->getPoints();
 	for (auto pts : points) {
 		const auto positions = pts->getPositions();

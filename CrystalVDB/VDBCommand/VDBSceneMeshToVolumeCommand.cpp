@@ -69,6 +69,7 @@ bool VDBSceneMeshToVolumeCommand::execute(World* world)
 		auto v = VDBMeshToVolumeConverter::toVolume(*mesh, args.divideLength.getValue());
 		newScene->add(v);
 	}
+	world->getScenes()->addScene(newScene);
 	results.newSceneId.setValue(newScene->getId());
 
 	return true;
