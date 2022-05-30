@@ -1,4 +1,6 @@
-#include "VDBVolumeToMeshCommand.h"
+#include "VDBSceneVolumeToMeshCommand.h"
+
+using namespace Crystal::VDB;
 
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
 #include "../CrystalVDB/VDBPolygonMeshConverter.h"
@@ -9,49 +11,51 @@
 
 namespace
 {
-	PublicLabel CommandNameLabel = "VDBVolumeToMesh";
-	PublicLabel VolumeIdLabel = "VolumeId";
-	PublicLabel VDBMeshIdLabel = "VDBMeshId";
+	PublicLabel CommandNameLabel = "VDBSceneVolumeToMesh";
+	PublicLabel VDBSceneIdLabel = "VDBSceneId";
 	PublicLabel ThresholdLabel = "Threshold";
 	PublicLabel AdaptivityLabel = "Adaptivity";
+
+	PublicLabel NewSceneIdLabel = "NewSceneId";
 }
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBVolumeToMeshCommand::Args::Args() :
-	vdbVolumeId(::VolumeIdLabel, -1),
-	vdbMeshId(::VDBMeshIdLabel, -1),
+VDBSceneVolumeToMeshCommand::Args::Args() :
+	vdbSceneId(::VDBSceneIdLabel, -1),
 	threshold(::ThresholdLabel, 0.0),
 	adaptivity(::AdaptivityLabel, 0.0)
 {
-	add(&vdbVolumeId);
-	add(&vdbMeshId);
+	add(&vdbSceneId);
 	add(&threshold);
 	add(&adaptivity);
 }
 
-VDBVolumeToMeshCommand::Results::Results()
+VDBSceneVolumeToMeshCommand::Results::Results() :
+	newSceneId(::NewSceneIdLabel, -1)
 {
+	add(&newSceneId);
 }
 
-VDBVolumeToMeshCommand::VDBVolumeToMeshCommand() :
+VDBSceneVolumeToMeshCommand::VDBSceneVolumeToMeshCommand() :
 	ICommand(&args, &results)
 {}
 
-VDBVolumeToMeshCommand::VDBVolumeToMeshCommand(const Args& args) :
+VDBSceneVolumeToMeshCommand::VDBSceneVolumeToMeshCommand(const Args& args) :
 	args(args),
 	ICommand(&this->args, &results)
 {}
 
-std::string VDBVolumeToMeshCommand::getName()
+std::string VDBSceneVolumeToMeshCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-bool VDBVolumeToMeshCommand::execute(World* world)
+bool VDBSceneVolumeToMeshCommand::execute(World* world)
 {
+	/*
 	auto volume = world->getScenes()->findSceneById<VDBVolumeScene*>(args.vdbVolumeId.getValue());
 	if (volume == nullptr) {
 		return false;
@@ -65,4 +69,6 @@ bool VDBVolumeToMeshCommand::execute(World* world)
 	converter.toMesh(*volume, mesh, args.threshold.getValue(), args.adaptivity.getValue());
 
 	return true;
+	*/
+	return false;
 }

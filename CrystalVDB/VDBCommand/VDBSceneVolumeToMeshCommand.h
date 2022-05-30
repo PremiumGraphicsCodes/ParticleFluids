@@ -5,15 +5,14 @@
 namespace Crystal {
 	namespace VDB {
 
-class VDBVolumeToMeshCommand : public Command::ICommand
+class VDBSceneVolumeToMeshCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
 	{
 		Args();
 
-		Command::Arg<int> vdbVolumeId;
-		Command::Arg<int> vdbMeshId;
+		Command::Arg<int> vdbSceneId;
 		Command::Arg<double> threshold;
 		Command::Arg<double> adaptivity;
 	};
@@ -21,11 +20,13 @@ public:
 	struct Results : Command::IResults
 	{
 		Results();
+
+		Command::Result<int> newSceneId;
 	};
 
-	VDBVolumeToMeshCommand();
+	VDBSceneVolumeToMeshCommand();
 
-	explicit VDBVolumeToMeshCommand(const Args& args);
+	explicit VDBSceneVolumeToMeshCommand(const Args& args);
 
 	static std::string getName();
 

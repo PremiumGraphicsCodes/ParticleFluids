@@ -5,7 +5,6 @@
 #include "../VDBCommand/VDBFileReadCommand.h"
 #include "../VDBCommand/VDBFileWriteCommand.h"
 #include "../VDBCommand/VDBSceneCreateCommand.h"
-#include "../VDBCommand/VDBVolumeToMeshCommand.h"
 
 #include "../VDBCommand/VDBSceneFileReadCommand.h"
 #include "../VDBCommand/VDBSceneFileWriteCommand.h"
@@ -14,6 +13,7 @@
 #include "../VDBCommand/VDBSceneResamplingCommand.h"
 #include "../VDBCommand/VDBScenePSToVolumeCommand.h"
 #include "../VDBCommand/VDBSceneMeshToVolumeCommand.h"
+#include "../VDBCommand/VDBSceneVolumeToMeshCommand.h"
 
 #include "CrystalScene/Command/JSONFileWriter.h"
 #include "CrystalScene/Command/JSONFileReader.h"
@@ -70,20 +70,6 @@ TEST(VDBRunnerTest, TestPointsSceneCreateCommand)
 	VDBSceneCreateCommand command;
 	VDBSceneCreateCommand::Args args;
 	args.sceneType.setValue(std::string("VDBPoints"));
-	JSONFileWriter writer;
-	writer.add(&command);
-	EXPECT_TRUE(writer.write(filepath));
-
-	VDBCommandFactory factory;
-	JSONFileReader reader;
-	EXPECT_TRUE(reader.read(filepath, factory));
-}
-
-TEST(VDBRunnerTest, TestVolumeToMeshCommand)
-{
-	const std::string filepath("./TestFiles/volume_to_mesh.json");
-
-	VDBVolumeToMeshCommand command;
 	JSONFileWriter writer;
 	writer.add(&command);
 	EXPECT_TRUE(writer.write(filepath));
@@ -175,6 +161,20 @@ TEST(VDBRunnerTest, TestSceneMeshToVolumeCommand)
 {
 	const std::string filepath = "./TestFiles/scene_mesh_to_volume.json";
 	VDBSceneMeshToVolumeCommand command;
+	JSONFileWriter writer;
+	writer.add(&command);
+	EXPECT_TRUE(writer.write(filepath));
+
+	VDBCommandFactory factory;
+	JSONFileReader reader;
+	EXPECT_TRUE(reader.read(filepath, factory));
+}
+
+TEST(VDBRunnerTest, TestSceneVolumeToMeshCommand)
+{
+	const std::string filepath("./TestFiles/scene_volume_to_mesh.json");
+
+	VDBSceneVolumeToMeshCommand command;
 	JSONFileWriter writer;
 	writer.add(&command);
 	EXPECT_TRUE(writer.write(filepath));

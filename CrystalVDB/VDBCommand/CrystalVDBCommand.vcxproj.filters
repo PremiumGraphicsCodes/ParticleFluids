@@ -4,7 +4,6 @@
     <ClCompile Include="VDBCommandFactory.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
-    <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
     <ClCompile Include="VDBVolumeToPSCommand.cpp" />
     <ClCompile Include="VDBFileReadCommand.cpp">
       <Filter>IO</Filter>
@@ -40,12 +39,14 @@
     <ClCompile Include="VDBSceneMeshToVolumeCommand.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="VDBSceneVolumeToMeshCommand.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
     <ClInclude Include="VDBInitCommand.h" />
     <ClInclude Include="VDBSceneCreateCommand.h" />
-    <ClInclude Include="VDBVolumeToMeshCommand.h" />
     <ClInclude Include="VDBVolumeToPSCommand.h" />
     <ClInclude Include="VDBFileReadCommand.h">
       <Filter>IO</Filter>
@@ -79,6 +80,9 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="VDBSceneMeshToVolumeCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBSceneVolumeToMeshCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
