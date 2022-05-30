@@ -14,7 +14,7 @@
 
 using namespace Crystal::VDB;
 
-VDBParticleSystemScene* VDBVolumeToPointsConverter::toPoints(const VDBVolumeScene& volume)
+VDBPointsScene* VDBVolumeToPointsConverter::toPoints(const VDBVolumeScene& volume)
 {
     auto impl = volume.getImpl();
     auto grid = impl->getPtr();
@@ -25,7 +25,7 @@ VDBParticleSystemScene* VDBVolumeToPointsConverter::toPoints(const VDBVolumeScen
         coords.push_back(coord);
     }
     auto ptr = openvdb::points::createPointDataGrid<openvdb::points::NullCodec, openvdb::points::PointDataGrid>(coords, transform);
-    VDBParticleSystemScene* points = new VDBParticleSystemScene();
+    auto points = new VDBPointsScene();
     points->getImpl()->setPtr(ptr);
     return points;
 }

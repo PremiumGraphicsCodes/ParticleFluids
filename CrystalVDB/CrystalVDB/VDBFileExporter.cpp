@@ -13,7 +13,7 @@
 using namespace Crystal::IO;
 using namespace Crystal::VDB;
 
-bool VDBFileExporter::writePLY(VDBParticleSystemScene* vdbPoints, const std::string& filePath)
+bool VDBFileExporter::writePLY(VDBPointsScene* vdbPoints, const std::string& filePath)
 {
 	assert(vdbPoints != nullptr);
 
@@ -35,7 +35,7 @@ bool VDBFileExporter::writePLY(VDBParticleSystemScene* vdbPoints, const std::str
 	return true;
 }
 
-bool VDBFileExporter::writePCD(VDBParticleSystemScene* vdbPoints, const std::string& filePath)
+bool VDBFileExporter::writePCD(VDBPointsScene* vdbPoints, const std::string& filePath)
 {
 	assert(vdbPoints != nullptr);
 

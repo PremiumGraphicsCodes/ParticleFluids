@@ -36,7 +36,7 @@ namespace {
 }
 
 
-std::vector<VDBVolumeScene*> SmoothVolumeConverter::build(VDBParticleSystemScene* vdbParticles, const float particleRadius, const float cellLength, const std::vector<std::string>& floatNames)
+std::vector<VDBVolumeScene*> SmoothVolumeConverter::build(VDBPointsScene* vdbParticles, const float particleRadius, const float cellLength, const std::vector<std::string>& floatNames)
 {
 	std::vector<VDBVolumeScene*> vdbVolumes;
 

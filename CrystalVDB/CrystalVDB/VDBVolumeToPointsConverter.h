@@ -3,12 +3,12 @@
 namespace Crystal {
 	namespace VDB {
 		class VDBVolumeScene;
-		class VDBParticleSystemScene;
+		class VDBPointsScene;
 
 class VDBVolumeToPointsConverter
 {
 public:
-	static VDBParticleSystemScene* toPoints(const VDBVolumeScene& volume);
+	static VDBPointsScene* toPoints(const VDBVolumeScene& volume);
 
 private:
 };

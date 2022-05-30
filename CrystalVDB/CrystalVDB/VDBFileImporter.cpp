@@ -12,9 +12,9 @@ using namespace Crystal::Math;
 using namespace Crystal::IO;
 using namespace Crystal::VDB;
 
-VDBParticleSystemScene* VDBFileImporter::readPLY(const std::string& filePath)
+VDBPointsScene* VDBFileImporter::readPLY(const std::string& filePath)
 {
-	auto scene = new VDBParticleSystemScene();
+	auto scene = new VDBPointsScene();
 
 	Crystal::IO::PLYFileReader reader;
 	const auto isOk = reader.read(filePath);
@@ -49,7 +49,7 @@ VDBParticleSystemScene* VDBFileImporter::readPLY(const std::string& filePath)
 	return scene;
 }
 
-VDBParticleSystemScene* VDBFileImporter::readPCD(const std::string& filePath)
+VDBPointsScene* VDBFileImporter::readPCD(const std::string& filePath)
 {
 	Crystal::IO::PCDFileReader reader;
 	const auto isOk = reader.readBinary(filePath);
@@ -57,7 +57,7 @@ VDBParticleSystemScene* VDBFileImporter::readPCD(const std::string& filePath)
 		return nullptr;
 	}
 	const auto pcd = reader.getPCD();
-	auto scene = new VDBParticleSystemScene();
+	auto scene = new VDBPointsScene();
 	scene->create(pcd.data.positions);
 
 	return scene;

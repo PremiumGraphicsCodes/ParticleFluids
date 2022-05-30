@@ -16,7 +16,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::VDB;
 using namespace Crystal::Scene;
 
-void VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particles, const float radius, const float voxelSize, VDBVolumeScene* volume)
+void VDBParticleSystemConverter::toVolume(const VDBPointsScene& particles, const float radius, const float voxelSize, VDBVolumeScene* volume)
 {
     /*
     // Rasterize into an SDF.
@@ -32,7 +32,7 @@ void VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particle
     */
 }
 
-void VDBParticleSystemConverter::fromVDB(const VDBParticleSystemScene& src, ParticleSystemScene* ps)
+void VDBParticleSystemConverter::fromVDB(const VDBPointsScene& src, ParticleSystemScene* ps)
 {
     ps->clear();
 
@@ -49,7 +49,7 @@ void VDBParticleSystemConverter::fromVDB(const VDBParticleSystemScene& src, Part
     }
 }
 
-void VDBParticleSystemConverter::toVDB(const IParticleSystemScene& src, VDBParticleSystemScene* dest)
+void VDBParticleSystemConverter::toVDB(const IParticleSystemScene& src, VDBPointsScene* dest)
 {
     dest->clear();
     const auto positions = src.getPositions();

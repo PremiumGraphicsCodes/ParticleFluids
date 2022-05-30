@@ -17,7 +17,7 @@ public:
 
 	void add(VDBVolumeScene* volume);
 
-	void add(VDBParticleSystemScene* points);
+	void add(VDBPointsScene* points);
 
 	void add(VDBPolygonMeshScene* mesh);
 
@@ -27,13 +27,13 @@ public:
 
 	std::vector<VDBVolumeScene*> getVolumes() { return volumes; }
 
-	std::vector<VDBParticleSystemScene*> getPoints() { return points; }
+	std::vector<VDBPointsScene*> getPoints() { return points; }
 
 	std::vector<VDBPolygonMeshScene*> getMeshes() { return meshes; }
 
 private:
 	std::vector<VDBVolumeScene*> volumes;
-	std::vector<VDBParticleSystemScene*> points;
+	std::vector<VDBPointsScene*> points;
 	std::vector<VDBPolygonMeshScene*> meshes;
 };
 	}

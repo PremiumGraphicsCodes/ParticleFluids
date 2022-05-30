@@ -7,7 +7,7 @@
 
 namespace Crystal {
     namespace VDB {
-        class VDBParticleSystemScene;
+        class VDBPointsScene;
         class VDBVolumeScene;
 
 class VDBFileReader
@@ -27,7 +27,7 @@ public:
 
     std::vector<std::string> getGridNames() const { return floatGridNames; }
 
-    VDBParticleSystemScene* readPositions(const std::string& pointName, const float radius);
+    VDBPointsScene* readPositions(const std::string& pointName, const float radius);
 
     VDBVolumeScene* readVolume(const std::string& volumeName);
 

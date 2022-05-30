@@ -9,7 +9,7 @@ void VDBScene::add(VDBVolumeScene* volume)
 	this->children.push_back(volume);
 }
 
-void VDBScene::add(VDBParticleSystemScene* points)
+void VDBScene::add(VDBPointsScene* points)
 {
 	this->points.push_back(points);
 	this->children.push_back(points);

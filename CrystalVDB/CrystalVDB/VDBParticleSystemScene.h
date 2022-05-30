@@ -12,14 +12,14 @@ namespace Crystal {
     namespace VDB {
         class VDBParticleSystemImpl;
 
-class VDBParticleSystemScene : public Scene::IParticleSystemScene
+class VDBPointsScene : public Scene::IParticleSystemScene
 {
 public:
-    VDBParticleSystemScene();
+    VDBPointsScene();
 
-    VDBParticleSystemScene(const int id, const std::string name);
+    VDBPointsScene(const int id, const std::string name);
 
-    ~VDBParticleSystemScene();
+    ~VDBPointsScene();
 
     void create(const std::vector<Math::Vector3dd>& positions);
 

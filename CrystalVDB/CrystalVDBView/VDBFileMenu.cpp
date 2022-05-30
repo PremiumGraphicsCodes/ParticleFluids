@@ -7,7 +7,7 @@
 #include "CrystalScene/AppBase/FileOpenMenu.h"
 #include "CrystalScene/AppBase/FileSaveMenu.h"
 
-#include "../VDBCommand/VDBFileReadCommand.h"
+#include "../VDBCommand/VDBSceneFileImportCommand.h"
 //#include "../VDBCommand/PublicLabels/VDBFileReadLabels.h"
 #include "CrystalScene/AppBase/MenuItem.h"
 
@@ -34,6 +34,7 @@ void VDBFileMenu::onImport()
 	view.show();
 	const auto& filename = view.getFileName();
 	if (!filename.empty()) {
+		/*
 		VDBFileReader reader;
 		const auto isOk = reader.open(filename);
 		if (isOk) {
@@ -55,6 +56,7 @@ void VDBFileMenu::onImport()
 				std::cout << "import failed." << std::endl;
 			}
 		}
+		*/
 	}
 }
 
@@ -68,10 +70,10 @@ void VDBFileMenu::onExport()
 		VDBFileWriter writer;
 		const auto isOk = writer.open(filename);
 		if (isOk) {
-			const auto pointType = SceneType(VDBParticleSystemScene::Type);
+			const auto pointType = SceneType(VDBPointsScene::Type);
 			const auto pointScenes = getWorld()->getScenes()->findScenes(pointType);
 			for (auto s : pointScenes) {
-				auto ps = static_cast<VDBParticleSystemScene*>(s);
+				auto ps = static_cast<VDBPointsScene*>(s);
 				const auto& particles = ps->getPositions();
 				writer.writePoints(s->getName(), particles);
 			}

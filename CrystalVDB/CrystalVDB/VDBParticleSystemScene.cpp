@@ -10,22 +10,22 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBParticleSystemScene::VDBParticleSystemScene() :
-    VDBParticleSystemScene(-1, "")
+VDBPointsScene::VDBPointsScene() :
+    VDBPointsScene(-1, "")
 {}
 
-VDBParticleSystemScene::VDBParticleSystemScene(const int id, const std::string name) :
+VDBPointsScene::VDBPointsScene(const int id, const std::string name) :
     IParticleSystemScene(id, name)
 {
     this->impl = std::make_unique<VDBParticleSystemImpl>();
     this->presenter = std::make_unique<VDBParticleSystemPresenter>(this);
 }
 
-VDBParticleSystemScene::~VDBParticleSystemScene()
+VDBPointsScene::~VDBPointsScene()
 {
 }
 
-void VDBParticleSystemScene::create(const std::vector<Vector3dd>& positions)
+void VDBPointsScene::create(const std::vector<Vector3dd>& positions)
 {
     std::vector<openvdb::Vec3f> coords;
     for (const auto& p : positions) {
@@ -49,7 +49,7 @@ void VDBParticleSystemScene::fromCrystal(const std::vector<Vector3dd>& positions
 }
 */
 
-Box3dd VDBParticleSystemScene::getBoundingBox() const
+Box3dd VDBPointsScene::getBoundingBox() const
 {
     const auto size = impl->size();
     if (size == 0) {
@@ -63,7 +63,7 @@ Box3dd VDBParticleSystemScene::getBoundingBox() const
     return box;
 }
 
-std::vector<Vector3dd> VDBParticleSystemScene::getPositions() const
+std::vector<Vector3dd> VDBPointsScene::getPositions() const
 {
     std::vector<Vector3dd> positions;
     const auto ps = impl->getPositions();
@@ -73,32 +73,32 @@ std::vector<Vector3dd> VDBParticleSystemScene::getPositions() const
     return positions;
 }
 
-void VDBParticleSystemScene::resetImpl()
+void VDBPointsScene::resetImpl()
 {
     this->impl = std::make_unique<VDBParticleSystemImpl>();
 }
 
-void VDBParticleSystemScene::addFloatAttribute(const std::string& name)
+void VDBPointsScene::addFloatAttribute(const std::string& name)
 {
     this->impl->addFloatAttribute(name);
 }
 
-void VDBParticleSystemScene::setFloatAttribute(const std::string& name, const std::vector<float>& values)
+void VDBPointsScene::setFloatAttribute(const std::string& name, const std::vector<float>& values)
 {
     this->impl->setFloatAttributes(name, values);
 }
 
-std::vector<float> VDBParticleSystemScene::getFloatAttribute(const std::string& name)
+std::vector<float> VDBPointsScene::getFloatAttribute(const std::string& name)
 {
     return this->impl->getFloatAttributes(name);
 }
 
-bool VDBParticleSystemScene::hasAttribute(const std::string& name)
+bool VDBPointsScene::hasAttribute(const std::string& name)
 {
     return this->impl->hasAttribute(name);
 }
 
-std::vector<std::string> VDBParticleSystemScene::getAttributeNames() const
+std::vector<std::string> VDBPointsScene::getAttributeNames() const
 {
     const auto names = this->impl->getAttributeNames();
     std::vector<std::string> results;
@@ -108,7 +108,7 @@ std::vector<std::string> VDBParticleSystemScene::getAttributeNames() const
     return results;
 }
 
-std::vector<std::string> VDBParticleSystemScene::getFloatAttributeNames() const
+std::vector<std::string> VDBPointsScene::getFloatAttributeNames() const
 {
     const auto names = this->impl->getAttributeNames();
     std::vector<std::string> results;

@@ -13,7 +13,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Graphics;
 using namespace Crystal::VDB;
 
-VDBParticleSystemPresenter::VDBParticleSystemPresenter(VDBParticleSystemScene* model) :
+VDBParticleSystemPresenter::VDBParticleSystemPresenter(VDBPointsScene* model) :
 	IPresenter(),
 	model(model),
 	view(nullptr),
