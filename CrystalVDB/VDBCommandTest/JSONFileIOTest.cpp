@@ -6,7 +6,6 @@
 #include "../VDBCommand/VDBFileWriteCommand.h"
 #include "../VDBCommand/VDBSceneCreateCommand.h"
 #include "../VDBCommand/VDBVolumeToMeshCommand.h"
-#include "../VDBCommand/VDBMeshToVolumeCommand.h"
 
 #include "../VDBCommand/VDBSceneFileReadCommand.h"
 #include "../VDBCommand/VDBSceneFileWriteCommand.h"
@@ -84,20 +83,6 @@ TEST(VDBRunnerTest, TestVolumeToMeshCommand)
 	const std::string filepath("./TestFiles/volume_to_mesh.json");
 
 	VDBVolumeToMeshCommand command;
-	JSONFileWriter writer;
-	writer.add(&command);
-	EXPECT_TRUE(writer.write(filepath));
-
-	VDBCommandFactory factory;
-	JSONFileReader reader;
-	EXPECT_TRUE(reader.read(filepath, factory));
-}
-
-TEST(VDBRunnerTest, TestMeshToVolumeCommand)
-{
-	const std::string filepath("./TestFiles/mesh_to_volume.json");
-
-	VDBMeshToVolumeCommand command;
 	JSONFileWriter writer;
 	writer.add(&command);
 	EXPECT_TRUE(writer.write(filepath));

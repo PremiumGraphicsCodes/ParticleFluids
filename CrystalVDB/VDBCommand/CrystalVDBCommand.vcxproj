@@ -191,11 +191,11 @@
     <ClInclude Include="VDBSceneFileReadCommand.h" />
     <ClInclude Include="VDBSceneFileWriteCommand.h" />
     <ClInclude Include="VDBSceneFilterCommand.h" />
+    <ClInclude Include="VDBSceneMeshToVolumeCommand.h" />
     <ClInclude Include="VDBScenePSToVolumeCommand.h" />
     <ClInclude Include="VDBSceneResamplingCommand.h" />
     <ClInclude Include="VDBTransformCommand.h" />
     <ClInclude Include="VDBVolumeToPSCommand.h" />
-    <ClInclude Include="VDBMeshToVolumeCommand.h" />
     <ClInclude Include="VDBSceneCreateCommand.h" />
     <ClInclude Include="VDBVolumeToMeshCommand.h" />
   </ItemGroup>
@@ -210,11 +210,11 @@
     <ClCompile Include="VDBSceneFileReadCommand.cpp" />
     <ClCompile Include="VDBSceneFileWriteCommand.cpp" />
     <ClCompile Include="VDBSceneFilterCommand.cpp" />
+    <ClCompile Include="VDBSceneMeshToVolumeCommand.cpp" />
     <ClCompile Include="VDBScenePSToVolumeCommand.cpp" />
     <ClCompile Include="VDBSceneResamplingCommand.cpp" />
     <ClCompile Include="VDBTransformCommand.cpp" />
     <ClCompile Include="VDBVolumeToPSCommand.cpp" />
-    <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
     <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
   </ItemGroup>

@@ -1,13 +1,13 @@
-#include "VDBMeshToVolumeCommand.h"
+#include "VDBSceneMeshToVolumeCommand.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
 namespace
 {
-	PublicLabel CommandNameLabel = "VDBMeshToVolume";
-	PublicLabel VDBMeshIdLabel = "VDBMeshId";
-	PublicLabel VDBVolumeIdLabel = "VDBVolumeId";
+	PublicLabel CommandNameLabel = "VDBSceneMeshToVolume";
+	PublicLabel VDBSceneIdLabel = "VDBSceneId";
 	PublicLabel DivideLengthLabel = "DivideLength";
+	PublicLabel NewSceneIdLabel = "NewSceneId";
 }
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
@@ -22,36 +22,37 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBMeshToVolumeCommand::Args::Args() :
-	vdbMeshId(::VDBMeshIdLabel, -1),
-	vdbVolumeId(::VDBVolumeIdLabel, -1),
+VDBSceneMeshToVolumeCommand::Args::Args() :
+	vdbSceneId(::VDBSceneIdLabel, -1),
 	divideLength(::DivideLengthLabel, 1.0f)
 {
-	add(&vdbMeshId);
-	add(&vdbVolumeId);
+	add(&vdbSceneId);
 	add(&divideLength);
 }
 
-VDBMeshToVolumeCommand::Results::Results()
+VDBSceneMeshToVolumeCommand::Results::Results() :
+	newSceneId(::NewSceneIdLabel, -1)
 {
+	add(&newSceneId);
 }
 
-VDBMeshToVolumeCommand::VDBMeshToVolumeCommand() :
+VDBSceneMeshToVolumeCommand::VDBSceneMeshToVolumeCommand() :
 	ICommand(&args, &results)
 {}
 
-VDBMeshToVolumeCommand::VDBMeshToVolumeCommand(const Args& args) :
+VDBSceneMeshToVolumeCommand::VDBSceneMeshToVolumeCommand(const Args& args) :
 	args(args),
 	ICommand(&this->args, &results)
 {}
 
-std::string VDBMeshToVolumeCommand::getName()
+std::string VDBSceneMeshToVolumeCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-bool VDBMeshToVolumeCommand::execute(World* world)
+bool VDBSceneMeshToVolumeCommand::execute(World* world)
 {
+	/*
 	auto meshScene = world->getScenes()->findSceneById<VDBPolygonMeshScene*>(args.vdbMeshId.getValue());
 	if (meshScene == nullptr) {
 		return false;
@@ -69,4 +70,6 @@ bool VDBMeshToVolumeCommand::execute(World* world)
 	//volumeScele->
 
 	return true;
+	*/
+	return false;
 }

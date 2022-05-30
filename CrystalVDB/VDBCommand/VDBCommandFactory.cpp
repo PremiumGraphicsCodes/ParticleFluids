@@ -4,7 +4,6 @@
 #include "VDBFileWriteCommand.h"
 #include "VDBFileReadCommand.h"
 #include "VDBSceneCreateCommand.h"
-#include "VDBMeshToVolumeCommand.h"
 #include "VDBVolumeToMeshCommand.h"
 #include "VDBVolumeToPSCommand.h"
 
@@ -16,6 +15,7 @@
 #include "VDBSceneCompositeCommand.h"
 #include "VDBSceneResamplingCommand.h"
 #include "VDBScenePSToVolumeCommand.h"
+#include "VDBSceneMeshToVolumeCommand.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
@@ -36,9 +36,6 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBVolumeToPSCommand::getName()) {
 		return std::make_unique<VDBVolumeToPSCommand>();
-	}
-	else if (name == VDBMeshToVolumeCommand::getName()) {
-		return std::make_unique<VDBMeshToVolumeCommand>();
 	}
 	else if (name == VDBVolumeToMeshCommand::getName()) {
 		return std::make_unique<VDBVolumeToMeshCommand>();
@@ -66,6 +63,9 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBScenePSToVolumeCommand::getName()) {
 		return std::make_unique<VDBScenePSToVolumeCommand>();
+	}
+	else if (name == VDBSceneMeshToVolumeCommand::getName()) {
+		return std::make_unique<VDBSceneMeshToVolumeCommand>();
 	}
 	else {
 		assert(false);
