@@ -5,26 +5,27 @@
 namespace Crystal {
 	namespace VDB {
 
-class VDBVolumeToPSCommand : public Command::ICommand
+class VDBSceneVolumeToPointsCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
 	{
 		Args();
 
-		Command::Arg<int> vdbVolumeId;
-		Command::Arg<int> vdbParticleSystemId;
+		Command::Arg<int> vdbSceneId;
 		Command::Arg<double> radius;
 	};
 
 	struct Results : Command::IResults
 	{
 		Results();
+
+		Command::Result<int> newSceneId;
 	};
 
-	VDBVolumeToPSCommand();
+	VDBSceneVolumeToPointsCommand();
 
-	explicit VDBVolumeToPSCommand(const Args& args);
+	explicit VDBSceneVolumeToPointsCommand(const Args& args);
 
 	static std::string getName();
 

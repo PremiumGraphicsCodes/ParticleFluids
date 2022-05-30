@@ -195,8 +195,8 @@
     <ClInclude Include="VDBScenePSToVolumeCommand.h" />
     <ClInclude Include="VDBSceneResamplingCommand.h" />
     <ClInclude Include="VDBSceneVolumeToMeshCommand.h" />
+    <ClInclude Include="VDBSceneVolumeToPointsCommand.h" />
     <ClInclude Include="VDBTransformCommand.h" />
-    <ClInclude Include="VDBVolumeToPSCommand.h" />
     <ClInclude Include="VDBSceneCreateCommand.h" />
   </ItemGroup>
   <ItemGroup>
@@ -214,8 +214,8 @@
     <ClCompile Include="VDBScenePSToVolumeCommand.cpp" />
     <ClCompile Include="VDBSceneResamplingCommand.cpp" />
     <ClCompile Include="VDBSceneVolumeToMeshCommand.cpp" />
+    <ClCompile Include="VDBSceneVolumeToPointsCommand.cpp" />
     <ClCompile Include="VDBTransformCommand.cpp" />
-    <ClCompile Include="VDBVolumeToPSCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
