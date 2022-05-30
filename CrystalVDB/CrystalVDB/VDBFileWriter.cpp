@@ -2,6 +2,9 @@
 
 #include <openvdb/points/PointConversion.h>
 
+#include "VDBPointsScene.h"
+#include "VDBPointsImpl.h"
+
 #include "VDBVolumeScene.h"
 #include "VDBVolumeImpl.h"
 
@@ -32,7 +35,7 @@ void VDBFileWriter::close()
     file.close();
 }
 
-void VDBFileWriter::writePoints(const std::string& name, const std::vector<Vector3dd>& positions) const
+void VDBFileWriter::writePoints(const std::string& name, VDBPointsScene* points) const
 {
     /*
     try {
@@ -44,8 +47,11 @@ void VDBFileWriter::writePoints(const std::string& name, const std::vector<Vecto
     }
     */
 
-    std::vector<openvdb::Vec3R> ps = Converter::toVDB(positions);
-    openvdb::points::PointAttributeVector<openvdb::Vec3R> positionsWrapper(ps);
+    auto grid = points->getImpl()->getPtr();
+
+    /*
+    std::vector<openvdb::Vec3s> ps = points->getImpl()->getPositions();//Converter::toVDB(positions);
+    openvdb::points::PointAttributeVector<openvdb::Vec3s> positionsWrapper(ps);
 
     int pointsPerVoxel = 8;
     float voxelSize = openvdb::points::computeVoxelSize(positionsWrapper, pointsPerVoxel);
@@ -59,7 +65,7 @@ void VDBFileWriter::writePoints(const std::string& name, const std::vector<Vecto
         (ps, *transform);
     grid->setName(name);
     //std::cout << grid->gridType() << std::endl;
-
+    */
     /*
     if (!file.isOpen()) {
         return false;

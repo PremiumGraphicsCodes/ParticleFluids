@@ -6,20 +6,18 @@
             "Radius": 0.5
         }
     ],
-	[
-        "VDBSceneFilter",
+    [
+        "VDBSceneVolumeToPoints",
         {
-            "FilterType": "Median",
-            "Iteration": 1,
-            "VDBSceneId": 1,
-            "Width": 1
+            "Radius": 1.0,
+            "VDBSceneId": 1
         }
     ],
     [
         "VDBSceneFileWrite",
         {
-            "FilePath": "../VDBDataSet/scene_filtered_torus.vdb",
-            "VDBSceneId": 1
+            "FilePath": "../VDBDataSet/scene_to_points_torus.vdb",
+            "VDBSceneId": 2
         }
     ]
 ]

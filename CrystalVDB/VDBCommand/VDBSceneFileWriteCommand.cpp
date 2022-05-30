@@ -59,8 +59,7 @@ bool VDBSceneFileWriteCommand::execute(World* world)
 	}
 	const auto points = scene->getPoints();
 	for (auto pts : points) {
-		const auto positions = pts->getPositions();
-		writer.writePoints(scene->getName(), positions);
+		writer.writePoints(scene->getName(), pts);
 	}
 	const auto volumes = scene->getVolumes();
 	if (!volumes.empty()) {
