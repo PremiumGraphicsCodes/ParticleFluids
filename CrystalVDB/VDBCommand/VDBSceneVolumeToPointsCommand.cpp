@@ -59,20 +59,17 @@ bool VDBSceneVolumeToPointsCommand::execute(World* world)
 	if (scene == nullptr) {
 		return false;
 	}
-	/*
-	auto volume = world->getScenes()->findSceneById<VDBVolumeScene*>(args.vdbVolumeId.getValue());
-	if (volume == nullptr) {
+	const auto volumes = scene->getVolumes();
+	if (volumes.empty()) {
 		return false;
 	}
-	auto particleSystem = world->getScenes()->findSceneById<VDBParticleSystemScene*>(args.vdbParticleSystemId.getValue());
-	if (particleSystem == nullptr) {
-		return false;
+	auto newScene = new VDBScene(world->getNextSceneId(), "");
+	for (auto volume : volumes) {
+		auto points = VDBVolumeToPointsConverter::toPoints(*volume);
+		newScene->add(points);
 	}
-
-	VDBVolumeConverter volumeConverter;
-	volumeConverter.toParticleSystem(*volume, particleSystem);
+	world->addScene(newScene);
+	results.newSceneId.setValue(newScene->getId());
 
 	return true;
-	*/
-	return false;
 }
