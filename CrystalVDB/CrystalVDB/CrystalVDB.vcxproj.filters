@@ -21,7 +21,7 @@
       <Filter>Converter</Filter>
     </ClCompile>
     <ClCompile Include="VDBParticleSystemPresenter.cpp">
-      <Filter>ParticleSystem</Filter>
+      <Filter>Points</Filter>
     </ClCompile>
     <ClCompile Include="VDBVolumePresenter.cpp">
       <Filter>Volume</Filter>
@@ -30,10 +30,10 @@
       <Filter>Volume</Filter>
     </ClCompile>
     <ClCompile Include="VDBPointsImpl.cpp">
-      <Filter>ParticleSystem\Private</Filter>
+      <Filter>Points\Private</Filter>
     </ClCompile>
     <ClCompile Include="VDBParticleSystemScene.cpp">
-      <Filter>ParticleSystem</Filter>
+      <Filter>Points</Filter>
     </ClCompile>
     <ClCompile Include="VDBPolygonMeshPresenter.cpp">
       <Filter>PolygonMesh</Filter>
@@ -103,7 +103,7 @@
       <Filter>Converter</Filter>
     </ClInclude>
     <ClInclude Include="VDBParticleSystemPresenter.h">
-      <Filter>ParticleSystem</Filter>
+      <Filter>Points</Filter>
     </ClInclude>
     <ClInclude Include="VDBVolumePresenter.h">
       <Filter>Volume</Filter>
@@ -112,10 +112,10 @@
       <Filter>Volume</Filter>
     </ClInclude>
     <ClInclude Include="VDBPointsImpl.h">
-      <Filter>ParticleSystem\Private</Filter>
+      <Filter>Points\Private</Filter>
     </ClInclude>
     <ClInclude Include="VDBParticleSystemScene.h">
-      <Filter>ParticleSystem</Filter>
+      <Filter>Points</Filter>
     </ClInclude>
     <ClInclude Include="VDBPolygonMeshPresenter.h">
       <Filter>PolygonMesh</Filter>
@@ -171,17 +171,11 @@
     <Filter Include="FileIO">
       <UniqueIdentifier>{c5f10b5d-9511-410c-99ce-6ef985958a28}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ParticleSystem">
-      <UniqueIdentifier>{d2aae527-4a64-4e57-84b8-245f2953f558}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Volume">
       <UniqueIdentifier>{55f10d9d-169d-4327-8b69-528b2c908e2f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Volume\Private">
       <UniqueIdentifier>{6f79be99-26d8-40a9-ab7f-505504c5fdcb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ParticleSystem\Private">
-      <UniqueIdentifier>{0451f205-71e5-4c76-acef-a932cd8f6ea1}</UniqueIdentifier>
     </Filter>
     <Filter Include="PolygonMesh">
       <UniqueIdentifier>{d97b5d3a-14a6-4efc-b47a-67ca70ac9421}</UniqueIdentifier>
@@ -209,6 +203,12 @@
     </Filter>
     <Filter Include="Tools\ToSpheres">
       <UniqueIdentifier>{e7dcb0c6-08dc-4678-a70b-820b7e4eeee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Points">
+      <UniqueIdentifier>{d2aae527-4a64-4e57-84b8-245f2953f558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Points\Private">
+      <UniqueIdentifier>{0451f205-71e5-4c76-acef-a932cd8f6ea1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -13,7 +13,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Graphics;
 using namespace Crystal::VDB;
 
-VDBParticleSystemPresenter::VDBParticleSystemPresenter(VDBPointsScene* model) :
+VDBPointsPresenter::VDBPointsPresenter(VDBPointsScene* model) :
 	IPresenter(),
 	model(model),
 	view(nullptr),
@@ -22,7 +22,7 @@ VDBParticleSystemPresenter::VDBParticleSystemPresenter(VDBPointsScene* model) :
 {
 }
 
-void VDBParticleSystemPresenter::createView(SceneShader* sceneShader)
+void VDBPointsPresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
@@ -49,7 +49,7 @@ void VDBParticleSystemPresenter::createView(SceneShader* sceneShader)
 	updateView();
 }
 
-void VDBParticleSystemPresenter::removeView(SceneShader* sceneShader)
+void VDBPointsPresenter::removeView(SceneShader* sceneShader)
 {
 	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
@@ -66,14 +66,14 @@ void VDBParticleSystemPresenter::removeView(SceneShader* sceneShader)
 	*/
 }
 
-void VDBParticleSystemPresenter::updateView()
+void VDBPointsPresenter::updateView()
 {
 	updateScreenView();
 	updateParentIdView();
 	updateChildIdView();
 }
 
-void VDBParticleSystemPresenter::updateScreenView()
+void VDBPointsPresenter::updateScreenView()
 {
 	auto impl = model->getImpl();
 	const auto size = impl->size();// getShape()->getParticles();
@@ -87,10 +87,10 @@ void VDBParticleSystemPresenter::updateScreenView()
 	this->view->setVisible(model->isVisible());
 }
 
-void VDBParticleSystemPresenter::updateParentIdView()
+void VDBPointsPresenter::updateParentIdView()
 {
 }
 
-void VDBParticleSystemPresenter::updateChildIdView()
+void VDBPointsPresenter::updateChildIdView()
 {
 }

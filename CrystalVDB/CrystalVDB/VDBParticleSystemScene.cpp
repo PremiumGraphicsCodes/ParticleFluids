@@ -18,7 +18,7 @@ VDBPointsScene::VDBPointsScene(const int id, const std::string name) :
     IParticleSystemScene(id, name)
 {
     this->impl = std::make_unique<VDBPointsImpl>();
-    this->presenter = std::make_unique<VDBParticleSystemPresenter>(this);
+    this->presenter = std::make_unique<VDBPointsPresenter>(this);
 }
 
 VDBPointsScene::~VDBPointsScene()

@@ -57,7 +57,7 @@ public:
 
 private:
     std::unique_ptr<VDBPointsImpl> impl;
-    std::unique_ptr<VDBParticleSystemPresenter> presenter;
+    std::unique_ptr<VDBPointsPresenter> presenter;
 };
 
     }

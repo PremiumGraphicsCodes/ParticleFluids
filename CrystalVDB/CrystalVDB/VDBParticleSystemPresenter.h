@@ -9,10 +9,10 @@ namespace Crystal {
 	namespace VDB {
 		class VDBPointsScene;
 
-class VDBParticleSystemPresenter : public Scene::IPresenter
+class VDBPointsPresenter : public Scene::IPresenter
 {
 public:
-	explicit VDBParticleSystemPresenter(VDBPointsScene* model);
+	explicit VDBPointsPresenter(VDBPointsScene* model);
 
 	void createView(Scene::SceneShader* sceneShader) override;
 
