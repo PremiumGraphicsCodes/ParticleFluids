@@ -10,7 +10,7 @@
 
 namespace Crystal {
     namespace VDB {
-        class VDBParticleSystemImpl;
+        class VDBPointsImpl;
 
 class VDBPointsScene : public Scene::IParticleSystemScene
 {
@@ -23,7 +23,7 @@ public:
 
     void create(const std::vector<Math::Vector3dd>& positions);
 
-    VDBParticleSystemImpl* getImpl() const { return impl.get(); }
+    VDBPointsImpl* getImpl() const { return impl.get(); }
 
     void translate(const Math::Vector3dd& v) override {};
 
@@ -56,7 +56,7 @@ public:
     std::vector<std::string> getFloatAttributeNames() const;
 
 private:
-    std::unique_ptr<VDBParticleSystemImpl> impl;
+    std::unique_ptr<VDBPointsImpl> impl;
     std::unique_ptr<VDBParticleSystemPresenter> presenter;
 };
 

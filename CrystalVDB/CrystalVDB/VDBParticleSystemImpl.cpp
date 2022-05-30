@@ -2,12 +2,12 @@
 
 using namespace Crystal::VDB;
 
-void VDBParticleSystemImpl::addFloatAttribute(const std::string& name)
+void VDBPointsImpl::addFloatAttribute(const std::string& name)
 {
     openvdb::points::appendAttribute<float>(grid->tree(), name);
 }
 
-std::vector<openvdb::Vec3f> VDBParticleSystemImpl::getPositions() const
+std::vector<openvdb::Vec3f> VDBPointsImpl::getPositions() const
 {
     std::vector<openvdb::Vec3f> positions;
     for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
@@ -25,7 +25,7 @@ std::vector<openvdb::Vec3f> VDBParticleSystemImpl::getPositions() const
     return positions;
 }
 
-std::vector<float> VDBParticleSystemImpl::getFloatAttributes(const std::string& name) const
+std::vector<float> VDBPointsImpl::getFloatAttributes(const std::string& name) const
 {
     std::vector<float> values;
     for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
@@ -50,7 +50,7 @@ std::vector<float> VDBParticleSystemImpl::getFloatAttributes(const std::string& 
     return values;
 }
 
-void VDBParticleSystemImpl::setFloatAttributes(const std::string& name, const std::vector<float>& values)
+void VDBPointsImpl::setFloatAttributes(const std::string& name, const std::vector<float>& values)
 {
     int i = 0;
     for (auto leafIter = grid->tree().beginLeaf(); leafIter; ++leafIter) {
@@ -72,7 +72,7 @@ void VDBParticleSystemImpl::setValues(const std::vector<Particle>& particles)
 }
 */
 
-std::vector<std::string> VDBParticleSystemImpl::getAttributeNames() const
+std::vector<std::string> VDBPointsImpl::getAttributeNames() const
 {
     const auto desc = grid->tree().cbeginLeaf()->attributeSet().descriptor();
     const auto attrs = grid->tree().cbeginLeaf()->attributeSet();
@@ -89,7 +89,7 @@ std::vector<std::string> VDBParticleSystemImpl::getAttributeNames() const
     return names;
 }
 
-bool VDBParticleSystemImpl::hasAttribute(const std::string& name) const
+bool VDBPointsImpl::hasAttribute(const std::string& name) const
 {
     const auto desc = grid->tree().cbeginLeaf()->attributeSet().descriptor();
     const auto map = desc.map();

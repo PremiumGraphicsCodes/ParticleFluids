@@ -13,15 +13,15 @@ struct Particle
     openvdb::Real temperature;
 };
 
-class VDBParticleSystemImpl
+class VDBPointsImpl
 {
 public:
     typedef openvdb::Vec3R  PosType;
 
-    VDBParticleSystemImpl()
+    VDBPointsImpl()
     {}
 
-    ~VDBParticleSystemImpl()
+    ~VDBPointsImpl()
     {}
 
     /// Return the total number of particles in list.

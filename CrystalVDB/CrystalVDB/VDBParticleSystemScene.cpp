@@ -17,7 +17,7 @@ VDBPointsScene::VDBPointsScene() :
 VDBPointsScene::VDBPointsScene(const int id, const std::string name) :
     IParticleSystemScene(id, name)
 {
-    this->impl = std::make_unique<VDBParticleSystemImpl>();
+    this->impl = std::make_unique<VDBPointsImpl>();
     this->presenter = std::make_unique<VDBParticleSystemPresenter>(this);
 }
 
@@ -75,7 +75,7 @@ std::vector<Vector3dd> VDBPointsScene::getPositions() const
 
 void VDBPointsScene::resetImpl()
 {
-    this->impl = std::make_unique<VDBParticleSystemImpl>();
+    this->impl = std::make_unique<VDBPointsImpl>();
 }
 
 void VDBPointsScene::addFloatAttribute(const std::string& name)
