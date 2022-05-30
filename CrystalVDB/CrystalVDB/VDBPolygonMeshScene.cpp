@@ -12,6 +12,7 @@ using namespace Crystal::VDB;
 VDBPolygonMeshScene::VDBPolygonMeshScene() :
 	VDBPolygonMeshScene(-1, "")
 {
+	impl = std::make_unique<VDBPolygonMeshImpl>();
 }
 
 VDBPolygonMeshScene::VDBPolygonMeshScene(const int id, const std::string& name) :

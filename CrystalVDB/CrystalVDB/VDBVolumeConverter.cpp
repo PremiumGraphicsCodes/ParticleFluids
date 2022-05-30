@@ -22,27 +22,6 @@ using namespace Crystal::Space;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-void VDBVolumeConverter::toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScene* mesh, const double threshold, const double adaptivity)
-{   
-    auto impl = mesh->getImpl();
-    impl->clear();
-    auto grid = volume.getImpl()->getPtr();
-    std::vector<openvdb::Vec3I> triangles;
-    std::vector<openvdb::Vec4I> quads;
-    openvdb::tools::volumeToMesh(*grid, impl->points, triangles, quads, threshold, adaptivity);
-    for (const auto& t : triangles) {
-        Crystal::VDB::VDBPolygonMeshImpl::TriangleFace face;
-        face.indices = t;
-        impl->triangles.push_back(face);
-    }
-    for (const auto& q : quads) {
-        Crystal::VDB::VDBPolygonMeshImpl::QuadFace face;
-        face.indices = q;
-        impl->quads.push_back(face);
-    }
-    impl->updateNormals();
-}
-
 void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystemScene* ps) const
 {
     auto impl = volume.getImpl();
