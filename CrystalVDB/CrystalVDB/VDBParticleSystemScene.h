@@ -4,7 +4,7 @@
 #include "../../Crystal/Util/UnCopyable.h"
 
 #include "../../CrystalScene/Scene/IParticleSystemScene.h"
-#include "VDBParticleSystemPresenter.h"
+#include "VDBPointsPresenter.h"
 
 #include <memory>
 
