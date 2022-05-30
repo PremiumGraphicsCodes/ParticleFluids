@@ -1,7 +1,7 @@
 #include "VDBSceneFileImportCommand.h"
 
 
-#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBPointsScene.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
 #include "../CrystalVDB/VDBScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"

@@ -4,10 +4,11 @@
 
 #include <openvdb/points/PointConversion.h>
 
-#include "VDBVolumeImpl.h"
-#include "VDBParticleSystemScene.h"
-#include "VDBVolumeScene.h"
+#include "VDBPointsScene.h"
 #include "VDBPointsImpl.h"
+
+#include "VDBVolumeScene.h"
+#include "VDBVolumeImpl.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::VDB;

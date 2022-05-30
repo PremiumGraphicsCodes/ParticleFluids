@@ -10,10 +10,6 @@
 
 #include "VDBVolumeScene.h"
 #include "VDBVolumeImpl.h"
-#include "VDBPolygonMeshScene.h"
-#include "VDBPolygonMeshImpl.h"
-#include "VDBPointsImpl.h"
-#include "VDBParticleSystemScene.h"
 #include "Converter.h"
 
 #include "CrystalSpace/CrystalSpace/SparseVolume.h"

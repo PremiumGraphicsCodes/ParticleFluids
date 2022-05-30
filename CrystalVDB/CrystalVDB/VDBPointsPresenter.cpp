@@ -1,6 +1,6 @@
 #include "VDBPointsPresenter.h"
 
-#include "VDBParticleSystemScene.h"
+#include "VDBPointsScene.h"
 
 #include "../../CrystalScene/Scene/SceneShader.h"
 #include "../../CrystalScene/Scene/PointShaderScene.h"

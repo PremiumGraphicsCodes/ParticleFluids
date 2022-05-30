@@ -5,7 +5,7 @@
 #include "Crystal/IO/STLFileWriter.h"
 #include "Crystal/IO/OBJFileWriter.h"
 
-#include "VDBParticleSystemScene.h"
+#include "VDBPointsScene.h"
 #include "VDBPolygonMeshScene.h"
 
 #include <cassert>

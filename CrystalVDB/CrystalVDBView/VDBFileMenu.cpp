@@ -2,7 +2,7 @@
 
 #include "../CrystalVDB/VDBFileReader.h"
 #include "../CrystalVDB/VDBFileWriter.h"
-#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBPointsScene.h"
 
 #include "CrystalScene/AppBase/FileOpenMenu.h"
 #include "CrystalScene/AppBase/FileSaveMenu.h"

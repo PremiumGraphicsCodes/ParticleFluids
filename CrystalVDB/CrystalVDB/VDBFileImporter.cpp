@@ -5,7 +5,7 @@
 #include "../../Crystal/IO/OBJFileReader.h"
 #include "../../Crystal/IO/STLFileReader.h"
 
-#include "VDBParticleSystemScene.h"
+#include "VDBPointsScene.h"
 #include "VDBPolygonMeshScene.h"
 
 using namespace Crystal::Math;

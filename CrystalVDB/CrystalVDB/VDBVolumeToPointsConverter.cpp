@@ -3,7 +3,7 @@
 #include "VDBVolumeScene.h"
 #include "VDBVolumeImpl.h"
 
-#include "VDBParticleSystemScene.h"
+#include "VDBPointsScene.h"
 #include "VDBPointsImpl.h"
 
 //#include <openvdb/openvdb.h>

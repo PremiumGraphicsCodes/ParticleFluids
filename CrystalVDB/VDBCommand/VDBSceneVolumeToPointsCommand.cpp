@@ -11,7 +11,7 @@ namespace
 	PublicLabel NewSceneIdLabel = "NewSceneId";
 }
 
-#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBPointsScene.h"
 #include "../CrystalVDB/VDBParticleSystemConverter.h"
 #include "../CrystalVDB/VDBPolygonMeshConverter.h"
 #include "../CrystalVDB/VDBVolumeConverter.h"

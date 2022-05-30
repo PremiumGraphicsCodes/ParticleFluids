@@ -3,10 +3,10 @@
 #include <openvdb/tools/LevelSetUtil.h>
 
 #include "VDBParticleSystemConverter.h"
-#include "VDBParticleSystemScene.h"
+#include "VDBPointsScene.h"
 #include "VDBPointsImpl.h"
-#include "VDBVolumeImpl.h"
 #include "VDBVolumeScene.h"
+#include "VDBVolumeImpl.h"
 #include "../../CrystalScene/Scene/ParticleSystemScene.h"
 
 #include "Converter.h"
