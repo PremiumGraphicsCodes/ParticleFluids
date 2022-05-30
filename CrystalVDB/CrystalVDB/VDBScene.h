@@ -2,7 +2,7 @@
 
 #include "CrystalScene/Scene/IScene.h"
 #include "VDBVolumeScene.h"
-#include "VDBParticleSystemScene.h"
+#include "VDBPointsScene.h"
 #include "VDBPolygonMeshScene.h"
 
 namespace Crystal {

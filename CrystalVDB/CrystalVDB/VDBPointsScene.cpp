@@ -1,4 +1,4 @@
-#include "VDBParticleSystemScene.h"
+#include "VDBPointsScene.h"
 
 #include "VDBPointsImpl.h"
 

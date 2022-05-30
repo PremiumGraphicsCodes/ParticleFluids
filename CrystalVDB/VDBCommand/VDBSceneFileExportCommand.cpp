@@ -1,7 +1,7 @@
 #include "VDBSceneFileExportCommand.h"
 
 
-#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBPointsScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
 #include "CrystalVDB/CrystalVDB/VDBFileExporter.h"

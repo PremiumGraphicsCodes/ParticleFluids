@@ -2,7 +2,7 @@
 
 #include "../CrystalVDB/VDBFileReader.h"
 
-#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBPointsScene.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
 #include "../CrystalVDB/VDBScene.h"
 

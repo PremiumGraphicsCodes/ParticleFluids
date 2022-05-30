@@ -1,7 +1,7 @@
 #include "VDBPSBoxView.h"
 
 #include "CrystalScene/Scene/ParticleSystemScene.h"
-#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBPointsScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;

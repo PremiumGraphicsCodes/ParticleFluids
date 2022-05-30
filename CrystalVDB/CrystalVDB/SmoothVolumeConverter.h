@@ -5,7 +5,7 @@
 
 #include "Crystal/Shape/Volume.h"
 #include "CrystalSpace/CrystalSpace/SparseVolume.h"
-#include "VDBParticleSystemScene.h"
+#include "VDBPointsScene.h"
 #include "VDBVolumeScene.h"
 
 namespace Crystal {

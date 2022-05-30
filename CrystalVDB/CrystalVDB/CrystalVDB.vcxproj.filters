@@ -32,7 +32,7 @@
     <ClCompile Include="VDBPointsImpl.cpp">
       <Filter>Points\Private</Filter>
     </ClCompile>
-    <ClCompile Include="VDBParticleSystemScene.cpp">
+    <ClCompile Include="VDBPointsScene.cpp">
       <Filter>Points</Filter>
     </ClCompile>
     <ClCompile Include="VDBPolygonMeshPresenter.cpp">
@@ -114,7 +114,7 @@
     <ClInclude Include="VDBPointsImpl.h">
       <Filter>Points\Private</Filter>
     </ClInclude>
-    <ClInclude Include="VDBParticleSystemScene.h">
+    <ClInclude Include="VDBPointsScene.h">
       <Filter>Points</Filter>
     </ClInclude>
     <ClInclude Include="VDBPolygonMeshPresenter.h">
