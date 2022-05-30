@@ -342,6 +342,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="VDBFileExporter.cpp" />
     <ClCompile Include="VDBFileImporter.cpp" />
     <ClCompile Include="VDBFilter.cpp" />
+    <ClCompile Include="VDBMeshToVolumeConverter.cpp" />
     <ClCompile Include="VDBPolygonMeshImpl.cpp" />
     <ClCompile Include="VDBPolygonMeshConverter.cpp" />
     <ClCompile Include="VDBAdapter.cpp" />
@@ -369,6 +370,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="VDBFileExporter.h" />
     <ClInclude Include="VDBFileImporter.h" />
     <ClInclude Include="VDBFilter.h" />
+    <ClInclude Include="VDBMeshToVolumeConverter.h" />
     <ClInclude Include="VDBPolygonMeshConverter.h" />
     <ClInclude Include="VDBAdapter.h" />
     <ClInclude Include="VDBFileReader.h" />

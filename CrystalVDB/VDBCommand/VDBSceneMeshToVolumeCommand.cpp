@@ -13,10 +13,11 @@ namespace
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 #include "CrystalScene/Scene/PolygonMeshScene.h"
 
-#include "../CrystalVDB/VDBPolygonMeshConverter.h"
 #include "../CrystalVDB/VDBVolumeConverter.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
+
+#include "../CrystalVDB/VDBMeshToVolumeConverter.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

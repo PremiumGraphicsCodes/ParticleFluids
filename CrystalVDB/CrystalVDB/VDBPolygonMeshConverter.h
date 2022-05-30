@@ -11,8 +11,6 @@ namespace Crystal {
 class VDBPolygonMeshConverter
 {
 public:
-	void toVolume(const VDBPolygonMeshScene& mesh, VDBVolumeScene* volume, const double divideLength);
-
 	void fromVDB(const VDBPolygonMeshScene& src, Shape::PolygonMesh* dest);
 
 private:

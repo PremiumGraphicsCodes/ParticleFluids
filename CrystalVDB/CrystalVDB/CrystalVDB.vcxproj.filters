@@ -72,6 +72,9 @@
     <ClCompile Include="VDBFileExporter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="VDBMeshToVolumeConverter.cpp">
+      <Filter>Converter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -144,6 +147,9 @@
     </ClInclude>
     <ClInclude Include="VDBFileExporter.h">
       <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBMeshToVolumeConverter.h">
+      <Filter>Converter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
