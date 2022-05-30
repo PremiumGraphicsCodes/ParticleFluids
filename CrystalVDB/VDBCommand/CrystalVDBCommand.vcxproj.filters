@@ -4,12 +4,6 @@
     <ClCompile Include="VDBCommandFactory.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
-    <ClCompile Include="VDBFileReadCommand.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
-    <ClCompile Include="VDBFileWriteCommand.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
     <ClCompile Include="VDBTransformCommand.cpp" />
     <ClCompile Include="VDBSceneFileReadCommand.cpp">
       <Filter>Scene</Filter>
@@ -49,12 +43,6 @@
     <ClInclude Include="VDBCommandFactory.h" />
     <ClInclude Include="VDBInitCommand.h" />
     <ClInclude Include="VDBSceneCreateCommand.h" />
-    <ClInclude Include="VDBFileReadCommand.h">
-      <Filter>IO</Filter>
-    </ClInclude>
-    <ClInclude Include="VDBFileWriteCommand.h">
-      <Filter>IO</Filter>
-    </ClInclude>
     <ClInclude Include="VDBTransformCommand.h" />
     <ClInclude Include="VDBSceneFileReadCommand.h">
       <Filter>Scene</Filter>
@@ -91,9 +79,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="IO">
-      <UniqueIdentifier>{3e91be6a-2223-4d75-815a-5b562735f18c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{71ca32ae-affb-4dde-8009-dbec5bc27d19}</UniqueIdentifier>
     </Filter>

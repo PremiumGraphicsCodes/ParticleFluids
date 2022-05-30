@@ -1,8 +1,6 @@
 #include "VDBCommandFactory.h"
 
 #include "VDBInitCommand.h"
-#include "VDBFileWriteCommand.h"
-#include "VDBFileReadCommand.h"
 #include "VDBSceneCreateCommand.h"
 
 #include "VDBSceneFileReadCommand.h"
@@ -24,12 +22,6 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 {
 	if (name == VDBInitCommand::getName()) {
 		return std::make_unique<VDBInitCommand>();
-	}
-	else if (name == VDBFileWriteCommand::getName()) {
-		return std::make_unique<VDBFileWriteCommand>();
-	}
-	else if (name == VDBFileReadCommand::getName()) {
-		return std::make_unique<VDBFileReadCommand>();
 	}
 	else if (name == VDBSceneCreateCommand::getName()) {
 		return std::make_unique<VDBSceneCreateCommand>();

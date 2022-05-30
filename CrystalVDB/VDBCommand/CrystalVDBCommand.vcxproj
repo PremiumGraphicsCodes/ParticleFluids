@@ -182,8 +182,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
-    <ClInclude Include="VDBFileReadCommand.h" />
-    <ClInclude Include="VDBFileWriteCommand.h" />
     <ClInclude Include="VDBInitCommand.h" />
     <ClInclude Include="VDBSceneCompositeCommand.h" />
     <ClInclude Include="VDBSceneFileExportCommand.h" />
@@ -201,8 +199,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VDBCommandFactory.cpp" />
-    <ClCompile Include="VDBFileReadCommand.cpp" />
-    <ClCompile Include="VDBFileWriteCommand.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
     <ClCompile Include="VDBSceneCompositeCommand.cpp" />
     <ClCompile Include="VDBSceneFileExportCommand.cpp" />

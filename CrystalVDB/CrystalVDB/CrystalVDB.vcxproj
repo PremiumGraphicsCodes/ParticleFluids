@@ -363,6 +363,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="VDBVolumeImpl.cpp" />
     <ClCompile Include="VDBVolumeConverter.cpp" />
     <ClCompile Include="VDBVolumeToMeshConverter.cpp" />
+    <ClCompile Include="VDBVolumeToPointsConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h" />
@@ -392,6 +393,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="VDBVolumeImpl.h" />
     <ClInclude Include="VDBVolumeConverter.h" />
     <ClInclude Include="VDBVolumeToMeshConverter.h" />
+    <ClInclude Include="VDBVolumeToPointsConverter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -22,19 +22,6 @@ using namespace Crystal::Space;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystemScene* ps) const
-{
-    auto impl = volume.getImpl();
-    auto grid = impl->getPtr();
-    auto transform = grid->transform();
-    std::vector<openvdb::Vec3f> coords;
-    for (auto iter = grid->cbeginValueOn(); iter; ++iter) {
-        auto coord = transform.indexToWorld(iter.getCoord());
-        coords.push_back(coord);
-    }
-    auto ptr = openvdb::points::createPointDataGrid<openvdb::points::NullCodec, openvdb::points::PointDataGrid>(coords, transform);
-    ps->getImpl()->setPtr(ptr);
-}
 
 void VDBVolumeConverter::fromSparseVolume(const SparseVolume<float>& sp, VDBVolumeScene* volume) const
 {

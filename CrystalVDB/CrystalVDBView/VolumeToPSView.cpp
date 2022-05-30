@@ -2,7 +2,7 @@
 
 #include "../CrystalVDB/VDBParticleSystemScene.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
-#include "../CrystalVDB/VDBVolumeConverter.h"
+#include "../CrystalVDB/VDBVolumeToPointsConverter.h"
 
 #include <iostream>
 
@@ -22,9 +22,7 @@ void VolumeToPSView::onOk()
 	const auto id = vdbVolumeSelectView.getId();
 	auto volume = getWorld()->getScenes()->findSceneById<VDBVolumeScene*>(id);
 
-	VDBVolumeConverter converter;
-	auto ps = new VDBParticleSystemScene(getWorld()->getNextSceneId(), "VolumeToPS");
-	converter.toParticleSystem(*volume, ps);
+	auto ps = VDBVolumeToPointsConverter::toPoints(*volume);
 	ps->getPresenter()->createView(getWorld()->getRenderer());
 	getWorld()->getScenes()->addScene(ps);
 }

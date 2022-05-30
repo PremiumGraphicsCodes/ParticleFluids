@@ -17,6 +17,8 @@ namespace
 #include "../CrystalVDB/VDBVolumeConverter.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
+#include "../CrystalVDB/VDBVolumeToPointsConverter.h"
+#include "../CrystalVDB/VDBScene.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
@@ -53,6 +55,10 @@ std::string VDBSceneVolumeToPointsCommand::getName()
 
 bool VDBSceneVolumeToPointsCommand::execute(World* world)
 {
+	auto scene = world->getScenes()->findSceneById<VDBScene*>(args.vdbSceneId.getValue());
+	if (scene == nullptr) {
+		return false;
+	}
 	/*
 	auto volume = world->getScenes()->findSceneById<VDBVolumeScene*>(args.vdbVolumeId.getValue());
 	if (volume == nullptr) {
