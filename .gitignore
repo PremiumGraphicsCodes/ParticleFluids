@@ -340,3 +340,4 @@ Blender/CrystalPythonTest/test_export.stl
 /CrystalVDB/VDBDataSet/*.vdb
 *.stl
 /FluidStudio/FluidStudio/imgui.ini
+Blender/vdb_tools/points.vdb

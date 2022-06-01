@@ -25,7 +25,7 @@ class VDB_TOOLS_OT_VolumeToPointsOperator(bpy.types.Operator) :
 
   def execute(self, context) :
       #export_dir_path = bpy.path.abspath(context.scene.filter_property.export_directory_prop)
-      name = context.scene.filter_property.name_prop
+      name = context.scene.volume_to_points_property.name_prop
 
       selected_volume = self.get_selected_volume(context)
       if selected_volume == None :
@@ -114,7 +114,7 @@ class VDB_TOOLS_PT_VolumeToPointsPanel(bpy.types.Panel) :
   def draw(self, context):
     layout = self.layout
     #layout.prop(context.scene.filter_property, "width_prop", text="Width")
-    layout.prop(context.scene.filter_property, "name_prop", text="Name")
+    layout.prop(context.scene.volume_to_points_property, "name_prop", text="Name")
     layout.operator(VDB_TOOLS_OT_VolumeToPointsOperator.bl_idname, text="ToPoints")
 
 classes = [
