@@ -1,8 +1,5 @@
 #include "VDBSceneFileImportCommand.h"
 
-
-#include "../CrystalVDB/VDBPointsScene.h"
-#include "../CrystalVDB/VDBVolumeScene.h"
 #include "../CrystalVDB/VDBScene.h"
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
@@ -59,36 +56,26 @@ bool VDBSceneFileImportCommand::execute(World* world)
 {
 	const auto format = args.fileFormat.getValue();
 	const auto filePath = args.filePath.getValue();
-	VDBScene* scene = new VDBScene(world->getNextSceneId(), "Imported");
+	VDBScene* scene = nullptr;// new VDBScene(world->getNextSceneId(), "Imported");
 	VDBFileImporter importer;
 	if (format == FileFormat_PLY_Label) {
-		auto points = importer.readPLY(filePath);
-		if (points != nullptr) {
-			scene->add(points);
-		}
+		scene = importer.readPLY(filePath);
 	}
 	else if (format == FileFormat_PCD_Label) {
-		auto points = importer.readPCD(filePath);
-		if (points != nullptr) {
-			scene->add(points);
-		}
+		scene = importer.readPCD(filePath);
 	}
 	else if (format == FileFormat_OBJ_Label) {
-		auto mesh = importer.readOBJ(filePath);
-		if (mesh != nullptr) {
-			scene->add(mesh);
-		}
+		scene = importer.readOBJ(filePath);
 	}
 	else if (format == FileFormat_STL_Label) {
-		auto mesh = importer.readSTL(filePath);
-		if (mesh != nullptr) {
-			scene->add(mesh);
-		}
+		scene = importer.readSTL(filePath);
 	}
 	else {
 		assert(false);
 		return false;
 	}
+	scene->setId(world->getNextSceneId());
+	scene->setName("Imported");
 	world->addScene(scene);
 	results.newSceneId.setValue(scene->getId());
 	return true;

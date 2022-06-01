@@ -11,6 +11,8 @@ namespace Crystal {
 class VDBScene : public Scene::IScene
 {
 public:
+	VDBScene() = default;
+
 	VDBScene(const int id, const std::string& name) :
 		Scene::IScene(id, name)
 	{}

@@ -4,19 +4,18 @@
 
 namespace Crystal {
 	namespace VDB {
-		class VDBPointsScene;
-		class VDBPolygonMeshScene;
+		class VDBScene;
 
 class VDBFileImporter
 {
 public:
-	VDBPointsScene* readPLY(const std::string& filePath);
+	VDBScene* readPLY(const std::string& filePath);
 
-	VDBPointsScene* readPCD(const std::string& filePath);
+	VDBScene* readPCD(const std::string& filePath);
 
-	VDBPolygonMeshScene* readOBJ(const std::string& filePath);
+	VDBScene* readOBJ(const std::string& filePath);
 
-	VDBPolygonMeshScene* readSTL(const std::string& filePath);
+	VDBScene* readSTL(const std::string& filePath);
 };
 	}
 }

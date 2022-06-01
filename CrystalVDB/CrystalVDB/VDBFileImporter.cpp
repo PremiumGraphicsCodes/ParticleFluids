@@ -7,12 +7,13 @@
 
 #include "VDBPointsScene.h"
 #include "VDBPolygonMeshScene.h"
+#include "VDBScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::IO;
 using namespace Crystal::VDB;
 
-VDBPointsScene* VDBFileImporter::readPLY(const std::string& filePath)
+VDBScene* VDBFileImporter::readPLY(const std::string& filePath)
 {
 	auto scene = new VDBPointsScene();
 
@@ -46,10 +47,12 @@ VDBPointsScene* VDBFileImporter::readPLY(const std::string& filePath)
 
 	}
 
-	return scene;
+	auto vdbScene = new VDBScene();
+	vdbScene->add(scene);
+	return vdbScene;
 }
 
-VDBPointsScene* VDBFileImporter::readPCD(const std::string& filePath)
+VDBScene* VDBFileImporter::readPCD(const std::string& filePath)
 {
 	Crystal::IO::PCDFileReader reader;
 	const auto isOk = reader.readBinary(filePath);
@@ -60,10 +63,12 @@ VDBPointsScene* VDBFileImporter::readPCD(const std::string& filePath)
 	auto scene = new VDBPointsScene();
 	scene->create(pcd.data.positions);
 
-	return scene;
+	auto vdbScene = new VDBScene();
+	vdbScene->add(scene);
+	return vdbScene;
 }
 
-VDBPolygonMeshScene* VDBFileImporter::readOBJ(const std::string& filePath)
+VDBScene* VDBFileImporter::readOBJ(const std::string& filePath)
 {
 	Crystal::IO::OBJFileReader reader;
 	const auto isOk = reader.read(filePath);
@@ -88,10 +93,12 @@ VDBPolygonMeshScene* VDBFileImporter::readOBJ(const std::string& filePath)
 		}
 	}
 	mesh->updateNormals();
-	return mesh;
+	auto vdbScene = new VDBScene();
+	vdbScene->add(mesh);
+	return vdbScene;
 }
 
-VDBPolygonMeshScene* VDBFileImporter::readSTL(const std::string& filePath)
+VDBScene* VDBFileImporter::readSTL(const std::string& filePath)
 {
 	Crystal::IO::STLFileReader reader;
 	const auto isOk = reader.readBinary(filePath);
@@ -108,5 +115,8 @@ VDBPolygonMeshScene* VDBFileImporter::readSTL(const std::string& filePath)
 		mesh->addTriangle({ index, index + 1, index + 2 });
 		index += 3;
 	}
-	return mesh;
+	auto vdbScene = new VDBScene();
+	vdbScene->add(mesh);
+	return vdbScene;
+
 }
