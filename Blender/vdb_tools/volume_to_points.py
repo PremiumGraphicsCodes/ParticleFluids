@@ -20,7 +20,7 @@ import subprocess
 
 class VDB_TOOLS_OT_VolumeToPointsOperator(bpy.types.Operator) :
   bl_idname = "pg.volumetopointsoperator"
-  bl_label = "ToPoints"
+  bl_label = "VolumeToPoints"
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
@@ -37,9 +37,9 @@ class VDB_TOOLS_OT_VolumeToPointsOperator(bpy.types.Operator) :
       print(filepath)
 
       export_dir_path = os.path.dirname(filepath)
-      export_file_path = os.path.join(export_dir_path, name + ".ply")
+      points_file_path = os.path.join(export_dir_path, name + ".ply")
 
-      j = self.to_json(filepath, export_file_path)
+      j = self.to_json(filepath, points_file_path)
       print(json.dumps(j, ensure_ascii=False, indent=2))
 
       json_file_path = os.path.join(export_dir_path, "command.json")
@@ -56,10 +56,12 @@ class VDB_TOOLS_OT_VolumeToPointsOperator(bpy.types.Operator) :
       if result == -1 : 
         return {'CANCELLED'}
 
-      vol = bpy.data.volumes.new(name = name)
-      vol.filepath = export_file_path
-      ob = bpy.data.objects.new(name, vol)
-      bpy.context.collection.objects.link(ob)
+      bpy.ops.import_mesh.ply(filepath=points_file_path)
+
+      #vol = bpy.data.volumes.new(name = name)
+      #vol.filepath = export_file_path
+      #ob = bpy.data.objects.new(name, vol)
+      #bpy.context.collection.objects.link(ob)
 
       return {'FINISHED'}
 
@@ -75,30 +77,28 @@ class VDB_TOOLS_OT_VolumeToPointsOperator(bpy.types.Operator) :
     read_dict["Radius"] = 0.5
     read_command = ["VDBSceneFileRead", read_dict]
 
-    dict2 = dict()
-    dict2["FilterType"] = "Median"
-    dict2["Iteration"] = 1
-    dict2["VDBVolumeId"] = 1
-    dict2["Width"] = 1
-    data2 = ["VDBSmoothing", dict2]
+    convert_dict = dict()
+    convert_dict["Radius"] = 1.0
+    convert_dict["VDBSceneId"] = 1
+    convert_command = ["VDBSceneVolumeToPoints", convert_dict]
 
     write_dict = dict()
     write_dict["FilePath"] = output_ply_file
-    write_dict["ParticleSystemIds"] = []
-    write_dict["VDBVolumeIds"] = [1]
-    data3 = ["VDBFileWriteExport", write_dict]
+    write_dict["FileFormat"] = "PLY"
+    write_dict["VDBSceneId"] = 2
+    write_command = ["VDBSceneFileExport", write_dict]
 
     data = dict()
-    data = [read_command, data2, data3]
+    data = [read_command, convert_command, write_command]
     return data
 
 class VolumeToPointsPropertyGroup(bpy.types.PropertyGroup):
-  width_prop : bpy.props.IntProperty(
-      name="width",
-      description="",
-      default=1,
-      min=1
-  )
+  #width_prop : bpy.props.IntProperty(
+  #    name="width",
+  #    description="",
+  #    default=1,
+  #    min=1
+  #)
   name_prop : bpy.props.StringProperty(
     name="name",
     description="Name",
@@ -109,13 +109,12 @@ class VDB_TOOLS_PT_VolumeToPointsPanel(bpy.types.Panel) :
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
   bl_category = "VDBTools"
-  bl_label = "ToVolume"
+  bl_label = "VolumeToPoints"
   
   def draw(self, context):
     layout = self.layout
-    layout.prop(context.scene.filter_property, "width_prop", text="Width")
+    #layout.prop(context.scene.filter_property, "width_prop", text="Width")
     layout.prop(context.scene.filter_property, "name_prop", text="Name")
-    #layout.prop(context.scene.filter_property, "export_directory_prop", text="ExportDir")
     layout.operator(VDB_TOOLS_OT_VolumeToPointsOperator.bl_idname, text="ToPoints")
 
 classes = [
