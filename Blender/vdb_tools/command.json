@@ -1,28 +1,24 @@
 [
     [
-        "VDBFileRead",
+        "VDBSceneFileImport",
         {
-            "FilePath": "C:\\Users\\mabuc\\Desktop\\TestVolumes\\particle0.vdb",
+            "FilePath": "points.stl",
+            "FileFormat": "STL",
             "Radius": 0.5
         }
     ],
     [
-        "VDBSmoothing",
+        "VDBSceneMeshToVolume",
         {
-            "FilterType": "Median",
-            "Iteration": 1,
-            "VDBVolumeId": 1,
-            "Width": 1
+            "VDBSceneId": 1,
+            "DivideLength": 1
         }
     ],
     [
-        "OpenVDBFileWrite",
+        "VDBSceneFileWrite",
         {
-            "FilePath": "particle0.vdb",
-            "ParticleSystemIds": [],
-            "VDBVolumeIds": [
-                1
-            ]
+            "FilePath": "points.vdb",
+            "VDBSceneId": 2
         }
     ]
 ]
