@@ -58,41 +58,25 @@ bool VDBSceneFileExportCommand::execute(World* world)
 	const auto points = scene->getPoints();
 	const auto meshes = scene->getMeshes();
 
-	VDBFileExporter exporter;
+	VDBFileExporter exporter(scene);
 
 	const auto filePath = args.filePath.getValue();
 	const auto format = args.fileFormat.getValue();
 	if (format == FileFormat_PLY_Label) {
-		for (auto p : points) {
-			const auto isOk = exporter.writePLY(p, filePath);
-			if (!isOk) {
-				return false;
-			}
-		}
+		const auto isOk = exporter.writePLY(filePath);
+		return isOk;
 	}
 	else if (format == FileFormat_PCD_Label) {
-		for (auto p : points) {
-			const auto isOk = exporter.writePCD(p, filePath);
-			if (!isOk) {
-				return false;
-			}
-		}
+		const auto isOk = exporter.writePCD(filePath);
+		return isOk;
 	}
 	else if (format == FileFormat_STL_Label) {
-		for (auto m : meshes) {
-			const auto isOk = exporter.writeSTL(m, filePath);
-			if (!isOk) {
-				return false;
-			}
-		}
+		const auto isOk = exporter.writeSTL(filePath);
+		return isOk;
 	}
 	else if (format == FileFormat_OBJ_Label) {
-		for (auto m : meshes) {
-			const auto isOk = exporter.writeOBJ(m, filePath);
-			if (!isOk) {
-				return false;
-			}
-		}
+		assert(false);
+		return false;
 	}
 	else {
 		assert(false);

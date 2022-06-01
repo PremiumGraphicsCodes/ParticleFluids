@@ -4,19 +4,27 @@
 
 namespace Crystal {
 	namespace VDB {
+		class VDBScene;
 		class VDBPointsScene;
 		class VDBPolygonMeshScene;
 
 class VDBFileExporter
 {
 public:
-	bool writePLY(VDBPointsScene* vdbPoints, const std::string& filePath);
+	explicit VDBFileExporter(const VDBScene* scene) :
+		scene(scene)
+	{}
 
-	bool writePCD(VDBPointsScene* vdbPoints, const std::string& filePath);
+	bool writePLY(const std::string& filePath);
 
-	bool writeSTL(VDBPolygonMeshScene* mesh, const std::string& filePath);
+	bool writePCD(const std::string& filePath);
 
-	bool writeOBJ(VDBPolygonMeshScene* mesh, const std::string& filePath);
+	bool writeSTL(const std::string& filePath);
+
+	bool writeOBJ(const std::string& filePath);
+
+private:
+	const VDBScene* scene;
 };
 	}
 }

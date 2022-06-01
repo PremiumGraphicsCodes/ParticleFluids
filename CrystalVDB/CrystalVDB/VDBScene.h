@@ -25,11 +25,11 @@ public:
 
 	Scene::IPresenter* getPresenter() override;
 
-	std::vector<VDBVolumeScene*> getVolumes() { return volumes; }
+	std::vector<VDBVolumeScene*> getVolumes() const { return volumes; }
 
-	std::vector<VDBPointsScene*> getPoints() { return points; }
+	std::vector<VDBPointsScene*> getPoints() const { return points; }
 
-	std::vector<VDBPolygonMeshScene*> getMeshes() { return meshes; }
+	std::vector<VDBPolygonMeshScene*> getMeshes() const { return meshes; }
 
 private:
 	std::vector<VDBVolumeScene*> volumes;
