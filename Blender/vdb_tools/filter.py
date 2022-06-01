@@ -72,21 +72,20 @@ class VDB_TOOLS_OT_FilterOperator(bpy.types.Operator) :
     dict1 = dict()
     dict1["FilePath"] =  input_vdb_file
     dict1["Radius"] = 0.5
-    data1 = ["VDBFileRead", dict1]
+    data1 = ["VDBSceneFileRead", dict1]
 
     dict2 = dict()
     dict2["FilterType"] = "Median"
     dict2["Iteration"] = 1
-    dict2["VDBVolumeId"] = 1
+    dict2["VDBSceneId"] = 1
     dict2["Width"] = 1
-    data2 = ["VDBSmoothing", dict2]
+    data2 = ["VDBSceneFilter", dict2]
 
     dict3 = dict()
     dict3["FilePath"] = output_vdb_file
-    dict3["ParticleSystemIds"] = []
-    dict3["VDBVolumeIds"] = [1]
+    dict3["VDBSceneId"] = 1
+    data3 = ["VDBSceneFileWrite", dict3]
 
-    data3 = ["OpenVDBFileWrite", dict3]
     data = dict()
     data = [data1, data2, data3]
     return data
