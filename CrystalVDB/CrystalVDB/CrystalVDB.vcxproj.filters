@@ -163,6 +163,9 @@
     <ClInclude Include="VDBVolumeToPointsConverter.h">
       <Filter>Converter</Filter>
     </ClInclude>
+    <ClInclude Include="VDBPLYFileWriter.h">
+      <Filter>FileIO\PLY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">
@@ -209,6 +212,9 @@
     </Filter>
     <Filter Include="Points\Private">
       <UniqueIdentifier>{0451f205-71e5-4c76-acef-a932cd8f6ea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileIO\PLY">
+      <UniqueIdentifier>{5ec32ed1-feab-4f91-b06f-ed5c85a5b6c4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -373,6 +373,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="VDBFileImporter.h" />
     <ClInclude Include="VDBFilter.h" />
     <ClInclude Include="VDBMeshToVolumeConverter.h" />
+    <ClInclude Include="VDBPLYFileWriter.h" />
     <ClInclude Include="VDBPolygonMeshConverter.h" />
     <ClInclude Include="VDBAdapter.h" />
     <ClInclude Include="VDBFileReader.h" />

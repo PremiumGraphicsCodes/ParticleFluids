@@ -2,7 +2,7 @@
     [
         "VDBSceneFileRead",
         {
-            "FilePath": "../VDBDataSet/scene_to_volume.vdb",
+            "FilePath": "../VDBDataSet/sphere.vdb",
             "Radius": 0.5
         }
     ],
