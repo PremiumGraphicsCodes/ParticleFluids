@@ -24,6 +24,27 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
+namespace {
+	VDBFileExporter::Format toFormat(const std::string& format) {
+		if (format == FileFormat_PLY_Label) {
+			return VDBFileExporter::Format::PLY;
+		}
+		else if (format == FileFormat_PCD_Label) {
+			return VDBFileExporter::Format::PCD;
+		}
+		else if (format == FileFormat_STL_Label) {
+			return VDBFileExporter::Format::STL;
+		}
+		else if (format == FileFormat_OBJ_Label) {
+			assert(false);
+			return VDBFileExporter::Format::OBJ;
+		}
+		assert(false);
+		return VDBFileExporter::Format::OBJ;
+	}
+}
+
+
 VDBSceneFileExportCommand::Args::Args() :
 	filePath(::FilePathLabel, ""),
 	fileFormat(::FileFormatLabel, ""),
@@ -55,33 +76,16 @@ std::string VDBSceneFileExportCommand::getName()
 bool VDBSceneFileExportCommand::execute(World* world)
 {
 	auto scene = world->getScenes()->findSceneById<VDBScene*>(args.vdbSceneId.getValue());
-	const auto points = scene->getPoints();
-	const auto meshes = scene->getMeshes();
+	if (scene == nullptr) {
+		return false;
+	}
 
 	VDBFileExporter exporter(scene);
 
 	const auto filePath = args.filePath.getValue();
-	const auto format = args.fileFormat.getValue();
-	if (format == FileFormat_PLY_Label) {
-		const auto isOk = exporter.writePLY(filePath);
-		return isOk;
-	}
-	else if (format == FileFormat_PCD_Label) {
-		const auto isOk = exporter.writePCD(filePath);
-		return isOk;
-	}
-	else if (format == FileFormat_STL_Label) {
-		const auto isOk = exporter.writeSTL(filePath);
-		return isOk;
-	}
-	else if (format == FileFormat_OBJ_Label) {
-		assert(false);
-		return false;
-	}
-	else {
-		assert(false);
-		return false;
-	}
-	return true;
+	const auto format = ::toFormat( args.fileFormat.getValue() );
+
+	const auto isOk = exporter.write(filePath, format);
+	return isOk;
 }
 

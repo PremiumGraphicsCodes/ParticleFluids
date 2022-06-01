@@ -14,6 +14,23 @@
 using namespace Crystal::IO;
 using namespace Crystal::VDB;
 
+bool VDBFileExporter::write(const std::string& filePath, const Format format)
+{
+	switch (format) {
+	case Format::PLY :
+		return writePLY(filePath);
+	case Format::PCD :
+		return writePCD(filePath);
+	case Format::STL :
+		return writeSTL(filePath);
+	case Format::OBJ :
+		return writeOBJ(filePath);
+	default:
+		assert(false);
+		return false;
+	}
+}
+
 bool VDBFileExporter::writePLY(const std::string& filePath)
 {
 	const auto vdbPointss = scene->getPoints();

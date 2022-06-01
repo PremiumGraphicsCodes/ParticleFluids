@@ -11,9 +11,19 @@ namespace Crystal {
 class VDBFileExporter
 {
 public:
+	enum class Format
+	{
+		PLY,
+		PCD,
+		STL,
+		OBJ
+	};
+
 	explicit VDBFileExporter(const VDBScene* scene) :
 		scene(scene)
 	{}
+
+	bool write(const std::string& filePath, const Format format);
 
 	bool writePLY(const std::string& filePath);
 
