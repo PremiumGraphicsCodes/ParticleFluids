@@ -24,6 +24,25 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
+namespace {
+	VDBFileImporter::Format toFormat(const std::string& format) {
+		if (format == FileFormat_PLY_Label) {
+			return VDBFileImporter::Format::PLY;
+		}
+		else if (format == FileFormat_PCD_Label) {
+			return VDBFileImporter::Format::PCD;
+		}
+		else if (format == FileFormat_STL_Label) {
+			return VDBFileImporter::Format::STL;
+		}
+		else if (format == FileFormat_OBJ_Label) {
+			return VDBFileImporter::Format::OBJ;
+		}
+		assert(false);
+		return VDBFileImporter::Format::NONE;
+	}
+}
+
 VDBSceneFileImportCommand::Args::Args() :
 	filePath(::FilePathLabel, ""),
 	fileFormat(::FileFormatLabel, "")
@@ -56,22 +75,11 @@ bool VDBSceneFileImportCommand::execute(World* world)
 {
 	const auto format = args.fileFormat.getValue();
 	const auto filePath = args.filePath.getValue();
-	VDBScene* scene = nullptr;// new VDBScene(world->getNextSceneId(), "Imported");
+
+	const auto f = ::toFormat(format);
 	VDBFileImporter importer;
-	if (format == FileFormat_PLY_Label) {
-		scene = importer.readPLY(filePath);
-	}
-	else if (format == FileFormat_PCD_Label) {
-		scene = importer.readPCD(filePath);
-	}
-	else if (format == FileFormat_OBJ_Label) {
-		scene = importer.readOBJ(filePath);
-	}
-	else if (format == FileFormat_STL_Label) {
-		scene = importer.readSTL(filePath);
-	}
-	else {
-		assert(false);
+	auto scene = importer.read(filePath, f);
+	if (scene == nullptr) {
 		return false;
 	}
 	scene->setId(world->getNextSceneId());

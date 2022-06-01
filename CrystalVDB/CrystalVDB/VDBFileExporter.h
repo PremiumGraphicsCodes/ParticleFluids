@@ -5,8 +5,6 @@
 namespace Crystal {
 	namespace VDB {
 		class VDBScene;
-		class VDBPointsScene;
-		class VDBPolygonMeshScene;
 
 class VDBFileExporter
 {

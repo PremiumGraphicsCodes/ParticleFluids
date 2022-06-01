@@ -13,6 +13,25 @@ using namespace Crystal::Math;
 using namespace Crystal::IO;
 using namespace Crystal::VDB;
 
+VDBScene* VDBFileImporter::read(const std::string& filePath, const Format format)
+{
+	switch (format) {
+	case Format::PLY :
+		return readPLY(filePath);
+	case Format::PCD :
+		return readPCD(filePath);
+	case Format::STL :
+		return readSTL(filePath);
+	case Format::OBJ:
+		return readOBJ(filePath);
+	default:
+		assert(false);
+		return nullptr;
+	}
+	assert(false);
+	return nullptr;
+}
+
 VDBScene* VDBFileImporter::readPLY(const std::string& filePath)
 {
 	auto scene = new VDBPointsScene();
