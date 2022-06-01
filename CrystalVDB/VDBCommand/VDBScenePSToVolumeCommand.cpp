@@ -2,7 +2,7 @@
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
-#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBPointsScene.h"
 #include "../CrystalVDB/VDBParticleSystemConverter.h"
 #include "../CrystalVDB/VDBVolumeScene.h"
 #include "../CrystalVDB/VDBVolumeConverter.h"
