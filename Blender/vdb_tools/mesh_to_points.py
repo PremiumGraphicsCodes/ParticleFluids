@@ -24,19 +24,20 @@ class VDB_TOOLS_OT_MeshToPointsOperator(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      """
-      points_file_prop = context.scene.points_to_volume_property.points_file_prop
-      name = context.scene.points_to_volume_property.name_prop
-      radius = context.scene.points_to_volume_property.radius_prop
-      voxel_size = context.scene.points_to_volume_property.voxel_size_prop
+      points_file_prop = context.scene.mesh_to_points_property.points_file_prop
+      name = context.scene.mesh_to_points_property.name_prop
+      voxel_size = context.scene.mesh_to_points_property.voxel_size_prop
       filepath = bpy.path.abspath( points_file_prop )
 
       print(filepath)
 
       export_dir_path = os.path.dirname(filepath)
-      export_file_path = os.path.join(export_dir_path, name)
+      mesh_file_path = os.path.join(export_dir_path, name + ".stl")
+      vdb_file_path = os.path.join(export_dir_path, name + ".vdb")
 
-      j = self.to_json(filepath, radius, voxel_size, export_file_path)
+      bpy.ops.export_mesh.stl(filepath=mesh_file_path, use_selection = True)
+
+      j = self.to_json(mesh_file_path, 1.0, voxel_size, vdb_file_path)
       print(json.dumps(j, ensure_ascii=False, indent=2))
 
       json_file_path = os.path.join(export_dir_path, "command.json")
@@ -54,10 +55,9 @@ class VDB_TOOLS_OT_MeshToPointsOperator(bpy.types.Operator) :
         return {'CANCELLED'}
 
       vol = bpy.data.volumes.new(name =name)
-      vol.filepath = export_file_path
+      vol.filepath = vdb_file_path
       ob = bpy.data.objects.new(name, vol)
       bpy.context.collection.objects.link(ob)
-      """
 
       return {'FINISHED'}
 
@@ -67,17 +67,17 @@ class VDB_TOOLS_OT_MeshToPointsOperator(bpy.types.Operator) :
         return o
     return None
 
-  def to_json(self, input_vdb_file, radius, voxel_size, output_vdb_file) :
+  def to_json(self, input_stl_file, radius, voxel_size, output_vdb_file) :
     read_dict = dict()
-    read_dict["FilePath"] =  input_vdb_file
+    read_dict["FilePath"] =  input_stl_file
+    read_dict["FileFormat"] = "STL"
     read_dict["Radius"] = 0.5
-    read_command = ["VDBSceneFileRead", read_dict]
+    read_command = ["VDBSceneFileImport", read_dict]
 
     convert_dict = dict()
-    convert_dict["SceneId"] = 1
-    convert_dict["Radius"] = radius
-    convert_dict["VoxelSize"] = voxel_size
-    convert_command = ["VDBScenePSToVolume", convert_dict]
+    convert_dict["VDBSceneId"] = 1
+    convert_dict["DivideLength"] = voxel_size
+    convert_command = ["VDBSceneMeshToVolume", convert_dict]
 
     write_dict = dict()
     write_dict["FilePath"] = output_vdb_file
@@ -111,7 +111,7 @@ class MeshToPointsPropertyGroup(bpy.types.PropertyGroup):
   name_prop : bpy.props.StringProperty(
     name="name",
     description="",
-    default="ToVolume",
+    default="points",
   )
 
 class VDB_TOOLS_PT_MeshToPointsPanel(bpy.types.Panel) :
@@ -122,11 +122,11 @@ class VDB_TOOLS_PT_MeshToPointsPanel(bpy.types.Panel) :
   
   def draw(self, context):
     layout = self.layout
-    #layout.prop(context.scene.points_to_volume_property, "voxel_size_prop", text="VoxelSize")
-    #layout.prop(context.scene.points_to_volume_property, "radius_prop", text="Radius")
-    #layout.prop(context.scene.points_to_volume_property, "points_file_prop", text="PointsFile")
-    #layout.prop(context.scene.points_to_volume_property, "name_prop", text="Name")
-    #layout.operator(VDB_TOOLS_OT_MeshToPointsOperator.bl_idname, text="ToVolume")
+    layout.prop(context.scene.mesh_to_points_property, "voxel_size_prop", text="VoxelSize")
+    layout.prop(context.scene.mesh_to_points_property, "radius_prop", text="Radius")
+    layout.prop(context.scene.mesh_to_points_property, "points_file_prop", text="PointsFile")
+    layout.prop(context.scene.mesh_to_points_property, "name_prop", text="Name")
+    layout.operator(VDB_TOOLS_OT_MeshToPointsOperator.bl_idname, text="ToPoints")
 
 classes = [
   VDB_TOOLS_OT_MeshToPointsOperator,
@@ -141,7 +141,7 @@ class VDB_TOOLS_MeshToPoints_UI :
     bpy.types.Scene.mesh_to_points_property = bpy.props.PointerProperty(type=MeshToPointsPropertyGroup)
 
   def unregister() :
-    del bpy.types.Scene.points_to_volume_property
+    del bpy.types.Scene.mesh_to_points_property
     for c in classes:
       bpy.utils.unregister_class(c)
  
