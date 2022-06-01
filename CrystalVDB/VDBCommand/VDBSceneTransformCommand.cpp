@@ -1,4 +1,4 @@
-#include "VDBTransformCommand.h"
+#include "VDBSceneTransformCommand.h"
 
 #include "CrystalScene/Command/Public/PublicLabel.h"
 #include "CrystalVDB/CrystalVDB/VDBVolumeScene.h"
@@ -6,43 +6,45 @@
 
 namespace
 {
-	PublicLabel CommandNameLabel = "VDBTransform";
-	PublicLabel SourceVolumeIdLabel = "SourceVolumeId";
-	PublicLabel TargetVolumeIdLabel = "TargetVolumeId";
+	PublicLabel CommandNameLabel = "VDBSceneTransform";
+	PublicLabel VDBSceneIdLabel = "VDBSceneId";
+	PublicLabel MatrixLabel = "Matrix";
 }
 
+using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBTransformCommand::Args::Args() :
-	sourceVolumeId(::SourceVolumeIdLabel, -1),
-	targetVolumeId(::TargetVolumeIdLabel, -1)
+VDBSceneTransformCommand::Args::Args() :
+	vdbSceneId(::VDBSceneIdLabel, -1),
+	matrix(::MatrixLabel, Matrix4dd())
 {
-	add(&sourceVolumeId);
-	add(&targetVolumeId);
+	add(&vdbSceneId);
+	add(&matrix);
 }
 
-VDBTransformCommand::Results::Results()
+VDBSceneTransformCommand::Results::Results()
 {
 }
 
-VDBTransformCommand::VDBTransformCommand() :
+VDBSceneTransformCommand::VDBSceneTransformCommand() :
 	ICommand(&args, &results)
 {}
 
-VDBTransformCommand::VDBTransformCommand(const Args& args) :
+VDBSceneTransformCommand::VDBSceneTransformCommand(const Args& args) :
 	args(args),
 	ICommand(&this->args, &results)
 {}
 
-std::string VDBTransformCommand::getName()
+std::string VDBSceneTransformCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-bool VDBTransformCommand::execute(World* world)
+bool VDBSceneTransformCommand::execute(World* world)
 {
+	/*
 	auto volume = world->getScenes()->findSceneById<VDBVolumeScene*>(args.sourceVolumeId.getValue());
 	if (volume == nullptr) {
 		return false;
@@ -57,4 +59,6 @@ bool VDBTransformCommand::execute(World* world)
 	transform.transformGeometry();
 
 	return true;
+	*/
+	return false;
 }

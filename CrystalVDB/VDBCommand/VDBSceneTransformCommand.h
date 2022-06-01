@@ -5,17 +5,15 @@
 namespace Crystal {
 	namespace VDB {
 
-class VDBTransformCommand : public Command::ICommand
+class VDBSceneTransformCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
 	{
 		Args();
 
-		Command::Arg<int> sourceVolumeId;
-		Command::Arg<int> targetVolumeId;
-		//Command::Arg<int> width;
-		//Command::Arg<int> iteration;
+		Command::Arg<int> vdbSceneId;
+		Command::Arg<Math::Matrix4dd> matrix;
 	};
 
 	struct Results : Command::IResults
@@ -23,9 +21,9 @@ public:
 		Results();
 	};
 
-	VDBTransformCommand();
+	VDBSceneTransformCommand();
 
-	explicit VDBTransformCommand(const Args& args);
+	explicit VDBSceneTransformCommand(const Args& args);
 
 	static std::string getName();
 
