@@ -7,7 +7,7 @@
 #include "hitrecord.h"
 #include "SphereObject.h"
 
-#include "../../Crystal/Math/Box3d.h"
+#include "Crystal/Math/Box3d.h"
 
 namespace Crystal {
     namespace Photon {

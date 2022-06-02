@@ -42,10 +42,10 @@
     <Image Include="image.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CrystalSpace\CrystalAlgo\CrystalSpace.vcxproj">
+    <ProjectReference Include="..\..\..\CGLib\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
       <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
+    <ProjectReference Include="..\..\..\CGLib\Crystal\Math\Math.vcxproj">
       <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -130,7 +130,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\src;../../../CGLib/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>

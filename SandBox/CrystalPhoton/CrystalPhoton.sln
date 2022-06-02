@@ -5,30 +5,30 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhotonViewer", "CrystalPhotonViewer\CrystalPhotonViewer.vcxproj", "{BA32CD1E-55EA-4C25-A8F5-8B523B251BA3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math", "..\Crystal\Math\Math.vcxproj", "{EF054C93-201B-4807-9285-CABC9C68978A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math", "..\..\CGLib\Crystal\Math\Math.vcxproj", "{EF054C93-201B-4807-9285-CABC9C68978A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphics", "..\Crystal\Graphics\Graphics.vcxproj", "{227E5411-92CB-4E30-A67B-043D8B04A9BC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphics", "..\..\CGLib\Crystal\Graphics\Graphics.vcxproj", "{227E5411-92CB-4E30-A67B-043D8B04A9BC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shader", "..\Crystal\Shader\Shader.vcxproj", "{33BDCAB8-A30C-44B1-A93F-1AD3E15461AD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shader", "..\..\CGLib\Crystal\Shader\Shader.vcxproj", "{33BDCAB8-A30C-44B1-A93F-1AD3E15461AD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IO", "..\Crystal\IO\IO.vcxproj", "{198160CC-5ED1-499D-AD45-90DBAC4852F8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IO", "..\..\CGLib\Crystal\IO\IO.vcxproj", "{198160CC-5ED1-499D-AD45-90DBAC4852F8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{227E5411-92CB-4E30-A67B-043D8B04A9BC} = {227E5411-92CB-4E30-A67B-043D8B04A9BC}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shape", "..\Crystal\Shape\Shape.vcxproj", "{ED61B745-9F00-48C2-B309-F1DBB37F03E3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shape", "..\..\CGLib\Crystal\Shape\Shape.vcxproj", "{ED61B745-9F00-48C2-B309-F1DBB37F03E3}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhoton", "CrystalPhoton\CrystalPhoton.vcxproj", "{0E5B53A9-7767-4013-98F3-3A3968EC05DA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sample_ppm", "PPM\sample_ppm.vcxproj", "{9E50D2F6-C985-4166-BC83-9A7D6FF49810}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AppBase", "..\CrystalScene\AppBase\AppBase.vcxproj", "{8BCD40A1-4223-4E7A-A84A-93FBF1B6FFD8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AppBase", "..\..\CGLib\CrystalScene\AppBase\AppBase.vcxproj", "{8BCD40A1-4223-4E7A-A84A-93FBF1B6FFD8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Command", "..\CrystalScene\Command\Command.vcxproj", "{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Command", "..\..\CGLib\CrystalScene\Command\Command.vcxproj", "{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\..\CGLib\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "..\CrystalScene\Scene\Scene.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "..\..\CGLib\CrystalScene\Scene\Scene.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

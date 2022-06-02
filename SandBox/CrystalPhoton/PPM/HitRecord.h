@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../../Crystal/Math/Vector3d.h"
+#include "Crystal/Math/Vector3d.h"
 
 namespace Crystal {
     namespace Photon {

@@ -4,8 +4,8 @@
 #include "PhotonCloudScene.h"
 #include "Photon.h"
 
-#include "../../CrystalScene/Scene/SceneShader.h"
-#include "../../CrystalScene/Scene/PointShaderScene.h"
+#include "CrystalScene/Scene/SceneShader.h"
+#include "CrystalScene/Scene/PointShaderScene.h"
 
 #include "PBVRShaderScene.h"
 

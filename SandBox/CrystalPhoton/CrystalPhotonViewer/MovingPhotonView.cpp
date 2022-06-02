@@ -2,7 +2,7 @@
 
 #include "MovingPhotonView.h"
 #include "Crystal/Math/Tolerance.h"
-#include "CrystalPhoton/CrystalPhoton/Photon.h"
+#include "../CrystalPhoton/Photon.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
