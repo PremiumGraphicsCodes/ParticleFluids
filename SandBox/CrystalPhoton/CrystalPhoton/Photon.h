@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../Crystal/Shape/IParticle.h"
-#include "../../Crystal/Graphics/ColorRGBA.h"
+#include "Crystal/Shape/IParticle.h"
+#include "Crystal/Graphics/ColorRGBA.h"
 
 namespace Crystal {
 	namespace Photon {

@@ -15,6 +15,7 @@ from physics.emitter_scene_test import *
 from physics.solver_scene_test import SolverSceneTest
 from physics.csg_boundary_scene_test import CSGBoundarySceneTest
 from physics.surface_builder_test import SurfaceBuilderTest
+from physics.volume_scene_test import VolumeSceneTest
 #print('doc=', CrystalPLI.__doc__)
 
 class TestVector2df(unittest.TestCase):

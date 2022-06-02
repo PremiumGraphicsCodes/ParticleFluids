@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Math/Sphere3d.h"
-#include "../../Crystal/Math/Ray3d.h"
+#include "Crystal/Math/Vector3d.h"
+#include "Crystal/Math/Sphere3d.h"
+#include "Crystal/Math/Ray3d.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // MaterialType

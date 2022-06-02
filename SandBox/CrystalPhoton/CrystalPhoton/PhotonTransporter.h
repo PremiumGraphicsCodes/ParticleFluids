@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../Crystal/Shape/IParticle.h"
-#include "../../Crystal/Graphics/SpotLight.h"
-#include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+#include "Crystal/Shape/IParticle.h"
+#include "Crystal/Graphics/SpotLight.h"
+#include "CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 
 namespace Crystal {
 	namespace Photon {

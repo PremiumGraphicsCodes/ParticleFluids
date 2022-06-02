@@ -17,6 +17,12 @@ class EmitterScene :
         self.__interval = 5
         self.__initial_velocity = Vector3df(0,0,0)
 
+        self.__temperature = 300.0
+        self.__heat_diffuse = 1.0
+        self.__drag_force = 0.0
+        self.__drag_heat = 0.0
+        self.__lifetime = -1
+
     def get_id(self) :
         return self.__id
 
@@ -44,6 +50,21 @@ class EmitterScene :
     def set_initial_velocity(self, v) :
         self.__initial_velocity = Vector3df(v[0],v[1],v[2])
 
+    def set_temperature(self, v) :
+        self.__temperature = v
+
+    def set_heat_diffuse(self, v) :
+        self.__heat_diffuse = v
+
+    def set_drag_force(self, v) :
+        self.__drag_force = v
+
+    def set_drag_heat(self, v) :
+        self.__drag_heat = v
+
+    def set_lifetime(self, v) :
+        self.__lifetime = v
+
     def create(self) :
         create_physics_command(EmitterSceneCreateCommand.CommandNameLabel)
         execute_command(self.__scene.world)
@@ -61,6 +82,11 @@ class EmitterScene :
         set_arg_int(EmitterSceneUpdateCommand.EndStepLabel, self.__end_step)
         set_arg_int(EmitterSceneUpdateCommand.IntervalLabel, self.__interval)
         set_arg_vector3df(EmitterSceneUpdateCommand.InitialVelocityLabel, self.__initial_velocity)
+        set_arg_float(EmitterSceneUpdateCommand.TemperatureLabel, self.__temperature)
+        set_arg_float(EmitterSceneUpdateCommand.HeatDiffuseCoeLabel, self.__heat_diffuse)
+        set_arg_float(EmitterSceneUpdateCommand.DragForceCoeLabel, self.__drag_force)
+        set_arg_float(EmitterSceneUpdateCommand.DragHeatCoeLabel, self.__drag_heat)
+        set_arg_int(EmitterSceneUpdateCommand.LifeLimitLabel, self.__lifetime)
         is_ok = execute_command(self.__scene.world)
         return is_ok
 

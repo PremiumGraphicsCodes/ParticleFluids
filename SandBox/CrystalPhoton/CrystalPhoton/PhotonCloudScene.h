@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../../CrystalScene/Scene/IParticleSystemScene.h"
+#include "CrystalScene/Scene/IParticleSystemScene.h"
 //#include "ParticleAttribute.h"
 
 //#include "IParticleSystemScene.h"
-#include "../../CrystalScene/Scene/ParticleSystemPresenter.h"
+#include "CrystalScene/Scene/ParticleSystemPresenter.h"
 
 namespace Crystal {
 	namespace Photon {

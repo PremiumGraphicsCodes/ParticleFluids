@@ -46,11 +46,16 @@ class PARTICLE_FLUID_PT_FluidPanel(bpy.types.Panel) :
       layout.prop(fluid_property, "stiffness_prop", text="Stiffness")
       layout.prop(fluid_property, "viscosity_prop", text="Viscosity")
       #  layout.prop(fluid_property, "is_static_prop", text="Static")
+      layout.prop(fluid_property, "temperature_prop", text="Temperature")
+      layout.prop(fluid_property, "heat_diffuse_prop", text="HeatDiffuse")
+      layout.prop(fluid_property, "drag_force_prop", text="DragForce")
+      layout.prop(fluid_property, "drag_heat_prop", text="DragHeat")
       if fluid_property.type_prop == "Emitter" :
         layout.prop(fluid_property, "start_step_prop", text="StartStep")
         layout.prop(fluid_property, "end_step_prop", text="EndStep")
         layout.prop(fluid_property, "interval_prop", text="Interval")
         layout.prop(fluid_property, "initial_velocity_prop", text="Velocity")
+        layout.prop(fluid_property, "lifetime_prop", text="LifeTime")
 
 classes = [
   PARTICLE_FLUID_OT_Activate,

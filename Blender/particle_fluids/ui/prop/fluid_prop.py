@@ -77,5 +77,33 @@ class PARTICLE_FLUID_FluidProperty(bpy.types.PropertyGroup) :
     description="InitialVelocity",
     default=(0.0, 0.0, 0.0)
     )
-
-
+  temperature_prop : FloatProperty(
+    name ="temperature",
+    description="Temperature",
+    default=300.0,
+    min=0.0
+    )
+  heat_diffuse_prop : FloatProperty(
+    name="heat_diffuse",
+    description="HeatDiffuse",
+    default=1.0,
+    min=0.0
+  )
+  drag_force_prop : FloatProperty(
+    name="drag_force",
+    description="DragForce",
+    default=0.0,
+    min=0.0
+  )
+  drag_heat_prop : FloatProperty(
+    name="drag_heat",
+    description="DragHeat",
+    default = 0.0,
+    min = 0.0
+  )
+  lifetime_prop : IntProperty(
+    name="lifetime",
+    description="LifeTime",
+    default = -1,
+    min = -1
+  )

@@ -46,6 +46,8 @@ def find_all_fluids() :
                 fluid.set_stiffness( prop.stiffness_prop )
                 fluid.set_viscosity( prop.viscosity_prop )
                 fluid.set_is_boundary( prop.type_prop == "Obstacle" )
+                fluid.set_temperature( prop.temperature_prop )
+                fluid.set_heat_diffuse( prop.heat_diffuse_prop )
                 fluid.send()
                 fluids.append(fluid)
     return fluids
@@ -88,6 +90,8 @@ def reset() :
     bl_boundary.send()
     bl_solver.add_boundary(bl_boundary)
     bl_solver.set_effect_length(bpy.context.scene.solver_property.search_radius_prop)
+    bl_solver.set_external_force(bpy.context.scene.solver_property.external_force_prop)
+    bl_solver.set_buoyancy(bpy.context.scene.solver_property.buoyancy_prop )
     
     bl_solver.send()
     bl_solver.set_start_frame(bpy.context.scene.solver_property.start_frame_prop)
@@ -147,6 +151,7 @@ class PARTICLE_FLUIDS_PT_SolverPanel(bpy.types.Panel):
         self.layout.prop(solver_property, "end_frame_prop", text="EndFrame")
         self.layout.prop(solver_property, "time_step_prop", text="TimeStep")
         self.layout.prop(solver_property, "external_force_prop", text="ExternalForce")
+        self.layout.prop(solver_property, "buoyancy_prop", text="Buoyancy")
         self.layout.prop(solver_property, "search_radius_prop", text="SearchRadius")
         self.layout.prop(solver_property, "min_prop", text="Min")
         self.layout.prop(solver_property, "max_prop", text="Max")

@@ -30,6 +30,9 @@
     <Compile Include="physics\surface_builder.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="physics\volume_scene.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="scene\file_io.py">
       <SubType>Code</SubType>
     </Compile>

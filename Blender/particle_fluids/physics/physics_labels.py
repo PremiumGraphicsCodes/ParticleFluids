@@ -22,6 +22,11 @@ class EmitterSceneUpdateCommand:
    StartStepLabel="StartStep"
    EndStepLabel="EndStep"
    IntervalLabel="Interval"
+   TemperatureLabel="Temperature"
+   HeatDiffuseCoeLabel="HeatDiffuseCoe"
+   DragForceCoeLabel="DragForceCoe"
+   DragHeatCoeLabel="DragHeatCoe"
+   LifeLimitLabel="LifeLimit"
 class FluidSceneCreateCommand:
    CommandNameLabel="FluidSceneCreateCommand"
    NewIdLabel="NewId"
@@ -37,11 +42,23 @@ class FluidSceneUpdateCommand:
    StiffnessLabel="Stiffness"
    ViscosityLabel="Viscosity"
    DensityLabel="Density"
+   TemperatureLabel="Temperature"
+   HeatDiffuseCoeLabel="HeatDiffuseCoe"
+   DragForceCoeLabel="DragForceCoe"
+   DragHeatCoeLabel="DragHeatCoe"
+   LifeLimitLabel="LifeLimit"
    IsBoundary="IsBoundary"
    NameLabel="Name"
 class FluidSimulationCommand:
    CommandNameLabel="FluidSimulationCommand"
    SolverIdLabel="SolverId"
+class FluidVolumeExportCommand:
+   CommandNameLabel="FluidVolumeExportCommand"
+   VolumeIdLabel="VolumeId"
+   FilePathLabel="FilePath"
+class FluidVolumeSceneCreateCommand:
+   CommandNameLabel="FluidVolumeSceneCreateCommand"
+   NewIdLabel="NewId"
 class MeshBoundarySceneCreateCommand:
    CommandNameLabel="MeshBoundarySceneCreate"
    NewIdLabel="NewId"
@@ -50,8 +67,8 @@ class MeshBoundarySceneUpdateCommand:
    IdLabel="Id"
    MeshIdLabel="MeshId"
    NameLabel="Name"
-class MVPSurfaceConstructionCommand:
-   CommandNameLabel="MPVSurfaceConstructionCommand"
+class MVPVolumeConvertCommand:
+   CommandNameLabel="MVPVolumeConvertCommand"
    VolumeParticleSystemIdLabel="VolumeParticleSystemId"
    MassParticleSystemIdLabel="MassParticleSystemId"
    TriangleMeshIdLabel="TriangleMeshId"
@@ -65,6 +82,7 @@ class PhysicsSolverExportCommand:
    FluidIdsLabel="FluidIds"
    FilePathLabel="FilePath"
    DoExportMicroLabel="DoExportMicro"
+   AsBinaryLabel="AsBinary"
 class PhysicsSolverUpdateCommand:
    CommandNameLabel="PhysicsSolverUpdateCommand"
    IdLabel="Id"
@@ -73,12 +91,13 @@ class PhysicsSolverUpdateCommand:
    CSGBoundarySceneIdsLabel="CSGBoundarySceneIds"
    EffectLengthLabel="EffectLength"
    ExternalForceLabel="ExternalForce"
+   BuoyancyForceLabel="BuoyancyForce"
    TimeStepLabel="TimeStep"
    NameLabel="Name"
-class SPHSurfaceConstructionCommand:
-   CommandNameLabel="SPHSurfaceConstructionCommand"
+class SPHVolumeConvertCommand:
+   CommandNameLabel="SPHVolumeConvertCommand"
    ParticleSystemIdLabel="ParticleSystemId"
-   TriangleMeshIdLabel="TriangleMeshId"
+   VolumeIdLabel="VolumeId"
    ParticleRadiusLabel="ParticleRadius"
    CellLengthLabel="CellLength"
    ThresholdLabel="Threshold"

@@ -1,7 +1,7 @@
 #include "PCSphereView.h"
 
-#include "../../Crystal/Math/Sphere3d.h"
-#include "../../Crystal/Graphics/ColorRGBA.h"
+#include "Crystal/Math/Sphere3d.h"
+#include "Crystal/Graphics/ColorRGBA.h"
 
 #include "../CrystalPhoton/Photon.h"
 #include "../CrystalPhoton/PhotonCloudScene.h"

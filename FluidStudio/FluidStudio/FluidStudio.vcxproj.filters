@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="FluidStudio.cpp" />
+    <ClCompile Include="FluidMenu.cpp">
+      <Filter>UI\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverView.cpp">
+      <Filter>UI\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverExporter.cpp">
+      <Filter>UI\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="ToVolumeView.cpp">
+      <Filter>VDB</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBMenu.cpp">
+      <Filter>VDB</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidView.cpp">
+      <Filter>UI\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="EmitterView.cpp">
+      <Filter>UI\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidListPanel.cpp">
+      <Filter>UI\Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidModel.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverModel.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="EmitterModel.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="FileMenu.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="FSProjFileWriter.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FluidMenu.h">
+      <Filter>UI\Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverView.h">
+      <Filter>UI\Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverExporter.h">
+      <Filter>UI\Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="ToVolumeView.h">
+      <Filter>VDB</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBMenu.h">
+      <Filter>VDB</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidView.h">
+      <Filter>UI\Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="EmitterView.h">
+      <Filter>UI\Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidListPanel.h">
+      <Filter>UI\Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidModel.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverModel.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="EmitterModel.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="FileMenu.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="FSProjFileWriter.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="IModel.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="VDB">
+      <UniqueIdentifier>{2ded9ef5-bdf9-49a6-a9eb-865cbe97d9d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{6cd903fb-0c0a-48d0-8e9e-9fa49ced85a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Fluid">
+      <UniqueIdentifier>{ae99daef-114e-485f-a3f4-eadb063ed4d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{337932cf-d449-4af9-a210-6242725edb82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileIO">
+      <UniqueIdentifier>{f51c11d6-4619-4405-ae37-ac0b904d5b44}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

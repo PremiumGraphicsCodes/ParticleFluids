@@ -14,22 +14,22 @@ class SurfaceBuilderTest(unittest.TestCase):
         triangle_mesh.create_empty("")
 
         builder = SurfaceBuilder(scene)
-        builder.build_anisotorpic(particle_system.id, triangle_mesh.id, 1.0, 1.0, 1.0)
+        builder.build_isotorpic(particle_system.id, triangle_mesh.id, 1.0, 1.0)
 
-    def test_build_mvp(self):
-        scene = Scene(World())
+    #def test_build_mvp(self):
+    #    scene = Scene(World())
 
-        volume_particle_system = ParticleSystemScene(scene)
-        volume_particle_system.create_empty("")
+    #    volume_particle_system = ParticleSystemScene(scene)
+    #    volume_particle_system.create_empty("")
 
-        mass_particle_system = ParticleSystemScene(scene)
-        mass_particle_system.create_empty("")
+    #    mass_particle_system = ParticleSystemScene(scene)
+    #    mass_particle_system.create_empty("")
 
-        triangle_mesh = TriangleMeshScene(scene)
-        triangle_mesh.create_empty("")
+    #    triangle_mesh = TriangleMeshScene(scene)
+    #    triangle_mesh.create_empty("")
 
-        builder = SurfaceBuilder(scene)
-        builder.build_mvp_surface(volume_particle_system.id, mass_particle_system.id, triangle_mesh.id, 1.0, 1.0)
+    #    builder = SurfaceBuilder(scene)
+    #    builder.build_mvp_surface(volume_particle_system.id, mass_particle_system.id, triangle_mesh.id, 1.0, 1.0)
 
 
 if __name__ == '__main__':
