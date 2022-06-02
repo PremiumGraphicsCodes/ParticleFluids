@@ -1,16 +1,8 @@
 #include "ToVolumeView.h"
 
-//#include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "CrystalPhysics/CrystalPhysics/FluidVolumeScene.h"
-#include "CrystalPhysics/CrystalPhysics/SurfaceConstruction/SPHVolumeConverter.h"
-#include "CrystalPhysics/CrystalPhysics/FluidVolumeScene.h"
-#include "CrystalPhysics/CrystalPhysicsCommand/SPHVolumeConvertCommand.h"
-#include "CrystalPhysics/CrystalPhysicsCommand/FluidVolumeExportCommand.h"
 
 #include "CrystalVDB/VDBCommand/VDBInitCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSceneFileImportCommand.h"
-#include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
-#include "CrystalVDB/VDBCommand/VDBSceneFileExportCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSceneFileWriteCommand.h"
 #include "CrystalVDB/VDBCommand/VDBScenePSToVolumeCommand.h"
 
@@ -20,8 +12,6 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
-using namespace Crystal::Space;
-using namespace Crystal::Physics;
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
 using namespace Crystal::UI;
@@ -44,58 +34,32 @@ ToVolumeView::ToVolumeView(const std::string& name, World* model, Canvas* canvas
 
 void ToVolumeView::onOk()
 {
-
 	const auto path = inputDirectoryView.getPath();
 	const auto outdir = outputDirectoryView.getPath();
 	for (const auto& file : std::filesystem::directory_iterator(path)) {
 		std::cout << file << std::endl;
 		World w;
 
-		/*
-		VDBSceneCreateCommand::Args scArgs;
-		scArgs.sceneType.setValue("VDBPoints");
-		VDBSceneCreateCommand scCommand(scArgs);
-		scCommand.execute(&w);
-		const auto vdbPointsId = std::any_cast<int>(scCommand.getResult("NewId"));
-
-		VDBPLYFileReadCommand::Args readArgs;
-		readArgs.vdbSceneId.setValue(vdbPointsId);
-		readArgs.isVolume.setValue(false);
+		VDBSceneFileImportCommand::Args readArgs;
 		readArgs.filePath.setValue(file.path().string());
-		VDBPLYFileReadCommand readCommand(readArgs);
+		readArgs.fileFormat.setValue("PLY");
+		VDBSceneFileImportCommand readCommand(readArgs);
 		readCommand.execute(&w);
+		//readCommand.getResult("NewId")
 
-		VDBSceneCreateCommand::Args scArgs2;
-		scArgs2.sceneType.setValue("VDBVolume");
-		scArgs2.name.setValue("density");
-		VDBSceneCreateCommand scCommand2(scArgs2);
-		scCommand2.execute(&w);
-		const auto vdbVolumeId = std::any_cast<int>(scCommand2.getResult("NewId"));
-
-		VDBSceneCreateCommand::Args scArgs3;
-		scArgs3.sceneType.setValue("VDBVolume");
-		scArgs3.name.setValue("temperature");
-		VDBSceneCreateCommand scCommand3(scArgs3);
-		scCommand3.execute(&w);
-		const auto vdbTemperatureVolumeId = std::any_cast<int>(scCommand3.getResult("NewId"));
-
-		VDBPSToVolumeCommand::Args cArgs;
-		cArgs.doUseSph.setValue(true);
-		cArgs.radius.setValue(1.0);
-		cArgs.voxelSize.setValue(0.5);
-		cArgs.particleSystemId.setValue(vdbPointsId);
-		cArgs.vdbVolumeId.setValue(vdbVolumeId);
-		cArgs.temperatureVolumeId.setValue(vdbTemperatureVolumeId);
-		VDBPSToVolumeCommand cCommand(cArgs);
+		VDBScenePSToVolumeCommand::Args cArgs;
+		cArgs.radius.setValue(particleRadiusView.getValue());
+		cArgs.voxelSize.setValue(gridCellWidthView.getValue());
+		cArgs.sceneId.setValue(1);
+		VDBScenePSToVolumeCommand cCommand(cArgs);
 		cCommand.execute(&w);
 
-		VDBFileWriteCommand::Args wArgs;
+		VDBSceneFileWriteCommand::Args wArgs;
 		std::filesystem::path wFilePath(outdir);
 		wFilePath.append(file.path().stem().string() + ".vdb");
-		wArgs.vdbVolumeIds.setValue(std::vector<int>{ vdbVolumeId, vdbTemperatureVolumeId });
+		wArgs.vdbSceneId.setValue(2);
 		wArgs.filePath.setValue(wFilePath.string());
-		VDBFileWriteCommand wCommand(wArgs);
+		VDBSceneFileWriteCommand wCommand(wArgs);
 		wCommand.execute(&w);
-		*/
 	}
 }
