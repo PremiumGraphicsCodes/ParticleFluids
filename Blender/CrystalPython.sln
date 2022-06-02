@@ -3,32 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math", "..\Crystal\Math\Math.vcxproj", "{EF054C93-201B-4807-9285-CABC9C68978A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math", "..\CGLib\Crystal\Math\Math.vcxproj", "{EF054C93-201B-4807-9285-CABC9C68978A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphics", "..\Crystal\Graphics\Graphics.vcxproj", "{227E5411-92CB-4E30-A67B-043D8B04A9BC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphics", "..\CGLib\Crystal\Graphics\Graphics.vcxproj", "{227E5411-92CB-4E30-A67B-043D8B04A9BC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shader", "..\Crystal\Shader\Shader.vcxproj", "{33BDCAB8-A30C-44B1-A93F-1AD3E15461AD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shader", "..\CGLib\Crystal\Shader\Shader.vcxproj", "{33BDCAB8-A30C-44B1-A93F-1AD3E15461AD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IO", "..\Crystal\IO\IO.vcxproj", "{198160CC-5ED1-499D-AD45-90DBAC4852F8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IO", "..\CGLib\Crystal\IO\IO.vcxproj", "{198160CC-5ED1-499D-AD45-90DBAC4852F8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{227E5411-92CB-4E30-A67B-043D8B04A9BC} = {227E5411-92CB-4E30-A67B-043D8B04A9BC}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Crystal", "Crystal", "{B4537626-CA8F-448A-98CC-0F0FCD392AAD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "..\CrystalScene\Scene\Scene.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "..\CGLib\CrystalScene\Scene\Scene.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Command", "..\CrystalScene\Command\Command.vcxproj", "{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Command", "..\CGLib\CrystalScene\Command\Command.vcxproj", "{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shape", "..\Crystal\Shape\Shape.vcxproj", "{ED61B745-9F00-48C2-B309-F1DBB37F03E3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shape", "..\CGLib\Crystal\Shape\Shape.vcxproj", "{ED61B745-9F00-48C2-B309-F1DBB37F03E3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysics", "..\CrystalPhysics\CrystalPhysics\CrystalPhysics.vcxproj", "{4C0EFD78-680E-45C9-9828-9B674EE70DF0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysics", "..\CGLib\CrystalPhysics\CrystalPhysics\CrystalPhysics.vcxproj", "{4C0EFD78-680E-45C9-9828-9B674EE70DF0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysicsCommand", "..\CrystalPhysics\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj", "{09EE8B6A-2D6F-4B9E-83FF-6A40D03BC465}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysicsCommand", "..\CGLib\CrystalPhysics\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj", "{09EE8B6A-2D6F-4B9E-83FF-6A40D03BC465}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CGLib\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalNumerics", "..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj", "{C4927D35-7611-4AFD-934A-DA114663BFB2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalNumerics", "..\CGLib\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj", "{C4927D35-7611-4AFD-934A-DA114663BFB2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPLI", "CrystalPLI\CrystalPLI.vcxproj", "{09688343-9C7D-4B37-825A-3A4AD8201EAE}"
 EndProject
@@ -38,7 +38,7 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonLabelFileGenerator", 
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonLabelFileGeneratorTest", "PythonLabelFileGeneratorTest\PythonLabelFileGeneratorTest.pyproj", "{0F7BEA09-D087-47DF-B6CC-19D6585A025A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpaceCommand", "..\CrystalSpace\CrystalSpaceCommand\CrystalSpaceCommand.vcxproj", "{33E8C184-64B2-410D-9AAB-C47917688DBB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpaceCommand", "..\CGLib\CrystalSpace\CrystalSpaceCommand\CrystalSpaceCommand.vcxproj", "{33E8C184-64B2-410D-9AAB-C47917688DBB}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "particle_fluids", "particle_fluids\particle_fluids.pyproj", "{75A5DAC9-0299-44E1-B8D0-C745B458D040}"
 EndProject
