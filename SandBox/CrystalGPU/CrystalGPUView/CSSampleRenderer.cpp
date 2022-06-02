@@ -1,6 +1,6 @@
 #include "CSSampleRenderer.h"
 
-#include "../../../Crystal/Graphics/ColorRGBA.h"
+#include "Crystal/Graphics/ColorRGBA.h"
 //#include "../Scene/ParticleSystemScene.h"
 
 #include "Crystal/Shader/ShaderUnit.h"

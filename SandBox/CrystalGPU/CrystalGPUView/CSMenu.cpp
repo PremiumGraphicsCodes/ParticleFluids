@@ -1,6 +1,6 @@
 #include "CSMenu.h"
-#include "../../../CrystalScene/AppBase/imgui.h"
-#include "../../../CrystalScene/AppBase/ControlPanel.h"
+#include "CrystalScene/AppBase/imgui.h"
+#include "CrystalScene/AppBase/ControlPanel.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
