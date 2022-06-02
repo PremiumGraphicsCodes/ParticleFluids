@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Unity\CrystalCI.vcxproj" />
+    <ProjectReference Include="..\CrystalCI\CrystalCI.vcxproj" />
   </ItemGroup>
 
 </Project>
