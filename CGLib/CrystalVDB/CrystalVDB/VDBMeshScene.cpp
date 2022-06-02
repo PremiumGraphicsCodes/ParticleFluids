@@ -19,7 +19,7 @@ VDBMeshScene::VDBMeshScene(const int id, const std::string& name) :
 	IShapeScene(id, name)
 {
 	impl = std::make_unique<VDBPolygonMeshImpl>();
-	presenter = std::make_unique<VDBPolygonMeshPresenter>(this);
+	presenter = std::make_unique<VDBMeshPresenter>(this);
 }
 
 VDBMeshScene::~VDBMeshScene()

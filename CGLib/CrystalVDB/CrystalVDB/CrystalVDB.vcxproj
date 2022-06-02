@@ -353,7 +353,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="VDBPointsScene.cpp" />
     <ClCompile Include="VDBPointsPresenter.cpp" />
     <ClCompile Include="VDBMeshScene.cpp" />
-    <ClCompile Include="VDBPolygonMeshPresenter.cpp" />
+    <ClCompile Include="VDBMeshPresenter.cpp" />
     <ClCompile Include="VDBResampler.cpp" />
     <ClCompile Include="VDBScene.cpp" />
     <ClCompile Include="VDBToSpheres.cpp" />
@@ -384,7 +384,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="VDBPointsPresenter.h" />
     <ClInclude Include="VDBMeshScene.h" />
     <ClInclude Include="VDBPolygonMeshImpl.h" />
-    <ClInclude Include="VDBPolygonMeshPresenter.h" />
+    <ClInclude Include="VDBMeshPresenter.h" />
     <ClInclude Include="VDBResampler.h" />
     <ClInclude Include="VDBScene.h" />
     <ClInclude Include="VDBToSpheres.h" />

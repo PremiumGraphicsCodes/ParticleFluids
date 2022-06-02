@@ -9,10 +9,10 @@ namespace Crystal {
 	namespace VDB {
 		class VDBMeshScene;
 
-class VDBPolygonMeshPresenter : public Scene::IPresenter
+class VDBMeshPresenter : public Scene::IPresenter
 {
 public:
-	explicit VDBPolygonMeshPresenter(VDBMeshScene* model);
+	explicit VDBMeshPresenter(VDBMeshScene* model);
 
 	void createView(Scene::SceneShader* sceneShader) override;
 

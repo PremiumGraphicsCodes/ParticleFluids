@@ -4,7 +4,7 @@
 
 #include "../../CrystalScene/Scene/IShapeScene.h"
 
-#include "VDBPolygonMeshPresenter.h"
+#include "VDBMeshPresenter.h"
 
 #include <memory>
 #include <array>
@@ -81,7 +81,7 @@ public:
 
 private:
 	std::unique_ptr<VDBPolygonMeshImpl> impl;
-	std::unique_ptr<VDBPolygonMeshPresenter> presenter;
+	std::unique_ptr<VDBMeshPresenter> presenter;
 };
 
 	}

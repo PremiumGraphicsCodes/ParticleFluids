@@ -1,6 +1,6 @@
-#include "VDBPolygonMeshPresenter.h"
+#include "VDBMeshPresenter.h"
 
-#include "VDBPolygonMeshScene.h"
+#include "VDBMeshScene.h"
 
 #include "../../CrystalScene/Scene/SceneShader.h"
 #include "../../CrystalScene/Scene/LineShaderScene.h"
@@ -10,13 +10,13 @@ using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 using namespace Crystal::VDB;
 
-VDBPolygonMeshPresenter::VDBPolygonMeshPresenter(VDBMeshScene* model) :
+VDBMeshPresenter::VDBMeshPresenter(VDBMeshScene* model) :
 	model(model),
 	view(nullptr)
 {
 }
 
-void VDBPolygonMeshPresenter::createView(SceneShader* sceneShader)
+void VDBMeshPresenter::createView(SceneShader* sceneShader)
 {
 	{
 		this->view = new LineShaderScene(model->getName());
@@ -29,21 +29,21 @@ void VDBPolygonMeshPresenter::createView(SceneShader* sceneShader)
 	updateView();
 }
 
-void VDBPolygonMeshPresenter::removeView(SceneShader* sceneShader)
+void VDBMeshPresenter::removeView(SceneShader* sceneShader)
 {
 	this->view->release(*sceneShader->getGLFactory());
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 }
 
-void VDBPolygonMeshPresenter::updateView()
+void VDBMeshPresenter::updateView()
 {
 	updateScreenView();
 	updateParentIdView();
 	updateChildIdView();
 }
 
-void VDBPolygonMeshPresenter::updateScreenView()
+void VDBMeshPresenter::updateScreenView()
 {
 	const auto ps = model->getVerticesf();
 	LineBuffer buffer;
@@ -76,11 +76,11 @@ void VDBPolygonMeshPresenter::updateScreenView()
 	this->view->send(buffer);
 }
 
-void VDBPolygonMeshPresenter::updateParentIdView()
+void VDBMeshPresenter::updateParentIdView()
 {
 }
 
-void VDBPolygonMeshPresenter::updateChildIdView()
+void VDBMeshPresenter::updateChildIdView()
 {
 
 }
