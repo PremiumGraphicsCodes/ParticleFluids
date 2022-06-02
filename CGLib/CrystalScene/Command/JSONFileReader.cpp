@@ -10,7 +10,7 @@ bool JSONFileReader::read(const std::filesystem::path& path, const ICommandFacto
 	if (!stream.is_open()) {
 		return false;
 	}
-	JSONConverter converter;
+	//JSONConverter converter;
 	nlohmann::json root;
 	stream >> root;
 	for (const auto& j : root) {
