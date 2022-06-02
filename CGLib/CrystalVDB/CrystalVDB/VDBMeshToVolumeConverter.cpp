@@ -2,8 +2,8 @@
 
 #include "VDBMeshToVolumeConverter.h"
 
-#include "CrystalVDB/CrystalVDB/VDBPolygonMeshScene.h"
-#include "CrystalVDB/CrystalVDB/VDBPolygonMeshImpl.h"
+#include "CrystalVDB/CrystalVDB/VDBMeshScene.h"
+#include "CrystalVDB/CrystalVDB/VDBMeshImpl.h"
 #include "CrystalVDB/CrystalVDB/VDBVolumeScene.h"
 #include "CrystalVDB/CrystalVDB/VDBVolumeImpl.h"
 

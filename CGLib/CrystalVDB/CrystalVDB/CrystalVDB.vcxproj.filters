@@ -41,7 +41,7 @@
     <ClCompile Include="VDBMeshScene.cpp">
       <Filter>Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="VDBPolygonMeshImpl.cpp">
+    <ClCompile Include="VDBMeshImpl.cpp">
       <Filter>Mesh\Private</Filter>
     </ClCompile>
     <ClCompile Include="VDBVolumeImpl.cpp">
@@ -123,7 +123,7 @@
     <ClInclude Include="VDBMeshScene.h">
       <Filter>Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="VDBPolygonMeshImpl.h">
+    <ClInclude Include="VDBMeshImpl.h">
       <Filter>Mesh\Private</Filter>
     </ClInclude>
     <ClInclude Include="VDBVolumeImpl.h">

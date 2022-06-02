@@ -1,6 +1,6 @@
 #include "VDBVolumeToMeshConverter.h"
 #include "VDBVolumeImpl.h"
-#include "VDBPolygonMeshImpl.h"
+#include "VDBMeshImpl.h"
 #include "openvdb/tools/VolumeToMesh.h"
 
 using namespace Crystal::VDB;
@@ -14,12 +14,12 @@ VDBMeshScene* VDBVolumeToMeshConverter::toMesh(const VDBVolumeScene& volume, con
     std::vector<openvdb::Vec4I> quads;
     openvdb::tools::volumeToMesh(*grid, impl->points, triangles, quads, threshold, adaptivity);
     for (const auto& t : triangles) {
-        Crystal::VDB::VDBPolygonMeshImpl::TriangleFace face;
+        Crystal::VDB::VDBMeshImpl::TriangleFace face;
         face.indices = t;
         impl->triangles.push_back(face);
     }
     for (const auto& q : quads) {
-        Crystal::VDB::VDBPolygonMeshImpl::QuadFace face;
+        Crystal::VDB::VDBMeshImpl::QuadFace face;
         face.indices = q;
         impl->quads.push_back(face);
     }

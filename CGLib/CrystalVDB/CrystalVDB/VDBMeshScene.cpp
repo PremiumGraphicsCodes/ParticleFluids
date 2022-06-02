@@ -1,6 +1,6 @@
 #include "VDBMeshScene.h"
 
-#include "VDBPolygonMeshImpl.h"
+#include "VDBMeshImpl.h"
 #include "Converter.h"
 
 #include "../../Crystal/Shape/PolygonMesh.h"
@@ -12,13 +12,13 @@ using namespace Crystal::VDB;
 VDBMeshScene::VDBMeshScene() :
 	VDBMeshScene(-1, "")
 {
-	impl = std::make_unique<VDBPolygonMeshImpl>();
+	impl = std::make_unique<VDBMeshImpl>();
 }
 
 VDBMeshScene::VDBMeshScene(const int id, const std::string& name) :
 	IShapeScene(id, name)
 {
-	impl = std::make_unique<VDBPolygonMeshImpl>();
+	impl = std::make_unique<VDBMeshImpl>();
 	presenter = std::make_unique<VDBMeshPresenter>(this);
 }
 
@@ -49,7 +49,7 @@ std::vector<Vector3dd> VDBMeshScene::getVerticesd() const
 
 void VDBMeshScene::addTriangle(const std::array<unsigned int, 3>& indices)
 {
-	VDBPolygonMeshImpl::TriangleFace triangle;
+	VDBMeshImpl::TriangleFace triangle;
 	triangle.indices = Converter::toVDB( indices );
 	//triangle.normal = Converter::toVDB(normal);
 	impl->triangles.push_back(triangle);
@@ -69,7 +69,7 @@ std::vector<VDBMeshScene::TriangleFace> VDBMeshScene::getTriangleFaces() const
 
 void VDBMeshScene::addQuad(const std::array<unsigned int, 4>& indices)
 {
-	VDBPolygonMeshImpl::QuadFace quad;
+	VDBMeshImpl::QuadFace quad;
 	quad.indices = Converter::toVDB(indices);
 	//quad.normal = Converter::toVDB(normal);
 	impl->quads.push_back(quad);
