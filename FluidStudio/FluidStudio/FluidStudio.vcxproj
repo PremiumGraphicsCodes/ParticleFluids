@@ -116,13 +116,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../CGLib;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../CrystalScene/ThirdParty\glfw-3.3\lib-vc2019;$(VCPKGPath)\debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../CGLib/Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../CGLib/CrystalScene/ThirdParty\glfw-3.3\lib-vc2019;$(VCPKGPath)\debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;openvdb.lib;tbbmalloc_debug.lib;boost_iostreams-vc140-mt-gd.lib;boost_regex-vc140-mt-gd.lib;boost_system-vc140-mt-gd.lib;blosc.lib;tbb_debug.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -165,50 +165,6 @@
     <ClCompile Include="VDBMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj">
-      <Project>{c4927d35-7611-4afd-934a-da114663bfb2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj">
-      <Project>{09ee8b6a-2d6f-4b9e-83ff-6a40d03bc465}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysics\CrystalPhysics.vcxproj">
-      <Project>{4c0efd78-680e-45c9-9828-9b674ee70df0}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrystalScene\AppBase\AppBase.vcxproj">
-      <Project>{8bcd40a1-4223-4e7a-a84a-93fbf1b6ffd8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrystalScene\Command\Command.vcxproj">
-      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrystalScene\Scene\Scene.vcxproj">
-      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
-      <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrystalVDB\CrystalVDB\CrystalVDB.vcxproj">
-      <Project>{516a29d3-e143-4d8a-8067-24b2d24a6643}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrystalVDB\VDBCommand\CrystalVDBCommand.vcxproj">
-      <Project>{0aa3c227-939a-4b73-a27c-9d6be4f2adbc}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
-      <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\IO\IO.vcxproj">
-      <Project>{198160cc-5ed1-499d-ad45-90dbac4852f8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
-      <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Shader\Shader.vcxproj">
-      <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
-      <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="EmitterModel.h" />
     <ClInclude Include="EmitterView.h" />
     <ClInclude Include="FileMenu.h" />
@@ -225,6 +181,50 @@
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="ToVolumeView.h" />
     <ClInclude Include="VDBMenu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CGLib\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj">
+      <Project>{c4927d35-7611-4afd-934a-da114663bfb2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\CrystalPhysics\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj">
+      <Project>{09ee8b6a-2d6f-4b9e-83ff-6a40d03bc465}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\CrystalPhysics\CrystalPhysics\CrystalPhysics.vcxproj">
+      <Project>{4c0efd78-680e-45c9-9828-9b674ee70df0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\CrystalScene\AppBase\AppBase.vcxproj">
+      <Project>{8bcd40a1-4223-4e7a-a84a-93fbf1b6ffd8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\CrystalScene\Command\Command.vcxproj">
+      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\CrystalScene\Scene\Scene.vcxproj">
+      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
+      <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\CrystalVDB\CrystalVDB\CrystalVDB.vcxproj">
+      <Project>{516a29d3-e143-4d8a-8067-24b2d24a6643}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\CrystalVDB\VDBCommand\CrystalVDBCommand.vcxproj">
+      <Project>{0aa3c227-939a-4b73-a27c-9d6be4f2adbc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\Crystal\Graphics\Graphics.vcxproj">
+      <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\Crystal\IO\IO.vcxproj">
+      <Project>{198160cc-5ed1-499d-ad45-90dbac4852f8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\Crystal\Math\Math.vcxproj">
+      <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\Crystal\Shader\Shader.vcxproj">
+      <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CGLib\Crystal\Shape\Shape.vcxproj">
+      <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

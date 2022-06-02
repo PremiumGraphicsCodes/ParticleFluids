@@ -8,11 +8,11 @@
 #include "CrystalPhysics/CrystalPhysicsCommand/FluidVolumeExportCommand.h"
 
 #include "CrystalVDB/VDBCommand/VDBInitCommand.h"
-#include "CrystalVDB/VDBCommand/VDBPLYFileReadCommand.h"
+#include "CrystalVDB/VDBCommand/VDBSceneFileImportCommand.h"
 #include "CrystalVDB/VDBCommand/VDBSceneCreateCommand.h"
-#include "CrystalVDB/VDBCommand/VDBPLYFileReadCommand.h"
-#include "CrystalVDB/VDBCommand/VDBFileWriteCommand.h"
-#include "CrystalVDB/VDBCommand/VDBPSToVolumeCommand.h"
+#include "CrystalVDB/VDBCommand/VDBSceneFileExportCommand.h"
+#include "CrystalVDB/VDBCommand/VDBSceneFileWriteCommand.h"
+#include "CrystalVDB/VDBCommand/VDBScenePSToVolumeCommand.h"
 
 #include "CrystalScene/Command/ParticleSystemCreateCommand.h"
 #include "CrystalScene/Command/PLYFileImportCommand.h"
@@ -51,6 +51,7 @@ void ToVolumeView::onOk()
 		std::cout << file << std::endl;
 		World w;
 
+		/*
 		VDBSceneCreateCommand::Args scArgs;
 		scArgs.sceneType.setValue("VDBPoints");
 		VDBSceneCreateCommand scCommand(scArgs);
@@ -95,81 +96,6 @@ void ToVolumeView::onOk()
 		wArgs.filePath.setValue(wFilePath.string());
 		VDBFileWriteCommand wCommand(wArgs);
 		wCommand.execute(&w);
-
-		/*
-		ParticleSystemCreateCommand psCreateCommand;
-		psCreateCommand.execute(&w);
-		const auto psId = std::any_cast<int>(psCreateCommand.getResult("NewId"));
-
-		auto fluidVolumeScene = new FluidVolumeScene(w.getNextSceneId(), "", std::make_unique<SparseVolumef>());
-		w.addScene(fluidVolumeScene);
-		const auto volumeId = fluidVolumeScene->getId();
-
-
-		std::cout << file.path() << std::endl;
-		PLYFileImportCommand::Args iArgs;
-		iArgs.filePath.setValue(file.path().string());
-		iArgs.particleSystemId.setValue(psId);
-		PLYFileImportCommand importCommand(iArgs);
-		importCommand.execute(&w);
-
-		SPHVolumeConvertCommand::Args args;
-		args.isIsotorpic.setValue(true);
-		args.particleRadius.setValue(particleRadiusView.getValue());
-		args.cellLength.setValue(gridCellWidthView.getValue());
-		args.volumeId.setValue(volumeId);
-		args.particleSystemId.setValue(psId);
-		SPHVolumeConvertCommand command(args);
-		command.execute(&w);
-
-		FluidVolumeExportCommand::Args eArgs;
-		std::filesystem::path eFilePath(outdir);
-		eFilePath.append(file.path().filename().string());
-		std::cout << eFilePath << std::endl;
-		eArgs.filePath.setValue(eFilePath.string());
-		eArgs.volumeId.setValue(volumeId);
-		FluidVolumeExportCommand exportCommand(eArgs);
-		exportCommand.execute(&w);
-
-		VDBSceneCreateCommand::Args scArgs;
-		scArgs.sceneType.setValue("VDBVolume");
-		VDBSceneCreateCommand scCommand(scArgs);
-		scCommand.execute(&w);
-		const auto vdbVolumeId = std::any_cast<int>(scCommand.getResult("NewId"));
-
-		VDBPLYFileReadCommand::Args vArgs;
-		vArgs.filePath.setValue(eFilePath.string());
-		vArgs.isVolume.setValue(true);
-		vArgs.vdbSceneId.setValue(vdbVolumeId);
-		VDBPLYFileReadCommand vdbReadCommand(vArgs);
-		vdbReadCommand.execute(&w);
-
-		VDBFileWriteCommand::Args wArgs;
-		std::filesystem::path wFilePath(outdir);
-		wFilePath.append(file.path().stem().string() + ".vdb");
-		wArgs.vdbVolumeIds.setValue(std::vector<int>{ vdbVolumeId });
-		wArgs.filePath.setValue(wFilePath.string());
-		VDBFileWriteCommand wCommand(wArgs);
-		wCommand.execute(&w);
 		*/
 	}
-
-	/*
-	ToVDBVolumeCommand command;
-	command.execute(getWorld());
-	auto volume = new VDBVolumeScene(getWorld()->getNextSceneId(), "VDBVolume");
-	for (int i = 0; i < 10; ++i) {
-		for (int j = 0; j < 10; ++j) {
-			for (int k = 0; k < 10; ++k) {
-				const auto dist = i * i + j * j + k * k;
-				const auto v = std::sqrt(dist) / 10.0;
-				volume->setValue({ i,j,k }, v);
-			}
-		}
-	}
-	volume->setScale(scaleView.getValue());
-
-	volume->getPresenter()->createView(getWorld()->getRenderer());
-	getWorld()->getScenes()->addScene(volume);
-	*/
 }

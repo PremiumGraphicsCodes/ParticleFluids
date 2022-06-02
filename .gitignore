@@ -341,3 +341,5 @@ Blender/CrystalPythonTest/test_export.stl
 *.stl
 /FluidStudio/FluidStudio/imgui.ini
 Blender/vdb_tools/points.vdb
+/CGLib/CrystalPhysics/CrystalPhysicsView/imgui.ini
+*.vdb
