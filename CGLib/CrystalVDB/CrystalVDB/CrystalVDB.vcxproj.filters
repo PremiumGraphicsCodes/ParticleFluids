@@ -38,7 +38,7 @@
     <ClCompile Include="VDBPolygonMeshPresenter.cpp">
       <Filter>Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="VDBPolygonMeshScene.cpp">
+    <ClCompile Include="VDBMeshScene.cpp">
       <Filter>Mesh</Filter>
     </ClCompile>
     <ClCompile Include="VDBPolygonMeshImpl.cpp">
@@ -120,7 +120,7 @@
     <ClInclude Include="VDBPolygonMeshPresenter.h">
       <Filter>Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="VDBPolygonMeshScene.h">
+    <ClInclude Include="VDBMeshScene.h">
       <Filter>Mesh</Filter>
     </ClInclude>
     <ClInclude Include="VDBPolygonMeshImpl.h">

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "VDBPolygonMeshScene.h"
+#include "VDBMeshScene.h"
 #include "VDBVolumeScene.h"
 
 namespace Crystal {

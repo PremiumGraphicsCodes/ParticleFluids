@@ -7,7 +7,7 @@
 
 #include "VDBScene.h"
 #include "VDBPointsScene.h"
-#include "VDBPolygonMeshScene.h"
+#include "VDBMeshScene.h"
 
 #include <cassert>
 

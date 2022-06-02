@@ -1,6 +1,6 @@
 #include "VDBPolygonMeshConverter.h"
 
-#include "VDBPolygonMeshScene.h"
+#include "VDBMeshScene.h"
 #include "VDBPolygonMeshImpl.h"
 
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"

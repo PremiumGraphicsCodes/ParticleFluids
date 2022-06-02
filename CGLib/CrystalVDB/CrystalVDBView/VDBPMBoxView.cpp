@@ -1,6 +1,6 @@
 #include "VDBPMBoxView.h"
 
-#include "../CrystalVDB/VDBPolygonMeshScene.h"
+#include "../CrystalVDB/VDBMeshScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
