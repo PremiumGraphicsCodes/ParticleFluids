@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace VDB {
 		class VDBParticleSystemScene;
-		class VDBPolygonMeshScene;
+		class VDBMeshScene;
 
 class VDBSceneFileExportCommand : public Command::ICommand
 {

@@ -36,13 +36,13 @@
       <Filter>Points</Filter>
     </ClCompile>
     <ClCompile Include="VDBPolygonMeshPresenter.cpp">
-      <Filter>PolygonMesh</Filter>
+      <Filter>Mesh</Filter>
     </ClCompile>
     <ClCompile Include="VDBPolygonMeshScene.cpp">
-      <Filter>PolygonMesh</Filter>
+      <Filter>Mesh</Filter>
     </ClCompile>
     <ClCompile Include="VDBPolygonMeshImpl.cpp">
-      <Filter>PolygonMesh\Private</Filter>
+      <Filter>Mesh\Private</Filter>
     </ClCompile>
     <ClCompile Include="VDBVolumeImpl.cpp">
       <Filter>Volume\Private</Filter>
@@ -118,13 +118,13 @@
       <Filter>Points</Filter>
     </ClInclude>
     <ClInclude Include="VDBPolygonMeshPresenter.h">
-      <Filter>PolygonMesh</Filter>
+      <Filter>Mesh</Filter>
     </ClInclude>
     <ClInclude Include="VDBPolygonMeshScene.h">
-      <Filter>PolygonMesh</Filter>
+      <Filter>Mesh</Filter>
     </ClInclude>
     <ClInclude Include="VDBPolygonMeshImpl.h">
-      <Filter>PolygonMesh\Private</Filter>
+      <Filter>Mesh\Private</Filter>
     </ClInclude>
     <ClInclude Include="VDBVolumeImpl.h">
       <Filter>Volume\Private</Filter>
@@ -180,12 +180,6 @@
     <Filter Include="Volume\Private">
       <UniqueIdentifier>{6f79be99-26d8-40a9-ab7f-505504c5fdcb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PolygonMesh">
-      <UniqueIdentifier>{d97b5d3a-14a6-4efc-b47a-67ca70ac9421}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PolygonMesh\Private">
-      <UniqueIdentifier>{54852c6f-bc32-48ff-9fc0-3ba07b936a5b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Converter\Private">
       <UniqueIdentifier>{0f07a8f8-2e2f-46b1-84e9-eb32e7f913f3}</UniqueIdentifier>
     </Filter>
@@ -215,6 +209,12 @@
     </Filter>
     <Filter Include="FileIO\PLY">
       <UniqueIdentifier>{5ec32ed1-feab-4f91-b06f-ed5c85a5b6c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh">
+      <UniqueIdentifier>{d97b5d3a-14a6-4efc-b47a-67ca70ac9421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh\Private">
+      <UniqueIdentifier>{54852c6f-bc32-48ff-9fc0-3ba07b936a5b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

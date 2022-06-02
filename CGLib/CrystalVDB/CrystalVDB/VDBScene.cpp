@@ -15,7 +15,7 @@ void VDBScene::add(VDBPointsScene* points)
 	this->children.push_back(points);
 }
 
-void VDBScene::add(VDBPolygonMeshScene* mesh)
+void VDBScene::add(VDBMeshScene* mesh)
 {
 	this->meshes.push_back(mesh);
 	this->children.push_back(mesh);

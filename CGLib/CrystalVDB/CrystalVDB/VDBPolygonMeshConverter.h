@@ -5,13 +5,13 @@ namespace Crystal {
 		class PolygonMesh;
 	}
 	namespace VDB {
-		class VDBPolygonMeshScene;
+		class VDBMeshScene;
 		class VDBVolumeScene;
 
 class VDBPolygonMeshConverter
 {
 public:
-	void fromVDB(const VDBPolygonMeshScene& src, Shape::PolygonMesh* dest);
+	void fromVDB(const VDBMeshScene& src, Shape::PolygonMesh* dest);
 
 private:
 };

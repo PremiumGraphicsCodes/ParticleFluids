@@ -3,7 +3,7 @@
 #include "CrystalScene/Scene/ParticleSystemScene.h"
 #include "CrystalScene/Scene/PolygonMeshScene.h"
 
-#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBPointsScene.h"
 #include "../CrystalVDB/VDBParticleSystemConverter.h"
 #include "../CrystalVDB/VDBVolumeConverter.h"
 #include "../CrystalVDB/VDBVolumeScene.h"

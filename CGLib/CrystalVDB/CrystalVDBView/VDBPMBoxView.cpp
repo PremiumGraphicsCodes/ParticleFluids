@@ -14,7 +14,7 @@ VDBPMBoxView::VDBPMBoxView(const std::string& name, World* world, Canvas* canvas
 
 void VDBPMBoxView::onOk()
 {
-	auto mesh = new VDBPolygonMeshScene(getWorld()->getNextSceneId(), "VDBMesh");
+	auto mesh = new VDBMeshScene(getWorld()->getNextSceneId(), "VDBMesh");
 	// cube vertices
 
 	mesh->addVertex(Vector3dd(2, 2, 2)); // 0       6--------7

@@ -9,7 +9,7 @@
 
 using namespace Crystal::VDB;
 
-VDBVolumeScene* VDBMeshToVolumeConverter::toVolume(const VDBPolygonMeshScene& mesh, const double divideLength)
+VDBVolumeScene* VDBMeshToVolumeConverter::toVolume(const VDBMeshScene& mesh, const double divideLength)
 {
 	const auto scale = 1.0 / divideLength;
 	openvdb::math::Transform::Ptr xform = openvdb::math::Transform::createLinearTransform(divideLength);

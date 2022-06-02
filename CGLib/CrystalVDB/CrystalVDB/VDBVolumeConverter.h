@@ -7,7 +7,7 @@ namespace Crystal {
 	}
 	namespace VDB {
 		class VDBVolumeScene;
-		class VDBPolygonMeshScene;
+		class VDBMeshScene;
 		class VDBParticleSystemScene;
 
 class VDBVolumeConverter

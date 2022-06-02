@@ -95,7 +95,7 @@ VDBScene* VDBFileImporter::readOBJ(const std::string& filePath)
 		return nullptr;
 	}
 	const auto obj = reader.getOBJ();
-	auto mesh = new VDBPolygonMeshScene();
+	auto mesh = new VDBMeshScene();
 	for (const auto& p : obj.positions) {
 		mesh->addVertex(p);
 	}
@@ -124,7 +124,7 @@ VDBScene* VDBFileImporter::readSTL(const std::string& filePath)
 	if (!isOk) {
 		return nullptr;
 	}
-	auto mesh = new VDBPolygonMeshScene();
+	auto mesh = new VDBMeshScene();
 	const auto stl = reader.getSTL();
 	unsigned int index = 0;
 	for (const auto& f : stl.faces) {

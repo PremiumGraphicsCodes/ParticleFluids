@@ -21,7 +21,7 @@ public:
 
 	void add(VDBPointsScene* points);
 
-	void add(VDBPolygonMeshScene* mesh);
+	void add(VDBMeshScene* mesh);
 
 	Scene::SceneType getType() const override;
 
@@ -31,12 +31,12 @@ public:
 
 	std::vector<VDBPointsScene*> getPoints() const { return points; }
 
-	std::vector<VDBPolygonMeshScene*> getMeshes() const { return meshes; }
+	std::vector<VDBMeshScene*> getMeshes() const { return meshes; }
 
 private:
 	std::vector<VDBVolumeScene*> volumes;
 	std::vector<VDBPointsScene*> points;
-	std::vector<VDBPolygonMeshScene*> meshes;
+	std::vector<VDBMeshScene*> meshes;
 };
 	}
 }

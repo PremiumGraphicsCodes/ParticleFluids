@@ -10,7 +10,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 using namespace Crystal::VDB;
 
-VDBPolygonMeshPresenter::VDBPolygonMeshPresenter(VDBPolygonMeshScene* model) :
+VDBPolygonMeshPresenter::VDBPolygonMeshPresenter(VDBMeshScene* model) :
 	model(model),
 	view(nullptr)
 {

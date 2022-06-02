@@ -2,13 +2,13 @@
 
 namespace Crystal {
 	namespace VDB {
-		class VDBPolygonMeshScene;
+		class VDBMeshScene;
 		class VDBVolumeScene;
 
 class VDBMeshToVolumeConverter
 {
 public:
-	static VDBVolumeScene* toVolume(const VDBPolygonMeshScene& mesh, const double divideLength);
+	static VDBVolumeScene* toVolume(const VDBMeshScene& mesh, const double divideLength);
 
 private:
 };

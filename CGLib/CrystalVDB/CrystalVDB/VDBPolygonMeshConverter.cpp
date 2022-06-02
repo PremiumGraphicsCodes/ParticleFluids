@@ -8,7 +8,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
-void VDBPolygonMeshConverter::fromVDB(const VDBPolygonMeshScene& src, Crystal::Shape::PolygonMesh* mesh)
+void VDBPolygonMeshConverter::fromVDB(const VDBMeshScene& src, Crystal::Shape::PolygonMesh* mesh)
 {
 	auto vertices = src.getVerticesd();
 

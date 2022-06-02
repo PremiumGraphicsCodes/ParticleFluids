@@ -9,7 +9,7 @@ namespace Crystal {
 class VDBVolumeToMeshConverter
 {
 public:
-	static VDBPolygonMeshScene* toMesh(const VDBVolumeScene& volume, const double threshold, const double adaptivity);
+	static VDBMeshScene* toMesh(const VDBVolumeScene& volume, const double threshold, const double adaptivity);
 };
 	}
 }

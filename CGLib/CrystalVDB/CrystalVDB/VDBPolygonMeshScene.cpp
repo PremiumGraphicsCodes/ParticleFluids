@@ -9,45 +9,45 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBPolygonMeshScene::VDBPolygonMeshScene() :
-	VDBPolygonMeshScene(-1, "")
+VDBMeshScene::VDBMeshScene() :
+	VDBMeshScene(-1, "")
 {
 	impl = std::make_unique<VDBPolygonMeshImpl>();
 }
 
-VDBPolygonMeshScene::VDBPolygonMeshScene(const int id, const std::string& name) :
+VDBMeshScene::VDBMeshScene(const int id, const std::string& name) :
 	IShapeScene(id, name)
 {
 	impl = std::make_unique<VDBPolygonMeshImpl>();
 	presenter = std::make_unique<VDBPolygonMeshPresenter>(this);
 }
 
-VDBPolygonMeshScene::~VDBPolygonMeshScene()
+VDBMeshScene::~VDBMeshScene()
 {
 
 }
 
-void VDBPolygonMeshScene::addVertex(const Vector3df& position)
+void VDBMeshScene::addVertex(const Vector3df& position)
 {
 	impl->points.push_back(Converter::toVDB(position));
 }
 
-Vector3df VDBPolygonMeshScene::getVertex(const int index)
+Vector3df VDBMeshScene::getVertex(const int index)
 {
 	return Converter::fromVDB( impl->points[index] );
 }
 
-std::vector<Vector3df> VDBPolygonMeshScene::getVerticesf() const
+std::vector<Vector3df> VDBMeshScene::getVerticesf() const
 {
 	return Converter::fromVDBf<Vector3df>(impl->points);
 }
 
-std::vector<Vector3dd> VDBPolygonMeshScene::getVerticesd() const
+std::vector<Vector3dd> VDBMeshScene::getVerticesd() const
 {
 	return Converter::fromVDBf<Vector3dd>(impl->points);
 }
 
-void VDBPolygonMeshScene::addTriangle(const std::array<unsigned int, 3>& indices)
+void VDBMeshScene::addTriangle(const std::array<unsigned int, 3>& indices)
 {
 	VDBPolygonMeshImpl::TriangleFace triangle;
 	triangle.indices = Converter::toVDB( indices );
@@ -55,11 +55,11 @@ void VDBPolygonMeshScene::addTriangle(const std::array<unsigned int, 3>& indices
 	impl->triangles.push_back(triangle);
 }
 
-std::vector<VDBPolygonMeshScene::TriangleFace> VDBPolygonMeshScene::getTriangleFaces() const
+std::vector<VDBMeshScene::TriangleFace> VDBMeshScene::getTriangleFaces() const
 {
-	std::vector<VDBPolygonMeshScene::TriangleFace> faces;
+	std::vector<VDBMeshScene::TriangleFace> faces;
 	for (const auto& t : impl->triangles) {
-		VDBPolygonMeshScene::TriangleFace face;
+		VDBMeshScene::TriangleFace face;
 		face.indices = Converter::fromVDB(t.indices);
 		face.normal = Converter::fromVDB(t.normal);
 		faces.emplace_back(face);
@@ -67,7 +67,7 @@ std::vector<VDBPolygonMeshScene::TriangleFace> VDBPolygonMeshScene::getTriangleF
 	return faces;
 }
 
-void VDBPolygonMeshScene::addQuad(const std::array<unsigned int, 4>& indices)
+void VDBMeshScene::addQuad(const std::array<unsigned int, 4>& indices)
 {
 	VDBPolygonMeshImpl::QuadFace quad;
 	quad.indices = Converter::toVDB(indices);
@@ -75,11 +75,11 @@ void VDBPolygonMeshScene::addQuad(const std::array<unsigned int, 4>& indices)
 	impl->quads.push_back(quad);
 }
 
-std::vector<VDBPolygonMeshScene::QuadFace> VDBPolygonMeshScene::getQuadFaces() const
+std::vector<VDBMeshScene::QuadFace> VDBMeshScene::getQuadFaces() const
 {
-	std::vector<VDBPolygonMeshScene::QuadFace> faces;
+	std::vector<VDBMeshScene::QuadFace> faces;
 	for (const auto& q : impl->quads) {
-		VDBPolygonMeshScene::QuadFace face;
+		VDBMeshScene::QuadFace face;
 		face.indices = Converter::fromVDB(q.indices);
 		face.normal = Converter::fromVDB(q.normal);
 		faces.emplace_back(face);
@@ -87,17 +87,17 @@ std::vector<VDBPolygonMeshScene::QuadFace> VDBPolygonMeshScene::getQuadFaces() c
 	return faces;
 }
 
-std::vector<VDBPolygonMeshScene::Face> VDBPolygonMeshScene::getAllFaces() const
+std::vector<VDBMeshScene::Face> VDBMeshScene::getAllFaces() const
 {
-	std::vector<VDBPolygonMeshScene::Face> faces;
+	std::vector<VDBMeshScene::Face> faces;
 	for (const auto& t : impl->triangles) {
-		VDBPolygonMeshScene::Face f;
+		VDBMeshScene::Face f;
 		f.indices = { t.indices[0], t.indices[1], t.indices[2] };
 		f.normal = Converter::fromVDB(t.normal);
 		faces.emplace_back(f);
 	}
 	for (const auto& t : impl->quads) {
-		VDBPolygonMeshScene::Face f;
+		VDBMeshScene::Face f;
 		f.indices = { t.indices[0], t.indices[1], t.indices[2], t.indices[3] };
 		f.normal = Converter::fromVDB(t.normal);
 		faces.emplace_back(f);
@@ -105,7 +105,7 @@ std::vector<VDBPolygonMeshScene::Face> VDBPolygonMeshScene::getAllFaces() const
 	return faces;
 }
 
-Box3dd VDBPolygonMeshScene::getBoundingBox() const
+Box3dd VDBMeshScene::getBoundingBox() const
 {
 	if (impl->points.empty()) {
 		return Box3dd::createDegeneratedBox();
@@ -119,12 +119,12 @@ Box3dd VDBPolygonMeshScene::getBoundingBox() const
 	return box;
 }
 
-void VDBPolygonMeshScene::updateNormals()
+void VDBMeshScene::updateNormals()
 {
 	impl->updateNormals();
 }
 
-void VDBPolygonMeshScene::scale(const double scale)
+void VDBMeshScene::scale(const double scale)
 {
 	for (auto& p : impl->points) {
 		p *= scale;

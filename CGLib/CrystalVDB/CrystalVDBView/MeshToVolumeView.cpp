@@ -24,7 +24,7 @@ MeshToVolumeView::MeshToVolumeView(const std::string& name, World* model, Canvas
 void MeshToVolumeView::onOk()
 {
 	const auto meshId = vdbMeshSelectView.getId();
-	auto mesh = getWorld()->getScenes()->findSceneById<VDBPolygonMeshScene*>(meshId);
+	auto mesh = getWorld()->getScenes()->findSceneById<VDBMeshScene*>(meshId);
 
 	auto volume = VDBMeshToVolumeConverter::toVolume(*mesh, divideLengthView.getValue());
 	volume->getPresenter()->createView(getWorld()->getRenderer());

@@ -74,8 +74,7 @@ void VDBFileMenu::onExport()
 			const auto pointScenes = getWorld()->getScenes()->findScenes(pointType);
 			for (auto s : pointScenes) {
 				auto ps = static_cast<VDBPointsScene*>(s);
-				const auto& particles = ps->getPositions();
-				writer.writePoints(s->getName(), particles);
+				writer.writePoints("name", ps);
 			}
 			std::cout << "export succeded." << std::endl;
 		}

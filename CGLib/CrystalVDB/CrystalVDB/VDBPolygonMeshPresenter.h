@@ -7,12 +7,12 @@ namespace Crystal {
 		class LineShaderScene;
 	}
 	namespace VDB {
-		class VDBPolygonMeshScene;
+		class VDBMeshScene;
 
 class VDBPolygonMeshPresenter : public Scene::IPresenter
 {
 public:
-	explicit VDBPolygonMeshPresenter(VDBPolygonMeshScene* model);
+	explicit VDBPolygonMeshPresenter(VDBMeshScene* model);
 
 	void createView(Scene::SceneShader* sceneShader) override;
 
@@ -28,7 +28,7 @@ private:
 	void updateChildIdView();
 
 private:
-	VDBPolygonMeshScene* model;
+	VDBMeshScene* model;
 	Scene::LineShaderScene* view;
 };
 

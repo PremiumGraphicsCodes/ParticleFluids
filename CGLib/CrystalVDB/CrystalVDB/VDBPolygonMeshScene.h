@@ -14,7 +14,7 @@ namespace Crystal {
 	namespace VDB {
 		class VDBPolygonMeshImpl;
 
-class VDBPolygonMeshScene : public Scene::IShapeScene
+class VDBMeshScene : public Scene::IShapeScene
 {
 public:
 	struct TriangleFace
@@ -35,11 +35,11 @@ public:
 		Math::Vector3df normal;
 	};
 
-	VDBPolygonMeshScene();
+	VDBMeshScene();
 
-	VDBPolygonMeshScene(const int id, const std::string& name);
+	VDBMeshScene(const int id, const std::string& name);
 
-	~VDBPolygonMeshScene();
+	~VDBMeshScene();
 
 	void addVertex(const Math::Vector3df& position);
 

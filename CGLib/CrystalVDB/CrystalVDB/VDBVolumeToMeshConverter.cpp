@@ -5,9 +5,9 @@
 
 using namespace Crystal::VDB;
 
-VDBPolygonMeshScene* VDBVolumeToMeshConverter::toMesh(const VDBVolumeScene& volume, const double threshold, const double adaptivity)
+VDBMeshScene* VDBVolumeToMeshConverter::toMesh(const VDBVolumeScene& volume, const double threshold, const double adaptivity)
 {
-    VDBPolygonMeshScene* mesh = new VDBPolygonMeshScene();
+    VDBMeshScene* mesh = new VDBMeshScene();
     auto impl = mesh->getImpl();
     auto grid = volume.getImpl()->getPtr();
     std::vector<openvdb::Vec3I> triangles;
